@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum E_Ability //enter abilities as we go here
 {
-    Placeholder
+    Debug,
+    Dodge
 }
 
 [System.Serializable]

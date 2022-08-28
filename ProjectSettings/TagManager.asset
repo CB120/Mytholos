@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Party 1 Parent
+  - Party 2 Parent
   layers:
   - Default
   - TransparentFX

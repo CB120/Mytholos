@@ -5,8 +5,8 @@ using UnityEngine;
 public class Participant : MonoBehaviour
 {
     //Properties
-    [SerializeField]
-    public static bool debugOn; //Ethan: Something I like to add to my scripts, allows me to 'mute' all my optional Debug messages
+    [Tooltip("If ticked, allows all non-critical Debug messages to be shown")]
+    public bool debugOn;
 
 
     //Variables
@@ -17,8 +17,11 @@ public class Participant : MonoBehaviour
 
 
     //References
+    public SO_AllParticipantData liveParticipantData;
+    public SO_AllParticipantData debugParticipantData;
+
     [HideInInspector] 
-    public Myth[] party = { null, null, null }; //3 references to the Myth scripts on the Myth GameObjects in this Participant's party. Auto-populated in Arena scene by PartyBuilder
+    public List<Myth> party = new List<Myth>(); //3 references to the Myth scripts on the Myth GameObjects in this Participant's party. Auto-populated in Arena scene by PartyBuilder
 
 
     //Engine-called
@@ -29,5 +32,8 @@ public class Participant : MonoBehaviour
         partyIndex = numberOfParticipants;
         numberOfParticipants++;
         if (debugOn) Debug.Log(gameObject.name + "'s partyIndex is " + partyIndex);
+
+        liveParticipantData.partyData[partyIndex].participant = this;
+        debugParticipantData.partyData[partyIndex].participant = this;
     }
 }
