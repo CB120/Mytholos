@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class PartyBuilder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
+    //Engine-called
+    void Start()
     {
         
     }

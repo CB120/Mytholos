@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2500836886932577087}
   - component: {fileID: 781119230625859627}
   m_Layer: 0
-  m_Name: Participant
+  m_Name: Player Participant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3425d9e9747fa814ba7af020357aa6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partyData: {fileID: 0}
   party:
   - {fileID: 0}
   - {fileID: 0}
