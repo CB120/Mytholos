@@ -21,7 +21,7 @@ public class Participant : MonoBehaviour
     public SO_AllParticipantData debugParticipantData;
 
     [HideInInspector] 
-    public List<Myth> party = new List<Myth>(); //3 references to the Myth scripts on the Myth GameObjects in this Participant's party. Auto-populated in Arena scene by PartyBuilder
+    public List<Myth> party = new List<Myth>(); 
 
 
     //Engine-called

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum E_Ability //enter abilities as we go here
 {
-    DebugNoth,
+    DebugNorth,
     DebugWest,
     DebugSouth,
     Dodge
@@ -21,8 +21,9 @@ public class Command
 [CreateAssetMenu(fileName = "Untitled", menuName = "ScriptableObjects/Ability", order = 1)]
 public class SO_Ability : ScriptableObject
 {
+    public E_Ability ability;
+    public SO_Element element;
+
     public float damage;
     public float healing;
-    public E_Element elementalType;
-    public E_Ability abilityType;
 }

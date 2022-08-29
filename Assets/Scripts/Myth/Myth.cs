@@ -25,7 +25,10 @@ public class Myth : MonoBehaviour
 
 
     //References
-    SO_Ability[] abilities = { null, null, null, null };
+    public SO_Ability northAbility;
+    public SO_Ability westAbility;
+    public SO_Ability southAbility;
+    public SO_Ability eastAbility;
 
 
     //Input-called

@@ -18,6 +18,9 @@ public class PartyData
 {
     [HideInInspector]
     public Participant participant; //reference to this party's Participant
+    [HideInInspector]
+    public List<Myth> myths = new List<Myth>(); //3 references to the Myth scripts on the Myth GameObjects in this Participant's party. Auto-populated in Arena scene by PartyBuilder
+
     public Color colour;
 
     public MythData[] mythData = new MythData[3];
