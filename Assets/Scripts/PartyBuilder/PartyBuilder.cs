@@ -17,12 +17,7 @@ public class PartyBuilder : MonoBehaviour
     public SO_AllParticipantData debugAllParticipantData;
     SO_AllParticipantData allParticipantData;
 
-    [Header("Myth prefabs")]
-    public GameObject Arnkerrth;
-    public GameObject Dybbuk;
-    public GameObject Enfield;
-    public GameObject Golem;
-    public GameObject Gossan;
+    public Myth[] mythPrefabs;
 
     public SO_Ability[] allAbilities;
 
@@ -65,8 +60,7 @@ public class PartyBuilder : MonoBehaviour
 
     void SpawnMyth(MythData mythData, int participantIndex)
     {
-        //newMyth = Instantiate(<mythData.myth -> prefab>, partyParents[p]);
-        //newMyth.position = <correct spawn point>
+        //newMyth = Instantiate(<mythData.myth -> prefab>, partyParents[p], <correct spawn point>);
         //allParticipantData.partyData[p].participant.party.Add(newMyth);
         //
     }
