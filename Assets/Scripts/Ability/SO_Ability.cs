@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum E_Ability //enter abilities as we go here
 {
-    Debug,
+    DebugNoth,
+    DebugWest,
+    DebugSouth,
     Dodge
 }
 

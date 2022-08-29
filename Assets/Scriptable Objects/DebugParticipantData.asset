@@ -17,17 +17,35 @@ MonoBehaviour:
     colour: {r: 0.8018868, g: 0.23073156, b: 0.23073156, a: 0}
     mythData:
     - myth: 0
-      abilities: 000000000000000000000000
+      northAbility: 0
+      westAbility: 1
+      southAbility: 2
+      eastAbility: 3
     - myth: 4
-      abilities: 000000000000000000000000
+      northAbility: 0
+      westAbility: 1
+      southAbility: 2
+      eastAbility: 3
     - myth: 3
-      abilities: 000000000000000000000000
+      northAbility: 0
+      westAbility: 1
+      southAbility: 2
+      eastAbility: 3
   - participant: {fileID: 0}
     colour: {r: 0, g: 0, b: 0, a: 0}
     mythData:
     - myth: 0
-      abilities: 000000000000000000000000
+      northAbility: 0
+      westAbility: 0
+      southAbility: 0
+      eastAbility: 3
     - myth: 0
-      abilities: 000000000000000000000000
+      northAbility: 0
+      westAbility: 0
+      southAbility: 0
+      eastAbility: 3
     - myth: 0
-      abilities: 000000000000000000000000
+      northAbility: 0
+      westAbility: 0
+      southAbility: 0
+      eastAbility: 3

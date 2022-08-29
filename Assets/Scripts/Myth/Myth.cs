@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum E_Myth //One per Myth, just so we don't need to remember int IDs. In alphabetical order
+public enum E_Myth
 {
-    Arnkerrth,
-    Dybbuk,
-    Enfield,
+    Beetle,
+    Fox,
     Golem,
-    Gossan,
-    Kelpie,
-    Khepra,
-    Wolper
+    Horse,
+    Lizard,
+    Mask,
+    Snake,
+    Stag
 }
 
 public class Myth : MonoBehaviour
 {
     //Properties
+    public E_Myth myth;
 
 
     //Variables
@@ -28,22 +29,22 @@ public class Myth : MonoBehaviour
 
 
     //Input-called
-    public virtual void OnYPress()
+    public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
     {
 
     }
 
-    public virtual void OnXPress()
+    public virtual void OnWestPress() //Xbox -> X | PlayStation -> Square | Switch -> Y
     {
 
     }
 
-    public virtual void OnAPress()
+    public virtual void OnSouthPress() //Xbox -> A | PlayStation -> X | Switch -> B
     {
 
     }
 
-    public virtual void OnBPress()
+    public virtual void OnEastPress() //Dodge? | Xbox -> B
     {
 
     }

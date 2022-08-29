@@ -6,7 +6,10 @@ using UnityEngine;
 public class MythData //used sort of like a struct, bundling together a Participant's Myth selection and their ability choices for PartyBuilder
 {
     public E_Myth myth;
-    public E_Ability[] abilities = new E_Ability[3];
+    public E_Ability northAbility;
+    public E_Ability westAbility;
+    public E_Ability southAbility;
+    public E_Ability eastAbility = E_Ability.Dodge;
 }
 
 

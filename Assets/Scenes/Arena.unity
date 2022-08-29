@@ -172,11 +172,7 @@ MonoBehaviour:
     type: 2}
   debugAllParticipantData: {fileID: 11400000, guid: 147620fded745804385c132b70ed8ecd,
     type: 2}
-  Arnkerrth: {fileID: 0}
-  Dybbuk: {fileID: 0}
-  Enfield: {fileID: 0}
-  Golem: {fileID: 0}
-  Gossan: {fileID: 0}
+  mythPrefabs: []
   allAbilities: []
 --- !u!1 &443856805
 GameObject:

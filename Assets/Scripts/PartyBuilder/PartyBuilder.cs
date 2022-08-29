@@ -62,6 +62,6 @@ public class PartyBuilder : MonoBehaviour
     {
         //newMyth = Instantiate(<mythData.myth -> prefab>, partyParents[p], <correct spawn point>);
         //allParticipantData.partyData[p].participant.party.Add(newMyth);
-        //
+        
     }
 }
