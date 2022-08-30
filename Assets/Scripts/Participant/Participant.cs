@@ -20,9 +20,6 @@ public class Participant : MonoBehaviour
     public SO_AllParticipantData liveParticipantData;
     public SO_AllParticipantData debugParticipantData;
 
-    [HideInInspector] 
-    public List<Myth> party = new List<Myth>(); 
-
 
     //Engine-called
     protected void Awake()
