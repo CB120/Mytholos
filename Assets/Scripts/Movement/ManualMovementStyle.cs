@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ManualMovementStyle : MovementStyleManager
+public class ManualMovementStyle : CollisionDetection
 {
     //https://docs.unity3d.com/Packages/com.unity.inputsystem@1.4/manual/QuickStartGuide.html
-    public Rigidbody rb;
-    
+    public float mythSpeed;
+    private Vector2 inputVector;
+
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log("Moving!" + context);
-        Vector2 inputVector = context.ReadValue<Vector2>();
-        float speed = 2.0f;
-        rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
+        //Debug.Log("Moving!" + context);
+        inputVector = context.ReadValue<Vector2>() * mythSpeed;
+    }
+
+
+    protected override void SetTargetVelocity()
+    {
+        base.SetTargetVelocity();
+        velocity = new Vector3(inputVector.x, velocity.y, inputVector.y);
     }
 }
