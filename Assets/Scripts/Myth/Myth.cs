@@ -18,7 +18,9 @@ public class Myth : MonoBehaviour
 {
     //Properties
     public E_Myth myth;
-
+    public float stamina;
+    public float speed;
+    public float acceleration;
 
     //Variables
     List<Command> commandQueue = new List<Command>();
