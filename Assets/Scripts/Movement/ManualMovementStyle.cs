@@ -19,6 +19,9 @@ public class ManualMovementStyle : CollisionDetection
         if (!context.canceled)
         {
             lastRotation = newRotation;
+        } else if (context.canceled)
+        {
+            lastRotation = this.transform.rotation;
         }
     }
 

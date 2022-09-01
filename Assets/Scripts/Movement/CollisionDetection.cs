@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetection : MonoBehaviour
+public class CollisionDetection : MovementStyleManager
 {
     protected enum HitDirection { Left, Right, Down, Up, Back, Front } // X-, X+, Y-, Y+, Z-, Z+
 
