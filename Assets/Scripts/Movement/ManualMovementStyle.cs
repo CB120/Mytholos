@@ -8,8 +8,11 @@ public class ManualMovementStyle : CollisionDetection
     //https://docs.unity3d.com/Packages/com.unity.inputsystem@1.4/manual/QuickStartGuide.html
     public float mythSpeed;
     private Vector2 inputVector;
-    Quaternion newRotation;
-    Quaternion lastRotation;
+    private Quaternion newRotation;
+    private Quaternion lastRotation;
+
+    // Animation shit 
+    [SerializeField] private Animator anim;
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -18,10 +21,21 @@ public class ManualMovementStyle : CollisionDetection
         newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
         if (!context.canceled)
         {
+            anim.SetBool("Walking", true);
             lastRotation = newRotation;
         } else if (context.canceled)
         {
+            anim.SetBool("Walking", false);
             lastRotation = this.transform.rotation;
+        }
+    }
+
+    public void AttackExample(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.phase);
+        if (context.performed)
+        {
+            anim.SetTrigger("attack");
         }
     }
 
