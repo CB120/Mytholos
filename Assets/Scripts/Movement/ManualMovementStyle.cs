@@ -25,7 +25,6 @@ public class ManualMovementStyle : CollisionDetection
         }
     }
 
-
     protected override void SetTargetVelocity()
     {
         base.SetTargetVelocity();
