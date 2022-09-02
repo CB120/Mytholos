@@ -53,6 +53,9 @@ public class PartyBuilder : MonoBehaviour
     {
         for (int p = 0; p < allParticipantData.partyData.Length; p++) 
         {
+            // Clear the myth lists since they will persist from previous sessions
+            allParticipantData.partyData[p].myths.Clear();
+            
             foreach (MythData m in allParticipantData.partyData[p].mythData)
             {
                 SpawnMyth(m, p);

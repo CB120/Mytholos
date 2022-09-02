@@ -34,8 +34,44 @@
                 },
                 {
                     "name": "Select Left",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "44db108f-9d27-4a10-9110-16b63986c6e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Select Right",
+                    "type": "Value",
+                    "id": "de2d6252-0ce5-42a5-865a-8bbe6ebba150",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "UseAbilityWest",
+                    "type": "Button",
+                    "id": "3b697c39-2e8f-4add-8104-a397ddded3b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveStrategyDown",
+                    "type": "Button",
+                    "id": "6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveStrategyUp",
+                    "type": "Button",
+                    "id": "2dee7095-db00-465d-8497-34a7d3c13604",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -267,10 +303,54 @@
                     "name": "",
                     "id": "3a86fa27-20f4-48b4-bcce-fd70cc44693c",
                     "path": "<Gamepad>/leftShoulder",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Select Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84f9b504-8e65-4044-b702-9aa7b8367bf1",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9cd65c0b-7e0f-4add-9a3f-53ebc00dd77b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseAbilityWest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "936ee0e2-b244-4e64-be78-9bb962490d8c",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveStrategyDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bcae4377-be95-495c-9878-91b4cce70ef8",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveStrategyUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

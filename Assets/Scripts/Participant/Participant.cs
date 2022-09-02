@@ -13,7 +13,7 @@ public class Participant : MonoBehaviour
         //Static
     static int numberOfParticipants = 0; //used to track which party index each participant should use
 
-    int partyIndex = -1; //0 = Player 1, 1 = Player 2. Used to fetch the correct element from the SO_AllParticipantData array
+    protected int partyIndex = -1; //0 = Player 1, 1 = Player 2. Used to fetch the correct element from the SO_AllParticipantData array
 
 
     //References

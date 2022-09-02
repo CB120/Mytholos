@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Commands;
 using UnityEngine;
 
 public enum E_Myth
@@ -16,6 +18,10 @@ public enum E_Myth
 
 public class Myth : MonoBehaviour
 {
+    private enum State { Idle, PerformingAbility, Moving }
+
+    private State currentState;
+    
     //Properties
     public E_Myth myth;
 
@@ -30,25 +36,65 @@ public class Myth : MonoBehaviour
     public SO_Ability southAbility;
     public SO_Ability eastAbility;
 
+    public Command Command { get; set; }
 
-    //Input-called
-    public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
+    // And here begins the monolithic state machine
+
+    private void Update()
     {
-
+        StateMachine();
     }
 
-    public virtual void OnWestPress() //Xbox -> X | PlayStation -> Square | Switch -> Y
+    private void StateMachine()
     {
-
+        switch (currentState)
+        {
+            case State.Idle:
+                IdleBehaviour();
+                break;
+            case State.PerformingAbility:
+                PerformingAbilityBehaviour();
+                break;
+            case State.Moving:
+                MovingBehaviour();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
-    public virtual void OnSouthPress() //Xbox -> A | PlayStation -> X | Switch -> B
+    private void IdleBehaviour()
     {
+        if (Command == null) return;
 
+        Debug.Log("command not null");
+
+        if (Command is AbilityCommand)
+        {
+            currentState = State.PerformingAbility;
+        }
+
+        if (Command is MoveCommand)
+        {
+            currentState = State.Moving;
+        }
     }
 
-    public virtual void OnEastPress() //Dodge? | Xbox -> B
+    private void PerformingAbilityBehaviour()
     {
+        Debug.Log($"{name} performed ability.");
 
+        Command = null;
+
+        currentState = State.Idle;
+    }
+
+    private void MovingBehaviour()
+    {
+        Debug.Log($"{name} moved. {((MoveCommand) Command).CurrentMoveCommandType}");
+
+        Command = null;
+
+        currentState = State.Idle;
     }
 }
