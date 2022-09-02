@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,27 +12,27 @@ public class ManualMovementStyle : CollisionDetection
     // Animation shit 
     [SerializeField] private Animator anim;
 
-    public void Move(InputAction.CallbackContext context)
+    public void Move(Vector2 input)
     {
-        inputVector = context.ReadValue<Vector2>() * mythSpeed;
-        newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
-        if (!context.canceled)
+        inputVector = input * mythSpeed;
+        
+        if (inputVector != Vector2.zero)
         {
-            anim.SetBool("Walking", true);
+            newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
+        
+            if (anim) anim.SetBool("Walking", true);
             lastRotation = newRotation;
-        } else if (context.canceled)
+        }
+        else
         {
-            anim.SetBool("Walking", false);
+            if (anim) anim.SetBool("Walking", false);
             lastRotation = this.transform.rotation;
         }
     }
 
-    public void AttackExample(InputAction.CallbackContext context)
+    public void AttackExample()
     {
-        if (context.performed)
-        {
-            anim.SetTrigger("attack");
-        }
+        if (anim) anim.SetTrigger("attack");
     }
 
     protected override void SetTargetVelocity()

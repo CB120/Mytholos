@@ -1,29 +1,18 @@
-using System;
 using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 
 namespace Myths
 {
-    public enum E_Myth
-    {
-        Beetle,
-        Fox,
-        Golem,
-        Horse,
-        Lizard,
-        Mask,
-        Snake,
-        Stag
-    }
-
     public class Myth : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour initialState;
+        [SerializeField] private ManualMovementStyle manualMovementStyle;
+        
         private MonoBehaviour currentState;
     
         //Properties
-        public E_Myth myth;
+        public SO_Myth myth;
         public float stamina;
         public float speed;
         public float acceleration;
@@ -32,6 +21,8 @@ namespace Myths
 
         //Variables
         List<Command> commandQueue = new List<Command>();
+
+        public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
         //References

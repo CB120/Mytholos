@@ -10,8 +10,9 @@ PrefabInstance:
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth
-      value: 0
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: c7eb348eb71dcfd45a81411f14111099,
+        type: 2}
     - target: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder

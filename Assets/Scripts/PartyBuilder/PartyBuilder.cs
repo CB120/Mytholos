@@ -18,11 +18,12 @@ public class PartyBuilder : MonoBehaviour
     public SO_AllParticipantData debugAllParticipantData;
     SO_AllParticipantData allParticipantData;
 
-    public Myth[] mythPrefabs;
-
     public SO_Ability[] allAbilities;
 
     Transform[] partyParents = new Transform[2];
+
+    private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
+    private Vector3 spawnOffset = new Vector3(3, 0, 0);
 
 
     //Engine-called
@@ -66,23 +67,18 @@ public class PartyBuilder : MonoBehaviour
 
     void SpawnMyth(MythData mythData, int participantIndex)
     {
-        GameObject prefab = null;
-        foreach (Myth m in mythPrefabs)
-        {
-            if (m.myth == mythData.myth)
-            {
-                prefab = m.gameObject;
-                break;
-            }
-        }
+        GameObject prefab = mythData.myth.prefab;
 
         if (prefab == null)
         {
-            Debug.LogWarning("Could not find a matching prefab! Please check AllParticipantData enums are correct, and all Myth enums are correct. Returning.");
+            Debug.LogWarning($"Could not find a matching prefab! {nameof(MythData)} may not have " +
+                            $"an assigned {nameof(SO_Myth)}, or {nameof(SO_Myth)} may not have an assigned {nameof(SO_Myth.prefab)}.");
             return;
         }
 
-        Vector3 spawnPosition = transform.GetChild(0).position; //add logic here for when we know how spawn positions are gonna work
+        Vector3 spawnPosition = currentSpawnPosition; // transform.GetChild(0).position; //add logic here for when we know how spawn positions are gonna work
+
+        currentSpawnPosition += spawnOffset;
 
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
