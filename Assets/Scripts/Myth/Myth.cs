@@ -21,6 +21,7 @@ public class Myth : MonoBehaviour
     public float stamina;
     public float speed;
     public float acceleration;
+    public float health;
 
     //Variables
     List<Command> commandQueue = new List<Command>();
