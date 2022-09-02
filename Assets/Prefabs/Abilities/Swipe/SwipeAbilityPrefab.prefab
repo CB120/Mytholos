@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5316833831943652738}
   - component: {fileID: 2111298335}
+  - component: {fileID: 1478457823589754531}
   m_Layer: 0
   m_Name: SwipeAbilityPrefab
   m_TagString: Untagged
@@ -176,8 +177,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
-  lerpSpeed: 0.05
+  lerpSpeed: 0.005
   rotationAngle: -180
+--- !u!95 &1478457823589754531
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300852338785146115}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8430ee1e49d491499bc1ddea0bf6d75, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9132670351590714428
 PrefabInstance:
   m_ObjectHideFlags: 0

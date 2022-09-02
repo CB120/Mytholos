@@ -55,4 +55,9 @@ public class Myth : MonoBehaviour
     {
 
     }
+
+    public virtual void OnTakeDamage(float damage)//When a myth Recieves Damage
+    {
+        health -= damage;
+    }
 }
