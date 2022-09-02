@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}

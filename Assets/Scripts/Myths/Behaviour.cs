@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Myths
@@ -5,5 +6,10 @@ namespace Myths
     public class Behaviour : MonoBehaviour
     {
         [SerializeField] protected Myth myth;
+
+        private void Awake()
+        {
+            enabled = false;
+        }
     }
 }

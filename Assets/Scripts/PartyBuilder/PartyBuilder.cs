@@ -87,20 +87,9 @@ public class PartyBuilder : MonoBehaviour
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
-        newMyth.northAbility = GetAbilityReference(mythData.northAbility);
-        newMyth.westAbility = GetAbilityReference(mythData.westAbility);
-        newMyth.southAbility = GetAbilityReference(mythData.southAbility);
-        newMyth.eastAbility = GetAbilityReference(mythData.eastAbility);
-    }
-
-    SO_Ability GetAbilityReference(E_Ability ability)
-    {
-        foreach (SO_Ability a in allAbilities)
-        {
-            if (a.abilityType == ability) return a;
-        }
-
-        Debug.LogWarning("Could not find an ability that matched this enum! Please check all Ability ScriptableObjects have the correct ability enums set. Returning null.");
-        return null;
+        newMyth.northAbility = mythData.northAbility;
+        newMyth.westAbility = mythData.westAbility;
+        newMyth.southAbility = mythData.southAbility;
+        newMyth.eastAbility = mythData.eastAbility;
     }
 }
