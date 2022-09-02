@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Myths;
 using UnityEngine;
 
 public class Ability : MonoBehaviour //Parent Class to All Abilities

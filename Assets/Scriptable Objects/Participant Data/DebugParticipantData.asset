@@ -14,38 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyData:
   - participant: {fileID: 0}
+    myths: []
     colour: {r: 0.8018868, g: 0.23073156, b: 0.23073156, a: 0}
     mythData:
     - myth: 0
-      northAbility: 0
-      westAbility: 1
-      southAbility: 2
-      eastAbility: 3
+      northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
+      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
+      eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
     - myth: 4
-      northAbility: 0
-      westAbility: 1
-      southAbility: 2
-      eastAbility: 3
+      northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
+      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
+      eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
     - myth: 3
-      northAbility: 0
-      westAbility: 1
-      southAbility: 2
-      eastAbility: 3
+      northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
+      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
+      eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
   - participant: {fileID: 0}
+    myths: []
     colour: {r: 0, g: 0, b: 0, a: 0}
     mythData:
     - myth: 0
-      northAbility: 0
-      westAbility: 0
-      southAbility: 0
-      eastAbility: 3
+      northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
+      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
+      eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
     - myth: 0
-      northAbility: 0
-      westAbility: 0
-      southAbility: 0
-      eastAbility: 3
+      northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
+      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
+      eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
     - myth: 0
-      northAbility: 0
-      westAbility: 0
-      southAbility: 0
-      eastAbility: 3
+      northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
+      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
+      eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
