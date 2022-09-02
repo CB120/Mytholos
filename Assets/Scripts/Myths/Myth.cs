@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Commands;
 using UnityEngine;
@@ -20,7 +19,7 @@ namespace Myths
 
     public class Myth : MonoBehaviour
     {
-        private enum State { Idle, PerformingAbility, Moving }
+        public enum State { Idle, PerformingAbility, Moving }
 
         private State currentState;
     
@@ -42,62 +41,20 @@ namespace Myths
 
         // And here begins the monolithic state machine
 
-        private void Update()
+        private void LateUpdate()
         {
             StateMachine();
         }
 
         private void StateMachine()
         {
-            switch (currentState)
-            {
-                case State.Idle:
-                    IdleBehaviour();
-                    break;
-                case State.PerformingAbility:
-                    PerformingAbilityBehaviour();
-                    break;
-                case State.Moving:
-                    MovingBehaviour();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
-        private void IdleBehaviour()
+        public void ChangeState(State state)
         {
-            if (Command == null) return;
-
-            Debug.Log("command not null");
-
-            if (Command is AbilityCommand)
-            {
-                currentState = State.PerformingAbility;
-            }
-
-            if (Command is MoveCommand)
-            {
-                currentState = State.Moving;
-            }
-        }
-
-        private void PerformingAbilityBehaviour()
-        {
-            Debug.Log($"{name} performed ability.");
-
-            Command = null;
-
-            currentState = State.Idle;
-        }
-
-        private void MovingBehaviour()
-        {
-            Debug.Log($"{name} moved. {((MoveCommand) Command).CurrentMoveCommandType}");
-
-            Command = null;
-
-            currentState = State.Idle;
+            currentState = state;
+            
+            
         }
     }
 }
