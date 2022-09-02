@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class BeamAttack : MonoBehaviour
 {
     public GameObject Beam;
@@ -9,18 +9,25 @@ public class BeamAttack : MonoBehaviour
     private GameObject NewBeam;
     private float BeamOfset;
 
+    private bool BeamExists;
+
+    public void UseAbilityWest(InputAction.CallbackContext context)
+    {
+        //Debug.Log(context);
+        if (!BeamExists)
+        {
+            NewBeam = Instantiate(Beam, BeamOriginPosition, Quaternion.identity);
+            NewBeam.transform.parent = BeamOrigin.transform;
+            BeamExists = true;
+        }
+        
+    }
+    
+
     private void Start()
     {
         BeamOfset = 0.5f;
         BeamOriginPosition = BeamOrigin.transform.position;
         BeamTransform = BeamOrigin.transform;
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NewBeam = Instantiate(Beam, BeamOriginPosition + new Vector3(BeamOfset, 0), Quaternion.identity);
-            NewBeam.transform.parent = BeamOrigin.transform;
-        }
     }
 }
