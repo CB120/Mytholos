@@ -452,6 +452,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stag Myth (Fire)
       objectReference: {fileID: 0}
+    - target: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 592175270538599269, guid: ddca71413c6661a4c9981f280b601c00,
         type: 3}
       propertyPath: m_RootOrder
@@ -565,14 +570,14 @@ MonoBehaviour:
   debugAllParticipantData: {fileID: 11400000, guid: 147620fded745804385c132b70ed8ecd,
     type: 2}
   mythPrefabs:
-  - {fileID: 2243422159083079001, guid: 65f47e0119e30db41ae368398e974c78, type: 3}
-  - {fileID: 4938745847816756519, guid: aaf484e35a996ec4885e2f505e337e35, type: 3}
-  - {fileID: 4753386205334914624, guid: 274627e2854af2d45a437677e396dfa7, type: 3}
-  - {fileID: 4663119475945890011, guid: a7caf3368b3382847a2ae8d094df0a09, type: 3}
-  - {fileID: 5832598259058320133, guid: 47f6f69a1782ed74bb70e46857466028, type: 3}
-  - {fileID: 4431680704063422550, guid: 3fe7826e7ee0a5c40860bc9e6eb2c39b, type: 3}
-  - {fileID: 7125090430469805676, guid: 60c3313e0ccf74940b3057581bdbffb9, type: 3}
-  - {fileID: 2742533641383949773, guid: 00c623e5143321048a8be79c60ad2e71, type: 3}
+  - {fileID: 41245268643410627, guid: c63504bb0aca0b4409dd8c88a13875c6, type: 3}
+  - {fileID: 2527311315279366905, guid: cc0e2d07a35a31740840b0fe182f194c, type: 3}
+  - {fileID: 159780181518505597, guid: 999da1d6f8078e7429f6d2e79c653633, type: 3}
+  - {fileID: 5852553646604344762, guid: ecd81f8b84747f147abf0f20d6a5795e, type: 3}
+  - {fileID: 4040124198851291565, guid: 0ec28ad321c53234e920c0a79188e3b8, type: 3}
+  - {fileID: 1562923671586567054, guid: 9f0392631ea6e344d9e2077da51357ca, type: 3}
+  - {fileID: 8433666347343370616, guid: b9578e69af48cb148ab20fb48d83c14d, type: 3}
+  - {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
   allAbilities:
   - {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
   - {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
@@ -620,6 +625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stag Myth (Wood)
+      objectReference: {fileID: 0}
+    - target: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592175270538599269, guid: ddca71413c6661a4c9981f280b601c00,
         type: 3}
