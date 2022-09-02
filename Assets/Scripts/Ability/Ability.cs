@@ -16,6 +16,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         myth.health -= damage;
     }
 
+
     //Just Instantiate the Collider until it hits something and Then Instantiate the Ability Object - Look at Jack's Notes
     //Will most likely just be used for melee attacks to ensure player is close enough.
     virtual public void FakeAttack() 

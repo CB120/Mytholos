@@ -1213,6 +1213,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22a9ba395ad40445ab5acaf0b8d7659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1645711415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2742533641383949773, guid: 00c623e5143321048a8be79c60ad2e71,
+    type: 3}
+  m_PrefabInstance: {fileID: 2135600236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58acc599c57e14142863a46dbbd915fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046280200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1382,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
         type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+      value: e7d4781a-b7e6-4872-baa6-1005ad79fe89
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+      value: Player/North[/DualSenseGamepadHID/buttonNorth]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
@@ -1380,12 +1412,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1645711411}
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1645711415}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
@@ -1395,12 +1442,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNorthPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ManualMovementStyle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Myth, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666384133248192165, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2742533641383949770, guid: 00c623e5143321048a8be79c60ad2e71,
@@ -1463,6 +1525,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stag Myth (Wood)
       objectReference: {fileID: 0}
+    - target: {fileID: 2742533641383949773, guid: 00c623e5143321048a8be79c60ad2e71,
+        type: 3}
+      propertyPath: northAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a,
+        type: 2}
     - target: {fileID: 6225485264658150924, guid: 00c623e5143321048a8be79c60ad2e71,
         type: 3}
       propertyPath: anim

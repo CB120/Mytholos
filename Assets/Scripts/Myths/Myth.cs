@@ -60,5 +60,13 @@ namespace Myths
             
             
         }
+        
+        // TODO: From Baxter, left in for testing but will be removed once the state machine is ready.
+        //Input-called
+        public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
+        {
+            print("North Pressed");
+            Instantiate(northAbility.ability, this.gameObject.transform.position, Quaternion.identity);
+        }
     }
 }

@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "North",
+                    "type": "Button",
+                    "id": "e7d4781a-b7e6-4872-baa6-1005ad79fe89",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -406,6 +415,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveStrategyUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21581864-ee6e-4912-b50d-a6315e14c77d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "North",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
