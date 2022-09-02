@@ -10,6 +10,8 @@ public class BeamAttack : MonoBehaviour
     private Transform BeamTransform;
     public Vector3 BeamOriginPosition;
 
+    private float BeamTimer;
+
     private GameObject Beam;
 
     private void Start()
@@ -24,7 +26,8 @@ public class BeamAttack : MonoBehaviour
         if (!Beam)
         {
             Beam = Instantiate(BeamPrefab, BeamOriginPosition, Quaternion.identity);
-            Beam.transform.parent = BeamOrigin.transform.parent;
+            Beam.transform.parent = BeamOrigin.transform;
+            BeamTimer = 0.0f;
         }
         
     }
@@ -36,13 +39,26 @@ public class BeamAttack : MonoBehaviour
 
     public void DestroyBeam()
     {
-        Destroy(this);
+       
     }
 
     public void BeamTimeout()
     {
+        
 
+        
     }
-    
+
+    private void Update()
+    {
+        if (Beam)
+        {
+            BeamTimer += Time.deltaTime;
+            if (BeamTimer > BeamSettings.duration)
+            {
+                Destroy(Beam);
+            }
+        }
+    }
 
 }
