@@ -37,7 +37,8 @@ public class Myth : MonoBehaviour
     //Input-called
     public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
     {
-
+        print("North Pressed");
+        Instantiate(northAbility.ability, this.gameObject.transform.position, Quaternion.identity);
     }
 
     public virtual void OnWestPress() //Xbox -> X | PlayStation -> Square | Switch -> Y
