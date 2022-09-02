@@ -19,9 +19,8 @@ namespace Myths
 
     public class Myth : MonoBehaviour
     {
-        public enum State { Idle, PerformingAbility, Moving }
-
-        private State currentState;
+        [SerializeField] private MonoBehaviour initialState;
+        private MonoBehaviour currentState;
     
         //Properties
         public E_Myth myth;
@@ -43,22 +42,13 @@ namespace Myths
 
         public Command Command { get; set; }
 
-        // And here begins the monolithic state machine
-
-        private void LateUpdate()
+        public void ChangeState(MonoBehaviour state)
         {
-            StateMachine();
-        }
-
-        private void StateMachine()
-        {
-        }
-
-        public void ChangeState(State state)
-        {
+            currentState.enabled = false;
+            
             currentState = state;
-            
-            
+
+            currentState.enabled = true;
         }
         
         // TODO: From Baxter, left in for testing but will be removed once the state machine is ready.
@@ -67,6 +57,13 @@ namespace Myths
         {
             print("North Pressed");
             Instantiate(northAbility.ability, this.gameObject.transform.position, Quaternion.identity);
+        }
+
+        private void Start()
+        {
+            currentState = initialState;
+
+            currentState.enabled = true;
         }
     }
 }
