@@ -7,6 +7,8 @@ namespace Myths
     public class Myth : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour initialState;
+        [SerializeField] private ManualMovementStyle manualMovementStyle;
+        
         private MonoBehaviour currentState;
     
         //Properties
@@ -19,6 +21,8 @@ namespace Myths
 
         //Variables
         List<Command> commandQueue = new List<Command>();
+
+        public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
         //References

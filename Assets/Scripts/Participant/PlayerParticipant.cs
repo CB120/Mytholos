@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Commands;
 using Myths;
@@ -23,61 +20,60 @@ public class PlayerParticipant : Participant
 
     private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
 
-    //Engine-called
-    protected override void Awake()
-    {
-        base.Awake(); //Do not remove!
-
-        // TODO: This is some temporary jank to get manual movement input down to the myths.
-        var playerInput = GetComponent<PlayerInput>();
-
-        if (playerInput == null) return;
-
-        var moveEventID = playerInput.actions.FindAction("Move").id.ToString();
-
-        var moveEvent = playerInput.actionEvents.FirstOrDefault(e => e.actionId == moveEventID);
-
-        if (moveEvent == null) return;
-        
-        foreach (var myth in debugParticipantData.partyData[partyIndex].myths)
-        {
-            moveEvent.AddListener(myth.GetComponent<ManualMovementStyle>().Move);
-        }
-    }
-
-    private void SelectLeft(InputAction.CallbackContext context)
+    public void SelectLeft(InputAction.CallbackContext context)
     {
         if (selectedMythIndex == -1 && context.performed)
             selectedMythIndex = mythsInPlay[0];
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
+        {
+            SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
             selectedMythIndex = -1;
+        }
     }
     
-    private void SelectRight(InputAction.CallbackContext context)
+    public void SelectRight(InputAction.CallbackContext context)
     {
         if (selectedMythIndex == -1 && context.performed)
             selectedMythIndex = mythsInPlay[1];
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
+        {
+            SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
             selectedMythIndex = -1;
+        }
     }
 
-    private void UseAbilityWest(InputAction.CallbackContext context)
+    public void UseAbilityWest(InputAction.CallbackContext context)
     {
         if (SelectedMyth)
             SelectedMyth.Command = new AbilityCommand();
     }
 
-    private void MoveStrategyUp(InputAction.CallbackContext context)
+    public void MoveStrategyUp(InputAction.CallbackContext context)
     {
         if (SelectedMyth)
             SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Stay);
     }
 
-    private void MoveStrategyDown(InputAction.CallbackContext context)
+    public void MoveStrategyDown(InputAction.CallbackContext context)
     {
         if (SelectedMyth)
             SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
-    } 
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        if (SelectedMyth)
+            SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+    }
+    
+    // TODO: Temp. Just an anim. Will be replaced by abilities.
+    public void North(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (SelectedMyth)
+            SelectedMyth.ManualMovementStyle.AttackExample();
+    }
 }

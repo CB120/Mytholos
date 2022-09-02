@@ -25,7 +25,7 @@ MonoBehaviour:
       westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
       southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
       eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
-    - myth: {fileID: 11400000, guid: 1e493619701ce5d42a03d068100c64c3, type: 2}
+    - myth: {fileID: 11400000, guid: a5214353bcbc4864aa7156efa8000a5d, type: 2}
       northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
       westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
       southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}

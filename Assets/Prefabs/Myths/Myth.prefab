@@ -182,7 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: {fileID: 9166940849690583412}
-  myth: 0
+  manualMovementStyle: {fileID: 821080639122630624}
+  myth: {fileID: 0}
   stamina: 0
   speed: 0
   acceleration: 0
