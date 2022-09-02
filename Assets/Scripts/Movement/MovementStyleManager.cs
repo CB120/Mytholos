@@ -13,11 +13,6 @@ public enum MythStatus
 
 public class MovementStyleManager : MonoBehaviour
 {
-    [SerializeField] private enum SelectedMyth
-    {
-        Myth1,
-        Myth2
-    }
 
     private bool manualMovement = false;
     public float speed;
