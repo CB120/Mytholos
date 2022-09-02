@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Horse
   m_EditorClassIdentifier: 
   name: Horse
+  prefab: {fileID: 5259938521985855711, guid: ecd81f8b84747f147abf0f20d6a5795e, type: 3}

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: 
   name: Golem
+  prefab: {fileID: 2013350400531774232, guid: 999da1d6f8078e7429f6d2e79c653633, type: 3}

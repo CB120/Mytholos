@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Lizard
   m_EditorClassIdentifier: 
   name: Lizard
+  prefab: {fileID: 2438166152000914632, guid: 0ec28ad321c53234e920c0a79188e3b8, type: 3}

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Stag
   m_EditorClassIdentifier: 
   name: Stag
+  prefab: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00, type: 3}

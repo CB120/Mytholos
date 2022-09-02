@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Mask
   m_EditorClassIdentifier: 
   name: Mask
+  prefab: {fileID: 898435635414540011, guid: 9f0392631ea6e344d9e2077da51357ca, type: 3}

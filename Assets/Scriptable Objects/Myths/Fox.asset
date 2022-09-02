@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Fox
   m_EditorClassIdentifier: 
   name: Fox
+  prefab: {fileID: 4239484837227243420, guid: cc0e2d07a35a31740840b0fe182f194c, type: 3}
