@@ -16,7 +16,6 @@ public class ManualMovementStyle : CollisionDetection
 
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log(context.phase);
         inputVector = context.ReadValue<Vector2>() * mythSpeed;
         newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
         if (!context.canceled)
@@ -32,7 +31,6 @@ public class ManualMovementStyle : CollisionDetection
 
     public void AttackExample(InputAction.CallbackContext context)
     {
-        Debug.Log(context.phase);
         if (context.performed)
         {
             anim.SetTrigger("attack");

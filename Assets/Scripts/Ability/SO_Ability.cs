@@ -14,12 +14,6 @@ public enum E_Ability //enter abilities as we go here
     Boomerang,
 }
 
-[System.Serializable]
-public class Command
-{
-    public Myth target; //target Myth for this Command
-    //not sure what else to put here, @Jack
-}
 
 
 [CreateAssetMenu(fileName = "Untitled", menuName = "ScriptableObjects/Ability", order = 1)]

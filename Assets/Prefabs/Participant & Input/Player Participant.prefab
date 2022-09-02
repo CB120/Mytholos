@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 2eeeb4daa69549f459ee59a4a83d49a3,
     type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -111,6 +111,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b21cb573-db2f-4559-9f85-909aa9d7d188
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44db108f-9d27-4a10-9110-16b63986c6e4
+    m_ActionName: Player/Select Left[/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: de2d6252-0ce5-42a5-865a-8bbe6ebba150
+    m_ActionName: Player/Select Right[/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b697c39-2e8f-4add-8104-a397ddded3b4
+    m_ActionName: Player/UseAbilityWest[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8
+    m_ActionName: Player/MoveStrategyDown[/XInputControllerWindows/dpad/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
+    m_ActionName: Player/MoveStrategyUp[/XInputControllerWindows/dpad/up]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -133,7 +153,3 @@ MonoBehaviour:
     type: 2}
   debugParticipantData: {fileID: 11400000, guid: 147620fded745804385c132b70ed8ecd,
     type: 2}
-  party:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
