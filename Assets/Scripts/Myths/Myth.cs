@@ -25,6 +25,10 @@ namespace Myths
     
         //Properties
         public E_Myth myth;
+        public float stamina;
+        public float speed;
+        public float acceleration;
+        public float health;
 
 
         //Variables

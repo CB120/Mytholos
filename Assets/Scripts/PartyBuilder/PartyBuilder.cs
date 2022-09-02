@@ -97,7 +97,7 @@ public class PartyBuilder : MonoBehaviour
     {
         foreach (SO_Ability a in allAbilities)
         {
-            if (a.ability == ability) return a;
+            if (a.abilityType == ability) return a;
         }
 
         Debug.LogWarning("Could not find an ability that matched this enum! Please check all Ability ScriptableObjects have the correct ability enums set. Returning null.");
