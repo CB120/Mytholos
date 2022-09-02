@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class BeamExtender : MonoBehaviour
 {
+    public BeamSettingsConduit Beam;
+
     private Transform BeamTransform;
 
-    // Start is called before the first frame update
     void Start()
     {
+        Beam = transform.parent.GetComponent<BeamSettingsConduit>();
         BeamTransform = this.gameObject.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        BeamTransform.localScale += (new Vector3(3, 0, 0)) * Time.deltaTime;
+ 
+            //Debug.Log("Hi");
+            BeamTransform.localScale += (new Vector3(3.0f, 0, 0)) * Time.deltaTime;
+       
     }
 
     

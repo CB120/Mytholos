@@ -6,13 +6,9 @@ public class BeamHeadMover : MonoBehaviour
 {
     public Transform BeamHeadPosition;
     private Vector3 BeamHeadPositionVector;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    private BeamAttack Beam;
+
     void Update()
     {
         BeamHeadPositionVector = BeamHeadPosition.position;
@@ -23,7 +19,11 @@ public class BeamHeadMover : MonoBehaviour
     {
         if (other.transform.gameObject.name == "BeamHead")
         {
-            Debug.Log("HeadTime");
+            Destroy(transform.parent.gameObject);
+            /*
+            Beam = transform.parent.gameObject.GetComponent<BeamAttack>();
+            Beam.DestroyBeam();
+            */
         }
     }
 }

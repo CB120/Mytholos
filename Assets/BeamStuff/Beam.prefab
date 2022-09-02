@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8760312243387804359}
   - component: {fileID: 2434597425958628251}
   - component: {fileID: 6280502035933937635}
+  - component: {fileID: 1639892881194141239}
   m_Layer: 0
   m_Name: BeamBody
   m_TagString: Untagged
@@ -176,6 +177,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1639892881194141239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5364032775605158230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5960d0959820644a05802ce975e026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6426678438639010057
 GameObject:
   m_ObjectHideFlags: 0

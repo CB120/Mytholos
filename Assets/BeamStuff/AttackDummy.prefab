@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6435402579340208859}
   - component: {fileID: 6435402579340208856}
   - component: {fileID: 6435402579340208862}
+  - component: {fileID: 3776499665005080877}
   m_Layer: 0
   m_Name: AttackDummy
   m_TagString: Untagged
@@ -159,7 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9256e15463527c544b8f3bb3f1bc6f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Beam: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80, type: 3}
+  BeamSettings: {fileID: 11400000, guid: df748a96461ec9a47887e745df48913f, type: 2}
+  BeamPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
+    type: 3}
   BeamOrigin: {fileID: 6435402579094678424}
   BeamOriginPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6435402579340208862
@@ -281,3 +284,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &3776499665005080877
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435402579340208854}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
