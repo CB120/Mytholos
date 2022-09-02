@@ -9,12 +9,13 @@ public class SwipeAbility : Ability
 
     private void Start()
     {
-        
+        Destroy(this.gameObject, 0.5f);
     }
 
     public override void Update()
     {
-        gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, new Quaternion(0f, rotationAngle, 0f, 0f), lerpSpeed * Time.deltaTime)
-;        base.Update();
+        print(gameObject.transform.rotation.y);
+        //gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, new Quaternion(0f, rotationAngle, 0f, 0f), lerpSpeed * Time.deltaTime)
+;       base.Update();
     }
 }
