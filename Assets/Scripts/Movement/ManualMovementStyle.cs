@@ -17,14 +17,17 @@ public class ManualMovementStyle : CollisionDetection
     public void Move(InputAction.CallbackContext context)
     {
         inputVector = context.ReadValue<Vector2>() * mythSpeed;
-        newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
+        
+        if (inputVector != Vector2.zero)
+            newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
+        
         if (!context.canceled)
         {
-            anim.SetBool("Walking", true);
+            if (anim) anim.SetBool("Walking", true);
             lastRotation = newRotation;
         } else if (context.canceled)
         {
-            anim.SetBool("Walking", false);
+            if (anim) anim.SetBool("Walking", false);
             lastRotation = this.transform.rotation;
         }
     }
@@ -33,7 +36,7 @@ public class ManualMovementStyle : CollisionDetection
     {
         if (context.performed)
         {
-            anim.SetTrigger("attack");
+            if (anim) anim.SetTrigger("attack");
         }
     }
 

@@ -24,6 +24,9 @@ public class PartyBuilder : MonoBehaviour
 
     Transform[] partyParents = new Transform[2];
 
+    private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
+    private Vector3 spawnOffset = new Vector3(3, 0, 0);
+
 
     //Engine-called
     private void Awake()
@@ -82,7 +85,9 @@ public class PartyBuilder : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition = transform.GetChild(0).position; //add logic here for when we know how spawn positions are gonna work
+        Vector3 spawnPosition = currentSpawnPosition; // transform.GetChild(0).position; //add logic here for when we know how spawn positions are gonna work
+
+        currentSpawnPosition += spawnOffset;
 
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
