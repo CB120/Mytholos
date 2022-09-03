@@ -12,7 +12,8 @@ namespace Myths.Behaviours
         {
             Debug.Log($"{myth.name} performed ability.");
             GameObject ability = ((AbilityCommand)myth.Command).ability.ability;
-            Instantiate(ability, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
+            GameObject abilityPrefab = Instantiate(ability, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
+            abilityPrefab.GetComponent<Ability>().owningMyth = myth;
             myth.Command = null;
 
             performAbilityComplete.Invoke();

@@ -19,6 +19,6 @@ public class SwipeAbility : Ability
     private void OnCollisionEnter(Collision collision)
     {
         Myth myth = collision.gameObject.GetComponent<Myth>();
-        myth.TakeDamage(this.baseDamage);
+        Attack(myth, this.baseDamage);
     }
 }

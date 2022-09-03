@@ -17,6 +17,7 @@ namespace Myths
         public float speed;
         public float acceleration;
         public float health;
+        public int partyIndex;
 
 
         //Variables

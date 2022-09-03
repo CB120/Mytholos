@@ -7,6 +7,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
     public SO_Ability ability;
     public float baseDamage;
+    public Myth owningMyth;
 
     virtual public void Update()
     {
@@ -14,11 +15,9 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     virtual public void Attack(Myth myth, float damage)
     {
-        myth.health -= damage;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        
+        if (myth.partyIndex != this.owningMyth.partyIndex)
+        {
+            myth.TakeDamage(damage);
+        }
     }
 }
