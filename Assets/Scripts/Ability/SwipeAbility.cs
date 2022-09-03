@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Myths;
 using UnityEngine;
 
 public class SwipeAbility : Ability
@@ -13,5 +14,11 @@ public class SwipeAbility : Ability
     public override void Update()
     {
 ;       base.Update();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Myth myth = collision.gameObject.GetComponent<Myth>();
+        myth.TakeDamage(this.baseDamage);
     }
 }

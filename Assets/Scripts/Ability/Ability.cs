@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
     public SO_Ability ability;
+    public float baseDamage;
 
     virtual public void Update()
     {
