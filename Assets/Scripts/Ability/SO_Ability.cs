@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Untitled", menuName = "ScriptableObjects/Ability", order = 1)]
 public class SO_Ability : ScriptableObject
@@ -9,6 +10,6 @@ public class SO_Ability : ScriptableObject
     public float healing;
     
 
-    public GameObject ability;
+    [FormerlySerializedAs("ability")] public GameObject abilityPrefab;
     public Collider colliderPrefab;
 }

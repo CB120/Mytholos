@@ -51,18 +51,36 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UseAbilityWest",
+                    "name": "UseAbilityNorth",
                     "type": "Button",
-                    "id": "3b697c39-2e8f-4add-8104-a397ddded3b4",
+                    "id": "1b80c064-cd1a-4520-9625-8a58332da9d9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveStrategyDown",
+                    "name": "UseAbilityEast",
                     "type": "Button",
-                    "id": "6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8",
+                    "id": "cdc97184-c69e-405e-9527-6fa81fbbb7d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseAbilitySouth",
+                    "type": "Button",
+                    "id": "5e392c28-bd92-4975-b99a-2ae3f62bebb8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseAbilityWest",
+                    "type": "Button",
+                    "id": "3b697c39-2e8f-4add-8104-a397ddded3b4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -78,12 +96,30 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "North",
+                    "name": "MoveStrategyDown",
                     "type": "Button",
-                    "id": "e7d4781a-b7e6-4872-baa6-1005ad79fe89",
+                    "id": "6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveStrategyLeft",
+                    "type": "Button",
+                    "id": "214d72e0-1ea5-458e-87dd-b8a187787715",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveStrategyRight",
+                    "type": "Button",
+                    "id": "3d19a5dd-7245-4f9a-8fca-994186feb846",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -402,8 +438,41 @@
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "MoveStrategyDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b64c454-47cf-4797-a138-d88a699a8d96",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseAbilityNorth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88828b04-1cd6-42de-a0ca-ec3708fe9fef",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseAbilityEast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1245550e-5092-4fe5-8b8a-4af021cf5820",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseAbilitySouth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -413,19 +482,30 @@
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "MoveStrategyUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "21581864-ee6e-4912-b50d-a6315e14c77d",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "Tap",
+                    "id": "ecb484c4-02aa-447a-91b4-934d103309c5",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "North",
+                    "action": "MoveStrategyLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b34f92f-770a-4bf9-920e-28df91eb274b",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MoveStrategyRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

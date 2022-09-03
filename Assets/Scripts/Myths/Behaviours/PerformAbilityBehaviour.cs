@@ -11,9 +11,27 @@ namespace Myths.Behaviours
         private void Update()
         {
             Debug.Log($"{myth.name} performed ability.");
-            GameObject ability = ((AbilityCommand)myth.Command).ability.ability;
-            GameObject abilityPrefab = Instantiate(ability, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
-            abilityPrefab.GetComponent<Ability>().owningMyth = myth;
+
+            var abilityData = ((AbilityCommand) myth.Command).abilityData;
+            
+            GameObject ability = abilityData.abilityPrefab;
+            
+            if (ability)
+            {
+                GameObject abilityPrefab = Instantiate(
+                    ability,
+                    gameObject.transform.position,
+                    new Quaternion(0f, 0f, 0f, 0f),
+                    gameObject.transform
+                );
+                
+                abilityPrefab.GetComponent<Ability>().owningMyth = myth;
+            }
+            else
+            {
+                Debug.LogWarning($"Action was not performed. {abilityData} does not have an assigned {nameof(abilityData.abilityPrefab)}.");
+            }
+
             myth.Command = null;
 
             performAbilityComplete.Invoke();
