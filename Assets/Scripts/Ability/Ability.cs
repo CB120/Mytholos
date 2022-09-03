@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
     public SO_Ability ability;
-    public float baseDamage;
+    public Myth owningMyth;
 
     virtual public void Update()
     {
@@ -14,11 +14,20 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     virtual public void Attack(Myth myth, float damage)
     {
-        myth.health -= damage;
+        if (myth.partyIndex != this.owningMyth.partyIndex)//Ensures Myths cannot harm others in their party 
+        {                                                 
+            Debug.LogWarning($"{myth.gameObject.name} was Attacked by {owningMyth.gameObject.name}");
+            myth.TakeDamage(damage);
+        }
+        else
+        {
+            //Debug.LogWarning($"{myth.gameObject.name} was Attacked by it's own team");
+            myth.TakeDamage(0);
+        }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    virtual public void Trigger(Myth myth)
     {
-        
+
     }
 }

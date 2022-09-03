@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using Myths;
 using UnityEngine;
+using Myths;
 
-public class SwipeAbility : Ability
+public class BeamAbility : Ability
 {
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        Destroy(this.gameObject, 0.5f);
+        
     }
 
-    public override void Update()
+    // Update is called once per frame
+    void Update()
     {
-;       base.Update();
+        
     }
 
     public override void Trigger(Myth myth)
     {
-        Attack(myth, ability.damage);
+        Attack(myth, ability.damage); //Called In The Parent Ability
         Debug.LogWarning($"Swipe Collided With Object: {myth.gameObject.name}");
         base.Trigger(myth);
     }
