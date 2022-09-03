@@ -125,6 +125,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
       propertyPath: northAbility
       value: 
       objectReference: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a,

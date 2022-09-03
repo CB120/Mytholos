@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8681021912279263315}
   - component: {fileID: 2397419033978219787}
   m_Layer: 0
-  m_Name: SwipeTrail
+  m_Name: ObjectTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

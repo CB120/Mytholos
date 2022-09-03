@@ -65,7 +65,7 @@ namespace Myths
             if (health <= 0)
             {
                 Debug.Log($"{gameObject.name}, Has Been Destroyed");
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
             }
         }
     }
