@@ -20,32 +20,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.56
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
         type: 3}
-      propertyPath: m_LocalRotation.y
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
         type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
+        type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
         type: 3}
@@ -112,11 +112,17 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 8237076919643784108}
+    - target: {fileID: 4780120509031229686, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth
-      value: 7
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2,
+        type: 2}
     - target: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder
@@ -175,135 +181,10 @@ PrefabInstance:
     - target: {fileID: 9142296419116895834, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_Name
-      value: Myth (6) Variant
+      value: Stag Myth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db407f3364fe92842a089222a0ba139e, type: 3}
---- !u!1 &499217052893426560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9142296419116895834, guid: db407f3364fe92842a089222a0ba139e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8661096513613495770}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4169217915869798417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499217052893426560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2eeeb4daa69549f459ee59a4a83d49a3,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ManualMovementStyle, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 600618f6-93cf-4f3e-9d12-5f33f0e3b0c6
-    m_ActionName: Player/Move[/DualSenseGamepadHID/leftStick,/DualSenseGamepadHID/leftStick/up,/DualSenseGamepadHID/leftStick/down,/DualSenseGamepadHID/leftStick/left,/DualSenseGamepadHID/leftStick/right]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4cf3e7c2-15db-4bd6-8059-7df88cf8ddf5
-    m_ActionName: Player/Look[/DualSenseGamepadHID/rightStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 69c7a7d1-bf25-4dab-8f19-13e8e4d4280d
-    m_ActionName: Player/Fire[/DualSenseGamepadHID/rightTrigger]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 44db108f-9d27-4a10-9110-16b63986c6e4
-    m_ActionName: Player/Select Left[/DualSenseGamepadHID/leftShoulder]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 04ee6fa3-9d98-4db3-8073-83571d4a33f4
-    m_ActionName: UI/Navigate[/DualSenseGamepadHID/leftStick/up,/DualSenseGamepadHID/rightStick/up,/DualSenseGamepadHID/leftStick/down,/DualSenseGamepadHID/rightStick/down,/DualSenseGamepadHID/leftStick/left,/DualSenseGamepadHID/rightStick/left,/DualSenseGamepadHID/leftStick/right,/DualSenseGamepadHID/rightStick/right,/DualSenseGamepadHID/dpad]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a2d87111-c690-42a1-9dd0-de490ee32857
-    m_ActionName: UI/Submit[/DualSenseGamepadHID/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a4427be0-f44d-4481-98ff-b2b27fa6df07
-    m_ActionName: UI/Cancel[/DualSenseGamepadHID/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8f5bbe4c-4316-44c9-9ff9-54842bb6ee62
-    m_ActionName: UI/Point
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fddd1174-2f87-44cf-82df-d9b99341699b
-    m_ActionName: UI/Click
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 664ce671-067c-4581-8edd-d8362b8ac197
-    m_ActionName: UI/ScrollWheel
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3675e31c-ba7d-476b-a9cc-c70bda62a81c
-    m_ActionName: UI/MiddleClick
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f3ad88cf-4bd2-4af7-87e2-f09c2cb2fdb8
-    m_ActionName: UI/RightClick
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0ef24bc8-1f43-44b9-a0f0-bbf2392cb076
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b21cb573-db2f-4559-9f85-909aa9d7d188
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: de2d6252-0ce5-42a5-865a-8bbe6ebba150
-    m_ActionName: Player/Select Right[/XInputControllerWindows/rightShoulder]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3b697c39-2e8f-4add-8104-a397ddded3b4
-    m_ActionName: Player/UseAbilityWest[/XInputControllerWindows/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8
-    m_ActionName: Player/MoveStrategyDown[/XInputControllerWindows/dpad/down]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
-    m_ActionName: Player/MoveStrategyUp[/XInputControllerWindows/dpad/up]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e7d4781a-b7e6-4872-baa6-1005ad79fe89
-    m_ActionName: Player/North[/XInputControllerWindows/buttonNorth]
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!4 &592175270538599269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
