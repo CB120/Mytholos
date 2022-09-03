@@ -22,7 +22,7 @@ public class Participant : MonoBehaviour
 
 
     //Engine-called
-    protected void Awake()
+    protected virtual void Awake()
     {
         DontDestroyOnLoad(gameObject);
 

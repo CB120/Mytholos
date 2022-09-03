@@ -6,7 +6,6 @@ public class Character : MonoBehaviour
 {
     public float health, maxHealth = 3.0f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +14,8 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(float damageValue)
     {
+        Debug.Log("Damage Taken");
+
         health -= damageValue;
 
         if ( health <= 0)

@@ -1,29 +1,18 @@
-using System;
 using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 
 namespace Myths
 {
-    public enum E_Myth
-    {
-        Beetle,
-        Fox,
-        Golem,
-        Horse,
-        Lizard,
-        Mask,
-        Snake,
-        Stag
-    }
-
     public class Myth : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour initialState;
+        [SerializeField] private ManualMovementStyle manualMovementStyle;
+        
         private MonoBehaviour currentState;
     
         //Properties
-        public E_Myth myth;
+        public SO_Myth myth;
         public float stamina;
         public float speed;
         public float acceleration;
@@ -32,6 +21,8 @@ namespace Myths
 
         //Variables
         List<Command> commandQueue = new List<Command>();
+
+        public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
         //References
@@ -56,7 +47,7 @@ namespace Myths
         public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
         {
             print("North Pressed");
-            Instantiate(northAbility.ability, this.gameObject.transform.position, Quaternion.identity);
+            Ability ability = Instantiate(northAbility.ability, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
         }
 
         private void Start()
@@ -64,6 +55,17 @@ namespace Myths
             currentState = initialState;
 
             currentState.enabled = true;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+            Debug.Log($"{gameObject.name}, Has {health} Health Remaining");
+            if (health <= 0)
+            {
+                Debug.Log($"{gameObject.name}, Has Been Destroyed");
+                Destroy(this.gameObject);
+            }
         }
     }
 }
