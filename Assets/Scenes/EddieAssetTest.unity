@@ -613,55 +613,6 @@ Transform:
   m_Father: {fileID: 487835509}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &853087344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4258601667869569786, guid: 0f9d2760e9a36f14d87139d51897d827,
-    type: 3}
-  m_PrefabInstance: {fileID: 1278217697570705627}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &853087345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853087344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3842b109695cdb45923759583f1b76e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &853087346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853087344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2eeeb4daa69549f459ee59a4a83d49a3,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &927162145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1799,12 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 529614809483611965, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a,
+        type: 3}
     - target: {fileID: 1972664299779875526, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1953,6 +1910,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2848755742245003896, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: partyNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848755742245003896, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3280429822905128604, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_Color.b
@@ -1968,6 +1935,12 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3280429823945375751, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -549214236, guid: 15e5d785287b52043b34bf3f5762164a,
+        type: 3}
     - target: {fileID: 3280429823986793628, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2048,6 +2021,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8368680698186155680, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1411701411, guid: 15e5d785287b52043b34bf3f5762164a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4889c2244aed57449ae8d21e63a75fe2, type: 3}
 --- !u!224 &1869573150 stripped
@@ -2928,11 +2907,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3280429823945375751, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1330787377, guid: 15e5d785287b52043b34bf3f5762164a,
+        type: 3}
     - target: {fileID: 4771733101229366091, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_Name
       value: Party Menu R
       objectReference: {fileID: 0}
+    - target: {fileID: 8368680698186155680, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 629849923, guid: 15e5d785287b52043b34bf3f5762164a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4889c2244aed57449ae8d21e63a75fe2, type: 3}
 --- !u!224 &8368680697080162681 stripped

@@ -11,16 +11,16 @@ public class UIGameMyth : MonoBehaviour
     [SerializeField] Image staminaSliderBG;
     [SerializeField] Image staminaSliderFill;
 
-    float healthMaxWidth;
+    float healthMaxWidth;   // Records of UI size for slider code
     float staminaMaxWidth;
 
     void OnEnable()
     {
-        // TODO: Create listeners
+        // TODO: Create listeners // We might do this in a function instead, especially because we'll want to move our listeners to a different Myth
 
         // Look at referenced UI object and keep a record of their dimensions
-        healthMaxWidth = healthSliderBG.rectTransform.sizeDelta.x - 2.0f;
-        staminaMaxWidth = staminaSliderBG.rectTransform.sizeDelta.x - 2.0f;
+        healthMaxWidth = healthSliderBG.rectTransform.rect.width - 2.0f;
+        staminaMaxWidth = staminaSliderBG.rectTransform.rect.width - 2.0f;
         UpdateHealth(1.0f);
         UpdateStamina(0.0f);
     }
@@ -29,11 +29,11 @@ public class UIGameMyth : MonoBehaviour
 
     void UpdateHealth(float percent)
     {
-        healthSliderFill.rectTransform.sizeDelta = new Vector2(percent * healthMaxWidth, healthSliderFill.rectTransform.sizeDelta.y);
+        healthSliderFill.rectTransform.sizeDelta = new Vector2(percent * healthMaxWidth, healthSliderFill.rectTransform.rect.height);
     }
 
     void UpdateStamina(float percent)
     {
-        staminaSliderFill.rectTransform.sizeDelta = new Vector2(percent * staminaMaxWidth, staminaSliderFill.rectTransform.sizeDelta.y);
+        staminaSliderFill.rectTransform.sizeDelta = new Vector2(percent * staminaMaxWidth, staminaSliderFill.rectTransform.rect.height);
     }
 }
