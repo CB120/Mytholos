@@ -48,7 +48,7 @@ namespace Myths
         public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
         {
             print("North Pressed");
-            GameObject ability = Instantiate(northAbility.ability, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
+            GameObject ability = Instantiate(northAbility.abilityPrefab, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
         }
 
         private void Start()

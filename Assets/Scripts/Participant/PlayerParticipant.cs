@@ -44,31 +44,89 @@ public class PlayerParticipant : Participant
         }
     }
 
+    public void UseAbilityNorth(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.Command = new AbilityCommand(SelectedMyth.northAbility);
+    }
+
+    public void UseAbilityEast(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.Command = new AbilityCommand(SelectedMyth.eastAbility);
+    }
+
+    public void UseAbilitySouth(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
+    }
+
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            if (SelectedMyth)
-                SelectedMyth.Command = new AbilityCommand(SelectedMyth.westAbility);
-        }
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.Command = new AbilityCommand(SelectedMyth.westAbility);
     }
 
     public void MoveStrategyUp(InputAction.CallbackContext context)
     {
-        if (SelectedMyth)
-            SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Stay);
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Stay);
     }
 
     public void MoveStrategyDown(InputAction.CallbackContext context)
     {
-        if (SelectedMyth)
-            SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
+    }
+
+    public void MoveStrategyLeft(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        // TODO: Decide on a movement strategy.
+        // SelectedMyth.Command = new MoveCommand();
+
+        Debug.Log($"{nameof(MoveStrategyLeft)} has not been set up. See the {nameof(PlayerParticipant)} script.");
+    }
+
+    public void MoveStrategyRight(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+        
+        // TODO: Decide on a movement strategy.
+        // SelectedMyth.Command = new MoveCommand();
+        
+        Debug.Log($"{nameof(MoveStrategyRight)} has not been set up. See the {nameof(PlayerParticipant)} script.");
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (SelectedMyth)
-            SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
     }
     
     // TODO: Temp. Just an anim. Will be replaced by abilities.
@@ -76,7 +134,8 @@ public class PlayerParticipant : Participant
     {
         if (!context.performed) return;
         
-        if (SelectedMyth)
-            SelectedMyth.ManualMovementStyle.AttackExample();
+        if (!SelectedMyth) return;
+        
+        SelectedMyth.ManualMovementStyle.AttackExample();
     }
 }
