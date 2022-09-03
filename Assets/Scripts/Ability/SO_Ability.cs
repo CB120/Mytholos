@@ -9,6 +9,6 @@ public class SO_Ability : ScriptableObject
     public float healing;
     
 
-    public Ability ability;
+    public GameObject ability;
     public Collider colliderPrefab;
 }
