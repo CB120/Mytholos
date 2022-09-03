@@ -46,8 +46,11 @@ public class PlayerParticipant : Participant
 
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
-        if (SelectedMyth)
-            SelectedMyth.Command = new AbilityCommand();
+        if (context.performed)
+        {
+            if (SelectedMyth)
+                SelectedMyth.Command = new AbilityCommand(SelectedMyth.westAbility);
+        }
     }
 
     public void MoveStrategyUp(InputAction.CallbackContext context)

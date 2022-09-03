@@ -123,6 +123,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2,
         type: 2}
+    - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: northAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a,
+        type: 2}
     - target: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder

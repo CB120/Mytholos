@@ -87,5 +87,6 @@ public class PartyBuilder : MonoBehaviour
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;
         newMyth.eastAbility = mythData.eastAbility;
+        newMyth.partyIndex = participantIndex;
     }
 }

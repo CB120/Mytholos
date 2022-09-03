@@ -17,6 +17,7 @@ namespace Myths
         public float speed;
         public float acceleration;
         public float health;
+        public int partyIndex;
 
 
         //Variables
@@ -47,7 +48,7 @@ namespace Myths
         public virtual void OnNorthPress() //Xbox -> Y | PlayStation -> Triangle | Switch -> X
         {
             print("North Pressed");
-            Instantiate(northAbility.ability, this.gameObject.transform.position, Quaternion.identity);
+            GameObject ability = Instantiate(northAbility.ability, this.gameObject.transform.position, new Quaternion(0f, 0f, 0f, 0f), this.gameObject.transform);
         }
 
         private void Start()
@@ -55,6 +56,17 @@ namespace Myths
             currentState = initialState;
 
             currentState.enabled = true;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+            Debug.Log($"{gameObject.name}, Has {health} Health Remaining");
+            if (health <= 0)
+            {
+                Debug.Log($"{gameObject.name}, Has Been Destroyed");
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }
