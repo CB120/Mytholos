@@ -204,19 +204,7 @@ MonoBehaviour:
     m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
     m_ActionName: Player/MoveStrategyUp[/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: North
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e7d4781a-b7e6-4872-baa6-1005ad79fe89
     m_ActionName: Player/North[/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:

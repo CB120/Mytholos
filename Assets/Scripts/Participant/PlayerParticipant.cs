@@ -128,14 +128,4 @@ public class PlayerParticipant : Participant
         
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
     }
-    
-    // TODO: Temp. Just an anim. Will be replaced by abilities.
-    public void North(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-        
-        if (!SelectedMyth) return;
-        
-        SelectedMyth.ManualMovementStyle.AttackExample();
-    }
 }
