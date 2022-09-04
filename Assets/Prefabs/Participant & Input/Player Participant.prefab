@@ -204,10 +204,14 @@ MonoBehaviour:
     m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
     m_ActionName: Player/MoveStrategyUp[/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7d4781a-b7e6-4872-baa6-1005ad79fe89
+    m_ActionName: Player/North[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: North
+        m_MethodName: UseAbilityNorth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -217,8 +221,72 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e7d4781a-b7e6-4872-baa6-1005ad79fe89
-    m_ActionName: Player/North[/XInputControllerWindows/buttonNorth]
+    m_ActionId: 1b80c064-cd1a-4520-9625-8a58332da9d9
+    m_ActionName: Player/UseAbilityNorth[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: UseAbilityEast
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cdc97184-c69e-405e-9527-6fa81fbbb7d2
+    m_ActionName: Player/UseAbilityEast[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: UseAbilitySouth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e392c28-bd92-4975-b99a-2ae3f62bebb8
+    m_ActionName: Player/UseAbilitySouth[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: MoveStrategyLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 214d72e0-1ea5-458e-87dd-b8a187787715
+    m_ActionName: Player/MoveStrategyLeft[/XInputControllerWindows/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: MoveStrategyRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3d19a5dd-7245-4f9a-8fca-994186feb846
+    m_ActionName: Player/MoveStrategyRight[/XInputControllerWindows/dpad/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

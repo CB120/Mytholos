@@ -2,11 +2,11 @@ namespace Commands
 {
     public class AbilityCommand : Command
     {
-        public SO_Ability ability;
+        public SO_Ability abilityData;
 
-        public AbilityCommand(SO_Ability ability)
+        public AbilityCommand(SO_Ability abilityData)
         {
-            this.ability = ability;
+            this.abilityData = abilityData;
         }
     }
 }

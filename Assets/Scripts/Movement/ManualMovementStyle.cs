@@ -30,6 +30,7 @@ public class ManualMovementStyle : CollisionDetection
         }
     }
 
+    // TODO: Unused. Functionality needs to be bound to the PerformAbilityBehaviour.
     public void AttackExample()
     {
         if (anim) anim.SetTrigger("attack");
