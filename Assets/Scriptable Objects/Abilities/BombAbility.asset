@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BombAbility
   m_EditorClassIdentifier: 
   element: {fileID: 0}
+  name: Bomb
   damage: 50
   healing: 0
-  ability: {fileID: 0}
+  abilityPrefab: {fileID: 0}
   colliderPrefab: {fileID: 0}

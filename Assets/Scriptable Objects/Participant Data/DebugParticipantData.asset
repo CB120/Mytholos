@@ -20,7 +20,7 @@ MonoBehaviour:
     - {fileID: 0}
     colour: {r: 0.8018868, g: 0.23073156, b: 0.23073156, a: 0}
     mythData:
-    - myth: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2, type: 2}
+    - myth: {fileID: 11400000, guid: a5214353bcbc4864aa7156efa8000a5d, type: 2}
       northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
       westAbility: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
       southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
@@ -42,14 +42,14 @@ MonoBehaviour:
     - {fileID: 0}
     colour: {r: 0, g: 0, b: 0, a: 0}
     mythData:
-    - myth: {fileID: 11400000, guid: c7eb348eb71dcfd45a81411f14111099, type: 2}
+    - myth: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2, type: 2}
       northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
-      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      westAbility: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
       southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
       eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
-    - myth: {fileID: 11400000, guid: aef66653bbfbb714c8e758aea041cbaf, type: 2}
+    - myth: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2, type: 2}
       northAbility: {fileID: 11400000, guid: a6ec4f7cddce4ad40a65e3b1862419b4, type: 2}
-      westAbility: {fileID: 11400000, guid: 21990463623bc254ea7e721cf899120c, type: 2}
+      westAbility: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
       southAbility: {fileID: 11400000, guid: 9cc53eaebaa8d094aaac26868ecb9150, type: 2}
       eastAbility: {fileID: 11400000, guid: 80cd992c86693f84abe6bf971ecc3419, type: 2}
     - myth: {fileID: 11400000, guid: b5d2248d179193340bab95956baabaef, type: 2}

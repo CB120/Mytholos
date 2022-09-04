@@ -6,6 +6,7 @@ public class SO_Ability : ScriptableObject
 {
     public SO_Element element;
 
+    public new string name;
     public float damage;
     public float healing;
     

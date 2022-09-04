@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: SwipeAbility
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 677605b242f326b49a3d4ac03b773568, type: 2}
+  name: Swipe
   damage: 10
   healing: 0
-  ability: {fileID: 6300852338785146115, guid: 0f637fafea1f76f40adc81e06a434b54, type: 3}
+  abilityPrefab: {fileID: 6300852338785146115, guid: 0f637fafea1f76f40adc81e06a434b54,
+    type: 3}
   colliderPrefab: {fileID: 0}
