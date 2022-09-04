@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Commands;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Myths
 {
@@ -10,13 +11,24 @@ namespace Myths
         [SerializeField] private ManualMovementStyle manualMovementStyle;
         
         private MonoBehaviour currentState;
+
+        //Events
+        public UnityEvent<float> HealthChanged = new();
     
         //Properties
         public SO_Myth myth;
         public float stamina;
         public float speed;
         public float acceleration;
-        public float health;
+        public float health
+        {
+            get => health;
+            set
+            {
+                health = value;
+                HealthChanged.Invoke(health / 100.0f); // We're assuming 100.0f is the maximum health a myth can have
+            }
+        }
         public int partyIndex;
 
 
