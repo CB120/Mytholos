@@ -27,29 +27,33 @@ public class PlayerParticipant : Participant
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
-        SelectMyth.Invoke(context.performed ? 0 : -1);
-
         if (selectedMythIndex == -1 && context.performed)
+        {
             selectedMythIndex = mythsInPlay[0];
+            SelectMyth.Invoke(0);
+        }
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
         {
             SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
             selectedMythIndex = -1;
+            SelectMyth.Invoke(-1);
         }
     }
     
     public void SelectRight(InputAction.CallbackContext context)
     {
-        SelectMyth.Invoke(context.performed ? 1 : -1);
-
         if (selectedMythIndex == -1 && context.performed)
+        {
             selectedMythIndex = mythsInPlay[1];
+            SelectMyth.Invoke(1);
+        }
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
         {
             SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
             selectedMythIndex = -1;
+            SelectMyth.Invoke(-1);
         }
     }
 
