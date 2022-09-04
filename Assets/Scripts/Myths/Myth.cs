@@ -20,11 +20,15 @@ namespace Myths
         public float stamina;
         public float speed;
         public float acceleration;
-        public float health
+        public float health;
+        public float Health
         {
             get => health;
             set
             {
+                //if (value == health) return;
+
+                print("Health changed!");
                 health = value;
                 HealthChanged.Invoke(health / 100.0f); // We're assuming 100.0f is the maximum health a myth can have
             }
@@ -54,6 +58,13 @@ namespace Myths
 
             currentState.enabled = true;
         }
+
+        #if UNITY_EDITOR
+        private void OnValidate()
+        {
+            Health = health;
+        }
+        #endif
 
         private void Start()
         {

@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122f1873b00fa8140851f7bb724721da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partyMembers:
+  partyNumber: 0
+  mythUIs:
   - {fileID: 4693868620842175261}
   - {fileID: 3628194555668841088}
   - {fileID: 1767121817106369978}
@@ -60,6 +61,8 @@ MonoBehaviour:
   - {fileID: 9014393761875097364}
   - {fileID: 3069462135374628298}
   - {fileID: 9014393761647562975}
+  toggleAttacks: 0
+  selectedMythNumber: 0
 --- !u!1 &8368680696113432811
 GameObject:
   m_ObjectHideFlags: 0

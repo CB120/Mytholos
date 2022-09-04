@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b37e915fac584fb9aec4e3917cae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mythIcon: {fileID: 2823169662321419674}
   healthSliderBG: {fileID: 2823169662823398236}
   healthSliderFill: {fileID: 2823169663428784897}
   staminaSliderBG: {fileID: 2823169662807988694}
