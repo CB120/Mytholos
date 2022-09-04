@@ -6,6 +6,7 @@ public class EpicEddieCam : MonoBehaviour
 {
     public List<Transform> positions = new List<Transform>();
 
+    [SerializeField] float offsetY;
     [SerializeField] float zoomStartOffset;
     [SerializeField] float zoomRate;
     [SerializeField] float rotationX;
@@ -48,7 +49,7 @@ public class EpicEddieCam : MonoBehaviour
             // Find target position based on all known variables
             float cameraDistance = minZoom;
             cameraDistance = Mathf.Clamp(zoomStartOffset + (greatestDistance * zoomRate), minZoom, maxZoom);
-            targetPos = new Vector3(averagePos.x, Mathf.Sin(rotationX * Mathf.Deg2Rad) * cameraDistance, -Mathf.Cos(rotationX * Mathf.Deg2Rad) * cameraDistance);
+            targetPos = new Vector3(averagePos.x, Mathf.Sin(rotationX * Mathf.Deg2Rad) * cameraDistance + offsetY, -Mathf.Cos(rotationX * Mathf.Deg2Rad) * cameraDistance);
         }
     }
 

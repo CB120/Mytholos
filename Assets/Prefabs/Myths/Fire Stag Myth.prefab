@@ -74,6 +74,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fc458d76bc0f92c408725c6e015db27b, type: 2}
     - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
         type: 3}
+      propertyPath: myth
+      value: 
+      objectReference: {fileID: 11400000, guid: a5214353bcbc4864aa7156efa8000a5d,
+        type: 2}
+    - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
       propertyPath: health
       value: 100
       objectReference: {fileID: 0}

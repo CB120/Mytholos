@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -47,7 +48,11 @@ public class UIGameParty : MonoBehaviour
     void Start()
     {
         // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
-        FindObjectOfType<PartyBuilder>().allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
+        PartyBuilder partyBuilder = FindObjectOfType<PartyBuilder>();
+        partyBuilder.allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
+        if (partyBuilder.allParticipantData.partyData[partyNumber - 1].participant != null)
+            UpdateInputListeners(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant);
+
     }
 
     private void Awake()
@@ -121,7 +126,11 @@ public class UIGameParty : MonoBehaviour
                 UIGameMyth mythUI = mythUIs[i];
                 mythUI.greyedOut = i != partyMemberNumber;
                 mythUI.selected = i == partyMemberNumber;
-                myths[i].ring.sprite = rings[i == partyMemberNumber ? 1 : 0];
+                try {
+                    myths[i].ring.sprite = rings[i == partyMemberNumber ? 1 : 0];
+                }
+                catch (Exception e) {
+                }
                 mythUI.UpdateOpacity();
             }
 
@@ -147,7 +156,12 @@ public class UIGameParty : MonoBehaviour
                 UIGameMyth mythUI = mythUIs[i];
                 mythUI.greyedOut = false;
                 mythUI.selected = false;
-                myths[i].ring.sprite = rings[0];
+                try
+                {
+                    myths[i].ring.sprite = rings[0];
+                }
+                catch (Exception e) {
+                }
                 mythUI.UpdateOpacity();
             }
         }
@@ -202,6 +216,10 @@ public class UIGameParty : MonoBehaviour
                             myths[i/*myth.partyIndex*/] = myth;
                             counter++;
                             //Debug.Log("Player " + partyNumber + " adding myth " + myth.myth.name + " into party in slot " + i);
+
+                            // TODO: Delete this, 100% going to be problematic after sprint 2
+                            if (i == 2)
+                                myth.transform.position = new Vector3(1000.0f, 0.0f, -1000.0f);
                         }
                     }
                 }

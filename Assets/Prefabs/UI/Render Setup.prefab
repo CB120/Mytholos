@@ -505,10 +505,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions: []
-  zoomStartOffset: -5
+  offsetY: 1.75
+  zoomStartOffset: 0
   zoomRate: 1.8
   rotationX: 45
-  maxZoom: 50
+  maxZoom: 35
   minZoom: 0
   ratioOfXToZ: 2.5
   followSpeed: 3.5
