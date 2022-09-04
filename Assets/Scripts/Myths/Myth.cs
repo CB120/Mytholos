@@ -75,13 +75,22 @@ namespace Myths
 
         public void TakeDamage(float damage)
         {
-            Health -= damage;
-            Debug.Log($"{gameObject.name}, Has {Health} Health Remaining");
-            if (Health <= 0)
+            health -= damage;
+            //Debug.Log($"{gameObject.name}, Has {health} Health Remaining");
+            if (health <= 0)
             {
-                Debug.Log($"{gameObject.name}, Has Been Destroyed");
+                //Debug.Log($"{gameObject.name}, Has Been Destroyed");
+                TemporaryUpdateTeam(); //Remove this after 5/09/22
                 this.gameObject.SetActive(false);
+                
             }
+        }
+
+        /*Remove everything after this after 5/09/22*/
+        public WinState ws;
+        public void TemporaryUpdateTeam()
+        {
+            ws.DecreaseScore(partyIndex);
         }
     }
 }

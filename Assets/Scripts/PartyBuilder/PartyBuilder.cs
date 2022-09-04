@@ -88,5 +88,11 @@ public class PartyBuilder : MonoBehaviour
         newMyth.southAbility = mythData.southAbility;
         newMyth.eastAbility = mythData.eastAbility;
         newMyth.partyIndex = participantIndex;
+        newMyth.ws = winState;
     }
+
+    //Remove after playtest
+    public WinState winState;
+
+  
 }
