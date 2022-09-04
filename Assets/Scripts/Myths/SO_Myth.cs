@@ -7,5 +7,6 @@ namespace Myths
     {
         public new string name;
         public GameObject prefab;
+        public Sprite icon;
     }
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Snake
   prefab: {fileID: 7839951539531265053, guid: b9578e69af48cb148ab20fb48d83c14d, type: 3}
+  icon: {fileID: -549214236, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
