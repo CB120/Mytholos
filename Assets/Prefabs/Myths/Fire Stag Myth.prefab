@@ -74,8 +74,28 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fc458d76bc0f92c408725c6e015db27b, type: 2}
     - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
         type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
       propertyPath: health
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: stamina
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245871232327048933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddca71413c6661a4c9981f280b601c00, type: 3}

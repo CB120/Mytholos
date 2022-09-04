@@ -18,8 +18,8 @@ namespace Myths
         //Properties
         public SO_Myth myth;
         public float stamina;
-        public float speed;
-        public float acceleration;
+        public float walkSpeed;
+        public float sprintSpeed;
         public float health;
         public float Health
         {
@@ -39,6 +39,10 @@ namespace Myths
         //Variables
         List<Command> commandQueue = new List<Command>();
 
+        public bool isInteracting = false; // Not sure if im going to go this route, but when we're using an ability we'll set
+                                           // this to true for the duration & make abilities only usable if this is false
+
+        public bool isInvulnerable = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
