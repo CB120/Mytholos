@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 6305431803101859813}
   - component: {fileID: 6305431803101859812}
   - component: {fileID: 664854463525842477}
+  - component: {fileID: 8348959236202166376}
   m_Layer: 5
   m_Name: Ability
   m_TagString: Untagged
@@ -151,6 +152,18 @@ MonoBehaviour:
   - {r: 0.10044494, g: 0.52983266, b: 0.9339623, a: 1}
   - {r: 0.8679245, g: 0.8410097, b: 0.7483802, a: 1}
   - {r: 0, g: 0.8000001, b: 0, a: 1}
+--- !u!225 &8348959236202166376
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305431803101859814}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6305431803163707172
 GameObject:
   m_ObjectHideFlags: 0

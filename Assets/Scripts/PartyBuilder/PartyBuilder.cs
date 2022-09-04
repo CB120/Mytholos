@@ -16,7 +16,7 @@ public class PartyBuilder : MonoBehaviour
     [Header("ParticipantData")]
     public SO_AllParticipantData liveAllParticipantData;
     public SO_AllParticipantData debugAllParticipantData;
-    SO_AllParticipantData allParticipantData;
+    public SO_AllParticipantData allParticipantData;
 
     public SO_Ability[] allAbilities;
 
@@ -87,8 +87,15 @@ public class PartyBuilder : MonoBehaviour
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;
         newMyth.eastAbility = mythData.eastAbility;
-        newMyth.partyIndex = participantIndex;
+        newMyth.PartyIndex = participantIndex;
         newMyth.ws = winState;
+
+        // Eddie's awful camera code, probably delete later
+        EpicEddieCam cam = FindObjectOfType<EpicEddieCam>();
+        if (cam != null)
+        {
+            cam.positions.Add(newMythGameObject.transform);
+        }
     }
 
     //Remove after playtest

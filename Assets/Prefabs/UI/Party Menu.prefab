@@ -61,8 +61,10 @@ MonoBehaviour:
   - {fileID: 9014393761875097364}
   - {fileID: 3069462135374628298}
   - {fileID: 9014393761647562975}
-  toggleAttacks: 0
-  selectedMythNumber: 0
+  abilitiesLazyHardcodedOffset: 0
+  rings:
+  - {fileID: 21300000, guid: 1ea5a8f4aa325e04bab0bb170b680a0f, type: 3}
+  - {fileID: 21300000, guid: 0eff1e1a5b085c447944903bcc691987, type: 3}
 --- !u!1 &8368680696113432811
 GameObject:
   m_ObjectHideFlags: 0

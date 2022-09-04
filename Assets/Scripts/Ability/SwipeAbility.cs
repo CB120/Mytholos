@@ -19,7 +19,7 @@ public class SwipeAbility : Ability
     public override void Trigger(Myth myth)
     {
         Attack(myth, ability.damage);
-        Debug.LogWarning($"Swipe Collided With Object: {myth.gameObject.name}");
+        //Debug.LogWarning($"Swipe Collided With Object: {myth.gameObject.name}");
         base.Trigger(myth);
     }
 }

@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 4720286491871789904}
   - component: {fileID: 4720286491871789905}
   - component: {fileID: 4720286491871789906}
+  - component: {fileID: 8898454407488910352}
   m_Layer: 0
   m_Name: Camera Game
   m_TagString: Untagged
@@ -491,6 +492,26 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &8898454407488910352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720286491871789907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7efecae37208b048b4890e999496420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions: []
+  zoomStartOffset: -5
+  zoomRate: 1.8
+  rotationX: 45
+  maxZoom: 50
+  minZoom: 0
+  ratioOfXToZ: 2.5
+  followSpeed: 3.5
 --- !u!1 &4720286492361752278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1043,11 @@ PrefabInstance:
       propertyPath: partyNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2848755742245003896, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: abilitiesLazyHardcodedOffset
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 3280429823945375751, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_Sprite
@@ -1224,6 +1250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848755742245003896, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: abilitiesLazyHardcodedOffset
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3280429822905128604, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}

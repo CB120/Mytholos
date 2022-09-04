@@ -10,7 +10,7 @@ namespace Myths.Behaviours
         
         private void Update()
         {
-            Debug.Log($"{myth.name} performed ability.");
+            //Debug.Log($"{myth.name} performed ability.");
 
             var abilityData = ((AbilityCommand) myth.Command).abilityData;
             

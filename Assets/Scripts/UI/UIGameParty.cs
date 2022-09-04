@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using Myths;
@@ -18,45 +19,86 @@ public class UIGameParty : MonoBehaviour
     float abilitiesSelectedX;       // Records of target UI positions for the abilities menu
     float abilitiesUnselectedX;
     float abilitiesSelectedOffset = 10.0f;
+    [SerializeField] float abilitiesLazyHardcodedOffset;
     Coroutine abilitiesMenuCoroutine;
 
-    // TO DELETE LATER!!!
-    #region Test stuff to delete later
-    public bool toggleAttacks = false;
-    public int selectedMythNumber = 0;
-    private void Update()
-    {
-        if (toggleAttacks)
-        {
-            toggleAttacks = false;
-            if (abilitiesMenu.alpha == 1.0f) // Not a great way to check this
-            {
-                DisplayAbilities(false);
-            }
-            else
-            {
-                DisplayAbilities(true, selectedMythNumber);
-            }
-        }
-    }
-    #endregion
+    [SerializeField] Sprite[] rings; // 0 is thin ring, 1 is thick
 
-    void OnEnable()
+    //#region Test stuff to delete later
+    //public bool toggleAttacks = false;
+    //public int selectedMythNumber = 0;
+    //private void Update()
+    //{
+    //    if (toggleAttacks)
+    //    {
+    //        toggleAttacks = false;
+    //        if (abilitiesMenu.alpha == 1.0f) // Not a great way to check this
+    //        {
+    //            DisplayAbilities(false);
+    //        }
+    //        else
+    //        {
+    //            DisplayAbilities(true, selectedMythNumber);
+    //        }
+    //    }
+    //}
+    //#endregion
+
+    void Start()
+    {
+        // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
+        FindObjectOfType<PartyBuilder>().allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
+    }
+
+    private void Awake()
     {
         // Record some transform information from UI
         abilitiesMenuRectTransform = abilitiesMenu.GetComponent<RectTransform>();
-        abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y;
+        abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y + abilitiesLazyHardcodedOffset;
         abilitiesUnselectedX = abilitiesSelectedX + abilitiesSelectedOffset * (partyNumber > 1 ? 1.0f : -1.0f);
+    }
 
-        // TODO: Create listeners?
-        // ...
-
+    void OnEnable()
+    {
         // Store party information
         myths = new Myth[3];
         SetUpMythUIs();
 
         // Update UI for game beginning
         DisplayAbilities(false, 0, -1.0f);
+    }
+
+    void UpdateInputListeners(Participant participant)
+    {
+        PlayerParticipant playerParticipant = participant.GetComponent<PlayerParticipant>();
+
+        if (playerParticipant != null)
+        {
+            playerParticipant.SelectMyth.AddListener(SelectMyth);
+            playerParticipant.SelectAbility.AddListener(SelectAbility);
+        }
+    }
+
+    void SelectMyth(int partyMemberNumber)
+    {
+        //if (partyMemberNumber >= 0)
+        //    print("Trying to select myth " + partyMemberNumber + ", who is " + (mythUIs[partyMemberNumber].selected ? "" : "not")
+        //        + " already selected. Other myth is " + (mythUIs[partyMemberNumber == 0 ? 1 : 0].selected ? "" : "not") + " already selected.");
+        //else
+        //    print("Trying to remove currently selected myth; myth 1 is " + (mythUIs[0].selected ? "" : "not")
+        //        + " already selected, and myth 2 is " + (mythUIs[0 == 0 ? 1 : 0].selected ? "" : "not") + " already selected.");
+
+
+        if (partyMemberNumber < 0 && abilitiesMenu.alpha <= 0.0f) return;                           // Don't animate menu closing if it's already closed
+        if (mythUIs[partyMemberNumber == 0 ? 1 : 0].selected && partyMemberNumber >= 0) return;     // Don't animate if asking to display a myth, but other myth is already selected
+        
+        DisplayAbilities(partyMemberNumber >= 0, partyMemberNumber);
+    }
+
+    void SelectAbility(int abilityNumber)
+    {
+        if (abilityNumber >= 0 && abilityNumber < 3 && abilitiesMenu.alpha > 0.0f)
+            abilities[abilityNumber].AnimateSelectedAbility();
     }
 
     void DisplayAbilities(bool showUI, int partyMemberNumber = -1, float animationSpeed = 25.0f)
@@ -74,19 +116,20 @@ public class UIGameParty : MonoBehaviour
             //abilitiesMenu.alpha = 1.0f;
 
             // Make all unselected myths greyed out, and vice versa
-            int counter = 0;
-            foreach (UIGameMyth mythUI in mythUIs)
+            for (int i = 0; i < 2; i++)// (UIGameMyth mythUI in mythUIs)
             {
-                mythUI.greyedOut = counter != partyMemberNumber;
-                mythUI.selected = counter == partyMemberNumber;
-                counter++;
+                UIGameMyth mythUI = mythUIs[i];
+                mythUI.greyedOut = i != partyMemberNumber;
+                mythUI.selected = i == partyMemberNumber;
+                myths[i].ring.sprite = rings[i == partyMemberNumber ? 1 : 0];
                 mythUI.UpdateOpacity();
             }
 
             // Populate it with relevant info
             for (int i = 0; i < 3; i++)
             {
-                SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].eastAbility : myths[partyMemberNumber].southAbility;
+                SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
+                //print("Myth " + partyMemberNumber + ", ability " + i + " is " + ability.name + " / " + ability.ToString());
                 abilities[i].UpdateUI(ability.name, E_Element.Wind, ability.damage);
             }
 
@@ -99,10 +142,12 @@ public class UIGameParty : MonoBehaviour
             //abilitiesMenu.alpha = 0.0f;
 
             // Make all myths ungreyed out
-            foreach (UIGameMyth mythUI in mythUIs)
+            for (int i = 0; i < 3; i++)
             {
+                UIGameMyth mythUI = mythUIs[i];
                 mythUI.greyedOut = false;
                 mythUI.selected = false;
+                myths[i].ring.sprite = rings[0];
                 mythUI.UpdateOpacity();
             }
         }
@@ -116,6 +161,7 @@ public class UIGameParty : MonoBehaviour
             // Position
             float difference = (showUI ? abilitiesSelectedX : abilitiesUnselectedX) - abilitiesMenuRectTransform.anchoredPosition.x;
             abilitiesMenuRectTransform.anchoredPosition += Vector2.right * difference * animationSpeed * Time.deltaTime; // Janky ease in/out
+
             // Alpha
             abilitiesMenu.alpha = (showUI ? 1.0f : 0.0f) + (Mathf.Abs(difference / abilitiesSelectedOffset)) * ((showUI ? -1.0f : 1.0f));
             yield return new WaitForSeconds(0);

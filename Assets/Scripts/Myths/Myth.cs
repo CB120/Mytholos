@@ -26,14 +26,21 @@ namespace Myths
             get => health;
             set
             {
-                //if (value == health) return;
-
-                print("Health changed!");
                 health = value;
                 HealthChanged.Invoke(health / 100.0f); // We're assuming 100.0f is the maximum health a myth can have
             }
         }
         public int partyIndex;
+        public int PartyIndex
+        {
+            get => partyIndex;
+            set
+            {
+                partyIndex = value;
+                ring.color = value == 0 ? new Color(1.0f, 0.3f, 0.0f, 1.0f)
+                    : new Color(0.0f, 0.5f, 1.0f, 1.0f);
+            }
+        }
 
 
         //Variables
@@ -48,6 +55,8 @@ namespace Myths
         public SO_Ability southAbility;
         public SO_Ability eastAbility;
 
+        public SpriteRenderer ring;
+
         public Command Command { get; set; }
 
         public void ChangeState(MonoBehaviour state)
@@ -59,12 +68,12 @@ namespace Myths
             currentState.enabled = true;
         }
 
-        #if UNITY_EDITOR
-        private void OnValidate()
-        {
-            Health = health;
-        }
-        #endif
+        //#if UNITY_EDITOR
+        //private void OnValidate()
+        //{
+        //    Health = health;
+        //}
+        //#endif
 
         private void Start()
         {
@@ -75,9 +84,9 @@ namespace Myths
 
         public void TakeDamage(float damage)
         {
-            health -= damage;
+            Health -= damage;
             //Debug.Log($"{gameObject.name}, Has {health} Health Remaining");
-            if (health <= 0)
+            if (Health <= 0)
             {
                 //Debug.Log($"{gameObject.name}, Has Been Destroyed");
                 TemporaryUpdateTeam(); //Remove this after 5/09/22

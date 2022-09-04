@@ -30,7 +30,7 @@ public class Participant : MonoBehaviour
         numberOfParticipants++;
         if (debugOn) Debug.Log(gameObject.name + "'s partyIndex is " + partyIndex);
 
-        liveParticipantData.partyData[partyIndex].participant = this;
-        debugParticipantData.partyData[partyIndex].participant = this;
+        liveParticipantData.partyData[partyIndex].Participant = this;
+        debugParticipantData.partyData[partyIndex].Participant = this;
     }
 }
