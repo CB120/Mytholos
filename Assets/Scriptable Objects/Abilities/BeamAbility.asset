@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 677605b242f326b49a3d4ac03b773568, type: 2}
   name: Beam
-  damage: 0
+  damage: 20
   healing: 0
-  abilityPrefab: {fileID: 0}
+  abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
+    type: 3}
   colliderPrefab: {fileID: 0}
