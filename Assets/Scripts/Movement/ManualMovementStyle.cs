@@ -10,7 +10,6 @@ public class ManualMovementStyle : CollisionDetection
     private Quaternion lastRotation;
 
     // Properties 
-    public bool isSprinting = false;
 
 
     // References
@@ -19,14 +18,7 @@ public class ManualMovementStyle : CollisionDetection
 
     public void Move(Vector2 input)
     {
-        if (!isSprinting)
-        {
             inputVector = input * mythProperties.walkSpeed;
-        } else
-        {
-            inputVector = input * mythProperties.sprintSpeed;
-            mythProperties.stamina -= 0.01f;
-        }
 
             if (inputVector != Vector2.zero)
             {

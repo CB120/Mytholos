@@ -16,5 +16,6 @@ MonoBehaviour:
   name: Beam
   damage: 0
   healing: 0
+  stamina: 30
   abilityPrefab: {fileID: 0}
   colliderPrefab: {fileID: 0}

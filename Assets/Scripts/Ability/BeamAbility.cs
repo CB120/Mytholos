@@ -8,7 +8,7 @@ public class BeamAbility : Ability
     // Start is called before the first frame update
     void Start()
     {
-        
+        owningMyth.Stamina -= ability.stamina;
     }
 
     // Update is called once per frame

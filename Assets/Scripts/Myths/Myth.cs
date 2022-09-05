@@ -14,12 +14,12 @@ namespace Myths
 
         //Events
         public UnityEvent<float> HealthChanged = new();
+        public UnityEvent<float> StaminaChanged = new();
     
         //Properties
         public SO_Myth myth;
         public float stamina;
         public float walkSpeed;
-        public float sprintSpeed;
         public float health;
         public float Health
         {
@@ -41,7 +41,20 @@ namespace Myths
                     : new Color(0.0f, 0.5f, 1.0f, 1.0f);
             }
         }
-
+        public float Stamina
+        {
+            get => stamina;
+            set
+            {
+                if (value < stamina)
+                {
+                    Invoke("startRegen", 0.75f);
+                    StopRegen();
+                }
+                    stamina = value;
+                    StaminaChanged.Invoke(stamina / 100.0f); // We're assuming 100.0f is the maximum health a myth can have
+            }
+        }
 
         //Variables
         List<Command> commandQueue = new List<Command>();
@@ -50,6 +63,7 @@ namespace Myths
                                            // this to true for the duration & make abilities only usable if this is false
 
         public bool isInvulnerable = false;
+        public bool staminaRegen = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
@@ -86,7 +100,28 @@ namespace Myths
             currentState.enabled = true;
         }
 
-        public void TakeDamage(float damage)
+        private void Update()
+        {
+            if (staminaRegen)
+            {
+                if (Stamina < 100f && Stamina > 0.3f)
+                {
+                    Stamina += 5f * Time.deltaTime;
+                }
+            }
+        }
+
+        private void startRegen()
+        {
+            staminaRegen = true;
+        }
+
+        private void StopRegen()
+        {
+            staminaRegen = false;
+        }
+
+            public void TakeDamage(float damage)
         {
             Health -= damage;
             //Debug.Log($"{gameObject.name}, Has {health} Health Remaining");
