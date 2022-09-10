@@ -3,9 +3,14 @@ using Commands;
 using Myths;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerParticipant : Participant
 {
+    //Events
+    public UnityEvent<int> SelectMyth = new();
+    public UnityEvent<int> SelectAbility = new();
+
     //Properties
 
 
@@ -23,24 +28,32 @@ public class PlayerParticipant : Participant
     public void SelectLeft(InputAction.CallbackContext context)
     {
         if (selectedMythIndex == -1 && context.performed)
+        {
             selectedMythIndex = mythsInPlay[0];
+            SelectMyth.Invoke(0);
+        }
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
         {
             SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
             selectedMythIndex = -1;
+            SelectMyth.Invoke(-1);
         }
     }
     
     public void SelectRight(InputAction.CallbackContext context)
     {
         if (selectedMythIndex == -1 && context.performed)
+        {
             selectedMythIndex = mythsInPlay[1];
+            SelectMyth.Invoke(1);
+        }
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
         {
             SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
             selectedMythIndex = -1;
+            SelectMyth.Invoke(-1);
         }
     }
 
@@ -51,6 +64,7 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.northAbility);
+        SelectAbility.Invoke(0);
     }
 
     public void UseAbilityEast(InputAction.CallbackContext context)
@@ -60,6 +74,7 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.eastAbility);
+        SelectAbility.Invoke(3);
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)
@@ -69,6 +84,7 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
+        SelectAbility.Invoke(2);
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)
@@ -78,6 +94,7 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.westAbility);
+        SelectAbility.Invoke(1);
     }
 
     public void MoveStrategyUp(InputAction.CallbackContext context)

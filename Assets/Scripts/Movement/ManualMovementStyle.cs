@@ -1,33 +1,36 @@
+using Myths;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ManualMovementStyle : CollisionDetection
 {
-    //https://docs.unity3d.com/Packages/com.unity.inputsystem@1.4/manual/QuickStartGuide.html
-    public float mythSpeed;
+    // Variables 
     private Vector2 inputVector;
     private Quaternion newRotation;
     private Quaternion lastRotation;
 
-    // Animation shit 
+    // Properties 
+
+
+    // References
     [SerializeField] private Animator anim;
+    [SerializeField] private Myth mythProperties;
 
     public void Move(Vector2 input)
     {
-        inputVector = input * mythSpeed;
-        
-        if (inputVector != Vector2.zero)
-        {
-            newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
-        
-            if (anim) anim.SetBool("Walking", true);
-            lastRotation = newRotation;
-        }
-        else
-        {
-            if (anim) anim.SetBool("Walking", false);
-            lastRotation = this.transform.rotation;
-        }
+            inputVector = input * mythProperties.walkSpeed;
+
+            if (inputVector != Vector2.zero)
+            {
+                newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
+                if (anim) anim.SetBool("Walking", true);
+                lastRotation = newRotation;
+            }
+            else
+            {
+                if (anim) anim.SetBool("Walking", false);
+                lastRotation = this.transform.rotation;
+            }
     }
 
     // TODO: Unused. Functionality needs to be bound to the PerformAbilityBehaviour.
@@ -35,6 +38,15 @@ public class ManualMovementStyle : CollisionDetection
     {
         if (anim) anim.SetTrigger("attack");
     }
+
+
+    public void Dodge(Vector2 input)
+    {
+        // Can either access the rigidbody and use a push force function to quickly move the myth, however this makes eddies script a bit useless
+        // Can increase the speed and keep moving the myth in a direction
+    }
+
+
 
     protected override void SetTargetVelocity()
     {

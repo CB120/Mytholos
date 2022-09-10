@@ -16,7 +16,7 @@ public class PartyBuilder : MonoBehaviour
     [Header("ParticipantData")]
     public SO_AllParticipantData liveAllParticipantData;
     public SO_AllParticipantData debugAllParticipantData;
-    SO_AllParticipantData allParticipantData;
+    public SO_AllParticipantData allParticipantData;
 
     public SO_Ability[] allAbilities;
 
@@ -65,6 +65,9 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
+    // TODO: Delete this I'm so sorry --Eddie
+    int partyCounter = 0;
+
     void SpawnMyth(MythData mythData, int participantIndex)
     {
         GameObject prefab = mythData.myth.prefab;
@@ -87,8 +90,16 @@ public class PartyBuilder : MonoBehaviour
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;
         newMyth.eastAbility = mythData.eastAbility;
-        newMyth.partyIndex = participantIndex;
+        newMyth.PartyIndex = participantIndex;
         newMyth.ws = winState;
+
+        // Eddie's awful camera code, probably delete later
+        EpicEddieCam cam = FindObjectOfType<EpicEddieCam>();
+        if (cam != null && partyCounter % 3 != 2)
+        {
+            cam.positions.Add(newMythGameObject.transform);
+        }
+        partyCounter++; // TODO: Stop fudging this where 3rd member of each party is excluded from Camera list
     }
 
     //Remove after playtest

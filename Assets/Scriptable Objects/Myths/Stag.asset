@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stag
   prefab: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
+  icon: {fileID: 720469514, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}

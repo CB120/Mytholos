@@ -9,6 +9,7 @@ public class SO_Ability : ScriptableObject
     public new string name;
     public float damage;
     public float healing;
+    public float stamina;
     
 
     [FormerlySerializedAs("ability")] public GameObject abilityPrefab;
