@@ -11,6 +11,7 @@ namespace Myths
 
         private void Start()
         {
+            Instantiate(abilityPS.gameObject, gameObject.transform.position, gameObject.transform.rotation, this.transform);
             Destroy(this.gameObject, 0.8f);
         }
         public override void Update()
