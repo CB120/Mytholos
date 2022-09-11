@@ -8,8 +8,9 @@ public class BeamAbility : Ability
     private float BeamTimer;
     private float BeamDuration;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         BeamDuration = 3.0f;
     }
 

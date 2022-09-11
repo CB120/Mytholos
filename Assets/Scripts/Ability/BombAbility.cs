@@ -15,9 +15,10 @@ public class BombAbility : Ability
 
 	Vector3 startPos;
 
-	void Start()
+	public override void Start()
 	{
 		startPos = transform.position;
+		base.Start();
 	}
 
 	void Update()
