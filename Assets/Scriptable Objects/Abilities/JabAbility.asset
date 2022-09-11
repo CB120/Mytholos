@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: BeamAbility
+  m_Name: JabAbility
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 677605b242f326b49a3d4ac03b773568, type: 2}
-  name: Beam
-  damage: 20
+  name: Jab
+  damage: 5
   healing: 0
-  stamina: 50
-  chargeTime: 0
-  abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
+  stamina: 0
+  abilityPrefab: {fileID: 1759088471933823973, guid: 50379f691b7e3694a97798c6fa0c248f,
     type: 3}
   colliderPrefab: {fileID: 0}

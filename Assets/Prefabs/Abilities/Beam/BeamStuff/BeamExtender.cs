@@ -18,7 +18,7 @@ public class BeamExtender : MonoBehaviour
     {
  
             //Debug.Log("Hi");
-            BeamTransform.localScale += (new Vector3(3.0f, 0, 0)) * Time.deltaTime;
+            BeamTransform.localScale += (new Vector3(0, 0, 10.0f)) * Time.deltaTime;
        
     }
 

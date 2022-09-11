@@ -10,7 +10,7 @@ public class SO_Ability : ScriptableObject
     public float damage;
     public float healing;
     public float stamina;
-    
+    public float chargeTime;
 
     [FormerlySerializedAs("ability")] public GameObject abilityPrefab;
     public Collider colliderPrefab;
