@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wolper
       objectReference: {fileID: 0}
+    - target: {fileID: 2440066683721349898, guid: a5d8aa79f2c38744eb84a4e7950e2ebf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5d8aa79f2c38744eb84a4e7950e2ebf, type: 3}
 --- !u!1 &1120119604450963002 stripped
@@ -115,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 4780120509031229686, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
