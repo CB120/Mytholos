@@ -52,7 +52,7 @@ namespace Myths
                     StopRegen();
                 }
                     stamina = value;
-                    StaminaChanged.Invoke(stamina / 100.0f); // We're assuming 100.0f is the maximum health a myth can have
+                    StaminaChanged.Invoke(stamina / 100.0f); // We're assuming 100.0f is the maximum stamina a myth can have
             }
         }
 
@@ -107,6 +107,9 @@ namespace Myths
                 if (Stamina < 100f && Stamina > 0.3f)
                 {
                     Stamina += 5f * Time.deltaTime;
+                } else if (Stamina < 0.6f)
+                {
+                    Stamina = 1;
                 }
             }
         }
