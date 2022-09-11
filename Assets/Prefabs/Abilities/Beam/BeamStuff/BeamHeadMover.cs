@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamHeadMover : MonoBehaviour
+public class BeamHead : MonoBehaviour
 {
     public Transform BeamHeadPosition;
     private Vector3 BeamHeadPositionVector;

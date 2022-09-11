@@ -130,6 +130,7 @@ public class UIGameParty : MonoBehaviour
                     myths[i].ring.sprite = rings[i == partyMemberNumber ? 1 : 0];
                 }
                 catch (Exception e) {
+                    if (e != null) { } // Truly, incredible code
                 }
                 mythUI.UpdateOpacity();
             }

@@ -35,13 +35,7 @@ public class BombAbility : Ability
 		transform.rotation = LookAt2D(nextPos - transform.position);
 		transform.position = nextPos;
 
-		// Do something when we reach the target
-		if (nextPos == targetPos) Arrived();
-	}
-
-	void Arrived()
-	{
-		Destroy(gameObject);
+		Debug.Log(baseY);
 	}
 
 	static Quaternion LookAt2D(Vector2 forward)

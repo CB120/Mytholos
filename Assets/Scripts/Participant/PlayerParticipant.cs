@@ -62,7 +62,10 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
+        if (SelectedMyth.Stamina < SelectedMyth.northAbility.stamina) return;   
+
+
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.northAbility);
         SelectAbility.Invoke(0);
     }
@@ -72,7 +75,10 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
+        if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
+
+
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.eastAbility);
         SelectAbility.Invoke(3);
     }
@@ -82,7 +88,9 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
+        if (SelectedMyth.Stamina < SelectedMyth.southAbility.stamina) return;
+
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
         SelectAbility.Invoke(2);
     }
@@ -92,6 +100,7 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
+        if (SelectedMyth.Stamina < SelectedMyth.westAbility.stamina) return;
         
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.westAbility);
         SelectAbility.Invoke(1);

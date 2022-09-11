@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Myths;
 
-public class DetectCollision : MonoBehaviour
+namespace DetectCollision
 {
-    [SerializeField] private Ability ability;
-    private void OnTriggerEnter(Collider other)
+    public class DetectCollision : MonoBehaviour
     {
-        Myth attackedMyth = other.gameObject.GetComponent<Myth>();
-        if (attackedMyth)
+        [SerializeField] private Ability ability;
+        private void OnTriggerEnter(Collider other)
         {
-            ability.Trigger(attackedMyth);
+            Myth attackedMyth = other.gameObject.GetComponent<Myth>();
+            if (attackedMyth)
+            {
+                ability.Trigger(attackedMyth);
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            ability.Collision();
         }
     }
 }
