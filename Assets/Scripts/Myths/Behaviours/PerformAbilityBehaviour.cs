@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Commands;
+using System.Collections;
 
 namespace Myths.Behaviours
 {
@@ -18,14 +19,7 @@ namespace Myths.Behaviours
             
             if (ability)
             {
-                GameObject abilityPrefab = Instantiate(
-                    ability,
-                    gameObject.transform.position,
-                    new Quaternion(0f, 0f, 0f, 0f),
-                    gameObject.transform
-                );
-                
-                abilityPrefab.GetComponent<Ability>().owningMyth = myth;
+                StartCoroutine(PerformAbility(ability, abilityData.chargeTime));
             }
             else
             {
@@ -36,5 +30,18 @@ namespace Myths.Behaviours
 
             performAbilityComplete.Invoke();
         }
+        IEnumerator PerformAbility(GameObject ability, float chargeTime)
+        {
+            yield return new WaitForSeconds(chargeTime);
+
+            GameObject abilityPrefab = Instantiate(
+                    ability,
+                    gameObject.transform.position,
+                    new Quaternion(0f, 0f, 0f, 0f),
+                    gameObject.transform
+                );
+            abilityPrefab.GetComponent<Ability>().owningMyth = myth;
+        }
     }
+   
 }
