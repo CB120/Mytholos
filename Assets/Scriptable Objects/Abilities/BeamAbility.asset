@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Beam
   damage: 20
   healing: 0
-  stamina: 0
+  stamina: 50
   chargeTime: 0
   abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
     type: 3}
