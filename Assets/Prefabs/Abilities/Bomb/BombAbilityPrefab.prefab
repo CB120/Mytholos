@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7516873970837099685}
   - component: {fileID: 7516873970837099706}
   - component: {fileID: 7516873970837099707}
+  - component: {fileID: 1171528003992299898}
   m_Layer: 0
   m_Name: BombAbilityPrefab
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: d9da8405993fbc74fb9ef904e4858c9e, type: 2}
   owningMyth: {fileID: 0}
+  abilityPS: {fileID: 0}
   targetPos: {x: 10, y: 0, z: 10}
   speed: 5
   arcHeight: 8
@@ -125,10 +127,23 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7516873970837099704}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &1171528003992299898
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516873970837099704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7516873970888053135
 PrefabInstance:

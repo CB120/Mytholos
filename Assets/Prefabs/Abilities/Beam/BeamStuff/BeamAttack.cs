@@ -53,11 +53,7 @@ public class BeamAttack : MonoBehaviour
     {
         if (Beam)
         {
-            BeamTimer += Time.deltaTime;
-            if (BeamTimer > BeamSettings.duration)
-            {
-                Destroy(Beam);
-            }
+            
         }
     }
 

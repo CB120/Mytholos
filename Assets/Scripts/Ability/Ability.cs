@@ -7,7 +7,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
     public SO_Ability ability;
     public Myth owningMyth;
-
+    public ParticleSystem abilityPS;
     virtual public void Update()
     {
         
@@ -29,5 +29,10 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void Trigger(Myth myth)
     {
 
+    }
+
+    virtual public void Collision()
+    {
+        Destroy(gameObject);
     }
 }
