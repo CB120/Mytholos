@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamHeadMover : MonoBehaviour
+public class BeamHead : MonoBehaviour
 {
     public Transform BeamHeadPosition;
     private Vector3 BeamHeadPositionVector;
 
-   // private BeamAttack Beam;
 
     void Update()
     {
@@ -20,10 +19,6 @@ public class BeamHeadMover : MonoBehaviour
         if (other.transform.gameObject.name == "BeamHead")
         {
             Destroy(transform.parent.gameObject);
-            /*
-            Beam = transform.parent.gameObject.GetComponent<BeamAttack>();
-            Beam.DestroyBeam();
-            */
         }
     }
 }

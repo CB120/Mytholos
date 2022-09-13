@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
   owningMyth: {fileID: 0}
+  abilityPS: {fileID: 0}
 --- !u!1 &4274577651556709272
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f001f8c0584648349a30e6dafafc4631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Beam: {fileID: 0}
 --- !u!1 &5364032775605158230
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,8 +249,8 @@ GameObject:
   - component: {fileID: 9030312298396743610}
   - component: {fileID: 8202758055091837036}
   - component: {fileID: 6444413875973193334}
-  - component: {fileID: 7263583623791309667}
   - component: {fileID: 541529531825767634}
+  - component: {fileID: 4753464160137050764}
   m_Layer: 0
   m_Name: BeamHead
   m_TagString: Untagged
@@ -336,19 +336,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7263583623791309667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7706961841124512121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1362343e9315de45bdebcfb6086e4a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BeamHeadPosition: {fileID: 3275380738363577109}
 --- !u!54 &541529531825767634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -365,3 +352,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4753464160137050764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706961841124512121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1362343e9315de45bdebcfb6086e4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BeamHeadPosition: {fileID: 3275380738363577109}
