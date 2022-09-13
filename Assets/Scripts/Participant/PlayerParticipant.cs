@@ -18,12 +18,12 @@ public class PlayerParticipant : Participant
     int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
                                   // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
 
-
     //References
 
     private int selectedMythIndex = -1;
 
     private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -153,5 +153,41 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+    }
+
+    public void EnemySelectRight(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!SelectedMyth) return;
+    }
+
+    public void EnemySelectLeft(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!SelectedMyth) return;
+
+        /*for(int i = 0; i < liveParticipantData.partyData.Length; i++)
+        {
+            Debug.Log(liveParticipantData.partyData[i]);
+            for (int y = 0; y < liveParticipantData.partyData[i].mythData.Length; y++)
+            Debug.Log(liveParticipantData.partyData[i].mythData[y]);
+        }*/
+
+        for (int i = 0; i < liveParticipantData.partyData.Length; i++)
+        {
+            if (liveParticipantData.partyData[i].participant != this)
+            {
+                Debug.Log(liveParticipantData.partyData[i].myths.Count);
+                int tempNumber = liveParticipantData.partyData[i].myths.Count - 1;
+                    SelectedMyth.targetEnemy = liveParticipantData.partyData[i].myths[tempNumber].gameObject;
+            }
+            else
+            {
+                Debug.Log("found ourself");
+            }
+        }
+
     }
 }
