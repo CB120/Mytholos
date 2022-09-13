@@ -9,13 +9,10 @@ public class BeamAbility : Ability
     private float DurationTimer;
 
     [SerializeField] private float BeamDuration;
-    [SerializeField] private float BeamChargeTime;
     [SerializeField] private float BeamLength;
 
     BeamExtender BeamExtender;
     BeamHead BeamHead;
-
-    private Transform[] beamChildren;
 
     // Start is called before the first frame update
     public override void Start()
@@ -29,12 +26,12 @@ public class BeamAbility : Ability
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         ChargeTimer += Time.deltaTime;
         DurationTimer += Time.deltaTime;
 
-        if (ChargeTimer > BeamChargeTime)
+        if (ChargeTimer > ability.chargeTime)
         {
             if (BeamHead)
             {
