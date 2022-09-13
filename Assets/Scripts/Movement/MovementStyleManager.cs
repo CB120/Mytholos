@@ -19,8 +19,4 @@ public class MovementStyleManager : MonoBehaviour
     public float stamina;
     public MythStatus mStatus;
 
-    void Update()
-    {
-        // If (R2 or L2 i cant fucking remember) is pressed (I think it should be toggled!!), manualMovement = true;     
-    }
 }

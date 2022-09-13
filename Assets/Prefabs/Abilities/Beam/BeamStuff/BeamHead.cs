@@ -7,7 +7,7 @@ public class BeamHeadMover : MonoBehaviour
     public Transform BeamHeadPosition;
     private Vector3 BeamHeadPositionVector;
 
-    private BeamAttack Beam;
+   // private BeamAttack Beam;
 
     void Update()
     {
