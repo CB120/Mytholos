@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class BeamExtender : MonoBehaviour
 {
-    public BeamSettingsConduit Beam;
 
     private Transform BeamTransform;
 
     void Start()
     {
-        Beam = transform.parent.GetComponent<BeamSettingsConduit>();
         BeamTransform = this.gameObject.transform;
     }
 
