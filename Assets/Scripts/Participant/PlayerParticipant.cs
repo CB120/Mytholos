@@ -21,7 +21,8 @@ public class PlayerParticipant : Participant
     //References
 
     private int selectedMythIndex = -1;
-
+    private int selectedEnemyIndex = 0;
+    private bool EnemySwitch = false; 
     private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
 
 
@@ -160,6 +161,31 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
 
         if (!SelectedMyth) return;
+
+        EnemySwitch = !EnemySwitch;
+
+        if (EnemySwitch)
+        {
+            selectedEnemyIndex = 0;
+        }
+        else if (!EnemySwitch)
+        {
+            selectedEnemyIndex = 1;
+        }
+
+        for (int i = 0; i < debugParticipantData.partyData.Length; i++)
+        {
+            if (debugParticipantData.partyData[i].participant != this)
+            {
+                Debug.Log(debugParticipantData.partyData[i].myths.Count);
+                SelectedMyth.targetEnemy = debugParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                return;
+            }
+            else
+            {
+                Debug.Log("found ourself");
+            }
+        }
     }
 
     public void EnemySelectLeft(InputAction.CallbackContext context)
@@ -168,6 +194,16 @@ public class PlayerParticipant : Participant
 
         if (!SelectedMyth) return;
 
+        EnemySwitch = !EnemySwitch;
+        
+        if (EnemySwitch)
+        {
+            selectedEnemyIndex = 0;
+        } else if (!EnemySwitch)
+        {
+            selectedEnemyIndex = 1;
+        }
+
         /*for(int i = 0; i < liveParticipantData.partyData.Length; i++)
         {
             Debug.Log(liveParticipantData.partyData[i]);
@@ -175,19 +211,22 @@ public class PlayerParticipant : Participant
             Debug.Log(liveParticipantData.partyData[i].mythData[y]);
         }*/
 
-        for (int i = 0; i < liveParticipantData.partyData.Length; i++)
+        for (int i = 0; i < debugParticipantData.partyData.Length; i++)
         {
-            if (liveParticipantData.partyData[i].participant != this)
+            if (debugParticipantData.partyData[i].participant != this)
             {
-                Debug.Log(liveParticipantData.partyData[i].myths.Count);
-                int tempNumber = liveParticipantData.partyData[i].myths.Count - 1;
-                    SelectedMyth.targetEnemy = liveParticipantData.partyData[i].myths[tempNumber].gameObject;
+                Debug.Log(debugParticipantData.partyData[i].myths.Count);
+                //partyCount = debugParticipantData.partyData[i].myths.Count;
+                    SelectedMyth.targetEnemy = debugParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                return;
             }
             else
             {
                 Debug.Log("found ourself");
             }
         }
+        
+
 
     }
 }

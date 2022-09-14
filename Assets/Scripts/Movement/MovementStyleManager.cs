@@ -14,7 +14,7 @@ public enum MythStatus
 public class MovementStyleManager : MonoBehaviour
 {
 
-    private bool manualMovement = false;
+    //private bool manualMovement = false;
     public float speed;
     public float stamina;
     public MythStatus mStatus;
