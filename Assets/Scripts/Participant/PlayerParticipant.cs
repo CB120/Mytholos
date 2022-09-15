@@ -25,7 +25,6 @@ public class PlayerParticipant : Participant
     private bool EnemySwitch = false; 
     private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
 
-
     public void SelectLeft(InputAction.CallbackContext context)
     {
         if (selectedMythIndex == -1 && context.performed)
@@ -156,7 +155,7 @@ public class PlayerParticipant : Participant
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
     }
 
-    public void EnemySelectRight(InputAction.CallbackContext context)
+    public void EnemyTargetRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
@@ -188,7 +187,7 @@ public class PlayerParticipant : Participant
         }
     }
 
-    public void EnemySelectLeft(InputAction.CallbackContext context)
+    public void EnemyTargetLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
