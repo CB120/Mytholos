@@ -11,7 +11,6 @@ namespace Myths.Behaviours
 
         [SerializeField] private Animator anim;
         public NavMeshAgent navMeshAgent;
-        [SerializeField] private GameObject targetUnit;
         private bool activePath = false;
 
         private void Start()
@@ -22,7 +21,6 @@ namespace Myths.Behaviours
                 Debug.Log("There was a problem assigning " + myth.gameObject.name + " to the navmesh");
             }
         }
-
 
         private void Update()
         {
@@ -37,13 +35,11 @@ namespace Myths.Behaviours
         private void SetDestination()
         {
             //Debug.Log("CALLING SET DESTINATION");
-            if (targetUnit == null)
+            if (myth.targetEnemy == null) { return; }
+            
+            if(myth.targetEnemy != null)
             {
-                targetUnit = myth.targetEnemy;
-            }
-            if(targetUnit != null)
-            {
-                Vector3 targetVector = targetUnit.transform.position;
+                Vector3 targetVector = myth.targetEnemy.transform.position;
                 navMeshAgent.SetDestination(targetVector);
                 if (anim) anim.SetBool("Walking", true);
                 activePath = true;
