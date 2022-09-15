@@ -52,7 +52,7 @@ MonoBehaviour:
   bomb: {fileID: 7516873970837099685}
   arcHeight: 8
   destroySpeed: 3
-  collider: {fileID: 2149221307316013115}
+  bombCollider: {fileID: 2149221307316013115}
 --- !u!33 &2813579939791192079
 MeshFilter:
   m_ObjectHideFlags: 0
