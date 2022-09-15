@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: BombAbility
+  m_Name: HealingAbility
   m_EditorClassIdentifier: 
   element: {fileID: 0}
-  name: Bomb
-  damage: 50
-  healing: 0
-  stamina: 60
+  name: Healing Pool
+  damage: 0
+  healing: 15
+  stamina: 25
   chargeTime: 0
   spawnInWorldSpace: 1
-  relativeSpawnPosition: {x: 0, y: 1.5, z: 0}
-  abilityPrefab: {fileID: 7516873970837099704, guid: 98cf307a26c57b541b467d7024405b64,
+  relativeSpawnPosition: {x: 0, y: 0, z: 0}
+  abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
     type: 3}
   colliderPrefab: {fileID: 0}

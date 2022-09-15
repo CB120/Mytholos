@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace Myths
 {
@@ -65,6 +66,10 @@ namespace Myths
 
         public bool isInvulnerable = false;
         public bool staminaRegen = false;
+        [HideInInspector]
+        public float healthRegenTick = 0f;
+        [HideInInspector]
+        public bool healthRegen = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
@@ -114,6 +119,14 @@ namespace Myths
                     Stamina = 1;
                 }
             }
+
+            if (healthRegen)
+            {
+                if(Health <= 100)
+                {
+                    Health += healthRegenTick * Time.deltaTime;
+                }
+            }
         }
 
         private void startRegen()
@@ -136,6 +149,8 @@ namespace Myths
                 
             }
         }
+
+        
 
         /*Remove everything after this after 5/09/22*/
         public WinState ws;

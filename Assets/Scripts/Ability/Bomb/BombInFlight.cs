@@ -10,7 +10,7 @@ public class BombInFlight : MonoBehaviour
     [Tooltip("How high the arc should be, in units")]
     public float arcHeight = 1;
     public float destroySpeed = 1;
-    public Collider collider;
+    public Collider bombCollider;
 
     // Update is called once per frame
     void Update()
@@ -54,7 +54,7 @@ public class BombInFlight : MonoBehaviour
 
     private void ResetScale()
     {
-        collider.enabled = false;
+        bombCollider.enabled = false;
         bomb.areaOfEffect = 0f;
     }
 }
