@@ -19,7 +19,7 @@ namespace Myths.Behaviours
             
             if (ability)
             {
-                StartCoroutine(PerformAbility(ability, abilityData.chargeTime));
+                StartCoroutine(PerformAbility(ability, abilityData.chargeTime, abilityData.spawnInWorldSpace));
             }
             else
             {
@@ -30,13 +30,23 @@ namespace Myths.Behaviours
 
             performAbilityComplete.Invoke();
         }
-        IEnumerator PerformAbility(GameObject ability, float chargeTime)
+        IEnumerator PerformAbility(GameObject ability, float chargeTime, bool spawnInWorldSpace)
         {
             yield return new WaitForSeconds(chargeTime);
 
-            GameObject abilityPrefab = Instantiate(
+            Vector3 pos = gameObject.transform.position;
+
+
+            GameObject abilityPrefab = spawnInWorldSpace ?
+                Instantiate(
                     ability,
-                    gameObject.transform.position,
+                    new Vector3(pos.x, pos.y + 1.5f, pos.z),
+                    new Quaternion(0f, 0f, 0f, 0f)
+                )
+                : 
+                Instantiate(
+                    ability,
+                    pos,
                     new Quaternion(0f, 0f, 0f, 0f),
                     gameObject.transform
                 );
