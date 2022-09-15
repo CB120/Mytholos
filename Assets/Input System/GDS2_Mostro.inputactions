@@ -112,6 +112,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SelectEnemyLeft",
+                    "type": "Button",
+                    "id": "bbde4d9b-682a-445c-8a33-529b63ba26d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectEnemyRight",
+                    "type": "Button",
+                    "id": "0906f682-9854-4fb3-af50-07e55f6136c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -409,6 +427,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "MoveStrategyRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae590f68-af42-4cd4-9163-d289a1ff5669",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEnemyLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2992fc98-3af1-4fce-926f-8d070fc2c18e",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEnemyRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

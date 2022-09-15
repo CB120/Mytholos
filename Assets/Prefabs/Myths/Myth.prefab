@@ -105,6 +105,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  navMeshAgent: {fileID: 7423737072121430647}
+  targetUnit: {fileID: 0}
 --- !u!114 &2672777451707083747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +232,7 @@ GameObject:
   - component: {fileID: 3131205609304386058}
   - component: {fileID: 821080639122630624}
   - component: {fileID: 6195943593850379723}
+  - component: {fileID: 7423737072121430647}
   m_Layer: 0
   m_Name: Myth
   m_TagString: Untagged
@@ -271,12 +274,18 @@ MonoBehaviour:
   HealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  StaminaChanged:
+    m_PersistentCalls:
+      m_Calls: []
   myth: {fileID: 0}
   stamina: 0
-  speed: 0
-  acceleration: 0
+  walkSpeed: 0
   health: 0
+  targetEnemy: {fileID: 0}
   partyIndex: 0
+  isInteracting: 0
+  isInvulnerable: 0
+  staminaRegen: 0
   northAbility: {fileID: 0}
   westAbility: {fileID: 0}
   southAbility: {fileID: 0}
@@ -316,8 +325,8 @@ MonoBehaviour:
   groundOnHorizontalMovement: 0
   hugGround: 1
   hugGroundDistance: 5
-  mythSpeed: 4
   anim: {fileID: 0}
+  mythProperties: {fileID: 0}
 --- !u!135 &6195943593850379723
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -331,3 +340,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!195 &7423737072121430647
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 75
+  m_StoppingDistance: 3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

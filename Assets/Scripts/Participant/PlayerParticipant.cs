@@ -18,12 +18,13 @@ public class PlayerParticipant : Participant
     int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
                                   // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
 
-
     //References
 
     private int selectedMythIndex = -1;
-
+    private int selectedEnemyIndex = 0;
+    private bool EnemySwitch = false; 
     private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -153,5 +154,79 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+    }
+
+    public void EnemySelectRight(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!SelectedMyth) return;
+
+        EnemySwitch = !EnemySwitch;
+
+        if (EnemySwitch)
+        {
+            selectedEnemyIndex = 0;
+        }
+        else if (!EnemySwitch)
+        {
+            selectedEnemyIndex = 1;
+        }
+
+        for (int i = 0; i < debugParticipantData.partyData.Length; i++)
+        {
+            if (debugParticipantData.partyData[i].participant != this)
+            {
+                Debug.Log(debugParticipantData.partyData[i].myths.Count);
+                SelectedMyth.targetEnemy = debugParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                return;
+            }
+            else
+            {
+                Debug.Log("found ourself");
+            }
+        }
+    }
+
+    public void EnemySelectLeft(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!SelectedMyth) return;
+
+        EnemySwitch = !EnemySwitch;
+        
+        if (EnemySwitch)
+        {
+            selectedEnemyIndex = 0;
+        } else if (!EnemySwitch)
+        {
+            selectedEnemyIndex = 1;
+        }
+
+        /*for(int i = 0; i < liveParticipantData.partyData.Length; i++)
+        {
+            Debug.Log(liveParticipantData.partyData[i]);
+            for (int y = 0; y < liveParticipantData.partyData[i].mythData.Length; y++)
+            Debug.Log(liveParticipantData.partyData[i].mythData[y]);
+        }*/
+
+        for (int i = 0; i < debugParticipantData.partyData.Length; i++)
+        {
+            if (debugParticipantData.partyData[i].participant != this)
+            {
+                Debug.Log(debugParticipantData.partyData[i].myths.Count);
+                //partyCount = debugParticipantData.partyData[i].myths.Count;
+                    SelectedMyth.targetEnemy = debugParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                return;
+            }
+            else
+            {
+                Debug.Log("found ourself");
+            }
+        }
+        
+
+
     }
 }

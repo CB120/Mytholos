@@ -21,7 +21,6 @@ public class PartyBuilder : MonoBehaviour
     public SO_Ability[] allAbilities;
 
     Transform[] partyParents = new Transform[2];
-
     private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
     private Vector3 spawnOffset = new Vector3(3, 0, 0);
 
@@ -86,6 +85,8 @@ public class PartyBuilder : MonoBehaviour
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
+        
+
         newMyth.northAbility = mythData.northAbility;
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;

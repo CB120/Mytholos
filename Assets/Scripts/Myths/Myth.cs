@@ -21,6 +21,7 @@ namespace Myths
         public float stamina;
         public float walkSpeed;
         public float health;
+        public GameObject targetEnemy;
         public float Health
         {
             get => health;
@@ -98,6 +99,7 @@ namespace Myths
             currentState = initialState;
 
             currentState.enabled = true;
+
         }
 
         private void Update()
