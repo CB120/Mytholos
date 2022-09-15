@@ -63,7 +63,7 @@ public class CollisionDetection : MonoBehaviour
         bool collisionOccurred = false;
         float distance = move.magnitude;
 
-        if (rigidbody.SweepTest(move, out hitBuffer, distance + collisionBuffer))
+        if (rigidbody.SweepTest(move, out hitBuffer, distance + collisionBuffer, QueryTriggerInteraction.Ignore))
         {
             collisionOccurred = true;
 
