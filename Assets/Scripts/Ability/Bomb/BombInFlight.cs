@@ -49,7 +49,7 @@ public class BombInFlight : MonoBehaviour
         {
             bomb.Trigger(attackedMyth);
         }
-        Destroy(this.gameObject, destroySpeed);
+        Destroy(bomb.gameObject, destroySpeed);
     }
 
     private void ResetScale()
