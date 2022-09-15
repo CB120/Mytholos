@@ -176,13 +176,13 @@ public class PlayerParticipant : Participant
         {
             if (debugParticipantData.partyData[i].participant != this)
             {
-                Debug.Log(debugParticipantData.partyData[i].myths.Count);
+                //Debug.Log(debugParticipantData.partyData[i].myths.Count);
                 SelectedMyth.targetEnemy = debugParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
                 return;
             }
             else
             {
-                Debug.Log("found ourself");
+                //Debug.Log("found ourself");
             }
         }
     }
@@ -214,14 +214,14 @@ public class PlayerParticipant : Participant
         {
             if (debugParticipantData.partyData[i].participant != this)
             {
-                Debug.Log(debugParticipantData.partyData[i].myths.Count);
+                //Debug.Log(debugParticipantData.partyData[i].myths.Count);
                 //partyCount = debugParticipantData.partyData[i].myths.Count;
                     SelectedMyth.targetEnemy = debugParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
                 return;
             }
             else
             {
-                Debug.Log("found ourself");
+                //Debug.Log("found ourself");
             }
         }
         

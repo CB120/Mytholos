@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 821080639122630624, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: mythProperties
+      value: 
+      objectReference: {fileID: 1562923671586567054}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth
@@ -75,3 +80,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db407f3364fe92842a089222a0ba139e, type: 3}
+--- !u!114 &1562923671586567054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8261875871626186929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348152d2c5324d48a71d69d6e8c93bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

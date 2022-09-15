@@ -58,7 +58,7 @@ namespace Myths.Behaviours
 
         private void CheckDestination()
         {
-            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, UpdateRotation(), Time.deltaTime * 8);
+            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, UpdateRotation(), Time.deltaTime);
             //Debug.Log("CALLING CHECK DESTINATION");
             if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {

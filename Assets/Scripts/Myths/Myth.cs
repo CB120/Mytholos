@@ -65,6 +65,7 @@ namespace Myths
 
         public bool isInvulnerable = false;
         public bool staminaRegen = false;
+        public bool isManuallyMoving = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
