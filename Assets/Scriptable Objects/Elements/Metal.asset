@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debrisBehavioursPrefab: {fileID: 0}
   color: {r: 0.3254902, g: 0.37647063, b: 0.37647063, a: 0}
+  strongAgainst:
+  - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
