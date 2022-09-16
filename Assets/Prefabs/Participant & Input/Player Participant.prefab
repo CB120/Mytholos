@@ -328,11 +328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3425d9e9747fa814ba7af020357aa6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugOn: 1
-  liveParticipantData: {fileID: 11400000, guid: e6d9ba1070afa3a4f911b044fe84ab18,
+  allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}
-  debugParticipantData: {fileID: 11400000, guid: 147620fded745804385c132b70ed8ecd,
-    type: 2}
+  debugOn: 0
   SelectMyth:
     m_PersistentCalls:
       m_Calls: []
