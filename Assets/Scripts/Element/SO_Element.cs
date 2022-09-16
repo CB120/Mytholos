@@ -19,4 +19,6 @@ public class SO_Element : ScriptableObject
 
     // TODO: Not ideal to be storing this here, elements shouldn't know about debris
     public GameObject debrisBehavioursPrefab;
+
+    public Color color;
 }

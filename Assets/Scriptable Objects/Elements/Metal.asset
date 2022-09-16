@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Metal
   m_EditorClassIdentifier: 
   debrisBehavioursPrefab: {fileID: 0}
+  color: {r: 0.3254902, g: 0.37647063, b: 0.37647063, a: 0}

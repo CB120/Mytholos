@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  element: {fileID: 0}
-  name: 
-  damage: 0
-  healing: 0
-  stamina: 0
-  chargeTime: 0
-  abilityPrefab: {fileID: 0}
-  colliderPrefab: {fileID: 0}
+  debrisBehavioursPrefab: {fileID: 0}
+  color: {r: 0.427451, g: 0.95294124, b: 0.95294124, a: 0}

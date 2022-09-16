@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   debrisBehavioursPrefab: {fileID: 0}
+  color: {r: 0.6039216, g: 0.4, b: 0.28627452, a: 0}

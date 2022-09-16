@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   debrisBehavioursPrefab: {fileID: 0}
+  color: {r: 0.10196079, g: 0.5294118, b: 0.9333334, a: 0}

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   debrisBehavioursPrefab: {fileID: 0}
+  color: {r: 0, g: 0.8000001, b: 0, a: 0}

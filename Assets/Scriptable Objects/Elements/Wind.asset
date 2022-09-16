@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wind
   m_EditorClassIdentifier: 
   debrisBehavioursPrefab: {fileID: 0}
+  color: {r: 0.86666673, g: 0.83921576, b: 0.7490196, a: 0}
