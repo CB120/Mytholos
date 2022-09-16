@@ -36,7 +36,6 @@ public class BombAbility : Ability
         //targetPos = owningMyth != null ? owningMyth.targetEnemy.gameObject.transform.position : new Vector3(10, 0, 10);
         targetPos = owningMyth.targetEnemy.gameObject.transform.position;
         base.Start();
-        Debug.Log($"StartPos: {startPos}, EndPos: {targetPos}");
     }
 
     public override void Update()

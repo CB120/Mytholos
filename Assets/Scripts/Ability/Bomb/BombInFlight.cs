@@ -11,6 +11,7 @@ public class BombInFlight : MonoBehaviour
     public float arcHeight = 1;
     public float destroySpeed = 1;
     public Collider bombCollider;
+    public MeshRenderer mesh;
 
     // Update is called once per frame
     void Update()
@@ -28,8 +29,8 @@ public class BombInFlight : MonoBehaviour
         else
         {
             transform.localScale = Vector3.Lerp(
-                transform.localScale, 
-                new Vector3(bomb.areaOfEffect, bomb.areaOfEffect, bomb.areaOfEffect), 
+                transform.localScale,
+                new Vector3(bomb.areaOfEffect, bomb.areaOfEffect, bomb.areaOfEffect),
                 bomb.expandSpeed * Time.deltaTime
             );
         }
@@ -43,7 +44,9 @@ public class BombInFlight : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         bomb.hasReachedPosition = true;
-        Invoke("ResetScale", (bomb.expandSpeed * 0.75f));
+        bomb.abilityPS.gameObject.SetActive(true);
+        mesh.enabled = false;
+        //Invoke("ResetScale", (bomb.expandSpeed * 0.75f));
         Myth attackedMyth = other.gameObject.GetComponent<Myth>();
         if (attackedMyth)
         {
@@ -52,9 +55,9 @@ public class BombInFlight : MonoBehaviour
         Destroy(bomb.gameObject, destroySpeed);
     }
 
-    private void ResetScale()
-    {
-        bombCollider.enabled = false;
-        bomb.areaOfEffect = 0f;
-    }
+    //private void ResetScale()
+    //{
+    //    bombCollider.enabled = false;
+    //    bomb.areaOfEffect = 0f;
+    //}
 }
