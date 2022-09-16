@@ -9,12 +9,12 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private TextMeshProUGUI abilityNameTMP;
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
-    [SerializeField] private Color[] elementColours;
 
-    public void UpdateUI(string abilityName, E_Element element, float staminaCost)
+    // TODO: Should just take an ability
+    public void UpdateUI(string abilityName, SO_Element element, float staminaCost)
     {
         abilityNameTMP.text = abilityName;
-        elementIcon.color = elementColours[(int)element]; // TODO: Create a scriptiable object for commonly used asset resources (in this case, symbols/colours for each element)
+        elementIcon.color = element.color;
         //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
         staminaCostTMP.text = Mathf.RoundToInt(staminaCost) + ""; // For sprint 2, we'll just show the damage
     }

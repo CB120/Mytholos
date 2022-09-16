@@ -140,7 +140,7 @@ public class UIGameParty : MonoBehaviour
             {
                 SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
                 //print("Myth " + partyMemberNumber + ", ability " + i + " is " + ability.name + " / " + ability.ToString());
-                abilities[i].UpdateUI(ability.name, E_Element.Wind, ability.damage);
+                abilities[i].UpdateUI(ability.name, ability.element, ability.damage);
             }
 
             // TODO: Place listeners for stamina
