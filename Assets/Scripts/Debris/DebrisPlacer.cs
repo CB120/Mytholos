@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,41 +5,29 @@ namespace Debris
 {
     public class DebrisPlacer : MonoBehaviour
     {
-        [SerializeField] private Collider collider;
-
+        // TODO: Element should be taken from the ability
+        [SerializeField] private SO_Element element;
+        
         private List<Collider> colliders = new();
-
-        private void Awake()
-        {
-            // TODO: Find all of the cells that intersect the collider
-            // Could iterate over all the cells and compare the centre points
-            // Could cut this down by only getting the ones in the bounds of the collider
-            
-            // The other option would be to place a collider on each of the tiles and then do comparative collisions between them
-        }
 
         private void OnTriggerEnter(Collider other)
         {
             var debris = other.GetComponent<Debris>();
 
-            if (debris == null)
-                throw new Exception($"Debris instance does not have a {nameof(Debris)} component.");
+            if (debris == null) return;
             
             colliders.Add(other);
             
-            debris.Activate();
+            debris.PlaceDebris(element);
         }
         
         private void OnTriggerExit(Collider other)
         {
             var debris = other.GetComponent<Debris>();
 
-            if (debris == null)
-                throw new Exception($"Debris instance does not have a {nameof(Debris)} component.");
+            if (debris == null) return;
             
             colliders.Remove(other);
-            
-            // debris.Activate();
         }
     }
 }

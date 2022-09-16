@@ -13,20 +13,22 @@ namespace Debris
 
         private void Awake()
         {
-            Debug.Log(gridBounds);
             var scaledSize = new Vector3(
-                gridBounds.size.x / tilemap.layoutGrid.cellSize.x,
-                gridBounds.size.y / tilemap.layoutGrid.cellSize.y,
-                gridBounds.size.z / tilemap.layoutGrid.cellSize.z
+                gridBounds.size.x / tilemap.cellSize.x,
+                gridBounds.size.y / tilemap.cellSize.y,
+                gridBounds.size.z / tilemap.cellSize.z
             );
 
-            Debug.Log(scaledSize);
+            var scaledMin = new Vector3(
+                gridBounds.min.x / tilemap.cellSize.x,
+                gridBounds.min.y / tilemap.cellSize.y,
+                gridBounds.min.z / tilemap.cellSize.z
+            );
+
             var boundsInt = new BoundsInt(
-                Vector3Int.FloorToInt(gridBounds.min),
+                Vector3Int.FloorToInt(scaledMin),
                 Vector3Int.FloorToInt(scaledSize)
             );
-
-            Debug.Log(boundsInt);
 
             for (int x = boundsInt.xMin; x <= boundsInt.xMax; x++)
             {
@@ -38,15 +40,6 @@ namespace Debris
                     tilemap.GetInstantiatedObject(gridPos).transform.localScale = Grid.Swizzle(tilemap.cellSwizzle, tilemap.cellSize);
                 }
             }
-            
-            // tilemap.ResizeBounds();
-
-            Debug.Log(tilemap.cellBounds);
-
-            // tilemap.BoxFill(Vector3Int.zero, blankTile, -boundsInt, -boundsInt, boundsInt, boundsInt);
-            
-            // tilemap.SetTile(Vector3Int.zero, tile);
-            // tilemap.SetTilesBlock(new BoundsInt(Vector3Int.zero, new Vector3Int(5,5,5)), new []{blankTile});
         }
     }
 }
