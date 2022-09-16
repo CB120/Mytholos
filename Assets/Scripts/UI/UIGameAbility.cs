@@ -10,13 +10,12 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
 
-    // TODO: Should just take an ability
-    public void UpdateUI(string abilityName, SO_Element element, float staminaCost)
+    public void UpdateUI(SO_Ability ability)
     {
-        abilityNameTMP.text = abilityName;
-        elementIcon.color = element.color;
+        abilityNameTMP.text = ability.name;
+        elementIcon.color = ability.element == null ? Color.black : ability.element.color;
         //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-        staminaCostTMP.text = Mathf.RoundToInt(staminaCost) + ""; // For sprint 2, we'll just show the damage
+        staminaCostTMP.text = Mathf.RoundToInt(ability.stamina) + ""; // For sprint 2, we'll just show the damage
     }
 
     public void AnimateSelectedAbility()
