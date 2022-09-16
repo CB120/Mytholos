@@ -9,8 +9,9 @@ namespace Myths
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float jabDistance = 0.5f;
 
-        private void Start()
+        public override void Start()
         {
+            base.Start();
             Instantiate(abilityPS.gameObject, gameObject.transform.position, gameObject.transform.rotation, this.transform);
             Destroy(this.gameObject, 0.8f);
         }

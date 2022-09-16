@@ -23,7 +23,7 @@ public class WinState : MonoBehaviour
                 obj.SetActive(true);
 
                 StartCoroutine(AnyButtonCoroutine());
-                text.text = "Team 2 was Defeated";
+                text.text = "Team 1 was Defeated";
             }
         }
         else if (partyIndex == 1)
