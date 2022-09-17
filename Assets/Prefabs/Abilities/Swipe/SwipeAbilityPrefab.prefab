@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6684646392471459765}
   - component: {fileID: 235195530449914695}
   - component: {fileID: 1289076944217210145}
+  - component: {fileID: 550253078391389760}
+  - component: {fileID: 4812267537380817053}
   - component: {fileID: 4649261702580073201}
   m_Layer: 0
   m_Name: Collider
@@ -61,6 +63,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 2111298335}
+--- !u!114 &550253078391389760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555945966451579232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c64cb8893847fea47ed93cded76275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debrisInteractors:
+  - {fileID: 4812267537380817053}
+  - {fileID: 4649261702580073201}
+--- !u!114 &4812267537380817053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555945966451579232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f179d7e9abe4c20af62f97b9a5b7e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  ability: {fileID: 2111298335}
+  effect: 0.1
+  debrisPlacer: {fileID: 4649261702580073201}
 --- !u!114 &4649261702580073201
 MonoBehaviour:
   m_ObjectHideFlags: 0

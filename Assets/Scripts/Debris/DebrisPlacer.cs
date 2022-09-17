@@ -3,31 +3,20 @@ using UnityEngine;
 
 namespace Debris
 {
-    public class DebrisPlacer : MonoBehaviour
+    // TODO: CreateDebrisInteractor
+    public class DebrisPlacer : DebrisInteractor
     {
         // TODO: Element should be taken from the ability
         [SerializeField] private SO_Element element;
-        
-        // private List<Collider> colliders = new();
 
-        private void OnTriggerEnter(Collider other)
+        public List<Debris> PlacedDebris { get; } = new();
+
+        internal override void OnDebrisEnter(Debris debris)
         {
-            var debris = other.GetComponent<Debris>();
-
-            if (debris == null) return;
+            base.OnDebrisEnter(debris);
             
-            // colliders.Add(other);
-            
-            debris.PlaceDebris(element);
-        }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            var debris = other.GetComponent<Debris>();
-
-            if (debris == null) return;
-            
-            // colliders.Remove(other);
+            if (debris.PlaceDebris(element))
+                PlacedDebris.Add(debris);
         }
     }
 }

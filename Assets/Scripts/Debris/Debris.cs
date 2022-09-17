@@ -26,10 +26,10 @@ namespace Debris
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
 
-        public void PlaceDebris(SO_Element newElement)
+        public bool PlaceDebris(SO_Element newElement)
         {
             // Only override current debris if it is weak against the new debris
-            if (currentElement != null && !newElement.strongAgainst.Contains(currentElement)) return;
+            if (currentElement != null && !newElement.strongAgainst.Contains(currentElement)) return false;
             
             meshRenderer.enabled = true;
             
@@ -44,6 +44,8 @@ namespace Debris
                 StopCoroutine(decayCoroutine);
 
             decayCoroutine = StartCoroutine(Decay());
+            
+            return true;
         }
 
         private IEnumerator Decay()
