@@ -8,6 +8,12 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     public SO_Ability ability;
     public Myth owningMyth;
     public ParticleSystem abilityPS;
+
+    virtual public void Start()
+    {
+        owningMyth.Stamina -= ability.stamina;
+    }
+
     virtual public void Update()
     {
         

@@ -21,6 +21,7 @@ namespace Myths
         public float stamina;
         public float walkSpeed;
         public float health;
+        public GameObject targetEnemy;
         public float Health
         {
             get => health;
@@ -64,6 +65,7 @@ namespace Myths
 
         public bool isInvulnerable = false;
         public bool staminaRegen = false;
+        public bool isManuallyMoving = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
@@ -98,6 +100,7 @@ namespace Myths
             currentState = initialState;
 
             currentState.enabled = true;
+
         }
 
         private void Update()
@@ -124,13 +127,11 @@ namespace Myths
             staminaRegen = false;
         }
 
-            public void TakeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             Health -= damage;
-            //Debug.Log($"{gameObject.name}, Has {health} Health Remaining");
             if (Health <= 0)
             {
-                //Debug.Log($"{gameObject.name}, Has Been Destroyed");
                 TemporaryUpdateTeam(); //Remove this after 5/09/22
                 this.gameObject.SetActive(false);
                 

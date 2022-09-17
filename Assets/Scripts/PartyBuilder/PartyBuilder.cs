@@ -1,36 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Myths;
 using UnityEngine;
 
 public class PartyBuilder : MonoBehaviour
 {
-    //Properties
-    public bool debugOn;
+    [SerializeField] private AllParticipantDataService allParticipantDataService;
 
-
-    //Variables
-
-
-    //References
-    [Header("ParticipantData")]
-    public SO_AllParticipantData liveAllParticipantData;
-    public SO_AllParticipantData debugAllParticipantData;
-    public SO_AllParticipantData allParticipantData;
+    [NonSerialized] public SO_AllParticipantData allParticipantData;
 
     public SO_Ability[] allAbilities;
 
     Transform[] partyParents = new Transform[2];
-
     private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
     private Vector3 spawnOffset = new Vector3(3, 0, 0);
 
-
-    //Engine-called
     private void Awake()
     {
-        allParticipantData = liveAllParticipantData;
-        if (debugOn) allParticipantData = debugAllParticipantData;
+        allParticipantData = allParticipantDataService.GetAllParticipantData();
     }
 
     void Start()
@@ -86,6 +72,8 @@ public class PartyBuilder : MonoBehaviour
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
+        
+
         newMyth.northAbility = mythData.northAbility;
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;

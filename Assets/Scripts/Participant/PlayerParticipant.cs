@@ -18,12 +18,12 @@ public class PlayerParticipant : Participant
     int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
                                   // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
 
-
     //References
 
     private int selectedMythIndex = -1;
-
-    private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+    private int selectedEnemyIndex = 0;
+    private bool EnemySwitch = false; 
+    private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -153,5 +153,41 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+    }
+
+    public void EnemyTargetRight(InputAction.CallbackContext context)
+    {
+        TargetEnemy(context);
+    }
+
+    public void EnemyTargetLeft(InputAction.CallbackContext context)
+    {
+        TargetEnemy(context);
+    }
+
+    public void TargetEnemy(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!SelectedMyth) return;
+
+        EnemySwitch = !EnemySwitch;
+        
+        if (EnemySwitch)
+        {
+            selectedEnemyIndex = 0;
+        } else if (!EnemySwitch)
+        {
+            selectedEnemyIndex = 1;
+        }
+
+        for (int i = 0; i < ParticipantData.partyData.Length; i++)
+        {
+            if (ParticipantData.partyData[i].participant != this)
+            {
+                SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                return;
+            }
+        }
     }
 }

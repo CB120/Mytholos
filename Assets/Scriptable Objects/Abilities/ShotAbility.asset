@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: BeamAbility
+  m_Name: ShotAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: 677605b242f326b49a3d4ac03b773568, type: 2}
-  name: Beam
-  damage: 20
+  element: {fileID: 0}
+  name: Shot
+  damage: 10
   healing: 0
-  stamina: 50
-  chargeTime: 0.5
-  abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
+  stamina: 10
+  chargeTime: 0
+  abilityPrefab: {fileID: 8641636710526588070, guid: 7cbb761b2a1575042b43e63ecc60e6d6,
     type: 3}
   colliderPrefab: {fileID: 0}
