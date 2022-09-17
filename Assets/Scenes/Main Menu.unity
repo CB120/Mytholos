@@ -292,7 +292,7 @@ MonoBehaviour:
     Path: event:/Music/Menu Music
   Event: 
   PlayEvent: 1
-  StopEvent: 0
+  StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806daa6ed9e6d294ba5aa5036f3c5ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: ArenaEddie
 --- !u!1001 &2599298307400602852
 PrefabInstance:
   m_ObjectHideFlags: 0
