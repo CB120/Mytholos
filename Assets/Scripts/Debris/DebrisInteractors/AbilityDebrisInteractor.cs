@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Debris
+namespace Debris.DebrisInteractors
 {
-    // TODO: Needs a better name, AbilityDebrisInteractor
-    public class AffectAbilities : DebrisInteractor
+    public class AbilityDebrisInteractor : DebrisInteractor
     {
         // TODO: Element should be taken from the ability
         [SerializeField] private SO_Element element;
         [SerializeField] private Ability ability;
         [SerializeField] private float effect;
-        [SerializeField] private DebrisPlacer debrisPlacer;
+        [SerializeField] private CreateDebrisInteractor createDebrisInteractor;
         
         private List<Debris> debrisTouched = new();
 
@@ -28,7 +27,7 @@ namespace Debris
 
             // TODO: This can be optimised in a couple of ways, the first is to use a better data structure like a Dictionary<Vector3, bool>
             // TODO: The second would be to store the ability that created the debris on the debris, though that's a cyclic dependency
-            if (debrisPlacer.PlacedDebris.Contains(debris)) return;
+            if (createDebrisInteractor.PlacedDebris.Contains(debris)) return;
 
             // TODO: These ones can be optimised by compiling the strengths into a matrix
             if (debris.CurrentElement.strongAgainst.Contains(element))

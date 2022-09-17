@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Debris
+namespace Debris.DebrisInteractors
 {
-    // TODO: CreateDebrisInteractor
-    public class DebrisPlacer : DebrisInteractor
+    public class CreateDebrisInteractor : DebrisInteractor
     {
         // TODO: Element should be taken from the ability
         [SerializeField] private SO_Element element;
