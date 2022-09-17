@@ -1,7 +1,7 @@
 using Myths;
 using UnityEngine;
 
-namespace Debris
+namespace Debris.DebrisBehaviours
 {
     public class DamageMyths : DebrisBehaviour
     {
