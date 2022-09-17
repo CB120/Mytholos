@@ -8,6 +8,7 @@ namespace Debris
     {
         // TODO: Move all mesh renderer responsibility to TempDebrisColor
         [SerializeField] private MeshRenderer meshRenderer;
+        [SerializeField] private float decayTime;
 
         public SO_Element CurrentElement
         {
@@ -47,7 +48,7 @@ namespace Debris
 
         private IEnumerator Decay()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(decayTime);
             
             meshRenderer.enabled = false;
             

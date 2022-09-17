@@ -8,7 +8,7 @@ namespace Debris
         // TODO: Element should be taken from the ability
         [SerializeField] private SO_Element element;
         
-        private List<Collider> colliders = new();
+        // private List<Collider> colliders = new();
 
         private void OnTriggerEnter(Collider other)
         {
@@ -16,7 +16,7 @@ namespace Debris
 
             if (debris == null) return;
             
-            colliders.Add(other);
+            // colliders.Add(other);
             
             debris.PlaceDebris(element);
         }
@@ -27,7 +27,7 @@ namespace Debris
 
             if (debris == null) return;
             
-            colliders.Remove(other);
+            // colliders.Remove(other);
         }
     }
 }

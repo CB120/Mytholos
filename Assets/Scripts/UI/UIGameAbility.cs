@@ -21,6 +21,7 @@ public class UIGameAbility : MonoBehaviour
 
     public void AnimateSelectedAbility()
     {
+        // TODO: Inefficient.
         UIGameAbility effect = Instantiate<GameObject>(gameObject, transform.parent).GetComponent<UIGameAbility>();
         effect.StartCoroutine(effect.AnimateThisAbilityThenDie());
     }

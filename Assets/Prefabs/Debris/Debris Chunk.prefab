@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 867638482405699770}
+  decayTime: 5
   elementChanged:
     m_PersistentCalls:
       m_Calls: []
