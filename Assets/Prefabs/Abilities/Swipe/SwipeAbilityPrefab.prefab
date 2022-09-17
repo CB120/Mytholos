@@ -90,10 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f179d7e9abe4c20af62f97b9a5b7e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   ability: {fileID: 2111298335}
   effect: 0.1
-  debrisPlacer: {fileID: 4649261702580073201}
+  createDebrisInteractor: {fileID: 4649261702580073201}
 --- !u!114 &4649261702580073201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cec03e483174bbfb96533db5beec6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  ability: {fileID: 2111298335}
 --- !u!1 &4920226323367389519
 GameObject:
   m_ObjectHideFlags: 0

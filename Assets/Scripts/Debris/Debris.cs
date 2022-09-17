@@ -28,6 +28,8 @@ namespace Debris
 
         public bool PlaceDebris(SO_Element newElement)
         {
+            if (newElement == null) return false;
+            
             // Only override current debris if it is weak against the new debris
             if (currentElement != null && !newElement.strongAgainst.Contains(currentElement)) return false;
             

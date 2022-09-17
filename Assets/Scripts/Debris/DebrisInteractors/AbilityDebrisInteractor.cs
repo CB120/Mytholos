@@ -5,8 +5,6 @@ namespace Debris.DebrisInteractors
 {
     public class AbilityDebrisInteractor : DebrisInteractor
     {
-        // TODO: Element should be taken from the ability
-        [SerializeField] private SO_Element element;
         [SerializeField] private Ability ability;
         [SerializeField] private float effect;
         [SerializeField] private CreateDebrisInteractor createDebrisInteractor;
@@ -30,12 +28,14 @@ namespace Debris.DebrisInteractors
             if (createDebrisInteractor.PlacedDebris.Contains(debris)) return;
 
             // TODO: These ones can be optimised by compiling the strengths into a matrix
-            if (debris.CurrentElement.strongAgainst.Contains(element))
+            var abilityElement = ability.ability.element;
+            
+            if (debris.CurrentElement.strongAgainst.Contains(abilityElement))
             {
                 totalEffect -= effect;
             }
 
-            if (element.strongAgainst.Contains(debris.CurrentElement))
+            if (abilityElement == debris.CurrentElement || abilityElement.strongAgainst.Contains(debris.CurrentElement))
             {
                 totalEffect += effect;
             }

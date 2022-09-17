@@ -5,8 +5,7 @@ namespace Debris.DebrisInteractors
 {
     public class CreateDebrisInteractor : DebrisInteractor
     {
-        // TODO: Element should be taken from the ability
-        [SerializeField] private SO_Element element;
+        [SerializeField] private Ability ability;
 
         public List<Debris> PlacedDebris { get; } = new();
 
@@ -14,7 +13,7 @@ namespace Debris.DebrisInteractors
         {
             base.OnDebrisEnter(debris);
             
-            if (debris.PlaceDebris(element))
+            if (debris.PlaceDebris(ability.ability.element))
                 PlacedDebris.Add(debris);
         }
     }
