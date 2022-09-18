@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{bb9e9be0-8e50-428a-b881-bf9fcb47dad3}">
+		<property name="name">
+			<value>Ice Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8740759c-c76c-4700-9fc4-07cb6ed3b9a2}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8740759c-c76c-4700-9fc4-07cb6ed3b9a2}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
