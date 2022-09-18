@@ -9,4 +9,7 @@ public class SO_Element : ScriptableObject
     // TODO: Move element icon here too
 
     public List<SO_Element> strongAgainst = new();
+
+    // TODO: Cyclic dependency. Do we need this?
+    public bool hasDebris;
 }

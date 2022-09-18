@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  debrisBehavioursPrefab: {fileID: 0}
   color: {r: 0.427451, g: 0.95294124, b: 0.95294124, a: 0}
   strongAgainst:
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
+  hasDebris: 1

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  debrisBehavioursPrefab: {fileID: 0}
   color: {r: 0, g: 0.8000001, b: 0, a: 0}
   strongAgainst:
   - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
+  hasDebris: 1
