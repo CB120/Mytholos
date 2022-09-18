@@ -70,6 +70,7 @@ namespace Myths
         public float healthRegenTick = 0f;
         [HideInInspector]
         public bool healthRegen = false;
+        public bool isManuallyMoving = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 

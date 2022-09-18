@@ -1,22 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Myths;
 using UnityEngine;
 
 public class PartyBuilder : MonoBehaviour
 {
-    //Properties
-    public bool debugOn;
+    [SerializeField] private AllParticipantDataService allParticipantDataService;
 
-
-    //Variables
-
-
-    //References
-    [Header("ParticipantData")]
-    public SO_AllParticipantData liveAllParticipantData;
-    public SO_AllParticipantData debugAllParticipantData;
-    public SO_AllParticipantData allParticipantData;
+    [NonSerialized] public SO_AllParticipantData allParticipantData;
 
     public SO_Ability[] allAbilities;
 
@@ -24,12 +14,9 @@ public class PartyBuilder : MonoBehaviour
     private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
     private Vector3 spawnOffset = new Vector3(3, 0, 0);
 
-
-    //Engine-called
     private void Awake()
     {
-        allParticipantData = liveAllParticipantData;
-        if (debugOn) allParticipantData = debugAllParticipantData;
+        allParticipantData = allParticipantDataService.GetAllParticipantData();
     }
 
     void Start()

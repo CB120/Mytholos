@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 4720286491871789905}
   - component: {fileID: 4720286491871789906}
   - component: {fileID: 8898454407488910352}
+  - component: {fileID: -8332532189958746808}
   m_Layer: 0
   m_Name: Camera Game
   m_TagString: Untagged
@@ -513,6 +514,19 @@ MonoBehaviour:
   minZoom: 0
   ratioOfXToZ: 2.5
   followSpeed: 3.5
+--- !u!114 &-8332532189958746808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720286491871789907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &4720286492361752278
 GameObject:
   m_ObjectHideFlags: 0

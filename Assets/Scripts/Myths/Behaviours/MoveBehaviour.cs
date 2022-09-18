@@ -11,7 +11,6 @@ namespace Myths.Behaviours
 
         [SerializeField] private Animator anim;
         public NavMeshAgent navMeshAgent;
-        [SerializeField] private GameObject targetUnit;
         private bool activePath = false;
 
         private void Start()
@@ -21,33 +20,26 @@ namespace Myths.Behaviours
             {
                 Debug.Log("There was a problem assigning " + myth.gameObject.name + " to the navmesh");
             }
-            else
-            {
-                SetDestination();
-                Debug.Log("Destination set");
-            }
         }
-
 
         private void Update()
         {
             Debug.Log($"{myth.name} moved. {((MoveCommand)myth.Command).CurrentMoveCommandType}");
 
             myth.Command = null;
-
+            SetDestination();
             moveComplete.Invoke();
         }
 
 
         private void SetDestination()
         {
-            if(targetUnit == null)
+            //Debug.Log("CALLING SET DESTINATION");
+            if (myth.targetEnemy == null) { return; }
+            
+            if(myth.targetEnemy != null)
             {
-                targetUnit = myth.targetEnemy;
-            }
-            if(targetUnit != null)
-            {
-                Vector3 targetVector = targetUnit.transform.position;
+                Vector3 targetVector = myth.targetEnemy.transform.position;
                 navMeshAgent.SetDestination(targetVector);
                 if (anim) anim.SetBool("Walking", true);
                 activePath = true;
@@ -62,15 +54,25 @@ namespace Myths.Behaviours
 
         private void CheckDestination()
         {
-            if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, UpdateRotation(), Time.deltaTime);
+            //Debug.Log("CALLING CHECK DESTINATION");
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 navMeshAgent.ResetPath();
                 if (anim) anim.SetBool("Walking", false);
                 CancelInvoke("CheckDestination");
-                moveComplete.Invoke();
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
                 activePath = false;
             }
+        }
+
+        private Quaternion UpdateRotation()
+        {
+            Vector3 facingDirection = (navMeshAgent.steeringTarget);
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(facingDirection.x, 0, facingDirection.z), navMeshAgent.gameObject.transform.up);
+            Debug.Log(facingDirection.x + " " + facingDirection.z);    
+            return lookRotation;
+            
         }
     }
 }
