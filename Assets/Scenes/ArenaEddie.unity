@@ -1590,11 +1590,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1656483660
-      Data2: 1254265461
-      Data3: -818421370
-      Data4: -624564648
-    Path: event:/Music/Battle Music
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Event: 
   PlayEvent: 1
   StopEvent: 2
