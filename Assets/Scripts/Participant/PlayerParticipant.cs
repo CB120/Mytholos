@@ -29,6 +29,7 @@ public class PlayerParticipant : Participant
 
     private void Start()
     {
+        // Add code here to only do this in game instead of on start
         foreach(int myth in mythsInPlay)
         {
             selectedMythIndex = mythsInPlay[myth];
@@ -39,8 +40,8 @@ public class PlayerParticipant : Participant
                     SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
                 }
             }
-
         }
+        selectedMythIndex = -1;
     }
 
     public void SelectLeft(InputAction.CallbackContext context)
@@ -49,14 +50,6 @@ public class PlayerParticipant : Participant
         {
             selectedMythIndex = mythsInPlay[0];
             SelectMyth.Invoke(0);
-            for (int i = 0; i < ParticipantData.partyData.Length; i++)
-            {
-                if (ParticipantData.partyData[i].participant != this)
-                {
-                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
-                    return;
-                }
-            }
         }
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
@@ -73,14 +66,6 @@ public class PlayerParticipant : Participant
         {
             selectedMythIndex = mythsInPlay[1];
             SelectMyth.Invoke(1);
-            for (int i = 0; i < ParticipantData.partyData.Length; i++)
-            {
-                if (ParticipantData.partyData[i].participant != this)
-                {
-                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
-                    return;
-                }
-            }
         }
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
@@ -175,10 +160,10 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
         // TODO: Decide on a movement strategy.
         // SelectedMyth.Command = new MoveCommand();
-        
+
         Debug.Log($"{nameof(MoveStrategyRight)} has not been set up. See the {nameof(PlayerParticipant)} script.");
     }
 
@@ -187,16 +172,6 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
-    }
-
-    public void EnemyTargetRight(InputAction.CallbackContext context)
-    {
-        TargetEnemy(context);
-    }
-
-    public void EnemyTargetLeft(InputAction.CallbackContext context)
-    {
-        TargetEnemy(context);
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)

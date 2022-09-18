@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Party 1 Parent
   - Party 2 Parent
+  - Myth
   layers:
   - Default
   - TransparentFX

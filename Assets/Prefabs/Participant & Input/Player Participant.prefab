@@ -283,7 +283,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: EnemyTargetLeft
+        m_MethodName: TargetEnemy
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -299,7 +299,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: EnemyTargetRight
+        m_MethodName: TargetEnemy
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
