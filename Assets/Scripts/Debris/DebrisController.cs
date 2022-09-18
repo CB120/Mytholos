@@ -7,7 +7,6 @@ namespace Debris
     {
         [SerializeField] private Tilemap tilemap;
         [SerializeField] private TileBase tile;
-        [SerializeField] private TileBase blankTile;
         [SerializeField] private Bounds gridBounds;
 
         private void Awake()
@@ -34,7 +33,7 @@ namespace Debris
                 for (int y = boundsInt.yMin; y <= boundsInt.yMax; y++)
                 {
                     var gridPos = new Vector3Int(x, y, 0);
-                    tilemap.SetTile(gridPos, blankTile);
+                    tilemap.SetTile(gridPos, tile);
                     
                     tilemap.GetInstantiatedObject(gridPos).transform.localScale = Grid.Swizzle(tilemap.cellSwizzle, tilemap.cellSize);
                 }

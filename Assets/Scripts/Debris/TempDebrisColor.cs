@@ -26,6 +26,8 @@ namespace Debris
             var color = debris.CurrentElement == null ? Color.black : debris.CurrentElement.color;
             
             meshRenderer.material.color = color;
+
+            meshRenderer.enabled = debris.CurrentElement != null;
         }
     }
 }

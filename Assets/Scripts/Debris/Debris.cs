@@ -6,8 +6,6 @@ namespace Debris
 {
     public class Debris : MonoBehaviour
     {
-        // TODO: Move all mesh renderer responsibility to TempDebrisColor
-        [SerializeField] private MeshRenderer meshRenderer;
         [SerializeField] private float decayTime;
 
         public SO_Element CurrentElement
@@ -25,14 +23,13 @@ namespace Debris
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
 
+        // TODO: Restart the decay coroutine even if it's the same element, but return false
         public bool PlaceDebris(SO_Element newElement)
         {
             if (newElement == null) return false;
             
             // Only override current debris if it is weak against the new debris
             if (currentElement != null && !newElement.strongAgainst.Contains(currentElement)) return false;
-            
-            meshRenderer.enabled = true;
             
             CurrentElement = newElement;
             
@@ -47,8 +44,6 @@ namespace Debris
         private IEnumerator Decay()
         {
             yield return new WaitForSeconds(decayTime);
-            
-            meshRenderer.enabled = false;
             
             CurrentElement = null;
 
