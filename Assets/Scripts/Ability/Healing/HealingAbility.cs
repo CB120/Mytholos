@@ -8,6 +8,7 @@ public class HealingAbility : Ability
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
     public float timeToDestroy = 5f;
+    [SerializeField] private GameObject[] children;
 
     public override void Start()
     {
@@ -28,6 +29,7 @@ public class HealingAbility : Ability
 
     private void ResetScale()
     {
+        foreach (GameObject obj in children) obj.SetActive(false);
         areaOfEffect = 0;
     }
 
