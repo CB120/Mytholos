@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ac1d2e1a3f9d72640a0a9af86d0fcd39, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,8 +148,8 @@ MonoBehaviour:
   abilityPS: {fileID: 4078637225773376301, guid: 4f3f756d20dead843af40b3ce1d23a0f,
     type: 3}
   rigidBody: {fileID: 4679095279651952454}
-  target: {fileID: 0}
   strength: 1
+  rend: {fileID: 4679095279651952452}
   areaOfEffect: 4
   timeToExplode: 2
   expandSpeed: 5

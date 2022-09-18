@@ -6,7 +6,9 @@ public class LobAbility : Ability
 {
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] float strength;
+    [SerializeField] private MeshRenderer rend;
 
+    [Header("Explosion")]
     public float areaOfEffect;
     public float timeToExplode;
     private bool hasExploded;
@@ -33,6 +35,7 @@ public class LobAbility : Ability
 
     void Explode()
     {
+        rend.enabled = false;
         Instantiate(abilityPS, this.transform);
         hasExploded = true;
         Destroy(this.gameObject, timeToDestroy);
