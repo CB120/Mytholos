@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Myths;
 using UnityEngine;
 
-namespace Debris.DebrisBehaviours
+namespace Debris.DebrisInteractors
 {
-    public class DamageMyths : DebrisInteractor
+    public class DamageMythDebrisInteractor : DebrisInteractor
     {
         [SerializeField] private Myth myth;
         [SerializeField] private float damagePerSecond;
