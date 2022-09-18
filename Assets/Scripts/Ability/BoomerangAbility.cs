@@ -13,8 +13,6 @@ public class BoomerangAbility : Ability
     [SerializeField] private float speed;
     [SerializeField] private float acceleration;
 
-    private GameObject Owner; 
-
     // Start is called before the first frame update
     public override void Start()
     {
