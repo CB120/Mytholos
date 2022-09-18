@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: mythProperties
       value: 
       objectReference: {fileID: 4040124198851291565}
+    - target: {fileID: 3131205609304386058, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth

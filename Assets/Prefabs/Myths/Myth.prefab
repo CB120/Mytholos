@@ -77,6 +77,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  anim: {fileID: 0}
+  navMeshAgent: {fileID: 0}
 --- !u!114 &8562805467365396305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +107,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  anim: {fileID: 0}
   navMeshAgent: {fileID: 7423737072121430647}
-  targetUnit: {fileID: 0}
 --- !u!114 &2672777451707083747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +288,9 @@ MonoBehaviour:
   isInteracting: 0
   isInvulnerable: 0
   staminaRegen: 0
+  healthRegenTick: 0
+  healthRegen: 0
+  isManuallyMoving: 0
   northAbility: {fileID: 0}
   westAbility: {fileID: 0}
   southAbility: {fileID: 0}
