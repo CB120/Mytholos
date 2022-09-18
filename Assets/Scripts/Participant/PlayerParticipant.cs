@@ -41,8 +41,6 @@ public class PlayerParticipant : Participant
             }
 
         }
-        selectedMythIndex = -1;
-        SelectMyth.Invoke(-1);
     }
 
     public void SelectLeft(InputAction.CallbackContext context)

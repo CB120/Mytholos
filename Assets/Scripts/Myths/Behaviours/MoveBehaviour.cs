@@ -70,7 +70,7 @@ namespace Myths.Behaviours
         {
             Vector3 facingDirection = (navMeshAgent.steeringTarget);
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(facingDirection.x, 0, facingDirection.z), navMeshAgent.gameObject.transform.up);
-            Debug.Log(facingDirection.x + " " + facingDirection.z);    
+            //Debug.Log(facingDirection.x + " " + facingDirection.z);    
             return lookRotation;
             
         }
