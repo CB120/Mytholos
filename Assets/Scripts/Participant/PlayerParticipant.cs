@@ -25,12 +25,40 @@ public class PlayerParticipant : Participant
     private bool EnemySwitch = false; 
     private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
 
+    private GameObject PartyParent;
+
+    private void Start()
+    {
+        foreach(int myth in mythsInPlay)
+        {
+            selectedMythIndex = mythsInPlay[myth];
+            for (int i = 0; i < ParticipantData.partyData.Length; i++)
+            {
+                if (ParticipantData.partyData[i].participant != this)
+                {
+                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                }
+            }
+
+        }
+        selectedMythIndex = -1;
+        SelectMyth.Invoke(-1);
+    }
+
     public void SelectLeft(InputAction.CallbackContext context)
     {
         if (selectedMythIndex == -1 && context.performed)
         {
             selectedMythIndex = mythsInPlay[0];
             SelectMyth.Invoke(0);
+            for (int i = 0; i < ParticipantData.partyData.Length; i++)
+            {
+                if (ParticipantData.partyData[i].participant != this)
+                {
+                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                    return;
+                }
+            }
         }
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
@@ -47,6 +75,14 @@ public class PlayerParticipant : Participant
         {
             selectedMythIndex = mythsInPlay[1];
             SelectMyth.Invoke(1);
+            for (int i = 0; i < ParticipantData.partyData.Length; i++)
+            {
+                if (ParticipantData.partyData[i].participant != this)
+                {
+                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                    return;
+                }
+            }
         }
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
