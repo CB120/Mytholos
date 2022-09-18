@@ -22,7 +22,6 @@ namespace Debris
 
         public UnityEvent elementChanged = new();
 
-        private GameObject debrisBehavioursObject;
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
 
@@ -35,11 +34,6 @@ namespace Debris
             
             meshRenderer.enabled = true;
             
-            if (debrisBehavioursObject != null)
-                Destroy(debrisBehavioursObject);
-
-            debrisBehavioursObject = Instantiate(newElement.debrisBehavioursPrefab, transform);
-
             CurrentElement = newElement;
             
             if (decayCoroutine != null)
@@ -56,9 +50,6 @@ namespace Debris
             
             meshRenderer.enabled = false;
             
-            if (debrisBehavioursObject != null)
-                Destroy(debrisBehavioursObject);
-
             CurrentElement = null;
 
             decayCoroutine = null;

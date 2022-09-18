@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +11,28 @@ namespace Debris
         
         private void OnTriggerEnter(Collider other)
         {
+            OnDebrisTrigger(other, (debrisInteractor, debris) => debrisInteractor.OnDebrisEnter(debris));
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnDebrisTrigger(other, (debrisInteractor, debris) => debrisInteractor.OnDebrisExit(debris));
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            OnDebrisTrigger(other, (debrisInteractor, debris) => debrisInteractor.OnDebrisStay(debris));
+        }
+
+        private void OnDebrisTrigger(Collider other, Action<DebrisInteractor, Debris> action)
+        {
             var debris = other.GetComponent<Debris>();
 
             if (debris == null) return;
 
             foreach (var debrisInteractor in debrisInteractors)
             {
-                debrisInteractor.OnDebrisEnter(debris);
+                action(debrisInteractor, debris);
             }
         }
     }

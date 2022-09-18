@@ -6,5 +6,9 @@ namespace Debris
     public abstract class DebrisInteractor : MonoBehaviour
     {
         internal virtual void OnDebrisEnter(Debris debris) { }
+        
+        internal virtual void OnDebrisExit(Debris debris) { }
+        
+        internal virtual void OnDebrisStay(Debris debris) { }
     }
 }

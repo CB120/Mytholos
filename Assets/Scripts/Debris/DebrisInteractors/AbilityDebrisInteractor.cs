@@ -44,7 +44,7 @@ namespace Debris.DebrisInteractors
             
             // TODO: Also need to cap the damage. Here or in Ability?
             
-            // TODO: Actually update the effect. May need to be more flexible to allow other things to modify the damage too
+            // TODO: May need to be more flexible to allow other things to modify the damage too
             ability.DamageMultiplier = totalEffect;
         }
     }
