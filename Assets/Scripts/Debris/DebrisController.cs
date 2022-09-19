@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace Debris
@@ -8,6 +10,12 @@ namespace Debris
         [SerializeField] private Tilemap tilemap;
         [SerializeField] private TileBase tile;
         [SerializeField] private Bounds gridBounds;
+
+        public int NumberOfTiles { get; private set; }
+
+        private readonly Dictionary<SO_Element, int> numberOfTilesWithElement = new();
+
+        public UnityEvent numberOfTilesWithElementChanged = new();
 
         private void Awake()
         {
@@ -34,10 +42,38 @@ namespace Debris
                 {
                     var gridPos = new Vector3Int(x, y, 0);
                     tilemap.SetTile(gridPos, tile);
+
+                    var tileObject = tilemap.GetInstantiatedObject(gridPos);
                     
-                    tilemap.GetInstantiatedObject(gridPos).transform.localScale = Grid.Swizzle(tilemap.cellSwizzle, tilemap.cellSize);
+                    tileObject.transform.localScale = Grid.Swizzle(tilemap.cellSwizzle, tilemap.cellSize);
+                    
+                    // TODO: Unlisten?
+                    tileObject.GetComponent<Debris>().elementChanged.AddListener(OnElementChanged);
+
+                    NumberOfTiles++;
                 }
             }
+        }
+
+        private void OnElementChanged(Debris debris)
+        {
+            if (debris.OldElement != null)
+                numberOfTilesWithElement[debris.OldElement]--;
+
+            if (debris.CurrentElement != null)
+            {
+                if (!numberOfTilesWithElement.ContainsKey(debris.CurrentElement))
+                    numberOfTilesWithElement[debris.CurrentElement] = 0;
+
+                numberOfTilesWithElement[debris.CurrentElement]++;
+            }
+            
+            numberOfTilesWithElementChanged.Invoke();
+        }
+
+        public int NumberOfTilesWithElement(SO_Element element)
+        {
+            return !numberOfTilesWithElement.ContainsKey(element) ? 0 : numberOfTilesWithElement[element];
         }
     }
 }

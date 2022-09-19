@@ -20,7 +20,7 @@ namespace Debris
             debris.elementChanged.RemoveListener(OnElementChanged);
         }
 
-        private void OnElementChanged()
+        private void OnElementChanged(Debris _)
         {
             // TODO: Duplicate code. See UIGameAbility
             var color = debris.CurrentElement == null ? Color.black : debris.CurrentElement.color;

@@ -13,12 +13,15 @@ namespace Debris
             get => currentElement;
             set
             {
+                OldElement = currentElement;
                 currentElement = value;
-                elementChanged.Invoke();
+                elementChanged.Invoke(this);
             }
         }
+        
+        public SO_Element OldElement { get; private set; }
 
-        public UnityEvent elementChanged = new();
+        public UnityEvent<Debris> elementChanged = new();
 
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
