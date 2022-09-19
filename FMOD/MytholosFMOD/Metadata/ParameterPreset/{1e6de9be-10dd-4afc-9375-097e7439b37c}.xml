@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{1e6de9be-10dd-4afc-9375-097e7439b37c}">
+		<property name="name">
+			<value>Water Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3fe9a457-c3fb-4274-b765-c5f718802f0b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3fe9a457-c3fb-4274-b765-c5f718802f0b}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

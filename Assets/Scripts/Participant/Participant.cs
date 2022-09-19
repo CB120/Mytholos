@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Participant : MonoBehaviour
 {
+    [SerializeField] private AllParticipantDataService allParticipantDataService;
+    
     //Properties
     [Tooltip("If ticked, allows all non-critical Debug messages to be shown")]
     public bool debugOn;
@@ -15,11 +15,7 @@ public class Participant : MonoBehaviour
 
     protected int partyIndex = -1; //0 = Player 1, 1 = Player 2. Used to fetch the correct element from the SO_AllParticipantData array
 
-
-    //References
-    public SO_AllParticipantData liveParticipantData;
-    public SO_AllParticipantData debugParticipantData;
-
+    protected SO_AllParticipantData ParticipantData { get; private set; }
 
     //Engine-called
     protected virtual void Awake()
@@ -28,9 +24,12 @@ public class Participant : MonoBehaviour
 
         partyIndex = numberOfParticipants;
         numberOfParticipants++;
+        
         if (debugOn) Debug.Log(gameObject.name + "'s partyIndex is " + partyIndex);
 
-        liveParticipantData.partyData[partyIndex].Participant = this;
-        debugParticipantData.partyData[partyIndex].Participant = this;
+        ParticipantData = allParticipantDataService.GetAllParticipantData();
+
+        // TODO: This also should not be handled here
+        ParticipantData.partyData[partyIndex].Participant = this;
     }
 }

@@ -19,7 +19,7 @@ public class ManualMovementStyle : CollisionDetection
     public void Move(Vector2 input)
     {
             inputVector = input * mythProperties.walkSpeed;
-
+            mythProperties.isManuallyMoving = true;
             if (inputVector != Vector2.zero)
             {
                 newRotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y), this.transform.up);
@@ -28,6 +28,7 @@ public class ManualMovementStyle : CollisionDetection
             }
             else
             {
+                mythProperties.isManuallyMoving = false;
                 if (anim) anim.SetBool("Walking", false);
                 lastRotation = this.transform.rotation;
             }
@@ -50,8 +51,11 @@ public class ManualMovementStyle : CollisionDetection
 
     protected override void SetTargetVelocity()
     {
-        base.SetTargetVelocity();
-        velocity = new Vector3(inputVector.x, velocity.y, inputVector.y);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lastRotation, Time.deltaTime * 8);
+            base.SetTargetVelocity();
+            velocity = new Vector3(inputVector.x, velocity.y, inputVector.y);
+            if (mythProperties.isManuallyMoving)
+            {
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lastRotation, Time.deltaTime * 8);
+            }
+        }
     }
-}

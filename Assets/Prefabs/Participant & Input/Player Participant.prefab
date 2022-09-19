@@ -81,10 +81,6 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 69c7a7d1-bf25-4dab-8f19-13e8e4d4280d
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 04ee6fa3-9d98-4db3-8073-83571d4a33f4
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -204,10 +200,6 @@ MonoBehaviour:
     m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
     m_ActionName: Player/MoveStrategyUp[/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e7d4781a-b7e6-4872-baa6-1005ad79fe89
-    m_ActionName: Player/North[/XInputControllerWindows/buttonNorth]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
@@ -287,6 +279,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3d19a5dd-7245-4f9a-8fca-994186feb846
     m_ActionName: Player/MoveStrategyRight[/XInputControllerWindows/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: TargetEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bbde4d9b-682a-445c-8a33-529b63ba26d5
+    m_ActionName: Player/SelectEnemyLeft[/DualSenseGamepadHID/rightStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: TargetEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0906f682-9854-4fb3-af50-07e55f6136c5
+    m_ActionName: Player/SelectEnemyRight[/DualSenseGamepadHID/rightStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -304,8 +328,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3425d9e9747fa814ba7af020357aa6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugOn: 1
-  liveParticipantData: {fileID: 11400000, guid: e6d9ba1070afa3a4f911b044fe84ab18,
+  allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}
-  debugParticipantData: {fileID: 11400000, guid: 147620fded745804385c132b70ed8ecd,
-    type: 2}
+  debugOn: 0
+  SelectMyth:
+    m_PersistentCalls:
+      m_Calls: []
+  SelectAbility:
+    m_PersistentCalls:
+      m_Calls: []

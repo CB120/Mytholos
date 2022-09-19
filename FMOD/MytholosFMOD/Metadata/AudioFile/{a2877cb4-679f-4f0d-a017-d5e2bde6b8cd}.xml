@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a2877cb4-679f-4f0d-a017-d5e2bde6b8cd}">
+		<property name="assetPath">
+			<value>BattleTheme_WindLayer.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>344.375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{001458d7-73d4-4e2b-bd37-4c28845f61d1}</destination>
+		</relationship>
+	</object>
+</objects>

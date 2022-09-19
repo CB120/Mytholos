@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace Myths
 {
@@ -21,6 +22,7 @@ namespace Myths
         public float stamina;
         public float walkSpeed;
         public float health;
+        public GameObject targetEnemy;
         public float Health
         {
             get => health;
@@ -64,6 +66,11 @@ namespace Myths
 
         public bool isInvulnerable = false;
         public bool staminaRegen = false;
+        [HideInInspector]
+        public float healthRegenTick = 0f;
+        [HideInInspector]
+        public bool healthRegen = false;
+        public bool isManuallyMoving = false;
         public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
 
 
@@ -98,6 +105,7 @@ namespace Myths
             currentState = initialState;
 
             currentState.enabled = true;
+
         }
 
         private void Update()
@@ -110,6 +118,14 @@ namespace Myths
                 } else if (Stamina < 0.6f)
                 {
                     Stamina = 1;
+                }
+            }
+
+            if (healthRegen)
+            {
+                if(Health <= 100)
+                {
+                    Health += healthRegenTick * Time.deltaTime;
                 }
             }
         }
@@ -134,6 +150,8 @@ namespace Myths
                 
             }
         }
+
+        
 
         /*Remove everything after this after 5/09/22*/
         public WinState ws;

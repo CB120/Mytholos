@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class TestScript : MonoBehaviour
 {
+    public string sceneName = "ArenaEddie";
+    
     public void ChangeScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneName);
     }
 }

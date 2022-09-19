@@ -5,7 +5,9 @@ namespace Commands
         public enum MoveCommandType
         {
             Stay,
-            Approach
+            Approach,
+            Flee,
+            Support
         }
         
         public MoveCommandType CurrentMoveCommandType { get; set; }

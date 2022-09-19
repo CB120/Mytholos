@@ -12,6 +12,10 @@ public class SO_Ability : ScriptableObject
     public float stamina;
     public float chargeTime;
 
+    [Header("Spawning Properties")]
+    public bool spawnInWorldSpace;
+    public Vector3 relativeSpawnPosition;
+
     [FormerlySerializedAs("ability")] public GameObject abilityPrefab;
     public Collider colliderPrefab;
 }

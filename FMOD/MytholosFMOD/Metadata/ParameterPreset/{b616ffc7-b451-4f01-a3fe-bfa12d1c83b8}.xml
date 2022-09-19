@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{b616ffc7-b451-4f01-a3fe-bfa12d1c83b8}">
+		<property name="name">
+			<value>Wood Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3784bc3d-a8f9-46c2-894f-1448ab35f347}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3784bc3d-a8f9-46c2-894f-1448ab35f347}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

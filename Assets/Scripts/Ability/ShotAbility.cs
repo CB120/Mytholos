@@ -6,20 +6,23 @@ using Myths;
 public class ShotAbility : Ability
 {
     private Transform ShotTransform;
-    private float speed;
+    private Vector3 Direction;
+
+    [SerializeField] private float speed;
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        Direction = owningMyth.transform.forward;
         ShotTransform = this.gameObject.transform;
-        speed = 5;
+        transform.parent = null;
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        ShotTransform.position += owningMyth.transform.forward * speed * Time.deltaTime;
+        ShotTransform.position += Direction * speed * Time.deltaTime;
     }
 
     public override void Trigger(Myth myth)
@@ -27,5 +30,6 @@ public class ShotAbility : Ability
         Attack(myth, ability.damage); //Called In The Parent Ability
         Debug.LogWarning($"Shot Collided With Object: {myth.gameObject.name}");
         base.Trigger(myth);
+        Destroy(this.gameObject);
     }
 }

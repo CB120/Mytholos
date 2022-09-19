@@ -18,12 +18,31 @@ public class PlayerParticipant : Participant
     int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
                                   // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
 
-
     //References
 
     private int selectedMythIndex = -1;
+    private int selectedEnemyIndex = 0;
+    private bool EnemySwitch = false; 
+    private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
 
-    private Myth SelectedMyth => debugParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+    private GameObject PartyParent;
+
+    private void Start()
+    {
+        // Add code here to only do this in game instead of on start
+        foreach(int myth in mythsInPlay)
+        {
+            selectedMythIndex = mythsInPlay[myth];
+            for (int i = 0; i < ParticipantData.partyData.Length; i++)
+            {
+                if (ParticipantData.partyData[i].participant != this)
+                {
+                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                }
+            }
+        }
+        selectedMythIndex = -1;
+    }
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -141,10 +160,10 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
         // TODO: Decide on a movement strategy.
         // SelectedMyth.Command = new MoveCommand();
-        
+
         Debug.Log($"{nameof(MoveStrategyRight)} has not been set up. See the {nameof(PlayerParticipant)} script.");
     }
 
@@ -153,5 +172,31 @@ public class PlayerParticipant : Participant
         if (!SelectedMyth) return;
         
         SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+    }
+
+    public void TargetEnemy(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!SelectedMyth) return;
+
+        EnemySwitch = !EnemySwitch;
+        
+        if (EnemySwitch)
+        {
+            selectedEnemyIndex = 0;
+        } else if (!EnemySwitch)
+        {
+            selectedEnemyIndex = 1;
+        }
+
+        for (int i = 0; i < ParticipantData.partyData.Length; i++)
+        {
+            if (ParticipantData.partyData[i].participant != this)
+            {
+                SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                return;
+            }
+        }
     }
 }
