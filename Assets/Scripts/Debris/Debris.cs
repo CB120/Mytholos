@@ -26,24 +26,35 @@ namespace Debris
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
 
-        // TODO: Restart the decay coroutine even if it's the same element, but return false
         public bool PlaceDebris(SO_Element newElement)
         {
             if (newElement == null) return false;
 
             if (!newElement.hasDebris) return false;
             
+            if (newElement == currentElement)
+            {
+                RestartDecayTimer();
+
+                return false;
+            }
+
             // Only override current debris if it is weak against the new debris
             if (currentElement != null && !newElement.strongAgainst.Contains(currentElement)) return false;
             
             CurrentElement = newElement;
             
+            RestartDecayTimer();
+            
+            return true;
+        }
+
+        private void RestartDecayTimer()
+        {
             if (decayCoroutine != null)
                 StopCoroutine(decayCoroutine);
 
             decayCoroutine = StartCoroutine(Decay());
-            
-            return true;
         }
 
         private IEnumerator Decay()
