@@ -9,18 +9,19 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private TextMeshProUGUI abilityNameTMP;
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
-    [SerializeField] private Color[] elementColours;
 
-    public void UpdateUI(string abilityName, E_Element element, float staminaCost)
+    public void UpdateUI(SO_Ability ability)
     {
-        abilityNameTMP.text = abilityName;
-        elementIcon.color = elementColours[(int)element]; // TODO: Create a scriptiable object for commonly used asset resources (in this case, symbols/colours for each element)
+        abilityNameTMP.text = ability.name;
+        // TODO: Should give designer control over the default element colour
+        elementIcon.color = ability.element == null ? Color.black : ability.element.color;
         //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-        staminaCostTMP.text = Mathf.RoundToInt(staminaCost) + ""; // For sprint 2, we'll just show the damage
+        staminaCostTMP.text = Mathf.RoundToInt(ability.stamina) + ""; // For sprint 2, we'll just show the damage
     }
 
     public void AnimateSelectedAbility()
     {
+        // TODO: Inefficient.
         UIGameAbility effect = Instantiate<GameObject>(gameObject, transform.parent).GetComponent<UIGameAbility>();
         effect.StartCoroutine(effect.AnimateThisAbilityThenDie());
     }
