@@ -4,6 +4,7 @@ using Myths;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class PlayerParticipant : Participant
 {
@@ -24,11 +25,13 @@ public class PlayerParticipant : Participant
     private int selectedEnemyIndex = 0;
     private bool EnemySwitch = false; 
     private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+    //public static PlayerParticipant singleton;
 
-    private GameObject PartyParent;
+    //public List<GameObject> Enemies;
 
     private void Start()
     {
+
         // Add code here to only do this in game instead of on start
         foreach(int myth in mythsInPlay)
         {
@@ -38,6 +41,7 @@ public class PlayerParticipant : Participant
                 if (ParticipantData.partyData[i].participant != this)
                 {
                     SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                    //Enemies.Add(ParticipantData.partyData[i].myths[0].gameObject);
                 }
             }
         }
@@ -54,7 +58,7 @@ public class PlayerParticipant : Participant
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
         {
-            SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
+            SelectedMyth.ManualMovementStyle.Move(Vector2.zero, context);
             selectedMythIndex = -1;
             SelectMyth.Invoke(-1);
         }
@@ -70,7 +74,7 @@ public class PlayerParticipant : Participant
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
         {
-            SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
+            SelectedMyth.ManualMovementStyle.Move(Vector2.zero, context);
             selectedMythIndex = -1;
             SelectMyth.Invoke(-1);
         }
@@ -171,7 +175,8 @@ public class PlayerParticipant : Participant
     {
         if (!SelectedMyth) return;
         
-        SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+        SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>(), context);
+        
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)
@@ -194,7 +199,14 @@ public class PlayerParticipant : Participant
         {
             if (ParticipantData.partyData[i].participant != this)
             {
-                SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                if (ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject.activeSelf == false)
+                {
+                    return;
+                }
+                else
+                {
+                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                }
                 return;
             }
         }

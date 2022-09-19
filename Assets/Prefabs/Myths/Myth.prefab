@@ -332,6 +332,7 @@ MonoBehaviour:
   hugGroundDistance: 5
   anim: {fileID: 0}
   mythProperties: {fileID: 0}
+  navMeshAgent: {fileID: 7423737072121430647}
 --- !u!135 &6195943593850379723
 SphereCollider:
   m_ObjectHideFlags: 0
