@@ -7,6 +7,8 @@ namespace Debris
     public class Debris : MonoBehaviour
     {
         [SerializeField] private float decayTime;
+        [Tooltip("Read only. For debugging purposes.")]
+        [SerializeField] private Vector3Int tilePositionReadout;
 
         public SO_Element CurrentElement
         {
@@ -25,6 +27,11 @@ namespace Debris
 
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
+
+        public void Initialise(Vector3Int tilePosition)
+        {
+            tilePositionReadout = tilePosition;
+        }
 
         public bool PlaceDebris(SO_Element newElement)
         {
