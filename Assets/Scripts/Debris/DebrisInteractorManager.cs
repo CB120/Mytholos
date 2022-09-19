@@ -24,7 +24,7 @@ namespace Debris
             OnDebrisTrigger(other, (debrisInteractor, debris) => debrisInteractor.OnDebrisStay(debris));
         }
 
-        private void OnDebrisTrigger(Collider other, Action<DebrisInteractor, Debris> action)
+        public void OnDebrisTrigger(Collider other, Action<DebrisInteractor, Debris> action)
         {
             var debris = other.GetComponent<Debris>();
 

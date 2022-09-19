@@ -141,8 +141,7 @@ GameObject:
   - component: {fileID: 2434597425958628251}
   - component: {fileID: 6280502035933937635}
   - component: {fileID: 2923133708647535340}
-  - component: {fileID: 7894043107105688472}
-  - component: {fileID: 1470047808955039919}
+  - component: {fileID: 7737170078603415442}
   m_Layer: 0
   m_Name: BeamBody
   m_TagString: Untagged
@@ -242,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 4892058137569826491}
---- !u!114 &7894043107105688472
+--- !u!114 &7737170078603415442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,21 +250,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5364032775605158230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c64cb8893847fea47ed93cded76275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debrisInteractors:
-  - {fileID: 1470047808955039919}
---- !u!114 &1470047808955039919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5364032775605158230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cec03e483174bbfb96533db5beec6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba8f8a7b49e4f1da29334a78c8a197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 4892058137569826491}

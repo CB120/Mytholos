@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 6684646392471459765}
   - component: {fileID: 235195530449914695}
   - component: {fileID: 1289076944217210145}
-  - component: {fileID: 550253078391389760}
-  - component: {fileID: 4812267537380817053}
-  - component: {fileID: 4649261702580073201}
+  - component: {fileID: 2269820394154874047}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -63,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 2111298335}
---- !u!114 &550253078391389760
+--- !u!114 &2269820394154874047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,37 +70,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1555945966451579232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c64cb8893847fea47ed93cded76275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debrisInteractors:
-  - {fileID: 4812267537380817053}
-  - {fileID: 4649261702580073201}
---- !u!114 &4812267537380817053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555945966451579232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f179d7e9abe4c20af62f97b9a5b7e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ability: {fileID: 2111298335}
-  effect: 0.1
-  createDebrisInteractor: {fileID: 4649261702580073201}
---- !u!114 &4649261702580073201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555945966451579232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cec03e483174bbfb96533db5beec6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba8f8a7b49e4f1da29334a78c8a197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 2111298335}

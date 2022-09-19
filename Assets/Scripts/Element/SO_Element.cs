@@ -12,4 +12,5 @@ public class SO_Element : ScriptableObject
 
     // TODO: Cyclic dependency. Do we need this?
     public bool hasDebris;
+    public GameObject abilityDebrisInteractorsPrefab;
 }

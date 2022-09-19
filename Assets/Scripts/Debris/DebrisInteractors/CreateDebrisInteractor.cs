@@ -5,7 +5,7 @@ namespace Debris.DebrisInteractors
 {
     public class CreateDebrisInteractor : DebrisInteractor
     {
-        [SerializeField] private Ability ability;
+        [SerializeField] public Ability ability;
 
         public List<Debris> PlacedDebris { get; } = new();
 

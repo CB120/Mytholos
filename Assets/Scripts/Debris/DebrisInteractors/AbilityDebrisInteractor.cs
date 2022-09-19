@@ -5,7 +5,7 @@ namespace Debris.DebrisInteractors
 {
     public class AbilityDebrisInteractor : DebrisInteractor
     {
-        [SerializeField] private Ability ability;
+        [SerializeField] public Ability ability;
         [SerializeField] private float effect;
         [SerializeField] private CreateDebrisInteractor createDebrisInteractor;
         
