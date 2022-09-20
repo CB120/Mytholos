@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -985,6 +985,41 @@ PrefabInstance:
       propertyPath: gridBounds.m_Extent.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1070058097}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDebrisChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleMusicController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
+      propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17cf5ba58448ad4da03910679968464, type: 3}
 --- !u!1 &553383177
@@ -1776,6 +1811,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a55f7f43cf03834f9d71acdf614f4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earthVolume: 0
+  electricVolume: 0
+  fireVolume: 0
+  iceVolume: 0
+  steelVolume: 0
+  waterVolume: 0
+  windVolume: 0
+  woodVolume: 0
+  allElements:
+  - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
+  - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
+  - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
+  - {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
+  - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
+  - {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
+  - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
 --- !u!1 &1104835184
 GameObject:
   m_ObjectHideFlags: 0

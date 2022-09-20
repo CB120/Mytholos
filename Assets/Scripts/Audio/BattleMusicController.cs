@@ -9,7 +9,7 @@ public class BattleMusicController : MonoBehaviour
 
 
     // Variables
-    [Tooltip("Debug readouts of current Element volumes")]
+    [Header("Debug readouts of current Element volumes")]
     [Range(0, 100)] public float earthVolume = 0f;
     [Range(0, 100)] public float electricVolume = 0f;
     [Range(0, 100)] public float fireVolume = 0f;
@@ -22,6 +22,10 @@ public class BattleMusicController : MonoBehaviour
 
     // References
     StudioEventEmitter battleMusicEmitter;
+
+    [Space(30)]
+    [Header("Asset References")]
+    public SO_Element[] allElements;
 
 
     //Engine-called
@@ -37,10 +41,18 @@ public class BattleMusicController : MonoBehaviour
     }
 
 
+    //Listener-called
+    public void OnDebrisChange() //Called by DebrisController
+    {
+        Debug.Log("hello!");
+    }
+
+
     //Methods
         //Private
     void CalculateElementVolumes()
     {
+
         //FMOD seems to automatically clamp the values in the 0-100 range set for each parameter. Apply a Mathf.Clamp() if bugs occur
     }
 
