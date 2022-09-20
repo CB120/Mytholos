@@ -76,8 +76,20 @@ namespace Myths
         public SO_Ability eastAbility;
 
         public SpriteRenderer ring;
+        
+        private Command command;
 
-        public Command Command { get; set; }
+        public Command Command
+        {
+            get => command;
+            set
+            {
+                command = value;
+                commandChanged.Invoke();
+            }
+        }
+
+        public UnityEvent commandChanged = new();
 
         public void ChangeState(MonoBehaviour state)
         {

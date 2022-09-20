@@ -1,19 +1,7 @@
-using Commands;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.AI;
-
 namespace Myths.Behaviours
 {
     public class IdleBehaviour : Behaviour
     {
-        public UnityEvent abilityCommandReceived = new();
-        public UnityEvent moveCommandReceived = new();
-        public UnityEvent manualMoveCommandReceived = new();
-
-        [SerializeField] private Animator anim;
-        public NavMeshAgent navMeshAgent;
-
         /* When the myth is set to Auto (Currently known as idle behaviour), it will go through a list of things to do.
         - It will first check to see if it is low health, if so it will fuck off to the other side of the map. 
         - It will next check if its team mate is low health. If so, heal it if possible. 
@@ -28,41 +16,10 @@ namespace Myths.Behaviours
 
         */
 
-        private void Start()
-        {
-            navMeshAgent = myth.GetComponent<NavMeshAgent>();
-            if (navMeshAgent == null)
-            {
-                Debug.Log("There was a problem assigning " + myth.gameObject.name + " to the navmesh");
-            }
-        }
-
-        private void Update()
-        {
-            // TODO: Move these to an AnyStateTransition
-            if (myth.Command == null) return;
-
-            if (myth.Command is AbilityCommand)
-            {
-                abilityCommandReceived.Invoke();
-            }
-
-            if (myth.Command is MoveCommand)
-            {
-                moveCommandReceived.Invoke();
-            }
-
-            if (myth.Command is ManualMoveCommand)
-            {
-                manualMoveCommandReceived.Invoke();
-            }
-        }
-
         private void GoalOrientedDecision()
         {
             // This is where a decision is made for what to do on auto-pilot based on the goal to be achieved
         }
-
 
         private void LowHealthResponse()
         {
@@ -88,6 +45,5 @@ namespace Myths.Behaviours
         {
             // This is the response to recover stamina and line up the next shot on the target
         }
-
     }
 }
