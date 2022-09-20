@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: DebugEastAbility
   m_EditorClassIdentifier: 
-  ability: 3
-  element: {fileID: 11400000, guid: 677605b242f326b49a3d4ac03b773568, type: 2}
+  element: {fileID: 0}
+  name: 
   damage: 0
   healing: 0
+  stamina: 0
+  chargeTime: 0
+  abilityPrefab: {fileID: 0}
+  colliderPrefab: {fileID: 0}
