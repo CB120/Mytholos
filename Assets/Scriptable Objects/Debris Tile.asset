@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
-  m_Name: DebugElement
+  m_Script: {fileID: 11500000, guid: 3b150c9d540b46deba7db07c4e076152, type: 3}
+  m_Name: Debris Tile
   m_EditorClassIdentifier: 
+  debrisPrefab: {fileID: 5428884417466843774, guid: a8284e01ff6f0b542965ce5d9df9288a,
+    type: 3}
