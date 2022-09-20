@@ -8,7 +8,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     public SO_Ability ability;
     public Myth owningMyth;
     public ParticleSystem abilityPS;
-    public float DamageMultiplier { get; set; } = 1;
 
     virtual public void Start()
     {
@@ -22,11 +21,9 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void Attack(Myth myth, float damage)
     {
         if (myth.partyIndex != this.owningMyth.partyIndex)//Ensures Myths cannot harm others in their party 
-        {
-            var finalDamage = damage * DamageMultiplier;
+        {                                                 
             Debug.LogWarning($"{myth.gameObject.name} was Attacked by {owningMyth.gameObject.name}");
-            Debug.LogWarning($"Dealt {finalDamage} damage ({DamageMultiplier * 100}% of base {damage})");
-            myth.TakeDamage(finalDamage);
+            myth.TakeDamage(damage);
         }
         else
         {

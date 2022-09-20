@@ -82,6 +82,7 @@ MonoBehaviour:
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
   BeamDuration: 4
+  BeamChargeTime: 1
   BeamLength: 20
 --- !u!1 &4274577651556709272
 GameObject:
@@ -141,7 +142,6 @@ GameObject:
   - component: {fileID: 2434597425958628251}
   - component: {fileID: 6280502035933937635}
   - component: {fileID: 2923133708647535340}
-  - component: {fileID: 7737170078603415442}
   m_Layer: 0
   m_Name: BeamBody
   m_TagString: Untagged
@@ -238,19 +238,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe2c41013590b3c41bab6447388cfed5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ability: {fileID: 4892058137569826491}
---- !u!114 &7737170078603415442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5364032775605158230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba8f8a7b49e4f1da29334a78c8a197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 4892058137569826491}
