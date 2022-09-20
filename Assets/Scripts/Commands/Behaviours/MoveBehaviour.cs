@@ -1,4 +1,3 @@
-using Commands;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
@@ -8,10 +7,14 @@ namespace Myths.Behaviours
     public class MoveBehaviour : Behaviour
     {
         public UnityEvent moveComplete = new();
+        public UnityEvent moveFailed = new();
 
+        // TODO: This needs to be hooked back up
+        // TODO: So does rotation
         [SerializeField] private Animator anim;
+        [SerializeField] private CollisionDetection movementController;
+        [SerializeField] private float speed;
         public NavMeshAgent navMeshAgent;
-        private bool activePath = false;
 
         private void Start()
         {
@@ -22,57 +25,60 @@ namespace Myths.Behaviours
             }
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            Debug.Log($"{myth.name} moved. {((MoveCommand)myth.Command).CurrentMoveCommandType}");
-
-            myth.Command = null;
             SetDestination();
-            moveComplete.Invoke();
         }
 
+        private void Update()
+        {
+            // Debug.Log($"{myth.name} moved. {((MoveCommand)myth.Command).CurrentMoveCommandType}");
+            
+            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime);
+
+            movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
+
+            CheckDestination();
+        }
 
         private void SetDestination()
         {
-            //Debug.Log("CALLING SET DESTINATION");
-            if (myth.targetEnemy == null) { return; }
+            if (myth.targetEnemy == null)
+            {
+                myth.Command = null;
+                moveFailed.Invoke();
+                return;
+            }
             
-            if(myth.targetEnemy != null)
-            {
-                Vector3 targetVector = myth.targetEnemy.transform.position;
-                navMeshAgent.SetDestination(targetVector);
-                if (anim) anim.SetBool("Walking", true);
-                activePath = true;
-            }
-            else { Debug.Log("No Unit Selected"); }
-
-            if (activePath)
-            {
-                InvokeRepeating("CheckDestination", 1f, 0.2f); // Might need to play with these values for the sake of efficiency
-            }
+            navMeshAgent.SetDestination(myth.targetEnemy.transform.position);
+            
+            if (anim) anim.SetBool("Walking", true);
         }
 
         private void CheckDestination()
         {
-            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, UpdateRotation(), Time.deltaTime);
-            //Debug.Log("CALLING CHECK DESTINATION");
             if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 navMeshAgent.ResetPath();
                 if (anim) anim.SetBool("Walking", false);
-                CancelInvoke("CheckDestination");
+                movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
-                activePath = false;
+                myth.Command = null;
+                moveComplete.Invoke();
             }
         }
 
-        private Quaternion UpdateRotation()
+        private Quaternion NewRotation()
         {
             Vector3 facingDirection = (navMeshAgent.steeringTarget);
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(facingDirection.x, 0, facingDirection.z), navMeshAgent.gameObject.transform.up);
-            //Debug.Log(facingDirection.x + " " + facingDirection.z);    
             return lookRotation;
-            
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(navMeshAgent.steeringTarget, 0.3f);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Myths.Behaviours
     {
         public UnityEvent abilityCommandReceived = new();
         public UnityEvent moveCommandReceived = new();
+        public UnityEvent manualMoveCommandReceived = new();
 
         [SerializeField] private Animator anim;
         public NavMeshAgent navMeshAgent;
@@ -38,6 +39,7 @@ namespace Myths.Behaviours
 
         private void Update()
         {
+            // TODO: Move these to an AnyStateTransition
             if (myth.Command == null) return;
 
             if (myth.Command is AbilityCommand)
@@ -48,6 +50,11 @@ namespace Myths.Behaviours
             if (myth.Command is MoveCommand)
             {
                 moveCommandReceived.Invoke();
+            }
+
+            if (myth.Command is ManualMoveCommand)
+            {
+                manualMoveCommandReceived.Invoke();
             }
         }
 

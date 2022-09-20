@@ -2,14 +2,12 @@ using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
 
 namespace Myths
 {
     public class Myth : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour initialState;
-        [SerializeField] private ManualMovementStyle manualMovementStyle;
         
         private MonoBehaviour currentState;
 
@@ -70,9 +68,6 @@ namespace Myths
         public float healthRegenTick = 0f;
         [HideInInspector]
         public bool healthRegen = false;
-        public bool isManuallyMoving = false;
-        public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
-
 
         //References
         public SO_Ability northAbility;

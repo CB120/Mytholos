@@ -4,7 +4,6 @@ using Myths;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
-using System.Collections.Generic;
 
 public class PlayerParticipant : Participant
 {
@@ -58,7 +57,7 @@ public class PlayerParticipant : Participant
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
         {
-            SelectedMyth.ManualMovementStyle.Move(Vector2.zero, context);
+            CancelManualMovement();
             selectedMythIndex = -1;
             SelectMyth.Invoke(-1);
         }
@@ -74,10 +73,16 @@ public class PlayerParticipant : Participant
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
         {
-            SelectedMyth.ManualMovementStyle.Move(Vector2.zero, context);
+            CancelManualMovement();
             selectedMythIndex = -1;
             SelectMyth.Invoke(-1);
         }
+    }
+
+    private void CancelManualMovement()
+    {
+        if (SelectedMyth.Command is ManualMoveCommand manualMoveCommand)
+            manualMoveCommand.input = Vector2.zero;
     }
 
     public void UseAbilityNorth(InputAction.CallbackContext context)
@@ -174,9 +179,13 @@ public class PlayerParticipant : Participant
     public void Move(InputAction.CallbackContext context)
     {
         if (!SelectedMyth) return;
+
+        if (SelectedMyth.Command is not ManualMoveCommand)
+            SelectedMyth.Command = new ManualMoveCommand();
         
-        SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>(), context);
-        
+        var manualMoveCommand = SelectedMyth.Command as ManualMoveCommand;
+
+        manualMoveCommand.input = context.ReadValue<Vector2>();
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)
