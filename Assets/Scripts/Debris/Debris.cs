@@ -56,6 +56,14 @@ namespace Debris
             return true;
         }
 
+        public void RemoveDebris()
+        {
+            CurrentElement = null;
+            
+            if (decayCoroutine != null)
+                StopCoroutine(decayCoroutine);
+        }
+
         private void RestartDecayTimer()
         {
             if (decayCoroutine != null)
