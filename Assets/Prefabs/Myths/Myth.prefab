@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4441584325354896440}
   - component: {fileID: 767059984563626952}
   - component: {fileID: 2326847374803901642}
+  - component: {fileID: 735515940438014375}
   m_Layer: 0
   m_Name: State Machine
   m_TagString: Untagged
@@ -204,6 +205,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  dodgeCommandReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7428839973292417855}
+        m_TargetAssemblyTypeName: Myths.Myth, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 735515940438014375}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2326847374803901642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  speed: 5
   moveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -236,7 +253,36 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementController: {fileID: 6450067431077666470}
-  speed: 5
+  anim: {fileID: 0}
+--- !u!114 &735515940438014375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040751574335777805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36be6ce37baae6429a7080068bc4b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  DodgeComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7428839973292417855}
+        m_TargetAssemblyTypeName: Myths.Myth, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9166940849690583412}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  navMeshAgent: {fileID: 7423737072121430647}
 --- !u!1 &8969299549519444571
 GameObject:
   m_ObjectHideFlags: 0

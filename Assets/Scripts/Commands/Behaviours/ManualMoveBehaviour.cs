@@ -35,45 +35,50 @@ namespace Commands.Behaviours
 
         private void Update()
         {
-            var inputVector = new Vector3(
-                manualMoveCommand.input.x,
-                0,
-                manualMoveCommand.input.y
-            );
-
-            if (inputVector == Vector3.zero)
+            if (!myth.isInvulnerable)
             {
-                myth.Command = null;
-                movementController.SetTargetVelocity(Vector3.zero);
-                if (anim) anim.SetBool("Walking", false);
-                moveComplete.Invoke();
-                return;
+                var inputVector = new Vector3(
+                    manualMoveCommand.input.x,
+                    0,
+                    manualMoveCommand.input.y
+                );
+
+                if (inputVector == Vector3.zero)
+                {
+                    myth.Command = null;
+                    movementController.SetTargetVelocity(Vector3.zero);
+                    if (anim) anim.SetBool("Walking", false);
+                    moveComplete.Invoke();
+                    return;
+                }
+
+                inputVector.Normalize();
+
+                if (inputVector != lastDirection)
+                {
+                    lerpTime = 0;
+                }
+
+                lastDirection = inputVector;
+                targetDirection = Vector3.Lerp(targetDirection, inputVector,
+                    Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing)));
+                if (anim) anim.SetBool("Walking", true);
+                movementController.SetTargetVelocity(inputVector * speed);
+
+
+                Vector3 lookDirection = inputVector;
+                myth.lastInputDirection = inputVector;
+                if (lookDirection != Vector3.zero)
+                {
+                    myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 8);
+                    //myth.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDirection),
+                    //Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing)));
+                }
+
+                lerpTime += Time.deltaTime;
+
+                //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lastRotation, Time.deltaTime * 8);
             }
-
-            inputVector.Normalize();
-
-            if (inputVector != lastDirection)
-            {
-                lerpTime = 0;
-            }
-
-            lastDirection = inputVector;
-            targetDirection = Vector3.Lerp(targetDirection, inputVector,
-                Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing)));
-            if (anim) anim.SetBool("Walking", true);
-            movementController.SetTargetVelocity(inputVector * speed);
-
-            Vector3 lookDirection = inputVector;
-            if (lookDirection != Vector3.zero)
-            {
-                myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 8);
-                //myth.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDirection),
-                //Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing)));
-            }
-
-            lerpTime += Time.deltaTime;
-
-            //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lastRotation, Time.deltaTime * 8);
         }
     }
 }

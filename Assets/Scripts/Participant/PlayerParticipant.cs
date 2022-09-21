@@ -104,11 +104,12 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
 
-        if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
+        
+        //if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
+        
 
-
-        SelectedMyth.Command = new AbilityCommand(SelectedMyth.eastAbility);
-        SelectAbility.Invoke(3);
+        SelectedMyth.Command = new DodgeCommand();
+        //SelectAbility.Invoke(3);
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)
@@ -140,7 +141,7 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
         
-        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Stay);
+        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Idle);
     }
 
     public void MoveStrategyDown(InputAction.CallbackContext context)
@@ -157,11 +158,11 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
         // TODO: Decide on a movement strategy.
         // SelectedMyth.Command = new MoveCommand();
 
-        Debug.Log($"{nameof(MoveStrategyLeft)} has not been set up. See the {nameof(PlayerParticipant)} script.");
+        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Flee);
     }
 
     public void MoveStrategyRight(InputAction.CallbackContext context)

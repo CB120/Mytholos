@@ -4,7 +4,7 @@ namespace Commands
     {
         public enum MoveCommandType
         {
-            Stay,
+            Idle,
             Approach,
             Flee,
             Support

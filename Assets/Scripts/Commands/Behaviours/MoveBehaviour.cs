@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using Commands;
 
 namespace Myths.Behaviours
 {
@@ -9,12 +10,12 @@ namespace Myths.Behaviours
         public UnityEvent moveComplete = new();
         public UnityEvent moveFailed = new();
 
-        // TODO: This needs to be hooked back up
-        // TODO: So does rotation
         [SerializeField] private Animator anim;
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private float speed;
         public NavMeshAgent navMeshAgent;
+
+        //[SerializeField] private 
 
         private void Start()
         {
@@ -27,21 +28,36 @@ namespace Myths.Behaviours
 
         private void OnEnable()
         {
-            SetDestination();
+            if(((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Approach)
+            {
+                ApproachEnemy();
+                Debug.Log("Approaching!");
+            }
+            if (((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Flee)
+            {
+                
+                Debug.Log("Approaching!");
+            }
+
         }
 
         private void Update()
         {
-            // Debug.Log($"{myth.name} moved. {((MoveCommand)myth.Command).CurrentMoveCommandType}");
+             Debug.Log($"{myth.name} moved. {((MoveCommand)myth.Command).CurrentMoveCommandType}");
             
             navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime);
 
             movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
 
-            CheckDestination();
+            if (((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Approach)
+            {
+                ApproachEnemyDistanceCheck();
+            }
+         
         }
 
-        private void SetDestination()
+        //** Approach related function **/
+        private void ApproachEnemy()
         {
             if (myth.targetEnemy == null)
             {
@@ -55,7 +71,7 @@ namespace Myths.Behaviours
             if (anim) anim.SetBool("Walking", true);
         }
 
-        private void CheckDestination()
+        private void ApproachEnemyDistanceCheck()
         {
             if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
@@ -68,6 +84,9 @@ namespace Myths.Behaviours
             }
         }
 
+        /** Flee functions **/
+
+
         private Quaternion NewRotation()
         {
             Vector3 facingDirection = (navMeshAgent.steeringTarget);
@@ -75,6 +94,7 @@ namespace Myths.Behaviours
             return lookRotation;
         }
 
+        // Debug
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;

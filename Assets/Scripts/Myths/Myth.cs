@@ -21,6 +21,7 @@ namespace Myths
         public float walkSpeed;
         public float health;
         public GameObject targetEnemy;
+        public Vector2 lastInputDirection;
         public float Health
         {
             get => health;

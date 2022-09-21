@@ -12,6 +12,7 @@ namespace Commands
         public UnityEvent abilityCommandReceived = new();
         public UnityEvent moveCommandReceived = new();
         public UnityEvent manualMoveCommandReceived = new();
+        public UnityEvent dodgeCommandReceived = new();
 
         private void OnEnable()
         {
@@ -40,6 +41,13 @@ namespace Commands
             if (myth.Command is ManualMoveCommand)
             {
                 manualMoveCommandReceived.Invoke();
+            }
+            if(myth.Command is DodgeCommand)
+            {
+                if (myth.isInvulnerable == false)
+                {
+                    dodgeCommandReceived.Invoke();
+                }
             }
         }
     }
