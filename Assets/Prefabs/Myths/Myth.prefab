@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 3960126671536291985}
   - component: {fileID: 3518652285303723768}
   - component: {fileID: 6610304959912024817}
+  - component: {fileID: 9015663202842353153}
   m_Layer: 0
   m_Name: Myth
   m_TagString: Myth
@@ -445,6 +446,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   damagePerSecond: 1
-  filterType: 1
+  elementFilter: {fileID: 9015663202842353153}
+--- !u!114 &9015663202842353153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f77ae4f9a84fd78427b66ddb897998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filterType: 0
   filterElements:
   - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
