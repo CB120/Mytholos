@@ -19,6 +19,7 @@ public class MusicLayer
 public class BattleMusicController : MonoBehaviour
 {
     // Properties
+    [Tooltip("Reorder this list for layer priority")]
     public MusicLayer[] musicLayers;
 
     [Tooltip("% volume per second | Larger values = faster crossfades")]
@@ -33,6 +34,7 @@ public class BattleMusicController : MonoBehaviour
 
     [Space(30)]
     [Header("Asset References")]
+    public AllParticipantDataService allParticipantDataService;
     public SO_Element[] allElements;
 
 
@@ -40,6 +42,12 @@ public class BattleMusicController : MonoBehaviour
     private void Awake()
     {
         battleMusicEmitter = GetComponent<StudioEventEmitter>();
+    }
+
+    private void Start()
+    {
+        CalculateInitialVolumes();
+        UpdateVolumesImmediate();
     }
 
     void Update()
@@ -62,6 +70,13 @@ public class BattleMusicController : MonoBehaviour
     {
 
         //Apply a Mathf.Clamp() if bugs occur
+    }
+
+    void CalculateInitialVolumes()
+    {
+        SO_AllParticipantData ParticipantData = allParticipantDataService.GetAllParticipantData();
+
+
     }
 
     void UpdateFades() //applies the lerp between the current volume and target volume
@@ -87,5 +102,15 @@ public class BattleMusicController : MonoBehaviour
         {
             battleMusicEmitter.SetParameter(m.name + " Volume", m.volume); //Syntax in FMOD is currently '<Element> Volume', e.g 'Earth Volume'
         }
+    }
+
+    void UpdateVolumesImmediate() //Instantly applies a fade, should only be used at start of track
+    {
+        foreach (MusicLayer m in musicLayers)
+        {
+            m.targetVolume = Mathf.Clamp(m.targetVolume, 0f, 100f);
+            m.volume = m.targetVolume;
+        }
+        UpdateElementVolumes();
     }
 }
