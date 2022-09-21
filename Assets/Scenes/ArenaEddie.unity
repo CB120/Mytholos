@@ -1811,14 +1811,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a55f7f43cf03834f9d71acdf614f4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthVolume: 0
-  electricVolume: 0
-  fireVolume: 0
-  iceVolume: 0
-  steelVolume: 0
-  waterVolume: 0
-  windVolume: 0
-  woodVolume: 0
+  musicLayers:
+  - name: Earth
+    volume: 0
+    targetVolume: 0
+  - name: Electric
+    volume: 0
+    targetVolume: 0
+  - name: Fire
+    volume: 0
+    targetVolume: 0
+  - name: Ice
+    volume: 0
+    targetVolume: 0
+  - name: Metal
+    volume: 0
+    targetVolume: 0
+  - name: Water
+    volume: 0
+    targetVolume: 0
+  - name: Wind
+    volume: 0
+    targetVolume: 0
+  - name: Wood
+    volume: 0
+    targetVolume: 0
+  volumeLerpRate: 20
   allElements:
   - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}

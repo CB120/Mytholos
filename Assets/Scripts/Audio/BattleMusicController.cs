@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+[System.Serializable]
+public class MusicLayer
+{
+    [Tooltip("Element Name, '<Name> Volume' in FMOD")]
+    public string name;
+    [Tooltip("Current Layer volume")]
+    [Range(0, 100)] public float volume = 0f;
+    [Tooltip("Fade-in/out target volume")]
+    [Range(0, 100)] public float targetVolume = 0f;
+    [Tooltip("If enabled, Volume slider allows direct control of FMOD parameter")]
+    public bool manualVolumeOverride = false;
+}
+
 public class BattleMusicController : MonoBehaviour
 {
     // Properties
+    public MusicLayer[] musicLayers;
+
+    [Tooltip("% volume per second | Larger values = faster crossfades")]
+    public float volumeLerpRate = 20f;
 
 
     // Variables
-    [Header("Debug readouts of current Element volumes")]
-    [Range(0, 100)] public float earthVolume = 0f;
-    [Range(0, 100)] public float electricVolume = 0f;
-    [Range(0, 100)] public float fireVolume = 0f;
-    [Range(0, 100)] public float iceVolume = 0f;
-    [Range(0, 100)] public float steelVolume = 0f;
-    [Range(0, 100)] public float waterVolume = 0f;
-    [Range(0, 100)] public float windVolume = 0f;
-    [Range(0, 100)] public float woodVolume = 0f;
 
 
     // References
@@ -36,7 +44,7 @@ public class BattleMusicController : MonoBehaviour
 
     void Update()
     {
-        CalculateElementVolumes();
+        UpdateFades();
         UpdateElementVolumes();
     }
 
@@ -44,7 +52,7 @@ public class BattleMusicController : MonoBehaviour
     //Listener-called
     public void OnDebrisChange() //Called by DebrisController
     {
-        Debug.Log("hello!");
+        CalculateElementVolumes();
     }
 
 
@@ -53,19 +61,31 @@ public class BattleMusicController : MonoBehaviour
     void CalculateElementVolumes()
     {
 
-        //FMOD seems to automatically clamp the values in the 0-100 range set for each parameter. Apply a Mathf.Clamp() if bugs occur
+        //Apply a Mathf.Clamp() if bugs occur
     }
 
-    void UpdateElementVolumes() //yes there's a lot of repeated code, but it's way easier to read and understand in FMOD doing it this way.
-                                //could be improved by a Serializable string & float struct
+    void UpdateFades() //applies the lerp between the current volume and target volume
     {
-        battleMusicEmitter.SetParameter("Earth Volume", earthVolume);
-        battleMusicEmitter.SetParameter("Electric Volume", electricVolume);
-        battleMusicEmitter.SetParameter("Fire Volume", fireVolume);
-        battleMusicEmitter.SetParameter("Ice Volume", iceVolume);
-        battleMusicEmitter.SetParameter("Steel Volume", steelVolume);
-        battleMusicEmitter.SetParameter("Water Volume", waterVolume);
-        battleMusicEmitter.SetParameter("Wind Volume", windVolume);
-        battleMusicEmitter.SetParameter("Wood Volume", woodVolume);
+        foreach (MusicLayer m in musicLayers)
+        {
+            if (m.manualVolumeOverride) continue;
+
+            //Adding/subtracting a constant per second = linear transition.
+            //Adjust the volume curve in FMOD, don't try and change the lerp curve
+            if (m.volume > m.targetVolume) m.volume -= volumeLerpRate * Time.deltaTime; 
+            if (m.volume < m.targetVolume) m.volume += volumeLerpRate * Time.deltaTime;
+
+            //If we end up with targetVolumes that aren't 0 or 100, add a 'if volume delta <= 0.1, volume = target' here
+
+            m.volume = Mathf.Clamp(m.volume, 0f, 100f);
+        }
+    }
+
+    void UpdateElementVolumes() //applies the current volumes to FMOD
+    {
+        foreach (MusicLayer m in musicLayers)
+        {
+            battleMusicEmitter.SetParameter(m.name + " Volume", m.volume); //Syntax in FMOD is currently '<Element> Volume', e.g 'Earth Volume'
+        }
     }
 }
