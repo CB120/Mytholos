@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,10 +6,6 @@ namespace Myths
 {
     public class Myth : MonoBehaviour
     {
-        [SerializeField] private MonoBehaviour initialState;
-        
-        private MonoBehaviour currentState;
-
         //Events
         public UnityEvent<float> HealthChanged = new();
         public UnityEvent<float> StaminaChanged = new();
@@ -57,9 +52,6 @@ namespace Myths
             }
         }
 
-        //Variables
-        List<Command> commandQueue = new List<Command>();
-
         public bool isInteracting = false; // Not sure if im going to go this route, but when we're using an ability we'll set
                                            // this to true for the duration & make abilities only usable if this is false
 
@@ -93,29 +85,12 @@ namespace Myths
 
         public UnityEvent commandChanged = new();
 
-        public void ChangeState(MonoBehaviour state)
-        {
-            currentState.enabled = false;
-            
-            currentState = state;
-
-            currentState.enabled = true;
-        }
-
         //#if UNITY_EDITOR
         //private void OnValidate()
         //{
         //    Health = health;
         //}
         //#endif
-
-        private void Start()
-        {
-            currentState = initialState;
-
-            currentState.enabled = true;
-
-        }
 
         private void Update()
         {
