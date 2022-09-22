@@ -17,13 +17,14 @@ public class PartyBuilder : MonoBehaviour
     private void Awake()
     {
         allParticipantData = allParticipantDataService.GetAllParticipantData();
+
+        //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
+        SetPartyParentReferences();
+        SpawnParties();
     }
 
     void Start()
     {
-        SetPartyParentReferences();
-        SpawnParties();
-
         //Destroy(this.gameObject); //not sure if we want this yet?
     }
 

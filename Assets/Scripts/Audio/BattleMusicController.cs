@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using Myths;
 
 [System.Serializable]
 public class MusicLayer
@@ -14,6 +15,9 @@ public class MusicLayer
     [Range(0, 100)] public float targetVolume = 0f;
     [Tooltip("If enabled, Volume slider allows direct control of FMOD parameter")]
     public bool manualVolumeOverride = false;
+
+    [HideInInspector]
+    public int score = 0;
 }
 
 public class BattleMusicController : MonoBehaviour
@@ -24,7 +28,8 @@ public class BattleMusicController : MonoBehaviour
 
     [Tooltip("% volume per second | Larger values = faster crossfades")]
     public float volumeLerpRate = 20f;
-
+    [Tooltip("Desired number of Layers - Algorithm will target this number of Layers playing at once")]
+    [Range(0, 8)] public int desiredLayers = 3;
 
     // Variables
 
@@ -46,7 +51,8 @@ public class BattleMusicController : MonoBehaviour
 
     private void Start()
     {
-        CalculateInitialVolumes();
+        CalculateInitialScores();
+        UpdateTargetVolumes();
         UpdateVolumesImmediate();
     }
 
@@ -60,23 +66,63 @@ public class BattleMusicController : MonoBehaviour
     //Listener-called
     public void OnDebrisChange() //Called by DebrisController
     {
-        CalculateElementVolumes();
+        CalculateElementScores();
+        UpdateTargetVolumes();
     }
 
 
-    //Methods
-        //Private
-    void CalculateElementVolumes()
+    // Methods
+        // Private
+    void CalculateElementScores()
     {
 
         //Apply a Mathf.Clamp() if bugs occur
     }
 
-    void CalculateInitialVolumes()
+    void CalculateInitialScores()
     {
+        //Set the scores based on myth choices
         SO_AllParticipantData participantData = allParticipantDataService.GetAllParticipantData();
 
-        
+        foreach (PartyData p in participantData.partyData)
+        {
+            foreach (Myth m in p.myths)
+            {
+                musicLayers[GetIndexOfLayer(m.element.name)].score++;
+            }
+        }
+    }
+
+    void UpdateTargetVolumes() { 
+        //Find the top <desiredLayers> elements (if there's a tie, it's broken by the order of MusicLayers)
+        List<int> maxLayerIndexes = new List<int>(); //'applied' indexes get added here
+
+        for (int a = 0; a < desiredLayers; a++) {
+            //Max search
+            int maxScore = int.MinValue;
+            int maxIndex = -1;
+            for (int i = 0; i < musicLayers.Length; i++)
+            {
+                if (musicLayers[i].score > maxScore && !maxLayerIndexes.Contains(i))
+                {
+                    maxScore = musicLayers[i].score;
+                    maxIndex = i;
+                }
+            }
+
+            maxLayerIndexes.Add(maxIndex);
+        }
+
+        //Apply the target volumes, based on whether a layer was in maxLayerIndexes or not
+        foreach (int i in maxLayerIndexes)
+        {
+            musicLayers[i].targetVolume = 100f;
+        }
+
+        for (int i = 0; i < musicLayers.Length; i++)
+        {
+            if (!maxLayerIndexes.Contains(i)) musicLayers[i].targetVolume = 0f;
+        }
     }
 
     void UpdateFades() //applies the lerp between the current volume and target volume
@@ -112,5 +158,18 @@ public class BattleMusicController : MonoBehaviour
             m.volume = m.targetVolume;
         }
         UpdateElementVolumes();
+    }
+
+
+    // Functions
+    int GetIndexOfLayer(string elementName)
+    {
+        for (int i = 0; i < musicLayers.Length; i++)
+        {
+            if (musicLayers[i].name == elementName) return i;
+        }
+
+        Debug.LogWarning("Could not find Music Layer with name " + elementName + ", return -1, expect index errors.");
+        return -1;
     }
 }
