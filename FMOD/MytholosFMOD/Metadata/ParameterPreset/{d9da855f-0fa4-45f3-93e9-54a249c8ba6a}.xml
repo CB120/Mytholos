@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{d9da855f-0fa4-45f3-93e9-54a249c8ba6a}">
+		<property name="name">
+			<value>Menu Music</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7545896f-4f3f-4948-ae2a-163a829f6993}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7545896f-4f3f-4948-ae2a-163a829f6993}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>5</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Main Menu</value>
+			<value>Options</value>
+			<value>Encyclopaedia</value>
+			<value>Myth Select</value>
+			<value>Arena Select</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
