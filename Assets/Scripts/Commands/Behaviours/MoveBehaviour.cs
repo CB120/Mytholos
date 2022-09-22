@@ -8,6 +8,7 @@ namespace Myths.Behaviours
 {
     public class MoveBehaviour : Behaviour
     {
+        [Header("Move Behaviour")]
         public UnityEvent moveComplete = new();
         public UnityEvent moveFailed = new();
         
@@ -41,8 +42,10 @@ namespace Myths.Behaviours
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             switch (((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType) { 
                 case MoveCommand.MoveCommandType.Approach:
                     ApproachEnemy();

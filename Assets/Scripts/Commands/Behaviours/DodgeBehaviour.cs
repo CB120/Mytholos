@@ -8,6 +8,7 @@ namespace Myths.Behaviours
     // Create a scriptable object for this
     public class DodgeBehaviour : Behaviour
     {
+        [Header("Dodge Behaviour")]
         public UnityEvent DodgeComplete = new();
         public NavMeshAgent navMeshAgent;
         private float speed = 0;
@@ -23,8 +24,10 @@ namespace Myths.Behaviours
             //ActivateDodge();
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             inputDirection = new Vector3(myth.lastInputDirection.x, 0, myth.lastInputDirection.y);
             if (inputDirection != null && inputDirection != Vector3.zero)
             {

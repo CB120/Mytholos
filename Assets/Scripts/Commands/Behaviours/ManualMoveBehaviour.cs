@@ -6,6 +6,7 @@ namespace Commands.Behaviours
 {
     public class ManualMoveBehaviour : Behaviour
     {
+        [Header("Manual Move Behaviour")]
         // Movement Properties
         private Vector3 lastDirection;
         private Vector3 targetDirection;
@@ -22,8 +23,10 @@ namespace Commands.Behaviours
 
         private ManualMoveCommand manualMoveCommand;
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             manualMoveCommand = mythCommandHandler.Command as ManualMoveCommand;
 
             if (manualMoveCommand == null)

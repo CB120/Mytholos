@@ -7,13 +7,16 @@ namespace Commands.Behaviours
 {
     public class ChargeAbilityBehaviour : Behaviour
     {
+        [Header("Charge Ability Behaviour")]
         public UnityEvent abilityCharged = new();
         
         private Coroutine chargeAbilityCoroutine;
         private AbilityCommand abilityCommand;
-        
-        private void OnEnable()
+
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             abilityCommand = mythCommandHandler.Command as AbilityCommand;
             
             if (chargeAbilityCoroutine != null)
@@ -22,8 +25,10 @@ namespace Commands.Behaviours
             chargeAbilityCoroutine = StartCoroutine(ChargeAbility());
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
+            
             if (chargeAbilityCoroutine != null)
                 StopCoroutine(chargeAbilityCoroutine);
 

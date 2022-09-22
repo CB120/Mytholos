@@ -7,13 +7,16 @@ namespace Commands.Behaviours
 {
     public class PerformAbilityBehaviour : Behaviour
     {
+        [Header("Perform Ability Behaviour")]
         public UnityEvent performAbilityComplete = new();
 
         private Coroutine performAbilityCoroutine;
         private AbilityCommand abilityCommand;
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             abilityCommand = mythCommandHandler.Command as AbilityCommand;
             
             var abilityData = abilityCommand.abilityData;
@@ -45,17 +48,15 @@ namespace Commands.Behaviours
             
             abilityObject.GetComponent<Ability>().owningMyth = myth;
 
-            mythCommandHandler.WillStoreNewCommands = false;
-
             if (performAbilityCoroutine != null)
                 StopCoroutine(performAbilityCoroutine);
 
             performAbilityCoroutine = StartCoroutine(PerformAbility());
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
-            mythCommandHandler.WillStoreNewCommands = true;
+            base.OnDisable();
             
             if (performAbilityCoroutine != null)
                 StopCoroutine(performAbilityCoroutine);
@@ -69,8 +70,6 @@ namespace Commands.Behaviours
 
             mythCommandHandler.Command = null;
             
-            mythCommandHandler.WillStoreNewCommands = true;
-
             performAbilityComplete.Invoke();
         }
     }
