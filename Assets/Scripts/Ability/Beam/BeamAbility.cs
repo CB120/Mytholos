@@ -6,6 +6,7 @@ public class BeamAbility : Ability
     private float DurationTimer;
 
     [SerializeField] private BeamExtender BeamExtender;
+    // TODO: Should this be derived from SO_Ability.performTime?
     [SerializeField] private float BeamDuration;
     [SerializeField] private float BeamLength;
 

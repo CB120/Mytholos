@@ -12,10 +12,13 @@ namespace Commands
             get => command;
             set
             {
+                if (!WillStoreNewCommands) return;
                 command = value;
                 commandChanged.Invoke();
             }
         }
+        
+        public bool WillStoreNewCommands { get; set; }
 
         public UnityEvent commandChanged = new();
     }

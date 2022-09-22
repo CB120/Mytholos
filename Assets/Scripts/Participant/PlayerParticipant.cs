@@ -200,10 +200,9 @@ public class PlayerParticipant : Participant
 
         if (SelectedMythCommandHandler.Command is not ManualMoveCommand)
             SelectedMythCommandHandler.Command = new ManualMoveCommand();
-        
-        var manualMoveCommand = SelectedMythCommandHandler.Command as ManualMoveCommand;
 
-        manualMoveCommand.input = context.ReadValue<Vector2>();
+        if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
+            manualMoveCommand.input = context.ReadValue<Vector2>();
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)

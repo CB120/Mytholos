@@ -28,6 +28,7 @@ namespace Commands.Behaviours
 
             if (manualMoveCommand == null)
             {
+                // TODO: Unhelpful
                 Debug.LogWarning("I'm not sure how you got here?");
                 moveFailed.Invoke();
             }
