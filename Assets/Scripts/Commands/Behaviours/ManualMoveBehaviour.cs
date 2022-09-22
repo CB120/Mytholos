@@ -6,6 +6,7 @@ namespace Commands.Behaviours
 {
     public class ManualMoveBehaviour : Behaviour
     {
+        [Header("Manual Move Behaviour")]
         // Movement Properties
         private Vector3 lastDirection;
         private Vector3 targetDirection;
@@ -22,12 +23,15 @@ namespace Commands.Behaviours
 
         private ManualMoveCommand manualMoveCommand;
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            manualMoveCommand = myth.Command as ManualMoveCommand;
+            base.OnEnable();
+            
+            manualMoveCommand = mythCommandHandler.Command as ManualMoveCommand;
 
             if (manualMoveCommand == null)
             {
+                // TODO: Unhelpful
                 Debug.LogWarning("I'm not sure how you got here?");
                 moveFailed.Invoke();
             }
@@ -45,7 +49,7 @@ namespace Commands.Behaviours
 
                 if (inputVector == Vector3.zero)
                 {
-                    myth.Command = null;
+                    mythCommandHandler.Command = null;
                     movementController.SetTargetVelocity(Vector3.zero);
                     if (anim) anim.SetBool("Walking", false);
                     moveComplete.Invoke();

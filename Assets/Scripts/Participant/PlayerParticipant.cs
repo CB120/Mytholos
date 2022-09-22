@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Commands;
 using Myths;
@@ -9,7 +10,7 @@ public class PlayerParticipant : Participant
 {
     //Events
     public UnityEvent<int> SelectMyth = new();
-    public UnityEvent<int> SelectAbility = new();
+    public UnityEvent<SO_Ability> SelectAbility = new();
 
     //Properties
 
@@ -24,6 +25,8 @@ public class PlayerParticipant : Participant
     private int selectedEnemyIndex = 0;
     private bool EnemySwitch = false; 
     private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+    // TODO: Should be cached for performance
+    private MythCommandHandler SelectedMythCommandHandler => SelectedMyth.GetComponent<MythCommandHandler>();
     //public static PlayerParticipant singleton;
 
     //public List<GameObject> Enemies;
@@ -81,26 +84,13 @@ public class PlayerParticipant : Participant
 
     private void CancelManualMovement()
     {
-        if (SelectedMyth.Command is ManualMoveCommand manualMoveCommand)
+        if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
             manualMoveCommand.input = Vector2.zero;
     }
 
     public void UseAbilityNorth(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        
-        if (!SelectedMyth) return;
-
-        if (SelectedMyth.Stamina < SelectedMyth.northAbility.stamina) return;
-        if (!SelectedMyth.northAbility.isRanged)
-        {
-            SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
-            Debug.Log("Close range attack");
-            return;
-        }
-
-        SelectedMyth.Command = new AbilityCommand(SelectedMyth.northAbility);
-        SelectAbility.Invoke(0);
+        UseAbility(context, myth => myth.northAbility);
     }
 
     public void UseAbilityEast(InputAction.CallbackContext context)
@@ -113,41 +103,18 @@ public class PlayerParticipant : Participant
         //if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
         
 
-        SelectedMyth.Command = new DodgeCommand();
+        SelectedMythCommandHandler.Command = new DodgeCommand();
         //SelectAbility.Invoke(3);
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        
-        if (!SelectedMyth) return;
-
-        if (SelectedMyth.Stamina < SelectedMyth.southAbility.stamina) return;
-
-        if (!SelectedMyth.southAbility.isRanged)
-        {
-            SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.ApproachAttack);
-            SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
-            Debug.Log("Close range attack");
-            return;
-        }
-        else
-        {
-            SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
-            SelectAbility.Invoke(2);
-        }
+        UseAbility(context, myth => myth.southAbility);
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        
-        if (!SelectedMyth) return;
-        if (SelectedMyth.Stamina < SelectedMyth.westAbility.stamina) return;
-        
-        SelectedMyth.Command = new AbilityCommand(SelectedMyth.westAbility);
-        SelectAbility.Invoke(1);
+        UseAbility(context, myth => myth.westAbility);
     }
 
     public void MoveStrategyUp(InputAction.CallbackContext context)
@@ -156,7 +123,7 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
         
-        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Idle);
+        SelectedMythCommandHandler.Command = new MoveCommand(MoveCommand.MoveCommandType.Idle);
     }
 
     public void MoveStrategyDown(InputAction.CallbackContext context)
@@ -165,7 +132,7 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
         
-        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
+        SelectedMythCommandHandler.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
     }
 
     public void MoveStrategyLeft(InputAction.CallbackContext context)
@@ -177,7 +144,7 @@ public class PlayerParticipant : Participant
         // TODO: Decide on a movement strategy.
         // SelectedMyth.Command = new MoveCommand();
 
-        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Flee);
+        SelectedMythCommandHandler.Command = new MoveCommand(MoveCommand.MoveCommandType.Flee);
     }
 
     public void MoveStrategyRight(InputAction.CallbackContext context)
@@ -196,12 +163,11 @@ public class PlayerParticipant : Participant
     {
         if (!SelectedMyth) return;
 
-        if (SelectedMyth.Command is not ManualMoveCommand)
-            SelectedMyth.Command = new ManualMoveCommand();
-        
-        var manualMoveCommand = SelectedMyth.Command as ManualMoveCommand;
+        if (SelectedMythCommandHandler.Command is not ManualMoveCommand)
+            SelectedMythCommandHandler.Command = new ManualMoveCommand();
 
-        manualMoveCommand.input = context.ReadValue<Vector2>();
+        if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
+            manualMoveCommand.input = context.ReadValue<Vector2>();
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)
@@ -235,5 +201,28 @@ public class PlayerParticipant : Participant
                 return;
             }
         }
+    }
+
+    private void UseAbility(InputAction.CallbackContext context, Func<Myth, SO_Ability> abilityAccessor)
+    {
+        if (!context.performed) return;
+        
+        if (!SelectedMyth) return;
+
+        var ability = abilityAccessor(SelectedMyth);
+
+        // TODO: I don't think this is the right place for this check
+        if (SelectedMyth.Stamina.Value < ability.stamina) return;
+        
+        if (!ability.isRanged)
+        {
+            SelectedMythCommandHandler.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
+            Debug.Log("Close range attack");
+            return;
+        }
+
+        SelectedMythCommandHandler.Command = new AbilityCommand(ability);
+        
+        SelectAbility.Invoke(ability);
     }
 }

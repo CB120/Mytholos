@@ -1,30 +1,27 @@
 using UnityEngine;
 using Myths;
 
-public class FlurryAbility : Ability
+public class BeamAbility : Ability
 {
     private float DurationTimer;
 
-    Transform Collider;
-
-    [SerializeField] private float FlurryDuration;
+    [SerializeField] private BeamExtender BeamExtender;
+    // TODO: Should this be derived from SO_Ability.performTime?
+    [SerializeField] private float BeamDuration;
+    [SerializeField] private float BeamLength;
 
     public override void Start()
     {
         base.Start();
-        Collider = gameObject.transform.GetChild(0);
-        
-        if (Collider)
-        {
-            Collider.gameObject.SetActive(true);
-        }
+
+        BeamExtender.SetMaxRange(BeamLength);
     }
 
     public override void Update()
     {
         DurationTimer += Time.deltaTime;
 
-        if (DurationTimer > FlurryDuration)
+        if (DurationTimer > BeamDuration)
         {
             Destroy(gameObject);
         }

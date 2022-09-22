@@ -12,7 +12,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void Start()
     {
-        owningMyth.Stamina -= ability.stamina;
+        owningMyth.Stamina.Value -= ability.stamina;
     }
 
     virtual public void Update()
@@ -21,18 +21,12 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     virtual public void Attack(Myth myth, float damage)
     {
-        if (myth.partyIndex != this.owningMyth.partyIndex)//Ensures Myths cannot harm others in their party 
-        {
-            var finalDamage = damage * DamageMultiplier;
-            Debug.LogWarning($"{myth.gameObject.name} was Attacked by {owningMyth.gameObject.name}");
-            Debug.LogWarning($"Dealt {finalDamage} damage ({DamageMultiplier * 100}% of base {damage})");
-            myth.TakeDamage(finalDamage);
-        }
-        else
-        {
-            //Debug.LogWarning($"{myth.gameObject.name} was Attacked by it's own team");
-            myth.TakeDamage(0);
-        }
+        if (myth.partyIndex == this.owningMyth.partyIndex) return; //Ensures Myths cannot harm others in their party 
+        
+        var finalDamage = damage * DamageMultiplier;
+        Debug.LogWarning($"{myth.gameObject.name} was Attacked by {owningMyth.gameObject.name}");
+        Debug.LogWarning($"Dealt {finalDamage} damage ({DamageMultiplier * 100}% of base {damage})");
+        myth.Health.Value -= finalDamage;
     }
 
     virtual public void Trigger(Myth myth)

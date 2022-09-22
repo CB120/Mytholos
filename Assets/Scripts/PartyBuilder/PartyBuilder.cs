@@ -74,7 +74,7 @@ public class PartyBuilder : MonoBehaviour
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
         
-
+        // TODO: I want it on the record that I don't like this
         newMyth.northAbility = mythData.northAbility;
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;

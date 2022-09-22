@@ -38,9 +38,7 @@ public class HealingAbility : Ability
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (myth)
         {
-            
-            myth.healthRegenTick = ability.healing;
-            myth.healthRegen = true;
+            myth.Health.regenSpeed = ability.healing;
         }
     }
 
@@ -49,9 +47,7 @@ public class HealingAbility : Ability
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (myth)
         {
-            myth.healthRegenTick = 0;
-            myth.healthRegen = false;
+            myth.Health.regenSpeed = 0;
         }
     }
-
 }

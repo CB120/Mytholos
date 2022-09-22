@@ -11,6 +11,7 @@ public class SO_Ability : ScriptableObject
     public float healing;
     public float stamina;
     public float chargeTime;
+    public float performTime;
     public bool isRanged;
 
     [Header("Spawning Properties")]
