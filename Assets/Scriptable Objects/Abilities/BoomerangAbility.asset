@@ -18,6 +18,7 @@ MonoBehaviour:
   healing: 0
   stamina: 20
   chargeTime: 0
+  isRanged: 1
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 8698727573697963700, guid: 083411b646840c24ea366b0fcc94c911,

@@ -6,6 +6,7 @@ namespace Commands
         {
             Idle,
             Approach,
+            ApproachAttack,
             Flee,
             Support
         }

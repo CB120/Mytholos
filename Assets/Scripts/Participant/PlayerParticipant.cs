@@ -91,8 +91,13 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
 
-        if (SelectedMyth.Stamina < SelectedMyth.northAbility.stamina) return;   
-
+        if (SelectedMyth.Stamina < SelectedMyth.northAbility.stamina) return;
+        if (!SelectedMyth.northAbility.isRanged)
+        {
+            SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
+            Debug.Log("Close range attack");
+            return;
+        }
 
         SelectedMyth.Command = new AbilityCommand(SelectedMyth.northAbility);
         SelectAbility.Invoke(0);
@@ -120,8 +125,18 @@ public class PlayerParticipant : Participant
 
         if (SelectedMyth.Stamina < SelectedMyth.southAbility.stamina) return;
 
-        SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
-        SelectAbility.Invoke(2);
+        if (!SelectedMyth.southAbility.isRanged)
+        {
+            SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.ApproachAttack);
+            SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
+            Debug.Log("Close range attack");
+            return;
+        }
+        else
+        {
+            SelectedMyth.Command = new AbilityCommand(SelectedMyth.southAbility);
+            SelectAbility.Invoke(2);
+        }
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)

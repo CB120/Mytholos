@@ -10,6 +10,7 @@ namespace Myths.Behaviours
     {
         public UnityEvent moveComplete = new();
         public UnityEvent moveFailed = new();
+        
 
         [SerializeField] private Animator anim;
         [SerializeField] private CollisionDetection movementController;
@@ -17,7 +18,7 @@ namespace Myths.Behaviours
         public NavMeshAgent navMeshAgent;
 
         [SerializeField] private List<NavigationNode> navigationNode;
-        
+
 
         private new void Awake()
         {
@@ -33,7 +34,7 @@ namespace Myths.Behaviours
 
         private void Start()
         {
-                navMeshAgent = myth.GetComponent<NavMeshAgent>();
+            navMeshAgent = myth.GetComponent<NavMeshAgent>();
             if (navMeshAgent == null)
             {
                 Debug.Log("There was a problem assigning " + myth.gameObject.name + " to the navmesh");
@@ -42,18 +43,27 @@ namespace Myths.Behaviours
 
         private void OnEnable()
         {
-           
-            if(((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Approach)
-            {
-                ApproachEnemy();
-                Debug.Log("Approaching!");
-            }
-            if (((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Flee)
-            {
-                FleeEnemy();
-                Debug.Log("Fleeing!");
-            }
-                
+            switch (((MoveCommand)myth.Command).CurrentMoveCommandType) { 
+                case MoveCommand.MoveCommandType.Approach:
+                    ApproachEnemy();
+                    Debug.Log("Approaching!");
+                    break;
+                case MoveCommand.MoveCommandType.Flee:
+                    FleeEnemy();
+                    Debug.Log("Fleeing!");
+                    break;
+                case MoveCommand.MoveCommandType.ApproachAttack:
+                    ApproachEnemy();
+                    Debug.Log("Approaching to attack!");
+                    break;
+                case MoveCommand.MoveCommandType.Support:
+                    break;
+                case MoveCommand.MoveCommandType.Idle:
+                    break;
+                default:
+                    Debug.Log("How the fuck did you get here?");
+                break;
+            }   
         }
 
         private void Update()
@@ -64,14 +74,27 @@ namespace Myths.Behaviours
 
             movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
 
-            if (((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Approach)
+            switch (((MoveCommand)myth.Command).CurrentMoveCommandType)
             {
-                ApproachEnemyDistanceCheck();
+                case MoveCommand.MoveCommandType.Approach:
+                    ApproachEnemyDistanceCheck();
+                    break;
+                case MoveCommand.MoveCommandType.Flee:
+                    killFlee();
+                    break;
+                case MoveCommand.MoveCommandType.ApproachAttack:
+                    AttackRangeDistanceCheck();
+                    break;
+                case MoveCommand.MoveCommandType.Support:
+                    break;
+                case MoveCommand.MoveCommandType.Idle:
+                    break;
+                default:
+                    Debug.Log("How the fuck did you get here?");
+                    break;
             }
-            if (((MoveCommand)myth.Command).CurrentMoveCommandType == MoveCommand.MoveCommandType.Flee)
-            {
-                killFlee();
-            }
+
+           
 
         }
 
@@ -159,7 +182,23 @@ namespace Myths.Behaviours
                 myth.Command = null;
                 moveComplete.Invoke();
             }
-    }
+        }
+
+        /* Approach - Attack related functions */
+
+        private void AttackRangeDistanceCheck()
+        {
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            {
+                navMeshAgent.ResetPath();
+                if (anim) anim.SetBool("Walking", false);
+                movementController.SetTargetVelocity(Vector3.zero);
+                Debug.Log("Complete " + navMeshAgent.pathStatus);
+                // Pass the ability into here
+                myth.Command = null;
+                moveComplete.Invoke();
+            }
+        }
 
 
         private Quaternion NewRotation()
