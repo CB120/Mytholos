@@ -14,7 +14,7 @@ namespace Commands.Behaviours
         
         private void OnEnable()
         {
-            abilityCommand = myth.Command as AbilityCommand;
+            abilityCommand = mythCommandHandler.Command as AbilityCommand;
             
             if (chargeAbilityCoroutine != null)
                 StopCoroutine(chargeAbilityCoroutine);

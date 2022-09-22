@@ -8,7 +8,8 @@ namespace Commands
     public class AnyStateTransition : MonoBehaviour
     {
         [SerializeField] protected Myth myth;
-        
+        [SerializeField] protected MythCommandHandler mythCommandHandler;
+
         public UnityEvent abilityCommandReceived = new();
         public UnityEvent moveCommandReceived = new();
         public UnityEvent manualMoveCommandReceived = new();
@@ -16,33 +17,33 @@ namespace Commands
 
         private void OnEnable()
         {
-            myth.commandChanged.AddListener(OnCommandChanged);
+            mythCommandHandler.commandChanged.AddListener(OnCommandChanged);
         }
 
         private void OnDisable()
         {
-            myth.commandChanged.RemoveListener(OnCommandChanged);
+            mythCommandHandler.commandChanged.RemoveListener(OnCommandChanged);
         }
 
         private void OnCommandChanged()
         {
-            if (myth.Command == null) return;
+            if (mythCommandHandler.Command == null) return;
 
-            if (myth.Command is AbilityCommand)
+            if (mythCommandHandler.Command is AbilityCommand)
             {
                 abilityCommandReceived.Invoke();
             }
 
-            if (myth.Command is MoveCommand)
+            if (mythCommandHandler.Command is MoveCommand)
             {
                 moveCommandReceived.Invoke();
             }
 
-            if (myth.Command is ManualMoveCommand)
+            if (mythCommandHandler.Command is ManualMoveCommand)
             {
                 manualMoveCommandReceived.Invoke();
             }
-            if(myth.Command is DodgeCommand)
+            if(mythCommandHandler.Command is DodgeCommand)
             {
                 if (myth.isInvulnerable == false)
                 {

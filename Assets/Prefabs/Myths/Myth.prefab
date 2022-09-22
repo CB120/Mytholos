@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
 --- !u!114 &8562805467365396305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
   moveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -102,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
   performAbilityComplete:
     m_PersistentCalls:
       m_Calls:
@@ -162,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
   abilityCommandReceived:
     m_PersistentCalls:
       m_Calls:
@@ -235,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
   speed: 5
   moveComplete:
     m_PersistentCalls:
@@ -269,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
   DodgeComplete:
     m_PersistentCalls:
       m_Calls:
@@ -298,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
   abilityCharged:
     m_PersistentCalls:
       m_Calls:
@@ -415,6 +422,7 @@ GameObject:
   - component: {fileID: 6610304959912024817}
   - component: {fileID: 6450067431077666470}
   - component: {fileID: 7869152638623657870}
+  - component: {fileID: -3291310522803648204}
   m_Layer: 0
   m_Name: Myth
   m_TagString: Myth
@@ -464,7 +472,6 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   lastInputDirection: {x: 0, y: 0}
   partyIndex: 0
-  isInteracting: 0
   isInvulnerable: 0
   staminaRegen: 0
   healthRegenTick: 0
@@ -475,9 +482,6 @@ MonoBehaviour:
   southAbility: {fileID: 0}
   eastAbility: {fileID: 0}
   ring: {fileID: 1257123659443305625}
-  commandChanged:
-    m_PersistentCalls:
-      m_Calls: []
   ws: {fileID: 0}
 --- !u!54 &3131205609304386058
 Rigidbody:
@@ -604,3 +608,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: {fileID: 9166940849690583412}
+--- !u!114 &-3291310522803648204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f247cf0253ef452bb80946e5594de90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandChanged:
+    m_PersistentCalls:
+      m_Calls: []

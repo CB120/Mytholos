@@ -43,7 +43,7 @@ namespace Myths.Behaviours
 
         private void OnEnable()
         {
-            switch (((MoveCommand)myth.Command).CurrentMoveCommandType) { 
+            switch (((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType) { 
                 case MoveCommand.MoveCommandType.Approach:
                     ApproachEnemy();
                     Debug.Log("Approaching!");
@@ -68,13 +68,13 @@ namespace Myths.Behaviours
 
         private void Update()
         {
-             Debug.Log($"{myth.name} moved. {((MoveCommand)myth.Command).CurrentMoveCommandType}");
+             Debug.Log($"{myth.name} moved. {((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType}");
             
             navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime);
 
             movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
 
-            switch (((MoveCommand)myth.Command).CurrentMoveCommandType)
+            switch (((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType)
             {
                 case MoveCommand.MoveCommandType.Approach:
                     ApproachEnemyDistanceCheck();
@@ -103,7 +103,7 @@ namespace Myths.Behaviours
         {
             if (myth.targetEnemy == null)
             {
-                myth.Command = null;
+                mythCommandHandler.Command = null;
                 moveFailed.Invoke();
                 return;
             }
@@ -121,7 +121,7 @@ namespace Myths.Behaviours
                 if (anim) anim.SetBool("Walking", false);
                 movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
-                myth.Command = null;
+                mythCommandHandler.Command = null;
                 moveComplete.Invoke();
             }
         }
@@ -132,13 +132,13 @@ namespace Myths.Behaviours
             if(navigationNode == null)
             {
                 Debug.Log("Something went wrong with the nodes, please check again");
-                myth.Command = null;
+                mythCommandHandler.Command = null;
                 moveFailed.Invoke();
                 return;
             }
             if (myth.targetEnemy == null)
             {
-                myth.Command = null;
+                mythCommandHandler.Command = null;
                 moveFailed.Invoke();
                 return;
             }
@@ -179,7 +179,7 @@ namespace Myths.Behaviours
                 if (anim) anim.SetBool("Walking", false);
                 movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
-                myth.Command = null;
+                mythCommandHandler.Command = null;
                 moveComplete.Invoke();
             }
         }
@@ -195,7 +195,7 @@ namespace Myths.Behaviours
                 movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
                 // Pass the ability into here
-                myth.Command = null;
+                mythCommandHandler.Command = null;
                 moveComplete.Invoke();
             }
         }

@@ -24,7 +24,7 @@ namespace Commands.Behaviours
 
         private void OnEnable()
         {
-            manualMoveCommand = myth.Command as ManualMoveCommand;
+            manualMoveCommand = mythCommandHandler.Command as ManualMoveCommand;
 
             if (manualMoveCommand == null)
             {
@@ -45,7 +45,7 @@ namespace Commands.Behaviours
 
                 if (inputVector == Vector3.zero)
                 {
-                    myth.Command = null;
+                    mythCommandHandler.Command = null;
                     movementController.SetTargetVelocity(Vector3.zero);
                     if (anim) anim.SetBool("Walking", false);
                     moveComplete.Invoke();

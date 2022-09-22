@@ -12,7 +12,7 @@ namespace Commands.Behaviours
         {
             //Debug.Log($"{myth.name} performed ability.");
 
-            var abilityData = ((AbilityCommand) myth.Command).abilityData;
+            var abilityData = ((AbilityCommand) mythCommandHandler.Command).abilityData;
             
             GameObject ability = abilityData.abilityPrefab;
             
@@ -40,7 +40,7 @@ namespace Commands.Behaviours
                 Debug.LogWarning($"Action was not performed. {abilityData} does not have an assigned {nameof(abilityData.abilityPrefab)}.");
             }
 
-            myth.Command = null;
+            mythCommandHandler.Command = null;
 
             performAbilityComplete.Invoke();
         }

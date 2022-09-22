@@ -64,7 +64,7 @@ namespace Myths.Behaviours
             navMeshAgent.speed = speed;
             navMeshAgent.acceleration = acceleration;
             navMeshAgent.stoppingDistance = 3;
-            myth.Command = null;
+            mythCommandHandler.Command = null;
             DodgeComplete.Invoke();
         }
 

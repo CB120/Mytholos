@@ -1,4 +1,3 @@
-using Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +15,7 @@ namespace Myths
         public float walkSpeed;
         public float health;
         public GameObject targetEnemy;
+        // TODO: Do we still need this? Some instances can be replaced by passing this in the command
         public Vector2 lastInputDirection;
         public float Health
         {
@@ -52,9 +52,6 @@ namespace Myths
             }
         }
 
-        public bool isInteracting = false; // Not sure if im going to go this route, but when we're using an ability we'll set
-                                           // this to true for the duration & make abilities only usable if this is false
-
         public bool isInvulnerable = false;
         public bool staminaRegen = false;
         [HideInInspector]
@@ -71,20 +68,6 @@ namespace Myths
 
         public SpriteRenderer ring;
         
-        private Command command;
-
-        public Command Command
-        {
-            get => command;
-            set
-            {
-                command = value;
-                commandChanged.Invoke();
-            }
-        }
-
-        public UnityEvent commandChanged = new();
-
         //#if UNITY_EDITOR
         //private void OnValidate()
         //{
