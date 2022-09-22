@@ -11,6 +11,7 @@ namespace Myths
     
         //Properties
         public SO_Myth myth;
+        // TODO: Make private
         public float stamina;
         public float walkSpeed;
         public float health;

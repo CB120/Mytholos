@@ -8,14 +8,20 @@ namespace Commands.Behaviours
     public class ChargeAbilityBehaviour : Behaviour
     {
         [Header("Charge Ability Behaviour")]
+        [Tooltip("The percentage of the ability's stamina cost to deduct if cancelled while charging (0.5 is 50%).")]
+        [SerializeField] private float staminaPenalty;
         public UnityEvent abilityCharged = new();
         
         private Coroutine chargeAbilityCoroutine;
         private AbilityCommand abilityCommand;
 
+        private bool abilityWasCharged;
+
         protected override void OnEnable()
         {
             base.OnEnable();
+
+            abilityWasCharged = false;
             
             abilityCommand = mythCommandHandler.Command as AbilityCommand;
             
@@ -33,11 +39,18 @@ namespace Commands.Behaviours
                 StopCoroutine(chargeAbilityCoroutine);
 
             chargeAbilityCoroutine = null;
+
+            if (!abilityWasCharged && abilityCommand != null)
+                // TODO: Duplicate code. See Ability.
+                // TODO: Unsafe. Does not prevent negative values.
+                myth.stamina -= abilityCommand.abilityData.stamina * staminaPenalty;
         }
 
         private IEnumerator ChargeAbility()
         {
             yield return new WaitForSeconds(abilityCommand.abilityData.chargeTime);
+
+            abilityWasCharged = true;
 
             abilityCharged.Invoke();
         }

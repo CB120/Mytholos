@@ -311,6 +311,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
+  staminaPenalty: 0.5
   abilityCharged:
     m_PersistentCalls:
       m_Calls:
