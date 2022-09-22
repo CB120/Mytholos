@@ -1,4 +1,5 @@
 using System.Collections;
+using Myths;
 using UnityEngine;
 using UnityEngine.Events;
 using Behaviour = Myths.Behaviour;
@@ -7,7 +8,8 @@ namespace Commands.Behaviours
 {
     public class ChargeAbilityBehaviour : Behaviour
     {
-        [Header("Charge Ability Behaviour")]
+        [Header("Charge Ability Behaviour")] [SerializeField]
+        private MythStamina mythStamina;
         [Tooltip("The percentage of the ability's stamina cost to deduct if cancelled while charging (0.5 is 50%).")]
         [SerializeField] private float staminaPenalty;
         public UnityEvent abilityCharged = new();
@@ -41,9 +43,8 @@ namespace Commands.Behaviours
             chargeAbilityCoroutine = null;
 
             if (!abilityWasCharged && abilityCommand != null)
-                // TODO: Duplicate code. See Ability.
                 // TODO: Unsafe. Does not prevent negative values.
-                myth.stamina -= abilityCommand.abilityData.stamina * staminaPenalty;
+                mythStamina.Stamina -= abilityCommand.abilityData.stamina * staminaPenalty;
         }
 
         private IEnumerator ChargeAbility()

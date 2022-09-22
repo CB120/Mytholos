@@ -7,12 +7,9 @@ namespace Myths
     {
         //Events
         public UnityEvent<float> HealthChanged = new();
-        public UnityEvent<float> StaminaChanged = new();
     
         //Properties
         public SO_Myth myth;
-        // TODO: Make private
-        public float stamina;
         public float walkSpeed;
         public float health;
         public GameObject targetEnemy;
@@ -38,23 +35,7 @@ namespace Myths
                     : new Color(0.0f, 0.5f, 1.0f, 1.0f);
             }
         }
-        public float Stamina
-        {
-            get => stamina;
-            set
-            {
-                if (value < stamina)
-                {
-                    Invoke("startRegen", 0.75f);
-                    StopRegen();
-                }
-                    stamina = value;
-                    StaminaChanged.Invoke(stamina / 100.0f); // We're assuming 100.0f is the maximum stamina a myth can have
-            }
-        }
-
         public bool isInvulnerable = false;
-        public bool staminaRegen = false;
         [HideInInspector]
         public float healthRegenTick = 0f;
         [HideInInspector]
@@ -78,17 +59,6 @@ namespace Myths
 
         private void Update()
         {
-            if (staminaRegen)
-            {
-                if (Stamina < 100f && Stamina > 0.3f)
-                {
-                    Stamina += 5f * Time.deltaTime;
-                } else if (Stamina < 0.6f)
-                {
-                    Stamina = 1;
-                }
-            }
-
             if (healthRegen)
             {
                 if(Health <= 100)
@@ -96,16 +66,6 @@ namespace Myths
                     Health += healthRegenTick * Time.deltaTime;
                 }
             }
-        }
-
-        private void startRegen()
-        {
-            staminaRegen = true;
-        }
-
-        private void StopRegen()
-        {
-            staminaRegen = false;
         }
 
         public void TakeDamage(float damage)

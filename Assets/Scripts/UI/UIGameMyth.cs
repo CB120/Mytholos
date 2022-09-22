@@ -77,19 +77,22 @@ public class UIGameMyth : MonoBehaviour
         if (myth != null)
         {
             // Remove listeners from previous referenced myth
+            // TODO: Cache this for performance.
+            var mythStamina = myth.GetComponent<MythStamina>();
+            
             if (this.myth != null)
             {
                 myth.HealthChanged.RemoveListener(UpdateHealth);
-                myth.StaminaChanged.RemoveListener(UpdateStamina);
+                mythStamina.staminaChanged.RemoveListener(UpdateStamina);
                 // TODO: Remove a listener for stamina
             }
 
             // Update UI visuals and place listeners in new referenced myth
             this.myth = myth;
             myth.HealthChanged.AddListener(UpdateHealth);
-            myth.StaminaChanged.AddListener(UpdateStamina);
+            mythStamina.staminaChanged.AddListener(UpdateStamina);
             UpdateHealth(myth.Health / 100.0f);
-            UpdateStamina(myth.Stamina / 100.0f);
+            UpdateStamina(mythStamina.StaminaPercent);
             // TODO: Create a listener (and event) for stamina
             mythIcon.sprite = myth.myth.icon;
         }

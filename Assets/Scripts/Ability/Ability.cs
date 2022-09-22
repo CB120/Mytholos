@@ -12,7 +12,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void Start()
     {
-        owningMyth.Stamina -= ability.stamina;
+        owningMyth.GetComponent<MythStamina>().Stamina -= ability.stamina;
     }
 
     virtual public void Update()

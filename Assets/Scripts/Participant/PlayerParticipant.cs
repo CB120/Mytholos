@@ -93,7 +93,7 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
 
-        if (SelectedMyth.Stamina < SelectedMyth.northAbility.stamina) return;
+        if (SelectedMyth.GetComponent<MythStamina>().Stamina < SelectedMyth.northAbility.stamina) return;
         if (!SelectedMyth.northAbility.isRanged)
         {
             SelectedMythCommandHandler.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
@@ -125,7 +125,8 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
 
-        if (SelectedMyth.Stamina < SelectedMyth.southAbility.stamina) return;
+        // TODO: I don't think this is the right place for this check, especially since it has to be repeated three times
+        if (SelectedMyth.GetComponent<MythStamina>().Stamina < SelectedMyth.southAbility.stamina) return;
 
         if (!SelectedMyth.southAbility.isRanged)
         {
@@ -146,7 +147,7 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        if (SelectedMyth.Stamina < SelectedMyth.westAbility.stamina) return;
+        if (SelectedMyth.GetComponent<MythStamina>().Stamina < SelectedMyth.westAbility.stamina) return;
         
         SelectedMythCommandHandler.Command = new AbilityCommand(SelectedMyth.westAbility);
         SelectAbility.Invoke(1);
