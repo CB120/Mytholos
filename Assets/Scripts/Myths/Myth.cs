@@ -43,6 +43,7 @@ namespace Myths
                     : new Color(0.0f, 0.5f, 1.0f, 1.0f);
             }
         }
+
         public float Stamina
         {
             get => stamina;
@@ -59,11 +60,8 @@ namespace Myths
         }
 
         //Variables
-        List<Command> commandQueue = new List<Command>();
-
         public bool isInteracting = false; // Not sure if im going to go this route, but when we're using an ability we'll set
                                            // this to true for the duration & make abilities only usable if this is false
-
         public bool isInvulnerable = false;
         public bool staminaRegen = false;
         [HideInInspector]
@@ -81,6 +79,7 @@ namespace Myths
         public SO_Ability eastAbility;
 
         public SpriteRenderer ring;
+        
 
         public Command Command { get; set; }
 
@@ -92,13 +91,6 @@ namespace Myths
 
             currentState.enabled = true;
         }
-
-        //#if UNITY_EDITOR
-        //private void OnValidate()
-        //{
-        //    Health = health;
-        //}
-        //#endif
 
         private void Start()
         {

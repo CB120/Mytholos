@@ -30,6 +30,8 @@ namespace Myths.Behaviours
 
             performAbilityComplete.Invoke();
         }
+
+
         IEnumerator PerformAbility(GameObject ability, float chargeTime, SO_Ability abilityData)
         {
             yield return new WaitForSeconds(chargeTime);
