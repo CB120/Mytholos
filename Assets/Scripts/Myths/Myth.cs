@@ -71,6 +71,7 @@ namespace Myths
         public bool healthRegen = false;
 
         //References
+        public SO_Element element;
         public SO_Ability northAbility;
         public SO_Ability westAbility;
         public SO_Ability southAbility;

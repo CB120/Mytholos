@@ -155,6 +155,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
+      propertyPath: element
+      value: 
+      objectReference: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0,
+        type: 2}
+    - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
       propertyPath: stamina
       value: 100
       objectReference: {fileID: 0}

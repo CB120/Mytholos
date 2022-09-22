@@ -74,9 +74,9 @@ public class BattleMusicController : MonoBehaviour
 
     void CalculateInitialVolumes()
     {
-        SO_AllParticipantData ParticipantData = allParticipantDataService.GetAllParticipantData();
+        SO_AllParticipantData participantData = allParticipantDataService.GetAllParticipantData();
 
-
+        
     }
 
     void UpdateFades() //applies the lerp between the current volume and target volume
