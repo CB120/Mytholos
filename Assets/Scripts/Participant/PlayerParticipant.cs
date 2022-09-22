@@ -24,11 +24,13 @@ public class PlayerParticipant : Participant
     private int selectedEnemyIndex = 0;
     private bool EnemySwitch = false; 
     private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
+    //public static PlayerParticipant singleton;
 
-    private GameObject PartyParent;
+    //public List<GameObject> Enemies;
 
     private void Start()
     {
+
         // Add code here to only do this in game instead of on start
         foreach(int myth in mythsInPlay)
         {
@@ -38,6 +40,7 @@ public class PlayerParticipant : Participant
                 if (ParticipantData.partyData[i].participant != this)
                 {
                     SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                    //Enemies.Add(ParticipantData.partyData[i].myths[0].gameObject);
                 }
             }
         }
@@ -54,7 +57,7 @@ public class PlayerParticipant : Participant
 
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
         {
-            SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
+            CancelManualMovement();
             selectedMythIndex = -1;
             SelectMyth.Invoke(-1);
         }
@@ -70,10 +73,16 @@ public class PlayerParticipant : Participant
 
         if (selectedMythIndex == mythsInPlay[1] && context.canceled)
         {
-            SelectedMyth.ManualMovementStyle.Move(Vector2.zero);
+            CancelManualMovement();
             selectedMythIndex = -1;
             SelectMyth.Invoke(-1);
         }
+    }
+
+    private void CancelManualMovement()
+    {
+        if (SelectedMyth.Command is ManualMoveCommand manualMoveCommand)
+            manualMoveCommand.input = Vector2.zero;
     }
 
     public void UseAbilityNorth(InputAction.CallbackContext context)
@@ -95,11 +104,12 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
 
-        if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
+        
+        //if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
+        
 
-
-        SelectedMyth.Command = new AbilityCommand(SelectedMyth.eastAbility);
-        SelectAbility.Invoke(3);
+        SelectedMyth.Command = new DodgeCommand();
+        //SelectAbility.Invoke(3);
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)
@@ -131,7 +141,7 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
         
-        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Stay);
+        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Idle);
     }
 
     public void MoveStrategyDown(InputAction.CallbackContext context)
@@ -148,11 +158,11 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         
         if (!SelectedMyth) return;
-        
+
         // TODO: Decide on a movement strategy.
         // SelectedMyth.Command = new MoveCommand();
 
-        Debug.Log($"{nameof(MoveStrategyLeft)} has not been set up. See the {nameof(PlayerParticipant)} script.");
+        SelectedMyth.Command = new MoveCommand(MoveCommand.MoveCommandType.Flee);
     }
 
     public void MoveStrategyRight(InputAction.CallbackContext context)
@@ -170,8 +180,13 @@ public class PlayerParticipant : Participant
     public void Move(InputAction.CallbackContext context)
     {
         if (!SelectedMyth) return;
+
+        if (SelectedMyth.Command is not ManualMoveCommand)
+            SelectedMyth.Command = new ManualMoveCommand();
         
-        SelectedMyth.ManualMovementStyle.Move(context.ReadValue<Vector2>());
+        var manualMoveCommand = SelectedMyth.Command as ManualMoveCommand;
+
+        manualMoveCommand.input = context.ReadValue<Vector2>();
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)
@@ -194,7 +209,14 @@ public class PlayerParticipant : Participant
         {
             if (ParticipantData.partyData[i].participant != this)
             {
-                SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                if (ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject.activeSelf == false)
+                {
+                    return;
+                }
+                else
+                {
+                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
+                }
                 return;
             }
         }

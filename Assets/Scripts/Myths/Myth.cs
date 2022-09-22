@@ -2,14 +2,12 @@ using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
 
 namespace Myths
 {
     public class Myth : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour initialState;
-        [SerializeField] private ManualMovementStyle manualMovementStyle;
         
         private MonoBehaviour currentState;
 
@@ -23,6 +21,7 @@ namespace Myths
         public float walkSpeed;
         public float health;
         public GameObject targetEnemy;
+        public Vector2 lastInputDirection;
         public float Health
         {
             get => health;
@@ -70,9 +69,6 @@ namespace Myths
         public float healthRegenTick = 0f;
         [HideInInspector]
         public bool healthRegen = false;
-        public bool isManuallyMoving = false;
-        public ManualMovementStyle ManualMovementStyle => manualMovementStyle;
-
 
         //References
         public SO_Ability northAbility;
@@ -81,8 +77,20 @@ namespace Myths
         public SO_Ability eastAbility;
 
         public SpriteRenderer ring;
+        
+        private Command command;
 
-        public Command Command { get; set; }
+        public Command Command
+        {
+            get => command;
+            set
+            {
+                command = value;
+                commandChanged.Invoke();
+            }
+        }
+
+        public UnityEvent commandChanged = new();
 
         public void ChangeState(MonoBehaviour state)
         {

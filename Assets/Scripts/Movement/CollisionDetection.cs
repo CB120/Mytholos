@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Rename so that actual function is more clear
 public class CollisionDetection : MonoBehaviour
 {
     protected enum HitDirection { Left, Right, Down, Up, Back, Front } // X-, X+, Y-, Y+, Z-, Z+
@@ -25,11 +24,6 @@ public class CollisionDetection : MonoBehaviour
     protected virtual void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-    }
-
-    protected virtual void Update()
-    {
-        SetTargetVelocity();
     }
 
     protected virtual void FixedUpdate()
@@ -120,10 +114,9 @@ public class CollisionDetection : MonoBehaviour
         if (!onlyMoveIfCollides || (onlyMoveIfCollides && collisionOccurred)) rigidbody.position += move.normalized * distance;
     }
 
-    // This functions exists so that child classes can override it to modify velocity every frame, as necessary
-    protected virtual void SetTargetVelocity()
+    public void SetTargetVelocity(Vector3 velocity)
     {
-
+        this.velocity = velocity;
     }
 
     // Handles logic for hitting another collider. 'direction' is the normal of the face we've collided with.

@@ -7,6 +7,7 @@ TagManager:
   - Party 1 Parent
   - Party 2 Parent
   - Myth
+  - NavigationNode
   layers:
   - Default
   - TransparentFX
