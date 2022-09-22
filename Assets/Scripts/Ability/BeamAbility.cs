@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Myths;
 
 public class BeamAbility : Ability
 {
-    private float ChargeTimer;
     private float DurationTimer;
 
     [SerializeField] private float BeamDuration;
@@ -14,7 +11,6 @@ public class BeamAbility : Ability
     BeamExtender BeamExtender;
     BeamHead BeamHead;
 
-    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
@@ -23,33 +19,26 @@ public class BeamAbility : Ability
 
         BeamExtender.SetMaxRange(BeamLength);
 
+        if (BeamHead)
+        {
+            BeamHead.Activate();
+        }
+
+        if (BeamExtender)
+        {
+            BeamExtender.Activate();
+        }
     }
 
-    // Update is called once per frame
     public override void Update()
     {
-        ChargeTimer += Time.deltaTime;
         DurationTimer += Time.deltaTime;
-
-        if (ChargeTimer > ability.chargeTime)
-        {
-            if (BeamHead)
-            {
-                BeamHead.Activate();
-            }
-
-            if (BeamExtender)
-            {
-                BeamExtender.Activate();
-            }
-        }
 
         if (DurationTimer > BeamDuration)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
-
 
     public override void Trigger(Myth myth)
     {
