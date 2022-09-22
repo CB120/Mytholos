@@ -5,29 +5,15 @@ public class BeamAbility : Ability
 {
     private float DurationTimer;
 
+    [SerializeField] private BeamExtender BeamExtender;
     [SerializeField] private float BeamDuration;
     [SerializeField] private float BeamLength;
-
-    BeamExtender BeamExtender;
-    BeamHead BeamHead;
 
     public override void Start()
     {
         base.Start();
-        BeamExtender = gameObject.GetComponentInChildren<BeamExtender>();
-        BeamHead = gameObject.GetComponentInChildren<BeamHead>();
 
         BeamExtender.SetMaxRange(BeamLength);
-
-        if (BeamHead)
-        {
-            BeamHead.Activate();
-        }
-
-        if (BeamExtender)
-        {
-            BeamExtender.Activate();
-        }
     }
 
     public override void Update()
