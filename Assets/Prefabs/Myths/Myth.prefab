@@ -311,7 +311,6 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
-  mythStamina: {fileID: 599707136238804702}
   staminaPenalty: 0.5
   abilityCharged:
     m_PersistentCalls:
@@ -431,7 +430,8 @@ GameObject:
   - component: {fileID: 6450067431077666470}
   - component: {fileID: 7869152638623657870}
   - component: {fileID: -3291310522803648204}
-  - component: {fileID: 599707136238804702}
+  - component: {fileID: 3328760576734170970}
+  - component: {fileID: 1496457094348944347}
   m_Layer: 0
   m_Name: Myth
   m_TagString: Myth
@@ -468,18 +468,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348152d2c5324d48a71d69d6e8c93bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  health: {fileID: 3328760576734170970}
+  stamina: {fileID: 1496457094348944347}
   myth: {fileID: 0}
   walkSpeed: 0
-  health: 0
   targetEnemy: {fileID: 0}
   lastInputDirection: {x: 0, y: 0}
   partyIndex: 0
   isInvulnerable: 0
-  healthRegenTick: 0
-  healthRegen: 0
   element: {fileID: 0}
   northAbility: {fileID: 0}
   westAbility: {fileID: 0}
@@ -627,7 +623,7 @@ MonoBehaviour:
   commandChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &599707136238804702
+--- !u!114 &3328760576734170970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -636,11 +632,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 9142296419116895834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d56b633f3c5e4a60b5ca933184f73294, type: 3}
+  m_Script: {fileID: 11500000, guid: c71da87c5e30427e887a306cff5f129c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regenSpeed: 0
+  regenPauseTime: 0
+  valueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  valueZeroed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7428839973292417855}
+        m_TargetAssemblyTypeName: Myths.Myth, Assembly-CSharp
+        m_MethodName: TemporaryUpdateTeam
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9142296419116895834}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1496457094348944347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71da87c5e30427e887a306cff5f129c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   regenSpeed: 5
   regenPauseTime: 0.75
-  staminaChanged:
+  valueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  valueZeroed:
     m_PersistentCalls:
       m_Calls: []

@@ -8,8 +8,7 @@ namespace Commands.Behaviours
 {
     public class ChargeAbilityBehaviour : Behaviour
     {
-        [Header("Charge Ability Behaviour")] [SerializeField]
-        private MythStamina mythStamina;
+        [Header("Charge Ability Behaviour")]
         [Tooltip("The percentage of the ability's stamina cost to deduct if cancelled while charging (0.5 is 50%).")]
         [SerializeField] private float staminaPenalty;
         public UnityEvent abilityCharged = new();
@@ -44,7 +43,7 @@ namespace Commands.Behaviours
 
             if (!abilityWasCharged && abilityCommand != null)
                 // TODO: Unsafe. Does not prevent negative values.
-                mythStamina.Stamina -= abilityCommand.abilityData.stamina * staminaPenalty;
+                myth.Stamina.Value -= abilityCommand.abilityData.stamina * staminaPenalty;
         }
 
         private IEnumerator ChargeAbility()
