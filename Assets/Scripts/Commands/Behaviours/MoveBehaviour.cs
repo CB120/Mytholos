@@ -73,7 +73,7 @@ namespace Myths.Behaviours
         {
              Debug.Log($"{myth.name} moved. {((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType}");
             
-            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime);
+            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime * 10);
 
             movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
 
