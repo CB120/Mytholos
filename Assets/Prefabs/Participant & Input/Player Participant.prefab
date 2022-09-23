@@ -81,44 +81,12 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 04ee6fa3-9d98-4db3-8073-83571d4a33f4
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: a2d87111-c690-42a1-9dd0-de490ee32857
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: a4427be0-f44d-4481-98ff-b2b27fa6df07
     m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8f5bbe4c-4316-44c9-9ff9-54842bb6ee62
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fddd1174-2f87-44cf-82df-d9b99341699b
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 664ce671-067c-4581-8edd-d8362b8ac197
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3675e31c-ba7d-476b-a9cc-c70bda62a81c
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f3ad88cf-4bd2-4af7-87e2-f09c2cb2fdb8
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0ef24bc8-1f43-44b9-a0f0-bbf2392cb076
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b21cb573-db2f-4559-9f85-909aa9d7d188
-    m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
@@ -311,6 +279,58 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0906f682-9854-4fb3-af50-07e55f6136c5
     m_ActionName: Player/SelectEnemyRight[/DualSenseGamepadHID/rightStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: NavigateUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ea7e63cc-b397-47eb-8ecc-abcd88d8f077
+    m_ActionName: UI/NavigateUp[/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7057605768711586851}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a18ac44-6e62-4f25-a787-7bf7c41c571c
+    m_ActionName: UI/NavigateDown[/Keyboard/s,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a1f216cd-2747-4fc6-821a-973f2281ebb0
+    m_ActionName: UI/NavigateRight[/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58de09a0-b7c1-4a5c-b4ac-3f7478e6ebf7
+    m_ActionName: UI/NavigateLeft[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a61ae83-aee3-4fee-8c93-56449d59fb2e
+    m_ActionName: UI/AssignNorth[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 66b3c4a5-6b80-479f-b943-04943064e017
+    m_ActionName: UI/AssignWest[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db782c80-ac34-4dce-be99-f9f000fb5b45
+    m_ActionName: UI/AssignSouth[/Keyboard/u]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

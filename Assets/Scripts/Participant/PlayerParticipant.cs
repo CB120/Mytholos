@@ -28,6 +28,9 @@ public class PlayerParticipant : Participant
 
     //public List<GameObject> Enemies;
 
+    // Menu references
+    UIMenuNodeGraph currentMenuGraph;
+
     private void Start()
     {
 
@@ -235,5 +238,57 @@ public class PlayerParticipant : Participant
                 return;
             }
         }
+    }
+
+    public void NavigateUp(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Up, partyIndex);
+    }
+    public void NavigateDown(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Down, partyIndex);
+    }
+
+    public void NavigateRight(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+    }
+
+    public void NavigateLeft(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+    }
+
+    public void AssignNorth(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph.ParseAction(UIMenuNode.Action.North, partyIndex);
+    }
+    public void AssignWest(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph.ParseAction(UIMenuNode.Action.West, partyIndex);
+    }
+
+    public void AssignSouth(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph.ParseAction(UIMenuNode.Action.South, partyIndex);
+    }
+
+    public void Submit(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph.ParseAction(UIMenuNode.Action.Submit, partyIndex);
+    }
+
+    public void Cancel(InputAction.CallbackContext context)
+    {
+        if (currentMenuGraph == null) return;
+        currentMenuGraph.ParseAction(UIMenuNode.Action.Cancel, partyIndex);
     }
 }

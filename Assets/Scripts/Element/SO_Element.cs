@@ -5,6 +5,7 @@ using UnityEngine;
 public class SO_Element : ScriptableObject
 {
     public Color color;
+    public Sprite icon;
     
     // TODO: Move element icon here too
 

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Wind
   m_EditorClassIdentifier: 
-  color: {r: 0.86666673, g: 0.83921576, b: 0.7490196, a: 0}
+  color: {r: 0.86666673, g: 0.83921576, b: 0.7490196, a: 1}
+  icon: {fileID: 108356541, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   strongAgainst:
   - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   hasDebris: 0

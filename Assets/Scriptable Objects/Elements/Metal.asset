@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Metal
   m_EditorClassIdentifier: 
-  color: {r: 0.3254902, g: 0.37647063, b: 0.37647063, a: 0}
+  color: {r: 0.3254902, g: 0.37647063, b: 0.37647063, a: 1}
+  icon: {fileID: 730618174, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   strongAgainst:
   - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   hasDebris: 1
