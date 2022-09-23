@@ -45,7 +45,7 @@ namespace Myths.Behaviours
         protected override void OnEnable()
         {
             base.OnEnable();
-            
+            if (myth.targetEnemy == null) return;
             switch (((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType) { 
                 case MoveCommand.MoveCommandType.Approach:
                     ApproachEnemy();
@@ -62,6 +62,7 @@ namespace Myths.Behaviours
                 case MoveCommand.MoveCommandType.Support:
                     break;
                 case MoveCommand.MoveCommandType.Idle:
+                    navMeshAgent.ResetPath();
                     break;
                 default:
                     Debug.Log("How the fuck did you get here?");
@@ -91,6 +92,9 @@ namespace Myths.Behaviours
                 case MoveCommand.MoveCommandType.Support:
                     break;
                 case MoveCommand.MoveCommandType.Idle:
+                    if (anim) anim.SetBool("Walking", false);
+                    mythCommandHandler.Command = null;
+                    moveComplete.Invoke();
                     break;
                 default:
                     Debug.Log("How the fuck did you get here?");
