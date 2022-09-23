@@ -16,6 +16,7 @@ public class UIGameParty : MonoBehaviour
     [SerializeField] CanvasGroup abilitiesMenu;
     RectTransform abilitiesMenuRectTransform;
     [SerializeField] UIGameAbility[] abilities;
+    Dictionary<SO_Ability, UIGameAbility> abilityUIByAbilitySO = new();
 
     float abilitiesSelectedX;       // Records of target UI positions for the abilities menu
     float abilitiesUnselectedX;
@@ -80,6 +81,7 @@ public class UIGameParty : MonoBehaviour
         if (playerParticipant != null)
         {
             playerParticipant.SelectMyth.AddListener(SelectMyth);
+            // TODO: Unlisten?
             playerParticipant.SelectAbility.AddListener(SelectAbility);
         }
     }
@@ -100,10 +102,10 @@ public class UIGameParty : MonoBehaviour
         DisplayAbilities(partyMemberNumber >= 0, partyMemberNumber);
     }
 
-    void SelectAbility(int abilityNumber)
+    void SelectAbility(SO_Ability ability)
     {
-        if (abilityNumber >= 0 && abilityNumber < 3 && abilitiesMenu.alpha > 0.0f)
-            abilities[abilityNumber].AnimateSelectedAbility();
+        if (abilityUIByAbilitySO.ContainsKey(ability) && abilitiesMenu.alpha > 0.0f)
+            abilityUIByAbilitySO[ability].AnimateSelectedAbility();
     }
 
     void DisplayAbilities(bool showUI, int partyMemberNumber = -1, float animationSpeed = 25.0f)
@@ -141,6 +143,7 @@ public class UIGameParty : MonoBehaviour
                 SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
                 //print("Myth " + partyMemberNumber + ", ability " + i + " is " + ability.name + " / " + ability.ToString());
                 abilities[i].UpdateUI(ability);
+                abilityUIByAbilitySO[ability] = abilities[i];
             }
 
             // TODO: Place listeners for stamina

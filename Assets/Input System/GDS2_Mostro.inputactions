@@ -290,7 +290,7 @@
                 {
                     "name": "",
                     "id": "db37303b-e1ec-40b9-8a01-8fdfb7193f24",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -312,7 +312,7 @@
                 {
                     "name": "",
                     "id": "5acfd436-bf43-44ac-9e3d-a923c9cd9c08",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -333,6 +333,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ca85caad-67cb-49b2-a2a5-6d5b8f6fe93c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveStrategyDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1b64c454-47cf-4797-a138-d88a699a8d96",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -345,7 +356,7 @@
                 {
                     "name": "",
                     "id": "def3b4d3-494e-4171-a728-7ebbe380d5a9",
-                    "path": "<Keyboard>/o",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -367,7 +378,7 @@
                 {
                     "name": "",
                     "id": "66b64e4c-fd66-48f2-9137-1b928d1d4322",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/quote",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -389,7 +400,7 @@
                 {
                     "name": "",
                     "id": "deb4ccbd-a450-4d7c-a573-b7f19df6ad73",
-                    "path": "<Keyboard>/u",
+                    "path": "<Keyboard>/semicolon",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -410,11 +421,33 @@
                 },
                 {
                     "name": "",
+                    "id": "b6e90c0f-a1fe-4fe5-892f-be99c41ca8af",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveStrategyUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ecb484c4-02aa-447a-91b4-934d103309c5",
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "MoveStrategyLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48c769e9-b2f8-4e99-bd0e-9ba7ebf25b72",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "MoveStrategyLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -432,6 +465,17 @@
                 },
                 {
                     "name": "",
+                    "id": "6499b6e9-9cdf-4a3b-b233-cbe14585bfea",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveStrategyRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ae590f68-af42-4cd4-9163-d289a1ff5669",
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
@@ -443,8 +487,30 @@
                 },
                 {
                     "name": "",
+                    "id": "6c3ed0fc-3f7d-46f7-82b4-d471d92b5454",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEnemyLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2992fc98-3af1-4fce-926f-8d070fc2c18e",
                     "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEnemyRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ca1501a-27d1-4271-a158-167b66b26e57",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

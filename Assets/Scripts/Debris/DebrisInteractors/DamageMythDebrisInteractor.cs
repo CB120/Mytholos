@@ -16,7 +16,7 @@ namespace Debris.DebrisInteractors
         internal override void OnDebrisStay(Debris debris)
         {
             if (filterType == filterElements.Contains(debris.CurrentElement)) 
-                myth.TakeDamage(damagePerSecond * Time.deltaTime);
+                myth.Health.Value -= damagePerSecond * Time.deltaTime;
         }
     }
 }

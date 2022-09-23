@@ -10,6 +10,9 @@ public class ShotAbility : Ability
 
     [SerializeField] private float speed;
 
+    private float ShotTimer;
+    [SerializeField] private float ShotDuration;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -23,6 +26,11 @@ public class ShotAbility : Ability
     public override void Update()
     {
         ShotTransform.position += Direction * speed * Time.deltaTime;
+
+        ShotTimer += Time.deltaTime;
+
+        if (ShotTimer > ShotDuration)
+            Destroy(this.gameObject);
     }
 
     public override void Trigger(Myth myth)
