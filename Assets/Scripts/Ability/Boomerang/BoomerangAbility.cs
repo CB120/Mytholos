@@ -39,7 +39,7 @@ public class BoomerangAbility : Ability
             speed += acceleration * Time.deltaTime;
             Direction = ( owningMyth.transform.position - BoomerangTransform.position).normalized;
             BoomerangTransform.position += Direction * speed * Time.deltaTime;
-            if (Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position) < .001f)
+            if (Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position) < .01f)
                 Destroy(this.gameObject);
         }
             

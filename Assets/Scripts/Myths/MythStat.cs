@@ -17,7 +17,7 @@ namespace Myths
         private bool isRegenerating;
         
         public UnityEvent<float> valueChanged = new();
-        public UnityEvent<float> valueZeroed = new();
+        public UnityEvent valueZeroed = new();
 
         public float ValuePercent => Value / MaxValue;
         
@@ -35,6 +35,9 @@ namespace Myths
                 this.value = Mathf.Clamp(value, MinValue, MaxValue);
                 
                 valueChanged.Invoke(this.value / MaxValue);
+                
+                if (value == 0)
+                    valueZeroed.Invoke();
             }
         }
 
