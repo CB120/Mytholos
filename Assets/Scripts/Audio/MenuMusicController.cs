@@ -22,12 +22,15 @@ public class MenuMusicController : MonoBehaviour
 
 
     // References
+    static MenuMusicController Singleton;
+
     StudioEventEmitter menuMusicEmitter;
 
 
     // Engine-called
     private void Awake()
     {
+        Singleton = this;
         if (persistent) DontDestroyOnLoad(gameObject);
 
         menuMusicEmitter = GetComponent<StudioEventEmitter>();
@@ -41,9 +44,9 @@ public class MenuMusicController : MonoBehaviour
 
     // Methods
         // Public
-    public void ChangeMenuState(E_MenuState newState)
+    public static void ChangeMenuState(E_MenuState newState)
     {
-        currentMenuState = newState;
-        menuMusicEmitter.SetParameter("Menu Music", (int)currentMenuState);
+        Singleton.currentMenuState = newState;
+        Singleton.menuMusicEmitter.SetParameter("Menu Music", (int)Singleton.currentMenuState);
     }
 }
