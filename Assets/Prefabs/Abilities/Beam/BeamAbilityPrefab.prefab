@@ -81,6 +81,7 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  BeamExtender: {fileID: 7226831236815921946}
   BeamDuration: 4
   BeamLength: 20
 --- !u!1 &4274577651556709272
@@ -180,7 +181,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5364032775605158230}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -224,7 +225,7 @@ BoxCollider:
   m_GameObject: {fileID: 5364032775605158230}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -336,7 +337,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7706961841124512121}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -380,7 +381,7 @@ SphereCollider:
   m_GameObject: {fileID: 7706961841124512121}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -412,7 +413,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1362343e9315de45bdebcfb6086e4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider: {fileID: 0}
-  Renderer: {fileID: 0}
-  Activated: 0
   BeamHeadPosition: {fileID: 3275380738363577109}

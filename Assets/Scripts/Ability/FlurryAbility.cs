@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Myths;
 
 public class FlurryAbility : Ability
 {
-    private float ChargeTimer;
     private float DurationTimer;
 
     Transform Collider;
@@ -15,25 +12,21 @@ public class FlurryAbility : Ability
     public override void Start()
     {
         base.Start();
-        Collider = this.gameObject.transform.GetChild(0);
+        Collider = gameObject.transform.GetChild(0);
+        
+        if (Collider)
+        {
+            Collider.gameObject.SetActive(true);
+        }
     }
 
     public override void Update()
     {
-        ChargeTimer += Time.deltaTime;
         DurationTimer += Time.deltaTime;
-
-        if (ChargeTimer > ability.chargeTime)
-        {
-            if (Collider)
-            {
-                Collider.gameObject.SetActive(true);
-            }
-        }
 
         if (DurationTimer > FlurryDuration)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

@@ -17,13 +17,14 @@ public class PartyBuilder : MonoBehaviour
     private void Awake()
     {
         allParticipantData = allParticipantDataService.GetAllParticipantData();
+
+        //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
+        SetPartyParentReferences();
+        SpawnParties();
     }
 
     void Start()
     {
-        SetPartyParentReferences();
-        SpawnParties();
-
         //Destroy(this.gameObject); //not sure if we want this yet?
     }
 
@@ -73,7 +74,7 @@ public class PartyBuilder : MonoBehaviour
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
         
-
+        // TODO: I want it on the record that I don't like this
         newMyth.northAbility = mythData.northAbility;
         newMyth.westAbility = mythData.westAbility;
         newMyth.southAbility = mythData.southAbility;

@@ -1,59 +1,76 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using Commands;
-using System.Collections;
+using Behaviour = Myths.Behaviour;
 
-namespace Myths.Behaviours
+namespace Commands.Behaviours
 {
     public class PerformAbilityBehaviour : Behaviour
     {
+        [Header("Perform Ability Behaviour")]
         public UnityEvent performAbilityComplete = new();
-        
-        private void Update()
+
+        private Coroutine performAbilityCoroutine;
+        private AbilityCommand abilityCommand;
+
+        protected override void OnEnable()
         {
-            //Debug.Log($"{myth.name} performed ability.");
-
-            var abilityData = ((AbilityCommand) myth.Command).abilityData;
+            base.OnEnable();
             
-            GameObject ability = abilityData.abilityPrefab;
+            abilityCommand = mythCommandHandler.Command as AbilityCommand;
             
-            if (ability)
+            var abilityData = abilityCommand.abilityData;
+            
+            GameObject abilityPrefab = abilityData.abilityPrefab;
+
+            if (!abilityPrefab)
             {
-                StartCoroutine(PerformAbility(ability, abilityData.chargeTime, abilityData));
+                Debug.LogWarning(
+                    $"Action was not performed. {abilityData} does not have an assigned {nameof(abilityData.abilityPrefab)}.");
+
+                return;
             }
-            else
-            {
-                Debug.LogWarning($"Action was not performed. {abilityData} does not have an assigned {nameof(abilityData.abilityPrefab)}.");
-            }
-
-            myth.Command = null;
-
-            performAbilityComplete.Invoke();
-        }
-
-
-        IEnumerator PerformAbility(GameObject ability, float chargeTime, SO_Ability abilityData)
-        {
-            yield return new WaitForSeconds(chargeTime);
-
+            
             Vector3 pos = gameObject.transform.position + abilityData.relativeSpawnPosition;
 
-
-            GameObject abilityPrefab = abilityData.spawnInWorldSpace ?
-                Instantiate(
-                    ability,
+            GameObject abilityObject = abilityData.spawnInWorldSpace
+                ? Instantiate(
+                    abilityPrefab,
                     pos,
                     new Quaternion(0f, 0f, 0f, 0f)
                 )
-                : 
-                Instantiate(
-                    ability,
+                : Instantiate(
+                    abilityPrefab,
                     pos,
                     new Quaternion(0f, 0f, 0f, 0f),
                     gameObject.transform
                 );
-            abilityPrefab.GetComponent<Ability>().owningMyth = myth;
+            
+            abilityObject.GetComponent<Ability>().owningMyth = myth;
+
+            if (performAbilityCoroutine != null)
+                StopCoroutine(performAbilityCoroutine);
+
+            performAbilityCoroutine = StartCoroutine(PerformAbility());
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            
+            if (performAbilityCoroutine != null)
+                StopCoroutine(performAbilityCoroutine);
+
+            performAbilityCoroutine = null;
+        }
+
+        private IEnumerator PerformAbility()
+        {
+            yield return new WaitForSeconds(abilityCommand.abilityData.performTime);
+
+            mythCommandHandler.Command = null;
+            
+            performAbilityComplete.Invoke();
         }
     }
-   
 }

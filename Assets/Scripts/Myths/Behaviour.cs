@@ -1,15 +1,31 @@
-using System;
+using Commands;
 using UnityEngine;
 
 namespace Myths
 {
     public class Behaviour : MonoBehaviour
     {
+        [Header("Behaviour")]
+        // TODO: Do we still need this?
         [SerializeField] protected Myth myth;
-
-        private void Awake()
+        [SerializeField] protected MythCommandHandler mythCommandHandler;
+        [SerializeField] private bool dontAllowOtherCommands;
+        
+        public void Awake()
         {
             enabled = false;
+        }
+
+        protected virtual void OnEnable()
+        {
+            if (dontAllowOtherCommands)
+                mythCommandHandler.WillStoreNewCommands = false;
+        }
+
+        protected virtual void OnDisable()
+        {
+            if (dontAllowOtherCommands)
+                mythCommandHandler.WillStoreNewCommands = true;
         }
     }
 }

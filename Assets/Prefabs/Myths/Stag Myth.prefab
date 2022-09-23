@@ -122,6 +122,11 @@ PrefabInstance:
       propertyPath: mythProperties
       value: 
       objectReference: {fileID: 2245871232327048933}
+    - target: {fileID: 2326847374803901642, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 8237076919643784108}
     - target: {fileID: 3131205609304386058, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_IsKinematic
@@ -145,14 +150,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
-        type: 3}
-      propertyPath: stamina
-      value: 100
-      objectReference: {fileID: 0}
+      propertyPath: element
+      value: 
+      objectReference: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0,
+        type: 2}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: walkSpeed
