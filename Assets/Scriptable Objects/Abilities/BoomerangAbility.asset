@@ -18,6 +18,7 @@ MonoBehaviour:
   healing: 0
   stamina: 20
   chargeTime: 0
+  performTime: 0
   isRanged: 1
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
