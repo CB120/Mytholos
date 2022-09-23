@@ -3,6 +3,7 @@ using System.Linq;
 using Commands;
 using Myths;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
@@ -27,11 +28,9 @@ public class PlayerParticipant : Participant
     private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => SelectedMyth.GetComponent<MythCommandHandler>();
-    //public static PlayerParticipant singleton;
+    
 
-    //public List<GameObject> Enemies;
-
-    private void Start()
+    /*private void Start()
     {
 
         // Add code here to only do this in game instead of on start
@@ -48,7 +47,7 @@ public class PlayerParticipant : Participant
             }
         }
         selectedMythIndex = -1;
-    }
+    }*/
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -88,6 +87,12 @@ public class PlayerParticipant : Participant
             manualMoveCommand.input = Vector2.zero;
     }
 
+    private void CancelCommandMovement()
+    {
+        if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
+            SelectedMyth.GetComponentInChildren<NavMeshAgent>().ResetPath();
+    }
+
     public void UseAbilityNorth(InputAction.CallbackContext context)
     {
         UseAbility(context, myth => myth.northAbility);
@@ -99,11 +104,12 @@ public class PlayerParticipant : Participant
         
         if (!SelectedMyth) return;
 
-        
-        //if (SelectedMyth.Stamina < SelectedMyth.eastAbility.stamina) return;
-        
+
+        //if (SelectedMyth. < SelectedMyth.eastAbility.stamina) return;
+        //SelectedMyth.Stamina -= 30;
 
         SelectedMythCommandHandler.Command = new DodgeCommand();
+        CancelManualMovement();
         //SelectAbility.Invoke(3);
     }
 
@@ -167,7 +173,10 @@ public class PlayerParticipant : Participant
             SelectedMythCommandHandler.Command = new ManualMoveCommand();
 
         if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
+        {
+            CancelCommandMovement();
             manualMoveCommand.input = context.ReadValue<Vector2>();
+        }
     }
 
     public void TargetEnemy(InputAction.CallbackContext context)

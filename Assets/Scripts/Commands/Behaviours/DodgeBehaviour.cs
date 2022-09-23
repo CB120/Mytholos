@@ -11,8 +11,6 @@ namespace Myths.Behaviours
         [Header("Dodge Behaviour")]
         public UnityEvent DodgeComplete = new();
         public NavMeshAgent navMeshAgent;
-        private float speed = 0;
-        private float acceleration = 0;
         private Vector3 inputDirection;
 
 
@@ -27,8 +25,17 @@ namespace Myths.Behaviours
         protected override void OnEnable()
         {
             base.OnEnable();
-            
-            inputDirection = new Vector3(myth.lastInputDirection.x, 0, myth.lastInputDirection.y);
+            if (myth.Stamina.Value < 35)
+            {
+                mythCommandHandler.Command = null;
+                DodgeComplete.Invoke();
+                return;
+            }
+            myth.Stamina.Value -= 35;
+            Debug.Log(myth.Stamina.Value);
+            //inputDirection = new Vector3(myth.lastInputDirection.x, 0, myth.lastInputDirection.y);
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(myth.lastInputDirection.x, 0, myth.lastInputDirection.y), myth.transform.up);
+            inputDirection = lookRotation * Vector3.forward;
             if (inputDirection != null && inputDirection != Vector3.zero)
             {
                 ActivateDodge(inputDirection);
@@ -43,30 +50,23 @@ namespace Myths.Behaviours
         {
             Vector3 direction = Vector3.zero;
             return direction;
+
+            // Use this in the future for a better dodge?
         }
         private void ActivateDodge(Vector3 dodgeDirection)
         {
             // Initialize dodge parameters 
-            speed = navMeshAgent.speed;
-            acceleration = navMeshAgent.acceleration;
             myth.isInvulnerable = true;
-            navMeshAgent.speed = 200;
-            navMeshAgent.acceleration = 200;
-            navMeshAgent.stoppingDistance = 0;
-            
-            Debug.Log(dodgeDirection);
-            //navMeshAgent.SetDestination(myth.gameObject.transform.position + dodgeDirection * 1.5f);
-            Invoke("KillDodge", 0.19f);
+            myth.transform.position = transform.position + (dodgeDirection * 1.75f);
+            //Debug.Log(dodgeDirection);
+            KillDodge();
             Invoke("KilliFrames", 0.33f);
         }
 
         private void KillDodge()
         {
-            navMeshAgent.ResetPath();
-            myth.gameObject.transform.position = myth.transform.position;
-            navMeshAgent.speed = speed;
-            navMeshAgent.acceleration = acceleration;
-            navMeshAgent.stoppingDistance = 3;
+            //navMeshAgent.ResetPath();
+            //myth.transform.position = myth.transform.position;
             mythCommandHandler.Command = null;
             DodgeComplete.Invoke();
         }
