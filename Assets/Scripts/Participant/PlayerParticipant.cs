@@ -30,7 +30,7 @@ public class PlayerParticipant : Participant
     private MythCommandHandler SelectedMythCommandHandler => SelectedMyth.GetComponent<MythCommandHandler>();
     
 
-    /*private void Start()
+    private void Start()
     {
 
         // Add code here to only do this in game instead of on start
@@ -47,7 +47,7 @@ public class PlayerParticipant : Participant
             }
         }
         selectedMythIndex = -1;
-    }*/
+    }
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
