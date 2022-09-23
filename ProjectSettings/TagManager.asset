@@ -8,6 +8,7 @@ TagManager:
   - Party 2 Parent
   - Myth
   - NavigationNode
+  - Grid
   layers:
   - Default
   - TransparentFX

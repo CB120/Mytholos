@@ -2113,6 +2113,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicLayers:
+  - name: Metal
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+  - name: Wind
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+  - name: Ice
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
   - name: Earth
     volume: 0
     targetVolume: 0
@@ -2128,22 +2143,7 @@ MonoBehaviour:
     targetVolume: 0
     manualVolumeOverride: 0
     score: 0
-  - name: Ice
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Metal
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
   - name: Water
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Wind
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
@@ -2153,7 +2153,8 @@ MonoBehaviour:
     targetVolume: 0
     manualVolumeOverride: 0
     score: 0
-  volumeLerpRate: 20
+  fadeInRate: 60
+  fadeOutRate: 20
   desiredLayers: 3
   allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}

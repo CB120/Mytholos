@@ -13,7 +13,7 @@ public class MusicLayer
     [Tooltip("Current Layer volume")]
     [Range(0, 100)] public float volume = 0f;
     //[Tooltip("Fade-in/out target volume")]
-    [HideInInspector][Range(0, 100)] public float targetVolume = 0f; 
+    [Range(0, 100)] public float targetVolume = 0f; 
     [Tooltip("If enabled, Volume slider allows direct control of FMOD parameter")]
     public bool manualVolumeOverride = false;
 
@@ -28,7 +28,9 @@ public class BattleMusicController : MonoBehaviour
     public MusicLayer[] musicLayers;
 
     [Tooltip("% volume per second | Larger values = faster crossfades")]
-    public float volumeLerpRate = 20f;
+    public float fadeInRate = 40f;
+    [Tooltip("% volume per second | Larger values = faster crossfades")]
+    public float fadeOutRate = 20f;
     [Tooltip("Desired number of Layers - Algorithm will target this number of Layers playing at once")]
     [Range(0, 8)] public int desiredLayers = 3;
 
@@ -49,6 +51,7 @@ public class BattleMusicController : MonoBehaviour
     private void Awake()
     {
         battleMusicEmitter = GetComponent<StudioEventEmitter>();
+        debrisController = GameObject.FindWithTag("Grid").GetComponent<DebrisController>();
 
         ReorderAllElements();
     }
@@ -83,7 +86,7 @@ public class BattleMusicController : MonoBehaviour
     {
         for (int i = 0; i < allElements.Length; i++)
         {
-            //musicLayers[i].score = 
+            musicLayers[i].score = debrisController.NumberOfTilesWithElement(allElements[i]);
         }
     }
 
@@ -111,14 +114,14 @@ public class BattleMusicController : MonoBehaviour
             int maxIndex = -1;
             for (int i = 0; i < musicLayers.Length; i++)
             {
-                if (musicLayers[i].score > maxScore && !maxLayerIndexes.Contains(i))
+                if (musicLayers[i].score > maxScore && !maxLayerIndexes.Contains(i) && musicLayers[i].score > 0)
                 {
                     maxScore = musicLayers[i].score;
                     maxIndex = i;
                 }
             }
 
-            maxLayerIndexes.Add(maxIndex);
+            if (maxIndex >= 0 && maxIndex < musicLayers.Length) maxLayerIndexes.Add(maxIndex);
         }
 
         //Apply the target volumes, based on whether a layer was in maxLayerIndexes or not
@@ -141,8 +144,9 @@ public class BattleMusicController : MonoBehaviour
 
             //Adding/subtracting a constant per second = linear transition.
             //Adjust the volume curve in FMOD, don't try and change the lerp curve
-            if (m.volume > m.targetVolume) m.volume -= volumeLerpRate * Time.deltaTime; 
-            if (m.volume < m.targetVolume) m.volume += volumeLerpRate * Time.deltaTime;
+            if (m.volume > m.targetVolume) m.volume -= fadeOutRate * Time.deltaTime; 
+            if (m.volume < m.targetVolume) m.volume += fadeInRate * Time.deltaTime;
+            if (Mathf.Abs(m.volume - m.targetVolume) <= 0.1f) m.volume = m.targetVolume;
 
             //If we end up with targetVolumes that aren't 0 or 100, add a 'if volume delta <= 0.1, volume = target' here
 
