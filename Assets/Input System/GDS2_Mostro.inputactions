@@ -312,7 +312,7 @@
                 {
                     "name": "",
                     "id": "5acfd436-bf43-44ac-9e3d-a923c9cd9c08",
-                    "path": "<Keyboard>/quote",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -378,7 +378,7 @@
                 {
                     "name": "",
                     "id": "66b64e4c-fd66-48f2-9137-1b928d1d4322",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/quote",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
