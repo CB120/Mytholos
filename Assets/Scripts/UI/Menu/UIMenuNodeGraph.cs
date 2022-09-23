@@ -37,8 +37,8 @@ public class UIMenuNodeGraph : MonoBehaviour
     virtual protected void Navigate(UIMenuNode node, int playerNumber)
     {
         playerCurrentNode[playerNumber] = node;
-        playerCursors[playerNumber].SetTransform(node.GetComponent<RectTransform>()); // Update cursor
         node.OnNavigate(playerNumber); // Perform any behaviour that might occur when moving to this node
+        UpdateCursorTransforms();
     }
 
     UIMenuNodeGraph Navigate(UIMenuNodeGraph graph, int playerNumber) // Return type is unneccesary
@@ -67,5 +67,13 @@ public class UIMenuNodeGraph : MonoBehaviour
     public void PlayerExitGraph(int playerNumber)
     {
         playerCursors[playerNumber].isPlaying = false;
+    }
+
+    public void UpdateCursorTransforms()
+    {
+        for (int i = 0; i < playerCursors.Length; i++)
+        {
+            playerCursors[i].SetTransform(playerCurrentNode[i].GetComponent<RectTransform>()); // Update cursor transform
+        }
     }
 }

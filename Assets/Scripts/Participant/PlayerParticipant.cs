@@ -35,7 +35,6 @@ public class PlayerParticipant : Participant
     // Menu references
     UIMenuNodeGraph currentMenuGraph;
 
-    private void Start()
     /*private void Start()
     {
 
