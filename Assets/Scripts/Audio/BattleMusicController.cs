@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using Myths;
+using Debris;
 
 [System.Serializable]
 public class MusicLayer
@@ -11,8 +12,8 @@ public class MusicLayer
     public string name;
     [Tooltip("Current Layer volume")]
     [Range(0, 100)] public float volume = 0f;
-    [Tooltip("Fade-in/out target volume")]
-    [Range(0, 100)] public float targetVolume = 0f;
+    //[Tooltip("Fade-in/out target volume")]
+    [HideInInspector][Range(0, 100)] public float targetVolume = 0f; 
     [Tooltip("If enabled, Volume slider allows direct control of FMOD parameter")]
     public bool manualVolumeOverride = false;
 
@@ -36,6 +37,7 @@ public class BattleMusicController : MonoBehaviour
 
     // References
     StudioEventEmitter battleMusicEmitter;
+    DebrisController debrisController;
 
     [Space(30)]
     [Header("Asset References")]
@@ -47,6 +49,8 @@ public class BattleMusicController : MonoBehaviour
     private void Awake()
     {
         battleMusicEmitter = GetComponent<StudioEventEmitter>();
+
+        ReorderAllElements();
     }
 
     private void Start()
@@ -54,6 +58,7 @@ public class BattleMusicController : MonoBehaviour
         CalculateInitialScores();
         UpdateTargetVolumes();
         UpdateVolumesImmediate();
+        ResetAllScores();
     }
 
     void Update()
@@ -68,6 +73,7 @@ public class BattleMusicController : MonoBehaviour
     {
         CalculateElementScores();
         UpdateTargetVolumes();
+        ResetAllScores();
     }
 
 
@@ -75,8 +81,10 @@ public class BattleMusicController : MonoBehaviour
         // Private
     void CalculateElementScores()
     {
-
-        //Apply a Mathf.Clamp() if bugs occur
+        for (int i = 0; i < allElements.Length; i++)
+        {
+            //musicLayers[i].score = 
+        }
     }
 
     void CalculateInitialScores()
@@ -158,6 +166,25 @@ public class BattleMusicController : MonoBehaviour
             m.volume = m.targetVolume;
         }
         UpdateElementVolumes();
+    }
+
+    void ResetAllScores() //clears the score values so they can be calculated afresh
+    {
+        foreach (MusicLayer m in musicLayers)
+        {
+            m.score = 0;
+        }
+    }
+
+    void ReorderAllElements()
+    {
+        SO_Element[] temp = new SO_Element[allElements.Length];
+
+        foreach (SO_Element e in allElements)
+        {
+            temp[GetIndexOfLayer(e.name)] = e;
+        }
+        allElements = temp;
     }
 
 

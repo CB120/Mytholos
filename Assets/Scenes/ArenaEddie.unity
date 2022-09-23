@@ -6853,35 +6853,44 @@ MonoBehaviour:
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Electric
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Fire
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Ice
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Metal
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Water
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Wind
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   - name: Wood
     volume: 0
     targetVolume: 0
     manualVolumeOverride: 0
+    score: 0
   volumeLerpRate: 20
+  desiredLayers: 3
   allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}
   allElements:
