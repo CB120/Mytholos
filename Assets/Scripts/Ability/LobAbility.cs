@@ -18,7 +18,17 @@ public class LobAbility : Ability
 
     void Start()
     {
-        Vector3 force = (owningMyth.targetEnemy.gameObject.transform.position - transform.position) + new Vector3(0, 2, 0);
+        //GUARD set added by Ethan, remove when unneeded
+        Vector3 force = (Vector3.zero - transform.position) + new Vector3(0, 2, 0);
+        if (owningMyth.targetEnemy)
+        {
+            force = (owningMyth.targetEnemy.gameObject.transform.position - transform.position) + new Vector3(0, 2, 0);
+        } 
+        else
+        {
+            Debug.LogWarning("owningMyth.targetEnemy is null, swapping its position for Vector3.zero");
+        }
+
         rigidBody.AddForce((force * strength), ForceMode.Impulse);
 
         Invoke("Explode", timeToExplode);
