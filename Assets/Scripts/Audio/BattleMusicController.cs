@@ -31,6 +31,8 @@ public class BattleMusicController : MonoBehaviour
     public float fadeInRate = 40f;
     [Tooltip("% volume per second | Larger values = faster crossfades")]
     public float fadeOutRate = 20f;
+    [Tooltip("s seconds | The time before a non-Debris Ability's layer fade-out begins, if not overriden by Debris first")]
+    public float nonDebrisFadeOutDelay = 5f;
     [Tooltip("Desired number of Layers - Algorithm will target this number of Layers playing at once")]
     [Range(0, 8)] public int desiredLayers = 3;
 
@@ -71,7 +73,7 @@ public class BattleMusicController : MonoBehaviour
     void Update()
     {
         UpdateFades();
-        UpdateElementVolumes();
+        UpdateLayerVolumes();
     }
 
 
@@ -85,19 +87,26 @@ public class BattleMusicController : MonoBehaviour
 
 
     // Called by other systems
-    public static void OnElectricAttack()
+    public static void OnElectricAbility()
     {
-
+        Singleton.S_OnElectricAbility();
     }
 
-    public static void OnWindAttack()
+    public static void OnWindAbility()
     {
-
+        Singleton.S_OnWindAbility();
     }
 
 
     // Methods
         // Private
+    void OnNonDebrisAbility(SO_Element element)
+    {
+        musicLayers[GetIndexOfLayer(element.name)].score = int.MaxValue;
+        UpdateTargetVolumes();
+        ResetAllScores();
+    }
+
     void CalculateElementScores()
     {
         for (int i = 0; i < allElements.Length; i++)
@@ -170,7 +179,7 @@ public class BattleMusicController : MonoBehaviour
         }
     }
 
-    void UpdateElementVolumes() //applies the current volumes to FMOD
+    void UpdateLayerVolumes() //applies the current volumes to FMOD
     {
         foreach (MusicLayer m in musicLayers)
         {
@@ -185,7 +194,7 @@ public class BattleMusicController : MonoBehaviour
             m.targetVolume = Mathf.Clamp(m.targetVolume, 0f, 100f);
             m.volume = m.targetVolume;
         }
-        UpdateElementVolumes();
+        UpdateLayerVolumes();
     }
 
     void ResetAllScores() //clears the score values so they can be calculated afresh
@@ -208,6 +217,30 @@ public class BattleMusicController : MonoBehaviour
     }
 
 
+    // Helpers
+    void S_OnElectricAbility()
+    {
+        OnNonDebrisAbility(allElements[GetIndexOfElement("Electric")]);
+        Invoke("ZeroElectricTargetVolume", nonDebrisFadeOutDelay);
+    }
+
+    void S_OnWindAbility()
+    {
+        OnNonDebrisAbility(allElements[GetIndexOfElement("Wind")]);
+        Invoke("ZeroWindTargetVolume", nonDebrisFadeOutDelay);
+    }
+
+    void ZeroElectricTargetVolume()
+    {
+        musicLayers[GetIndexOfLayer("Electric")].targetVolume = 0f;
+    }
+
+    void ZeroWindTargetVolume()
+    {
+        musicLayers[GetIndexOfLayer("Wind")].targetVolume = 0f;
+    }
+
+
     // Functions
     int GetIndexOfLayer(string elementName)
     {
@@ -216,7 +249,18 @@ public class BattleMusicController : MonoBehaviour
             if (musicLayers[i].name == elementName) return i;
         }
 
-        Debug.LogWarning("Could not find Music Layer with name " + elementName + ", return -1, expect index errors.");
+        Debug.LogWarning("Could not find Music Layer with name " + elementName + ", returning -1, expect index errors.");
+        return -1;
+    }
+
+    int GetIndexOfElement(string elementName) //this may be redundant as allElements should be getting re-ordered to match MusicLayers on Start()
+    {
+        for (int i = 0; i < allElements.Length; i++)
+        {
+            if (allElements[i].name == elementName) return i;
+        }
+
+        Debug.LogWarning("Could not find Element SO with name " + elementName + ", returning -1, expect index errors.");
         return -1;
     }
 }
