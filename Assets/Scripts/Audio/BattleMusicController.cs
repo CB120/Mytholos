@@ -38,6 +38,8 @@ public class BattleMusicController : MonoBehaviour
 
 
     // References
+    static BattleMusicController Singleton;
+
     StudioEventEmitter battleMusicEmitter;
     DebrisController debrisController;
 
@@ -47,9 +49,11 @@ public class BattleMusicController : MonoBehaviour
     public SO_Element[] allElements;
 
 
-    //Engine-called
+    // Engine-called
     private void Awake()
     {
+        Singleton = this;
+
         battleMusicEmitter = GetComponent<StudioEventEmitter>();
         debrisController = GameObject.FindWithTag("Grid").GetComponent<DebrisController>();
 
@@ -71,12 +75,24 @@ public class BattleMusicController : MonoBehaviour
     }
 
 
-    //Listener-called
-    public void OnDebrisChange() //Called by DebrisController
+    // Listener-called
+    public void OnDebrisChange() // Called by DebrisController
     {
         CalculateElementScores();
         UpdateTargetVolumes();
         ResetAllScores();
+    }
+
+
+    // Called by other systems
+    public static void OnElectricAttack()
+    {
+
+    }
+
+    public static void OnWindAttack()
+    {
+
     }
 
 
