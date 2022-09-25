@@ -9,6 +9,7 @@ public class PartyBuilder : MonoBehaviour
 
     [NonSerialized] public SO_AllParticipantData allParticipantData;
 
+    // Keep these public lol
     public List<Myth> Party1;
     public List<Myth> Party2;
 

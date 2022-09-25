@@ -89,6 +89,11 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 4334164369939574417}
+    - target: {fileID: 8216666602892919933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 4334164369939574417}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
 --- !u!95 &4334164369939574417 stripped
