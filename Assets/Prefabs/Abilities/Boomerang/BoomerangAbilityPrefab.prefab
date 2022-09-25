@@ -783,7 +783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3398393550023252279}
   - component: {fileID: 1682466321832268139}
-  - component: {fileID: 3344873697917338674}
+  - component: {fileID: -9015078016853536265}
   m_Layer: 0
   m_Name: BoomerangAbilityPrefab
   m_TagString: Untagged
@@ -824,7 +824,9 @@ MonoBehaviour:
   abilityPS: {fileID: 0}
   speed: 15
   acceleration: 10
---- !u!114 &3344873697917338674
+  boomerangSFXprefab: {fileID: 2727645108851578015, guid: 71cfebdb72817524a8bf6d44da5d9f3b,
+    type: 3}
+--- !u!114 &-9015078016853536265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
