@@ -1,5 +1,6 @@
 using System;
 using Myths;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PartyBuilder : MonoBehaviour
@@ -8,11 +9,16 @@ public class PartyBuilder : MonoBehaviour
 
     [NonSerialized] public SO_AllParticipantData allParticipantData;
 
+    // Keep these public lol
+    public List<Myth> Party1;
+    public List<Myth> Party2;
+
     public SO_Ability[] allAbilities;
 
     Transform[] partyParents = new Transform[2];
     private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
     private Vector3 spawnOffset = new Vector3(3, 0, 0);
+
 
     private void Awake()
     {
@@ -21,6 +27,7 @@ public class PartyBuilder : MonoBehaviour
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
+        setDefaultTarget();
     }
 
     void Start()
@@ -52,6 +59,18 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
+    void setDefaultTarget()
+    {
+        if (Party1.Count == Party2.Count && Party1 != null)
+        {
+            for (int i = 0; i < Party1.Count; i++)
+            {
+                Party1[i].targetEnemy = Party2[i].gameObject;
+                Party2[i].targetEnemy = Party1[i].gameObject;
+            }
+        }
+    }
+
     // TODO: Delete this I'm so sorry --Eddie
     int partyCounter = 0;
 
@@ -73,7 +92,14 @@ public class PartyBuilder : MonoBehaviour
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
-        
+        if(participantIndex == 1)
+        {
+            Party1.Add(newMyth);
+        }
+        else
+        {
+            Party2.Add(newMyth);
+        }
         // TODO: I want it on the record that I don't like this
         newMyth.northAbility = mythData.northAbility;
         newMyth.westAbility = mythData.westAbility;
