@@ -9,7 +9,7 @@ namespace Myths.Behaviours
     {
         [Header("Dodge Behaviour")]
         public UnityEvent DodgeComplete = new();
-        private Vector3 inputDirection;
+        [SerializeField] private float dodgeSpeed;
 
         // References
         public NavMeshAgent navMeshAgent;
@@ -31,19 +31,8 @@ namespace Myths.Behaviours
                 DodgeComplete.Invoke();
                 return;
             }
-            myth.Stamina.Value -= 0;
-            Debug.Log(myth.Stamina.Value);
-            //inputDirection = new Vector3(myth.lastInputDirection.x, 0, myth.lastInputDirection.y);
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(myth.lastInputDirection.x, 0, myth.lastInputDirection.y), myth.transform.up);
-            inputDirection = lookRotation * Vector3.one;
-            if (inputDirection != null && inputDirection != Vector3.zero)
-            {
-                ActivateDodge(inputDirection);
-            }
-            else
-            {
-                //ActivateDodge(decideDirection());
-            }
+            myth.Stamina.Value -= 35;
+            ActivateDodge();
         }
 
         private Vector3 decideDirection()
@@ -53,16 +42,12 @@ namespace Myths.Behaviours
 
             // Use this in the future for a better dodge?
         }
-        private void ActivateDodge(Vector3 dodgeDirection)
+        private void ActivateDodge()
         {
             // Initialize dodge parameters 
             myth.isInvulnerable = true;
-            movementController.SetTargetVelocity(dodgeDirection * 10f);
-            //myth.transform.position = transform.position + (dodgeDirection * 1.75f);
+            movementController.SetTargetVelocity(myth.transform.forward * dodgeSpeed);
             if (anim) anim.SetBool("Walking", false);
-            //Debug.Log(dodgeDirection);
-            //navMeshAgent.ResetPath();
-            //navMeshAgent.gameObject.transform.position = navMeshAgent.gameObject.transform.position;
             Invoke("KilliFrames", 0.33f);
             mythCommandHandler.Command = null;
             DodgeComplete.Invoke();
