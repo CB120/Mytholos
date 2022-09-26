@@ -89,7 +89,7 @@ public class PartyBuilder : MonoBehaviour
 
         currentSpawnPosition += spawnOffset;
 
-        GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
+        GameObject newMythGameObject = Instantiate(prefab, spawnPosition * 4, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
         if(participantIndex == 1)

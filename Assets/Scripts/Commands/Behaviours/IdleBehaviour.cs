@@ -17,7 +17,7 @@ namespace Myths.Behaviours
         protected override void OnEnable()
         {
             base.OnEnable();
-            navMeshAgent.ResetPath();
+            //navMeshAgent.ResetPath();
             Debug.Log("Idling");
         }
     }

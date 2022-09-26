@@ -2442,7 +2442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1400154222
 Transform:
   m_ObjectHideFlags: 0
@@ -3316,6 +3316,16 @@ PrefabInstance:
     - target: {fileID: 1739577771300268254, guid: b074b28048e94164e95294786fd9d556,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673746058977388516, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720286491523542649, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4720286491723870142, guid: b074b28048e94164e95294786fd9d556,
@@ -3383,10 +3393,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5104903101255017089, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7784399411744501179, guid: b074b28048e94164e95294786fd9d556,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898454407488910352, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: maxZoom
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898454407488910352, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: minZoom
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898454407488910352, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: zoomRate
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4720286491871789905, guid: b074b28048e94164e95294786fd9d556, type: 3}

@@ -57,8 +57,8 @@ public class UIGameMyth : MonoBehaviour
             else
                 canvasGroup.alpha = 1.0f * (greyedOut ? 0.6f : 1.0f);
         }
-        else
-            StartCoroutine(TryUpdateOpacity());
+        //else
+            //StartCoroutine(TryUpdateOpacity());
 
         // Spicing things up with scale
         float scaleFactor = selected ? 1.05f : greyedOut ? 0.95f : 1.0f;

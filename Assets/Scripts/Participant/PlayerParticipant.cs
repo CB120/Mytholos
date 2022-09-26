@@ -40,8 +40,8 @@ public class PlayerParticipant : Participant
         if (selectedMythIndex == mythsInPlay[0] && context.canceled)
         {
             CancelManualMovement();
-            selectedMythIndex = -1;
-            SelectMyth.Invoke(-1);
+            //selectedMythIndex = -1;
+            //SelectMyth.Invoke(-1);
         }
     }
     
@@ -69,8 +69,8 @@ public class PlayerParticipant : Participant
 
     private void CancelCommandMovement()
     {
-        if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
-            SelectedMyth.GetComponentInChildren<NavMeshAgent>().ResetPath();
+        //if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
+            //SelectedMyth.GetComponentInChildren<NavMeshAgent>().ResetPath();
     }
 
     public void UseAbilityNorth(InputAction.CallbackContext context)
@@ -87,7 +87,8 @@ public class PlayerParticipant : Participant
 
         //if (SelectedMyth. < SelectedMyth.eastAbility.stamina) return;
         //SelectedMyth.Stamina -= 30;
-        CancelManualMovement();
+        //CancelManualMovement();
+
         CancelCommandMovement();
         SelectedMythCommandHandler.Command = new DodgeCommand();
 

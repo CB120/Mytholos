@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4780120509031229686}
   - component: {fileID: 9166940849690583412}
-  - component: {fileID: 8562805467365396305}
   - component: {fileID: 2672777451707083747}
   - component: {fileID: 8346572058382131708}
   - component: {fileID: 4441584325354896440}
@@ -36,8 +35,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4040675131982062353}
+  m_Children: []
   m_Father: {fileID: 8072052664142603967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,56 +55,6 @@ MonoBehaviour:
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
   navMeshAgent: {fileID: 7423737072121430647}
---- !u!114 &8562805467365396305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6040751574335777805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1e05f7f23c4857b45f1da392db9dfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 0
-  moveComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 9166940849690583412}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  moveFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7423737072121430647}
-        m_TargetAssemblyTypeName: UnityEngine.AI.NavMeshAgent, UnityEngine
-        m_MethodName: ResetPath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  anim: {fileID: 0}
-  movementController: {fileID: 6450067431077666470}
-  speed: 5
-  navMeshAgent: {fileID: 7423737072121430647}
-  navigationNode: []
 --- !u!114 &2672777451707083747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,19 +148,7 @@ MonoBehaviour:
         m_CallState: 2
   moveCommandReceived:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8562805467365396305}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   manualMoveCommandReceived:
     m_PersistentCalls:
       m_Calls:
@@ -309,8 +245,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  navMeshAgent: {fileID: 7423737072121430647}
   movementController: {fileID: 6450067431077666470}
+  anim: {fileID: 0}
+  dodgeSpeed: 5.2
 --- !u!114 &2927794498328948061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,37 +279,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &7800953375030218215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4040675131982062353}
-  m_Layer: 0
-  m_Name: Attack-Movement State Machine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4040675131982062353
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7800953375030218215}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5572189, y: 0.19487432, z: -0.26315403}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4780120509031229686}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8969299549519444571
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +425,6 @@ MonoBehaviour:
   myth: {fileID: 0}
   walkSpeed: 0
   targetEnemy: {fileID: 0}
-  lastInputDirection: {x: 0, y: 0}
   partyIndex: 0
   isInvulnerable: 0
   element: {fileID: 0}
@@ -565,7 +470,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9142296419116895834}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5

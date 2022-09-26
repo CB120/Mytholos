@@ -39,6 +39,7 @@ namespace Commands.Behaviours
 
         private void Update()
         {
+
             if (!myth.isInvulnerable)
             {
                 var inputVector = new Vector3(
@@ -62,6 +63,7 @@ namespace Commands.Behaviours
                 {
                     lerpTime = 0;
                 }
+                //myth.lastInputDirection = inputVector;
 
                 lastDirection = inputVector;
                 targetDirection = Vector3.Lerp(targetDirection, inputVector,
@@ -71,7 +73,7 @@ namespace Commands.Behaviours
 
 
                 Vector3 lookDirection = inputVector;
-                myth.lastInputDirection = inputVector;
+                
                 if (lookDirection != Vector3.zero)
                 {
                     myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 8);
