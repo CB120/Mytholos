@@ -12,7 +12,6 @@ namespace Myths.Behaviours
         [SerializeField] private float dodgeSpeed;
 
         // References
-        public NavMeshAgent navMeshAgent;
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private Animator anim;
 
@@ -31,7 +30,7 @@ namespace Myths.Behaviours
                 DodgeComplete.Invoke();
                 return;
             }
-            myth.Stamina.Value -= 35;
+            myth.Stamina.Value -= 0;
             ActivateDodge();
         }
 
@@ -45,6 +44,7 @@ namespace Myths.Behaviours
         private void ActivateDodge()
         {
             // Initialize dodge parameters 
+            Debug.Log("Activating" + myth);
             myth.isInvulnerable = true;
             movementController.SetTargetVelocity(myth.transform.forward * dodgeSpeed);
             if (anim) anim.SetBool("Walking", false);

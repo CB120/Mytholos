@@ -63,7 +63,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: MoveLeft
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -120,42 +120,18 @@ MonoBehaviour:
     m_ActionId: b21cb573-db2f-4559-9f85-909aa9d7d188
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: SelectLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 44db108f-9d27-4a10-9110-16b63986c6e4
     m_ActionName: Player/Select Left[/XInputControllerWindows/leftShoulder]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: SelectRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: de2d6252-0ce5-42a5-865a-8bbe6ebba150
     m_ActionName: Player/Select Right[/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: UseAbilityWest
+        m_MethodName: UseRightAbilityWest
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -171,7 +147,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyDown
+        m_MethodName: UseLeftAbilitySouth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -187,7 +163,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyUp
+        m_MethodName: UseLeftAbilityNorth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -203,7 +179,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: UseAbilityNorth
+        m_MethodName: UseRightAbilityNorth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -219,7 +195,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: UseAbilityEast
+        m_MethodName: UseRightAbilityEast
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -235,7 +211,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: UseAbilitySouth
+        m_MethodName: UseRightAbilitySouth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -251,7 +227,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyLeft
+        m_MethodName: UseLeftAbilityWest
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -267,7 +243,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyRight
+        m_MethodName: UseLeftAbilityEast
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -283,7 +259,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: TargetEnemy
+        m_MethodName: MoveRight
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -293,24 +269,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: bbde4d9b-682a-445c-8a33-529b63ba26d5
-    m_ActionName: Player/SelectEnemyLeft[/DualSenseGamepadHID/rightStick/left]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: TargetEnemy
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0906f682-9854-4fb3-af50-07e55f6136c5
-    m_ActionName: Player/SelectEnemyRight[/DualSenseGamepadHID/rightStick/right]
+    m_ActionId: 288eaf5c-019a-49a6-8f9c-0feaf667dd63
+    m_ActionName: Player/MoveRight[/DualSenseGamepadHID/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

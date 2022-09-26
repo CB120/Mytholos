@@ -6,9 +6,18 @@
             "id": "94d05b3b-bbca-4247-844a-2a39e187b264",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MoveLeft",
                     "type": "Value",
                     "id": "600618f6-93cf-4f3e-9d12-5f33f0e3b0c6",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(max=0.6)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveRight",
+                    "type": "Value",
+                    "id": "288eaf5c-019a-49a6-8f9c-0feaf667dd63",
                     "expectedControlType": "Vector2",
                     "processors": "StickDeadzone(max=0.6)",
                     "interactions": "",
@@ -112,24 +121,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "SelectEnemyLeft",
-                    "type": "Button",
-                    "id": "bbde4d9b-682a-445c-8a33-529b63ba26d5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SelectEnemyRight",
-                    "type": "Button",
-                    "id": "0906f682-9854-4fb3-af50-07e55f6136c5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -140,7 +131,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -151,7 +142,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -162,7 +153,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -173,7 +164,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -184,7 +175,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -195,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -206,7 +197,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -217,7 +208,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -228,7 +219,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -239,7 +230,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -476,45 +467,12 @@
                 },
                 {
                     "name": "",
-                    "id": "ae590f68-af42-4cd4-9163-d289a1ff5669",
-                    "path": "<Gamepad>/rightStick/left",
+                    "id": "259ad62d-2bb4-413f-885b-8dbd929d1a82",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "SelectEnemyLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6c3ed0fc-3f7d-46f7-82b4-d471d92b5454",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectEnemyLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2992fc98-3af1-4fce-926f-8d070fc2c18e",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectEnemyRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2ca1501a-27d1-4271-a158-167b66b26e57",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectEnemyRight",
+                    "groups": "Gamepad",
+                    "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
