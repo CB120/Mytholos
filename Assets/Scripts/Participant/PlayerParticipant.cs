@@ -28,26 +28,6 @@ public class PlayerParticipant : Participant
     private Myth SelectedMyth => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => SelectedMyth.GetComponent<MythCommandHandler>();
-    
-
-    private void Start()
-    {
-
-        // Add code here to only do this in game instead of on start
-        foreach(int myth in mythsInPlay)
-        {
-            selectedMythIndex = mythsInPlay[myth];
-            for (int i = 0; i < ParticipantData.partyData.Length; i++)
-            {
-                if (ParticipantData.partyData[i].participant != this)
-                {
-                    SelectedMyth.targetEnemy = ParticipantData.partyData[i].myths[selectedEnemyIndex].gameObject;
-                    //Enemies.Add(ParticipantData.partyData[i].myths[0].gameObject);
-                }
-            }
-        }
-        selectedMythIndex = -1;
-    }
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -107,10 +87,10 @@ public class PlayerParticipant : Participant
 
         //if (SelectedMyth. < SelectedMyth.eastAbility.stamina) return;
         //SelectedMyth.Stamina -= 30;
-
-        SelectedMythCommandHandler.Command = new DodgeCommand();
         CancelManualMovement();
-        //SelectAbility.Invoke(3);
+        CancelCommandMovement();
+        SelectedMythCommandHandler.Command = new DodgeCommand();
+
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)

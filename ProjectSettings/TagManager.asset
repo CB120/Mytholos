@@ -8,7 +8,7 @@ TagManager:
   - Party 2 Parent
   - Myth
   - NavigationNode
-  - MenuMusic
+  - Grid
   layers:
   - Default
   - TransparentFX

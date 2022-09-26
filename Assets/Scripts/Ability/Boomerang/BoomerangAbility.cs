@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Myths;
+using FMODUnity;
 
 public class BoomerangAbility : Ability
 {
@@ -13,6 +14,8 @@ public class BoomerangAbility : Ability
     [SerializeField] private float speed;
     [SerializeField] private float acceleration;
 
+    StudioEventEmitter boomerangSFXemitter; //SFX, inserted by Ethan
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -20,6 +23,8 @@ public class BoomerangAbility : Ability
         Direction = owningMyth.transform.forward;
         BoomerangTransform = this.gameObject.transform;
         transform.parent = null;
+
+        boomerangSFXemitter = GetComponent<StudioEventEmitter>(); //SFX, inserted by Ethan
     }
 
     // Update is called once per frame
@@ -42,7 +47,8 @@ public class BoomerangAbility : Ability
             if (Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position) < .01f)
                 Destroy(this.gameObject);
         }
-            
+
+        boomerangSFXemitter.SetParameter("Boomerang Speed", speed); //SFX, inserted by Ethan
     }
 
     public override void Trigger(Myth myth)
@@ -53,4 +59,3 @@ public class BoomerangAbility : Ability
         Destroy(this.gameObject);
     }
 }
-

@@ -34,7 +34,14 @@ public class BombAbility : Ability
     {
         startPos = transform.position;
         //targetPos = owningMyth != null ? owningMyth.targetEnemy.gameObject.transform.position : new Vector3(10, 0, 10);
-        targetPos = owningMyth.targetEnemy.gameObject.transform.position;
+        if (owningMyth.targetEnemy) //GUARD set added by Ethan, to prevent NREs. Remove when unneeded
+        {
+            targetPos = owningMyth.targetEnemy.gameObject.transform.position;
+        } else
+        {
+            targetPos = Vector3.zero;
+            Debug.LogWarning("owningMyth.targetEnemy is null, default-targeting the Origin.");
+        }
         base.Start();
     }
 
