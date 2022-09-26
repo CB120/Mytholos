@@ -25,6 +25,7 @@ public class HealingAbility : Ability
                 new Vector3(areaOfEffect, transform.localScale.y, areaOfEffect),
                 expandSpeed * Time.deltaTime
         );
+        base.Update();
     }
 
     private void ResetScale()

@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Horse
   prefab: {fileID: 5259938521985855711, guid: ecd81f8b84747f147abf0f20d6a5795e, type: 3}
   icon: {fileID: 420892485, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  element: 3

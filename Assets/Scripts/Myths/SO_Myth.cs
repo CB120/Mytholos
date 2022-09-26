@@ -1,4 +1,5 @@
 using UnityEngine;
+using Elements;
 
 namespace Myths
 {
@@ -8,5 +9,6 @@ namespace Myths
         public new string name;
         public GameObject prefab;
         public Sprite icon;
+        public Element element;
     }
 }

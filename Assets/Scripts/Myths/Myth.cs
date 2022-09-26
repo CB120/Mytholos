@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace Myths
 {
     public class Myth : MonoBehaviour
