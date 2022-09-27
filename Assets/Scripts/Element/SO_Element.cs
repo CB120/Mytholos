@@ -6,7 +6,7 @@ public class SO_Element : ScriptableObject
 {
     public Element element;
     public Color color;
-    
+    public float buffLength;
     // TODO: Move element icon here too
 
     public List<SO_Element> strongAgainst = new();

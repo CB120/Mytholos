@@ -59,6 +59,11 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         Destroy(gameObject);
     }
 
+    virtual public void ClearDebris(GameObject obj)//@Jack you can call this function to clear debris
+    {
+
+    }
+
     #endregion
 
     #region Effects
@@ -116,6 +121,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         myth.effectController.AdjustStamina(ability.staminaCost);
 
+        //myth.effectController.ApplyStaminaBuff(ability.element.buffLength, ability.regenSpeed); //Will Apply a Buff Rather than Direct Stamina Boost
     }
 
     virtual public void ApplyWaterEffect(Myth myth, bool isInParty)

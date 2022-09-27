@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Myths;
 using Elements;
+using Commands;
 public class Effects : MonoBehaviour
 {
     public Myth myth;
@@ -12,7 +13,7 @@ public class Effects : MonoBehaviour
         defaultWalkSpeed = myth.walkSpeed;
     }
 
-    #region Wood
+    #region Wood - Baxter
     public void Heal(float value)//Wood
     {
         myth.Health.Value += value;
@@ -29,15 +30,16 @@ public class Effects : MonoBehaviour
     #region Ice - Baxter
     public void Freeze(float value)//Ice
     {
-        
+
     }
     #endregion
 
-    #region Wind
+    #region Wind - Baxter 
     public void Displace(float value) //Wind
     {
-        //Rigidbody rb = GetComponent<Rigidbody>();
-        //rb.AddForce(new Vector3(Random.Range(-1, 1), Random.Range(0, 1), Random.Range(-1, 1)) * value, ForceMode.Impulse);
+        Rigidbody rb = GetComponent<Rigidbody>();
+        float force = Random.Range(-value, value);
+        rb.AddForce(new Vector3(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10)) * force);
     }
 
     public void AdjustAgility(float value)//Wind
@@ -50,13 +52,32 @@ public class Effects : MonoBehaviour
     {
         myth.walkSpeed = defaultWalkSpeed;
     }
-    #endregion - Baxter
+    #endregion 
 
-    #region Electric
+    #region Electric - Baxter
     public void AdjustStamina(float value)//Electric
     {
         myth.Stamina.Value += value;
     }
+
+    public void ApplyStaminaBuff(float time, float regenSpeed)
+    {
+        Invoke("DeactivateStaminaBuff", time);
+        myth.Stamina.regenSpeed = regenSpeed;
+    }
+
+    public void DeactivateStaminaBuff()
+    {
+        myth.Stamina.regenSpeed = 5;
+    }
+    #endregion
+
+    #region Earth
+    public void DefenceBuff()
+    {
+
+    }
+
     #endregion
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here
