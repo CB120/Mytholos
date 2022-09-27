@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: BombAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Bomb
+  description: 
   damage: 50
   healing: 0
   stamina: 60

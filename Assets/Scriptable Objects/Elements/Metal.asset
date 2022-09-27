@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Metal
   m_EditorClassIdentifier: 
   element: 6
-  color: {r: 0.3254902, g: 0.37647063, b: 0.37647063, a: 0}
+  color: {r: 0.3254902, g: 0.37647063, b: 0.37647063, a: 1}
   strongAgainst:
   - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
+    type: 3}
+  effectParticle: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
     type: 3}

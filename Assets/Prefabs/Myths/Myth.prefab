@@ -311,6 +311,7 @@ MonoBehaviour:
         m_CallState: 2
   navMeshAgent: {fileID: 7423737072121430647}
   movementController: {fileID: 6450067431077666470}
+  anim: {fileID: 0}
 --- !u!114 &2927794498328948061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +479,7 @@ GameObject:
   - component: {fileID: -3291310522803648204}
   - component: {fileID: 3328760576734170970}
   - component: {fileID: 1496457094348944347}
+  - component: {fileID: 4924105076923506392}
   m_Layer: 0
   m_Name: Myth
   m_TagString: Myth
@@ -519,6 +521,7 @@ MonoBehaviour:
   myth: {fileID: 0}
   walkSpeed: 0
   targetEnemy: {fileID: 0}
+  effectController: {fileID: 4924105076923506392}
   lastInputDirection: {x: 0, y: 0}
   partyIndex: 0
   isInvulnerable: 0
@@ -733,3 +736,16 @@ MonoBehaviour:
   valueZeroed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4924105076923506392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccfc94013a90fb48b189a741fb647c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: ShotAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   name: Shot
+  description: 
   damage: 10
   healing: 0
   stamina: 10

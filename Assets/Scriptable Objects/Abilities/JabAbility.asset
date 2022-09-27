@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: JabAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   name: Jab
+  description: 
   damage: 5
   healing: 0
   stamina: 10

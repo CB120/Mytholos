@@ -10,10 +10,10 @@ namespace Myths
 
         public MythStat Health => health;
         public MythStat Stamina => stamina;
-
         public SO_Myth myth;
         public float walkSpeed;
         public GameObject targetEnemy;
+        public Effects effectController;
         // TODO: Do we still need this? Some instances can be replaced by passing this in the command // 
         [HideInInspector]public Vector2 lastInputDirection;
         public int partyIndex;
