@@ -16,8 +16,9 @@ MonoBehaviour:
   name: Shot
   description: 
   damage: 10
-  healing: 0
-  stamina: 10
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 10
   chargeTime: 0
   performTime: 0
   isRanged: 1
@@ -25,4 +26,3 @@ MonoBehaviour:
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 8641636710526588070, guid: 7cbb761b2a1575042b43e63ecc60e6d6,
     type: 3}
-  colliderPrefab: {fileID: 0}

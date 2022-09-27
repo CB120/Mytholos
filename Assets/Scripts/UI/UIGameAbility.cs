@@ -16,7 +16,7 @@ public class UIGameAbility : MonoBehaviour
         // TODO: Should give designer control over the default element colour
         elementIcon.color = ability.element == null ? Color.black : ability.element.color;
         //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-        staminaCostTMP.text = Mathf.RoundToInt(ability.stamina) + ""; // For sprint 2, we'll just show the damage
+        staminaCostTMP.text = Mathf.RoundToInt(ability.staminaCost) + ""; // For sprint 2, we'll just show the damage
     }
 
     public void AnimateSelectedAbility()

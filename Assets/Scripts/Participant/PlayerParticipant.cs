@@ -201,7 +201,7 @@ public class PlayerParticipant : Participant
         var ability = abilityAccessor(SelectedMyth);
 
         // TODO: I don't think this is the right place for this check
-        if (SelectedMyth.Stamina.Value < ability.stamina) return;
+        if (SelectedMyth.Stamina.Value < ability.staminaCost) return;
         
         if (!ability.isRanged)
         {

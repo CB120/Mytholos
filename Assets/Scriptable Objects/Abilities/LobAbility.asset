@@ -16,8 +16,9 @@ MonoBehaviour:
   name: Lob
   description: 
   damage: 25
-  healing: 0
-  stamina: 25
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 25
   chargeTime: 0
   performTime: 0
   isRanged: 1
@@ -25,4 +26,3 @@ MonoBehaviour:
   relativeSpawnPosition: {x: 0, y: 2, z: 0}
   abilityPrefab: {fileID: 4679095279651952448, guid: de2a18777ce82e648ac26a1191b59be8,
     type: 3}
-  colliderPrefab: {fileID: 0}

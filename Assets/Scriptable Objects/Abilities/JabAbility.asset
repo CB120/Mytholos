@@ -16,8 +16,9 @@ MonoBehaviour:
   name: Jab
   description: 
   damage: 5
-  healing: 0
-  stamina: 10
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 10
   chargeTime: 0
   performTime: 0
   isRanged: 1
@@ -25,4 +26,3 @@ MonoBehaviour:
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 1759088471933823973, guid: 50379f691b7e3694a97798c6fa0c248f,
     type: 3}
-  colliderPrefab: {fileID: 0}

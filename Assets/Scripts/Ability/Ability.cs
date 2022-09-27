@@ -18,7 +18,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void Start()
     {
-        owningMyth.Stamina.Value -= ability.stamina;
+        owningMyth.Stamina.Value -= ability.staminaCost;
     }
 
     virtual public void Update()
@@ -29,38 +29,24 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void Attack(Myth myth, float damage)
     {
         bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
-        if (!isInParty) {
+        ParticleSystem particle = ability.element.debuffParticle;
+        if (!isInParty)
+        {
             var finalDamage = damage * DamageMultiplier;
-            myth.Health.Value -= finalDamage;
+            myth.Health.Value -= finalDamage; ;
         }
-
-        if (ability.element.effectParticle != null) //Temporary to show which debuff is bein
+        else
         {
-            ParticleSystem ps = Instantiate(ability.element.effectParticle, myth.transform);
-            ParticleSystem.MainModule ma = ps.main;
-            ma.startColor = ability.element.color;
+            if (ability.element.buffParticle != null) //Temporary to show which debuff is being used
+                particle = ability.element.buffParticle; 
+            
         }
-
-        switch (element)
-        {
-            case Element.Wind: ApplyWindEffect(myth, isInParty);
-                break;
-            case Element.Electric: ApplyElectricEffect(myth, isInParty);
-                break;
-            case Element.Water: ApplyWaterEffect(myth, isInParty);  
-                break;
-            case Element.Metal: ApplyMetalEffect(myth, isInParty);
-                break;
-            case Element.Fire: ApplyFireEffect(myth, isInParty);
-                break;
-            case Element.Earth: ApplyEarthEffect(myth, isInParty);
-                break;
-            case Element.Ice: ApplyIceEffect(myth, isInParty);
-                break;
-            case Element.Wood: ApplyWoodEffect(myth, isInParty);
-                break;
-        }
+        ParticleSystem ps = Instantiate(particle, myth.transform);
+        ParticleSystem.MainModule ma = ps.main;
+        ma.startColor = ability.element.color;
+        ApplyEffect(myth);
     }
+
 
     #region Collision
     virtual public void Trigger(Myth myth)
@@ -76,21 +62,59 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     #endregion
 
     #region Effects
-    virtual public void ApplyWoodEffect(Myth myth, bool isInParty)
+    virtual public void ApplyEffect(Myth myth)
     {
-        float value = ability.damage / 2;//Life Steal
+        bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
+
+        switch (element)
+        {
+            case Element.Wind:
+                ApplyWindEffect(myth, isInParty);
+                break;
+            case Element.Electric:
+                ApplyElectricEffect(myth, isInParty);
+                break;
+            case Element.Water:
+                ApplyWaterEffect(myth, isInParty);
+                break;
+            case Element.Metal:
+                ApplyMetalEffect(myth, isInParty);
+                break;
+            case Element.Fire:
+                ApplyFireEffect(myth, isInParty);
+                break;
+            case Element.Earth:
+                ApplyEarthEffect(myth, isInParty);
+                break;
+            case Element.Ice:
+                ApplyIceEffect(myth, isInParty);
+                break;
+            case Element.Wood:
+                ApplyWoodEffect(myth, isInParty);
+                break;
+        }
+    }
+
+    virtual public void ApplyWoodEffect(Myth myth, bool isInParty)//Heal Allies, Damage Enemies
+    {
+        float value = ability.damage;//Life Steal
+
         if (isInParty)
-            myth.effectController.Heal(value);
+            myth.effectController.Heal(ability.statIncrease);
+        else { //Life Steal
+            myth.Health.Value -= ability.damage;
+            owningMyth.effectController.Heal(ability.damage / 2);
+        }
 
     }
 
-    virtual public void ApplyElectricEffect(Myth myth, bool isInParty)
+    virtual public void ApplyElectricEffect(Myth myth, bool isInParty)//Stamina Buff, Stamina Debuff
     {
-        float value = ability.stamina; //If Myth is in the same party add half the stamina cost.
+        float value = ability.staminaCost; //If Myth is in the same party add half the stamina cost.
         if (!isInParty)
             value = (value / 2); //By Default Decrement the Enemy Myths Stamina
 
-        myth.effectController.AdjustStamina(ability.stamina);
+        myth.effectController.AdjustStamina(ability.staminaCost);
 
     }
 
@@ -104,7 +128,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     }
 
-    virtual public void ApplyWindEffect(Myth myth, bool isInParty)
+    virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
     {
         if (isInParty)
             myth.effectController.AdjustAgility(2);

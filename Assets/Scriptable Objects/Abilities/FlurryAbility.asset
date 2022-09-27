@@ -16,8 +16,9 @@ MonoBehaviour:
   name: Flurry
   description: 
   damage: 30
-  healing: 0
-  stamina: 10
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 10
   chargeTime: 0.3
   performTime: 0
   isRanged: 1
@@ -25,4 +26,3 @@ MonoBehaviour:
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 205508700800930181, guid: 83b4e559661a47349ac7c34f7992f942,
     type: 3}
-  colliderPrefab: {fileID: 0}

@@ -16,8 +16,9 @@ MonoBehaviour:
   name: Swipe
   description: 
   damage: 10
-  healing: 0
-  stamina: 10
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 10
   chargeTime: 0
   performTime: 0
   isRanged: 1
@@ -25,4 +26,3 @@ MonoBehaviour:
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 6300852338785146115, guid: 0f637fafea1f76f40adc81e06a434b54,
     type: 3}
-  colliderPrefab: {fileID: 0}

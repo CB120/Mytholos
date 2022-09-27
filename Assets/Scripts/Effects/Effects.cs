@@ -42,7 +42,7 @@ public class Effects : MonoBehaviour
 
     public void AdjustAgility(float value)//Wind
     {
-        myth.walkSpeed *= 2;
+        myth.walkSpeed = defaultWalkSpeed * 2; //Currently Not Stackable
         Invoke("SetDefaultAgility", value);
     }
 

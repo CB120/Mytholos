@@ -16,8 +16,9 @@ MonoBehaviour:
   name: Boomerang
   description: 
   damage: 30
-  healing: 0
-  stamina: 20
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 20
   chargeTime: 0
   performTime: 0
   isRanged: 1
@@ -25,4 +26,3 @@ MonoBehaviour:
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 8698727573697963700, guid: 083411b646840c24ea366b0fcc94c911,
     type: 3}
-  colliderPrefab: {fileID: 0}

@@ -12,8 +12,9 @@ public class SO_Ability : ScriptableObject
 
     [Header("Properties")]
     public float damage;
-    public float healing;
-    public float stamina;
+    [Tooltip("How Fast Stat Properties Regenerate (Health, Stamina)")] public float regenSpeed;
+    [Tooltip("Health, Agility, Any Arbitrary Stat Value")]  public float statIncrease; //TODO: Perhaps Move things like this to SO_ELEMENT
+    public float staminaCost;
     public float chargeTime;
     public float performTime;
     public bool isRanged;
@@ -24,5 +25,4 @@ public class SO_Ability : ScriptableObject
     public Vector3 relativeSpawnPosition;
 
     [FormerlySerializedAs("ability")] public GameObject abilityPrefab;
-    public Collider colliderPrefab;
 }
