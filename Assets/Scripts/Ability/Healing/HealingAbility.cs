@@ -75,18 +75,22 @@ public class HealingAbility : Ability
 
     public override void ApplyFireEffect(Myth myth, bool isInParty)
     {
+        //attack buff
     }
 
     public override void ApplyIceEffect(Myth myth, bool isInParty)
     {
+
     }
 
     public override void ApplyMetalEffect(Myth myth, bool isInParty)
     {
+        //forcefield
     }
 
     public override void ApplyWaterEffect(Myth myth, bool isInParty)
     {
+        //debuff cleanse
     }
 
     public override void ApplyWindEffect(Myth myth, bool isInParty)

@@ -21,7 +21,18 @@ public class Effects : MonoBehaviour
     #endregion
 
     #region Fire
-    public void Burn(float value)//Fire
+    private bool burning;
+    private float burnDamage;
+    private float burnTimer;
+    [SerializeField] private float burnDuration;
+    public void Burn(float damagevalue, float durationvalue)//Fire
+    {
+        burnDamage = damagevalue;
+        burnDuration = durationvalue;
+        burning = true;
+    }
+
+    public void attackBuff(float value)
     {
 
     }
@@ -79,6 +90,18 @@ public class Effects : MonoBehaviour
     }
 
     #endregion
+
+    private void Update()
+    {
+        if (burning)
+        {
+            Debug.Log("burning");
+            burnTimer += Time.deltaTime;
+            myth.Health.Value -= burnDamage;
+            if (burnTimer > burnDuration)
+                burning = false;
+        }
+    }
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here
     {

@@ -39,7 +39,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         {
             if (ability.element.buffParticle != null) //Temporary to show which debuff is being used
                 particle = ability.element.buffParticle; 
-            
         }
         ParticleSystem ps = Instantiate(particle, myth.transform);
         ParticleSystem.MainModule ma = ps.main;
@@ -154,7 +153,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
-
+        if (isInParty)
+            myth.effectController.Burn(1, 5);
     }
     #endregion
 
