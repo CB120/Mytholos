@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using Myths;
 
-public class UIPartyAbility : MonoBehaviour
+public class UIPartyAbility : MonoBehaviour // Not to be confused with UINodeAbility, which handles node/button related behaviour for when this ability is assigned
 {
     [SerializeField] UIPartyStat statDamage;
     [SerializeField] UIPartyStat statStamina;
@@ -23,7 +23,8 @@ public class UIPartyAbility : MonoBehaviour
     const float maxStamina = 100;
     const float maxImpact = 100;
 
-    SO_Ability ability;
+    public SO_Ability ability;
+    public bool isGreyedOut;
 
     public void SetUpUI(SO_Ability newAbility)
     {
@@ -38,9 +39,18 @@ public class UIPartyAbility : MonoBehaviour
         if (ability.element != null)
         {
             Color color = ability.element.color;
-            // elementIcon.sprite = ability.element.icon; // TODO: Create element icons
+            elementIcon.sprite = ability.element.icon;
+            elementIcon.color = new Color(color.r, color.g, color.b, 1.0f);
             elementBand.color = new Color(color.r, color.g, color.b, 1.0f);
             statBG.color = new Color(color.r, color.g, color.b, 0.2f);
         }
+    }
+
+    public void GreyOut(bool isNowGreyedOut)
+    {
+        isGreyedOut = isNowGreyedOut;
+
+        // Visually do something
+        GetComponent<CanvasGroup>().alpha = isGreyedOut ? 0.5f : 1.0f;
     }
 }

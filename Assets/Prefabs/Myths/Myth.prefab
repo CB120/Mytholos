@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2326847374803901642}
   - component: {fileID: 735515940438014375}
   - component: {fileID: 2927794498328948061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: State Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,6 +311,7 @@ MonoBehaviour:
         m_CallState: 2
   navMeshAgent: {fileID: 7423737072121430647}
   movementController: {fileID: 6450067431077666470}
+  anim: {fileID: 0}
 --- !u!114 &2927794498328948061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4040675131982062353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attack-Movement State Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5691834349451648970}
   - component: {fileID: 1257123659443305625}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +479,7 @@ GameObject:
   - component: {fileID: -3291310522803648204}
   - component: {fileID: 3328760576734170970}
   - component: {fileID: 1496457094348944347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Myth
   m_TagString: Myth
   m_Icon: {fileID: 0}

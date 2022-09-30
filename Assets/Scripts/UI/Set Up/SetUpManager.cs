@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class SetUpManager : MonoBehaviour
 {
@@ -32,6 +33,26 @@ public class SetUpManager : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (transitionAnimator)
+        {
+            transitionAnimator.SetInteger("Direction", playTransitionBackwards ? -1 : 1);
+            transitionAnimator.SetTrigger("Fade");
+            StartCoroutine(LoadScene(0.3f));
+        }
+        else
+        {
+            SceneManager.LoadScene(nameOfSceneToLoad);
+        }
     }
+
+    [SerializeField] string nameOfSceneToLoad;
+    [SerializeField] bool playTransitionBackwards;
+    [SerializeField] Animator transitionAnimator;
+
+    IEnumerator LoadScene(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        SceneManager.LoadScene(nameOfSceneToLoad);
+    }
+
 }

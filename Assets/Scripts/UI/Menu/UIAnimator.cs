@@ -10,11 +10,11 @@ public class UIAnimator : MonoBehaviour
     float timer;
     public bool isPlaying = true;
     Image imageComponent;
-    RectTransform rectTransform;
+    //RectTransform rectTransform;
 
     void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
+        //rectTransform = GetComponent<RectTransform>();
         imageComponent = GetComponent<Image>();
         if (imageComponent != null)
         {
@@ -59,13 +59,29 @@ public class UIAnimator : MonoBehaviour
     public void SetColour(Color newColor)
     {
         float alpha = isPlaying ? 1.0f : 0.5f;
-        imageComponent.color = new Color(newColor.r, newColor.g, newColor.b, alpha);
+        GetComponent<Image>().color = new Color(newColor.r, newColor.g, newColor.b, alpha);
+
+        enabled = true;
     }
 
-    public void SetTransform(RectTransform newTransform)
+    public void SetTransform(RectTransform newTransform, float padding = 0)
     {
-        transform.parent = newTransform;
-        rectTransform.anchorMin.Set(0.0f, 0.0f);
-        rectTransform.anchorMax.Set(1.0f, 1.0f);
+        transform.SetParent(newTransform, false);
+        GetComponent<RectTransform>().anchorMin = new Vector2(0.0f, 0.0f);
+        GetComponent<RectTransform>().anchorMax = new Vector2(1.0f, 1.0f);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(padding, padding);
+        //GetComponent<RectTransform>().si
+
+        enabled = true;
+    }
+
+    public void SetHidden(bool isHidden)
+    {
+        if (imageComponent != null)
+            imageComponent.enabled = !isHidden;
+        else
+            GetComponent<Image>().enabled = !isHidden;
+
+        enabled = true;
     }
 }

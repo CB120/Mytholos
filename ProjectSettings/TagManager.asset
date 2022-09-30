@@ -9,6 +9,8 @@ TagManager:
   - Myth
   - NavigationNode
   - Grid
+  - MenuMusic
+  - TransitionOverlay
   layers:
   - Default
   - TransparentFX

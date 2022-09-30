@@ -4,46 +4,327 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 using Myths;
 
 public class UIPartyManager : MonoBehaviour
 {
     // Asset references
-    [SerializeField] RenderTexture[] rendersTeam;
-    [SerializeField] RenderTexture[] rendersPortrait;
-    [SerializeField] GameObject[] mythPrefabs;
+    [SerializeField] Texture[] rendersTeamTextures;
+    [SerializeField] Texture[] rendersPortraitTextures;
     [SerializeField] SO_Myth[] mythSOs;
+    [SerializeField] SO_AllParticipantData livePartyData; // We're not going to write into this until we leave the scene (use myth datas on each UIPartyTeam for each player until then)
+    //[SerializeField] SO_AllParticipantData templatePartyData; // What we copy into live data, so we have a clear slate (maybe optional, if returning straight from gameplay scene)
+    [SerializeField] GameObject mythSelectPrefab;
+    [SerializeField] GameObject mythAbilityPrefab;
 
     // Scene references
-    [SerializeField] HorizontalLayoutGroup mythIconLayout;
-    [SerializeField] GameObject[] mythCameraSetUps;
-    [SerializeField] GameObject[] player1StartGraph;
-    [SerializeField] GameObject[] player2StartGraph;
-    [SerializeField] UIPartyMyth[] playerMythDetails;
-    [SerializeField] UIPartyTeam[] playerTeamDetails;
+    [SerializeField] UIMenuNodeGraph[] playerTeamGraphs;
+    [SerializeField] UIMenuNodeGraph mythSelectionGraph;
+    [SerializeField] UIMenuNodeGraph[] playerAbilityGraphs;
+    [SerializeField] UIPartyMyth[] playerMythDetails; // Can be fetched from playerAbilityGraphs?
+    [SerializeField] UIPartyTeam[] playerTeamDetails; // Can be fetched from playerTeamGraphs?
+    [SerializeField] TextMeshProUGUI[] progressTexts;
 
     // Variables
+    bool[] playersReady = new bool[2];
 
     void Start()
     {
-        // For each myth in the array
-        // Instantiate a new camera set up at the correct transforms, and hook up camera to next render texture
-        // Instantiate the current myth, parenting it to the camera set up, and strip it of any unneccesary components
-        // Set animator properties on that myth
-        // Create an icon/menu node, adding it to the horizontal layout group of selectable myth icons, and set up it's adjacent nodes (and amend node to left of it)
-        // ...
+        //SetUpPartyDataScriptableObjects(); // Might use this later down the line
 
-        // Find player participants, set their action map to UI, and assign them their starting UI menu node
-        PlayerParticipant[] players = FindObjectsOfType<PlayerParticipant>();
-        foreach (PlayerParticipant player in players)
+        // Store references to this manager in team nodes
+        foreach(UIMenuNodeGraph graph in playerTeamGraphs)
         {
+            foreach (UINodePartyMember partyMember in graph.nodes)
+            {
+                partyMember.manager = this;
+            }
+        }
+        // For each myth in the array
+        for (int i = 0; i < mythSOs.Length; i++)
+        {
+            // Currently, all camera/render texture set up is done manually in the scene, but doing it here could be more flexible a system
 
+            // Create an icon/menu node, adding it to the horizontal layout group of selectable myth icons, and set up it's adjacent nodes (and amend node to left of it)
+            UINodeMyth selectNode = Instantiate(mythSelectPrefab, mythSelectionGraph.transform).GetComponent<UINodeMyth>();
+            mythSelectionGraph.nodes.Add(selectNode);
+            selectNode.adjacent[(int)UIMenuNode.Direction.Left] = mythSelectionGraph.nodes[Mathf.Clamp(i - 1, 0, 1000)].gameObject;     // Connect node to left adjacent node (left)
+            selectNode.adjacent[(int)UIMenuNode.Direction.Right] = mythSelectionGraph.nodes[0].gameObject;                              // Connect node to first node (right)
+            selectNode.adjacent[(int)UIMenuNode.Direction.Up] = playerTeamGraphs[0].transform.parent.gameObject;                        // Connect node to teams split graph (up)
+            selectNode.adjacent[(int)UIMenuNode.Direction.Down] = playerMythDetails[0].transform.parent.gameObject;                     // Connect node to abilities split graph (down)
+            mythSelectionGraph.nodes[Mathf.Clamp(i - 1, 0, 1000)].adjacent[(int)UIMenuNode.Direction.Right] = selectNode.gameObject;    // Amend left adjacent node to point to this one (right)
+            mythSelectionGraph.nodes[0].adjacent[(int)UIMenuNode.Direction.Left] = selectNode.gameObject;                               // Amend first node to point to this one (left)
+            selectNode.GetComponent<Image>().sprite = mythSOs[i].icon;
+
+            // Store a reference to this manager
+            selectNode.manager = this;
+
+            // Create a mythData config in each UIPartyTeam for this new myth
+            foreach (UIPartyTeam team in playerTeamDetails)
+            {
+                MythData newData = new MythData();
+                newData.myth = mythSOs[i];
+                team.mythDatas.Add(newData);
+            }
+        }
+
+        // Find player participants, set their action map to UI,  assign them their starting UI menu node, and set up UI for that player
+        PlayerParticipant[] players = FindObjectsOfType<PlayerParticipant>();
+        //print("Participants found: " + players.Length);
+        for (int i = 0; i < players.Length; i++)
+        {
+            // Reference UI menu graph and set input action map
+            players[i].currentMenuGraph = playerTeamGraphs[players[i].partyIndex];
+            players[i].GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+        }
+
+        // Initialise each node graph
+        foreach (UIMenuNodeGraph graph in playerTeamGraphs)
+            graph.InitialiseCursorsAndStartingNodes(true);
+
+        mythSelectionGraph.InitialiseCursorsAndStartingNodes(false);
+
+        SelectTeamMember(0, playerTeamGraphs[0].playerCurrentNode[0]);
+        SelectTeamMember(1, playerTeamGraphs[1].playerCurrentNode[1]);
+    }
+
+    void SetUpPartyDataScriptableObjects() // Not quite an accurate name anymore // TODO: Create this functionality, later, if we really want it
+    {
+        // Reuse the old team if we've been flagged to do so (e.g. hitting 'return to party builder' from gameplay scene)
+        if (PlayerPrefs.HasKey("PartyBuilderKeepTeams"))
+        {
+            if (PlayerPrefs.GetInt("PartyBuilderKeepTeams") > 0)
+            {
+                // Remove the flag
+                PlayerPrefs.SetInt("PartyBuilderKeepTeams", 0);
+
+                // Copy existing myth config data into each team
+
+                // Set up each player's team to have those myths selected by default
+
+                return;
+            }
+        }
+
+        // Clear the live party data
+        // livePartyData = templatePartyData; // Does... this work?
+    }
+
+    public void SelectTeamMember(int teamIndex, UIMenuNode selectedNode)
+    {
+        // Need to use selected node to figure out what member index the given player selected
+        int selectedIndex = playerTeamGraphs[teamIndex].nodes.IndexOf(selectedNode);                // Which no. member in the team?
+        int mythIndex = playerTeamDetails[teamIndex].selectedMythIndices[selectedIndex];            // Which no. myth in the myth select graph?
+
+        // Need to update cursor in myth select graph, and update myth details to match newly selected myth...
+
+        // If this team member has been assigned a myth, update the position of our cursor in mythSelection, and update mythDetails to match
+        if (mythIndex >= 0)
+        {
+            // Navigate that player's cursor to the node that matches the myth assigned to that team member
+            UIMenuNode nodeInMythSelect = mythSelectionGraph.nodes[mythIndex];
+            mythSelectionGraph.Navigate(nodeInMythSelect, teamIndex, UIMenuNode.Direction.Right); // This should inherently also call SelectMyth();
+        }
+        // If no myth has been assigned to this, find the next available myth in myth selection, select it, update team member and myth details accordingly
+        else
+        {
+            UIMenuNode nodeInMythSelect = mythSelectionGraph.nodes[GetFirstAvailableIndexInMythSelect()];
+            mythSelectionGraph.Navigate(nodeInMythSelect, teamIndex, UIMenuNode.Direction.Right); // This should inherently also call SelectMyth();
         }
     }
 
-    void Update()
+    public void SelectMyth(int teamIndex, UIMenuNode selectedNode)
     {
-        
+        // Need to use selected node to figure out which myth the given player has selected
+        int selectedIndex = playerTeamGraphs[teamIndex].nodes.IndexOf(playerTeamGraphs[teamIndex].playerCurrentNode[teamIndex]);    // Which no. member in the team?
+        int mythIndex = mythSelectionGraph.nodes.IndexOf(selectedNode);                                                             // Which no. myth in the myth select graph?
+
+        // Using the current selected team member index, update that team member's myth, and update myth details to match newly selected myth...
+        //print("Updating team UI for player " + teamIndex + ": Member no.: " + selectedIndex + ", Myth no.: " + mythIndex);
+        playerTeamDetails[teamIndex].UpdateUI(selectedIndex, mythIndex, rendersTeamTextures[mythIndex]);
+        playerMythDetails[teamIndex].UpdateUI(playerTeamDetails[teamIndex].mythDatas[mythIndex], rendersPortraitTextures[mythIndex]);
+
+        // Regenerate the abilies list UI to match this new myth selection
+        GenerateAbilitiesList(teamIndex, mythIndex);
+
+        UpdateProgressText(teamIndex);
+    }
+
+    public void AssignAbility(int teamIndex, int assignedIndex, SO_Ability ability)
+    {
+        // Need some nifty numbers
+        int selectedIndex = playerTeamGraphs[teamIndex].nodes.IndexOf(playerTeamGraphs[teamIndex].playerCurrentNode[teamIndex]);    // Which no. member in the team?
+        int mythIndex = playerTeamDetails[teamIndex].selectedMythIndices[selectedIndex];                                            // Which no. myth in the myth select graph?
+
+        SO_Ability oldAbility = null;
+
+        // Update that ability slot in that team's mythData
+        switch (assignedIndex)
+        {
+            case 0:
+                oldAbility = playerTeamDetails[teamIndex].mythDatas[mythIndex].northAbility;
+                playerTeamDetails[teamIndex].mythDatas[mythIndex].northAbility = ability;
+                break;
+            case 1:
+                oldAbility = playerTeamDetails[teamIndex].mythDatas[mythIndex].westAbility;
+                playerTeamDetails[teamIndex].mythDatas[mythIndex].westAbility = ability;
+                break;
+            case 2:
+                oldAbility = playerTeamDetails[teamIndex].mythDatas[mythIndex].southAbility;
+                playerTeamDetails[teamIndex].mythDatas[mythIndex].southAbility = ability;
+                break;
+            default:
+                break;
+        }
+
+        // Update the myth details UI to reflect this change
+        playerMythDetails[teamIndex].UpdateUI(playerTeamDetails[teamIndex].mythDatas[mythIndex], rendersPortraitTextures[mythIndex]);
+        playerMythDetails[teamIndex].abilities[assignedIndex].AnimateSelectedAbility();
+
+        // Greying out / ungreying out abilities in the abilities list
+        foreach (UIMenuNode node in playerAbilityGraphs[teamIndex].nodes) // Gonna trigger someone's GetComponent nerve
+        {
+            UIPartyAbility abilityUI = node.GetComponent<UIPartyAbility>();
+            if (abilityUI.ability == ability)
+            {
+                abilityUI.GreyOut(true);
+                break;
+            }
+        }
+        if (oldAbility != null)
+        {
+            foreach (UIMenuNode node in playerAbilityGraphs[teamIndex].nodes) // Gonna trigger someone's GetComponent nerve
+            {
+                UIPartyAbility abilityUI = node.GetComponent<UIPartyAbility>();
+                if (abilityUI.ability == oldAbility)
+                {
+                    abilityUI.GreyOut(false);
+                    break;
+                }
+            }
+        }
+
+        UpdateProgressText(teamIndex);
+    }
+
+    public void GenerateAbilitiesList(int teamIndex, int mythIndex)
+    {
+        SO_Myth myth = mythSOs[mythIndex];
+
+        //// Save the cursors from an untimely death
+        //foreach (UIAnimator cursor in playerAbilityGraphs[teamIndex].playerCursors)
+        //{
+        //    cursor.SetTransform(playerAbilityGraphs[teamIndex].GetComponent<RectTransform>());
+        //}
+
+        // Destroy all existing ability UIs and clear the ability graph's list of nodes
+        for (int i = playerAbilityGraphs[teamIndex].nodes.Count - 1; i >= 0; i--)
+            Destroy(playerAbilityGraphs[teamIndex].nodes[i].gameObject);
+
+        playerAbilityGraphs[teamIndex].nodes = new List<UIMenuNode>();
+
+        // For each ability in the given myth's pool of abilities, create a new ability UI, and grey it out if already selected by the myth data in question (and format nodes)
+        for (int i = 0; i < myth.abilities.Length; i++)
+        {
+            SO_Ability ability = myth.abilities[i];
+
+            // Create a node, adding it to the group of abilities, and set up it's adjacent nodes (and amend node above of it)
+            UINodeAbility selectNode = Instantiate(mythAbilityPrefab, playerAbilityGraphs[teamIndex].transform).GetComponent<UINodeAbility>();
+            playerAbilityGraphs[teamIndex].nodes.Add(selectNode);
+
+            if (i == 0) // First node should point to myth select graph
+            {
+                selectNode.adjacent[(int)UIMenuNode.Direction.Up] = mythSelectionGraph.gameObject;                              // Connect node to myth select graph (up)
+            }
+            else // Subsequent nodes should point to previous node, and make previous node point to it
+            {
+                selectNode.adjacent[(int)UIMenuNode.Direction.Up] = playerAbilityGraphs[teamIndex].nodes[i - 1].gameObject;     // Connect node to up adjacent node (up)
+                playerAbilityGraphs[teamIndex].nodes[i - 1].adjacent[(int)UIMenuNode.Direction.Down] = selectNode.gameObject;   // Amend up adjacent node to point to this one (down)
+            }
+
+            selectNode.GetComponent<UIPartyAbility>().SetUpUI(ability);
+
+            // Store a reference to this manager
+            selectNode.manager = this;
+
+            // Grey out if neccessary
+            if (playerTeamDetails[teamIndex].mythDatas[mythIndex].northAbility == ability) selectNode.GetComponent<UIPartyAbility>().GreyOut(true);
+            if (playerTeamDetails[teamIndex].mythDatas[mythIndex].westAbility == ability) selectNode.GetComponent<UIPartyAbility>().GreyOut(true);
+            if (playerTeamDetails[teamIndex].mythDatas[mythIndex].southAbility == ability) selectNode.GetComponent<UIPartyAbility>().GreyOut(true);
+        }
+
+        // Initialise start node / cursor
+        playerAbilityGraphs[teamIndex].InitialiseCursorsAndStartingNodes(false);
+    }
+
+    void UpdateProgressText(int playerNumber)
+    {
+        playersReady[playerNumber] = false;
+
+        if (!PlayerHasAFullParty(playerNumber))
+        {
+            progressTexts[playerNumber].text = "Need to select 3 myths for your team...";
+            return;
+        }
+
+        if (!PlayerPartyMembersAllHaveFullAbilities(playerNumber))
+        {
+            progressTexts[playerNumber].text = "Need to assign 3 abilities to each myth...";
+            return;
+        }
+
+        // Set ready to true
+        playersReady[playerNumber] = true;
+        progressTexts[playerNumber].text = "Your team is ready!";
+
+        // If both players ready, progress...?
+    }
+
+    bool PlayerHasAFullParty(int playerNumber)
+    {
+        foreach (int mythIndex in playerTeamDetails[playerNumber].selectedMythIndices)
+        {
+            if (mythIndex < 0)
+                return false;
+        }
+
+        return true;
+    }
+    bool PlayerPartyMembersAllHaveFullAbilities(int playerNumber)
+    {
+        foreach (int mythIndex in playerTeamDetails[playerNumber].selectedMythIndices)
+        {
+            MythData mythData = playerTeamDetails[playerNumber].mythDatas[mythIndex];
+
+            if (mythData.northAbility == null) return false;
+            if (mythData.westAbility == null) return false;
+            if (mythData.southAbility == null) return false;
+        }
+
+        return true;
+    }
+
+    int GetFirstAvailableIndexInMythSelect()
+    {
+        List<int> occupiedIndices = new List<int>();
+
+        foreach (UIPartyTeam team in playerTeamDetails)
+        {
+            foreach (int index in team.selectedMythIndices)
+            {
+                occupiedIndices.Add(index);
+            }
+        }
+
+        for (int i = 0; i < mythSelectionGraph.nodes.Count; i++)
+        {
+            if (!occupiedIndices.Contains(i))
+                return i;
+        }
+
+        Debug.LogWarning("No available myths to select in the myth select graph!");
+        return -1;
     }
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class UINodePartyMember : UIMenuNode
 {
-    override public void OnNavigate(int playerNumber)
-    {
+    public UIPartyManager manager;
 
+    override public void OnNavigate(int playerNumber, Direction direction)
+    {
+        manager.SelectTeamMember(playerNumber, this);
     }
 
     override public void OnAction(Action action, int playerNumber)

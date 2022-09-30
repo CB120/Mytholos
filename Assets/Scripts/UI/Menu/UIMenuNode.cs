@@ -9,7 +9,7 @@ public class UIMenuNode : MonoBehaviour
 
     public GameObject[] adjacent = new GameObject[4]; // Indices follow that of Direction enum
 
-    virtual public void OnNavigate(int playerNumber) // Do something when a player navigates to this node, from another node
+    virtual public void OnNavigate(int playerNumber, Direction direction) // Do something when a player navigates to this node, from another node
     {
 
     }

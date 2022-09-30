@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881575023aff47da84e9eed480c4ceb6, type: 3}
   m_Name: Fox
   m_EditorClassIdentifier: 
-  name: Fox
+  name: Enfield
   prefab: {fileID: 4239484837227243420, guid: cc0e2d07a35a31740840b0fe182f194c, type: 3}
   icon: {fileID: 629849923, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  health: 0.4
+  size: 0.4
+  brawn: 0.6
+  psyche: 0.2
+  agility: 1
+  abilities:
+  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
+  - {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
+  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
+  - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
+  - {fileID: 11400000, guid: 063a6f1983b891247ab7d68b6542a149, type: 2}

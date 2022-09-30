@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881575023aff47da84e9eed480c4ceb6, type: 3}
   m_Name: Lizard
   m_EditorClassIdentifier: 
-  name: Lizard
+  name: Ternka
   prefab: {fileID: 2438166152000914632, guid: 0ec28ad321c53234e920c0a79188e3b8, type: 3}
   icon: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  health: 0.4
+  size: 0.2
+  brawn: 0.6
+  psyche: 0.6
+  agility: 0.8
+  abilities:
+  - {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
+  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
+  - {fileID: 11400000, guid: 063a6f1983b891247ab7d68b6542a149, type: 2}
+  - {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
+  - {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}

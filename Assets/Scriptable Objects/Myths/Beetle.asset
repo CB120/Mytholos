@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881575023aff47da84e9eed480c4ceb6, type: 3}
   m_Name: Beetle
   m_EditorClassIdentifier: 
-  name: Beetle
+  name: Khepra
   prefab: {fileID: 1825634489892544422, guid: c63504bb0aca0b4409dd8c88a13875c6, type: 3}
   icon: {fileID: -1330787377, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  health: 0.4
+  size: 0.6
+  brawn: 0.8
+  psyche: 0.2
+  agility: 0.6
+  abilities:
+  - {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
+  - {fileID: 11400000, guid: d9da8405993fbc74fb9ef904e4858c9e, type: 2}
+  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
+  - {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
+  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}

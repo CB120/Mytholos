@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 70810856251028904}
   - component: {fileID: 2641221512476541476}
   - component: {fileID: 4639077451568965546}
+  - component: {fileID: 7044597681687296214}
   m_Layer: 5
   m_Name: Ability
   m_TagString: Untagged
@@ -294,6 +295,26 @@ MonoBehaviour:
   elementIcon: {fileID: 70810856054400642}
   elementBand: {fileID: 591446450865707836}
   statBG: {fileID: 591446450415461846}
+  ability: {fileID: 0}
+  isGreyedOut: 0
+--- !u!114 &7044597681687296214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70810856251028906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6f36876955a4b4eaf5634c9b842b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adjacent:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  manager: {fileID: 0}
 --- !u!1 &70810857140333965
 GameObject:
   m_ObjectHideFlags: 0

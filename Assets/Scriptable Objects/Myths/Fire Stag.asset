@@ -15,3 +15,14 @@ MonoBehaviour:
   name: Fire Stag
   prefab: {fileID: 5225408211771678397, guid: 5b22d3ceb171b0f45935306da0a11e43, type: 3}
   icon: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  health: 0.4
+  size: 0.2
+  brawn: 0.2
+  psyche: 1
+  agility: 0.8
+  abilities:
+  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
+  - {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
+  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
+  - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
+  - {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}

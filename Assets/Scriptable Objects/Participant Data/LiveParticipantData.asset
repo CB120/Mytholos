@@ -13,21 +13,47 @@ MonoBehaviour:
   m_Name: LiveParticipantData
   m_EditorClassIdentifier: 
   partyData:
-  - participant: {fileID: 0}
-    colour: {r: 0, g: 0, b: 0, a: 0}
+  - ParticipantChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    participant: {fileID: 0}
+    myths: []
+    colour: {r: 0.9960785, g: 0.28627452, b: 0, a: 1}
     mythData:
-    - myth: 0
-      abilities: 000000000000000000000000
-    - myth: 0
-      abilities: 000000000000000000000000
-    - myth: 0
-      abilities: 000000000000000000000000
-  - participant: {fileID: 0}
-    colour: {r: 0, g: 0, b: 0, a: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+  - ParticipantChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    participant: {fileID: 0}
+    myths: []
+    colour: {r: 0, g: 0.050980397, b: 1, a: 1}
     mythData:
-    - myth: 0
-      abilities: 000000000000000000000000
-    - myth: 0
-      abilities: 000000000000000000000000
-    - myth: 0
-      abilities: 000000000000000000000000
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}

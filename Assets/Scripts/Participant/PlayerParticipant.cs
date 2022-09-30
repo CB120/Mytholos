@@ -30,7 +30,7 @@ public class PlayerParticipant : Participant
     private MythCommandHandler SelectedMythCommandHandler => SelectedMyth.GetComponent<MythCommandHandler>();
 
     // Menu references
-    UIMenuNodeGraph currentMenuGraph;
+    public UIMenuNodeGraph currentMenuGraph;
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -197,52 +197,65 @@ public class PlayerParticipant : Participant
 
     public void NavigateUp(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
+        //print("Player " + partyIndex + " just input UP. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Up, partyIndex);
     }
     public void NavigateDown(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
+        //print("Player " + partyIndex + " just input DOWN. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Down, partyIndex);
     }
 
     public void NavigateRight(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
+        //print("Player " + partyIndex + " just input RIGHT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
     }
 
     public void NavigateLeft(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
+        //print("Player " + partyIndex + " just input LEFT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
     }
 
     public void AssignNorth(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.North, partyIndex);
     }
     public void AssignWest(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.West, partyIndex);
     }
 
     public void AssignSouth(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.South, partyIndex);
     }
 
     public void Submit(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.Submit, partyIndex);
     }
 
     public void Cancel(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.Cancel, partyIndex);
     }

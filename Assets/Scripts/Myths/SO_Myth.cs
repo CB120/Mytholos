@@ -8,5 +8,15 @@ namespace Myths
         public new string name;
         public GameObject prefab;
         public Sprite icon;
+
+        // Stats
+        [Range(0,1)] public float health;
+        [Range(0, 1)] public float size;
+        [Range(0, 1)] public float brawn;
+        [Range(0, 1)] public float psyche;
+        [Range(0, 1)] public float agility;
+
+        // Abilities
+        public SO_Ability[] abilities;
     }
 }
