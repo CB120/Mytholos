@@ -125,7 +125,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyWaterEffect(Myth myth, bool isInParty)
     {
-
+        if (!isInParty)
+            myth.effectController.BuffCleanse();
     }
 
     virtual public void ApplyIceEffect(Myth myth, bool isInParty)
@@ -148,12 +149,13 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
     {
-
+        if (!isInParty)
+            myth.effectController.AgilityDebuff(3);
     }
 
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
-        if (isInParty)
+        if (!isInParty)
             myth.effectController.Burn(1, 5);
     }
     #endregion
