@@ -29,10 +29,13 @@ public class SetUpManager : MonoBehaviour
             foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
             {
                 participant.currentMenuGraph = returnToPreviousSceneGraph;
-                participant.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+                PlayerInput input = participant.GetComponent<PlayerInput>();
+                input.actions.FindActionMap("Player").Disable();
+                input.actions.FindActionMap("UI").Enable();
+
             }
 
-                if (playerCount >= 2)
+            if (playerCount >= 2)
             {
                 foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
                     participant.DisablePlayerInput(1.0f);

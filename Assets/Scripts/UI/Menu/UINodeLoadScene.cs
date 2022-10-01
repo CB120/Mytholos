@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
-using System;
+using UnityEngine.InputSystem;
 
 public class UINodeLoadScene : UIMenuNode
 {
     [SerializeField] string nameOfSceneToLoad;
     [SerializeField] bool playTransitionBackwards;
     [SerializeField] bool destroyAllParticipantsOnSceneLoad;
+    [SerializeField] bool updateAllParticipantActionMaps;
+    [SerializeField] string nameOfActionMap;
     [SerializeField] Animator transitionAnimator;
 
     override public void OnAction(Action action, int playerNumber)
@@ -23,7 +24,16 @@ public class UINodeLoadScene : UIMenuNode
                         if (destroyAllParticipantsOnSceneLoad)
                             participant.DestroyParticipant();
                         else
+                        {
+                            if (updateAllParticipantActionMaps)
+                            {
+                                PlayerInput input = participant.GetComponent<PlayerInput>();
+                                string oldActionMap = input.currentActionMap.name;
+                                input.actions.FindActionMap(oldActionMap).Disable();
+                                input.actions.FindActionMap(nameOfActionMap).Enable();
+                            }
                             participant.DisablePlayerInput(0.5f);
+                        }
                     }
 
                     transitionAnimator.SetInteger("Direction", playTransitionBackwards ? -1 : 1);

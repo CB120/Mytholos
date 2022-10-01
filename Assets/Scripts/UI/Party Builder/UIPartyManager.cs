@@ -92,7 +92,8 @@ public class UIPartyManager : MonoBehaviour
             // Reference UI menu graph and set input action map
             players[i].currentMenuGraph = playerTeamGraphs[players[i].partyIndex];
             PlayerInput input = players[i].GetComponent<PlayerInput>();
-            input.SwitchCurrentActionMap("UI");
+            input.actions.FindActionMap("Player").Disable();
+            input.actions.FindActionMap("UI").Enable();
         }
 
         // Initialise each node graph
@@ -405,6 +406,10 @@ public class UIPartyManager : MonoBehaviour
         }
         else
         {
+            MenuMusicController music = FindObjectOfType<MenuMusicController>();
+            if (music)
+                Destroy(music.gameObject);
+
             SceneManager.LoadScene(nameOfNextScene);
         }
     }
@@ -412,6 +417,11 @@ public class UIPartyManager : MonoBehaviour
     IEnumerator LoadScene(float timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
+
+        MenuMusicController music = FindObjectOfType<MenuMusicController>();
+        if (music)
+            Destroy(music.gameObject);
+
         SceneManager.LoadScene(nameOfNextScene);
     }
 

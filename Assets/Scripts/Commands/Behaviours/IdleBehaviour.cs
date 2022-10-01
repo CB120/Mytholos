@@ -18,7 +18,7 @@ namespace Myths.Behaviours
         {
             base.OnEnable();
             navMeshAgent.ResetPath();
-            Debug.Log("Idling");
+            //Debug.Log("Idling");
         }
     }
 }
