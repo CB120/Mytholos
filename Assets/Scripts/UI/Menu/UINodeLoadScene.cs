@@ -8,6 +8,7 @@ public class UINodeLoadScene : UIMenuNode
 {
     [SerializeField] string nameOfSceneToLoad;
     [SerializeField] bool playTransitionBackwards;
+    [SerializeField] bool destroyAllParticipantsOnSceneLoad;
     [SerializeField] Animator transitionAnimator;
 
     override public void OnAction(Action action, int playerNumber)
@@ -17,9 +18,17 @@ public class UINodeLoadScene : UIMenuNode
             case Action.Submit:
                 if (transitionAnimator)
                 {
+                    foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+                    {
+                        if (destroyAllParticipantsOnSceneLoad)
+                            participant.DestroyParticipant();
+                        else
+                            participant.DisablePlayerInput(0.5f);
+                    }
+
                     transitionAnimator.SetInteger("Direction", playTransitionBackwards ? -1 : 1);
                     transitionAnimator.SetTrigger("Fade");
-                    StartCoroutine(LoadScene(0.3f));
+                    StartCoroutine(LoadScene(0.35f));
                 }
                 else
                 {

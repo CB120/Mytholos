@@ -1502,12 +1502,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney Control Prompts_66
+      name: ControlsKeyEnter
       rect:
         serializedVersion: 2
         x: 512
         y: 352
-        width: 16
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1518,27 +1518,6 @@ TextureImporter:
       bones: []
       spriteID: 0e387b4081d789049a2cff5ce275cde0
       internalID: 440394323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kenney Control Prompts_67
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 352
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2adbb5d6be2f0514e977a42d7e5c6c14
-      internalID: -1398945344
       vertices: []
       indices: 
       edges: []
@@ -14627,7 +14606,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney Control Prompts_694
+      name: ControlsStartSwitch
       rect:
         serializedVersion: 2
         x: 224
@@ -14690,7 +14669,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney Control Prompts_697
+      name: ControlsStartPlayStation
       rect:
         serializedVersion: 2
         x: 272
@@ -16181,7 +16160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney Control Prompts_768
+      name: KenneyStartXbox
       rect:
         serializedVersion: 2
         x: 320
@@ -17218,6 +17197,7 @@ TextureImporter:
       Kenney Control Prompts_306: 1205513643
       Kenney Control Prompts_284: -1377463598
       Kenney Control Prompts_752: 535444163
+      ControlsStartSwitch: 992660327
       Kenney Control Prompts_791: -1765253897
       Kenney Control Prompts_68: -1060989608
       Kenney Control Prompts_653: -955058262
@@ -17259,17 +17239,16 @@ TextureImporter:
       Kenney Control Prompts_437: 1555596584
       Kenney Control Prompts_45: -900837290
       Kenney Control Prompts_500: 797128745
-      Kenney Control Prompts_697: -25040192
+      Kenney Control Prompts_698: 1213812719
       Kenney Control Prompts_670: 1535925314
       Kenney Control Prompts_130: -1929338078
       Kenney Control Prompts_61: -1091118015
       Kenney Control Prompts_95: 811604719
       Kenney Control Prompts_345: 2055464666
       Kenney Control Prompts_548: 909486868
-      Kenney Control Prompts_698: 1213812719
+      ControlsLeftShoulder: 936717039
       Kenney Control Prompts_526: -1903197199
       Kenney Control Prompts_507: 1607820787
-      ControlsLeftShoulder: 936717039
       Kenney Control Prompts_266: 11229766
       Kenney Control Prompts_308: -1430850440
       Kenney Control Prompts_572: 1152700461
@@ -17298,6 +17277,7 @@ TextureImporter:
       Kenney Control Prompts_85: -1385672741
       Kenney Control Prompts_529: -2116787657
       Kenney Control Prompts_654: -111445550
+      ControlsStartPlayStation: -25040192
       Kenney Control Prompts_41: 329126443
       Kenney Control Prompts_298: -2081536205
       Kenney Control Prompts_352: -919348934
@@ -17327,6 +17307,7 @@ TextureImporter:
       Kenney Control Prompts_447: 900524907
       Kenney Control Prompts_813: -1704987525
       Kenney Control Prompts_458: -1931565772
+      ControlsKeyEnter: 440394323
       Kenney Control Prompts_288: -581132959
       Kenney Control Prompts_611: -756868625
       Kenney Control Prompts_38: -1691760302
@@ -17512,6 +17493,7 @@ TextureImporter:
       Kenney Control Prompts_685: -1276375409
       Kenney Control Prompts_631: 1745170902
       ControlsKeySemicolon: -854809137
+      KenneyStartXbox: -733408891
       Kenney Control Prompts_781: -659830674
       Kenney Control Prompts_256: -1821723424
       Kenney Control Prompts_513: 1814144003
@@ -17538,7 +17520,6 @@ TextureImporter:
       Kenney Control Prompts_147: 575758537
       Kenney Control Prompts_476: -578297687
       Kenney Control Prompts_740: 1615261925
-      Kenney Control Prompts_768: -733408891
       Kenney Control Prompts_514: 86987177
       Kenney Control Prompts_488: -584181911
       Kenney Control Prompts_566: -266279240
@@ -17599,7 +17580,6 @@ TextureImporter:
       Kenney Control Prompts_390: -350341936
       Kenney Control Prompts_416: -469231864
       Kenney Control Prompts_705: -607981443
-      Kenney Control Prompts_66: 440394323
       Kenney Control Prompts_525: -279814773
       Kenney Control Prompts_731: 709750637
       Kenney Control Prompts_695: -2129458923
@@ -17986,7 +17966,6 @@ TextureImporter:
       Kenney Control Prompts_214: -1794507117
       Kenney Control Prompts_356: -1415984159
       Kenney Control Prompts_607: 1668572604
-      Kenney Control Prompts_694: 992660327
       Kenney Control Prompts_778: 413691603
       Kenney Control Prompts_405: 1645529841
       Kenney Control Prompts_498: 1619668237

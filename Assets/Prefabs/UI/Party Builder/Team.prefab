@@ -190,10 +190,10 @@ RectTransform:
   - {fileID: 3211811746287523011}
   - {fileID: 5134667226603057576}
   - {fileID: 7416487324979729681}
+  - {fileID: 4958361882588172591}
   - {fileID: 4958361883910501780}
   - {fileID: 4958361883408060328}
   - {fileID: 4958361883002401588}
-  - {fileID: 4958361882588172591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,12 +229,17 @@ MonoBehaviour:
   displayInactiveCursors: 1
   allowCursorsToShareANode: 0
   cursorPadding: 8
+  navigateToLastGraphNodeOnCancel: 0
+  navigateToPreviousSceneOnCancel: 1
+  destroyAllParticipantsOnSceneCancel: 1
+  nameOfPreviousScene: Main Menu
   playerCursors:
   - {fileID: 0}
   - {fileID: 0}
   playerCurrentNode:
   - {fileID: 0}
   - {fileID: 0}
+  transitionAnimator: {fileID: 0}
 --- !u!114 &4958361882442459251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +289,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4958361882442459255}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -497,7 +502,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4958361882442459255}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -589,7 +594,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4958361882442459255}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -681,7 +686,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4958361882442459255}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}

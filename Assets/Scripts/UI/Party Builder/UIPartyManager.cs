@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ using Myths;
 public class UIPartyManager : MonoBehaviour
 {
     // Asset references
+    [Header("Asset references")]
     [SerializeField] Texture[] rendersTeamTextures;
     [SerializeField] Texture[] rendersPortraitTextures;
     [SerializeField] SO_Myth[] mythSOs;
@@ -20,22 +22,33 @@ public class UIPartyManager : MonoBehaviour
     [SerializeField] GameObject mythAbilityPrefab;
 
     // Scene references
+    [Header("Scene references")]
     [SerializeField] UIMenuNodeGraph[] playerTeamGraphs;
     [SerializeField] UIMenuNodeGraph mythSelectionGraph;
     [SerializeField] UIMenuNodeGraph[] playerAbilityGraphs;
     [SerializeField] UIPartyMyth[] playerMythDetails; // Can be fetched from playerAbilityGraphs?
     [SerializeField] UIPartyTeam[] playerTeamDetails; // Can be fetched from playerTeamGraphs?
     [SerializeField] TextMeshProUGUI[] progressTexts;
+    [SerializeField] CanvasGroup startPrompt;
+    [SerializeField] Animator transitionAnimator;
+
+    [Header("To set in editor")]
+    [SerializeField] string nameOfNextScene;
 
     // Variables
     bool[] playersReady = new bool[2];
+    bool allPlayersReady;
 
     void Start()
     {
+        MenuMusicController.ChangeMenuState(E_MenuState.MythSelect);
+
+        startPrompt.alpha = 0.0f;
+
         //SetUpPartyDataScriptableObjects(); // Might use this later down the line
 
         // Store references to this manager in team nodes
-        foreach(UIMenuNodeGraph graph in playerTeamGraphs)
+        foreach (UIMenuNodeGraph graph in playerTeamGraphs)
         {
             foreach (UINodePartyMember partyMember in graph.nodes)
             {
@@ -49,6 +62,7 @@ public class UIPartyManager : MonoBehaviour
 
             // Create an icon/menu node, adding it to the horizontal layout group of selectable myth icons, and set up it's adjacent nodes (and amend node to left of it)
             UINodeMyth selectNode = Instantiate(mythSelectPrefab, mythSelectionGraph.transform).GetComponent<UINodeMyth>();
+            selectNode.name = "MythIcon" + i;
             mythSelectionGraph.nodes.Add(selectNode);
             selectNode.adjacent[(int)UIMenuNode.Direction.Left] = mythSelectionGraph.nodes[Mathf.Clamp(i - 1, 0, 1000)].gameObject;     // Connect node to left adjacent node (left)
             selectNode.adjacent[(int)UIMenuNode.Direction.Right] = mythSelectionGraph.nodes[0].gameObject;                              // Connect node to first node (right)
@@ -77,7 +91,8 @@ public class UIPartyManager : MonoBehaviour
         {
             // Reference UI menu graph and set input action map
             players[i].currentMenuGraph = playerTeamGraphs[players[i].partyIndex];
-            players[i].GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+            PlayerInput input = players[i].GetComponent<PlayerInput>();
+            input.SwitchCurrentActionMap("UI");
         }
 
         // Initialise each node graph
@@ -88,6 +103,14 @@ public class UIPartyManager : MonoBehaviour
 
         SelectTeamMember(0, playerTeamGraphs[0].playerCurrentNode[0]);
         SelectTeamMember(1, playerTeamGraphs[1].playerCurrentNode[1]);
+    }
+
+    void Update()
+    {
+        if (allPlayersReady)
+            startPrompt.alpha = Mathf.Pow(0.5f + 0.5f * Mathf.Sin(Time.time * 5.0f), 0.35f);
+        else
+            startPrompt.alpha = 0.0f;
     }
 
     void SetUpPartyDataScriptableObjects() // Not quite an accurate name anymore // TODO: Create this functionality, later, if we really want it
@@ -150,6 +173,7 @@ public class UIPartyManager : MonoBehaviour
         GenerateAbilitiesList(teamIndex, mythIndex);
 
         UpdateProgressText(teamIndex);
+        UpdateMythSelectIcons();
     }
 
     public void AssignAbility(int teamIndex, int assignedIndex, SO_Ability ability)
@@ -266,20 +290,28 @@ public class UIPartyManager : MonoBehaviour
         if (!PlayerHasAFullParty(playerNumber))
         {
             progressTexts[playerNumber].text = "Need to select 3 myths for your team...";
-            return;
         }
-
-        if (!PlayerPartyMembersAllHaveFullAbilities(playerNumber))
+        else if (!PlayerPartyMembersAllHaveFullAbilities(playerNumber))
         {
             progressTexts[playerNumber].text = "Need to assign 3 abilities to each myth...";
-            return;
+        }
+        else
+        {
+            // Set ready to true
+            playersReady[playerNumber] = true;
+            progressTexts[playerNumber].text = "Your team is ready!";
         }
 
-        // Set ready to true
-        playersReady[playerNumber] = true;
-        progressTexts[playerNumber].text = "Your team is ready!";
-
-        // If both players ready, progress...?
+        // If both players ready, note this
+        allPlayersReady = true;
+        foreach (bool playerReady in playersReady)
+        {
+            if (!playerReady)
+            {
+                allPlayersReady = false;
+                break;
+            }
+        }
     }
 
     bool PlayerHasAFullParty(int playerNumber)
@@ -326,5 +358,151 @@ public class UIPartyManager : MonoBehaviour
 
         Debug.LogWarning("No available myths to select in the myth select graph!");
         return -1;
+    }
+
+    // Should really stop copy/pasting this, but regardless...
+    public void TryStartGame()
+    {
+        if (!allPlayersReady) return;
+
+        PlayerParticipant[] playerParticipants = FindObjectsOfType<PlayerParticipant>();
+
+        // Look at our team data and write into party data
+        for (int i = 0; i < livePartyData.partyData.Length; i++)
+        {
+            MythData[] mythData = new MythData[playerTeamDetails[i].selectedMythIndices.Length];
+
+            for (int k = 0; k < playerTeamDetails[i].selectedMythIndices.Length; k++)
+            {
+                int mythIndex = playerTeamDetails[i].selectedMythIndices[k];
+                mythData[k] = playerTeamDetails[i].mythDatas[mythIndex];
+            }
+
+            livePartyData.partyData[i].mythData = mythData;
+            
+            foreach (PlayerParticipant playerParticipant in playerParticipants)
+            {
+                if (playerParticipant.partyIndex == i)
+                {
+                    livePartyData.partyData[i].Participant = playerParticipant;
+                    break;
+                }
+            }
+        }
+
+        // Initiate loading next scene via the transition UI element
+        if (transitionAnimator)
+        {
+            foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+            {
+                participant.DisablePlayerInput(0.5f);
+                participant.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            }
+
+            transitionAnimator.SetInteger("Direction", 1);
+            transitionAnimator.SetTrigger("Fade");
+            StartCoroutine(LoadScene(0.35f));
+        }
+        else
+        {
+            SceneManager.LoadScene(nameOfNextScene);
+        }
+    }
+
+    IEnumerator LoadScene(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        SceneManager.LoadScene(nameOfNextScene);
+    }
+
+    public bool IsMythAlreadySelectedInATeamAndMoveAgainIfSo(UIMenuNode node, int teamIndex, UIMenuNode.Direction direction)
+    {
+        // Need some nifty numbers
+        int selectedIndex = playerTeamGraphs[teamIndex].nodes.IndexOf(playerTeamGraphs[teamIndex].playerCurrentNode[teamIndex]);    // Member no. to overlook
+        int mythIndex = mythSelectionGraph.nodes.IndexOf(node);
+
+        bool isMythAlreadySelectedInATeam = false;
+
+        if (mythIndex >= 0)
+        {
+            for (int i = 0; i < playerTeamDetails.Length; i++)
+            {
+                for (int k = 0; k < playerTeamDetails[i].selectedMythIndices.Length; k++)
+                {
+                    if (!(i == teamIndex && k == selectedIndex)) // We don't check the current team member on the team in question
+                    {
+                        if (playerTeamDetails[i].selectedMythIndices[k] == mythIndex)
+                        {
+                            isMythAlreadySelectedInATeam = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (isMythAlreadySelectedInATeam)
+            mythSelectionGraph.ParseNavigation(direction, teamIndex);
+
+        return isMythAlreadySelectedInATeam;
+    }
+
+    public void UpdateMythSelectIcons() // For each team member on each team that is not 'active', grey their selected myth out, ungrey any other myth
+    {
+        List<int> selectedMythIndices = new List<int>();
+
+        // Need some nifty numbers
+        int[] selectedIndices = new int[playerTeamGraphs.Length];
+        int[] mythIndices = new int[playerTeamGraphs.Length];
+
+        for (int i = 0; i < playerTeamGraphs.Length; i++)
+        {
+            selectedIndices[i] = playerTeamGraphs[i].nodes.IndexOf(playerTeamGraphs[i].playerCurrentNode[i]);    // Which no. member in the team?
+            mythIndices[i] = playerTeamDetails[i].selectedMythIndices[selectedIndices[i]];                       // Which no. myth in the myth select graph?
+        }
+
+        for (int i = 0; i < playerTeamDetails.Length; i++)                          // For each team...
+        {
+            for (int k = 0; k < playerTeamDetails[i].selectedMythIndices.Length; k++)   // For each member on that team...
+            {
+                if (k != selectedIndices[i])                                                // We don't check the current member on the team in question...
+                {
+                    selectedMythIndices.Add(playerTeamDetails[i].selectedMythIndices[k]);       // Add that selected myth into the list
+                }
+            }
+        }
+
+        // Grey out or ungrey if that myth's index appears in the list we created (of myths currently selected)
+        for (int i = 0; i < mythSelectionGraph.nodes.Count; i++)
+        {
+            if (selectedMythIndices.Contains(i))
+                mythSelectionGraph.nodes[i].GetComponent<Image>().color = new Color(1, 1, 1, 0.35f);
+            else
+                mythSelectionGraph.nodes[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        }
+    }
+
+    public void RemovePartyMember(int teamIndex)
+    {
+        // Return out of this if the provided player only has one member left in their team
+        int counter = 0;
+        foreach (int mythIndex in playerTeamDetails[teamIndex].selectedMythIndices)
+        {
+            if (mythIndex >= 0)
+                counter++;
+        }
+        if (counter <= 1) return;
+
+        // Find which number team member that player has active
+        int selectedIndex = playerTeamGraphs[teamIndex].nodes.IndexOf(playerTeamGraphs[teamIndex].playerCurrentNode[teamIndex]);
+
+        // Set the selected index in team details to -1
+        playerTeamDetails[teamIndex].selectedMythIndices[selectedIndex] = -1;
+
+        // Navigate cursor in the team graph to the left
+        playerTeamGraphs[teamIndex].ParseNavigation(UIMenuNode.Direction.Left, teamIndex);
+
+        // Update visuals
+        playerTeamDetails[teamIndex].mythTeamRenderImages[selectedIndex].enabled = false;
     }
 }

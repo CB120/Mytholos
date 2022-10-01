@@ -13,6 +13,10 @@ public class UINodePartyMember : UIMenuNode
 
     override public void OnAction(Action action, int playerNumber)
     {
+        if (action == Action.Start)
+            manager.TryStartGame();
 
+        if (action == Action.Cancel)
+            manager.RemovePartyMember(playerNumber);
     }
 }

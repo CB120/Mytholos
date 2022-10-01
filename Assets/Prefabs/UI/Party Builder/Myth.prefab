@@ -2078,8 +2078,13 @@ MonoBehaviour:
   displayInactiveCursors: 0
   allowCursorsToShareANode: 0
   cursorPadding: 8
+  navigateToLastGraphNodeOnCancel: 0
+  navigateToPreviousSceneOnCancel: 1
+  destroyAllParticipantsOnSceneCancel: 1
+  nameOfPreviousScene: Main Menu
   playerCursors: []
   playerCurrentNode: []
+  transitionAnimator: {fileID: 0}
 --- !u!114 &4753508444536669771
 MonoBehaviour:
   m_ObjectHideFlags: 0

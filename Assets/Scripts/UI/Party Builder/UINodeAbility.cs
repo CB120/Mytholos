@@ -13,6 +13,9 @@ public class UINodeAbility : UIMenuNode // Not to be confused with UIPartyAbilit
 
     override public void OnAction(Action action, int playerNumber)
     {
+        if (action == Action.Start)
+            manager.TryStartGame();
+
         int abilityIndex = -1;
 
         switch (action)

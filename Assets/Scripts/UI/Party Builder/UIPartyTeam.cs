@@ -7,7 +7,7 @@ using Myths;
 public class UIPartyTeam : MonoBehaviour
 {
     public List<MythData> mythDatas; // Remembers configs for each possible selectable myth, so that if you change your myth selection, the abilities you chose are not forgotten
-    [SerializeField] RawImage[] mythTeamRenderImages = new RawImage[3];
+    public RawImage[] mythTeamRenderImages = new RawImage[3];
     public int[] selectedMythIndices = { -1, -1, -1 };
 
     public void UpdateUI(int teamMemberIndex, int mythSelectionIndex, Texture teamRender)

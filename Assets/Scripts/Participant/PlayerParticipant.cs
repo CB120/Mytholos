@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Commands;
 using Myths;
@@ -21,7 +22,6 @@ public class PlayerParticipant : Participant
                                   // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
 
     //References
-
     private int selectedMythIndex = -1;
     private int selectedEnemyIndex = 0;
     private bool EnemySwitch = false; 
@@ -31,6 +31,26 @@ public class PlayerParticipant : Participant
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
+    Coroutine cancelCoroutine;
+
+    public void DisablePlayerInput(float timeToWait)
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        if (input)
+        {
+            input.notificationBehavior = PlayerNotifications.SendMessages;
+            Invoke("EnablePlayerInput", timeToWait);
+        }    
+    }
+
+    void EnablePlayerInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        if (input)
+        {
+            input.notificationBehavior = PlayerNotifications.InvokeUnityEvents;
+        }
+    }
 
     public void SelectLeft(InputAction.CallbackContext context)
     {
@@ -255,11 +275,37 @@ public class PlayerParticipant : Participant
 
     public void Cancel(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+        {
+            if (cancelCoroutine != null)
+                StopCoroutine(cancelCoroutine);
+            return;
+        }
+
+        if (currentMenuGraph == null) return;
+
+        currentMenuGraph.ParseAction(UIMenuNode.Action.Cancel, partyIndex);
+
+        if (cancelCoroutine != null)
+            StopCoroutine(cancelCoroutine);
+        cancelCoroutine = StartCoroutine(HoldCancel(0.65f));
+    }
+
+    IEnumerator HoldCancel(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+
+        if (currentMenuGraph != null)
+            currentMenuGraph.ParseAction(UIMenuNode.Action.HoldCancel, partyIndex);
+    }
+
+    public void StartButton(InputAction.CallbackContext context)
+    {
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
-        currentMenuGraph.ParseAction(UIMenuNode.Action.Cancel, partyIndex);
+        currentMenuGraph.ParseAction(UIMenuNode.Action.Start, partyIndex);
     }
-    
+
     private void UseAbility(InputAction.CallbackContext context, Func<Myth, SO_Ability> abilityAccessor)
     {
         if (!context.performed) return;

@@ -8,6 +8,8 @@ public class UINodeMyth : UIMenuNode
 
     override public void OnNavigate(int playerNumber, Direction direction)
     {
+        if (manager.IsMythAlreadySelectedInATeamAndMoveAgainIfSo(this, playerNumber, direction)) return;
+
         manager.SelectMyth(playerNumber, this);
 
         // TODO: If this myth has already been selected by someone, continue navigating in that direction to the next adjacent node
@@ -15,6 +17,7 @@ public class UINodeMyth : UIMenuNode
 
     override public void OnAction(Action action, int playerNumber)
     {
-
+        if (action == Action.Start)
+            manager.TryStartGame();
     }
 }

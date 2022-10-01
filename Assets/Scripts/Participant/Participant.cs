@@ -27,9 +27,19 @@ public class Participant : MonoBehaviour
         
         if (debugOn) Debug.Log(gameObject.name + "'s partyIndex is " + partyIndex);
 
-        ParticipantData = allParticipantDataService.GetAllParticipantData();
+        // TODO: This also should not be handled here maybe possibly
+        UpdateParticipantData();
+    }
 
-        // TODO: This also should not be handled here
+    public void UpdateParticipantData()
+    {
+        ParticipantData = allParticipantDataService.GetAllParticipantData();
         ParticipantData.partyData[partyIndex].Participant = this;
+    }
+
+    public void DestroyParticipant()
+    {
+        numberOfParticipants--; // May cause issues if this isn't being called on every participant to destroy all participants
+        Destroy(gameObject);
     }
 }

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIMenuNode : MonoBehaviour
 {
     public enum Direction { Up, Down, Right, Left }
-    public enum Action { Submit, Cancel, North, South, East, West }
+    public enum Action { Submit, Cancel, North, South, East, West, HoldCancel, Start }
 
     public GameObject[] adjacent = new GameObject[4]; // Indices follow that of Direction enum
 

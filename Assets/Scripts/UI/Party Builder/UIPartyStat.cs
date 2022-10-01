@@ -7,7 +7,7 @@ public class UIPartyStat : MonoBehaviour
 
     public void SetUpUI(float percent)
     {
-        int barsToFill = Mathf.RoundToInt(Mathf.Clamp(percent, 0, 1) * bars.Length);
+        int barsToFill = Mathf.FloorToInt(Mathf.Clamp(percent, 0, 1) * bars.Length);
 
         for (int i = 0; i < bars.Length; i++)
         {

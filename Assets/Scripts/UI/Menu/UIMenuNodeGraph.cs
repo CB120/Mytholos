@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIMenuNodeGraph : MonoBehaviour
 {
     public List<UIMenuNode> nodes;
 
+    [Header("Cursor settings")]
     public bool displayInactiveCursors;
     public bool allowCursorsToShareANode;
     public float cursorPadding;
 
+    [Header("Player action settings")]
+    [SerializeField] bool navigateToLastGraphNodeOnCancel;
+    [SerializeField] bool navigateToPreviousSceneOnCancel;
+    [SerializeField] bool destroyAllParticipantsOnSceneCancel;
+    [SerializeField] string nameOfPreviousScene;
+
+    [Header("Scene references")]
     public UIAnimator[] playerCursors; // Reference expected to be set in-editor
     public UIMenuNode[] playerCurrentNode;
+    [SerializeField] Animator transitionAnimator;
 
     //private void Update()
     //{
@@ -21,6 +31,8 @@ public class UIMenuNodeGraph : MonoBehaviour
     virtual public UIMenuNodeGraph ParseNavigation(UIMenuNode.Direction direction, int playerNumber)
     {
         int index = (int)direction;
+
+        if (playerCurrentNode.Length <= playerNumber) return this;
 
         if (playerCurrentNode[playerNumber] == null)
         {
@@ -50,7 +62,8 @@ public class UIMenuNodeGraph : MonoBehaviour
 
     virtual public void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction)
     {
-        //print("Navigating to a NODE");
+        //print("Player" + playerNumber + " navigating " + direction + " to node " + node.name + " in " + name);
+
         if (!allowCursorsToShareANode && NodeIsAlreadyOccupied(node, playerNumber))
         {
             playerCurrentNode[playerNumber] = node;
@@ -82,8 +95,49 @@ public class UIMenuNodeGraph : MonoBehaviour
 
     virtual public void ParseAction(UIMenuNode.Action action, int playerNumber)
     {
+        //print("Parsing action " + action + " for player " + playerNumber);
+
+        if (action == UIMenuNode.Action.Cancel)
+        {
+            if (navigateToLastGraphNodeOnCancel)
+            {
+                Navigate(nodes[nodes.Count - 1], playerNumber, UIMenuNode.Direction.Down);
+                return;
+            }
+        }
+        else if (action == UIMenuNode.Action.HoldCancel)
+        {
+            if (navigateToPreviousSceneOnCancel)
+            {
+                if (transitionAnimator)
+                {
+                    foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+                    {
+                        if (destroyAllParticipantsOnSceneCancel)
+                            participant.DestroyParticipant();
+                        else
+                            participant.DisablePlayerInput(0.5f);
+                    }
+
+                    transitionAnimator.SetInteger("Direction", -1);
+                    transitionAnimator.SetTrigger("Fade");
+                    StartCoroutine(LoadScene(0.35f));
+                }
+                return;
+            }
+        }
+
+        if (playerCurrentNode.Length <= playerNumber) return;
+
         playerCurrentNode[playerNumber].OnAction(action, playerNumber); // Perform behaviour specified by that node for that action
     }
+
+    IEnumerator LoadScene(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        SceneManager.LoadScene(nameOfPreviousScene);
+    }
+
 
     public void PlayerEnterGraph(int playerNumber)
     {
