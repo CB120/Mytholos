@@ -32,7 +32,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         ParticleSystem particle = ability.element.debuffParticle;
         if (!isInParty)
         {
-            var finalDamage = damage * DamageMultiplier;
+            var finalDamage = damage * DamageMultiplier * myth.AttackStat / myth.DefenceStat;
             myth.Health.Value -= finalDamage; ;
         }
         else
