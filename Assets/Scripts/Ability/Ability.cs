@@ -137,9 +137,9 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
     {
         if (isInParty)
-            myth.effectController.AdjustAgility(2);
+            myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
         else
-            myth.effectController.Displace(2);
+            myth.effectController.Displace(ability.statIncrease);
     }
 
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)

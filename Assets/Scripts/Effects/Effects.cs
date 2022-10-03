@@ -42,10 +42,10 @@ public class Effects : MonoBehaviour
         rb.AddForce(new Vector3(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10)) * force);
     }
 
-    public void AdjustAgility(float value)//Wind
+    public void AdjustAgility(float time, float value)//Wind
     {
-        myth.walkSpeed = defaultWalkSpeed * 2; //Currently Not Stackable
-        Invoke("SetDefaultAgility", value);
+        myth.walkSpeed += value; //Currently Not Stackable
+        Invoke("SetDefaultAgility", time);
     }
 
     private void SetDefaultAgility()

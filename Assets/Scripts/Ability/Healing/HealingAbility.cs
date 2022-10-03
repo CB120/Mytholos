@@ -21,7 +21,6 @@ public class HealingAbility : Ability
             trail.startColor = ability.element.color;
             trail.endColor = ability.element.color * new Color(1, 1, 1, 0.25f);
         }
-
         base.Start();
     }
 
@@ -91,7 +90,7 @@ public class HealingAbility : Ability
 
     public override void ApplyWindEffect(Myth myth, bool isInParty)
     {
-        myth.effectController.AdjustAgility(ability.statIncrease);;
+        myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
     }
 
     public override void ApplyWoodEffect(Myth myth, bool isInParty)
