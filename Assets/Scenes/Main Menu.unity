@@ -3009,7 +3009,7 @@ PrefabInstance:
     - target: {fileID: 5728678898826638310, guid: fcf1d95b61c76b34092e0e53d5e15bb9,
         type: 3}
       propertyPath: currentMenuState
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5728678898826638311, guid: fcf1d95b61c76b34092e0e53d5e15bb9,
         type: 3}

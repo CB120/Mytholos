@@ -165,7 +165,7 @@ public class BattleMusicController : MonoBehaviour
     {
         foreach (MusicLayer m in musicLayers)
         {
-            if (m.manualVolumeOverride) continue;
+            if (m.manualVolumeOverride) continue; //GUARD to allow manualVolumeOverride to disable the automated fading
 
             //Adding/subtracting a constant per second = linear transition.
             //Adjust the volume curve in FMOD, don't try and change the lerp curve
@@ -173,7 +173,7 @@ public class BattleMusicController : MonoBehaviour
             if (m.volume < m.targetVolume) m.volume += fadeInRate * Time.deltaTime;
             if (Mathf.Abs(m.volume - m.targetVolume) <= 0.1f) m.volume = m.targetVolume;
 
-            //If we end up with targetVolumes that aren't 0 or 100, add a 'if volume delta <= 0.1, volume = target' here
+            //If we end up with targetVolumes that aren't 0 or 100, add an 'if volume delta <= 0.1, volume = target' here
 
             m.volume = Mathf.Clamp(m.volume, 0f, 100f);
         }

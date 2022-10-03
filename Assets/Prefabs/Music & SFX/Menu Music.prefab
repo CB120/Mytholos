@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5728678898826638311}
   - component: {fileID: 5728678898826638310}
-  - component: {fileID: 5728678898826638313}
+  - component: {fileID: 1492141916486888764}
   m_Layer: 0
   m_Name: Menu Music
   m_TagString: MenuMusic
@@ -46,8 +46,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistent: 1
+  fadeInRate: 40
+  fadeOutRate: 20
+  musicTracks:
+  - name: Main Menu
+    volume: 100
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+    state: 0
+  - name: Options
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+    state: 1
+  - name: Encyclopaedia
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+    state: 2
+  - name: Myth Select
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+    state: 3
+  - name: Arena Select
+    volume: 0
+    targetVolume: 0
+    manualVolumeOverride: 0
+    score: 0
+    state: 4
   currentMenuState: 0
---- !u!114 &5728678898826638313
+--- !u!114 &1492141916486888764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,8 +101,8 @@ MonoBehaviour:
       Data4: 1033877765
     Path: event:/Music/Menu Music
   Event: 
-  PlayEvent: 1
-  StopEvent: 2
+  PlayEvent: 11
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
