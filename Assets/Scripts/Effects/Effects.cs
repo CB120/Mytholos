@@ -8,9 +8,14 @@ public class Effects : MonoBehaviour
 {
     public Myth myth;
     private float defaultWalkSpeed = 0;
+    private float defaultAttackStat = 0;
+    private float defaultDefenceStat = 0;
+
     private void Awake()
     {
         defaultWalkSpeed = myth.walkSpeed;
+        defaultAttackStat = myth.AttackStat;
+        defaultDefenceStat = myth.DefenceStat;
     }
 
     #region Wood - Baxter
@@ -21,9 +26,37 @@ public class Effects : MonoBehaviour
     #endregion
 
     #region Fire
-    public void Burn(float value)//Fire
-    {
+    private bool burning;
+    private float burnDamage;
+    private float burnTimer;
+    private float burnDuration = 5;
 
+    private bool AttackBuffActive;
+
+    public void Burn(float damagevalue, float durationvalue)//Fire
+    {
+        burnDamage = damagevalue;
+        burnDuration = durationvalue;
+        burning = true;
+    }
+
+    public void attackBuff(float value)
+    {
+        if(!AttackBuffActive)
+        {
+            AttackBuffActive = true;
+            myth.AttackStat *= 2;
+            Invoke("RemoveAttackBuff", value);
+        }
+    }
+
+    private void RemoveAttackBuff()
+    {
+        if (AttackBuffActive)
+        {
+            AttackBuffActive = false;
+            myth.AttackStat /= 2;
+        }
     }
     #endregion
 
@@ -72,13 +105,75 @@ public class Effects : MonoBehaviour
     }
     #endregion
 
-    #region Earth
-    public void DefenceBuff()
+    #region Earth - Will
+    private bool DefenceBuffActive;
+    private bool AgilityDebuffActive;
+    public void DefenceBuff(float value)
     {
+        if (!DefenceBuffActive)
+        {
+            DefenceBuffActive = true;
+            myth.DefenceStat *= 2;
+            Invoke("RemoveDefenceBuff", value);
+        }
+    }
 
+    private void RemoveDefenceBuff()
+    {
+        if (DefenceBuffActive)
+        {
+            DefenceBuffActive = false;
+            myth.AttackStat /= 2;
+        }
+    }
+
+    public void AgilityDebuff(float value)
+    {
+        if (!AgilityDebuffActive)
+        {
+            AgilityDebuffActive = true;
+            myth.walkSpeed /= 2;
+            Invoke("RemoveAgilityDebuff", value);
+        }
+    }
+
+    public void RemoveAgilityDebuff()
+    {
+        if (AgilityDebuffActive)
+        {
+            AgilityDebuffActive = false;
+            myth.walkSpeed *= 2;
+        }
     }
 
     #endregion
+
+    #region Water - Will
+
+    public void BuffCleanse()
+    {
+        RemoveAttackBuff();
+        RemoveDefenceBuff();
+    }
+
+    public void DebuffCleanse()
+    {
+        RemoveAgilityDebuff();
+    }
+
+    #endregion
+
+    private void Update()
+    {
+        if (burning)
+        {
+            Debug.Log("burning");
+            burnTimer += Time.deltaTime;
+            myth.Health.Value -= burnDamage;
+            if (burnTimer > burnDuration)
+                burning = false;
+        }
+    }
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here
     {

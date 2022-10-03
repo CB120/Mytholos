@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c10437e8b47a3643b699981f31fbdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 3
+  RotationSpeed: 720
 --- !u!1 &2867047009964383558
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,10 +822,9 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  effectValue: 0
   speed: 15
   acceleration: 10
-  boomerangSFXprefab: {fileID: 2727645108851578015, guid: 71cfebdb72817524a8bf6d44da5d9f3b,
-    type: 3}
 --- !u!114 &-9015078016853536265
 MonoBehaviour:
   m_ObjectHideFlags: 0

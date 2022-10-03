@@ -12,6 +12,9 @@ namespace Myths
         public MythStat Stamina => stamina;
         public SO_Myth myth;
         public float walkSpeed;
+        //placeholder stat of 1
+        public float AttackStat = 1;
+        public float DefenceStat = 1;
         public GameObject targetEnemy;
         public Effects effectController;
         // TODO: Do we still need this? Some instances can be replaced by passing this in the command // 

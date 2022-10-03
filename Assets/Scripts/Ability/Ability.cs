@@ -32,14 +32,13 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         ParticleSystem particle = ability.element.debuffParticle;
         if (!isInParty)
         {
-            var finalDamage = damage * DamageMultiplier;
+            var finalDamage = damage * DamageMultiplier * myth.AttackStat / myth.DefenceStat;
             myth.Health.Value -= finalDamage; ;
         }
         else
         {
             if (ability.element.buffParticle != null) //Temporary to show which debuff is being used
                 particle = ability.element.buffParticle; 
-            
         }
         ParticleSystem ps = Instantiate(particle, myth.transform);
         ParticleSystem.MainModule ma = ps.main;
@@ -126,7 +125,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyWaterEffect(Myth myth, bool isInParty)
     {
-
+        if (!isInParty)
+            myth.effectController.BuffCleanse();
     }
 
     virtual public void ApplyIceEffect(Myth myth, bool isInParty)
@@ -149,12 +149,14 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
     {
-
+        if (!isInParty)
+            myth.effectController.AgilityDebuff(3);
     }
 
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
-
+        if (!isInParty)
+            myth.effectController.Burn(1, 5);
     }
     #endregion
 

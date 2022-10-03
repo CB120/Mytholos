@@ -7,7 +7,7 @@ public class BeamAbility : Ability
 
     [SerializeField] private BeamExtender BeamExtender;
     // TODO: Should this be derived from SO_Ability.performTime?
-    [SerializeField] private float BeamDuration;
+    
     [SerializeField] private float BeamLength;
 
     public override void Start()
@@ -21,7 +21,7 @@ public class BeamAbility : Ability
     {
         DurationTimer += Time.deltaTime;
 
-        if (DurationTimer > BeamDuration)
+        if (DurationTimer > ability.performTime)
         {
             Destroy(gameObject);
         }

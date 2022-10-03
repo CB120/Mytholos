@@ -14,6 +14,9 @@ public class BoomerangAbility : Ability
     [SerializeField] private float speed;
     [SerializeField] private float acceleration;
 
+    private float currentPoint;
+    private float endPoint;
+
     StudioEventEmitter boomerangSFXemitter; //SFX, inserted by Ethan
 
     // Start is called before the first frame update
@@ -31,7 +34,11 @@ public class BoomerangAbility : Ability
     public override void Update()
     {
         if (speed <= 0)
+        {
             Returning = true;
+            endPoint = Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position);
+        }
+
 
         if (!Returning)
         {
@@ -44,7 +51,12 @@ public class BoomerangAbility : Ability
             speed += acceleration * Time.deltaTime;
             Direction = ( owningMyth.transform.position - BoomerangTransform.position).normalized;
             BoomerangTransform.position += Direction * speed * Time.deltaTime;
-            if (Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position) < .01f)
+            
+            currentPoint = Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position);
+
+            this.gameObject.transform.localScale = new Vector3 (1*currentPoint/endPoint, 1, 1*currentPoint/endPoint);
+
+            if (Vector3.Distance(BoomerangTransform.position, owningMyth.transform.position) < .1f)
                 Destroy(this.gameObject);
         }
 
