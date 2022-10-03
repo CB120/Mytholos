@@ -12,7 +12,6 @@ namespace Myths.Behaviours
         [SerializeField] private float dodgeSpeed;
 
         // References
-        public NavMeshAgent navMeshAgent;
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private Animator anim;
 

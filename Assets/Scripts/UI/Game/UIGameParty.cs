@@ -222,8 +222,8 @@ public class UIGameParty : MonoBehaviour
                             //Debug.Log("Player " + partyNumber + " adding myth " + myth.myth.name + " into party in slot " + i);
 
                             // TODO: Delete this, 100% going to be problematic after sprint 2
-                            if (i == 2)
-                                myth.transform.position = new Vector3(1000.0f, 0.0f, -1000.0f);
+                            //if (i == 2)
+                            //    myth.transform.position = new Vector3(1000.0f, 0.0f, -1000.0f);
                         }
                     }
                 }
