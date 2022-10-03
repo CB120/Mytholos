@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{92a987de-6a60-46f7-a38c-243f1663ecc6}">
+		<property name="name">
+			<value>Myth Select Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8451aed1-8d1b-4a0b-98b5-3465f160d840}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8451aed1-8d1b-4a0b-98b5-3465f160d840}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
