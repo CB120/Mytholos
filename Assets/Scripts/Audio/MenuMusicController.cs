@@ -30,15 +30,18 @@ public class MenuMusicController : MonoBehaviour
     // Engine-called
     private void Awake()
     {
-        //if (Singleton != null && Singleton != this)
-        //    Destroy(gameObject);
+        if (Singleton != null && Singleton != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         // Hm
-        foreach (MenuMusicController musicController in FindObjectsOfType<MenuMusicController>())
-        {
-            if (musicController != this)
-                Destroy(gameObject);
-        }
+        //foreach (MenuMusicController musicController in FindObjectsOfType<MenuMusicController>())
+        //{
+        //    if (musicController != this)
+        //        Destroy(gameObject);
+        //}
 
         Singleton = this;
         if (persistent) DontDestroyOnLoad(gameObject);

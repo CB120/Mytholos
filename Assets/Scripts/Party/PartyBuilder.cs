@@ -27,7 +27,7 @@ public class PartyBuilder : MonoBehaviour
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
-        setDefaultTarget();
+        SetDefaultTarget();
     }
 
     void Start()
@@ -59,7 +59,7 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
-    void setDefaultTarget()
+    void SetDefaultTarget()
     {
         if (Party1.Count == Party2.Count && Party1 != null)
         {
@@ -118,7 +118,5 @@ public class PartyBuilder : MonoBehaviour
     }
 
     //Remove after playtest
-    public WinState winState;
-
-  
+    public WinState winState;  
 }
