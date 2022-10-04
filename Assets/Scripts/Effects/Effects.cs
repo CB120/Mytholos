@@ -25,7 +25,7 @@ public class Effects : MonoBehaviour
     }
     #endregion
 
-    #region Fire
+    #region Fire - Will
     private bool burning;
     private float burnDamage;
     private float burnTimer;
