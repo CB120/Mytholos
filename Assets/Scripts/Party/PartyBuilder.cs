@@ -9,6 +9,8 @@ public class PartyBuilder : MonoBehaviour
 
     [NonSerialized] public SO_AllParticipantData allParticipantData;
 
+    [SerializeField] private SO_SpawnPoints spawnPoints;
+
     // Keep these public lol
     public List<GameObject> Party1;
     public List<GameObject> Party2;
@@ -18,16 +20,6 @@ public class PartyBuilder : MonoBehaviour
     private int mythCounter = 0;
 
     Transform[] partyParents = new Transform[2];
-
-    /** This needs work BIG TIME **/
-    private Vector3 MythInPlaySpawnPoint = new Vector3(3, 2, 0);
-    private Vector3 spawnOffset = new Vector3(9, 0, 0);
-
-    private Vector3 Team1BenchedSpawnPoint = new Vector3(-2, 2, 5);
-    private Vector3 Team1BenchedSpawnOffset = new Vector3(2, 0, 2);
-
-    private Vector3 Team2BenchedSpawnPoint = new Vector3(16, 2, 6);
-    private Vector3 Team2BenchedSpawnOffset = new Vector3(-2, 0, 2);
 
     private void Awake()
     {
@@ -78,6 +70,7 @@ public class PartyBuilder : MonoBehaviour
 
     void SpawnMyth(MythData mythData, int participantIndex)
     {
+        
         GameObject prefab = mythData.myth.prefab;
         Vector3 spawnPosition;
         
@@ -88,25 +81,13 @@ public class PartyBuilder : MonoBehaviour
             return;
         }
 
-        // This is fucking shocking, will probably split this whole function into SpawnMythsInPlay && SpawnReserves
-        if (mythCounter == 0 || mythCounter == 3)
-        {
-            spawnPosition = MythInPlaySpawnPoint;
-            MythInPlaySpawnPoint += spawnOffset;
-        } else if(participantIndex == 0)
-        {
-            spawnPosition = Team1BenchedSpawnPoint;
-            Team1BenchedSpawnPoint += Team1BenchedSpawnOffset;
-        } else
-        {
-            spawnPosition = Team2BenchedSpawnPoint;
-            Team2BenchedSpawnPoint += Team2BenchedSpawnOffset;
-        }
-        
+        spawnPosition = spawnPoints.SpawnLocations[mythCounter];
 
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
+        
+        
         if (participantIndex == 1)
         {
             Party1.Add(newMythGameObject);
@@ -124,15 +105,22 @@ public class PartyBuilder : MonoBehaviour
         newMyth.eastAbility = mythData.eastAbility;
         newMyth.PartyIndex = participantIndex;
         newMyth.ws = winState;
-
         // Eddie's awful camera code, probably delete later
         EpicEddieCam cam = FindObjectOfType<EpicEddieCam>();
         if (cam != null && mythCounter == 0 || mythCounter == 3)
         {
             cam.positions.Add(newMythGameObject.transform);
         }
+        newMythGameObject.SetActive(false);
+        if (mythCounter == 0 || mythCounter == 3)
+        {
+            Debug.Log(mythCounter);
+            newMythGameObject.SetActive(true);
+        }
         mythCounter ++; // TODO: Stop fudging this where 3rd member of each party is excluded from Camera list
     }
+
+
 
     //Remove after playtest
     public WinState winState;  

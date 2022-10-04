@@ -521,6 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}
+  allParticipantData: {fileID: 0}
+  spawnPoints: {fileID: 11400000, guid: fd786890b7d3faa41916e5f2460f3a23, type: 2}
   Party1: []
   Party2: []
   allAbilities:
