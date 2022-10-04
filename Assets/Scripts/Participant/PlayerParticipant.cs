@@ -1,36 +1,67 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Commands;
 using Myths;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
 public class PlayerParticipant : Participant
 {
+    // Technically a cyclic dependency, but more effort than it's worth to solve
+    [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
+    
     //Events
     public UnityEvent<int> SelectMyth = new();
     public UnityEvent<SO_Ability> SelectAbility = new();
+    [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
 
     //Properties
 
 
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
-                                  // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
+    // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
 
     //References
-    private int selectedMythIndex = 0;
+    public Myth MythInPlay
+    {
+        get => mythInPlay;
+        private set
+        {
+            if (mythInPlay != null)
+                mythInPlay.gameObject.SetActive(false);
+            
+            mythInPlay = value;
+            
+            if (mythInPlay != null)
+                mythInPlay.gameObject.SetActive(true);
+            
+            mythInPlayChanged.Invoke(this);
+        }
+    }
 
-    private Myth MythInPlay => ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(selectedMythIndex);
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
+
+    private List<Myth> mythsInReserve = new();
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
     Coroutine cancelCoroutine;
+    private Myth mythInPlay;
+
+    private void OnEnable()
+    {
+        playerParticipantRuntimeSet.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        playerParticipantRuntimeSet.Remove(this);
+    }
 
     public void DisablePlayerInput(float timeToWait)
     {
@@ -113,16 +144,16 @@ public class PlayerParticipant : Participant
     public void SwitchLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        Debug.Log("Left trigger to switch has been activated");
+        
+        SwapReserveAtIndex(0);
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        Debug.Log("Right trigger to switch has been activated");
+        
+        SwapReserveAtIndex(1);
     }
-
-
 
     #endregion
 
@@ -221,4 +252,23 @@ public class PlayerParticipant : Participant
     }
 
     #endregion
+
+    private void SwapReserveAtIndex(int index)
+    {
+        var position = MythInPlay.transform.position;
+        
+        (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
+
+        MythInPlay.transform.position = position;
+    }
+
+    private void Start()
+    {
+        MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
+        
+        mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
+
+        if (MythInPlay != null)
+            mythsInReserve.Remove(MythInPlay);
+    }
 }

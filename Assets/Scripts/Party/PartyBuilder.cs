@@ -105,19 +105,10 @@ public class PartyBuilder : MonoBehaviour
         newMyth.eastAbility = mythData.eastAbility;
         newMyth.PartyIndex = participantIndex;
         newMyth.ws = winState;
-        // Eddie's awful camera code, probably delete later
-        EpicEddieCam cam = FindObjectOfType<EpicEddieCam>();
-        if (cam != null && mythCounter == 0 || mythCounter == 3)
-        {
-            cam.positions.Add(newMythGameObject.transform);
-        }
+        
         newMythGameObject.SetActive(false);
-        if (mythCounter == 0 || mythCounter == 3)
-        {
-            Debug.Log(mythCounter);
-            newMythGameObject.SetActive(true);
-        }
-        mythCounter ++; // TODO: Stop fudging this where 3rd member of each party is excluded from Camera list
+        
+        mythCounter ++;
     }
 
 

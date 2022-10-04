@@ -792,7 +792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7efecae37208b048b4890e999496420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions: []
+  playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
+    type: 2}
   offsetY: 1.75
   zoomStartOffset: 0
   zoomRate: 1.8

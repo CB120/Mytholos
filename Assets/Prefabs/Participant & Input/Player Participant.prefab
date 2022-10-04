@@ -352,6 +352,8 @@ MonoBehaviour:
     type: 2}
   debugOn: 0
   partyIndex: -1
+  playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
+    type: 2}
   SelectMyth:
     m_PersistentCalls:
       m_Calls: []
