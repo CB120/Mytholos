@@ -11,7 +11,7 @@ namespace Myths
         public MythStat Stamina => stamina;
 
         public SO_Myth myth;
-        public float walkSpeed;
+
         public GameObject targetEnemy;
         // TODO: Do we still need this? Some instances can be replaced by passing this in the command // 
         [HideInInspector]public Vector2 lastInputDirection;

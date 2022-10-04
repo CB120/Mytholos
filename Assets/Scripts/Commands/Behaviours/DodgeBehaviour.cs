@@ -9,7 +9,7 @@ namespace Myths.Behaviours
     {
         [Header("Dodge Behaviour")]
         public UnityEvent DodgeComplete = new();
-        [SerializeField] private float dodgeSpeed;
+        private float dodgeSpeed = 6;
 
         // References
         [SerializeField] private CollisionDetection movementController;
@@ -45,7 +45,7 @@ namespace Myths.Behaviours
         {
             // Initialize dodge parameters 
             myth.isInvulnerable = true;
-            movementController.SetTargetVelocity(myth.transform.forward * dodgeSpeed);
+            movementController.SetTargetVelocity(myth.transform.forward * (myth.myth.agility + dodgeSpeed));
             if (anim) anim.SetBool("Walking", false);
             Invoke("KilliFrames", 0.33f);
             mythCommandHandler.Command = null;
