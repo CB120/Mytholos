@@ -4,7 +4,7 @@ using Behaviour = Myths.Behaviour;
 
 namespace Commands.Behaviours
 {
-    public class ManualMoveBehaviour : Behaviour
+    public class MoveBehaviour : Behaviour
     {
         [Header("Manual Move Behaviour")]
         // Movement Properties
@@ -25,15 +25,15 @@ namespace Commands.Behaviours
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private Animator anim;
 
-        private ManualMoveCommand manualMoveCommand;
+        private MoveCommand moveCommand;
 
         protected override void OnEnable()
         {
             base.OnEnable();
             
-            manualMoveCommand = mythCommandHandler.Command as ManualMoveCommand;
+            moveCommand = mythCommandHandler.Command as MoveCommand;
 
-            if (manualMoveCommand == null)
+            if (moveCommand == null)
             {
                 Debug.LogWarning("There was a problem with finding the manualMovementCommand on the Myth's Command Handler.");
                 moveFailed.Invoke();
@@ -63,9 +63,9 @@ namespace Commands.Behaviours
             if (!myth.isInvulnerable)
             {
                 var inputVector = new Vector3(
-                    manualMoveCommand.input.x,
+                    moveCommand.input.x,
                     0,
-                    manualMoveCommand.input.y
+                    moveCommand.input.y
                 );
 
                 if (inputVector == Vector3.zero)

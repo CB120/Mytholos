@@ -1,6 +1,6 @@
 namespace Commands
 {
-    public class MoveCommand : Command
+    public class AIMoveCommand : Command
     {
         public enum MoveCommandType
         {
@@ -13,7 +13,7 @@ namespace Commands
         
         public MoveCommandType CurrentMoveCommandType { get; set; }
 
-        public MoveCommand(MoveCommandType moveCommandType)
+        public AIMoveCommand(MoveCommandType moveCommandType)
         {
             CurrentMoveCommandType = moveCommandType;
         }

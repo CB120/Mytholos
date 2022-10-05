@@ -11,8 +11,8 @@ namespace Commands
         [SerializeField] protected MythCommandHandler mythCommandHandler;
 
         public UnityEvent abilityCommandReceived = new();
-        public UnityEvent moveCommandReceived = new();
-        public UnityEvent manualMoveCommandReceived = new();
+        //public UnityEvent moveCommandReceived = new();
+        public UnityEvent MoveCommandReceived = new();
         public UnityEvent dodgeCommandReceived = new();
 
         private void OnEnable()
@@ -34,14 +34,14 @@ namespace Commands
                 abilityCommandReceived.Invoke();
             }
 
-            if (mythCommandHandler.Command is MoveCommand)
+            if (mythCommandHandler.Command is AIMoveCommand)
             {
-                moveCommandReceived.Invoke();
+                //moveCommandReceived.Invoke();
             }
 
-            if (mythCommandHandler.Command is ManualMoveCommand)
+            if (mythCommandHandler.Command is MoveCommand)
             {
-                manualMoveCommandReceived.Invoke();
+                MoveCommandReceived.Invoke();
             }
             if(mythCommandHandler.Command is DodgeCommand)
             {

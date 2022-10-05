@@ -79,31 +79,22 @@ public class PlayerParticipant : Participant
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (SelectedMythCommandHandler.Command is not ManualMoveCommand)
-            SelectedMythCommandHandler.Command = new ManualMoveCommand();
+        if (SelectedMythCommandHandler.Command is not MoveCommand)
+            SelectedMythCommandHandler.Command = new MoveCommand();
 
-        if (SelectedMythCommandHandler.Command is ManualMoveCommand manualMoveCommand)
+        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
         {
-            manualMoveCommand.input = context.ReadValue<Vector2>();
+            moveCommand.input = context.ReadValue<Vector2>();
         }
     }
     private void UseAbility(InputAction.CallbackContext context, Func<Myth, SO_Ability> abilityAccessor)
     {
         if (!context.performed) return;
 
-        if (!MythInPlay) return;
-
         var ability = abilityAccessor(MythInPlay);
 
         // TODO: I don't think this is the right place for this check
         if (MythInPlay.Stamina.Value < ability.stamina) return;
-
-        if (!ability.isRanged)
-        {
-            SelectedMythCommandHandler.Command = new MoveCommand(MoveCommand.MoveCommandType.Approach);
-            Debug.Log("Close range attack");
-            return;
-        }
 
         SelectedMythCommandHandler.Command = new AbilityCommand(ability);
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Commands
 {
-    public class ManualMoveCommand : Command
+    public class MoveCommand : Command
     {
         public Vector2 input;
     }
