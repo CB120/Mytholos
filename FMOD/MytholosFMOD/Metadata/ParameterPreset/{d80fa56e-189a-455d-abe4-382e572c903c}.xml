@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{d80fa56e-189a-455d-abe4-382e572c903c}">
+		<property name="name">
+			<value>Encyclopaedia Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{bd5324f9-5fd6-4746-8554-9a7771ec6b85}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{bd5324f9-5fd6-4746-8554-9a7771ec6b85}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

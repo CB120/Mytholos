@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881575023aff47da84e9eed480c4ceb6, type: 3}
   m_Name: Snake
   m_EditorClassIdentifier: 
-  name: Snake
+  name: Dybbuk
   prefab: {fileID: 7839951539531265053, guid: b9578e69af48cb148ab20fb48d83c14d, type: 3}
   icon: {fileID: -549214236, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  element: 2
+  health: 0.2
+  size: 0.4
+  brawn: 0.4
+  psyche: 1
+  agility: 0.6
+  abilities:
+  - {fileID: 11400000, guid: 063a6f1983b891247ab7d68b6542a149, type: 2}
+  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
+  - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
+  - {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
+  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}

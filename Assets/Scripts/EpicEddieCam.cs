@@ -61,4 +61,18 @@ public class EpicEddieCam : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * followSpeed);
         }
     }
+
+    public void FocusOnSingleMyth(int winningTeamIndex)
+    {
+        // We can assume (as of, uh, writing this) that element 0 and 1 of the postions list belong to team 0, and elements 2 and 3 belong to team 1
+        if (positions.Count != 4)
+        {
+            Debug.LogWarning("Camera expected 4 myths in it's positions array, but found " + positions.Count + "!");
+        }
+
+        positions.RemoveAt(winningTeamIndex * 2 + 1);
+        positions.RemoveAt(winningTeamIndex * 2);
+
+        //if (positions[0].)
+    }
 }

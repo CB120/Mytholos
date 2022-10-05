@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881575023aff47da84e9eed480c4ceb6, type: 3}
   m_Name: Horse
   m_EditorClassIdentifier: 
-  name: Horse
+  name: Kelpie
   prefab: {fileID: 5259938521985855711, guid: ecd81f8b84747f147abf0f20d6a5795e, type: 3}
   icon: {fileID: 420892485, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  element: 3
+  health: 0.2
+  size: 0.6
+  brawn: 0.2
+  psyche: 0.8
+  agility: 0.8
+  abilities:
+  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
+  - {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
+  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
+  - {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
+  - {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}

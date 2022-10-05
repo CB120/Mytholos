@@ -9,16 +9,17 @@ public class PartyBuilder : MonoBehaviour
 
     [NonSerialized] public SO_AllParticipantData allParticipantData;
 
+    [SerializeField] private SO_SpawnPoints spawnPoints;
+
     // Keep these public lol
-    public List<Myth> Party1;
-    public List<Myth> Party2;
+    public List<GameObject> Party1;
+    public List<GameObject> Party2;
 
     public SO_Ability[] allAbilities;
 
-    Transform[] partyParents = new Transform[2];
-    private Vector3 currentSpawnPosition = new Vector3(0, 2, 0);
-    private Vector3 spawnOffset = new Vector3(3, 0, 0);
+    private int mythCounter = 0;
 
+    Transform[] partyParents = new Transform[2];
 
     private void Awake()
     {
@@ -27,12 +28,7 @@ public class PartyBuilder : MonoBehaviour
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
-        setDefaultTarget();
-    }
-
-    void Start()
-    {
-        //Destroy(this.gameObject); //not sure if we want this yet?
+        SetDefaultTarget();
     }
 
 
@@ -54,30 +50,30 @@ public class PartyBuilder : MonoBehaviour
             
             foreach (MythData m in allParticipantData.partyData[p].mythData)
             {
-                SpawnMyth(m, p);
+                SpawnMyth(m,p);
             }
+
         }
     }
 
-    void setDefaultTarget()
+    void SetDefaultTarget() // Will need to set this to be the myth in play instead
     {
         if (Party1.Count == Party2.Count && Party1 != null)
         {
             for (int i = 0; i < Party1.Count; i++)
             {
-                Party1[i].targetEnemy = Party2[i].gameObject;
-                Party2[i].targetEnemy = Party1[i].gameObject;
+                Party1[i].GetComponent<Myth>().targetEnemy = Party2[i].gameObject;
+                Party2[i].GetComponent<Myth>().targetEnemy = Party1[i].gameObject;
             }
         }
     }
 
-    // TODO: Delete this I'm so sorry --Eddie
-    int partyCounter = 0;
-
     void SpawnMyth(MythData mythData, int participantIndex)
     {
+        
         GameObject prefab = mythData.myth.prefab;
-
+        Vector3 spawnPosition;
+        
         if (prefab == null)
         {
             Debug.LogWarning($"Could not find a matching prefab! {nameof(MythData)} may not have " +
@@ -85,21 +81,23 @@ public class PartyBuilder : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition = currentSpawnPosition; // transform.GetChild(0).position; //add logic here for when we know how spawn positions are gonna work
-
-        currentSpawnPosition += spawnOffset;
+        spawnPosition = spawnPoints.SpawnLocations[mythCounter];
 
         GameObject newMythGameObject = Instantiate(prefab, spawnPosition, Quaternion.identity, partyParents[participantIndex]);
         Myth newMyth = newMythGameObject.GetComponent<Myth>();
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
-        if(participantIndex == 1)
+        
+        
+        if (participantIndex == 1)
         {
-            Party1.Add(newMyth);
+            Party1.Add(newMythGameObject);
         }
         else
         {
-            Party2.Add(newMyth);
+            Party2.Add(newMythGameObject);
         }
+
+
         // TODO: I want it on the record that I don't like this
         newMyth.northAbility = mythData.northAbility;
         newMyth.westAbility = mythData.westAbility;
@@ -107,18 +105,23 @@ public class PartyBuilder : MonoBehaviour
         newMyth.eastAbility = mythData.eastAbility;
         newMyth.PartyIndex = participantIndex;
         newMyth.ws = winState;
-
         // Eddie's awful camera code, probably delete later
         EpicEddieCam cam = FindObjectOfType<EpicEddieCam>();
-        if (cam != null && partyCounter % 3 != 2)
+        if (cam != null && mythCounter == 0 || mythCounter == 3)
         {
             cam.positions.Add(newMythGameObject.transform);
         }
-        partyCounter++; // TODO: Stop fudging this where 3rd member of each party is excluded from Camera list
+        newMythGameObject.SetActive(false);
+        if (mythCounter == 0 || mythCounter == 3)
+        {
+            Debug.Log(mythCounter);
+            newMythGameObject.SetActive(true);
+        }
+        mythCounter ++; // TODO: Stop fudging this where 3rd member of each party is excluded from Camera list
     }
 
-    //Remove after playtest
-    public WinState winState;
 
-  
+
+    //Remove after playtest
+    public WinState winState;  
 }
