@@ -40,6 +40,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
             if (ability.element.buffParticle != null) //Temporary to show which debuff is being used
                 particle = ability.element.buffParticle; 
         }
+
         ParticleSystem ps = Instantiate(particle, myth.transform);
         ParticleSystem.MainModule ma = ps.main;
         ma.startColor = ability.element.color;
@@ -101,23 +102,17 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyWoodEffect(Myth myth, bool isInParty)//Heal Allies, Damage Enemies
     {
+        if (isInParty) return;
         float value = ability.damage;//Life Steal
-
-        if (isInParty)
-            myth.effectController.Heal(ability.statIncrease);
-        else { //Life Steal
-            myth.Health.Value -= ability.damage;
-            owningMyth.effectController.Heal(ability.damage / 2);
-        }
-
+        myth.Health.Value -= ability.damage;
+        owningMyth.effectController.Heal(ability.damage / 2);
     }
 
     virtual public void ApplyElectricEffect(Myth myth, bool isInParty)//Stamina Buff, Stamina Debuff
     {
+        if (isInParty) return;
         float value = ability.staminaCost; //If Myth is in the same party add half the stamina cost.
-        if (!isInParty)
-            value = (value / 2); //By Default Decrement the Enemy Myths Stamina
-
+        value = (value / 2); //By Default Decrement the Enemy Myths Stamina
         myth.effectController.AdjustStamina(ability.staminaCost);
 
         //myth.effectController.ApplyStaminaBuff(ability.element.buffLength, ability.regenSpeed); //Will Apply a Buff Rather than Direct Stamina Boost
@@ -125,8 +120,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyWaterEffect(Myth myth, bool isInParty)
     {
-        if (!isInParty)
-            myth.effectController.BuffCleanse();
+        if (isInParty) return;
+        myth.effectController.BuffCleanse();
     }
 
     virtual public void ApplyIceEffect(Myth myth, bool isInParty)
@@ -136,10 +131,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
     {
-        if (isInParty)
-            myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
-        else
-            myth.effectController.Displace(ability.statIncrease);
+        if (isInParty) return;
+        myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
     }
 
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
@@ -149,14 +142,14 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
     {
-        if (!isInParty)
-            myth.effectController.AgilityDebuff(3);
+        if (isInParty) return;
+        myth.effectController.AgilityDebuff(3);
     }
 
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
-        if (!isInParty)
-            myth.effectController.Burn(1, 5);
+        if (isInParty) return;
+        myth.effectController.Burn(1, 5);
     }
     #endregion
 
