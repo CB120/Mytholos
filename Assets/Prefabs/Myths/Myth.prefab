@@ -137,10 +137,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4780120509031229686}
-  - component: {fileID: 9166940849690583412}
   - component: {fileID: 767059984563626952}
   - component: {fileID: 2326847374803901642}
+  - component: {fileID: 9166940849690583412}
   - component: {fileID: 735515940438014375}
+  - component: {fileID: 1783890801170331943}
+  - component: {fileID: 797678280069715649}
+  - component: {fileID: 2576476352379660932}
   m_Layer: 6
   m_Name: Movement State Machine
   m_TagString: Untagged
@@ -164,21 +167,6 @@ Transform:
   m_Father: {fileID: 8072052664142603967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9166940849690583412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6040751574335777805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a9a927fd4a46acb745de7ee19d198b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 0
 --- !u!114 &767059984563626952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +196,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  MoveCommandReceived:
+  incomingAttackReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 797678280069715649}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  freezeDebrisReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1783890801170331943}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moveCommandReceived:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7869152638623657870}
@@ -277,6 +295,21 @@ MonoBehaviour:
       m_Calls: []
   movementController: {fileID: 6450067431077666470}
   anim: {fileID: 0}
+--- !u!114 &9166940849690583412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040751574335777805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a9a927fd4a46acb745de7ee19d198b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  dontAllowOtherCommands: 0
 --- !u!114 &735515940438014375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 0
+  dontAllowOtherCommands: 1
   DodgeComplete:
     m_PersistentCalls:
       m_Calls:
@@ -309,6 +342,65 @@ MonoBehaviour:
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
   anim: {fileID: 0}
+--- !u!114 &1783890801170331943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040751574335777805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e4704d1c707fb4ca23d2df234bf607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 0}
+  mythCommandHandler: {fileID: 0}
+  dontAllowOtherCommands: 0
+  freezeComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  freezeFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  movementController: {fileID: 0}
+  anim: {fileID: 0}
+--- !u!114 &797678280069715649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040751574335777805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0eb3b42435ab324ea75c9059017678f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2576476352379660932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040751574335777805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c84dc3f687fc754c8a3440fdf1e05b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  dontAllowOtherCommands: 1
+  stunComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  stunFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  movementController: {fileID: 6450067431077666470}
+  anim: {fileID: 0}
+  stunTime: 2
 --- !u!1 &8969299549519444571
 GameObject:
   m_ObjectHideFlags: 0
