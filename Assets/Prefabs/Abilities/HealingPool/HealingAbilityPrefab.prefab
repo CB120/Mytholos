@@ -391,10 +391,10 @@ MonoBehaviour:
   areaOfEffect: 2
   expandSpeed: 3
   timeToDestroy: 10
-  children: []
   trails:
   - {fileID: 398162427}
   - {fileID: 312339910}
+  collider: {fileID: 2024061400511584014}
 --- !u!33 &2024061400511584008
 MeshFilter:
   m_ObjectHideFlags: 0

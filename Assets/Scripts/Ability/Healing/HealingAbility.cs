@@ -8,12 +8,15 @@ public class HealingAbility : Ability
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
     public float timeToDestroy = 5f;
-    [SerializeField] private GameObject[] children;
     [SerializeField] private TrailRenderer[] trails;
+    [SerializeField]
+    private Collider collider;
+    HashSet<Myth> overlappedMyths = new HashSet<Myth>();
 
     public override void Start()
     {
         Invoke("ResetScale", (timeToDestroy * 0.75f));
+        Invoke("DeactivateBuff", timeToDestroy * 0.9f);
         Destroy(gameObject, timeToDestroy);
 
         foreach(TrailRenderer trail in trails)
@@ -24,7 +27,6 @@ public class HealingAbility : Ability
         base.Start();
     }
 
-    
     public override void Update()
     {
         transform.localScale = Vector3.Lerp(
@@ -37,28 +39,56 @@ public class HealingAbility : Ability
 
     private void ResetScale()
     {
-        foreach (GameObject obj in children) obj.SetActive(false);
         areaOfEffect = 0;
     }
 
+    private void DeactivateBuff()
+    {
+        foreach (Myth myth in overlappedMyths)
+        {
+            myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Myth myth = other.gameObject.GetComponent<Myth>();
+        if (myth == null) return;
+
+        overlappedMyths.Add(myth);
+        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        InvokeRepeating("SpawnEffects", 0, 0.5f);
+    }
 
     //Effect Application
     private void OnTriggerStay(Collider other)//Would have preferred this to be onTrigger Enter, however if there are overlapping pools, an effect may be removed
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth)
-        {
+        if (myth == null) return;
             ApplyEffect(myth);
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth)
+        if (!myth) return;
+        myth.Health.regenSpeed = 0;
+        myth.Stamina.regenSpeed = 5;
+        myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+
+        if (overlappedMyths.Contains(myth)) overlappedMyths.Remove(myth);
+    }
+
+    private void SpawnEffects()
+    {
+        foreach (Myth myth in overlappedMyths)
         {
-            myth.Health.regenSpeed = 0;
-            myth.Stamina.regenSpeed = 5;
+            if (myth.partyIndex == this.owningMyth.partyIndex)
+            {
+                ParticleSystem ps = Instantiate(ability.element.buffParticle, myth.transform);
+                ParticleSystem.MainModule ma = ps.main;
+                ma.startColor = ability.element.color;
+            }
         }
     }
 

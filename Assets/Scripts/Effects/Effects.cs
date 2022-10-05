@@ -10,6 +10,10 @@ public class Effects : MonoBehaviour
     private float defaultWalkSpeed = 0;
     private float defaultAttackStat = 0;
     private float defaultDefenceStat = 0;
+    [SerializeField] private MythUI mythUI;
+    HashSet<Element> appliedBuffs = new();
+    HashSet<Element> appliedDebuffs = new();
+
 
     private void Awake()
     {
@@ -17,6 +21,8 @@ public class Effects : MonoBehaviour
         defaultAttackStat = myth.AttackStat;
         defaultDefenceStat = myth.DefenceStat;
     }
+
+    #region Effect Application
 
     #region Wood - Baxter
     public void Heal(float value)//Wood
@@ -40,7 +46,7 @@ public class Effects : MonoBehaviour
         burning = true;
     }
 
-    public void attackBuff(float value)
+    public void AttackBuff(float value)
     {
         if(!AttackBuffActive)
         {
@@ -162,7 +168,38 @@ public class Effects : MonoBehaviour
     }
 
     #endregion
+    #endregion
 
+    #region Effect Interface
+    public void ActivateBuff(Element element, bool isDebuff) //Baxter
+    {
+        if (isDebuff)
+        {
+            appliedDebuffs.Add(element);
+
+            mythUI.effectUIData[element].obj.SetActive(true);
+          
+
+        }
+        else { 
+            appliedBuffs.Add(element);
+            mythUI.effectUIData[element].obj.SetActive(true);
+        }
+        mythUI.effectUIData[element].animator.Play("EffectUIAnim", -1, 0f);
+    }
+
+    public void DeactivateBuff(Element element, bool isDebuff)
+    {
+        if (isDebuff && appliedDebuffs.Contains(element)) { 
+            appliedDebuffs.Remove(element);
+            mythUI.effectUIData[element].animator.SetTrigger("Close");
+        }
+        else if (!isDebuff && appliedBuffs.Contains(element)) { 
+            appliedBuffs.Remove(element);
+            mythUI.effectUIData[element].animator.SetTrigger("Close");
+        }
+    }
+    #endregion
     private void Update()
     {
         if (burning)

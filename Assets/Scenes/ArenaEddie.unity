@@ -521,7 +521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}
-  allParticipantData: {fileID: 0}
   spawnPoints: {fileID: 11400000, guid: fd786890b7d3faa41916e5f2460f3a23, type: 2}
   Party1: []
   Party2: []
@@ -2108,6 +2107,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 463599cb994cd3a4fa88112d11c5666e, type: 2}
+    - target: {fileID: 4720286491871789907, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 4720286491871789911, guid: b074b28048e94164e95294786fd9d556,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -71,6 +71,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     {
         bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
 
+        if(isInParty) myth.effectController.DeactivateBuff(ability.element.element, isInParty);
         switch (element)
         {
             case Element.Wind:

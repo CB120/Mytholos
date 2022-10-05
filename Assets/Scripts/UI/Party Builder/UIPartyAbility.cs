@@ -30,7 +30,7 @@ public class UIPartyAbility : MonoBehaviour // Not to be confused with UINodeAbi
     {
         ability = newAbility;
         statDamage.SetUpUI(ability.damage / maxDamage);
-        statStamina.SetUpUI(ability.stamina / maxStamina);
+        statStamina.SetUpUI(ability.staminaCost / maxStamina);
         statImpact.SetUpUI(0 / maxImpact);
         abilityName.text = ability.name;
         styleEffectName.text = ability.abilityPrefab.name.Replace("Ability", "").Replace("Prefab", ""); // TODO: Include ability effect description in this
