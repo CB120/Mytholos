@@ -207,6 +207,7 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  isInstantEffect: 1
 --- !u!95 &1478457823589754531
 Animator:
   serializedVersion: 4

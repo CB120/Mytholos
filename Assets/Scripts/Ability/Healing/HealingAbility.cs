@@ -56,7 +56,7 @@ public class HealingAbility : Ability
         if (myth == null) return;
 
         overlappedMyths.Add(myth);
-        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex, false);
         InvokeRepeating("SpawnEffects", 0, 0.5f);
     }
 

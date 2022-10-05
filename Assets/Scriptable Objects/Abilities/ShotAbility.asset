@@ -22,6 +22,7 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
+  isInstantEffect: 1
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 8641636710526588070, guid: 7cbb761b2a1575042b43e63ecc60e6d6,

@@ -171,32 +171,36 @@ public class Effects : MonoBehaviour
     #endregion
 
     #region Effect Interface
-    public void ActivateBuff(Element element, bool isDebuff) //Baxter
+    public void ActivateBuff(Element element, bool isDebuff, bool isInstantAttack) //Baxter
     {
         if (isDebuff)
         {
             appliedDebuffs.Add(element);
-
-            mythUI.effectUIData[element].obj.SetActive(true);
-          
-
+            mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
+            mythUI.effectUIData[element].negativeBuff.Play("EffectUIAnim", -1, 0f);
         }
         else { 
             appliedBuffs.Add(element);
-            mythUI.effectUIData[element].obj.SetActive(true);
+            mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
+            mythUI.effectUIData[element].positiveBuff.Play("EffectUIAnim", -1, 0f);
         }
-        mythUI.effectUIData[element].animator.Play("EffectUIAnim", -1, 0f);
+
+        if (isInstantAttack)//For Swipe Lob Etc
+        {
+            DeactivateBuff(element, isDebuff);
+        }
+      
     }
 
     public void DeactivateBuff(Element element, bool isDebuff)
     {
         if (isDebuff && appliedDebuffs.Contains(element)) { 
             appliedDebuffs.Remove(element);
-            mythUI.effectUIData[element].animator.SetTrigger("Close");
+            mythUI.effectUIData[element].negativeBuff.SetTrigger("Close");
         }
         else if (!isDebuff && appliedBuffs.Contains(element)) { 
             appliedBuffs.Remove(element);
-            mythUI.effectUIData[element].animator.SetTrigger("Close");
+            mythUI.effectUIData[element].positiveBuff.SetTrigger("Close");
         }
     }
     #endregion

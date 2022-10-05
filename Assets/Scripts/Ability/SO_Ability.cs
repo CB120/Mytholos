@@ -18,7 +18,7 @@ public class SO_Ability : ScriptableObject
     public float chargeTime;
     public float performTime;
     public bool isRanged;
-
+    public bool isInstantEffect;
 
     [Header("Spawning Properties")]
     public bool spawnInWorldSpace;

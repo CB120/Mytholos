@@ -12,9 +12,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     public float DamageMultiplier { get; set; } = 1;
 
-    [Header("Effects")]
-    public float effectValue; //Use to determine the value of the given effect
     private Element element { get => ability.element.element;}
+
 
     virtual public void Start()
     {
@@ -76,27 +75,35 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         {
             case Element.Wind:
                 ApplyWindEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Wind, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Electric:
                 ApplyElectricEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Electric, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Water:
                 ApplyWaterEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Water, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Metal:
                 ApplyMetalEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Metal, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Fire:
                 ApplyFireEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Fire, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Earth:
                 ApplyEarthEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Earth, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Ice:
                 ApplyIceEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Ice, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Wood:
                 ApplyWoodEffect(myth, isInParty);
+                myth.effectController.ActivateBuff(Element.Wood, !isInParty, ability.isInstantEffect);
                 break;
         }
     }

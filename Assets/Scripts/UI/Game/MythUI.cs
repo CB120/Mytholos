@@ -32,7 +32,7 @@ namespace Elements
     public struct BuffUI
     {
         public Element element;
-        public GameObject obj;
-        public Animator animator;
+        public Animator positiveBuff;
+        public Animator negativeBuff;
     }
 }
