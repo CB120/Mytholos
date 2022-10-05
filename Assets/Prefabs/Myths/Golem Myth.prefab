@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 735515940438014375, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1575143650859084374}
+    - target: {fileID: 2326847374803901642, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1575143650859084374}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth
@@ -19,11 +29,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721,
         type: 2}
-    - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
-        type: 3}
-      propertyPath: effectController
-      value: 
-      objectReference: {fileID: 2412454785231285146}
     - target: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder
@@ -79,6 +84,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8562805467365396305, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1575143650859084374}
     - target: {fileID: 9142296419116895834, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_Name
@@ -86,34 +96,89 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db407f3364fe92842a089222a0ba139e, type: 3}
---- !u!1 &2013350400531774232 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9142296419116895834, guid: db407f3364fe92842a089222a0ba139e,
+--- !u!4 &1525203512196649981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8072052664142603967, guid: db407f3364fe92842a089222a0ba139e,
     type: 3}
   m_PrefabInstance: {fileID: 7291096495894295874}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1438124260479172686
-MonoBehaviour:
+--- !u!1001 &7784187043267362378
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013350400531774232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ccfc94013a90fb48b189a741fb647c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myth: {fileID: 0}
---- !u!114 &2412454785231285146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4924105076923506392, guid: db407f3364fe92842a089222a0ba139e,
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1525203512196649981}
+    m_Modifications:
+    - target: {fileID: 2467091582125164531, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff2d9c58e37d5e048b9f434f064f9ba0, type: 2}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481923578774956096, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258601667869569786, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_Name
+      value: StagVisuals
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f9d2760e9a36f14d87139d51897d827, type: 3}
+--- !u!95 &1575143650859084374 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8780598779654755356, guid: 0f9d2760e9a36f14d87139d51897d827,
     type: 3}
-  m_PrefabInstance: {fileID: 7291096495894295874}
+  m_PrefabInstance: {fileID: 7784187043267362378}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013350400531774232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ccfc94013a90fb48b189a741fb647c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -10,14 +10,18 @@ namespace Commands.Behaviours
         // Movement Properties
         private Vector3 lastDirection;
         private Vector3 targetDirection;
-        private float lerpTime = 0;
-        private float targetLerpSpeed = 1f;
-        private float smoothing = 0.1f;
-        [SerializeField] private float speed;
+
+        [SerializeField] private float lerpTime = 0;
+        [SerializeField] private float targetLerpSpeed = 0.1f;
+        [SerializeField]private float smoothing = 0.1f;
+        [SerializeField] private float speedHandicap = 1.2f;
+        private float acceleration = 4;
+        private float moveSpeed = 0;
 
         // References & Events
         public UnityEvent moveComplete = new();
         public UnityEvent moveFailed = new();
+
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private Animator anim;
 
@@ -31,14 +35,31 @@ namespace Commands.Behaviours
 
             if (manualMoveCommand == null)
             {
-                // TODO: Unhelpful
-                Debug.LogWarning("I'm not sure how you got here?");
+                Debug.LogWarning("There was a problem with finding the manualMovementCommand on the Myth's Command Handler.");
                 moveFailed.Invoke();
             }
+
+            if(movementController == null)
+            {
+                Debug.LogWarning("There was a problem with finding the movementController (CollisionDetection Physics). Please re-assign it in the inspector.");
+                moveFailed.Invoke();
+            }
+
         }
 
+        private float speedValue()
+        {
+            moveSpeed += (acceleration - (myth.myth.size * 2)) * (Time.deltaTime * 1.5f);
+           
+            Debug.Log(myth.myth.size);
+            moveSpeed = Mathf.Clamp(moveSpeed, 0, myth.myth.agility * speedHandicap);
+            Debug.Log(moveSpeed);
+            return moveSpeed;
+        }
+        
         private void Update()
         {
+            
             if (!myth.isInvulnerable)
             {
                 var inputVector = new Vector3(
@@ -51,6 +72,7 @@ namespace Commands.Behaviours
                 {
                     mythCommandHandler.Command = null;
                     movementController.SetTargetVelocity(Vector3.zero);
+                    moveSpeed = 0;
                     if (anim) anim.SetBool("Walking", false);
                     moveComplete.Invoke();
                     return;
@@ -64,24 +86,27 @@ namespace Commands.Behaviours
                 }
 
                 lastDirection = inputVector;
-                targetDirection = Vector3.Lerp(targetDirection, inputVector,
-                    Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing)));
-                if (anim) anim.SetBool("Walking", true);
-                movementController.SetTargetVelocity(inputVector * speed);
 
+                targetDirection = Vector3.Lerp(targetDirection, inputVector,
+                    Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing))); // Only to be used with some sort of ice state / movement
+
+                if (anim) anim.SetBool("Walking", true);
+
+                //movementController.SetTargetVelocity(inputVector * (myth.myth.agility * speedHandicap));
+                
+                movementController.SetTargetVelocity(inputVector * speedValue());
+                
+                
+                //movementController.SetTargetVelocity(targetDirection * myth.myth.agility * speedHandicap); USING THIS IS LIKE WALKING ON ICE (6 TARGET LERP SPEED, 0.45 SMOOTHING)
 
                 Vector3 lookDirection = inputVector;
                 myth.lastInputDirection = inputVector;
                 if (lookDirection != Vector3.zero)
                 {
-                    myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 8);
-                    //myth.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDirection),
-                    //Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing)));
+                    myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 9);
                 }
 
                 lerpTime += Time.deltaTime;
-
-                //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lastRotation, Time.deltaTime * 8);
             }
         }
     }

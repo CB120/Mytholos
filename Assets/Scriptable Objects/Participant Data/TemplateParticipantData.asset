@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9061fef6a38eb2d4ead1edf2706cefa2, type: 3}
+  m_Name: TemplateParticipantData
+  m_EditorClassIdentifier: 
+  partyData:
+  - ParticipantChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    participant: {fileID: 0}
+    myths: []
+    colour: {r: 0.9960785, g: 0.28627452, b: 0, a: 1}
+    mythData:
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+  - ParticipantChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    participant: {fileID: 0}
+    myths: []
+    colour: {r: 0, g: 0.050980397, b: 1, a: 1}
+    mythData:
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
+    - myth: {fileID: 0}
+      northAbility: {fileID: 0}
+      westAbility: {fileID: 0}
+      southAbility: {fileID: 0}
+      eastAbility: {fileID: 0}
