@@ -10,7 +10,8 @@ namespace Myths
         [SerializeField] protected Myth myth;
         [SerializeField] protected MythCommandHandler mythCommandHandler;
         [SerializeField] private bool dontAllowOtherCommands;
-        
+
+
         public void Awake()
         {
             enabled = false;

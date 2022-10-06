@@ -46,22 +46,22 @@ namespace Myths.Behaviours
         {
             base.OnEnable();
             if (myth.targetEnemy == null) return;
-            switch (((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType) { 
-                case MoveCommand.MoveCommandType.Approach:
+            switch (((AIMoveCommand)mythCommandHandler.Command).CurrentMoveCommandType) { 
+                case AIMoveCommand.MoveCommandType.Approach:
                     ApproachEnemy();
                     Debug.Log("Approaching!");
                     break;
-                case MoveCommand.MoveCommandType.Flee:
+                case AIMoveCommand.MoveCommandType.Flee:
                     FleeEnemy();
                     Debug.Log("Fleeing!");
                     break;
-                case MoveCommand.MoveCommandType.ApproachAttack:
+                case AIMoveCommand.MoveCommandType.ApproachAttack:
                     ApproachEnemy();
                     Debug.Log("Approaching to attack!");
                     break;
-                case MoveCommand.MoveCommandType.Support:
+                case AIMoveCommand.MoveCommandType.Support:
                     break;
-                case MoveCommand.MoveCommandType.Idle:
+                case AIMoveCommand.MoveCommandType.Idle:
                     navMeshAgent.ResetPath();
                     break;
                 default:
@@ -72,26 +72,26 @@ namespace Myths.Behaviours
 
         private void Update()
         {
-             Debug.Log($"{myth.name} moved. {((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType}");
+             Debug.Log($"{myth.name} moved. {((AIMoveCommand)mythCommandHandler.Command).CurrentMoveCommandType}");
             
             navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime * 10);
 
             movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
 
-            switch (((MoveCommand)mythCommandHandler.Command).CurrentMoveCommandType)
+            switch (((AIMoveCommand)mythCommandHandler.Command).CurrentMoveCommandType)
             {
-                case MoveCommand.MoveCommandType.Approach:
+                case AIMoveCommand.MoveCommandType.Approach:
                     ApproachEnemyDistanceCheck();
                     break;
-                case MoveCommand.MoveCommandType.Flee:
+                case AIMoveCommand.MoveCommandType.Flee:
                     killFlee();
                     break;
-                case MoveCommand.MoveCommandType.ApproachAttack:
+                case AIMoveCommand.MoveCommandType.ApproachAttack:
                     AttackRangeDistanceCheck();
                     break;
-                case MoveCommand.MoveCommandType.Support:
+                case AIMoveCommand.MoveCommandType.Support:
                     break;
-                case MoveCommand.MoveCommandType.Idle:
+                case AIMoveCommand.MoveCommandType.Idle:
                     if (anim) anim.SetBool("Walking", false);
                     mythCommandHandler.Command = null;
                     moveComplete.Invoke();
