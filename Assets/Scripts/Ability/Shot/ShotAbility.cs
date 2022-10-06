@@ -40,4 +40,9 @@ public class ShotAbility : Ability
         base.Trigger(myth);
         Destroy(this.gameObject);
     }
+
+    public override void TerrainInteraction()
+    {
+        Destroy(this.gameObject);
+    }
 }

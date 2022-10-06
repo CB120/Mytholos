@@ -76,6 +76,16 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         Destroy(gameObject);
     }
 
+    virtual public void ClearDebris(GameObject obj)//@Jack you can call this function to clear debris
+    {
+
+    }
+
+    virtual public void TerrainInteraction()
+    {
+
+    }
+
     #endregion
 
     #region Effects

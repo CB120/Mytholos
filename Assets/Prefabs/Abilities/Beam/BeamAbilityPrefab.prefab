@@ -83,7 +83,6 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
-  effectValue: 0
   ParticleSystem: {fileID: 2059007022911807411}
   BeamExtender: {fileID: 7226831236815921946}
   BeamLength: 20
@@ -3738,9 +3737,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3857,7 +3856,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3912,7 +3911,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 512
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -3920,11 +3919,11 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 1
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
@@ -4913,6 +4912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f001f8c0584648349a30e6dafafc4631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AtMaxRange: 0
 --- !u!1 &5364032775605158230
 GameObject:
   m_ObjectHideFlags: 0

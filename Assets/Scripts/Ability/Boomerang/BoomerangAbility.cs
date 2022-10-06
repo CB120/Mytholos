@@ -70,4 +70,13 @@ public class BoomerangAbility : Ability
         base.Trigger(myth);
         Destroy(this.gameObject);
     }
+
+    public override void TerrainInteraction()
+    {
+        if (!Returning)
+        {
+            speed = 0;
+        }
+        else Destroy(this.gameObject);
+    }
 }

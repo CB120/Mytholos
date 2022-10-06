@@ -64,6 +64,11 @@ public class BeamAbility : Ability
         base.Trigger(myth);
     }
 
+    public override void TerrainInteraction()
+    {
+        BeamExtender.AtMaxRange = true;
+    }
+
     private void SetColor()
     {
         switch (element)
