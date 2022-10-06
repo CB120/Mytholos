@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: SwipeAbility
+  m_Name: HealingPool
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
-  name: Swipe
+  element: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
+  name: Healing Pool
   description: 
-  damage: 10
-  regenSpeed: 0
-  statIncrease: 5
-  staminaCost: 10
+  damage: 0
+  regenSpeed: 20
+  statIncrease: 15
+  staminaCost: 25
   chargeTime: 0
   performTime: 0
   isRanged: 1
   applyBuffToParty: 0
-  spawnInWorldSpace: 0
+  spawnInWorldSpace: 1
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
-  timeToDestroy: 0
-  abilityPrefab: {fileID: 6300852338785146115, guid: 0f637fafea1f76f40adc81e06a434b54,
+  timeToDestroy: 10
+  abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
     type: 3}

@@ -65,7 +65,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         
     }
 
-
     #region Collision
     virtual public void Trigger(Myth myth)
     {
@@ -75,11 +74,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void Collision()
     {
         Destroy(gameObject);
-    }
-
-    virtual public void ClearDebris(GameObject obj)//@Jack you can call this function to clear debris
-    {
-
     }
 
     #endregion
@@ -155,7 +149,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         }
         else if(!isInParty)
         {
-            //myth.effectController
+            myth.effectController.Disorient(ability.element.buffLength);
         }
     }
 

@@ -14,7 +14,6 @@ public class Effects : MonoBehaviour
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
 
-
     private void Start()
     {
         defaultWalkSpeed = myth.walkSpeed;
@@ -59,6 +58,7 @@ public class Effects : MonoBehaviour
     public void FreezeDebuff(float duration)//Ice Debuff 
     {
         CancelInvoke("RemoveFreezeDebuff");
+        ActivateBuff(Element.Ice, true);
         Invoke("RemoveFreezeDebuff", duration);
     }
 
@@ -93,9 +93,17 @@ public class Effects : MonoBehaviour
         DeactivateBuff(Element.Wind, false);
     }
 
-    public void ApplyKnockback()
+    public void Disorient(float duration)
     {
+        CancelInvoke("EndDisorient");
+        isDisoriented = true;
+        //Add Knockback here too
+        Invoke("EndDisorient", duration);
+    }
 
+    private void EndDisorient()
+    {
+        isDisoriented = false;
     }
     #endregion 
 
@@ -152,7 +160,7 @@ public class Effects : MonoBehaviour
         if (DefenceBuffActive)
         {
             DefenceBuffActive = false;
-            myth.AttackStat /= 2;
+            myth.AttackStat /= defaultAttackStat;
         }
     }
 
@@ -161,7 +169,7 @@ public class Effects : MonoBehaviour
         if (!AgilityDebuffActive)
         {
             AgilityDebuffActive = true;
-            myth.walkSpeed /= 2;
+            myth.walkSpeed /= defaultWalkSpeed;
             Invoke("RemoveAgilityDebuff", value);
         }
     }
@@ -266,6 +274,9 @@ public class Effects : MonoBehaviour
         }
     }
     #endregion
+
+    private bool isDisoriented;
+    private float rotateSpeed = 500;
     private void Update()
     {
         if (burning)
@@ -277,6 +288,10 @@ public class Effects : MonoBehaviour
                 burning = false;
         }
 
+        if (isDisoriented)
+        {
+            myth.gameObject.transform.Rotate(0, Time.deltaTime * rotateSpeed, 0);
+        }
     }
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here

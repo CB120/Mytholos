@@ -7,7 +7,7 @@ public class HealingAbility : Ability
 {
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
-    public float timeToDestroy = 5f;
+    public float timeToDestroy { get => ability.timeToDestroy; }
     [SerializeField] private TrailRenderer[] trails;
     [SerializeField]
     HashSet<Myth> overlappedMyths = new HashSet<Myth>();
