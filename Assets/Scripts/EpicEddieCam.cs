@@ -80,7 +80,14 @@ public class EpicEddieCam : MonoBehaviour
             // Find target position based on all known variables
             float cameraDistance = minZoom;
             cameraDistance = Mathf.Clamp(zoomStartOffset + (greatestDistance * zoomRate), minZoom, maxZoom);
-            targetPos = new Vector3(averagePos.x, Mathf.Sin(rotationX * Mathf.Deg2Rad) * cameraDistance + offsetY, -Mathf.Cos(rotationX * Mathf.Deg2Rad) * cameraDistance);
+            
+            var offsetFromAverage = new Vector3(
+                0,
+                Mathf.Sin(rotationX * Mathf.Deg2Rad) * cameraDistance + offsetY,
+                -Mathf.Cos(rotationX * Mathf.Deg2Rad) * cameraDistance
+            );
+
+            targetPos = averagePos + offsetFromAverage;
         }
     }
 

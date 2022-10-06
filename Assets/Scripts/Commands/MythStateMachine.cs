@@ -8,7 +8,7 @@ namespace Commands
         
         private MonoBehaviour currentState;
 
-        private void Start()
+        private void Awake()
         {
             currentState = initialState;
 

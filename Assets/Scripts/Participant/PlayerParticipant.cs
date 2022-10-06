@@ -262,8 +262,10 @@ public class PlayerParticipant : Participant
         MythInPlay.transform.position = position;
     }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
         
         mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
