@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2046280201}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -195,6 +195,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 5ffe6350a09ffab45b254c4a606325be, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -205,6 +210,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b21087e2a6d025744a529b2845cf1fd9, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &28734236 stripped
@@ -285,6 +295,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: a8a2fde2234352646807e89d791be5ee, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -295,6 +310,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ff2d9c58e37d5e048b9f434f064f9ba0, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &38620996 stripped
@@ -1543,6 +1563,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 4acf2f1c2f7bb664990179910f7c1c79, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -1553,6 +1578,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8fbd0c1a6a2d50e4aae42a78f4745058, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &879296113 stripped
@@ -2561,6 +2591,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 49d1b95ebf025b64fb6c0aeb67f57db8, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -2571,6 +2606,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fc458d76bc0f92c408725c6e015db27b, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &1127823791 stripped
@@ -3062,6 +3102,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 078ba708e53887b49811cdc3e56c9109, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -3072,6 +3117,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0c2a489d25e4bd744be6c36f4e9d1e7f, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &1426166043 stripped
@@ -3152,6 +3202,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 9b9178cac4bb227439c80b235262584a, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -3162,6 +3217,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 38f2c63010b8fb14ebd197d247d25ab9, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &1492249942 stripped
@@ -3911,6 +3971,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: bd7c6959daaae574297d7479533ab7b2, type: 2}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6244177579583406660, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_TargetTexture
@@ -3921,6 +3986,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 69c23e4a50f89db42aa109dfdec637dd, type: 2}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13c18db3a9fc2346be89e62666db4e8, type: 3}
 --- !u!4 &1906680954 stripped
@@ -4516,6 +4586,16 @@ PrefabInstance:
     - target: {fileID: 1668044774725997597, guid: f13c18db3a9fc2346be89e62666db4e8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668044775033080483, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808041920050132228, guid: f13c18db3a9fc2346be89e62666db4e8,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
