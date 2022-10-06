@@ -19,7 +19,7 @@ MonoBehaviour:
   size: 0.4
   brawn: 0.4
   psyche: 1
-  agility: 0.6
+  agility: 2.67
   abilities:
   - {fileID: 11400000, guid: 063a6f1983b891247ab7d68b6542a149, type: 2}
   - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
