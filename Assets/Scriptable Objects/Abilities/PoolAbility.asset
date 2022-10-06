@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: HealingAbility
+  m_Name: PoolAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   name: Healing Pool
+  description: 
   damage: 0
-  healing: 15
-  stamina: 25
+  regenSpeed: 20
+  statIncrease: 15
+  staminaCost: 25
   chargeTime: 0
   performTime: 0
   isRanged: 1
+  applyBuffToParty: 0
   spawnInWorldSpace: 1
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
     type: 3}
-  colliderPrefab: {fileID: 0}

@@ -107,6 +107,11 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4332012247886788042, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1280e134253ae3d4b8b4d6d1d6180d72, type: 2}
     - target: {fileID: 4780120509031229686, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder

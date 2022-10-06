@@ -11,6 +11,7 @@ TagManager:
   - Grid
   - MenuMusic
   - TransitionOverlay
+  - GameCamera
   layers:
   - Default
   - TransparentFX

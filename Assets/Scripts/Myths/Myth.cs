@@ -12,7 +12,13 @@ namespace Myths
 
         public SO_Myth myth;
         public float walkSpeed;
+        //placeholder stat of 1
+        public float AttackStat = 1;
+        public float DefenceStat = 1;
+
         public GameObject targetEnemy;
+        public Effects effectController;
+
         // TODO: Do we still need this? Some instances can be replaced by passing this in the command // 
         [HideInInspector]public Vector2 lastInputDirection;
         public int partyIndex;
@@ -36,7 +42,11 @@ namespace Myths
         public SO_Ability eastAbility;
 
         public SpriteRenderer ring;
-        
+
+        private void Awake()
+        {
+            walkSpeed = myth.agility;
+        }
 
         /*Remove everything after this after 5/09/22*/
         public WinState ws;

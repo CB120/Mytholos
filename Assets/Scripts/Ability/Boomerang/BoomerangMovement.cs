@@ -16,7 +16,7 @@ public class BoomerangMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.Rotate(0, 0, RotationSpeed);
+        this.gameObject.transform.Rotate(0, 0, RotationSpeed*Time.deltaTime);
     }
 
  

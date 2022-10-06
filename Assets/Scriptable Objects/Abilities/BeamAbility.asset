@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Beam
+  description: 
   damage: 20
-  healing: 0
-  stamina: 50
-  chargeTime: 0
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 0
+  chargeTime: 2
   performTime: 4
   isRanged: 1
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
     type: 3}
-  colliderPrefab: {fileID: 0}

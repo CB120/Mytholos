@@ -7,6 +7,7 @@ namespace Myths
     {
         [Header("Myth Stat")]
         // TODO: Depends on MaxValue
+        [HideInInspector] public float defaultRegenSpeed;
         public float regenSpeed;
         public float regenPauseTime;
 
@@ -43,6 +44,7 @@ namespace Myths
 
         private void Awake()
         {
+            defaultRegenSpeed = regenSpeed;
             value = MaxValue;
         }
 

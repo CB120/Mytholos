@@ -5,8 +5,9 @@ namespace Commands
     public class MythStateMachine : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour initialState;
-        
-        private MonoBehaviour currentState;
+
+        [Header("The current state of the state machine used for debugging")]
+        [SerializeField] private MonoBehaviour currentState;
 
         private void Awake()
         {

@@ -93,11 +93,22 @@ PrefabInstance:
         type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2408972591320810580}
     - target: {fileID: 8216666602892919933, guid: ddca71413c6661a4c9981f280b601c00,
         type: 3}
       propertyPath: anim
       value: 
+      objectReference: {fileID: 2408972591320810580}
+    - target: {fileID: 8216666602892919933, guid: ddca71413c6661a4c9981f280b601c00,
+        type: 3}
+      propertyPath: dontAllowOtherCommands
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
+--- !u!95 &2408972591320810580 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8000523345233488233, guid: ddca71413c6661a4c9981f280b601c00,
+    type: 3}
+  m_PrefabInstance: {fileID: 5650313662763167037}
+  m_PrefabAsset: {fileID: 0}

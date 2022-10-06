@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 312339909}
   - component: {fileID: 312339910}
   m_Layer: 0
-  m_Name: Trail
+  m_Name: Trail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 398162426}
   - component: {fileID: 398162427}
   m_Layer: 0
-  m_Name: Trail
+  m_Name: Trail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,10 +387,14 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  effectValue: 0
   areaOfEffect: 2
   expandSpeed: 3
   timeToDestroy: 10
-  children: []
+  trails:
+  - {fileID: 398162427}
+  - {fileID: 312339910}
+  collider: {fileID: 2024061400511584014}
 --- !u!33 &2024061400511584008
 MeshFilter:
   m_ObjectHideFlags: 0

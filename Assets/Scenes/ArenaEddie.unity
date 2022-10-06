@@ -2107,6 +2107,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 463599cb994cd3a4fa88112d11c5666e, type: 2}
+    - target: {fileID: 4720286491871789907, guid: b074b28048e94164e95294786fd9d556,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 4720286491871789911, guid: b074b28048e94164e95294786fd9d556,
         type: 3}
       propertyPath: m_LocalPosition.x

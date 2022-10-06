@@ -20,7 +20,7 @@ public class UIGameAbility : MonoBehaviour
             if (ability.element != null)
                 elementIcon.sprite = ability.element.icon;
             //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-            staminaCostTMP.text = Mathf.RoundToInt(ability.stamina) + ""; // For sprint 2, we'll just show the damage
+            staminaCostTMP.text = Mathf.RoundToInt(ability.staminaCost) + ""; // For sprint 2, we'll just show the damage
         }
         else
         {

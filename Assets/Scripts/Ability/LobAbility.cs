@@ -16,9 +16,8 @@ public class LobAbility : Ability
     [SerializeField] private float timeToDestroy;
     public CapsuleCollider triggerCollider;
 
-    void Start()
+    public override void Start()
     {
-        //GUARD set added by Ethan, remove when unneeded
         Vector3 force = (Vector3.zero - transform.position) + new Vector3(0, 2, 0);
         if (owningMyth.targetEnemy)
         {

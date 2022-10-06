@@ -43,7 +43,7 @@ namespace Commands.Behaviours
 
             if (!abilityWasCharged && abilityCommand != null)
                 // TODO: Unsafe. Does not prevent negative values.
-                myth.Stamina.Value -= abilityCommand.abilityData.stamina * staminaPenalty;
+                myth.Stamina.Value -= abilityCommand.abilityData.staminaCost * staminaPenalty;
         }
 
         private IEnumerator ChargeAbility()

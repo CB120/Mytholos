@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: BombAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
   name: Bomb
+  description: 
   damage: 50
-  healing: 0
-  stamina: 60
+  regenSpeed: 0
+  statIncrease: 0
+  staminaCost: 60
   chargeTime: 0
   performTime: 0
   isRanged: 1
+  applyBuffToParty: 0
   spawnInWorldSpace: 1
   relativeSpawnPosition: {x: 0, y: 1.5, z: 0}
   abilityPrefab: {fileID: 7516873970837099704, guid: 98cf307a26c57b541b467d7024405b64,
     type: 3}
-  colliderPrefab: {fileID: 0}
