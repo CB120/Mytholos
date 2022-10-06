@@ -54,7 +54,10 @@ public class HealingAbility : Ability
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (myth == null) return;
-        if (ability.element.element == Elements.Element.Ice) ApplyEffect(myth);
+        if (EffectWillRemain())
+        {
+            ApplyEffect(myth);
+        }
 
         overlappedMyths.Add(myth);
         myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
@@ -65,7 +68,7 @@ public class HealingAbility : Ability
     private void OnTriggerStay(Collider other)//Would have preferred this to be onTrigger Enter, however if there are overlapping pools, an effect may be removed
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null || ability.element.element == Elements.Element.Ice) return;
+        if (myth == null || EffectWillRemain()) return;
             ApplyEffect(myth);
     }
 
@@ -75,10 +78,23 @@ public class HealingAbility : Ability
         if (!myth) return;
         myth.Health.regenSpeed = myth.Stamina.defaultRegenSpeed;
         myth.Stamina.regenSpeed = myth.Stamina.defaultRegenSpeed;
-        if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
+
+        if (!EffectWillRemain())//If we don't want healing pool to wipe effect on exit
+        {
             myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        }
 
         if (overlappedMyths.Contains(myth)) overlappedMyths.Remove(myth);
+    }
+
+    private bool EffectWillRemain()
+    {
+        switch (ability.element.element)
+        {
+            case Elements.Element.Ice: return true;
+            case Elements.Element.Wind: return true;
+            default: return false;
+        }
     }
 
     private void SpawnEffects()
@@ -131,7 +147,9 @@ public class HealingAbility : Ability
 
     public override void ApplyWindEffect(Myth myth, bool isInParty)
     {
-        //myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
+        if(isInParty)
+        myth.effectController.AgilityBuff(ability.element.buffLength);
+
     }
 
     public override void ApplyWoodEffect(Myth myth, bool isInParty)

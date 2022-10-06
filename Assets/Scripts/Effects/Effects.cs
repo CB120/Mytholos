@@ -15,7 +15,7 @@ public class Effects : MonoBehaviour
     public HashSet<Element> appliedDebuffs = new();
 
 
-    private void Awake()
+    private void Start()
     {
         defaultWalkSpeed = myth.walkSpeed;
         defaultAttackStat = myth.AttackStat;
@@ -83,19 +83,19 @@ public class Effects : MonoBehaviour
     public void AgilityBuff(float duration)//Ice Debuff 
     {
         CancelInvoke("RemoveAgilityBuff");
-
+        myth.walkSpeed = Mathf.Clamp(myth.walkSpeed * 2, 0.5f, defaultWalkSpeed * 2);
         Invoke("RemoveAgilityBuff", duration);
     }
 
     private void RemoveAgilityBuff() //Ice Debuff
     {
-        //Unfreeze
-        DeactivateBuff(Element.Ice, true);
+        myth.walkSpeed = defaultWalkSpeed;
+        DeactivateBuff(Element.Wind, false);
     }
 
-    private void SetDefaultAgility()
+    public void ApplyKnockback()
     {
-        myth.walkSpeed = defaultWalkSpeed;
+
     }
     #endregion 
 
@@ -171,7 +171,7 @@ public class Effects : MonoBehaviour
         if (AgilityDebuffActive)
         {
             AgilityDebuffActive = false;
-            myth.walkSpeed *= 2;
+            myth.walkSpeed = defaultWalkSpeed;
         }
     }
 

@@ -148,8 +148,15 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
     {
-        
-        if (isInParty) return;
+        if(isInParty && ability.applyBuffToParty)
+        {
+            myth.effectController.AgilityBuff(ability.element.buffLength);
+            myth.effectController.ActivateBuff(Element.Ice, !isInParty);
+        }
+        else if(!isInParty)
+        {
+            //myth.effectController
+        }
     }
 
     virtual public void ApplyWaterEffect(Myth myth, bool isInParty)

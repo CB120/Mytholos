@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: PoolAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
+  element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   name: Healing Pool
   description: 
   damage: 0

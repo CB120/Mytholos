@@ -42,7 +42,11 @@ namespace Myths
         public SO_Ability eastAbility;
 
         public SpriteRenderer ring;
-        
+
+        private void Awake()
+        {
+            walkSpeed = myth.agility;
+        }
 
         /*Remove everything after this after 5/09/22*/
         public WinState ws;
