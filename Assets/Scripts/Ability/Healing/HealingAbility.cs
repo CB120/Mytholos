@@ -10,7 +10,6 @@ public class HealingAbility : Ability
     public float timeToDestroy = 5f;
     [SerializeField] private TrailRenderer[] trails;
     [SerializeField]
-    private Collider collider;
     HashSet<Myth> overlappedMyths = new HashSet<Myth>();
 
     public override void Start()
@@ -46,6 +45,7 @@ public class HealingAbility : Ability
     {
         foreach (Myth myth in overlappedMyths)
         {
+            if(!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
             myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
         }
     }
@@ -54,9 +54,10 @@ public class HealingAbility : Ability
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (myth == null) return;
+        if (ability.element.element == Elements.Element.Ice) ApplyEffect(myth);
 
         overlappedMyths.Add(myth);
-        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex, false);
+        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
         InvokeRepeating("SpawnEffects", 0, 0.5f);
     }
 
@@ -64,7 +65,7 @@ public class HealingAbility : Ability
     private void OnTriggerStay(Collider other)//Would have preferred this to be onTrigger Enter, however if there are overlapping pools, an effect may be removed
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null) return;
+        if (myth == null || ability.element.element == Elements.Element.Ice) return;
             ApplyEffect(myth);
     }
 
@@ -72,9 +73,10 @@ public class HealingAbility : Ability
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (!myth) return;
-        myth.Health.regenSpeed = 0;
-        myth.Stamina.regenSpeed = 5;
-        myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        myth.Health.regenSpeed = myth.Stamina.defaultRegenSpeed;
+        myth.Stamina.regenSpeed = myth.Stamina.defaultRegenSpeed;
+        if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
+            myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
 
         if (overlappedMyths.Contains(myth)) overlappedMyths.Remove(myth);
     }
@@ -109,7 +111,8 @@ public class HealingAbility : Ability
 
     public override void ApplyIceEffect(Myth myth, bool isInParty)
     {
-
+        if(isInParty)
+        myth.effectController.IceOvershield();
     }
 
     public override void ApplyMetalEffect(Myth myth, bool isInParty)
@@ -124,7 +127,7 @@ public class HealingAbility : Ability
 
     public override void ApplyWindEffect(Myth myth, bool isInParty)
     {
-        myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
+        //myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
     }
 
     public override void ApplyWoodEffect(Myth myth, bool isInParty)

@@ -11,8 +11,8 @@ public class Effects : MonoBehaviour
     private float defaultAttackStat = 0;
     private float defaultDefenceStat = 0;
     [SerializeField] private MythUI mythUI;
-    HashSet<Element> appliedBuffs = new();
-    HashSet<Element> appliedDebuffs = new();
+    public HashSet<Element> appliedBuffs = new();
+    public HashSet<Element> appliedDebuffs = new();
 
 
     private void Awake()
@@ -25,11 +25,79 @@ public class Effects : MonoBehaviour
     #region Effect Application
 
     #region Wood - Baxter
-    public void Heal(float value)//Wood
+    public void ApplyLifeStealDebuff(bool isDebuff, float duration)//Wood
     {
-        myth.Health.Value += value;
+        CancelInvoke("RemoveLifeStealDebuff");
+        Invoke("RemoveLifeStealDebuff", duration);
+    }
+
+    private void RemoveLifeStealDebuff()
+    {
+        DeactivateBuff(Element.Wood, true);
     }
     #endregion
+
+    #region Electric - Baxter
+    public void ApplyStaminaEffect(bool isDebuff, float duration)//Electric
+    {
+        CancelInvoke("RemoveStaminaDebuff");
+        float value = this.myth.Stamina.regenSpeed;
+        if (isDebuff) value /= 2;
+        else value *= 1.25f;
+        this.myth.Stamina.regenSpeed = Mathf.Clamp(value, 0.25f, 15);
+        Invoke("RemoveStaminaDebuff", duration);
+    }
+
+    private void RemoveStaminaDebuff()
+    {
+        this.myth.Stamina.regenSpeed = this.myth.Stamina.defaultRegenSpeed;
+        DeactivateBuff(Element.Electric, true);
+    }
+    #endregion
+
+    #region Ice - Baxter
+    public void FreezeDebuff(float duration)//Ice Debuff 
+    {
+        CancelInvoke("RemoveFreezeDebuff");
+        Invoke("RemoveFreezeDebuff", duration);
+    }
+
+    private void RemoveFreezeDebuff() //Ice Debuff
+    {
+        //Unfreeze
+        DeactivateBuff(Element.Ice, true);
+    }
+
+    public void IceOvershield() //Ice Buff
+    {
+        ActivateBuff(Element.Ice, false);
+    }
+
+    public void RemoveIceOvershield()//Ice Buff
+    {
+        DeactivateBuff(Element.Ice, false);
+    }
+    #endregion
+
+    #region Wind - Baxter 
+    public void AgilityBuff(float duration)//Ice Debuff 
+    {
+        CancelInvoke("RemoveAgilityBuff");
+
+        Invoke("RemoveAgilityBuff", duration);
+    }
+
+    private void RemoveAgilityBuff() //Ice Debuff
+    {
+        //Unfreeze
+        DeactivateBuff(Element.Ice, true);
+    }
+
+    private void SetDefaultAgility()
+    {
+        myth.walkSpeed = defaultWalkSpeed;
+    }
+    #endregion 
 
     #region Fire - Will
     private bool burning;
@@ -63,51 +131,6 @@ public class Effects : MonoBehaviour
             AttackBuffActive = false;
             myth.AttackStat /= 2;
         }
-    }
-    #endregion
-
-    #region Ice - Baxter
-    public void Freeze(float value)//Ice
-    {
-
-    }
-    #endregion
-
-    #region Wind - Baxter 
-    public void Displace(float value) //Wind
-    {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        float force = Random.Range(-value, value);
-        rb.AddForce(new Vector3(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10)) * force);
-    }
-
-    public void AdjustAgility(float time, float value)//Wind
-    {
-        myth.walkSpeed += value; //Currently Not Stackable
-        Invoke("SetDefaultAgility", time);
-    }
-
-    private void SetDefaultAgility()
-    {
-        myth.walkSpeed = defaultWalkSpeed;
-    }
-    #endregion 
-
-    #region Electric - Baxter
-    public void AdjustStamina(float value)//Electric
-    {
-        myth.Stamina.Value += value;
-    }
-
-    public void ApplyStaminaBuff(float time, float regenSpeed)
-    {
-        Invoke("DeactivateStaminaBuff", time);
-        myth.Stamina.regenSpeed = regenSpeed;
-    }
-
-    public void DeactivateStaminaBuff()
-    {
-        myth.Stamina.regenSpeed = 5;
     }
     #endregion
 
@@ -171,7 +194,7 @@ public class Effects : MonoBehaviour
     #endregion
 
     #region Effect Interface
-    public void ActivateBuff(Element element, bool isDebuff, bool isInstantAttack) //Baxter
+    public void ActivateBuff(Element element, bool isDebuff) //Baxter
     {
         if (isDebuff)
         {
@@ -184,17 +207,11 @@ public class Effects : MonoBehaviour
             mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
             mythUI.effectUIData[element].positiveBuff.Play("EffectUIAnim", -1, 0f);
         }
-
-        if (isInstantAttack)//For Swipe Lob Etc
-        {
-            DeactivateBuff(element, isDebuff);
-        }
-      
     }
 
     public void DeactivateBuff(Element element, bool isDebuff)
     {
-        if (isDebuff && appliedDebuffs.Contains(element)) { 
+        if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
             mythUI.effectUIData[element].negativeBuff.SetTrigger("Close");
         }
@@ -218,6 +235,8 @@ public class Effects : MonoBehaviour
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here
     {
-
+        RemoveLifeStealDebuff();
+        RemoveStaminaDebuff();
+        RemoveIceOvershield();
     }
 }

@@ -28,11 +28,29 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void Attack(Myth myth, float damage)
     {
         bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
+        if (isInParty && !ability.applyBuffToParty) return; //Guard if we don't want ability to give allies buffs
+
         ParticleSystem particle = ability.element.debuffParticle;
+        ApplyEffect(myth);
+
         if (!isInParty)
         {
             var finalDamage = damage * DamageMultiplier * myth.AttackStat / myth.DefenceStat;
-            myth.Health.Value -= finalDamage; ;
+           
+            if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
+            {
+                owningMyth.Health.Value += (finalDamage / 2f);
+            }
+
+            if (!myth.effectController.appliedBuffs.Contains(Element.Ice)) //If The Myth Doesn't Currently Have An Ice Buff
+            {
+                myth.Health.Value -= finalDamage;
+            }
+            else
+            {
+                myth.effectController.RemoveIceOvershield();
+            }
+
         }
         else
         {
@@ -40,10 +58,11 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 particle = ability.element.buffParticle; 
         }
 
+        
         ParticleSystem ps = Instantiate(particle, myth.transform);
         ParticleSystem.MainModule ma = ps.main;
         ma.startColor = ability.element.color;
-        ApplyEffect(myth);
+        
     }
 
 
@@ -69,61 +88,68 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyEffect(Myth myth)
     {
         bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
-
-        if(isInParty) myth.effectController.DeactivateBuff(ability.element.element, isInParty);
         switch (element)
         {
             case Element.Wind:
                 ApplyWindEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Wind, !isInParty, ability.isInstantEffect);
+                myth.effectController.ActivateBuff(Element.Wind, !isInParty);
                 break;
             case Element.Electric:
                 ApplyElectricEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Electric, !isInParty, ability.isInstantEffect);
                 break;
             case Element.Water:
                 ApplyWaterEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Water, !isInParty, ability.isInstantEffect);
+                myth.effectController.ActivateBuff(Element.Water, !isInParty);
                 break;
             case Element.Metal:
                 ApplyMetalEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Metal, !isInParty, ability.isInstantEffect);
+                myth.effectController.ActivateBuff(Element.Metal, !isInParty);
                 break;
             case Element.Fire:
                 ApplyFireEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Fire, !isInParty, ability.isInstantEffect);
+                myth.effectController.ActivateBuff(Element.Fire, !isInParty);
                 break;
             case Element.Earth:
                 ApplyEarthEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Earth, !isInParty, ability.isInstantEffect);
+                myth.effectController.ActivateBuff(Element.Earth, !isInParty);
                 break;
             case Element.Ice:
                 ApplyIceEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Ice, !isInParty, ability.isInstantEffect);
+                myth.effectController.ActivateBuff(Element.Ice, !isInParty);
                 break;
             case Element.Wood:
                 ApplyWoodEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Wood, !isInParty, ability.isInstantEffect);
                 break;
         }
     }
 
-    virtual public void ApplyWoodEffect(Myth myth, bool isInParty)//Heal Allies, Damage Enemies
+    virtual public void ApplyWoodEffect(Myth myth, bool isInParty)//While Debuff is Active, all damage to enemies dealt will heal the attacking player slightly
     {
         if (isInParty) return;
-        float value = ability.damage;//Life Steal
-        myth.Health.Value -= ability.damage;
-        owningMyth.effectController.Heal(ability.damage / 2);
+        myth.effectController.ActivateBuff(Element.Wood, !isInParty);
+        myth.effectController.ApplyLifeStealDebuff(!isInParty, ability.element.buffLength);
     }
 
     virtual public void ApplyElectricEffect(Myth myth, bool isInParty)//Stamina Buff, Stamina Debuff
     {
         if (isInParty) return;
-        float value = ability.staminaCost; //If Myth is in the same party add half the stamina cost.
-        value = (value / 2); //By Default Decrement the Enemy Myths Stamina
-        myth.effectController.AdjustStamina(ability.staminaCost);
+        myth.effectController.ActivateBuff(Element.Electric, !isInParty);
+        myth.effectController.ApplyStaminaEffect(!isInParty, ability.element.buffLength);
+    }
 
-        //myth.effectController.ApplyStaminaBuff(ability.element.buffLength, ability.regenSpeed); //Will Apply a Buff Rather than Direct Stamina Boost
+    virtual public void ApplyIceEffect(Myth myth, bool isInParty)//Freezes Enemy, Grants Overshield
+    {
+        myth.effectController.ActivateBuff(Element.Ice, !isInParty);
+        if (isInParty && ability.applyBuffToParty)
+            myth.effectController.IceOvershield();
+        else
+            myth.effectController.FreezeDebuff(ability.element.buffLength);
+    }
+
+    virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
+    {
+        
+        if (isInParty) return;
     }
 
     virtual public void ApplyWaterEffect(Myth myth, bool isInParty)
@@ -132,16 +158,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         myth.effectController.BuffCleanse();
     }
 
-    virtual public void ApplyIceEffect(Myth myth, bool isInParty)
-    {
 
-    }
-
-    virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
-    {
-        if (isInParty) return;
-        myth.effectController.AdjustAgility(ability.element.buffLength, ability.statIncrease);
-    }
 
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
     {

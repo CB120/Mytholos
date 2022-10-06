@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.86666673, g: 0.83921576, b: 0.7490196, a: 1}
   icon: {fileID: 108356541, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
-  element: 0
+  element: 5
   buffLength: 0
   debuffParticle: {fileID: 3361534561257019739, guid: 90292d90c78142344a2278f49b408e08,
     type: 3}

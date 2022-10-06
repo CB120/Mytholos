@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: SwipeAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
+  element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   name: Swipe
   description: 
   damage: 10
@@ -22,7 +22,7 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
-  isInstantEffect: 1
+  applyBuffToParty: 0
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 6300852338785146115, guid: 0f637fafea1f76f40adc81e06a434b54,

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
   m_Name: JabAbility
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
+  element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   name: Jab
   description: 
   damage: 5
@@ -22,7 +22,7 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
-  isInstantEffect: 1
+  applyBuffToParty: 0
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   abilityPrefab: {fileID: 1759088471933823973, guid: 50379f691b7e3694a97798c6fa0c248f,
