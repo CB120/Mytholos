@@ -183,11 +183,56 @@ public class Effects : MonoBehaviour
     {
         RemoveAttackBuff();
         RemoveDefenceBuff();
+        RemoveMetalDefence();
     }
 
     public void DebuffCleanse()
     {
         RemoveAgilityDebuff();
+        RemoveDefenceDebuff();
+    }
+
+    #endregion
+
+    #region Metal - Will
+    private bool DefenceDebuffActive;
+    public bool MetalDefenceActive;
+    public void DefenceDebuff(float value)
+    {
+        if (!DefenceDebuffActive)
+        {
+            DefenceDebuffActive = true;
+            myth.DefenceStat /= 2;
+            Invoke("RemoveDefenceDebuff", value);
+        }
+    }
+
+    private void RemoveDefenceDebuff()
+    {
+        if (DefenceDebuffActive)
+        {
+            DefenceDebuffActive = false;
+            myth.AttackStat *= 2;
+        }
+    }
+
+    public void MetalDefence(float value)
+    {
+        if (!MetalDefenceActive)
+        {
+            MetalDefenceActive = true;
+            myth.DefenceStat *= 3;
+            Invoke("RemoveDefenceDebuff", value);
+        }
+    }
+
+    private void RemoveMetalDefence()
+    {
+        if (MetalDefenceActive)
+        {
+            MetalDefenceActive = false;
+            myth.AttackStat /= 3;
+        }
     }
 
     #endregion
@@ -231,6 +276,7 @@ public class Effects : MonoBehaviour
             if (burnTimer > burnDuration)
                 burning = false;
         }
+
     }
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here

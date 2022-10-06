@@ -162,7 +162,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
     {
-
+        if (isInParty) return;
+        myth.effectController.DefenceDebuff(3);
     }
 
     virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
