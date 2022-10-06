@@ -51,9 +51,9 @@ namespace Commands.Behaviours
         {
             moveSpeed += (acceleration - (myth.myth.size * 2)) * (Time.deltaTime * 1.5f);
            
-            Debug.Log(myth.myth.size);
+            //Debug.Log(myth.myth.size);
             moveSpeed = Mathf.Clamp(moveSpeed, 0, myth.myth.agility * speedHandicap);
-            Debug.Log(moveSpeed);
+            //Debug.Log(moveSpeed);
             return moveSpeed;
         }
         

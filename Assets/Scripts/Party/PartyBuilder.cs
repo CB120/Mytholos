@@ -114,7 +114,7 @@ public class PartyBuilder : MonoBehaviour
         newMythGameObject.SetActive(false);
         if (mythCounter == 0 || mythCounter == 3)
         {
-            Debug.Log(mythCounter);
+            //Debug.Log(mythCounter);
             newMythGameObject.SetActive(true);
         }
         mythCounter ++; // TODO: Stop fudging this where 3rd member of each party is excluded from Camera list
