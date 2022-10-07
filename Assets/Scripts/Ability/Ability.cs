@@ -60,8 +60,11 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         
         ParticleSystem ps = Instantiate(particle, myth.transform);
-        ParticleSystem.MainModule ma = ps.main;
-        ma.startColor = ability.element.color;
+        if (ability.element.setParticleColor)
+        {
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = ability.element.color;
+        }
         
     }
 

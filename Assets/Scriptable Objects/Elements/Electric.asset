@@ -20,6 +20,7 @@ MonoBehaviour:
     type: 3}
   buffParticle: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
     type: 3}
+  setParticleColor: 1
   strongAgainst:
   - {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}

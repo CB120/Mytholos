@@ -15,6 +15,14 @@ public class LobAbility : Ability
     [SerializeField] private float expandSpeed;
     [SerializeField] private float timeToDestroy;
     public CapsuleCollider triggerCollider;
+    [SerializeField] private ParticleSystem childParticle;
+
+    public void Awake()
+    {
+        rend.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
+        var main = childParticle.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
+    }
 
     public override void Start()
     {
@@ -45,7 +53,7 @@ public class LobAbility : Ability
     void Explode()
     {
         rend.enabled = false;
-        Instantiate(abilityPS, this.transform);
+        abilityPS.gameObject.SetActive(true);
         hasExploded = true;
         Destroy(this.gameObject, timeToDestroy);
     }

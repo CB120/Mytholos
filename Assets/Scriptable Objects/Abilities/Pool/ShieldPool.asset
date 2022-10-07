@@ -22,9 +22,9 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
-  applyBuffToParty: 0
+  applyBuffToParty: 1
   spawnInWorldSpace: 1
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
-  timeToDestroy: 10
+  timeToDestroy: 3
   abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
     type: 3}
