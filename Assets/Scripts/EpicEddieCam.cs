@@ -1,11 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
+using Myths;
 using UnityEngine;
 
 public class EpicEddieCam : MonoBehaviour
 {
     public List<Transform> positions = new List<Transform>();
 
+    private Dictionary<PlayerParticipant, Myth> mythsInPlay = new();
+
+    [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
     [SerializeField] float offsetY;
     [SerializeField] float zoomStartOffset;
     [SerializeField] float zoomRate;
@@ -22,6 +25,34 @@ public class EpicEddieCam : MonoBehaviour
         rotationX = transform.rotation.eulerAngles.x;
     }
 
+    private void OnEnable()
+    {
+        playerParticipantRuntimeSet.itemAdded.AddListener(OnPlayerParticipantAdded);
+        playerParticipantRuntimeSet.itemRemoved.AddListener(OnPlayerParticipantRemoved);
+        
+        playerParticipantRuntimeSet.items.ForEach(OnPlayerParticipantAdded);
+    }
+
+    private void OnDisable()
+    {
+        playerParticipantRuntimeSet.itemAdded.RemoveListener(OnPlayerParticipantAdded);
+        playerParticipantRuntimeSet.itemRemoved.RemoveListener(OnPlayerParticipantRemoved);
+        
+        playerParticipantRuntimeSet.items.ForEach(OnPlayerParticipantRemoved);
+    }
+
+    private void OnPlayerParticipantRemoved(PlayerParticipant playerParticipant)
+    {
+        playerParticipant.mythInPlayChanged.RemoveListener(OnMythInPlayChanged);
+    }
+
+    private void OnPlayerParticipantAdded(PlayerParticipant playerParticipant)
+    {
+        playerParticipant.mythInPlayChanged.AddListener(OnMythInPlayChanged);
+
+        OnMythInPlayChanged(playerParticipant);
+    }
+    
     void Update()
     {
         if (positions.Count > 1)
@@ -49,7 +80,14 @@ public class EpicEddieCam : MonoBehaviour
             // Find target position based on all known variables
             float cameraDistance = minZoom;
             cameraDistance = Mathf.Clamp(zoomStartOffset + (greatestDistance * zoomRate), minZoom, maxZoom);
-            targetPos = new Vector3(averagePos.x, Mathf.Sin(rotationX * Mathf.Deg2Rad) * cameraDistance + offsetY, -Mathf.Cos(rotationX * Mathf.Deg2Rad) * cameraDistance);
+            
+            var offsetFromAverage = new Vector3(
+                0,
+                Mathf.Sin(rotationX * Mathf.Deg2Rad) * cameraDistance + offsetY,
+                -Mathf.Cos(rotationX * Mathf.Deg2Rad) * cameraDistance
+            );
+
+            targetPos = averagePos + offsetFromAverage;
         }
     }
 
@@ -64,15 +102,34 @@ public class EpicEddieCam : MonoBehaviour
 
     public void FocusOnSingleMyth(int winningTeamIndex)
     {
-        // We can assume (as of, uh, writing this) that element 0 and 1 of the postions list belong to team 0, and elements 2 and 3 belong to team 1
-        if (positions.Count != 4)
+        // TODO: Commented out for now, was broken by the 1v1 update, and then again by the PlayerParticipantRuntimeSet
+        // // We can assume (as of, uh, writing this) that element 0 and 1 of the postions list belong to team 0, and elements 2 and 3 belong to team 1
+        // if (positions.Count != 4)
+        // {
+        //     Debug.LogWarning("Camera expected 4 myths in it's positions array, but found " + positions.Count + "!");
+        // }
+        //
+        // positions.RemoveAt(winningTeamIndex * 2 + 1);
+        // positions.RemoveAt(winningTeamIndex * 2);
+        //
+        // //if (positions[0].)
+    }
+
+    private void OnMythInPlayChanged(PlayerParticipant playerParticipant)
+    {
+        if (mythsInPlay.ContainsKey(playerParticipant))
         {
-            Debug.LogWarning("Camera expected 4 myths in it's positions array, but found " + positions.Count + "!");
+            var oldMythInPlay = mythsInPlay[playerParticipant];
+
+            if (oldMythInPlay != null)
+                positions.Remove(oldMythInPlay.transform);
         }
 
-        positions.RemoveAt(winningTeamIndex * 2 + 1);
-        positions.RemoveAt(winningTeamIndex * 2);
+        var newMythInPlay = playerParticipant.MythInPlay;
 
-        //if (positions[0].)
+        if (newMythInPlay != null)
+            positions.Add(newMythInPlay.transform);
+        
+        mythsInPlay[playerParticipant] = newMythInPlay;
     }
 }

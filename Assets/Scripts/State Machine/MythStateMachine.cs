@@ -9,7 +9,7 @@ namespace Commands
         [Header("The current state of the state machine used for debugging")]
         [SerializeField] private MonoBehaviour currentState;
 
-        private void Start()
+        private void Awake()
         {
             currentState = initialState;
 
