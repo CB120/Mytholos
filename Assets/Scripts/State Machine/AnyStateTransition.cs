@@ -11,7 +11,8 @@ namespace Commands
         [SerializeField] protected MythCommandHandler mythCommandHandler;
 
         public UnityEvent abilityCommandReceived = new();
-        public UnityEvent incomingAttackReceived = new();
+        public UnityEvent knockbackCommandReceived = new();
+        public UnityEvent stunCommandReceived = new();
         public UnityEvent freezeDebrisReceived = new();
         public UnityEvent moveCommandReceived = new();
         public UnityEvent dodgeCommandReceived = new();
@@ -33,6 +34,16 @@ namespace Commands
             if (mythCommandHandler.Command is AbilityCommand)
             {
                 abilityCommandReceived.Invoke();
+            }
+
+            if(mythCommandHandler.Command is KnockbackService)
+            {
+                knockbackCommandReceived.Invoke();
+            }
+
+            if (mythCommandHandler.Command is StunService)
+            {
+                stunCommandReceived.Invoke();
             }
 
             if (mythCommandHandler.Command is MoveCommand)

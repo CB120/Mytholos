@@ -20,6 +20,6 @@ namespace Commands
         
         public bool WillStoreNewCommands { get; set; }
 
-        public UnityEvent commandChanged = new();
+        [HideInInspector] public UnityEvent commandChanged = new();
     }
 }

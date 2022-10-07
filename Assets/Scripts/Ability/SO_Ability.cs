@@ -19,6 +19,8 @@ public class SO_Ability : ScriptableObject
     public float performTime;
     public bool isRanged;
     public bool applyBuffToParty;
+    public float baseKnockback;
+    public float baseStun;
 
     [Header("Spawning Properties")]
     public bool spawnInWorldSpace;
