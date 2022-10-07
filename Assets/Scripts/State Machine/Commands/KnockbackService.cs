@@ -6,5 +6,6 @@ using UnityEngine;
         public GameObject abilitySender;
         public float knockbackStrength;
         public float senderStrength;
+        public float stunTime;
     }
 }

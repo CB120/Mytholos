@@ -13,6 +13,7 @@ namespace Commands.Behaviours
         [SerializeField] private GameObject sender;
         
 
+
         // Events
         public UnityEvent knockbackFailed = new();
         public UnityEvent knockbackComplete = new();
@@ -21,11 +22,13 @@ namespace Commands.Behaviours
         private float knockbackStrength;
         private float senderStrength;
         [SerializeField] private float knockbackDelay = 0.2f;
+
+        // Stun properties to pass through
+        private float stunTime;
         
         protected override void OnEnable()
         {
             base.OnEnable();
-
             knockbackService = mythCommandHandler.Command as KnockbackService;
 
             if (movementController == null)
@@ -39,18 +42,7 @@ namespace Commands.Behaviours
                 Debug.LogWarning("There was a problem with getting the knockback service, please check the Knockback State script.");
                 return;
             }
-            sender = knockbackService.abilitySender;
-            knockbackStrength = knockbackService.knockbackStrength;
-            senderStrength = knockbackService.senderStrength;
-           
-            if(sender == null && knockbackStrength == 0 && senderStrength == 0)
-            {
                 Invoke("lateEnable", 0.002f);
-            } else
-            {
-                //Debug.Log("Step 3 Knockback complete");
-                ActivateKnockback(); // Might go with a co-routine for this instead!
-            }
         }
 
         private void lateEnable()
@@ -58,12 +50,11 @@ namespace Commands.Behaviours
                 sender = knockbackService.abilitySender;
                 knockbackStrength = knockbackService.knockbackStrength;
                 senderStrength = knockbackService.senderStrength;
-            
+                stunTime = knockbackService.stunTime;
             if (sender != null && knockbackStrength != 0)
             {
                 //Debug.Log("Step 3 Knockback complete");
                 ActivateKnockback(); // Might go with a co-routine for this instead!
-                return;
             }
             else
             {
@@ -74,19 +65,23 @@ namespace Commands.Behaviours
 
         private void ActivateKnockback()
         {
-            //Debug.Log("ACTIVATINGGGG");
             Vector3 direction = (myth.transform.position - sender.transform.position).normalized;
-            // Add force here
             movementController.SetTargetVelocity(direction * (knockbackStrength - (myth.myth.size - senderStrength)));
-            // Make a call to reset the knockback effect and bring velocity to 0, then move to stunned.
             Invoke("ResetKnockback", knockbackDelay);
-
         }
 
         private void ResetKnockback()
         {
             movementController.SetTargetVelocity(Vector3.zero);
-            knockbackComplete.Invoke(); // Move it to stunned
+            mythCommandHandler.Command = null;
+            knockbackComplete.Invoke();
+            mythCommandHandler.Command = new StunService(stunTime);
+            if (mythCommandHandler.Command is StunService stunService)
+            {
+                //Debug.Log("Is StunService");
+                stunService.stunTime = stunTime;
+            }
+
         }
     }
 }

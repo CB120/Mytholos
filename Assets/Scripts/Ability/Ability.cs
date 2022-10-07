@@ -10,6 +10,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     public Myth owningMyth;
     public ParticleSystem abilityPS;
     private float SOknockbackStrength;
+    private float SOstunTime;
 
     public float DamageMultiplier { get; set; } = 1;
 
@@ -18,6 +19,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void Start()
     {
+        SOstunTime = ability.baseStun;
         SOknockbackStrength = ability.baseKnockback;
         owningMyth.Stamina.Value -= ability.staminaCost;
     }
@@ -67,8 +69,13 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (SOknockbackStrength > 0)
         {
-            Debug.Log("Knockback step 1 passed");
-            myth.Knockback(SOknockbackStrength, owningMyth.gameObject);
+            Debug.Log(SOstunTime);
+            myth.Knockback(SOknockbackStrength, owningMyth.gameObject, SOstunTime);
+        }
+
+        if(SOstunTime > 0 && SOknockbackStrength < 0)
+        {
+            myth.Stun(SOstunTime);
         }
     }
 
