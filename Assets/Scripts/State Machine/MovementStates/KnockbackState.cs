@@ -13,7 +13,7 @@ namespace Commands.Behaviours
         private GameObject sender;
 
         // Events
-        public UnityEvent knockbackRecieved = new();
+        public UnityEvent knockbackRecieved = new(); // ? 
         public UnityEvent knockbackComplete = new();
 
         // Properties
@@ -42,7 +42,7 @@ namespace Commands.Behaviours
 
             if(sender != null && knockbackStrength != 0)
             {
-                Invoke("ActivateKnockback", knockbackDelay); // Might go with a co-routine for this instead!
+                ActivateKnockback(); // Might go with a co-routine for this instead!
             }
         }
 
@@ -50,8 +50,15 @@ namespace Commands.Behaviours
         {
             Vector3 direction = (myth.transform.position - sender.transform.position).normalized;
             // Add force here
+            movementController.SetTargetVelocity(direction * (knockbackStrength / myth.myth.size));
             // Make a call to reset the knockback effect and bring velocity to 0, then move to stunned.
 
+        }
+
+        private void ResetKnockback()
+        {
+            movementController.SetTargetVelocity(Vector3.zero);
+            knockbackComplete.Invoke(); // Move it to stunned
         }
     }
 }

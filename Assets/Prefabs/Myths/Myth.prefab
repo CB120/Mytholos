@@ -413,6 +413,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0eb3b42435ab324ea75c9059017678f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  dontAllowOtherCommands: 1
+  movementController: {fileID: 6450067431077666470}
+  knockbackRecieved:
+    m_PersistentCalls:
+      m_Calls: []
+  knockbackComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3802980452727524054}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  knockbackDelay: 0.2
 --- !u!114 &3802980452727524054
 MonoBehaviour:
   m_ObjectHideFlags: 0
