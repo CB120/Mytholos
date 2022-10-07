@@ -417,9 +417,22 @@ MonoBehaviour:
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
   movementController: {fileID: 6450067431077666470}
-  knockbackRecieved:
+  sender: {fileID: 0}
+  knockbackFailed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9166940849690583412}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   knockbackComplete:
     m_PersistentCalls:
       m_Calls:
@@ -453,13 +466,25 @@ MonoBehaviour:
   dontAllowOtherCommands: 1
   stunComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9166940849690583412}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   stunFailed:
     m_PersistentCalls:
       m_Calls: []
-  movementController: {fileID: 0}
+  movementController: {fileID: 6450067431077666470}
   anim: {fileID: 0}
-  stunTime: 2
+  stunTime: 0.5
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3328760576734170970}
   stamina: {fileID: 1496457094348944347}
+  mythCommandHandler: {fileID: -3291310522803648204}
   myth: {fileID: 0}
   walkSpeed: 0
   AttackStat: 1

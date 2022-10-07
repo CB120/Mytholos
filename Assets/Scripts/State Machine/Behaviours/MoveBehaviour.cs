@@ -56,7 +56,17 @@ namespace Commands.Behaviours
             //Debug.Log(moveSpeed);
             return moveSpeed;
         }
-        
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            movementController.SetTargetVelocity(Vector3.zero);
+            moveSpeed = 0;
+            if (anim) anim.SetBool("Walking", false);
+        }
+
+
+
         private void Update()
         {
             

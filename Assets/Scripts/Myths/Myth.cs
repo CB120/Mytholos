@@ -57,9 +57,19 @@ namespace Myths
             ws.DecreaseScore(partyIndex);
         }
 
-        public void Knockback()
+        public void Knockback(float abilityKnockback, GameObject sendingMyth)
         {
             mythCommandHandler.Command = new KnockbackService();
+            if (mythCommandHandler.Command is KnockbackService knockbackService)
+            {
+                Debug.Log("Setting values in myth (Knockback step 2)");
+                knockbackService.abilitySender = sendingMyth;
+                knockbackService.senderStrength = myth.size;
+                knockbackService.knockbackStrength = abilityKnockback;
+
+                Debug.Log(knockbackService.abilitySender + " " + this.gameObject);
+            }
+
         }
     }
 }

@@ -35,6 +35,11 @@ namespace Commands
                 abilityCommandReceived.Invoke();
             }
 
+            if(mythCommandHandler.Command is KnockbackService)
+            {
+                incomingAttackReceived.Invoke();
+            }
+
             if (mythCommandHandler.Command is MoveCommand)
             {
                 moveCommandReceived.Invoke();
