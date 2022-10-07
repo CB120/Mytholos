@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7753544586378074802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -169,11 +169,71 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5179802493280945320}
     m_Modifications:
+    - target: {fileID: 297236700211941406, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 297236700211941406, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 297236700211941406, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553340641454609883, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1560319247203093855, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560319247203093855, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560319247203093855, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560319247203093855, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3933712424618345103, guid: ee2c6c37ac70d8f43ba59000748d53a7,
         type: 3}
       propertyPath: m_Name
       value: ShotPS
       objectReference: {fileID: 0}
+    - target: {fileID: 4256308506809919325, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256308506809919325, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256308506809919325, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947430728766900051, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8522568061213906613, guid: ee2c6c37ac70d8f43ba59000748d53a7,
         type: 3}
       propertyPath: m_RootOrder

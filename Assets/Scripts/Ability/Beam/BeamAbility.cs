@@ -9,9 +9,15 @@ public class BeamAbility : Ability
     [SerializeField] private ParticleSystem ParticleSystem;
 
     [SerializeField] private BeamExtender BeamExtender;
-    // TODO: Should this be derived from SO_Ability.performTime?
     
     [SerializeField] private float BeamLength;
+
+    [SerializeField] private Transform BeamHead;
+    [SerializeField] private Transform BeamOrigin;
+
+
+    private float ChargeTimer;
+    private bool Charged;
 
     private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
     private GradientColorKey FireEnd = new GradientColorKey(new Color(1.0f, 0.25f, 0.0f), 1);
@@ -49,9 +55,19 @@ public class BeamAbility : Ability
 
     public override void Update()
     {
+        ChargeTimer += Time.deltaTime;
+
+        if (ChargeTimer > ability.chargeTime)
+        {
+            Charged = true;
+            transform.GetChild(0).gameObject.SetActive(true);
+            ParticleSystem.Play();
+        }
+            
+        if (Charged)
         DurationTimer += Time.deltaTime;
 
-        if (DurationTimer > ability.performTime)
+        if (DurationTimer > ability.performTime - ability.chargeTime)
         {
             Destroy(gameObject);
         }
