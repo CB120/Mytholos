@@ -20,7 +20,12 @@ namespace Myths
         protected virtual void OnEnable()
         {
             if (dontAllowOtherCommands)
-                mythCommandHandler.WillStoreNewCommands = false;
+            {
+                if (mythCommandHandler.Command is not KnockbackService)
+                {
+                    mythCommandHandler.WillStoreNewCommands = false;
+                }
+            }
         }
 
         protected virtual void OnDisable()

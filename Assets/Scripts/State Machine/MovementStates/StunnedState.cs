@@ -18,7 +18,7 @@ namespace Commands.Behaviours
         protected override void OnEnable()
         {
             base.OnEnable();
-
+            CancelInvoke();
             if (movementController == null)
             {
                 Debug.LogWarning("There was a problem with finding the movementController (CollisionDetection Physics). Please re-assign it in the inspector.");
