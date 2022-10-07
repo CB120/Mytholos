@@ -63,6 +63,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         ParticleSystem.MainModule ma = ps.main;
         ma.startColor = ability.element.color;
         
+        if (ability.baseKnockback > 0)
+            myth.Knockback();
     }
 
 

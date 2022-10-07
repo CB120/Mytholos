@@ -1,3 +1,4 @@
+using Commands;
 using UnityEngine;
 
 namespace Myths
@@ -6,6 +7,7 @@ namespace Myths
     {
         [SerializeField] private MythStat health;
         [SerializeField] private MythStat stamina;
+        [SerializeField] private MythCommandHandler mythCommandHandler;
 
         public MythStat Health => health;
         public MythStat Stamina => stamina;
@@ -53,6 +55,11 @@ namespace Myths
         public void TemporaryUpdateTeam()
         {
             ws.DecreaseScore(partyIndex);
+        }
+
+        public void Knockback()
+        {
+            mythCommandHandler.Command = new KnockbackService();
         }
     }
 }
