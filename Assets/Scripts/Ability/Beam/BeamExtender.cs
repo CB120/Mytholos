@@ -4,7 +4,7 @@ public class BeamExtender : MonoBehaviour
 {
     private Transform BeamTransform;
 
-    private bool AtMaxRange;
+    public bool AtMaxRange;
 
     private float MaxRange;
 
