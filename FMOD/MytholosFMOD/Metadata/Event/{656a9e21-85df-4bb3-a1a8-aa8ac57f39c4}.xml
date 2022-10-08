@@ -8,7 +8,7 @@
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{e7d9cc1e-1798-4881-a3c3-6fe0541099cd}</destination>
+			<destination>{7f6b42dd-dfb6-4caa-9ad6-9d855dc99021}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{71364823-209a-4ace-b32e-362b916b34c9}</destination>
@@ -60,7 +60,11 @@
 			<destination>{b6e85508-4c05-439e-8017-7b976ef87079}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{2e5caca7-c5b7-42dd-bdf4-74628d8676dc}" />
+	<object class="EventAutomatableProperties" id="{2e5caca7-c5b7-42dd-bdf4-74628d8676dc}">
+		<property name="maximumDistance">
+			<value>1000</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{c3f99f18-59c7-4bf4-9728-ba17d4460aa7}" />
 	<object class="MarkerTrack" id="{fbb85fc3-068c-4ca3-be6e-02ccd41fa88e}" />
 	<object class="GroupTrack" id="{369f6793-af57-464a-b910-011617e153b8}">
@@ -136,6 +140,9 @@
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{25fb1723-9907-4f54-97e8-c2c2bf084c13}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{e2e8f310-ec16-42d0-9243-cf4b593ae842}</destination>
 		</relationship>
@@ -202,6 +209,23 @@
 	</object>
 	<object class="MixerBusPanner" id="{fadceba5-a48c-4712-828a-5472770ca9f8}" />
 	<object class="MixerBusFader" id="{a8e62ab6-07f2-437b-894d-a996d27b35cc}" />
+	<object class="ADSRModulator" id="{25fb1723-9907-4f54-97e8-c2c2bf084c13}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>0</value>
+		</property>
+		<property name="releaseTime">
+			<value>500</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{e2e8f310-ec16-42d0-9243-cf4b593ae842}">
 		<relationship name="effects">
 			<destination>{e5bef2ce-d81d-46b3-9153-6050951e53fa}</destination>
@@ -222,7 +246,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{02305de4-543e-48aa-b30d-ab28c8b7505c}" />
-	<object class="SpatialiserEffect" id="{cd3408c0-1405-4968-a23a-4b6bb04a6625}" />
+	<object class="SpatialiserEffect" id="{cd3408c0-1405-4968-a23a-4b6bb04a6625}">
+		<property name="maximumDistance">
+			<value>1000</value>
+		</property>
+	</object>
 	<object class="MultibandEqEffect" id="{e5bef2ce-d81d-46b3-9153-6050951e53fa}">
 		<property name="filterTypeA">
 			<value>4</value>

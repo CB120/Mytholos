@@ -1,6 +1,7 @@
 using UnityEngine;
 using Myths;
 using Elements;
+using FMODUnity;
 
 public class BeamAbility : Ability
 {
@@ -14,6 +15,9 @@ public class BeamAbility : Ability
 
     [SerializeField] private Transform BeamHead;
     [SerializeField] private Transform BeamOrigin;
+
+    [SerializeField] private StudioEventEmitter beamLoops;
+    [SerializeField] private StudioEventEmitter beamFiredSFX;
 
 
     private float ChargeTimer;
@@ -73,6 +77,18 @@ public class BeamAbility : Ability
         {
             Destroy(gameObject);
         }
+
+        // SFX stuff added by Ethan
+        float beamProgress = 0f;
+        if (Charged)
+        {
+            beamProgress = (DurationTimer) / (ability.performTime - ability.chargeTime) * 100 + 100;
+            beamFiredSFX.enabled = true;
+        } else
+        {
+            beamProgress = ChargeTimer / ability.chargeTime * 100;
+        }
+        beamLoops.SetParameter("Beam Progress", beamProgress);
     }
 
     public override void Trigger(Myth myth)
