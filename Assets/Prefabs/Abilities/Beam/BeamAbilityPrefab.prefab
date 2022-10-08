@@ -54,6 +54,8 @@ MonoBehaviour:
   ParticleSystem: {fileID: 2059007022911807411}
   BeamExtender: {fileID: 7226831236815921946}
   BeamLength: 20
+  BeamHead: {fileID: 3275380738363577109}
+  BeamOrigin: {fileID: 8018691964653190970}
 --- !u!199 &2788665453749804393
 ParticleSystemRenderer:
   serializedVersion: 6

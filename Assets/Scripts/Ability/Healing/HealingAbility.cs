@@ -112,8 +112,8 @@ public class HealingAbility : Ability
 
     public override void ApplyEarthEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.DefenceBuff(3);
-        if (!isInParty) myth.effectController.AgilityDebuff(3);
+        if (!isInParty) return; 
+        myth.effectController.DefenceBuff(ability.element.buffLength);
     }
 
     public override void ApplyElectricEffect(Myth myth, bool isInParty)
@@ -123,8 +123,8 @@ public class HealingAbility : Ability
 
     public override void ApplyFireEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.AttackBuff(3);
-        if (!isInParty) myth.effectController.Burn(1, 5);
+        if (!isInParty) return;
+        myth.effectController.AttackBuff(ability.element.buffLength);
     }
 
     public override void ApplyIceEffect(Myth myth, bool isInParty)
@@ -141,8 +141,8 @@ public class HealingAbility : Ability
 
     public override void ApplyWaterEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.DebuffCleanse();
-        if (!isInParty) myth.effectController.BuffCleanse();
+        if (!isInParty) return;
+        myth.effectController.DebuffCleanse();
     }
 
     public override void ApplyWindEffect(Myth myth, bool isInParty)
