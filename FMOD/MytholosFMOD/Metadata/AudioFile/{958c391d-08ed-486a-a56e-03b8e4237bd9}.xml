@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{958c391d-08ed-486a-a56e-03b8e4237bd9}">
+		<property name="assetPath">
+			<value>Dark Wind Ambience with Earth or Stone Particles Flying - Loop    [003620].wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>38</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{001458d7-73d4-4e2b-bd37-4c28845f61d1}</destination>
+		</relationship>
+	</object>
+</objects>
