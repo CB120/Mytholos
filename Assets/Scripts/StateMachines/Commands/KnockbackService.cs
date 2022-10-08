@@ -1,5 +1,6 @@
 using UnityEngine;
-   namespace Commands
+
+namespace StateMachines.Commands
 {
     public class KnockbackService : Command
     {

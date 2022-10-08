@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Commands
+namespace StateMachines.Commands
 {
     public class MoveCommand : Command
     {

@@ -1,6 +1,6 @@
 using Myths;
 
-namespace Commands
+namespace StateMachines.Commands
 {
     [System.Serializable]
     public class Command

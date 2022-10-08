@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Commands
+namespace StateMachines
 {
     public class MythStateMachine : MonoBehaviour
     {

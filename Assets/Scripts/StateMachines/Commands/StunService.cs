@@ -1,5 +1,4 @@
-using UnityEngine;
-namespace Commands
+namespace StateMachines.Commands
 {
     public class StunService : Command
     {

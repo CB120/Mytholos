@@ -1,4 +1,4 @@
-namespace Commands
+namespace StateMachines.Commands
 {
     public class AbilityCommand : Command
     {

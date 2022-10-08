@@ -1,6 +1,6 @@
-using Commands;
+using StateMachines.Commands;
 
-namespace State_Machine.AnyStateTransitions
+namespace StateMachines.AnyStateTransitions
 {
     public class DodgeCommandReceived : AnyStateTransition<DodgeCommand>
     {

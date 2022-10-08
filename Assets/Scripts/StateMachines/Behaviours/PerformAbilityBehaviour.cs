@@ -1,9 +1,10 @@
 using System.Collections;
+using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 using Behaviour = Myths.Behaviour;
 
-namespace Commands.Behaviours
+namespace StateMachines.Behaviours
 {
     public class PerformAbilityBehaviour : Behaviour
     {

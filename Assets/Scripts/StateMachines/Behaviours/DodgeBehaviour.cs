@@ -1,9 +1,8 @@
-using Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.AI;
+using Behaviour = Myths.Behaviour;
 
-namespace Myths.Behaviours
+namespace StateMachines.Behaviours
 {
     public class DodgeBehaviour : Behaviour
     {

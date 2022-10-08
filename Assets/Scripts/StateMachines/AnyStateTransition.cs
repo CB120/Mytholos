@@ -1,8 +1,9 @@
 using Myths;
+using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Commands
+namespace StateMachines
 {
     public abstract class AnyStateTransition<T> : MonoBehaviour where T : Command
     {

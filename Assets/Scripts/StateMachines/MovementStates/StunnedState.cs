@@ -1,8 +1,9 @@
+using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 using Behaviour = Myths.Behaviour;
 
-namespace Commands.Behaviours
+namespace StateMachines.MovementStates
 {   
     public class StunnedState : Behaviour
     {
