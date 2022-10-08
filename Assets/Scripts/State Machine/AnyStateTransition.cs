@@ -4,18 +4,12 @@ using UnityEngine.Events;
 
 namespace Commands
 {
-    // TODO: Ideally all this functionality should be broken out into separate classes.
-    public class AnyStateTransition : MonoBehaviour
+    public abstract class AnyStateTransition<T> : MonoBehaviour where T : Command
     {
         [SerializeField] protected Myth myth;
         [SerializeField] protected MythCommandHandler mythCommandHandler;
-
-        public UnityEvent abilityCommandReceived = new();
-        public UnityEvent knockbackCommandReceived = new();
-        public UnityEvent stunCommandReceived = new();
-        public UnityEvent freezeDebrisReceived = new();
-        public UnityEvent moveCommandReceived = new();
-        public UnityEvent dodgeCommandReceived = new();
+        
+        [SerializeField] protected UnityEvent transitionEvent = new();
 
         private void OnEnable()
         {
@@ -27,35 +21,11 @@ namespace Commands
             mythCommandHandler.commandChanged.RemoveListener(OnCommandChanged);
         }
 
-        private void OnCommandChanged()
+        protected virtual void OnCommandChanged()
         {
-            if (mythCommandHandler.Command == null) return;
-
-            if (mythCommandHandler.Command is AbilityCommand)
+            if (mythCommandHandler.Command is T)
             {
-                abilityCommandReceived.Invoke();
-            }
-
-            if(mythCommandHandler.Command is KnockbackService)
-            {
-                knockbackCommandReceived.Invoke();
-            }
-
-            if (mythCommandHandler.Command is StunService)
-            {
-                stunCommandReceived.Invoke();
-            }
-
-            if (mythCommandHandler.Command is MoveCommand)
-            {
-                moveCommandReceived.Invoke();
-            }
-            if(mythCommandHandler.Command is DodgeCommand)
-            {
-                if (myth.isInvulnerable == false)
-                {
-                    dodgeCommandReceived.Invoke();
-                }
+                transitionEvent.Invoke();
             }
         }
     }

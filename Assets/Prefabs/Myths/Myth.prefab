@@ -1,5 +1,186 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3271615391549213713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3274382791257027294}
+  - component: {fileID: 3041772259668658664}
+  - component: {fileID: 7463332392998710028}
+  - component: {fileID: 3685100383579352455}
+  - component: {fileID: 2574644570502656684}
+  - component: {fileID: 4471835222624717738}
+  m_Layer: 6
+  m_Name: Any State Transitions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3274382791257027294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4780120509031229686}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3041772259668658664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f35c25376b4670ac19749eec055ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  transitionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4022649125744793272}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7463332392998710028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd8b1706f29140fc8f5f15a8844893ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  transitionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7547223665843487771}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3685100383579352455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac3378387624f7493384a7a1027e08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  transitionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3802980452727524054}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2574644570502656684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e4d711e9e94bfd8208c528da467685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  transitionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2326847374803901642}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4471835222624717738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99722d97562140d0949e4f8173f46bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  transitionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 735515940438014375}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5029060779171543208
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +318,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4780120509031229686}
-  - component: {fileID: 767059984563626952}
   - component: {fileID: 2326847374803901642}
   - component: {fileID: 9166940849690583412}
   - component: {fileID: 735515940438014375}
@@ -164,113 +344,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 11613192735537259}
+  - {fileID: 3274382791257027294}
   m_Father: {fileID: 8072052664142603967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &767059984563626952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6040751574335777805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f029b977f9f490d9ca2c860f8cbbdc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
-  abilityCommandReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4022649125744793272}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  knockbackCommandReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7547223665843487771}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  stunCommandReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3802980452727524054}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  freezeDebrisReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1511236549751959824}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  moveCommandReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2326847374803901642}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  dodgeCommandReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7869152638623657870}
-        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 735515940438014375}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2326847374803901642
 MonoBehaviour:
   m_ObjectHideFlags: 0
