@@ -231,8 +231,8 @@ public class Effects : MonoBehaviour
     #region Effect Interface
     public void ActivateBuff(Element element, bool isDebuff) //Baxter
     {
-        mythUI.parent.enabled = false;
-        mythUI.parent.enabled = true;
+        mythUI.RefreshLayout();
+
         if (isDebuff)
         {
             appliedDebuffs.Add(element);
@@ -248,6 +248,8 @@ public class Effects : MonoBehaviour
 
     public void DeactivateBuff(Element element, bool isDebuff)
     {
+        mythUI.RefreshLayout();
+
         if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
             mythUI.effectUIData[element].negativeBuff.SetTrigger("Close");

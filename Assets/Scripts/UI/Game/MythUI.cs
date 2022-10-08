@@ -18,6 +18,7 @@ namespace Elements
                 effectUIData.Add(buffUI.element, buffUI);
 
             canvas.worldCamera = Camera.main;
+            RefreshLayout();
             //gameCamera = GameObject.FindGameObjectWithTag("GameCamera");
         }
 
@@ -25,6 +26,12 @@ namespace Elements
         {
             //Parent.transform.LookAt(gameCamera.transform);
             transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        public void RefreshLayout()
+        {
+            parent.enabled = false;
+            parent.enabled = true;
         }
 
 
