@@ -2,5 +2,5 @@ using StateMachines.Commands;
 
 namespace StateMachines.AnyStateTransitions
 {
-    public class StunCommandReceived : AnyStateTransition<StunService> { }
+    public class StunCommandReceived : AnyStateTransition<StunCommand> { }
 }

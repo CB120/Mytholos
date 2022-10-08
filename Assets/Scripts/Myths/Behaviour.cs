@@ -22,7 +22,7 @@ namespace Myths
         {
             if (dontAllowOtherCommands)
             {
-                if (mythCommandHandler.Command is not KnockbackService)
+                if (mythCommandHandler.Command is not KnockbackCommand)
                 {
                     mythCommandHandler.WillStoreNewCommands = false;
                 }

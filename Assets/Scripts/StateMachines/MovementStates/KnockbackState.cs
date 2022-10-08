@@ -10,7 +10,7 @@ namespace StateMachines.MovementStates
     {
         // References
         [SerializeField] private CollisionDetection movementController;
-        private KnockbackService knockbackService;
+        private KnockbackCommand knockbackCommand;
         [SerializeField] private GameObject sender;
         
 
@@ -30,7 +30,7 @@ namespace StateMachines.MovementStates
         protected override void OnEnable()
         {
             base.OnEnable();
-            knockbackService = mythCommandHandler.Command as KnockbackService;
+            knockbackCommand = mythCommandHandler.Command as KnockbackCommand;
             CancelInvoke("ResetKnockback");
             if (movementController == null)
             {
@@ -38,7 +38,7 @@ namespace StateMachines.MovementStates
                 return;
             }
             
-            if(knockbackService == null)
+            if(knockbackCommand == null)
             {
                 Debug.LogWarning("There was a problem with getting the knockback service, please check the Knockback State script.");
                 return;
@@ -48,10 +48,10 @@ namespace StateMachines.MovementStates
 
         private void lateEnable()
         {
-                sender = knockbackService.abilitySender;
-                knockbackStrength = knockbackService.knockbackStrength;
-                senderStrength = knockbackService.senderStrength;
-                stunTime = knockbackService.stunTime;
+                sender = knockbackCommand.abilitySender;
+                knockbackStrength = knockbackCommand.knockbackStrength;
+                senderStrength = knockbackCommand.senderStrength;
+                stunTime = knockbackCommand.stunTime;
             if (sender != null && knockbackStrength != 0)
             {
                 //Debug.Log("Step 3 Knockback complete");
@@ -76,8 +76,8 @@ namespace StateMachines.MovementStates
             movementController.SetTargetVelocity(Vector3.zero);
             mythCommandHandler.Command = null;
             knockbackComplete.Invoke();
-            mythCommandHandler.Command = new StunService(stunTime);
-            if (mythCommandHandler.Command is StunService stunService)
+            mythCommandHandler.Command = new StunCommand(stunTime);
+            if (mythCommandHandler.Command is StunCommand stunService)
             {
                 //Debug.Log("Is StunService");
                 stunService.stunTime = stunTime;

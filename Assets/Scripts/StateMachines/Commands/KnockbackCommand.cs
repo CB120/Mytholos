@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace StateMachines.Commands
 {
-    public class KnockbackService : Command
+    public class KnockbackCommand : Command
     {
         public GameObject abilitySender;
         public float knockbackStrength;

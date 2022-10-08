@@ -11,7 +11,7 @@ namespace StateMachines.MovementStates
         public UnityEvent stunComplete = new();
         public UnityEvent stunFailed = new();
 
-        private StunService stunService;
+        private StunCommand stunCommand;
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private Animation anim;
 
@@ -27,7 +27,7 @@ namespace StateMachines.MovementStates
                 return;
             }
 
-            stunService = mythCommandHandler.Command as StunService;
+            stunCommand = mythCommandHandler.Command as StunCommand;
             //Debug.Log("Is this activating");
             Invoke("startStun", 0.1f);
         }
@@ -40,7 +40,7 @@ namespace StateMachines.MovementStates
 
         private void startStun()
         {
-            stunTime = stunService.stunTime;
+            stunTime = stunCommand.stunTime;
             movementController.SetTargetVelocity(Vector3.zero);
             Invoke("killStun", stunTime);
         }
