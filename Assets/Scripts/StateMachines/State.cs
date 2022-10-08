@@ -1,8 +1,8 @@
-using Commands;
+using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 
-namespace Myths
+namespace StateMachines
 {
     public class State : MonoBehaviour
     {

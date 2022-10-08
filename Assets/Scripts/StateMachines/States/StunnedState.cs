@@ -1,9 +1,8 @@
-using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace StateMachines.MovementStates
+namespace StateMachines.States
 {   
     public class StunnedState : State
     {

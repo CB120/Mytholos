@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StateMachines.MovementStates
+namespace StateMachines.States
 {
     public class InvincibleState : MonoBehaviour
     {

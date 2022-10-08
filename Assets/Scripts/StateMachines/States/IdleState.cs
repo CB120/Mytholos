@@ -1,6 +1,4 @@
-using Myths;
-
-namespace StateMachines.Behaviours
+namespace StateMachines.States
 {
     public class IdleState : State
     {

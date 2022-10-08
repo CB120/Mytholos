@@ -1,8 +1,7 @@
-using Myths;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace StateMachines.Behaviours
+namespace StateMachines.States
 {
     public class DodgeState : State
     {

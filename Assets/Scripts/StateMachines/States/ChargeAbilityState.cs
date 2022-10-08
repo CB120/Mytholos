@@ -1,10 +1,9 @@
 using System.Collections;
-using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace StateMachines.Behaviours
+namespace StateMachines.States
 {
     public class ChargeAbilityState : State
     {
