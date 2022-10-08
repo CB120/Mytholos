@@ -1,3 +1,4 @@
+using Commands;
 using UnityEngine;
 
 namespace Myths
@@ -6,6 +7,7 @@ namespace Myths
     {
         [SerializeField] private MythStat health;
         [SerializeField] private MythStat stamina;
+        [SerializeField] private MythCommandHandler mythCommandHandler;
 
         public MythStat Health => health;
         public MythStat Stamina => stamina;
@@ -53,6 +55,30 @@ namespace Myths
         public void TemporaryUpdateTeam()
         {
             ws.DecreaseScore(partyIndex);
+        }
+
+        public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
+        {
+            mythCommandHandler.Command = new KnockbackService();
+            if (mythCommandHandler.Command is KnockbackService knockbackService)
+            {
+                Debug.Log(abilityStunTime);
+                //Debug.Log("Setting values in myth (Knockback step 2)");
+                knockbackService.abilitySender = sendingMyth;
+                knockbackService.senderStrength = myth.size;
+                knockbackService.knockbackStrength = abilityKnockback;
+                knockbackService.stunTime = abilityStunTime;
+                //Debug.Log(knockbackService.abilitySender + " " + this.gameObject);
+            }
+        }
+
+        public void Stun(float abilityStunTime)
+        {
+            mythCommandHandler.Command = new StunService(abilityStunTime);
+            if (mythCommandHandler.Command is StunService stunService)
+            {
+                stunService.stunTime = abilityStunTime;
+            }
         }
     }
 }
