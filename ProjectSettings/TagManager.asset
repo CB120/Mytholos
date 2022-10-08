@@ -12,6 +12,7 @@ TagManager:
   - MenuMusic
   - TransitionOverlay
   - GameCamera
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Outline
   - No Outline
   - Debris
-  - 
+  - Terrain
   - 
   - 
   - 

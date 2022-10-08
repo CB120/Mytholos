@@ -25,6 +25,7 @@ public class SO_Ability : ScriptableObject
     [Header("Spawning Properties")]
     public bool spawnInWorldSpace;
     public Vector3 relativeSpawnPosition;
+    public float timeToDestroy;
 
     [FormerlySerializedAs("ability")] public GameObject abilityPrefab;
 }

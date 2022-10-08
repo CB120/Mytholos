@@ -4,10 +4,11 @@ public class BeamExtender : MonoBehaviour
 {
     private Transform BeamTransform;
 
-    private bool AtMaxRange;
+    public bool AtMaxRange;
 
     private float MaxRange;
 
+  
     void Start()
     {
         BeamTransform = gameObject.transform;
@@ -16,7 +17,7 @@ public class BeamExtender : MonoBehaviour
     void Update()
     {    
         if (!AtMaxRange)
-            BeamTransform.localScale += (new Vector3(0, 0, 30.0f)) * Time.deltaTime;
+            BeamTransform.localScale += (new Vector3(0, 0, MaxRange)) * Time.deltaTime;
 
         if (BeamTransform.localScale.z > MaxRange)
             AtMaxRange = true;

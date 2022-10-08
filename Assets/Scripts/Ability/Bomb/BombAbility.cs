@@ -24,12 +24,18 @@ public class BombAbility : Ability
     [Header("Bomb Effects")]
 	public float areaOfEffect = 1.5f;
     public float expandSpeed = 0.5f;
+    [SerializeField] private ParticleSystem childParticle;
 
     [Header("BombInFlight")]
     [HideInInspector]
     public Vector3 nextBasePos;
 
-
+    public void Awake()
+    {
+        mesh.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
+        var main = childParticle.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
+    }
     public override void Start()
     {
         startPos = transform.position;

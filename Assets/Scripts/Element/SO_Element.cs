@@ -11,6 +11,7 @@ public class SO_Element : ScriptableObject
     public float buffLength;
     public ParticleSystem debuffParticle;
     public ParticleSystem buffParticle;
+    public bool setParticleColor;
     // TODO: Move element icon here too
 
     public List<SO_Element> strongAgainst = new();

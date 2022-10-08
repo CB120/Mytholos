@@ -10,6 +10,9 @@ namespace DetectCollision
         [SerializeField] private Ability ability;
         private void OnTriggerEnter(Collider other)
         {
+            if (other.tag == "Terrain")
+                ability.TerrainInteraction();
+
             Myth attackedMyth = other.gameObject.GetComponent<Myth>();
             if (attackedMyth)
             {
@@ -21,5 +24,6 @@ namespace DetectCollision
         {
             ability.Collision();
         }
+
     }
 }

@@ -64,8 +64,12 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         
         ParticleSystem ps = Instantiate(particle, myth.transform);
-        ParticleSystem.MainModule ma = ps.main;
-        ma.startColor = ability.element.color;
+        if (ability.element.setParticleColor)
+        {
+            Debug.LogWarning("Color is Set");
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = ability.element.color;
+        }
 
         if (SOknockbackStrength > 0)
         {
@@ -79,7 +83,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         }
     }
 
-
     #region Collision
     virtual public void Trigger(Myth myth)
     {
@@ -92,6 +95,11 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
 
     virtual public void ClearDebris(GameObject obj)//@Jack you can call this function to clear debris
+    {
+
+    }
+
+    virtual public void TerrainInteraction()
     {
 
     }
@@ -169,7 +177,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         }
         else if(!isInParty)
         {
-            //myth.effectController
+            myth.effectController.Disorient(ability.statIncrease, owningMyth, ability.element.buffLength / 2);
         }
     }
 
@@ -179,24 +187,25 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         myth.effectController.BuffCleanse();
     }
 
-
-
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.DefenceDebuff(3);
+        myth.effectController.DefenceDebuff(ability.element.buffLength);
+        myth.effectController.ActivateBuff(Element.Metal, !isInParty);
     }
 
     virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.AgilityDebuff(3);
+        myth.effectController.AgilityDebuff(ability.element.buffLength);
+        myth.effectController.ActivateBuff(Element.Earth, !isInParty);
     }
 
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.Burn(1, 5);
+        myth.effectController.Burn(3, ability.element.buffLength);
+        myth.effectController.ActivateBuff(Element.Fire, !isInParty);
     }
     #endregion
 
