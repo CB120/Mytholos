@@ -1,12 +1,12 @@
 using System.Collections;
+using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using Behaviour = Myths.Behaviour;
 
 namespace StateMachines.Behaviours
 {
-    public class ChargeAbilityBehaviour : Behaviour
+    public class ChargeAbilityState : State
     {
         [Header("Charge Ability Behaviour")]
         [Tooltip("The percentage of the ability's stamina cost to deduct if cancelled while charging (0.5 is 50%).")]

@@ -1,12 +1,12 @@
 using System.Collections;
+using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using Behaviour = Myths.Behaviour;
 
 namespace StateMachines.Behaviours
 {
-    public class PerformAbilityBehaviour : Behaviour
+    public class PerformAbilityState : State
     {
         [Header("Perform Ability Behaviour")]
         public UnityEvent performAbilityComplete = new();

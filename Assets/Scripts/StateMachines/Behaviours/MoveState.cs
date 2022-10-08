@@ -1,11 +1,11 @@
+using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using Behaviour = Myths.Behaviour;
 
 namespace StateMachines.Behaviours
 {
-    public class MoveBehaviour : Behaviour
+    public class MoveState : State
     {
         [Header("Manual Move Behaviour")]
         // Movement Properties

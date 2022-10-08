@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Myths
 {
-    public class Behaviour : MonoBehaviour
+    public class State : MonoBehaviour
     {
         [Header("Behaviour")]
         // TODO: Do we still need this?

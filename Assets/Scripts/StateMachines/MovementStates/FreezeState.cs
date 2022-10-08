@@ -1,11 +1,11 @@
+using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using Behaviour = Myths.Behaviour;
 
 namespace StateMachines.MovementStates
 {
-    public class FreezeState : Behaviour
+    public class FreezeState : State
     {
         // References & Events
         public UnityEvent freezeComplete = new();

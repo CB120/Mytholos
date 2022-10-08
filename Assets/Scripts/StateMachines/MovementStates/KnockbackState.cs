@@ -1,12 +1,12 @@
+using Myths;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
-using Behaviour = Myths.Behaviour;
 
 namespace StateMachines.MovementStates
 {
 
-    public class KnockbackState : Behaviour
+    public class KnockbackState : State
     {
         // References
         [SerializeField] private CollisionDetection movementController;

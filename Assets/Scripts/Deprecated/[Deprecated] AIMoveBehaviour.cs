@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Myths.Behaviours
 {
-    public class MoveBehaviour : Behaviour
+    public class MoveState : State
     {
         [Header("Move Behaviour")]
         public UnityEvent moveComplete = new();

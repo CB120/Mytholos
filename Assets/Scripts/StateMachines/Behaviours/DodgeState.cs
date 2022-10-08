@@ -1,10 +1,10 @@
+using Myths;
 using UnityEngine;
 using UnityEngine.Events;
-using Behaviour = Myths.Behaviour;
 
 namespace StateMachines.Behaviours
 {
-    public class DodgeBehaviour : Behaviour
+    public class DodgeState : State
     {
         [Header("Dodge Behaviour")]
         public UnityEvent DodgeComplete = new();
