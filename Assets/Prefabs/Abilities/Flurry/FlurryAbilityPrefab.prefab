@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3620687452420565690}
   - component: {fileID: 1591937747683845047}
+  - component: {fileID: 1332762332547013186}
   m_Layer: 0
   m_Name: FlurryAbilityPrefab
   m_TagString: Untagged
@@ -49,6 +50,36 @@ MonoBehaviour:
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
   FlurryDuration: 2
+--- !u!114 &1332762332547013186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205508700800930181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1262467512
+      Data2: 1286259674
+      Data3: 976254390
+      Data4: -332466338
+    Path: event:/SFX/Abilities/Flurry
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2889150754735116343
 GameObject:
   m_ObjectHideFlags: 0
