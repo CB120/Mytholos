@@ -187,24 +187,25 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         myth.effectController.BuffCleanse();
     }
 
-
-
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.DefenceDebuff(3);
+        myth.effectController.DefenceDebuff(ability.element.buffLength);
+        myth.effectController.ActivateBuff(Element.Metal, !isInParty);
     }
 
     virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.AgilityDebuff(3);
+        myth.effectController.AgilityDebuff(ability.element.buffLength);
+        myth.effectController.ActivateBuff(Element.Earth, !isInParty);
     }
 
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.Burn(1, 5);
+        myth.effectController.Burn(3, ability.element.buffLength);
+        myth.effectController.ActivateBuff(Element.Fire, !isInParty);
     }
     #endregion
 

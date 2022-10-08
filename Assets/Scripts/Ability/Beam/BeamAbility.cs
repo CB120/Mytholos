@@ -19,6 +19,7 @@ public class BeamAbility : Ability
     private float ChargeTimer;
     private bool Charged;
 
+    #region Colours
     private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
     private GradientColorKey FireEnd = new GradientColorKey(new Color(1.0f, 0.25f, 0.0f), 1);
     private GradientColorKey ElectricStart = new GradientColorKey(new Color(1.0f, 0.97f, 0.0f), 0);
@@ -31,6 +32,7 @@ public class BeamAbility : Ability
     private GradientColorKey WindEnd = new GradientColorKey(new Color(1.0f, 1.0f, 1.0f), 1);
     private GradientColorKey EarthStart = new GradientColorKey(new Color(0.53f, 0.22f, 0.13f), 0);
     private GradientColorKey EarthEnd = new GradientColorKey(new Color(1.0f, 0.29f, 0.01f), 1);
+    #endregion
 
     private Element element { get => ability.element.element; }
 
