@@ -10,15 +10,15 @@ namespace Elements
         [SerializeField] private List<BuffUI> interfaceList = new();
         public Dictionary<Element, BuffUI> effectUIData = new();
         public Canvas canvas;
-        [SerializeField] private GameObject Parent;
-        private GameObject gameCamera;
+        public HorizontalLayoutGroup parent;
+        //private GameObject gameCamera;
         private void Awake()
         {
             foreach (BuffUI buffUI in interfaceList)
                 effectUIData.Add(buffUI.element, buffUI);
 
             canvas.worldCamera = Camera.main;
-            gameCamera = GameObject.FindGameObjectWithTag("GameCamera");
+            //gameCamera = GameObject.FindGameObjectWithTag("GameCamera");
         }
 
         private void Update()
@@ -26,6 +26,8 @@ namespace Elements
             //Parent.transform.LookAt(gameCamera.transform);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+
     }
 
     [System.Serializable]

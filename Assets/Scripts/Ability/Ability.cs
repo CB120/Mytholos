@@ -66,6 +66,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         ParticleSystem ps = Instantiate(particle, myth.transform);
         if (ability.element.setParticleColor)
         {
+            Debug.LogWarning("Color is Set");
             ParticleSystem.MainModule main = ps.main;
             main.startColor = ability.element.color;
         }
@@ -176,7 +177,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         }
         else if(!isInParty)
         {
-            myth.effectController.Disorient(ability.element.buffLength);
+            myth.effectController.Disorient(ability.statIncrease, owningMyth, ability.element.buffLength / 2);
         }
     }
 

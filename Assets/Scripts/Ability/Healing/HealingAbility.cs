@@ -11,6 +11,7 @@ public class HealingAbility : Ability
     [SerializeField] private TrailRenderer[] trails;
     [SerializeField]
     HashSet<Myth> overlappedMyths = new HashSet<Myth>();
+    [SerializeField] private Collider trigger;
 
     public override void Start()
     {
@@ -45,8 +46,10 @@ public class HealingAbility : Ability
     {
         foreach (Myth myth in overlappedMyths)
         {
-            if(!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
+            trigger.enabled = false;
+            if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
             myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+            
         }
     }
 
@@ -61,7 +64,7 @@ public class HealingAbility : Ability
 
         overlappedMyths.Add(myth);
         myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
-        InvokeRepeating("SpawnEffects", 0, 0.5f);
+        InvokeRepeating("SpawnEffects", 0, 1f);
     }
 
     //Effect Application
@@ -103,9 +106,13 @@ public class HealingAbility : Ability
         {
             if (myth.partyIndex == this.owningMyth.partyIndex)
             {
+                
                 ParticleSystem ps = Instantiate(ability.element.buffParticle, myth.transform);
-                ParticleSystem.MainModule ma = ps.main;
-                ma.startColor = ability.element.color;
+                if (ability.element.setParticleColor)
+                {
+                    ParticleSystem.MainModule ma = ps.main;
+                    ma.startColor = ability.element.color;
+                }
             }
         }
     }

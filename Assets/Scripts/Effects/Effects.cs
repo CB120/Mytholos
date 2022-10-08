@@ -59,6 +59,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("RemoveFreezeDebuff");
         ActivateBuff(Element.Ice, true);
+        myth.Stun(duration);
         Invoke("RemoveFreezeDebuff", duration);
     }
 
@@ -93,10 +94,11 @@ public class Effects : MonoBehaviour
         DeactivateBuff(Element.Wind, false);
     }
 
-    public void Disorient(float duration)
+    public void Disorient(float knockback, Myth sendingMyth, float duration)
     {
         CancelInvoke("EndDisorient");
         isDisoriented = true;
+        myth.Knockback(knockback, sendingMyth.gameObject, duration * 0.75f);
         //Add Knockback here too
         Invoke("EndDisorient", duration);
     }
@@ -104,6 +106,7 @@ public class Effects : MonoBehaviour
     private void EndDisorient()
     {
         isDisoriented = false;
+        DeactivateBuff(Element.Wind, true);
     }
     #endregion 
 
@@ -249,6 +252,8 @@ public class Effects : MonoBehaviour
     #region Effect Interface
     public void ActivateBuff(Element element, bool isDebuff) //Baxter
     {
+        mythUI.parent.enabled = false;
+        mythUI.parent.enabled = true;
         if (isDebuff)
         {
             appliedDebuffs.Add(element);
@@ -276,7 +281,7 @@ public class Effects : MonoBehaviour
     #endregion
 
     private bool isDisoriented;
-    private float rotateSpeed = 500;
+    [SerializeField] private float rotateSpeed = 500;
     private void Update()
     {
         if (burning)

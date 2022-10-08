@@ -16,11 +16,11 @@ MonoBehaviour:
   icon: {fileID: 1854161382, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   element: 2
   buffLength: 7
-  debuffParticle: {fileID: 3361534561257019739, guid: 90292d90c78142344a2278f49b408e08,
+  debuffParticle: {fileID: 698678746893851193, guid: 1155a9d9a50572143af3bb2b07ee806e,
     type: 3}
-  buffParticle: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
+  buffParticle: {fileID: 341167002929958869, guid: 708bb8ddc7c24ec4b94ef53cd19ed355,
     type: 3}
-  setParticleColor: 1
+  setParticleColor: 0
   strongAgainst:
   - {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
