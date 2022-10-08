@@ -387,14 +387,12 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
-  effectValue: 0
   areaOfEffect: 2
   expandSpeed: 3
-  timeToDestroy: 10
   trails:
   - {fileID: 398162427}
   - {fileID: 312339910}
-  collider: {fileID: 2024061400511584014}
+  trigger: {fileID: 2024061400511584014}
 --- !u!33 &2024061400511584008
 MeshFilter:
   m_ObjectHideFlags: 0

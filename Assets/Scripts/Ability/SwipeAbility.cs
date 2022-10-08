@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class SwipeAbility : Ability
 {
+    [SerializeField] private TrailRenderer trail;
+
+    private void Awake()
+    {
+        trail.startColor = ability.element.color * new Color(1, 1, 1, 0.8f);
+        trail.endColor = ability.element.color * new Color(1, 1, 1, 0.1f);
+    }
 
     public override void Start()
     {

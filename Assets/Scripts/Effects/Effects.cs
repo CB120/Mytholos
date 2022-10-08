@@ -14,7 +14,6 @@ public class Effects : MonoBehaviour
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
 
-
     private void Start()
     {
         defaultWalkSpeed = myth.walkSpeed;
@@ -59,6 +58,8 @@ public class Effects : MonoBehaviour
     public void FreezeDebuff(float duration)//Ice Debuff 
     {
         CancelInvoke("RemoveFreezeDebuff");
+        ActivateBuff(Element.Ice, true);
+        myth.Stun(duration);
         Invoke("RemoveFreezeDebuff", duration);
     }
 
@@ -93,86 +94,78 @@ public class Effects : MonoBehaviour
         DeactivateBuff(Element.Wind, false);
     }
 
-    public void ApplyKnockback()
+    public void Disorient(float knockback, Myth sendingMyth, float duration)
     {
+        CancelInvoke("EndDisorient");
+        isDisoriented = true;
+        myth.Knockback(knockback, sendingMyth.gameObject, duration * 0.75f);
+        //Add Knockback here too
+        Invoke("EndDisorient", duration);
+    }
 
+    private void EndDisorient()
+    {
+        isDisoriented = false;
+        DeactivateBuff(Element.Wind, true);
     }
     #endregion 
 
     #region Fire - Will
-    private bool burning;
     private float burnDamage;
-    private float burnTimer;
-    private float burnDuration = 5;
-
-    private bool AttackBuffActive;
-
-    public void Burn(float damagevalue, float durationvalue)//Fire
+    private bool burning;
+    public void Burn(float damagevalue, float duration)//Fire
     {
+        CancelInvoke("EndBurn");
         burnDamage = damagevalue;
-        burnDuration = durationvalue;
-        burning = true;
+        Invoke("EndBurn", duration);
     }
 
-    public void AttackBuff(float value)
+    public void EndBurn()
     {
-        if(!AttackBuffActive)
-        {
-            AttackBuffActive = true;
-            myth.AttackStat *= 2;
-            Invoke("RemoveAttackBuff", value);
-        }
+        burning = false;
+        DeactivateBuff(Element.Fire, true);
+    }
+
+    public void AttackBuff(float duration)
+    {
+        CancelInvoke("RemoveAttackBuff");
+        myth.AttackStat = Mathf.Clamp(myth.AttackStat *2, defaultAttackStat/2, defaultAttackStat * 2);
+        Invoke("RemoveAttackBuff", duration);
     }
 
     private void RemoveAttackBuff()
     {
-        if (AttackBuffActive)
-        {
-            AttackBuffActive = false;
-            myth.AttackStat /= 2;
-        }
+        myth.AttackStat = defaultAttackStat;
+        DeactivateBuff(Element.Fire, false);
     }
     #endregion
 
     #region Earth - Will
-    private bool DefenceBuffActive;
-    private bool AgilityDebuffActive;
-    public void DefenceBuff(float value)
+    public void DefenceBuff(float duration)
     {
-        if (!DefenceBuffActive)
-        {
-            DefenceBuffActive = true;
-            myth.DefenceStat *= 2;
-            Invoke("RemoveDefenceBuff", value);
-        }
+        CancelInvoke("RemoveDefenceBuff");
+        myth.DefenceStat = Mathf.Clamp(myth.DefenceStat * 2, defaultDefenceStat/2, defaultDefenceStat*2);
+        Invoke("RemoveDefenceBuff", duration);
     }
 
     private void RemoveDefenceBuff()
     {
-        if (DefenceBuffActive)
-        {
-            DefenceBuffActive = false;
-            myth.AttackStat /= 2;
-        }
+        myth.AttackStat = defaultAttackStat;
+        DeactivateBuff(Element.Earth, false);
     }
 
-    public void AgilityDebuff(float value)
+    public void AgilityDebuff(float duration)
     {
-        if (!AgilityDebuffActive)
-        {
-            AgilityDebuffActive = true;
-            myth.walkSpeed /= 2;
-            Invoke("RemoveAgilityDebuff", value);
-        }
+        CancelInvoke("RemoveAgilityDebuff");    
+        myth.walkSpeed = Mathf.Clamp(myth.walkSpeed /2, defaultWalkSpeed/2, defaultWalkSpeed * 2);
+        Invoke("RemoveAgilityDebuff", duration);
+        
     }
 
     public void RemoveAgilityDebuff()
     {
-        if (AgilityDebuffActive)
-        {
-            AgilityDebuffActive = false;
-            myth.walkSpeed = defaultWalkSpeed;
-        }
+        myth.walkSpeed = defaultWalkSpeed;
+        DeactivateBuff(Element.Earth, true);
     }
 
     #endregion
@@ -181,15 +174,12 @@ public class Effects : MonoBehaviour
 
     public void BuffCleanse()
     {
-        RemoveAttackBuff();
-        RemoveDefenceBuff();
-        RemoveMetalDefence();
+        CleanseAllBuffs();
     }
 
     public void DebuffCleanse()
     {
-        RemoveAgilityDebuff();
-        RemoveDefenceDebuff();
+        CleanseAllDebuffs();
     }
 
     #endregion
@@ -241,6 +231,8 @@ public class Effects : MonoBehaviour
     #region Effect Interface
     public void ActivateBuff(Element element, bool isDebuff) //Baxter
     {
+        mythUI.RefreshLayout();
+
         if (isDebuff)
         {
             appliedDebuffs.Add(element);
@@ -256,6 +248,8 @@ public class Effects : MonoBehaviour
 
     public void DeactivateBuff(Element element, bool isDebuff)
     {
+        mythUI.RefreshLayout();
+
         if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
             mythUI.effectUIData[element].negativeBuff.SetTrigger("Close");
@@ -266,23 +260,40 @@ public class Effects : MonoBehaviour
         }
     }
     #endregion
+
+    private bool isDisoriented;
+    [SerializeField] private float rotateSpeed = 500;
     private void Update()
     {
         if (burning)
         {
             Debug.Log("burning");
-            burnTimer += Time.deltaTime;
             myth.Health.Value -= burnDamage;
-            if (burnTimer > burnDuration)
-                burning = false;
         }
 
+        if (isDisoriented)
+        {
+            myth.gameObject.transform.Rotate(0, Time.deltaTime * rotateSpeed, 0);
+        }
     }
 
     public void CleanseAllDebuffs()//@Will, any buff/debuff implementation that you write, ensure that you are able to disable it in here
     {
         RemoveLifeStealDebuff();
         RemoveStaminaDebuff();
+        RemoveAgilityDebuff();
+        RemoveDefenceDebuff();
+        RemoveFreezeDebuff();
+        EndDisorient();
+        EndBurn();
+    }
+
+    public void CleanseAllBuffs()
+    {
+        RemoveAttackBuff();
+        RemoveDefenceBuff();
         RemoveIceOvershield();
+        RemoveAgilityBuff();
+        //RemoveMetalDefence();
     }
 }

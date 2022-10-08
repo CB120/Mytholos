@@ -191,6 +191,7 @@ MonoBehaviour:
   hasReachedPosition: 0
   areaOfEffect: 4
   expandSpeed: 5
+  childParticle: {fileID: 5347112567999402897}
   nextBasePos: {x: 0, y: 0, z: 0}
 --- !u!95 &372928928782892588
 Animator:
@@ -307,6 +308,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7138950993708258870}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &5347112567999402897 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2965168000166430119, guid: 4f3f756d20dead843af40b3ce1d23a0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7138950993708258870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &6595694176158823707 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4078637225773376301, guid: 4f3f756d20dead843af40b3ce1d23a0f,
@@ -324,6 +331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: scalingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699320902247039994, guid: cd6d34f803aa7f04889641734d45f85f,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.0627451
       objectReference: {fileID: 0}
     - target: {fileID: 4472399959502665270, guid: cd6d34f803aa7f04889641734d45f85f,
         type: 3}

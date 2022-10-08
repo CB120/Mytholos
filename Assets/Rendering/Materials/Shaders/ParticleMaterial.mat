@@ -86,7 +86,7 @@ Material:
     - _ChangeColor: {r: 0, g: 0.9641308, b: 1, a: 1}
     - _Color: {r: 1, g: 0.505345, b: 0, a: 1}
     - _Emission: {r: 0, g: 23.968004, b: 1825.2137, a: 1}
-    - _Toon_Ramp_Tinting: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 0}
+    - _Toon_Ramp_Tinting: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8315129717480804080
 MonoBehaviour:

@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: BeamAbility
+  m_Name: HealingPool
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
-  name: Beam
+  element: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
+  name: Healing Pool
   description: 
-  damage: 20
-  regenSpeed: 0
-  statIncrease: 0
-  staminaCost: 0
-  chargeTime: 2
-  performTime: 4
+  damage: 0
+  regenSpeed: 20
+  statIncrease: 15
+  staminaCost: 25
+  chargeTime: 0
+  performTime: 0
   isRanged: 1
-  spawnInWorldSpace: 0
+  applyBuffToParty: 0
+  spawnInWorldSpace: 1
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
-  abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
+  timeToDestroy: 10
+  abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
     type: 3}

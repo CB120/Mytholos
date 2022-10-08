@@ -7,10 +7,11 @@ public class HealingAbility : Ability
 {
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
-    public float timeToDestroy = 5f;
+    public float timeToDestroy { get => ability.timeToDestroy; }
     [SerializeField] private TrailRenderer[] trails;
     [SerializeField]
     HashSet<Myth> overlappedMyths = new HashSet<Myth>();
+    [SerializeField] private Collider trigger;
 
     public override void Start()
     {
@@ -45,8 +46,10 @@ public class HealingAbility : Ability
     {
         foreach (Myth myth in overlappedMyths)
         {
-            if(!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
+            trigger.enabled = false;
+            if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
             myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+            
         }
     }
 
@@ -61,7 +64,7 @@ public class HealingAbility : Ability
 
         overlappedMyths.Add(myth);
         myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
-        InvokeRepeating("SpawnEffects", 0, 0.5f);
+        InvokeRepeating("SpawnEffects", 0, 1f);
     }
 
     //Effect Application
@@ -103,17 +106,21 @@ public class HealingAbility : Ability
         {
             if (myth.partyIndex == this.owningMyth.partyIndex)
             {
+                
                 ParticleSystem ps = Instantiate(ability.element.buffParticle, myth.transform);
-                ParticleSystem.MainModule ma = ps.main;
-                ma.startColor = ability.element.color;
+                if (ability.element.setParticleColor)
+                {
+                    ParticleSystem.MainModule ma = ps.main;
+                    ma.startColor = ability.element.color;
+                }
             }
         }
     }
 
     public override void ApplyEarthEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.DefenceBuff(3);
-        if (!isInParty) myth.effectController.AgilityDebuff(3);
+        if (!isInParty) return; 
+        myth.effectController.DefenceBuff(ability.element.buffLength);
     }
 
     public override void ApplyElectricEffect(Myth myth, bool isInParty)
@@ -123,8 +130,8 @@ public class HealingAbility : Ability
 
     public override void ApplyFireEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.AttackBuff(3);
-        if (!isInParty) myth.effectController.Burn(1, 5);
+        if (!isInParty) return;
+        myth.effectController.AttackBuff(ability.element.buffLength);
     }
 
     public override void ApplyIceEffect(Myth myth, bool isInParty)
@@ -141,8 +148,8 @@ public class HealingAbility : Ability
 
     public override void ApplyWaterEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.DebuffCleanse();
-        if (!isInParty) myth.effectController.BuffCleanse();
+        if (!isInParty) return;
+        myth.effectController.DebuffCleanse();
     }
 
     public override void ApplyWindEffect(Myth myth, bool isInParty)

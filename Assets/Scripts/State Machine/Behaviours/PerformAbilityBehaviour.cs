@@ -45,9 +45,10 @@ namespace Commands.Behaviours
                     new Quaternion(0f, 0f, 0f, 0f),
                     gameObject.transform
                 );
-            
-            abilityObject.GetComponent<Ability>().owningMyth = myth;
 
+            Ability ability = abilityObject.GetComponent<Ability>();
+            ability.owningMyth = myth;
+            ability.ability = abilityData;
             if (performAbilityCoroutine != null)
                 StopCoroutine(performAbilityCoroutine);
 
