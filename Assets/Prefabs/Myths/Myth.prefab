@@ -76,7 +76,7 @@ MonoBehaviour:
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4022649125744793272}
+          m_ObjectArgument: {fileID: 5566186331596335564}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -250,6 +250,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   performAbilityComplete:
     m_PersistentCalls:
       m_Calls:
@@ -280,6 +283,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   staminaPenalty: 0.5
   abilityCharged:
     m_PersistentCalls:
@@ -289,7 +295,7 @@ MonoBehaviour:
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 4022649125744793272}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -382,6 +388,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   lerpTime: 0
   targetLerpSpeed: 0.1
   smoothing: 0.1
@@ -433,6 +442,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
 --- !u!114 &735515940438014375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +460,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   DodgeComplete:
     m_PersistentCalls:
       m_Calls:
@@ -480,6 +495,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   freezeComplete:
     m_PersistentCalls:
       m_Calls:
@@ -527,6 +545,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   movementController: {fileID: 6450067431077666470}
   sender: {fileID: 0}
   knockbackFailed:
@@ -575,6 +596,9 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anyStateTransitionManager: {fileID: 0}
+  overrideBehaviour: 0
+  exceptions: []
   stunComplete:
     m_PersistentCalls:
       m_Calls:

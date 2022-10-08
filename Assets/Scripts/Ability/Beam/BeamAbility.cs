@@ -16,9 +16,6 @@ public class BeamAbility : Ability
     [SerializeField] private Transform BeamOrigin;
 
 
-    private float ChargeTimer;
-    private bool Charged;
-
     #region Colours
     private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
     private GradientColorKey FireEnd = new GradientColorKey(new Color(1.0f, 0.25f, 0.0f), 1);
@@ -53,23 +50,16 @@ public class BeamAbility : Ability
         grad.SetKeys(new GradientColorKey[] { StartColor, EndColor}, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
 
         BeamColour.color = grad;
+        
+        transform.GetChild(0).gameObject.SetActive(true);
+        ParticleSystem.Play();
     }
 
     public override void Update()
     {
-        ChargeTimer += Time.deltaTime;
-
-        if (ChargeTimer > ability.chargeTime)
-        {
-            Charged = true;
-            transform.GetChild(0).gameObject.SetActive(true);
-            ParticleSystem.Play();
-        }
-            
-        if (Charged)
         DurationTimer += Time.deltaTime;
 
-        if (DurationTimer > ability.performTime - ability.chargeTime)
+        if (DurationTimer > ability.performTime)
         {
             Destroy(gameObject);
         }
