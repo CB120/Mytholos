@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3274382791257027294}
+  - component: {fileID: 7710117388066988406}
   - component: {fileID: 3041772259668658664}
   - component: {fileID: 7463332392998710028}
   - component: {fileID: 3685100383579352455}
@@ -36,6 +37,24 @@ Transform:
   m_Father: {fileID: 4780120509031229686}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7710117388066988406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271615391549213713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38110ac7327e4ea9918e7b6cba7c7683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anyStateTransitions:
+  - {fileID: 3041772259668658664}
+  - {fileID: 7463332392998710028}
+  - {fileID: 3685100383579352455}
+  - {fileID: 2574644570502656684}
+  - {fileID: 4471835222624717738}
 --- !u!114 &3041772259668658664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,7 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
   transitionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -65,6 +83,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  mythCommandHandler: {fileID: -3291310522803648204}
 --- !u!114 &7463332392998710028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
   transitionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -94,6 +112,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  mythCommandHandler: {fileID: -3291310522803648204}
 --- !u!114 &3685100383579352455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
   transitionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -123,6 +141,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  mythCommandHandler: {fileID: -3291310522803648204}
 --- !u!114 &2574644570502656684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
   transitionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -152,6 +170,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  mythCommandHandler: {fileID: -3291310522803648204}
 --- !u!114 &4471835222624717738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
-  mythCommandHandler: {fileID: -3291310522803648204}
   transitionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -181,6 +199,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  mythCommandHandler: {fileID: -3291310522803648204}
 --- !u!1 &5029060779171543208
 GameObject:
   m_ObjectHideFlags: 0

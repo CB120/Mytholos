@@ -1,8 +1,8 @@
 using StateMachines.Commands;
 
-namespace StateMachines.AnyStateTransitions
+namespace StateMachines.AnyStateTransitions.CommandAnyStateTransition
 {
-    public class DodgeCommandReceived : AnyStateTransition<DodgeCommand>
+    public class DodgeCommandReceived : CommandAnyStateTransition<DodgeCommand>
     {
         protected override void OnCommandChanged()
         {
