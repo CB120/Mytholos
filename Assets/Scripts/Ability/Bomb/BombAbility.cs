@@ -67,7 +67,4 @@ public class BombAbility : Ability
         Attack(myth, ability.damage);
         base.Trigger(myth);
     }
-
-
-
 }
