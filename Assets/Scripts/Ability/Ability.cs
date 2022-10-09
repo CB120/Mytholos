@@ -62,13 +62,15 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 particle = ability.element.buffParticle; 
         }
 
-        
-        ParticleSystem ps = Instantiate(particle, myth.transform);
-        if (ability.element.setParticleColor)
+        if (ability.element.element != Element.Ice)
         {
-            Debug.LogWarning("Color is Set");
-            ParticleSystem.MainModule main = ps.main;
-            main.startColor = ability.element.color;
+            ParticleSystem ps = Instantiate(particle, myth.transform);
+            if (ability.element.setParticleColor)
+            {
+                Debug.LogWarning("Color is Set");
+                ParticleSystem.MainModule main = ps.main;
+                main.startColor = ability.element.color;
+            }
         }
 
         if (SOknockbackStrength > 0)
