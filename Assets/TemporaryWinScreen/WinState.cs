@@ -54,7 +54,7 @@ public class WinState : MonoBehaviour
 
     void EndGame(int winningPlayerIndex)
     {
-        print("Well, we tried");
+        //print("Well, we tried");
 
         gameObject.SetActive(true);
 

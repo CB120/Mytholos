@@ -12,7 +12,6 @@ namespace Commands.Behaviours
 
         private StunService stunService;
         [SerializeField] private CollisionDetection movementController;
-        [SerializeField] private Animation anim;
 
         private float stunTime;
         protected override void OnEnable()
@@ -39,6 +38,11 @@ namespace Commands.Behaviours
 
         private void startStun()
         {
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Stunned", true);
+            }
             stunTime = stunService.stunTime;
             movementController.SetTargetVelocity(Vector3.zero);
             Invoke("killStun", stunTime);
@@ -46,6 +50,11 @@ namespace Commands.Behaviours
 
         private void killStun()
         {
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Stunned", false);
+            }
             //Debug.Log("Killed stun");
             mythCommandHandler.Command = null;
             stunComplete.Invoke();

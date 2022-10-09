@@ -10,7 +10,6 @@ namespace Commands.Behaviours
         public UnityEvent freezeComplete = new();
         public UnityEvent freezeFailed = new();
         [SerializeField] private CollisionDetection movementController;
-        [SerializeField] private Animation anim;
         private MoveCommand moveCommand;
 
         // Freeze Movement p r o p e r t i e s 

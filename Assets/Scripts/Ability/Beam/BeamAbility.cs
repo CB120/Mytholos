@@ -61,13 +61,22 @@ public class BeamAbility : Ability
 
     public override void Update()
     {
+        if (!Charged)
         ChargeTimer += Time.deltaTime;
 
-        if (ChargeTimer > ability.chargeTime)
+        if (ChargeTimer > ability.chargeTime && !Charged)
         {
             Charged = true;
             transform.GetChild(0).gameObject.SetActive(true);
             ParticleSystem.Play();
+
+            // Animation stuff
+            Animator anim = owningMyth.gameObject.GetComponentInChildren<Animator>();
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetTrigger("AttackSpecial");
+            }
         }
             
         if (Charged)

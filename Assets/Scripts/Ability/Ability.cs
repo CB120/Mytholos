@@ -81,6 +81,14 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         {
             myth.Stun(SOstunTime);
         }
+
+        // Animate the myth that was hit
+        Animator anim = myth.gameObject.GetComponentInChildren<Animator>();
+        if (anim)
+        {
+            anim.speed = 1.0f;
+            anim.SetTrigger("Hurt");
+        }
     }
 
     #region Collision
