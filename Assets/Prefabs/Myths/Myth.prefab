@@ -50,6 +50,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anim: {fileID: 0}
   performAbilityComplete:
     m_PersistentCalls:
       m_Calls:
@@ -80,6 +81,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anim: {fileID: 0}
   staminaPenalty: 0.5
   abilityCharged:
     m_PersistentCalls:
@@ -286,6 +288,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
+  anim: {fileID: 0}
   lerpTime: 0
   targetLerpSpeed: 0.1
   smoothing: 0.1
@@ -321,7 +324,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
-  anim: {fileID: 0}
 --- !u!114 &9166940849690583412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +339,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
+  anim: {fileID: 0}
 --- !u!114 &735515940438014375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +355,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anim: {fileID: 0}
   DodgeComplete:
     m_PersistentCalls:
       m_Calls:
@@ -368,7 +372,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
-  anim: {fileID: 0}
 --- !u!114 &1511236549751959824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +387,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anim: {fileID: 0}
   freezeComplete:
     m_PersistentCalls:
       m_Calls:
@@ -415,7 +419,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
-  anim: {fileID: 0}
 --- !u!114 &7547223665843487771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +434,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anim: {fileID: 0}
   movementController: {fileID: 6450067431077666470}
   sender: {fileID: 0}
   knockbackFailed:
@@ -479,6 +483,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 1
+  anim: {fileID: 0}
   stunComplete:
     m_PersistentCalls:
       m_Calls:
@@ -510,7 +515,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
-  anim: {fileID: 0}
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0
