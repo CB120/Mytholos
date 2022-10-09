@@ -67,11 +67,30 @@ namespace Commands.Behaviours
 
         private IEnumerator PerformAbility()
         {
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Attacking", true);
+
+                if (abilityCommand.abilityData.performTime > 0)
+                {
+                    //anim.SetTrigger("AttackSpecial");
+                    anim.SetTrigger("Charge");
+                }
+                else
+                {
+                    anim.SetTrigger("Attack");
+                }
+            }
+
             yield return new WaitForSeconds(abilityCommand.abilityData.performTime);
 
             mythCommandHandler.Command = null;
             
             performAbilityComplete.Invoke();
+
+            if (anim)
+                anim.SetBool("Attacking", false);
         }
     }
 }

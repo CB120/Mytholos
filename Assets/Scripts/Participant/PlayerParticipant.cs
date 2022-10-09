@@ -94,8 +94,13 @@ public class PlayerParticipant : Participant
     {
         if (!context.performed) return;
 
-        SelectedMythCommandHandler.Command = new DodgeCommand();
-
+        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+            SelectedMythCommandHandler.Command = new DodgeCommand(moveCommand.input);   // Dodge in the input direction if the left stick is currently in use
+        else
+        {
+            Vector3 forwardVector = mythInPlay.transform.rotation * Vector3.forward;
+            SelectedMythCommandHandler.Command = new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized);    // Else dodge in direction myth is facing
+        }
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)

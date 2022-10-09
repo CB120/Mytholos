@@ -72,6 +72,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: StagVisuals
       objectReference: {fileID: 0}
+    - target: {fileID: 5540151402725898462, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675929892945326472, guid: 0f9d2760e9a36f14d87139d51897d827,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9d2760e9a36f14d87139d51897d827, type: 3}
 --- !u!95 &8688065226178720880 stripped
@@ -97,6 +107,11 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 8688065226178720880}
+    - target: {fileID: 7398305262685480618, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: myth

@@ -28,9 +28,14 @@ public class UINodeLoadScene : UIMenuNode
                             if (updateAllParticipantActionMaps)
                             {
                                 PlayerInput input = participant.GetComponent<PlayerInput>();
-                                string oldActionMap = input.currentActionMap.name;
-                                input.actions.FindActionMap(oldActionMap).Disable();
-                                input.actions.FindActionMap(nameOfActionMap).Enable();
+                                if (input != null)
+                                {
+                                    string oldActionMap = input.currentActionMap.name;
+                                    input.actions.FindActionMap(oldActionMap).Disable();
+                                    input.actions.FindActionMap(nameOfActionMap).Enable();
+                                }
+                                else
+                                    Debug.LogWarning("Failed to update a player participant's action map");
                             }
                             participant.DisablePlayerInput(0.5f);
                         }

@@ -48,6 +48,12 @@ namespace Commands.Behaviours
 
         private IEnumerator ChargeAbility()
         {
+            //if (anim)
+            //{
+            //    anim.speed = 1.0f;
+            //    anim.SetTrigger("Charge"); // Not sure if this is actually used
+            //}
+
             yield return new WaitForSeconds(abilityCommand.abilityData.chargeTime);
 
             abilityWasCharged = true;
