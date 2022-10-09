@@ -24,7 +24,7 @@ MonoBehaviour:
     colour: {r: 0.9960785, g: 0.28627452, b: 0, a: 1}
     mythData:
     - myth: {fileID: 11400000, guid: a5214353bcbc4864aa7156efa8000a5d, type: 2}
-      northAbility: {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
+      northAbility: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
       westAbility: {fileID: 11400000, guid: d9da8405993fbc74fb9ef904e4858c9e, type: 2}
       southAbility: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
       eastAbility: {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
