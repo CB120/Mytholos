@@ -13,6 +13,7 @@ public class Effects : MonoBehaviour
     [SerializeField] private MythUI mythUI;
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
+    [SerializeField] private AlternateEffects alternateIce;
 
     private void Start()
     {
@@ -60,13 +61,18 @@ public class Effects : MonoBehaviour
         CancelInvoke("RemoveFreezeDebuff");
         ActivateBuff(Element.Ice, true);
         myth.Stun(duration);
+        alternateIce.effectObject.SetActive(true);
         Invoke("RemoveFreezeDebuff", duration);
+
     }
 
     private void RemoveFreezeDebuff() //Ice Debuff
     {
         //Unfreeze
+        alternateIce.effectObject.SetActive(false);
+        ParticleSystem ps = Instantiate(alternateIce.element.debuffParticle, myth.transform);
         DeactivateBuff(Element.Ice, true);
+
     }
 
     public void IceOvershield() //Ice Buff
@@ -295,5 +301,15 @@ public class Effects : MonoBehaviour
         RemoveIceOvershield();
         RemoveAgilityBuff();
         //RemoveMetalDefence();
+    }
+}
+
+namespace Elements
+{
+    [System.Serializable]
+    struct AlternateEffects
+    {
+        public SO_Element element;
+        public GameObject effectObject;
     }
 }
