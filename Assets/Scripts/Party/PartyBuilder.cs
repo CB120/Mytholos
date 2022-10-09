@@ -46,13 +46,23 @@ public class PartyBuilder : MonoBehaviour
         for (int p = 0; p < allParticipantData.partyData.Length; p++) 
         {
             // Clear the myth lists since they will persist from previous sessions
-            allParticipantData.partyData[p].myths.Clear();
+            var partyData = allParticipantData.partyData[p];
+            partyData.myths.Clear();
             
-            foreach (MythData m in allParticipantData.partyData[p].mythData)
+            foreach (MythData m in partyData.mythData)
             {
                 SpawnMyth(m,p);
             }
 
+            try
+            {
+                ((PlayerParticipant)partyData.participant).Initialise();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("You probably tried to run the game from the Arena scene. This doesn't work anymore. Enjoy your error.");;
+                throw;
+            }
         }
     }
 
