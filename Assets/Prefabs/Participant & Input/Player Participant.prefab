@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 781119230625859627}
   m_Layer: 0
   m_Name: Player Participant
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
     m_ActionName: Player/Switch Reserve 2[/DualSenseGamepadHID/rightTrigger,/Keyboard/rightShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 94d05b3b-bbca-4247-844a-2a39e187b264
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &781119230625859627
