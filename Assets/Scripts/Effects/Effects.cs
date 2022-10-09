@@ -123,6 +123,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("EndBurn");
         burnDamage = damagevalue;
+        burning = true;
         Invoke("EndBurn", duration);
     }
 
@@ -136,6 +137,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("RemoveAttackBuff");
         myth.AttackStat = Mathf.Clamp(myth.AttackStat *2, defaultAttackStat/2, defaultAttackStat * 2);
+        ActivateBuff(Element.Fire, false);
         Invoke("RemoveAttackBuff", duration);
     }
 
@@ -151,6 +153,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("RemoveDefenceBuff");
         myth.DefenceStat = Mathf.Clamp(myth.DefenceStat * 2, defaultDefenceStat/2, defaultDefenceStat*2);
+        ActivateBuff(Element.Earth, false);
         Invoke("RemoveDefenceBuff", duration);
     }
 
@@ -274,7 +277,7 @@ public class Effects : MonoBehaviour
         if (burning)
         {
             Debug.Log("burning");
-            myth.Health.Value -= burnDamage;
+            myth.Health.Value -= burnDamage * Time.deltaTime;
         }
 
         if (isDisoriented)

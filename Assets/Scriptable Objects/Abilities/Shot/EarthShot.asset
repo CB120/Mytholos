@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: ShotAbility
+  m_Name: EarthShot
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
-  name: Shot
+  element: {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
+  name: ' Earth Shot'
   description: 
   damage: 10
   regenSpeed: 0
@@ -24,7 +24,10 @@ MonoBehaviour:
   isRanged: 1
   applyBuffToParty: 0
   baseKnockback: 5
+  baseStun: 0
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
+  relativeSpawnRotation: {x: 0, y: 0, z: 0}
+  timeToDestroy: 0
   abilityPrefab: {fileID: 8641636710526588070, guid: 7cbb761b2a1575042b43e63ecc60e6d6,
     type: 3}

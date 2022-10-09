@@ -100,6 +100,10 @@ public class BeamAbility : Ability
         beamLoops.SetParameter("Beam Progress", beamProgress);
     }
 
+    public override void TriggerStay(Myth myth)
+    {
+        Trigger(myth);
+    }
     public override void Trigger(Myth myth)
     {
         Attack(myth, ability.damage); //Called In The Parent Ability
