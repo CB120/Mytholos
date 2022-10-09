@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b46435732ebda64397cb586706ec6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team1Remaining: 2
-  team2Remaining: 2
+  team1Remaining: 3
+  team2Remaining: 3
   gameplayUI: {fileID: 378409566743601496}
   resultsUI: {fileID: 6446870355371409973}
   playerWinImage: {fileID: 61910415390934491}
@@ -792,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7efecae37208b048b4890e999496420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positions: []
   playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
     type: 2}
   offsetY: 1.75
