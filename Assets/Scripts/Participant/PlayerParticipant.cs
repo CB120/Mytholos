@@ -246,6 +246,8 @@ public class PlayerParticipant : Participant
 
     private void SwapReserveAtIndex(int index)
     {
+        if (mythsInReserve[index].Health.Value == 0) return;
+        
         var position = MythInPlay.transform.position;
         
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
