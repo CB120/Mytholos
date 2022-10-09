@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   name: Wind Pool
-  description: Agility Buff
+  description: Buffs agility
   damage: 0
   regenSpeed: 20
   statIncrease: 15

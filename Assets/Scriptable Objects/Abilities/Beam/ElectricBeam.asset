@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ElectricBeam
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
-  name: Electric Beem
+  name: Electric Beam
   description: 
   damage: 1
   regenSpeed: 0

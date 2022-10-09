@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   name: Water Pool
-  description: Cleanses All Debuffs
+  description: Clears debuffs
   damage: 0
   regenSpeed: 20
   statIncrease: 15
