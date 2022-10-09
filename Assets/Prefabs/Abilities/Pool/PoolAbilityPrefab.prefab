@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 820279315}
   - component: {fileID: 4552999308678220622}
   m_Layer: 0
-  m_Name: HealingAbilityPrefab
+  m_Name: PoolAbilityPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

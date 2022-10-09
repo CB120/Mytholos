@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Swipe_Water
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
-  name: Cleanse Swipe
+  name: Water Swipe
   description: 
   damage: 10
   regenSpeed: 0

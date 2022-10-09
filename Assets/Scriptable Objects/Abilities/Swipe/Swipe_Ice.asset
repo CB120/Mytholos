@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Swipe_Ice
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
-  name: Freeze Swipe
+  name: Ice Swipe
   description: 
   damage: 10
   regenSpeed: 0

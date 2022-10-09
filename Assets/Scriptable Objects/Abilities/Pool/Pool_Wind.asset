@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: Stamina Pool
+  m_Name: Pool_Wind
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
-  name: Stamina Pool
-  description: 
+  element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
+  name: Wind Pool
+  description: Agility Buff
   damage: 0
   regenSpeed: 20
   statIncrease: 15
@@ -23,8 +23,11 @@ MonoBehaviour:
   performTime: 0
   isRanged: 1
   applyBuffToParty: 0
+  baseKnockback: 0
+  baseStun: 0
   spawnInWorldSpace: 1
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
-  timeToDestroy: 10
+  relativeSpawnRotation: {x: 0, y: 0, z: 0}
+  timeToDestroy: 3
   abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
     type: 3}
