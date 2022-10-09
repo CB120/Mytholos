@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: BoomerangAbility
+  m_Name: Wind Boomerang
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
+  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Boomerang
   description: 
   damage: 30
@@ -22,7 +22,12 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
+  applyBuffToParty: 0
+  baseKnockback: 0
+  baseStun: 0
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
+  relativeSpawnRotation: {x: 0, y: 0, z: 0}
+  timeToDestroy: 0
   abilityPrefab: {fileID: 8698727573697963700, guid: 083411b646840c24ea366b0fcc94c911,
     type: 3}
