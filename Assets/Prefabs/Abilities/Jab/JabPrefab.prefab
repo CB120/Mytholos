@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
   owningMyth: {fileID: 0}
-  abilityPS: {fileID: 1791811316735005250, guid: e501ce7c1be26bd45ba364114d42b122,
+  abilityPS: {fileID: 5846727847080843245, guid: 1d84ff20a4bd9ef498fd06928722f283,
     type: 3}
   speed: 3
   jabDistance: 2.5

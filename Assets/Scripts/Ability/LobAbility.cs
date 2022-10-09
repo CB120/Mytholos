@@ -19,7 +19,7 @@ public class LobAbility : Ability
 
     public void Awake()
     {
-        rend.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
+        rend.materials[1].SetColor("_Color", ability.element.color + new Color(0, 0, 0, 0.75f));
         var main = childParticle.main;
         main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
     }

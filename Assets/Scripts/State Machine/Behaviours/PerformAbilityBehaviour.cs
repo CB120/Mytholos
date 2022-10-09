@@ -32,17 +32,17 @@ namespace Commands.Behaviours
             }
             
             Vector3 pos = gameObject.transform.position + abilityData.relativeSpawnPosition;
-
+            Vector3 rot = abilityData.relativeSpawnRotation;
             GameObject abilityObject = abilityData.spawnInWorldSpace
                 ? Instantiate(
                     abilityPrefab,
                     pos,
-                    new Quaternion(0f, 0f, 0f, 0f)
+                    new Quaternion(rot.x, rot.y, rot.z, 0f)
                 )
                 : Instantiate(
                     abilityPrefab,
                     pos,
-                    new Quaternion(0f, 0f, 0f, 0f),
+                    new Quaternion(rot.x, rot.y, rot.z, 0f),
                     gameObject.transform
                 );
 
