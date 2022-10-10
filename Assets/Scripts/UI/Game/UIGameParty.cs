@@ -54,7 +54,11 @@ public class UIGameParty : MonoBehaviour
         partyBuilder.allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
         if (partyBuilder.allParticipantData.partyData[partyNumber - 1].participant != null)
             UpdateInputListeners(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant);
+        else
+            Debug.LogWarning("UI Party failed to locate their player participant");
 
+        //if (partyBuilder)
+        //    SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
     }
 
     private void Awake()
@@ -73,8 +77,6 @@ public class UIGameParty : MonoBehaviour
 
         // Update UI for game beginning
         //DisplayAbilities(false, 0, -1.0f);
-        if (partyBuilder)
-            SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
     }
 
     void UpdateInputListeners(Participant participant)
@@ -106,10 +108,12 @@ public class UIGameParty : MonoBehaviour
                 partyMemberNumber = i;
         }
 
+        //print("Select myth " + partyMemberNumber);
+
         if (partyMemberNumber < 0) return;
 
-        if (partyMemberNumber < 0 && abilitiesMenu.alpha <= 0.0f) return;                           // Don't animate menu closing if it's already closed
-        if (mythUIs[partyMemberNumber == 0 ? 1 : 0].selected && partyMemberNumber >= 0) return;     // Don't animate if asking to display a myth, but other myth is already selected
+        //if (partyMemberNumber < 0 && abilitiesMenu.alpha <= 0.0f) return;                           // Don't animate menu closing if it's already closed
+        //if (mythUIs[partyMemberNumber == 0 ? 1 : 0].selected && partyMemberNumber >= 0) return;     // Don't animate if asking to display a myth, but other myth is already selected
         
         DisplayAbilities(partyMemberNumber >= 0, partyMemberNumber);
     }
@@ -260,6 +264,9 @@ public class UIGameParty : MonoBehaviour
 
             if (counter < 1)
                 StartCoroutine(TrySetUpMythUIs());
+            else if (partyBuilder)
+                SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
+
         }
         else
             Debug.LogWarning("UIGameParty has an invalid player number");

@@ -11,7 +11,7 @@ public class WinState : MonoBehaviour
 {
     /*TO BE REMOVED AFTER MONDAY*/
     // Apologies
-    public int team1Remaining = 2, team2Remaining = 2;
+    public int team1Remaining = 3, team2Remaining = 3;
     //public GameObject obj;
     //public TextMeshProUGUI text;
 
@@ -26,7 +26,8 @@ public class WinState : MonoBehaviour
 
     public void DecreaseScore(int partyIndex)
     {
-        print("Decrease score! Player " + partyIndex);
+        //print("Decrease score! Player " + partyIndex);
+        //print("Team 1: " + team1Remaining + ", Team 2: " + team2Remaining + "(before)");
 
         if (partyIndex == 0)
         {
@@ -50,6 +51,8 @@ public class WinState : MonoBehaviour
                 //text.text = "Team 2 was Defeated";
             }
         }
+
+        //print("Team 1: " + team1Remaining + ", Team 2: " + team2Remaining + "(after)");
     }
 
     void EndGame(int winningPlayerIndex)
