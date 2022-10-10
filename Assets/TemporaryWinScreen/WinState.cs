@@ -65,14 +65,18 @@ public class WinState : MonoBehaviour
         foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
         {
             // Update the winning player's current UI graph to the results menu
-            if (participant.partyIndex == winningPlayerIndex)
-                participant.currentMenuGraph = resultsMenu;
+            //if (participant.partyIndex == winningPlayerIndex)
+            //    participant.currentMenuGraph = resultsMenu;
 
-            participant.DisablePlayerInput(0.35f);
-            PlayerInput input = participant.GetComponent<PlayerInput>();
-            input.actions.FindActionMap("Player").Disable();
-            input.actions.FindActionMap("UI").Enable();
+            //participant.DisablePlayerInput(0.35f);
+            //PlayerInput input = participant.GetComponent<PlayerInput>();      // Temporarily commented out
+            //input.actions.FindActionMap("Player").Disable();
+            //input.actions.FindActionMap("UI").Enable();
+
+            participant.DisablePlayerInput(2.0f);
         }
+
+        StartCoroutine(UhhReloadTheScene());
 
         // Begin transition to fade out gameplay UI and fade in results UI
         StartCoroutine(FadeGameOutFadeResultsIn(0.35f));
@@ -82,6 +86,12 @@ public class WinState : MonoBehaviour
 
         // Set winning text image based on winning player index
         playerWinImage.sprite = playerWinSprites[winningPlayerIndex];
+    }
+
+    IEnumerator UhhReloadTheScene()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator FadeGameOutFadeResultsIn(float duration)

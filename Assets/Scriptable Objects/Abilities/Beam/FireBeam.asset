@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Fire Beam
-  description: 
+  description: Beam
   damage: 10
   regenSpeed: 0
   statIncrease: 0

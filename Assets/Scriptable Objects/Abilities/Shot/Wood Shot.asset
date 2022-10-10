@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
   name: Wood Shot
-  description: 
+  description: Shot
   damage: 10
   regenSpeed: 0
   statIncrease: 0

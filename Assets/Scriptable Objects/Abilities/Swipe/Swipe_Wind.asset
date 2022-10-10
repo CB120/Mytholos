@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   name: Wind Swipe
-  description: 
+  description: Swipe
   damage: 10
   regenSpeed: 0
   statIncrease: 5

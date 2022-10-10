@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   name: Metal Shot
-  description: 
+  description: Shot
   damage: 10
   regenSpeed: 0
   statIncrease: 0

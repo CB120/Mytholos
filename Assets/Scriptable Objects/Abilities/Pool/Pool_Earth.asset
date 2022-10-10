@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   name: Earth Pool
-  description: Buffs defense
+  description: Pool
   damage: 0
   regenSpeed: 20
   statIncrease: 15
