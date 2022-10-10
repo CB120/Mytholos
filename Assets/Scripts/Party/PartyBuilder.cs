@@ -15,6 +15,9 @@ public class PartyBuilder : MonoBehaviour
     public List<GameObject> Party1;
     public List<GameObject> Party2;
 
+    public GameObject Team1ActiveMyth;
+    public GameObject Team2ActiveMyth;
+
     public SO_Ability[] allAbilities;
 
     private int mythCounter = 0;
@@ -70,11 +73,38 @@ public class PartyBuilder : MonoBehaviour
     {
         if (Party1.Count == Party2.Count && Party1 != null)
         {
+            Team1ActiveMyth = Party1[0];
+            Team2ActiveMyth = Party2[0];
             for (int i = 0; i < Party1.Count; i++)
             {
                 Party1[i].GetComponent<Myth>().targetEnemy = Party2[i].gameObject;
                 Party2[i].GetComponent<Myth>().targetEnemy = Party1[i].gameObject;
             }
+        }
+    }
+
+    public void swappingDelay()
+    {
+        Invoke("setSwappingTarget", 0.2f);
+    }
+
+    private void setSwappingTarget()
+    {
+        for (int i = 0; i < Party1.Count; i++)
+        {
+            if(Party1[i].gameObject.activeInHierarchy == true)
+            {
+                Team1ActiveMyth = Party1[i];
+            }
+            if(Party2[i].gameObject.activeInHierarchy == true)
+            {
+                Team2ActiveMyth = Party2[i];
+            }
+        }
+        if (Team1ActiveMyth != null && Team2ActiveMyth != null)
+        {
+            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
+            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
         }
     }
 
