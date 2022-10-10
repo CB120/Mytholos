@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: 2954656715439765746}
   - {fileID: 6793274299684527908}
   displayInactiveCursors: 0
-  allowCursorsToShareANode: 0
+  allowCursorsToShareANode: 1
   cursorPadding: 6
   navigateToLastGraphNodeOnCancel: 1
   navigateToPreviousSceneOnCancel: 0
@@ -92,7 +92,9 @@ MonoBehaviour:
   nameOfPreviousScene: 
   playerCursors:
   - {fileID: 8144639576434828633}
+  - {fileID: 8144639576434828633}
   playerCurrentNode:
+  - {fileID: 3807779238154608719}
   - {fileID: 3807779238154608719}
   transitionAnimator: {fileID: 8391781334333109725}
 --- !u!1 &380498522844928528

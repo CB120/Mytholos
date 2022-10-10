@@ -99,6 +99,11 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     }
 
+    virtual public void TriggerStay(Myth myth)
+    {
+
+    }
+
     virtual public void Collision()
     {
         Destroy(gameObject);
@@ -214,7 +219,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.Burn(3, ability.element.buffLength);
+        myth.effectController.Burn(1, ability.element.buffLength);
         myth.effectController.ActivateBuff(Element.Fire, !isInParty);
     }
     #endregion

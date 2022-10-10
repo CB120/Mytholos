@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
-  m_Name: IceBeam
+  m_Name: ElectricShot
   m_EditorClassIdentifier: 
-  element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
-  name: Ice Beam
+  element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
+  name: Electric Shot
   description: 
   damage: 10
   regenSpeed: 0
   statIncrease: 0
-  staminaCost: 20
-  chargeTime: 2
-  performTime: 4
+  staminaCost: 10
+  chargeTime: 0
+  performTime: 0
   isRanged: 1
   applyBuffToParty: 0
-  baseKnockback: 0
+  baseKnockback: 5
   baseStun: 0
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   relativeSpawnRotation: {x: 0, y: 0, z: 0}
   timeToDestroy: 0
-  abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,
+  abilityPrefab: {fileID: 8641636710526588070, guid: 7cbb761b2a1575042b43e63ecc60e6d6,
     type: 3}
