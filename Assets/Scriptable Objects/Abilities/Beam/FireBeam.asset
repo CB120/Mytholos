@@ -15,10 +15,10 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Fire Beam
   description: 
-  damage: 1
+  damage: 10
   regenSpeed: 0
   statIncrease: 0
-  staminaCost: 0
+  staminaCost: 20
   chargeTime: 2
   performTime: 4
   isRanged: 1
