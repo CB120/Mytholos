@@ -75,7 +75,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (SOknockbackStrength > 0)
         {
-            Debug.Log(SOstunTime);
+            //Debug.Log(SOstunTime);
             myth.Knockback(SOknockbackStrength, owningMyth.gameObject, SOstunTime);
         }
 
