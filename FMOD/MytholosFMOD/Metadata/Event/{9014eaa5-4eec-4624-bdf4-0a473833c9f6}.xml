@@ -23,6 +23,7 @@
 			<destination>{0a572c02-01a4-497e-8324-23f0fcdd37f4}</destination>
 		</relationship>
 		<relationship name="markerTracks">
+			<destination>{f96a9509-ad43-4446-8400-55ee61e7c7dc}</destination>
 			<destination>{254f8f89-cc68-419e-b5ea-9ac2954450c3}</destination>
 		</relationship>
 		<relationship name="groupTracks">
@@ -75,6 +76,7 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{0a572c02-01a4-497e-8324-23f0fcdd37f4}" />
+	<object class="MarkerTrack" id="{f96a9509-ad43-4446-8400-55ee61e7c7dc}" />
 	<object class="MarkerTrack" id="{254f8f89-cc68-419e-b5ea-9ac2954450c3}" />
 	<object class="GroupTrack" id="{c764dbf4-c983-4078-a08d-8ed80f672c04}">
 		<relationship name="modules">
@@ -183,6 +185,10 @@
 			<destination>{ab4af713-1d66-421f-aa7c-66bd0d1c3f61}</destination>
 			<destination>{43e5bd08-eb5c-4bde-babc-27abd88f5d48}</destination>
 			<destination>{a3e7833c-7a4f-406b-9943-28c0fdcc7f42}</destination>
+		</relationship>
+		<relationship name="markers">
+			<destination>{783566e9-34b5-44c6-a5be-60d193af44ae}</destination>
+			<destination>{78996953-b5e5-44ce-bf8c-9a054149af66}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{5ed5cb4b-0a2b-4965-b50e-0a3ffdc95800}">
@@ -505,6 +511,34 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{954cca56-ef7a-434f-86cc-8a4755302284}</destination>
+		</relationship>
+	</object>
+	<object class="LoopRegion" id="{783566e9-34b5-44c6-a5be-60d193af44ae}">
+		<property name="position">
+			<value>4.6500000000000004</value>
+		</property>
+		<property name="length">
+			<value>332.30769230769232</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{14d7374c-9e00-49e5-94c6-5e40d880731c}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{254f8f89-cc68-419e-b5ea-9ac2954450c3}</destination>
+		</relationship>
+	</object>
+	<object class="TempoMarker" id="{78996953-b5e5-44ce-bf8c-9a054149af66}">
+		<property name="position">
+			<value>4.6500000000000004</value>
+		</property>
+		<property name="tempo">
+			<value>130</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{14d7374c-9e00-49e5-94c6-5e40d880731c}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{f96a9509-ad43-4446-8400-55ee61e7c7dc}</destination>
 		</relationship>
 	</object>
 	<object class="ADSRModulator" id="{8b75dd6d-8c7c-448a-9d34-c4e2cae16207}">
