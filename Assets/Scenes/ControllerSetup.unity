@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2046280201}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1079,7 +1079,7 @@ MonoBehaviour:
       Data2: 1082144760
       Data3: 1760414361
       Data4: -897880142
-    Path: event:/SFX/UI/P2 Joined
+    Path: event:/SFX/UI/Menus/P2 Joined
   Event: 
   PlayEvent: 11
   StopEvent: 12
@@ -1109,7 +1109,7 @@ MonoBehaviour:
       Data2: 1294135483
       Data3: 1405438882
       Data4: 306444769
-    Path: event:/SFX/UI/P1 Joined
+    Path: event:/SFX/UI/Menus/P1 Joined
   Event: 
   PlayEvent: 11
   StopEvent: 12
