@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1578271955498958260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578271955498958262}
+  - component: {fileID: 1578271955498958263}
+  m_Layer: 0
+  m_Name: UI SFX Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578271955498958262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578271955498958260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578271955498958263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578271955498958260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acd6864e7d5345419ee29703670dfcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiSFXpairs:
+  - soundName: Back Scene
+    uiSFXPrefab: {fileID: 7830256749392821391, guid: 7d293c2d21a16944bb61954f5e822c8c,
+      type: 3}
+  - soundName: Back to PartyBuilder
+    uiSFXPrefab: {fileID: 2104200660572776124, guid: 2c9957fa98275a04ab1a360d88b20a72,
+      type: 3}
+  - soundName: Confirm North
+    uiSFXPrefab: {fileID: 246900817874692381, guid: 9c1ca16102b6cdf409ec5fce51ac2fc5,
+      type: 3}
+  - soundName: Confirm South
+    uiSFXPrefab: {fileID: 6110301298461471804, guid: 61bb68215d3cb904ebaba000fa13e7d1,
+      type: 3}
+  - soundName: Confirm West
+    uiSFXPrefab: {fileID: 233587590030908847, guid: cfc884fb5544b164c81232d8c0e1cca4,
+      type: 3}
+  - soundName: Confirm
+    uiSFXPrefab: {fileID: 8886501731206058039, guid: 786f3c722555bbd4aa602fa9682adf70,
+      type: 3}
+  - soundName: Game Start
+    uiSFXPrefab: {fileID: 7392349447934216056, guid: 5172bef4d045cdc478d9b49ba954a3fb,
+      type: 3}
+  - soundName: Invalid
+    uiSFXPrefab: {fileID: 1537710789768350591, guid: 35c08d893b9a40b4aafcd7453f4ff6fc,
+      type: 3}
+  - soundName: Match Start
+    uiSFXPrefab: {fileID: 1030851282924414250, guid: 84c3a0d6ddadc7f4e8a3382259c7d6bd,
+      type: 3}
+  - soundName: Nav Down-Right
+    uiSFXPrefab: {fileID: 6330758502109973967, guid: a7971d021ccb05144905e3e2fd722d76,
+      type: 3}
+  - soundName: Nav Up-Left
+    uiSFXPrefab: {fileID: 6836600694352447035, guid: b48d20668cc509c4fa3d02c5cbb405e6,
+      type: 3}
