@@ -18,7 +18,7 @@ public class UINodeLoadScene : UIMenuNode
         {
             case Action.Submit:
 
-                //SFX stuff here
+                UISFXManager.PlaySound("Game Start");
 
                 if (transitionAnimator)
                 {

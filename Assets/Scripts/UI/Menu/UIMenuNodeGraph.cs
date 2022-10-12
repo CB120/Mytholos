@@ -124,7 +124,7 @@ public class UIMenuNodeGraph : MonoBehaviour
                     StartCoroutine(LoadScene(0.35f));
                 }
 
-                //SFX here
+                UISFXManager.PlaySound("Back Scene");
 
                 return;
             }

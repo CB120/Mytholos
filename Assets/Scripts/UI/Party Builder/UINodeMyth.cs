@@ -10,6 +10,8 @@ public class UINodeMyth : UIMenuNode
     {
         if (manager.IsMythAlreadySelectedInATeamAndMoveAgainIfSo(this, playerNumber, direction)) return;
 
+        base.OnNavigate(playerNumber, direction); //This could cause all manner of issues if we add more stuff to UIMenuNode.OnNavigate(). Chat to Ethan if we need to change this, it'll break SFX
+
         manager.SelectMyth(playerNumber, this);
 
         // TODO: If this myth has already been selected by someone, continue navigating in that direction to the next adjacent node

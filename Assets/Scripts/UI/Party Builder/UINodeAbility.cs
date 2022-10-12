@@ -6,10 +6,10 @@ public class UINodeAbility : UIMenuNode // Not to be confused with UIPartyAbilit
 {
     public UIPartyManager manager;
 
-    override public void OnNavigate(int playerNumber, Direction direction)
-    {
+    //override public void OnNavigate(int playerNumber, Direction direction)
+    //{
 
-    }
+    //}
 
     override public void OnAction(Action action, int playerNumber)
     {
@@ -35,7 +35,11 @@ public class UINodeAbility : UIMenuNode // Not to be confused with UIPartyAbilit
 
         if (abilityIndex < 0) return;
 
-        if (GetComponent<UIPartyAbility>().isGreyedOut) return; //SFX here
+        if (GetComponent<UIPartyAbility>().isGreyedOut)
+        {
+            UISFXManager.PlaySound("Invalid");
+            return;
+        }
 
         manager.AssignAbility(playerNumber, abilityIndex, GetComponent<UIPartyAbility>().ability);
     }
