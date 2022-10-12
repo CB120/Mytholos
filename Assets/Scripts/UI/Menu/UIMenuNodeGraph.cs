@@ -123,6 +123,9 @@ public class UIMenuNodeGraph : MonoBehaviour
                     transitionAnimator.SetTrigger("Fade");
                     StartCoroutine(LoadScene(0.35f));
                 }
+
+                //SFX here
+
                 return;
             }
         }

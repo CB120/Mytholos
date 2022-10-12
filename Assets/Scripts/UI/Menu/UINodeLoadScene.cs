@@ -17,6 +17,9 @@ public class UINodeLoadScene : UIMenuNode
         switch (action)
         {
             case Action.Submit:
+
+                //SFX stuff here
+
                 if (transitionAnimator)
                 {
                     foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())

@@ -35,7 +35,7 @@ public class UINodeAbility : UIMenuNode // Not to be confused with UIPartyAbilit
 
         if (abilityIndex < 0) return;
 
-        if (GetComponent<UIPartyAbility>().isGreyedOut) return;
+        if (GetComponent<UIPartyAbility>().isGreyedOut) return; //SFX here
 
         manager.AssignAbility(playerNumber, abilityIndex, GetComponent<UIPartyAbility>().ability);
     }
