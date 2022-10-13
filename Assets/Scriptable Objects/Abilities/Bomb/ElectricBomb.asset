@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   name: Electric Bomb
-  description: 
+  description: Bomb
   damage: 50
   regenSpeed: 0
   statIncrease: 0

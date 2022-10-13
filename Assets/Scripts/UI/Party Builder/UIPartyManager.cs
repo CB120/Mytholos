@@ -412,6 +412,8 @@ public class UIPartyManager : MonoBehaviour
 
             SceneManager.LoadScene(nameOfNextScene);
         }
+
+        UISFXManager.PlaySound("Match Start");
     }
 
     IEnumerator LoadScene(float timeToWait)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   name: Shot
-  description: 
+  description: Shot
   damage: 10
   regenSpeed: 0
   statIncrease: 0
@@ -24,7 +24,10 @@ MonoBehaviour:
   isRanged: 1
   applyBuffToParty: 0
   baseKnockback: 5
+  baseStun: 0
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
+  relativeSpawnRotation: {x: 0, y: 0, z: 0}
+  timeToDestroy: 0
   abilityPrefab: {fileID: 8641636710526588070, guid: 7cbb761b2a1575042b43e63ecc60e6d6,
     type: 3}

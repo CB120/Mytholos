@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EarthShot
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
-  name: ' Earth Shot'
-  description: 
+  name: Earth Shot
+  description: Shot
   damage: 10
   regenSpeed: 0
   statIncrease: 0

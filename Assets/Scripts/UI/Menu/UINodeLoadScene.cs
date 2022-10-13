@@ -17,6 +17,9 @@ public class UINodeLoadScene : UIMenuNode
         switch (action)
         {
             case Action.Submit:
+
+                UISFXManager.PlaySound("Game Start");
+
                 if (transitionAnimator)
                 {
                     foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())

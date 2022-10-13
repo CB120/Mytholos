@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wind Shot
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
-  name: Whind Shot
-  description: 
+  name: Wind Shot
+  description: Shot
   damage: 10
   regenSpeed: 0
   statIncrease: 0
