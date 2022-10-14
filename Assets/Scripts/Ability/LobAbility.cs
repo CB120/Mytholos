@@ -16,12 +16,11 @@ public class LobAbility : Ability
     [SerializeField] private float timeToDestroy;
     public CapsuleCollider triggerCollider;
     [SerializeField] private ParticleSystem childParticle;
+    [SerializeField] private int maxStrength;
 
     public void Awake()
     {
-        rend.materials[1].SetColor("_Color", ability.element.color + new Color(0, 0, 0, 0.75f));
-        var main = childParticle.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
+        rend.materials[1].SetColor("_Toon_Ramp_Tinting", ability.element.color);
     }
 
     public override void Start()
@@ -36,7 +35,7 @@ public class LobAbility : Ability
             Debug.LogWarning("owningMyth.targetEnemy is null, swapping its position for Vector3.zero");
         }
 
-        rigidBody.AddForce((force * strength), ForceMode.Impulse);
+        rigidBody.AddForce(Vector3.ClampMagnitude((force * strength), maxStrength), ForceMode.Impulse);
 
         Invoke("Explode", timeToExplode);
         base.Start();
@@ -53,7 +52,10 @@ public class LobAbility : Ability
     void Explode()
     {
         rend.enabled = false;
-        abilityPS.gameObject.SetActive(true);
+        ParticleSystem ps = Instantiate(childParticle, this.transform.position, Quaternion.identity);
+        var main = ps.gameObject.transform.GetChild(0).GetComponent<ParticleSystem>().main;
+        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
+
         hasExploded = true;
         Destroy(this.gameObject, timeToDestroy);
     }

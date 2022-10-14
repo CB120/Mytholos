@@ -2749,7 +2749,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -4901,7 +4901,7 @@ PrefabInstance:
     - target: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
         type: 3}
       propertyPath: NoiseModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
         type: 3}
@@ -5231,7 +5231,7 @@ PrefabInstance:
     - target: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
         type: 3}
       propertyPath: NoiseModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
         type: 3}

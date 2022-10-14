@@ -22,11 +22,11 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
-  applyBuffToParty: 0
+  applyBuffToParty: 1
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1
-  relativeSpawnPosition: {x: 0, y: 1.5, z: 0}
+  relativeSpawnPosition: {x: 0, y: 1, z: 0}
   relativeSpawnRotation: {x: 0, y: 0, z: 0}
   timeToDestroy: 0
   abilityPrefab: {fileID: 7516873970837099704, guid: 98cf307a26c57b541b467d7024405b64,
