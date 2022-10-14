@@ -68,7 +68,7 @@ Material:
     - _Brightness_Factor: 0.2
     - _CastShadows: 1
     - _Cull: 2
-    - _Distortion: 1.4
+    - _Distortion: 2
     - _DstBlend: 10
     - _QueueControl: 0
     - _QueueOffset: 0

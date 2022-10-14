@@ -15,11 +15,23 @@ public class Effects : MonoBehaviour
     public HashSet<Element> appliedDebuffs = new();
     [SerializeField] private AlternateEffects alternateIce;
 
-    private void Start()
+    [Header("Effect Manipulation")]
+    [SerializeField] private float rotateSpeed = 500;
+    private bool isDisoriented;
+
+
+    private void Awake()
     {
         defaultWalkSpeed = myth.walkSpeed;
         defaultAttackStat = myth.AttackStat;
         defaultDefenceStat = myth.DefenceStat;
+    }
+
+    private void OnEnable()
+    {
+        CleanseAllBuffs();
+        CleanseAllDebuffs();
+        Debug.LogWarning("Clear");
     }
 
     #region Effect Application
@@ -69,9 +81,12 @@ public class Effects : MonoBehaviour
     private void RemoveFreezeDebuff() //Ice Debuff
     {
         //Unfreeze
-        alternateIce.effectObject.SetActive(false);
-        ParticleSystem ps = Instantiate(alternateIce.element.debuffParticle, myth.transform);
-        DeactivateBuff(Element.Ice, true);
+        if (appliedDebuffs.Contains(Element.Ice))
+        {
+            alternateIce.effectObject.SetActive(false);
+            ParticleSystem ps = Instantiate(alternateIce.element.debuffParticle, myth.transform);
+            DeactivateBuff(Element.Ice, true);
+        }
 
     }
 
@@ -246,12 +261,12 @@ public class Effects : MonoBehaviour
         {
             appliedDebuffs.Add(element);
             mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].negativeBuff.Play("EffectUIAnim", -1, 0f);
+            mythUI.effectUIData[element].negativeBuff.isEnabled = true;
         }
         else { 
             appliedBuffs.Add(element);
             mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].positiveBuff.Play("EffectUIAnim", -1, 0f);
+            mythUI.effectUIData[element].positiveBuff.isEnabled = true;
         }
     }
 
@@ -261,17 +276,16 @@ public class Effects : MonoBehaviour
 
         if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
-            mythUI.effectUIData[element].negativeBuff.SetTrigger("Close");
+            mythUI.effectUIData[element].negativeBuff.isEnabled = false;
         }
         else if (!isDebuff && appliedBuffs.Contains(element)) { 
             appliedBuffs.Remove(element);
-            mythUI.effectUIData[element].positiveBuff.SetTrigger("Close");
+            mythUI.effectUIData[element].positiveBuff.isEnabled = false;
         }
     }
     #endregion
 
-    private bool isDisoriented;
-    [SerializeField] private float rotateSpeed = 500;
+
     private void Update()
     {
         if (burning)

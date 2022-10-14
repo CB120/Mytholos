@@ -7,20 +7,22 @@ namespace Elements
 {
     public class MythUI : MonoBehaviour
     {
-        [SerializeField] private List<BuffUI> interfaceList = new();
-        public Dictionary<Element, BuffUI> effectUIData = new();
+        [SerializeField] private List<BuffInfo> interfaceList = new();
+        public Dictionary<Element, BuffInfo> effectUIData = new();
         public Canvas canvas;
         public HorizontalLayoutGroup parent;
+        
         //private GameObject gameCamera;
         private void Awake()
         {
-            foreach (BuffUI buffUI in interfaceList)
-                effectUIData.Add(buffUI.element, buffUI);
+            foreach (BuffInfo info in interfaceList)
+                effectUIData.Add(info.element, info);
 
             canvas.worldCamera = Camera.main;
             RefreshLayout();
             //gameCamera = GameObject.FindGameObjectWithTag("GameCamera");
         }
+
 
         private void Update()
         {
@@ -38,10 +40,10 @@ namespace Elements
     }
 
     [System.Serializable]
-    public struct BuffUI
+    public struct BuffInfo
     {
         public Element element;
-        public Animator positiveBuff;
-        public Animator negativeBuff;
+        public BuffUI positiveBuff;
+        public BuffUI negativeBuff;
     }
 }
