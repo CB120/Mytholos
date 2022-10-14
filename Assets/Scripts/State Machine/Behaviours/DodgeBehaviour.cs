@@ -23,14 +23,14 @@ namespace Myths.Behaviours
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (myth.Stamina.Value < 35)
+            if (myth.Stamina.Value < 1)
             {
                 mythCommandHandler.Command = null;
                 DodgeComplete.Invoke();
                 return;
             }
             dodgeCommand = mythCommandHandler.Command as DodgeCommand;
-            myth.Stamina.Value -= 35;
+            myth.Stamina.Value -= 1;
             ActivateDodge();
         }
 
