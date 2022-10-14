@@ -20,7 +20,9 @@ public class PlayerParticipant : Participant
 
     //Properties
     private bool isAvailableToSwap = true;
+    private bool isAvailableToDodge = true;
     [SerializeField] private float swappingCooldown = 2f;
+    [SerializeField] private float dodgeCooldown = 2.1f;
 
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
@@ -93,14 +95,19 @@ public class PlayerParticipant : Participant
 
     public void UseAbilityEast(InputAction.CallbackContext context)
     {
+        if (!isAvailableToDodge) return;
         if (!context.performed) return;
 
         if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        {
             SelectedMythCommandHandler.Command = new DodgeCommand(moveCommand.input);   // Dodge in the input direction if the left stick is currently in use
+            StartDodgeCooldown();
+        }
         else
         {
             Vector3 forwardVector = mythInPlay.transform.rotation * Vector3.forward;
             SelectedMythCommandHandler.Command = new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized);    // Else dodge in direction myth is facing
+            StartDodgeCooldown();
         }
     }
 
@@ -256,7 +263,7 @@ public class PlayerParticipant : Participant
     {
         if (!isAvailableToSwap) return;
         if (mythsInReserve[index].Health.Value == 0) return;
-        StartCooldown();
+        StartSwapCooldown();
         var position = MythInPlay.transform.position;
         
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
@@ -264,15 +271,27 @@ public class PlayerParticipant : Participant
         MythInPlay.transform.position = position;
     }
 
-    private void StartCooldown()
+    
+    private void StartSwapCooldown()
     {
         isAvailableToSwap = false;
-        Invoke("EndCooldown", swappingCooldown);
+           Invoke("EndSwapCooldown", swappingCooldown);
     }
 
-    private void EndCooldown()
+    private void StartDodgeCooldown()
+    {
+        isAvailableToDodge = false;
+            Invoke("EndDodgeCooldown", dodgeCooldown);
+    }
+
+    private void EndSwapCooldown()
     {
         isAvailableToSwap = true;
+    }
+
+    private void EndDodgeCooldown()
+    {
+        isAvailableToDodge = true;
     }
 
     #endregion
