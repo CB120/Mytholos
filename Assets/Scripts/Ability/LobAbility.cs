@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Myths;
+using FMODUnity;
+
 public class LobAbility : Ability
 {
     [SerializeField] private Rigidbody rigidBody;
@@ -17,6 +19,14 @@ public class LobAbility : Ability
     public CapsuleCollider triggerCollider;
     [SerializeField] private ParticleSystem childParticle;
     [SerializeField] private int maxStrength;
+
+    [Header("SFX")]  //SFX stuff, added by Ethan
+    public StudioEventEmitter explosionSFX;
+    public GameObject groundHitSFXPrefab;
+    [Tooltip("s seconds | How long before the 'Lob Ground Hit' SFX Prefab gets destroyed after instantiation. No effect on the heard sound")]
+    public float timeToDestroyGroundHit = 1.5f;
+    [Tooltip("m/s meters per second | Minimum velocity for the ground hit sound to be heard")]
+    public float groundHitSFXVelocityThreshold;
 
     public void Awake()
     {
@@ -57,6 +67,7 @@ public class LobAbility : Ability
         main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
 
         hasExploded = true;
+        explosionSFX.enabled = true; //SFX, added by Ethan
         Destroy(this.gameObject, timeToDestroy);
     }
 
@@ -67,5 +78,8 @@ public class LobAbility : Ability
         {
             Attack(attackedMyth, ability.damage);
         }
+
+
+        //Instantiate(groundHitSFXPrefab, transform.position, Quaternion.identity);
     }
 }

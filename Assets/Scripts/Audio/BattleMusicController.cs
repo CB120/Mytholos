@@ -60,6 +60,8 @@ public class BattleMusicController : MonoBehaviour
         debrisController = GameObject.FindWithTag("Grid").GetComponent<DebrisController>();
 
         ReorderAllElements();
+
+        if (MenuMusicController.Singleton) Destroy(MenuMusicController.Singleton.gameObject);
     }
 
     private void Start()

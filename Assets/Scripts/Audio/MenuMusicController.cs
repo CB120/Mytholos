@@ -40,7 +40,7 @@ public class MenuMusicController : MonoBehaviour
 
 
     // References
-    static MenuMusicController Singleton;
+    public static MenuMusicController Singleton;
 
     StudioEventEmitter menuMusicEmitter;
 

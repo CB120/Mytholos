@@ -5006,7 +5006,8 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.minColor.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3931067420762996972, guid: 83604b8292e0efb47a538b31cb7ad216, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 83604b8292e0efb47a538b31cb7ad216, type: 3}
 --- !u!4 &1280719997979863038 stripped
 Transform:
