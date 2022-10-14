@@ -164,9 +164,10 @@ MonoBehaviour:
     type: 3}
   maxStrength: 10
   explosionSFX: {fileID: 2481768699243771247}
-  groundHitSFXPrefab: {fileID: 0}
+  groundHitSFXPrefab: {fileID: 6234452188925635033, guid: 17dbc803e4fa4c0439974b28e547b41f,
+    type: 3}
   timeToDestroyGroundHit: 1.5
-  groundHitSFXVelocityThreshold: 0
+  groundHitSFXVelocityThreshold: 5
 --- !u!114 &7134872003891523616
 MonoBehaviour:
   m_ObjectHideFlags: 0

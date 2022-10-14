@@ -183,6 +183,9 @@
 		<property name="attackTime">
 			<value>0</value>
 		</property>
+		<property name="holdTime">
+			<value>500</value>
+		</property>
 		<property name="sustainValue">
 			<value>-29.3968258</value>
 		</property>
@@ -195,6 +198,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{7fcb3648-86f8-4f61-8b17-6446df50baaa}">
 		<relationship name="effects">
+			<destination>{295566fb-54c3-4aa0-8b14-90deaa5867da}</destination>
 			<destination>{4183af40-152b-4be3-a541-cc1ff57f873e}</destination>
 		</relationship>
 	</object>
@@ -222,6 +226,17 @@
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="MultibandEqEffect" id="{295566fb-54c3-4aa0-8b14-90deaa5867da}">
+		<property name="filterTypeA">
+			<value>4</value>
+		</property>
+		<property name="frequencyA">
+			<value>134.544098</value>
+		</property>
+		<property name="qualityA">
+			<value>0.665137947</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{4183af40-152b-4be3-a541-cc1ff57f873e}" />

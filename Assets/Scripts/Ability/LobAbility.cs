@@ -79,7 +79,14 @@ public class LobAbility : Ability
             Attack(attackedMyth, ability.damage);
         }
 
+    }
 
-        //Instantiate(groundHitSFXPrefab, transform.position, Quaternion.identity);
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.relativeVelocity.magnitude >= groundHitSFXVelocityThreshold)
+        {
+            GameObject sound = Instantiate(groundHitSFXPrefab, transform.position, Quaternion.identity);
+            Destroy(sound, timeToDestroyGroundHit);
+        }
     }
 }
