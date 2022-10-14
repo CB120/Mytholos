@@ -70,7 +70,14 @@ namespace Myths
                 knockbackService.stunTime = abilityStunTime;
                 //Debug.Log(knockbackService.abilitySender + " " + this.gameObject);
             }
+            
         }
+
+        /*private void FixedUpdate()
+        {
+            Debug.Log(this.gameObject.transform.position.y + " Y Position");
+            // Used for debugging the flying issue
+        }*/ 
 
         public void Stun(float abilityStunTime)
         {
