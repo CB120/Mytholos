@@ -22,7 +22,7 @@ MonoBehaviour:
   chargeTime: 0
   performTime: 0
   isRanged: 1
-  applyBuffToParty: 0
+  applyBuffToParty: 1
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1
