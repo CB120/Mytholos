@@ -19,7 +19,8 @@ public class PlayerParticipant : Participant
     [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
 
     //Properties
-
+    private bool isAvailableToSwap = true;
+    [SerializeField] private float swappingCooldown = 2f;
 
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
@@ -249,10 +250,13 @@ public class PlayerParticipant : Participant
 
     #endregion
 
+    /*** Swapping ***/
+    #region Swapping
     private void SwapReserveAtIndex(int index)
     {
+        if (!isAvailableToSwap) return;
         if (mythsInReserve[index].Health.Value == 0) return;
-        
+        StartCooldown();
         var position = MythInPlay.transform.position;
         
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
@@ -260,6 +264,18 @@ public class PlayerParticipant : Participant
         MythInPlay.transform.position = position;
     }
 
+    private void StartCooldown()
+    {
+        isAvailableToSwap = false;
+        Invoke("EndCooldown", swappingCooldown);
+    }
+
+    private void EndCooldown()
+    {
+        isAvailableToSwap = true;
+    }
+
+    #endregion
     public void Initialise()
     {
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);

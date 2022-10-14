@@ -16,6 +16,7 @@ namespace Commands
         public UnityEvent freezeDebrisReceived = new();
         public UnityEvent moveCommandReceived = new();
         public UnityEvent dodgeCommandReceived = new();
+        public UnityEvent swapCommandReceived = new();
 
         private void OnEnable()
         {
@@ -56,6 +57,10 @@ namespace Commands
                 {
                     dodgeCommandReceived.Invoke();
                 }
+            }
+            if(mythCommandHandler.Command is SwapCommand)
+            {
+                swapCommandReceived.Invoke();
             }
         }
     }
