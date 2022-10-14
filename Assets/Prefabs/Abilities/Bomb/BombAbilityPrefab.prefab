@@ -62,7 +62,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7417791727942902249}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5495902117074765545, guid: 7ff59c8836aa2f349bd7dfff58199604, type: 3}
 --- !u!23 &7004085478113690020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -327,6 +327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToonTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 4828346627568877543, guid: a5c30bcd0134c184cac60312f4efc52d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a85314b08f23997429f790b76234a499, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c30bcd0134c184cac60312f4efc52d, type: 3}
 --- !u!1 &6908695330106576905 stripped

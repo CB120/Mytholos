@@ -13,7 +13,7 @@ public class BuffUI : MonoBehaviour
     {
         if (isEnabled && rect.sizeDelta != normalSize)
             rect.sizeDelta = Vector2.Lerp(rect.sizeDelta, normalSize, growSpeed * Time.deltaTime);
-        else
+        else if (!isEnabled && rect.sizeDelta != new Vector2(0, 0))
             rect.sizeDelta = Vector2.Lerp(rect.sizeDelta, new Vector2(0, 0), growSpeed * 1.25f * Time.deltaTime);
     }
 }
