@@ -42,7 +42,7 @@ public class UIMenuNodeGraph : MonoBehaviour
 
         GameObject[] adjacent = playerCurrentNode[playerNumber].adjacent; // Hm...
 
-        if (adjacent[index] == null) return this; // If nothing in that direction, return
+        if (adjacent[index] == null) return this; // If nothing in that direction, return // TODO: Let player's move left/right between team mates (during 2nd stage) using d-pad/stick
 
         UIMenuNode node = adjacent[index].GetComponent<UIMenuNode>(); // If there's a node in that direction, navigate to it and return its parent
         if (node != null)
@@ -164,7 +164,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         playerCursors[playerNumber].SetHidden(!displayInactiveCursors);
     }
 
-    public void UpdateCursorTransforms()
+    public virtual void UpdateCursorTransforms()
     {
         for (int i = 0; i < playerCursors.Length; i++)
         {
@@ -184,10 +184,6 @@ public class UIMenuNodeGraph : MonoBehaviour
                 playerCurrentNode[i] = nodes[count];
                 if (!allowCursorsToShareANode)
                     count++;
-
-                //print("Player cursor " + i + " valid? " + (playerCursors[i] != null));
-                //print("Player current node " + i + " valid? " + (playerCurrentNode[i] != null));
-                //print("Player current node " + i + "'s rectTransform valid? " + (playerCurrentNode[i].GetComponent<RectTransform>() != null));
 
                 playerCursors[i].SetTransform(playerCurrentNode[i].GetComponent<RectTransform>(), cursorPadding); // Update cursor transform
                 playerCursors[i].isPlaying = areCursorsActive;

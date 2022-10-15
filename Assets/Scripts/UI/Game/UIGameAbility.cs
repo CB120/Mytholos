@@ -9,22 +9,30 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private TextMeshProUGUI abilityNameTMP;
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
+    [SerializeField] private Image[] imagesToColour;
 
     public void UpdateUI(SO_Ability ability)
     {
         if (ability != null)
         {
-            abilityNameTMP.text = ability.name;
+            if (abilityNameTMP)
+                abilityNameTMP.text = ability.name;
             // TODO: Should give designer control over the default element colour
             elementIcon.color = ability.element == null ? new Color(0, 0, 0, 0.2f) : ability.element.color;
-            if (ability.element != null)
-                elementIcon.sprite = ability.element.icon;
+            if (ability.element)
+            {
+                if (elementIcon)
+                    elementIcon.sprite = ability.element.icon;
+                foreach (Image image in imagesToColour)
+                    image.color = ability.element.color;
+            }
             //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
             staminaCostTMP.text = Mathf.RoundToInt(ability.staminaCost) + ""; // For sprint 2, we'll just show the damage
         }
         else
         {
-            abilityNameTMP.text = "-";
+            if (abilityNameTMP)
+                abilityNameTMP.text = "-";
             // TODO: Should give designer control over the default element colour
             elementIcon.color = new Color(0.0f, 0.0f, 0.0f, 0.2f);
             //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1

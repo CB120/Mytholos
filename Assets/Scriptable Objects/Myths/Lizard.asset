@@ -17,8 +17,7 @@ MonoBehaviour:
   icon: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
   health: 0.4
   size: 0.2
-  brawn: 0.6
-  psyche: 0.6
+  attack: 1
   agility: 1
   abilities:
   - {fileID: 11400000, guid: affc8a951102a0d4f94f8115ebb8c1e0, type: 2}

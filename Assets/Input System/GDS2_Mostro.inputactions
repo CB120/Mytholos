@@ -292,6 +292,17 @@
                 },
                 {
                     "name": "",
+                    "id": "32c0eb98-f10a-4c7c-86b5-7e0bdb5c3bab",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Reserve 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c80b1203-1430-43a5-9472-4edbc48f6454",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -305,6 +316,17 @@
                     "name": "",
                     "id": "db05ae04-da82-4971-b42b-eac36686b2ac",
                     "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Reserve 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd26eca7-04b3-4079-8d0a-2145a3ad1083",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -403,6 +425,24 @@
                     "name": "Start",
                     "type": "Button",
                     "id": "793d2e85-98d7-4379-a3f9-81200c358ee9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NavigateRightShoulder",
+                    "type": "Button",
+                    "id": "f919ff23-eefc-4dd4-9676-44293e195ad5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NavigateLeftShoulder",
+                    "type": "Button",
+                    "id": "e1f40b0d-11e3-47d0-adfe-ddfcb87f21ed",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -737,6 +777,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f3d505f-15ca-46ab-a253-6b66fbb2f933",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateRightShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec0e1edb-b821-40bb-9a33-a41da3e1b0e3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateRightShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07569fa7-5c03-45b0-9395-24886bf7653d",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateRightShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed83b88a-8f7b-4a49-af4d-278e9fe2d921",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d109b30f-da07-4952-adb6-09067445c7cd",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7880d64-3389-437a-9f6b-423a77bae278",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftShoulder",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
