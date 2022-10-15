@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{282419d8-35e4-4e62-986b-a35dd6e9805d}">
 		<property name="name">
-			<value>Swapped Myth</value>
+			<value>Ability Denied</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -83,6 +83,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8deadc1b-1dd1-46c1-98bc-b8901524c9ec}">
+		<relationship name="modulators">
+			<destination>{fd3d2f3d-44b5-4ac5-b49d-acf2d35bd056}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{aa6cdf98-3bca-468c-b1e7-33100603e627}</destination>
 		</relationship>
@@ -116,9 +119,6 @@
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
-		<relationship name="modulators">
-			<destination>{9bace23e-9864-4f62-94be-4190bf6e216d}</destination>
-		</relationship>
 		<relationship name="effectChain">
 			<destination>{b4d302b7-4e0a-44e9-b73a-41d784b83799}</destination>
 		</relationship>
@@ -129,18 +129,7 @@
 			<destination>{8deadc1b-1dd1-46c1-98bc-b8901524c9ec}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusEffectChain" id="{aa6cdf98-3bca-468c-b1e7-33100603e627}">
-		<relationship name="effects">
-			<destination>{fe319801-28f3-4932-b2a4-14f1333949ce}</destination>
-		</relationship>
-	</object>
-	<object class="MixerBusPanner" id="{190de51e-fd8f-4bf3-b3f9-f6ecca046616}">
-		<relationship name="automators">
-			<destination>{ac305af1-ee40-48f1-9228-59e1e1eedad9}</destination>
-		</relationship>
-	</object>
-	<object class="MixerBusFader" id="{14821883-9772-404c-80fc-56af35e4de12}" />
-	<object class="ADSRModulator" id="{9bace23e-9864-4f62-94be-4190bf6e216d}">
+	<object class="ADSRModulator" id="{fd3d2f3d-44b5-4ac5-b49d-acf2d35bd056}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>volume</value>
 		</property>
@@ -154,8 +143,20 @@
 			<value>-80</value>
 		</property>
 	</object>
+	<object class="MixerBusEffectChain" id="{aa6cdf98-3bca-468c-b1e7-33100603e627}">
+		<relationship name="effects">
+			<destination>{fe319801-28f3-4932-b2a4-14f1333949ce}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{190de51e-fd8f-4bf3-b3f9-f6ecca046616}">
+		<relationship name="automators">
+			<destination>{ac305af1-ee40-48f1-9228-59e1e1eedad9}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusFader" id="{14821883-9772-404c-80fc-56af35e4de12}" />
 	<object class="MixerBusEffectChain" id="{b4d302b7-4e0a-44e9-b73a-41d784b83799}">
 		<relationship name="effects">
+			<destination>{9ba0e8dc-4958-4e2e-8dcc-0318b2ebbaa1}</destination>
 			<destination>{d81cc2ac-9340-41fc-8fad-1311b6a609dd}</destination>
 		</relationship>
 	</object>
@@ -168,6 +169,11 @@
 		<relationship name="automationCurves">
 			<destination>{b954b9b7-a167-4da7-8828-2e16bd2f3a8b}</destination>
 		</relationship>
+	</object>
+	<object class="MultibandEqEffect" id="{9ba0e8dc-4958-4e2e-8dcc-0318b2ebbaa1}">
+		<property name="filterTypeA">
+			<value>3</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{d81cc2ac-9340-41fc-8fad-1311b6a609dd}" />
 	<object class="AutomationCurve" id="{b954b9b7-a167-4da7-8828-2e16bd2f3a8b}">
