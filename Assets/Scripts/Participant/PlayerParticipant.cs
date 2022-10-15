@@ -138,7 +138,11 @@ public class PlayerParticipant : Participant
         var ability = abilityAccessor(MythInPlay);
 
         // TODO: I don't think this is the right place for this check
-        if (MythInPlay.Stamina.Value < ability.staminaCost) return;
+        if (MythInPlay.Stamina.Value < ability.staminaCost)
+        {
+            UISFXManager.PlaySound("Ability Denied " + partyIndex);
+            return;
+        }
 
         SelectedMythCommandHandler.Command = new AbilityCommand(ability);
 

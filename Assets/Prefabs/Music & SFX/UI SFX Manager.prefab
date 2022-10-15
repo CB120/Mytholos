@@ -78,3 +78,9 @@ MonoBehaviour:
   - soundName: Nav Up-Left
     uiSFXPrefab: {fileID: 6836600694352447035, guid: b48d20668cc509c4fa3d02c5cbb405e6,
       type: 3}
+  - soundName: Ability Denied 0
+    uiSFXPrefab: {fileID: 106671828771309886, guid: c6dc8d3263362d643850e2078740b0e0,
+      type: 3}
+  - soundName: Ability Denied 1
+    uiSFXPrefab: {fileID: 2974248542123478264, guid: e28c2c27931226747a44273a2fd4f9ed,
+      type: 3}
