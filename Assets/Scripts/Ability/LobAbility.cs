@@ -6,6 +6,7 @@ using FMODUnity;
 
 public class LobAbility : Ability
 {
+    [Header("Lob Ability Fields")]
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] float strength;
     [SerializeField] private MeshRenderer rend;

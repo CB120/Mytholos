@@ -6,6 +6,7 @@ using Elements;
 
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
+    [Header("All-Ability Fields")]
     public SO_Ability ability;
     public Myth owningMyth;
     public ParticleSystem abilityPS;
@@ -16,7 +17,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     private Element element { get => ability.element.element;}
 
-    [Header("SFX")] //SFX stuff, added by Ethan
+    [Header("All-Ability SFX")] //SFX stuff, added by Ethan
     public GameObject takingDamageSFXPrefab;
     public float timeToDestroyTakingDamageSFX = 0.4f;
 

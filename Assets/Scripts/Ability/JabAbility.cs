@@ -6,6 +6,7 @@ namespace Myths
 {
     public class JabAbility : Ability
     {
+        [Header("Jab Ability Fields")]
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float jabDistance = 0.5f;
 

@@ -14,6 +14,7 @@ public class FlurryAbility : Ability
 
     Transform Collider;
 
+    [Header("Flurry Ability Fields")]
     [SerializeField] private ParticleSystem PS1;
     [SerializeField] private ParticleSystem PS2;
 

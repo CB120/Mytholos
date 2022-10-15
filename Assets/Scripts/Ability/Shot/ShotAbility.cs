@@ -9,6 +9,7 @@ public class ShotAbility : Ability
     private Transform ShotTransform;
     private Vector3 Direction;
 
+    [Header("Shot Ability Fields")]
     [SerializeField] private float speed;
 
     private float ShotTimer;

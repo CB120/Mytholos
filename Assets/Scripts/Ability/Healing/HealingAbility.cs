@@ -5,6 +5,7 @@ using Myths;
 
 public class HealingAbility : Ability
 {
+    [Header("Heal Ability Fields")]
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
     public float timeToDestroy { get => ability.timeToDestroy; }
