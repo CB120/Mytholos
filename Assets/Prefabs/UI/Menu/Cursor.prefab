@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3385278463038667301}
   - component: {fileID: 3385278463038667300}
   - component: {fileID: 3385278463038667303}
+  - component: {fileID: 1889478589536040425}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -89,10 +90,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34823ca097e6c347bc5df0e5a0f28a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaying: 1
+  animateSprite: 1
   sprites:
   - {fileID: -856324033, guid: a169823775617d3498532a8ac16e0fc3, type: 3}
   - {fileID: 2111516844, guid: a169823775617d3498532a8ac16e0fc3, type: 3}
   - {fileID: -856324033, guid: a169823775617d3498532a8ac16e0fc3, type: 3}
   - {fileID: 1229239990, guid: a169823775617d3498532a8ac16e0fc3, type: 3}
   frameLength: 0.1
-  isPlaying: 1
+  animateSineX: 0
+  animateSineY: 0
+  curveHeight: 0
+  curveFrequency: 0
+  curveOffset: 0
+--- !u!223 &1889478589536040425
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3385278463038667297}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0

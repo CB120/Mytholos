@@ -14,11 +14,13 @@ public class UIPartyMyth : MonoBehaviour
     [SerializeField] Image[] backgroundsToColour;
     [SerializeField] UIPartyStat statHealth;
     [SerializeField] UIPartyStat statSize;
-    [SerializeField] UIPartyStat statBrawn;
-    [SerializeField] UIPartyStat statPsyche;
+    //[SerializeField] UIPartyStat statBrawn;
+    //[SerializeField] UIPartyStat statPsyche;
+    [SerializeField] UIPartyStat statAttack;
     [SerializeField] UIPartyStat statAgility;
     [SerializeField] TextMeshProUGUI mythName;
-    [SerializeField] TextMeshProUGUI mythSubtitle;
+    //[SerializeField] TextMeshProUGUI mythSubtitle;
+    [SerializeField] Image elementIcon;
     public UIGameAbility[] abilities = new UIGameAbility[3];
     [SerializeField] RawImage portraitRender;
 
@@ -36,12 +38,15 @@ public class UIPartyMyth : MonoBehaviour
 
         statHealth.SetUpUI(mythData.myth.health);
         statSize.SetUpUI(mythData.myth.size);
-        statBrawn.SetUpUI(mythData.myth.brawn);
-        statPsyche.SetUpUI(mythData.myth.psyche);
+        //statBrawn.SetUpUI(mythData.myth.brawn);
+        //statPsyche.SetUpUI(mythData.myth.psyche);
+        statAttack.SetUpUI(mythData.myth.attack);
         statAgility.SetUpUI(mythData.myth.agility);
 
         mythName.text = mythData.myth.name;
-        mythSubtitle.text = mythComponent.element.name + " myth";
+        //mythSubtitle.text = mythComponent.element.name + " myth";
+        elementIcon.sprite = mythComponent.element.icon;
+        elementIcon.color = Color.Lerp(elementColour, Color.black, 0.5f);
 
         abilities[0].UpdateUI(mythData.northAbility);
         abilities[1].UpdateUI(mythData.westAbility);

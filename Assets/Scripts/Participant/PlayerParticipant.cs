@@ -17,6 +17,10 @@ public class PlayerParticipant : Participant
     public UnityEvent<int> SelectMyth = new();
     public UnityEvent<SO_Ability> SelectAbility = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
+    public UnityEvent<bool> FaceButtonNorth = new();
+    public UnityEvent<bool> FaceButtonWest = new();
+    public UnityEvent<bool> FaceButtonSouth = new();
+    public UnityEvent<bool> FaceButtonEast = new();
 
     //Properties
 
@@ -50,6 +54,7 @@ public class PlayerParticipant : Participant
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
+    public UIMenuNodeGraph currentShoulderMenuGraph; // Alternate menu that you navigate using L/R
     Coroutine cancelCoroutine;
     private Myth mythInPlay;
 
@@ -177,6 +182,11 @@ public class PlayerParticipant : Participant
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input RIGHT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+
+        // If it works it works
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
     }
 
     public void NavigateLeft(InputAction.CallbackContext context)
@@ -185,16 +195,39 @@ public class PlayerParticipant : Participant
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input LEFT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+
+        // If it works it works
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+    }
+
+    public void NavigateRightShoulder(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+    }
+
+    public void NavigateLeftShoulder(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
     }
 
     public void AssignNorth(InputAction.CallbackContext context)
     {
+        FaceButtonNorth.Invoke(context.performed);
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.North, partyIndex);
     }
     public void AssignWest(InputAction.CallbackContext context)
     {
+        FaceButtonWest.Invoke(context.performed);
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.West, partyIndex);
@@ -202,6 +235,8 @@ public class PlayerParticipant : Participant
 
     public void AssignSouth(InputAction.CallbackContext context)
     {
+        FaceButtonSouth.Invoke(context.performed);
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.South, partyIndex);
@@ -209,6 +244,8 @@ public class PlayerParticipant : Participant
 
     public void Submit(InputAction.CallbackContext context)
     {
+        //print("Submit " + (context.performed ? "pressed!" : "released!"));
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.Submit, partyIndex);
@@ -216,6 +253,10 @@ public class PlayerParticipant : Participant
 
     public void Cancel(InputAction.CallbackContext context)
     {
+        FaceButtonEast.Invoke(context.performed); // Not accurate on keyboard
+
+        //print("Cancel " + (context.performed ? "pressed!" : "released!"));
+
         if (!context.performed)
         {
             if (cancelCoroutine != null)
