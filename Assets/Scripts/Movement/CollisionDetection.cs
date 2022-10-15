@@ -59,6 +59,7 @@ public class CollisionDetection : MonoBehaviour
         {
             rigidbody.velocity = Vector3.zero;
         }
+
         
     }
 
