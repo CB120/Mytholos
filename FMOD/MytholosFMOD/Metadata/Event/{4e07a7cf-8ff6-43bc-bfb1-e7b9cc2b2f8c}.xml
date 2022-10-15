@@ -56,7 +56,11 @@
 			<destination>{b6e85508-4c05-439e-8017-7b976ef87079}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{20dae98a-273f-4e09-9d21-7ae0ffb23579}" />
+	<object class="EventAutomatableProperties" id="{20dae98a-273f-4e09-9d21-7ae0ffb23579}">
+		<property name="maximumDistance">
+			<value>1000</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{2e8f25d9-5a26-4f6e-b541-8bf2b480f425}" />
 	<object class="GroupTrack" id="{64c0356b-dc93-4f65-ab2f-7455afd71251}">
 		<relationship name="modules">
@@ -178,7 +182,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{731929d2-429d-4fa5-aa79-ae2b9cc4477d}" />
 	<object class="MixerBusFader" id="{b806aabb-7f55-4fc7-af02-337e6a336569}" />
-	<object class="SpatialiserEffect" id="{89254535-396b-4b27-a79d-afe853a11300}" />
+	<object class="SpatialiserEffect" id="{89254535-396b-4b27-a79d-afe853a11300}">
+		<property name="maximumDistance">
+			<value>1000</value>
+		</property>
+	</object>
 	<object class="MultibandEqEffect" id="{a4e9aaac-b0d6-471d-8d56-4671be86225a}">
 		<property name="filterTypeA">
 			<value>4</value>

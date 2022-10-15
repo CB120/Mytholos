@@ -53,6 +53,9 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   ParticleSystem: {fileID: 2059007022911807411}
   BeamExtender: {fileID: 7226831236815921946}
   BeamLength: 20

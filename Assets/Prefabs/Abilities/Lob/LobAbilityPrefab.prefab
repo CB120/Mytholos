@@ -152,6 +152,9 @@ MonoBehaviour:
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 4078637225773376301, guid: 4f3f756d20dead843af40b3ce1d23a0f,
     type: 3}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   rigidBody: {fileID: 4679095279651952454}
   strength: 1
   rend: {fileID: 4679095279651952452}

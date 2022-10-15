@@ -16,6 +16,10 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     private Element element { get => ability.element.element;}
 
+    [Header("SFX")] //SFX stuff, added by Ethan
+    public GameObject takingDamageSFXPrefab;
+    public float timeToDestroyTakingDamageSFX = 0.4f;
+
 
     virtual public void Start()
     {
@@ -55,6 +59,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 myth.effectController.RemoveIceOvershield();
             }
 
+            GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
+            Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
         }
         else
         {
