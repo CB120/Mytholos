@@ -95,11 +95,14 @@ public class PlayerParticipant : Participant
 
     public void UseAbilityNorth(InputAction.CallbackContext context)
     {
+        FaceButtonNorth.Invoke(context.performed);
         UseAbility(context, myth => myth.northAbility);
     }
 
     public void UseAbilityEast(InputAction.CallbackContext context)
     {
+        FaceButtonEast.Invoke(context.performed);
+
         if (!isAvailableToDodge) return;
         if (!context.performed) return;
 
@@ -118,11 +121,13 @@ public class PlayerParticipant : Participant
 
     public void UseAbilitySouth(InputAction.CallbackContext context)
     {
+        FaceButtonSouth.Invoke(context.performed);
         UseAbility(context, myth => myth.southAbility);
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
+        FaceButtonWest.Invoke(context.performed);
         UseAbility(context, myth => myth.westAbility);
     }
 

@@ -9,6 +9,7 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private TextMeshProUGUI abilityNameTMP;
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
+    [SerializeField] private UIPartyStat staminaUIStat;
     [SerializeField] private Image[] imagesToColour;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Color defaultColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
@@ -26,23 +27,26 @@ public class UIGameAbility : MonoBehaviour
                 if (elementIcon)
                     elementIcon.sprite = ability.element.icon;
                 foreach (Image image in imagesToColour)
-                    image.color = elementColor;
+                    image.color = new Color(elementColor.r, elementColor.g, elementColor.b, image.color.a);
             }
-            //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-            staminaCostTMP.text = Mathf.RoundToInt(ability.staminaCost) + ""; // For sprint 2, we'll just show the damage
+            if (staminaUIStat)
+                staminaUIStat.SetUpUI(ability.staminaCost / 100);
         }
         else
         {
             if (abilityNameTMP)
                 abilityNameTMP.text = "-";
-            // TODO: Should give designer control over the default element colour
+
             if (defaultIcon)
                 elementIcon.sprite = defaultIcon;
+
             elementIcon.color = defaultColor;
+
             foreach (Image image in imagesToColour)
-                image.color = defaultColor;
-            //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-            staminaCostTMP.text =  ""; // For sprint 2, we'll just show the damage
+                image.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, image.color.a);
+
+            if (staminaUIStat)
+                staminaUIStat.SetUpUI(0);
         }
     }
 
