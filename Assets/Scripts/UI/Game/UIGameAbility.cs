@@ -10,6 +10,8 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
     [SerializeField] private Image[] imagesToColour;
+    [SerializeField] private Sprite defaultIcon;
+    [SerializeField] private Color defaultColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
 
     public void UpdateUI(SO_Ability ability)
     {
@@ -17,14 +19,14 @@ public class UIGameAbility : MonoBehaviour
         {
             if (abilityNameTMP)
                 abilityNameTMP.text = ability.name;
-            // TODO: Should give designer control over the default element colour
-            elementIcon.color = ability.element == null ? new Color(0, 0, 0, 0.2f) : ability.element.color;
+            Color elementColor = ability.element == null ? defaultColor : ability.element.color;
+            elementIcon.color = elementColor;
             if (ability.element)
             {
                 if (elementIcon)
                     elementIcon.sprite = ability.element.icon;
                 foreach (Image image in imagesToColour)
-                    image.color = ability.element.color;
+                    image.color = elementColor;
             }
             //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
             staminaCostTMP.text = Mathf.RoundToInt(ability.staminaCost) + ""; // For sprint 2, we'll just show the damage
@@ -34,7 +36,11 @@ public class UIGameAbility : MonoBehaviour
             if (abilityNameTMP)
                 abilityNameTMP.text = "-";
             // TODO: Should give designer control over the default element colour
-            elementIcon.color = new Color(0.0f, 0.0f, 0.0f, 0.2f);
+            if (defaultIcon)
+                elementIcon.sprite = defaultIcon;
+            elementIcon.color = defaultColor;
+            foreach (Image image in imagesToColour)
+                image.color = defaultColor;
             //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
             staminaCostTMP.text =  ""; // For sprint 2, we'll just show the damage
         }

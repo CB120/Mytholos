@@ -193,6 +193,9 @@ public class UIPartyManager : MonoBehaviour
         }
 
         UpdateMythSelectIcons();
+
+        // Pull abilities list back up to the top
+        (playerAbilityGraphs[teamIndex] as UIMenuNodeList).ResetScroll();
     }
 
     public void AssignAbility(int teamIndex, int assignedIndex, SO_Ability ability)
@@ -668,6 +671,10 @@ public class UIPartyManager : MonoBehaviour
             mythSelectionGraph.playerCursors[1].gameObject.SetActive(false);
         }
 
+        // Save arrows in the ability lists from getting weird
+        foreach (UIMenuNodeList list in playerAbilityGraphs)
+            list.EnableArrowAnimators(false);
+
         // Animate transition over time
         while (direction > 0 ? timer < duration : timer > 0) // While timer is yet to reach max if going forward, or if timer is yet to reach min if going backward
         {
@@ -701,6 +708,13 @@ public class UIPartyManager : MonoBehaviour
             mythSelectionGraph.playerCursors[1].gameObject.SetActive(true);
 
             mythSelectionGraph.UpdateCursorTransforms();
+        }
+
+        // Save arrows in the ability lists from getting weird
+        foreach (UIMenuNodeList list in playerAbilityGraphs)
+        {
+            list.EnableArrowAnimators(true);
+            list.ResetScroll();
         }
 
         EnterExitGraphsPerNextStage(nextStage);
