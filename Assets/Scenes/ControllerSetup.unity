@@ -4063,6 +4063,7 @@ MonoBehaviour:
   abilityNameTMP: {fileID: 4720286491826328108}
   elementIcon: {fileID: 4720286491693681088}
   staminaCostTMP: {fileID: 4720286493116573927}
+  imagesToColour: []
 --- !u!114 &3252802489184809811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6861,6 +6862,7 @@ MonoBehaviour:
   abilityNameTMP: {fileID: 7071550395929552279}
   elementIcon: {fileID: 7071550396065349243}
   staminaCostTMP: {fileID: 7071550395172839260}
+  imagesToColour: []
 --- !u!114 &4366341903615322963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6876,6 +6878,7 @@ MonoBehaviour:
   abilityNameTMP: {fileID: 7071550395753464412}
   elementIcon: {fileID: 7071550395888212400}
   staminaCostTMP: {fileID: 7071550395465808023}
+  imagesToColour: []
 --- !u!114 &4720286491409095952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10416,6 +10419,7 @@ MonoBehaviour:
   abilityNameTMP: {fileID: 1585468687843215161}
   elementIcon: {fileID: 1585468687979011285}
   staminaCostTMP: {fileID: 1585468689200578034}
+  imagesToColour: []
 --- !u!114 &5241022364655143421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10431,6 +10435,7 @@ MonoBehaviour:
   abilityNameTMP: {fileID: 1585468687549833458}
   elementIcon: {fileID: 1585468687684582174}
   staminaCostTMP: {fileID: 1585468689375959609}
+  imagesToColour: []
 --- !u!1001 &5496399834104697233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11748,6 +11753,7 @@ MonoBehaviour:
   abilityNameTMP: {fileID: 3864745229306091337}
   elementIcon: {fileID: 3864745229172395173}
   staminaCostTMP: {fileID: 3864745229085535618}
+  imagesToColour: []
 --- !u!222 &7784399409698366796
 CanvasRenderer:
   m_ObjectHideFlags: 0

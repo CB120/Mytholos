@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Behaviour = Myths.Behaviour;
+using FMODUnity;
 
 namespace Commands.Behaviours
 {   
@@ -12,6 +13,10 @@ namespace Commands.Behaviours
 
         private StunService stunService;
         [SerializeField] private CollisionDetection movementController;
+
+        [Header("SFX")]
+        [SerializeField] GameObject stunnedSFXprefab; //SFX, added by Ethan
+        [SerializeField] float timeToDestroySFX = 4f;
 
         private float stunTime;
         protected override void OnEnable()
@@ -28,6 +33,10 @@ namespace Commands.Behaviours
             stunService = mythCommandHandler.Command as StunService;
             //Debug.Log("Is this activating");
             Invoke("startStun", 0.1f);
+
+            //SFX, added by Ethan
+            GameObject sfxGameObject = Instantiate(stunnedSFXprefab, transform.position, Quaternion.identity);
+            Destroy(sfxGameObject, timeToDestroySFX);
         }
 
         protected override void OnDisable()
@@ -59,7 +68,5 @@ namespace Commands.Behaviours
             mythCommandHandler.Command = null;
             stunComplete.Invoke();
         }
-
-        
     }
 }

@@ -531,6 +531,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
+  stunnedSFXprefab: {fileID: 8808833398103444868, guid: 2c2989572fa4057418808aab84de23e9,
+    type: 3}
+  timeToDestroySFX: 4
 --- !u!114 &5886717739620653941
 MonoBehaviour:
   m_ObjectHideFlags: 0
