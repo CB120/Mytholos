@@ -83,29 +83,23 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
-    public void swappingDelay()
+    public void setSwappingTarget(GameObject swappingInMyth, int Index)
     {
-        Invoke("setSwappingTarget", 0.2f);
-    }
+        if(Index == 0)
+        {
+            Team1ActiveMyth = swappingInMyth;
+            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
+            swappingInMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
+        }
+        if(Index == 1)
+        {
+            Team2ActiveMyth = swappingInMyth;
+            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
+            swappingInMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
+        }
 
-    private void setSwappingTarget()
-    {
-        for (int i = 0; i < Party1.Count; i++)
-        {
-            if(Party1[i].gameObject.activeInHierarchy == true)
-            {
-                Team1ActiveMyth = Party1[i];
-            }
-            if(Party2[i].gameObject.activeInHierarchy == true)
-            {
-                Team2ActiveMyth = Party2[i];
-            }
-        }
-        if (Team1ActiveMyth != null && Team2ActiveMyth != null)
-        {
-            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
-            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
-        }
+        
+
     }
 
     void SpawnMyth(MythData mythData, int participantIndex)
@@ -128,7 +122,7 @@ public class PartyBuilder : MonoBehaviour
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
         
         
-        if (participantIndex == 1)
+        if (participantIndex == 0)
         {
             Party1.Add(newMythGameObject);
         }

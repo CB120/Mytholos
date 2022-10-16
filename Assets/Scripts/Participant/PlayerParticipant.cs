@@ -157,15 +157,30 @@ public class PlayerParticipant : Participant
     public void SwitchLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
-        SwapReserveAtIndex(0);
+        SelectedMythCommandHandler.Command = new SwapCommand();
+        if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+        {
+            swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
+            swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
+            swapCommand.sendingPlayer = this;
+            swapCommand.TriggerIndex = 0;
+        }
+        //SwapReserveAtIndex(0);
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
-        SwapReserveAtIndex(1);
+        SelectedMythCommandHandler.Command = new SwapCommand();
+        if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+        {
+            swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
+            swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
+            swapCommand.sendingPlayer = this;
+            swapCommand.TriggerIndex = 1;
+            //SwapReserveAtIndex(1);
+        }
+        //SwapReserveAtIndex(1);
     }
 
     #endregion
@@ -304,13 +319,14 @@ public class PlayerParticipant : Participant
 
     /*** Swapping ***/
     #region Swapping
-    private void SwapReserveAtIndex(int index)
+    public void SwapReserveAtIndex(int index)
     {
         if (!isAvailableToSwap) return;
         if (mythsInReserve[index].Health.Value == 0) return;
         StartSwapCooldown();
-        var position = MythInPlay.transform.position;
         
+        var position = MythInPlay.transform.position;
+
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
 
         MythInPlay.transform.position = position;
