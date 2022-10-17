@@ -586,6 +586,15 @@ MonoBehaviour:
   swapTime: 2
   ActiveMythController: {fileID: 0}
   winState: {fileID: 0}
+  swapStartSFXPrefabLeft: {fileID: 3492036811386516792, guid: 683d92629e8ca754fb5f5bcb6b80b862,
+    type: 3}
+  swapEndSFXPrefabLeft: {fileID: 2072431530991618130, guid: 57f5f08b5f3da0c4cbdbb069ccf8d1f5,
+    type: 3}
+  swapStartSFXPrefabRight: {fileID: 1571169821902959856, guid: 8a0f89808b9cdf44a85685b85d5ba866,
+    type: 3}
+  swapEndSFXPrefabRight: {fileID: 5315541126662372785, guid: 2234edc87b09fa44d82cad8c32cf4df6,
+    type: 3}
+  timeToDestroySwapSFX: 0.3
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0

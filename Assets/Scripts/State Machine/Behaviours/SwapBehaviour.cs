@@ -1,3 +1,4 @@
+using Myths;
 using UnityEngine;
 using UnityEngine.Events;
 using Behaviour = Myths.Behaviour;
@@ -15,11 +16,19 @@ namespace Commands.Behaviours
         private float timer;
         private SwapCommand swapCommand;
 
+        [Header("SFX")]
+        public GameObject swapStartSFXPrefabLeft;
+        public GameObject swapEndSFXPrefabLeft;
+        public GameObject swapStartSFXPrefabRight;
+        public GameObject swapEndSFXPrefabRight;
+        public float timeToDestroySwapSFX = 0.3f;
+        int partyIndex = 0;
 
         private void Awake()
         {
             ActiveMythController = GameObject.FindGameObjectWithTag("PartyBuilder");
         }
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -27,11 +36,18 @@ namespace Commands.Behaviours
             // Start the Animation
             Debug.Log("Swapping!");
             timer = 0;
+
+            // SFX
+            partyIndex = gameObject.GetComponentInParent<Myth>().partyIndex; // SFX
+
+            GameObject selectedPrefab = swapStartSFXPrefabLeft;
+            if (partyIndex == 1) selectedPrefab = swapStartSFXPrefabRight;
+            GameObject swapStartSFX = Instantiate(selectedPrefab, Vector3.zero, Quaternion.identity);
+            Destroy(swapStartSFX, timeToDestroySwapSFX);
         }
 
         private void Update()
         {
-            
             if(timer < swapTime)
             {
                 timer += Time.deltaTime;
@@ -50,6 +66,12 @@ namespace Commands.Behaviours
                 swapCommand.sendingPlayer.SwapReserveAtIndex(swapCommand.TriggerIndex);
                 mythCommandHandler.Command = null;
                 swapComplete.Invoke();
+
+                // SFX
+                GameObject selectedPrefab = swapEndSFXPrefabLeft;
+                if (partyIndex == 1) selectedPrefab = swapEndSFXPrefabRight;
+                GameObject swapStartSFX = Instantiate(selectedPrefab, Vector3.zero, Quaternion.identity);
+                Destroy(swapStartSFX, timeToDestroySwapSFX);
             }
         }
     }
