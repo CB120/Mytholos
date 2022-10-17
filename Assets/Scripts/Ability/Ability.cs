@@ -44,7 +44,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (!isInParty)
         {
-            var finalDamage = damage * DamageMultiplier * myth.AttackStat / myth.DefenceStat;
+            var finalDamage = damage * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
            
             if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
             {
@@ -226,7 +226,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.Burn(1, ability.element.buffLength);
+        myth.effectController.Burn(5, ability.element.buffLength);
         myth.effectController.ActivateBuff(Element.Fire, !isInParty);
     }
     #endregion
