@@ -557,6 +557,8 @@ MonoBehaviour:
     volume: 90
   - name: UI SFX Bus Volume
     volume: 90
+  - name: Debris SFX Bus Volume
+    volume: 90
 --- !u!1 &443856805
 GameObject:
   m_ObjectHideFlags: 0
