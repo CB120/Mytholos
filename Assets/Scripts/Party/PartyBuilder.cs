@@ -27,7 +27,6 @@ public class PartyBuilder : MonoBehaviour
     private void Awake()
     {
         allParticipantData = allParticipantDataService.GetAllParticipantData();
-
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
@@ -97,9 +96,6 @@ public class PartyBuilder : MonoBehaviour
             Team1ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
             swappingInMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
         }
-
-        
-
     }
 
     void SpawnMyth(MythData mythData, int participantIndex)
@@ -145,6 +141,19 @@ public class PartyBuilder : MonoBehaviour
         mythCounter ++;
     }
 
+    public int GetRemainingMyths(int teamIndex) // dont know if i need this anymore ~ Christian
+    {
+        int remaining;
+        if(teamIndex == 0)
+        {
+            remaining = winState.team1Remaining;
+        } else 
+        {
+            remaining = winState.team2Remaining;
+        }
+        Debug.Log("Remaining = " + remaining);
+        return remaining;
+    }
 
 
     //Remove after playtest

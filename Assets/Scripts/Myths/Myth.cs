@@ -63,21 +63,13 @@ namespace Myths
             if (mythCommandHandler.Command is KnockbackService knockbackService)
             {
                 Debug.Log(abilityStunTime);
-                //Debug.Log("Setting values in myth (Knockback step 2)");
                 knockbackService.abilitySender = sendingMyth;
                 knockbackService.senderStrength = myth.size;
                 knockbackService.knockbackStrength = abilityKnockback;
                 knockbackService.stunTime = abilityStunTime;
-                //Debug.Log(knockbackService.abilitySender + " " + this.gameObject);
             }
             
         }
-
-        /*private void FixedUpdate()
-        {
-            Debug.Log(this.gameObject.transform.position.y + " Y Position");
-            // Used for debugging the flying issue
-        }*/ 
 
         public void Stun(float abilityStunTime)
         {

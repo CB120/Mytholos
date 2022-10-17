@@ -1366,7 +1366,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1744497322}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1744497323}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b46435732ebda64397cb586706ec6ab, type: 3}
@@ -2286,6 +2286,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b074b28048e94164e95294786fd9d556, type: 3}
+--- !u!1 &1744497323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 380498522844928528, guid: b074b28048e94164e95294786fd9d556,
+    type: 3}
+  m_PrefabInstance: {fileID: 1744497322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1783465722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 995921980033662124, guid: c17cf5ba58448ad4da03910679968464,
@@ -2567,6 +2573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Party Builder
       objectReference: {fileID: 0}
+    - target: {fileID: 1472210606597478711, guid: 09e246012724a3f48adb32f240a1d46e,
+        type: 3}
+      propertyPath: Results
+      value: 
+      objectReference: {fileID: 1744497323}
     - target: {fileID: 1472210606597478711, guid: 09e246012724a3f48adb32f240a1d46e,
         type: 3}
       propertyPath: winState

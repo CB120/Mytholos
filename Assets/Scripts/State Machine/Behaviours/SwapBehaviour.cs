@@ -10,7 +10,8 @@ namespace Commands.Behaviours
         public UnityEvent swapFailed = new();
         public UnityEvent swapComplete = new();
         [SerializeField] private float swapTime;
-        private GameObject ActiveMythController;
+        [SerializeField] private GameObject ActiveMythController;
+        [SerializeField] private WinState winState;
         private float timer;
         private SwapCommand swapCommand;
 
@@ -30,6 +31,7 @@ namespace Commands.Behaviours
 
         private void Update()
         {
+            
             if(timer < swapTime)
             {
                 timer += Time.deltaTime;
@@ -37,7 +39,13 @@ namespace Commands.Behaviours
             } else if (timer >= swapTime)
             {
                 Debug.Log("Swap complete!");
-                ActiveMythController.GetComponent<PartyBuilder>().setSwappingTarget(swapCommand.SwappingInMyth, swapCommand.PartyIndex);
+                if (ActiveMythController != null)
+                {
+                    ActiveMythController.GetComponent<PartyBuilder>().setSwappingTarget(swapCommand.SwappingInMyth, swapCommand.PartyIndex);
+                } else
+                {
+                    Debug.Log("Could not find the PartyBuilder to set the active myth on " + this.gameObject.name);
+                }
 
                 swapCommand.sendingPlayer.SwapReserveAtIndex(swapCommand.TriggerIndex);
                 mythCommandHandler.Command = null;

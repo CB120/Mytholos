@@ -157,30 +157,42 @@ public class PlayerParticipant : Participant
     public void SwitchLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        SelectedMythCommandHandler.Command = new SwapCommand();
-        if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+        if (mythsInReserve[0].Health.Value == 0) return;
+        if (MythInPlay.Health.Value > 0)
         {
-            swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
-            swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
-            swapCommand.sendingPlayer = this;
-            swapCommand.TriggerIndex = 0;
+            SelectedMythCommandHandler.Command = new SwapCommand();
+            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            {
+                swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
+                swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
+                swapCommand.sendingPlayer = this;
+                swapCommand.TriggerIndex = 0;
+            }
+        } else
+        {
+            SwapReserveAtIndex(0);
         }
-        //SwapReserveAtIndex(0);
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        SelectedMythCommandHandler.Command = new SwapCommand();
-        if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+        if (mythsInReserve[1].Health.Value == 0) return;
+        if (MythInPlay.Health.Value > 0)
         {
-            swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
-            swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
-            swapCommand.sendingPlayer = this;
-            swapCommand.TriggerIndex = 1;
-            //SwapReserveAtIndex(1);
+            SelectedMythCommandHandler.Command = new SwapCommand();
+            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            {
+                swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
+                swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
+                swapCommand.sendingPlayer = this;
+                swapCommand.TriggerIndex = 1;
+            }
         }
-        //SwapReserveAtIndex(1);
+        else
+        {
+            SwapReserveAtIndex(1);
+        }
     }
 
     #endregion
