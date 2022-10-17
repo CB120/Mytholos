@@ -17,9 +17,16 @@ public class PlayerParticipant : Participant
     public UnityEvent<int> SelectMyth = new();
     public UnityEvent<SO_Ability> SelectAbility = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
+    public UnityEvent<bool> FaceButtonNorth = new();
+    public UnityEvent<bool> FaceButtonWest = new();
+    public UnityEvent<bool> FaceButtonSouth = new();
+    public UnityEvent<bool> FaceButtonEast = new();
 
     //Properties
-
+    private bool isAvailableToSwap = true;
+    private bool isAvailableToDodge = true;
+    [SerializeField] private float swappingCooldown = 2f;
+    [SerializeField] private float dodgeCooldown = 2.1f;
 
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
@@ -50,6 +57,7 @@ public class PlayerParticipant : Participant
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
+    public UIMenuNodeGraph currentShoulderMenuGraph; // Alternate menu that you navigate using L/R
     Coroutine cancelCoroutine;
     private Myth mythInPlay;
 
@@ -92,14 +100,19 @@ public class PlayerParticipant : Participant
 
     public void UseAbilityEast(InputAction.CallbackContext context)
     {
+        if (!isAvailableToDodge) return;
         if (!context.performed) return;
 
         if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        {
             SelectedMythCommandHandler.Command = new DodgeCommand(moveCommand.input);   // Dodge in the input direction if the left stick is currently in use
+            StartDodgeCooldown();
+        }
         else
         {
             Vector3 forwardVector = mythInPlay.transform.rotation * Vector3.forward;
             SelectedMythCommandHandler.Command = new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized);    // Else dodge in direction myth is facing
+            StartDodgeCooldown();
         }
     }
 
@@ -130,7 +143,11 @@ public class PlayerParticipant : Participant
         var ability = abilityAccessor(MythInPlay);
 
         // TODO: I don't think this is the right place for this check
-        if (MythInPlay.Stamina.Value < ability.staminaCost) return;
+        if (MythInPlay.Stamina.Value < ability.staminaCost)
+        {
+            UISFXManager.PlaySound("Ability Denied " + partyIndex);
+            return;
+        }
 
         SelectedMythCommandHandler.Command = new AbilityCommand(ability);
 
@@ -140,15 +157,42 @@ public class PlayerParticipant : Participant
     public void SwitchLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
-        SwapReserveAtIndex(0);
+        if (mythsInReserve[0].Health.Value == 0) return;
+        if (MythInPlay.Health.Value > 0)
+        {
+            SelectedMythCommandHandler.Command = new SwapCommand();
+            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            {
+                swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
+                swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
+                swapCommand.sendingPlayer = this;
+                swapCommand.TriggerIndex = 0;
+            }
+        } else
+        {
+            SwapReserveAtIndex(0);
+        }
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
-        SwapReserveAtIndex(1);
+        if (mythsInReserve[1].Health.Value == 0) return;
+        if (MythInPlay.Health.Value > 0)
+        {
+            SelectedMythCommandHandler.Command = new SwapCommand();
+            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            {
+                swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
+                swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
+                swapCommand.sendingPlayer = this;
+                swapCommand.TriggerIndex = 1;
+            }
+        }
+        else
+        {
+            SwapReserveAtIndex(1);
+        }
     }
 
     #endregion
@@ -177,6 +221,11 @@ public class PlayerParticipant : Participant
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input RIGHT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+
+        // If it works it works
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
     }
 
     public void NavigateLeft(InputAction.CallbackContext context)
@@ -185,16 +234,39 @@ public class PlayerParticipant : Participant
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input LEFT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
         currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+
+        // If it works it works
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+    }
+
+    public void NavigateRightShoulder(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+    }
+
+    public void NavigateLeftShoulder(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (currentShoulderMenuGraph == null) return;
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
     }
 
     public void AssignNorth(InputAction.CallbackContext context)
     {
+        FaceButtonNorth.Invoke(context.performed);
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.North, partyIndex);
     }
     public void AssignWest(InputAction.CallbackContext context)
     {
+        FaceButtonWest.Invoke(context.performed);
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.West, partyIndex);
@@ -202,6 +274,8 @@ public class PlayerParticipant : Participant
 
     public void AssignSouth(InputAction.CallbackContext context)
     {
+        FaceButtonSouth.Invoke(context.performed);
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.South, partyIndex);
@@ -209,6 +283,8 @@ public class PlayerParticipant : Participant
 
     public void Submit(InputAction.CallbackContext context)
     {
+        //print("Submit " + (context.performed ? "pressed!" : "released!"));
+
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.Submit, partyIndex);
@@ -216,6 +292,10 @@ public class PlayerParticipant : Participant
 
     public void Cancel(InputAction.CallbackContext context)
     {
+        FaceButtonEast.Invoke(context.performed); // Not accurate on keyboard
+
+        //print("Cancel " + (context.performed ? "pressed!" : "released!"));
+
         if (!context.performed)
         {
             if (cancelCoroutine != null)
@@ -249,17 +329,45 @@ public class PlayerParticipant : Participant
 
     #endregion
 
-    private void SwapReserveAtIndex(int index)
+    /*** Swapping ***/
+    #region Swapping
+    public void SwapReserveAtIndex(int index)
     {
+        if (!isAvailableToSwap) return;
         if (mythsInReserve[index].Health.Value == 0) return;
+        StartSwapCooldown();
         
         var position = MythInPlay.transform.position;
-        
+
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
 
         MythInPlay.transform.position = position;
     }
 
+    
+    private void StartSwapCooldown()
+    {
+        isAvailableToSwap = false;
+           Invoke("EndSwapCooldown", swappingCooldown);
+    }
+
+    private void StartDodgeCooldown()
+    {
+        isAvailableToDodge = false;
+            Invoke("EndDodgeCooldown", dodgeCooldown);
+    }
+
+    private void EndSwapCooldown()
+    {
+        isAvailableToSwap = true;
+    }
+
+    private void EndDodgeCooldown()
+    {
+        isAvailableToDodge = true;
+    }
+
+    #endregion
     public void Initialise()
     {
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);

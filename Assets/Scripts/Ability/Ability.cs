@@ -6,6 +6,7 @@ using Elements;
 
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
+    [Header("All-Ability Fields")]
     public SO_Ability ability;
     public Myth owningMyth;
     public ParticleSystem abilityPS;
@@ -15,6 +16,10 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     public float DamageMultiplier { get; set; } = 1;
 
     private Element element { get => ability.element.element;}
+
+    [Header("All-Ability SFX")] //SFX stuff, added by Ethan
+    public GameObject takingDamageSFXPrefab;
+    public float timeToDestroyTakingDamageSFX = 0.4f;
 
 
     virtual public void Start()
@@ -55,6 +60,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 myth.effectController.RemoveIceOvershield();
             }
 
+            GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
+            Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
         }
         else
         {

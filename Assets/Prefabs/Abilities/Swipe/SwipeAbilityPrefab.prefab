@@ -208,6 +208,9 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   trail: {fileID: 6915440664071520567}
 --- !u!95 &1478457823589754531
 Animator:

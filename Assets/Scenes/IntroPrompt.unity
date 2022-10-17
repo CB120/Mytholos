@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 1674311601}
   - component: {fileID: 1674311600}
   m_Layer: 0
-  m_Name: MagicalManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,18 +411,6 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4cf3e7c2-15db-4bd6-8059-7df88cf8ddf5
-    m_ActionName: Player/Look
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 44db108f-9d27-4a10-9110-16b63986c6e4
-    m_ActionName: Player/Select Left[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: de2d6252-0ce5-42a5-865a-8bbe6ebba150
-    m_ActionName: Player/Select Right[/Keyboard/rightShift]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 1b80c064-cd1a-4520-9625-8a58332da9d9
     m_ActionName: Player/UseAbilityNorth[/Keyboard/p]
   - m_PersistentCalls:
@@ -437,30 +425,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3b697c39-2e8f-4add-8104-a397ddded3b4
     m_ActionName: Player/UseAbilityWest[/Keyboard/l]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
-    m_ActionName: Player/MoveStrategyUp[/Keyboard/1]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8
-    m_ActionName: Player/MoveStrategyDown[/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 214d72e0-1ea5-458e-87dd-b8a187787715
-    m_ActionName: Player/MoveStrategyLeft[/Keyboard/3]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3d19a5dd-7245-4f9a-8fca-994186feb846
-    m_ActionName: Player/MoveStrategyRight[/Keyboard/4]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bbde4d9b-682a-445c-8a33-529b63ba26d5
-    m_ActionName: Player/SelectEnemyLeft[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0906f682-9854-4fb3-af50-07e55f6136c5
-    m_ActionName: Player/SelectEnemyRight[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1674311601}
@@ -545,6 +509,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: db782c80-ac34-4dce-be99-f9f000fb5b45
     m_ActionName: UI/AssignSouth[/Keyboard/u]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c21a6c4e-8cd4-46da-a124-142497c57f5d
+    m_ActionName: Player/Switch Reserve 1[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99e51151-6341-4ae5-b72c-5888b67f255c
+    m_ActionName: Player/Switch Reserve 2[/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 793d2e85-98d7-4379-a3f9-81200c358ee9
+    m_ActionName: UI/Start[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -984,7 +960,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 960, y: 540}
+  m_ReferenceResolution: {x: 640, y: 360}
   m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1169,7 +1145,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 960, y: 540}
+  m_ReferenceResolution: {x: 640, y: 360}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1259,10 +1235,10 @@ RectTransform:
   m_Father: {fileID: 4720286492787807328}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 960, y: 540}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4720286493426074905
 CanvasRenderer:

@@ -51,6 +51,9 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   PS1: {fileID: 4906144337773297651}
   PS2: {fileID: 4387546102326533768}
 --- !u!114 &1332762332547013186

@@ -331,6 +331,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99e51151-6341-4ae5-b72c-5888b67f255c
     m_ActionName: Player/Switch Reserve 2[/DualSenseGamepadHID/rightTrigger,/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: NavigateRightShoulder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f919ff23-eefc-4dd4-9676-44293e195ad5
+    m_ActionName: UI/NavigateRightShoulder
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: NavigateLeftShoulder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e1f40b0d-11e3-47d0-adfe-ddfcb87f21ed
+    m_ActionName: UI/NavigateLeftShoulder
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -361,3 +393,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   currentMenuGraph: {fileID: 0}
+  currentShoulderMenuGraph: {fileID: 0}

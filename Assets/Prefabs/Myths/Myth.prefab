@@ -128,7 +128,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &6040751574335777805
 GameObject:
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1511236549751959824}
   - component: {fileID: 7547223665843487771}
   - component: {fileID: 3802980452727524054}
+  - component: {fileID: 5886717739620653941}
   m_Layer: 6
   m_Name: Movement State Machine
   m_TagString: Untagged
@@ -273,6 +274,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  swapCommandReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5886717739620653941}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2326847374803901642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +388,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
+  dodgeSFXPrefab: {fileID: 5414215791629883969, guid: 7fd07fd40f09df64a87eabec0eb739ef,
+    type: 3}
+  timeToDestroyDodgeSFX: 1
 --- !u!114 &1511236549751959824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +534,58 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
+  stunnedSFXprefab: {fileID: 8808833398103444868, guid: 2c2989572fa4057418808aab84de23e9,
+    type: 3}
+  timeToDestroySFX: 4
+--- !u!114 &5886717739620653941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040751574335777805}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeae9ba270df1d14f922e00a9b9d1a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  mythCommandHandler: {fileID: -3291310522803648204}
+  dontAllowOtherCommands: 1
+  anim: {fileID: 0}
+  swapFailed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7547223665843487771}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  swapComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7869152638623657870}
+        m_TargetAssemblyTypeName: Commands.MythStateMachine, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9166940849690583412}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  swapTime: 2
+  ActiveMythController: {fileID: 0}
+  winState: {fileID: 0}
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +933,6 @@ GameObject:
   - component: {fileID: 8072052664142603967}
   - component: {fileID: 7428839973292417855}
   - component: {fileID: 3131205609304386058}
-  - component: {fileID: 6195943593850379723}
   - component: {fileID: 3518652285303723768}
   - component: {fileID: 6610304959912024817}
   - component: {fileID: 6450067431077666470}
@@ -871,6 +941,7 @@ GameObject:
   - component: {fileID: 3328760576734170970}
   - component: {fileID: 1496457094348944347}
   - component: {fileID: 5637322297209466938}
+  - component: {fileID: 6173289821993678817}
   m_Layer: 6
   m_Name: Myth
   m_TagString: Myth
@@ -939,24 +1010,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!135 &6195943593850379723
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9142296419116895834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!114 &3518652285303723768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,11 +1058,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ee5b8e37d4e9549916d81b0d230082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: {x: 0, y: -9.8, z: 0}
-  steepestSlope: 0.65
+  gravity: {x: 0, y: 0, z: 0}
+  steepestSlope: 1.25
   groundOnHorizontalMovement: 0
   hugGround: 0
   hugGroundDistance: 5
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7869152638623657870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,6 +1178,19 @@ MonoBehaviour:
     effectObject: {fileID: 3754040524866713557}
   rotateSpeed: 300
   MetalDefenceActive: 0
+--- !u!65 &6173289821993678817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.731205, z: 1}
+  m_Center: {x: 0, y: 0.365, z: 0}
 --- !u!1001 &671719258101206772
 PrefabInstance:
   m_ObjectHideFlags: 0

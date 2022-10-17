@@ -13,9 +13,9 @@ public class UIPartyStat : MonoBehaviour
         for (int i = 0; i < bars.Length; i++)
         {
             if (i < barsToFill)
-                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 1.0f);
+                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 0.99f);
             else
-                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 0.2f);
+                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 0.15f);
         }
     }
 }

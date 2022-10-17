@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,8 +58,6 @@ public class UISFXManager : MonoBehaviour
         // Private
     void SpawnSound(string sound)
     {
-        // Add check for 'skipped' Nodes here
-
         foreach (UISFXPair p in uiSFXpairs)
         {
             if (p.soundName == sound)

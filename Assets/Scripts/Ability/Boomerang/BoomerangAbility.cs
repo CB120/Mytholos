@@ -12,6 +12,7 @@ public class BoomerangAbility : Ability
 
     private bool Returning;
 
+    [Header("Boomerang Ability Fields")]
     [SerializeField] private float speed;
     [SerializeField] private float acceleration;
 

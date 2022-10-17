@@ -13,8 +13,18 @@ public class UINodeAbility : UIMenuNode // Not to be confused with UIPartyAbilit
 
     override public void OnAction(Action action, int playerNumber)
     {
+        if (action == Action.HoldCancel)
+            manager.ProgressToNextStage(0);
+
         if (action == Action.Start)
             manager.TryStartGame();
+
+        if (action == Action.Cancel)
+        {
+            manager.AssignAbility(playerNumber, -1, GetComponent<UIPartyAbility>().ability);
+            UISFXManager.PlaySound("Invalid");
+            return;
+        }
 
         int abilityIndex = -1;
         string soundToBePlayed = "Nothing";

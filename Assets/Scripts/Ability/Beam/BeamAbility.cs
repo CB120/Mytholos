@@ -7,6 +7,7 @@ public class BeamAbility : Ability
 {
     private float DurationTimer;
 
+    [Header("Beam Ability Fields")]
     [SerializeField] private ParticleSystem ParticleSystem;
 
     [SerializeField] private BeamExtender BeamExtender;

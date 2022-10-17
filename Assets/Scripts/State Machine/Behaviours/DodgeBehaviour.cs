@@ -15,22 +15,27 @@ namespace Myths.Behaviours
         [SerializeField] private CollisionDetection movementController;
         private DodgeCommand dodgeCommand;
 
-        private void Update()
-        {
+
+        [Header("SFX")]
+        public GameObject dodgeSFXPrefab;
+        public float timeToDestroyDodgeSFX = 1f;
+
+        //private void Update()
+        //{
             //Debug.Log($"{myth.name} used a dodge");
-        }
+        //}
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (myth.Stamina.Value < 35)
+            if (myth.Stamina.Value < 1)
             {
                 mythCommandHandler.Command = null;
                 DodgeComplete.Invoke();
                 return;
             }
             dodgeCommand = mythCommandHandler.Command as DodgeCommand;
-            myth.Stamina.Value -= 35;
+            myth.Stamina.Value -= 1;
             ActivateDodge();
         }
 
@@ -65,11 +70,13 @@ namespace Myths.Behaviours
             Invoke("KilliFrames", 0.33f);
             mythCommandHandler.Command = null;
             DodgeComplete.Invoke();
+
+            GameObject dodgeSFX = Instantiate(dodgeSFXPrefab, transform);
+            Destroy(dodgeSFX, timeToDestroyDodgeSFX);
         }
 
         private void KilliFrames()
         {
-
             movementController.SetTargetVelocity(Vector3.zero);
             myth.isInvulnerable = false;
         }

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4679095279651952457}
   - component: {fileID: 4679095279651952454}
   - component: {fileID: 4679095279651952455}
+  - component: {fileID: 7134872003891523616}
+  - component: {fileID: 2481768699243771247}
   m_Layer: 0
   m_Name: LobAbilityPrefab
   m_TagString: Untagged
@@ -150,6 +152,9 @@ MonoBehaviour:
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 4078637225773376301, guid: 4f3f756d20dead843af40b3ce1d23a0f,
     type: 3}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   rigidBody: {fileID: 4679095279651952454}
   strength: 1
   rend: {fileID: 4679095279651952452}
@@ -161,6 +166,71 @@ MonoBehaviour:
   childParticle: {fileID: 4078637225773376301, guid: 4f3f756d20dead843af40b3ce1d23a0f,
     type: 3}
   maxStrength: 10
+  explosionSFX: {fileID: 2481768699243771247}
+  groundHitSFXPrefab: {fileID: 6234452188925635033, guid: 17dbc803e4fa4c0439974b28e547b41f,
+    type: 3}
+  timeToDestroyGroundHit: 1.5
+  groundHitSFXVelocityThreshold: 5
+--- !u!114 &7134872003891523616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679095279651952448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1487243204
+      Data2: 1214088756
+      Data3: 859103921
+      Data4: -26710933
+    Path: event:/SFX/Abilities/Lob/Lob Cast
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2481768699243771247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679095279651952448}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1609374305
+      Data2: 1252509681
+      Data3: -1532464500
+      Data4: -1199163054
+    Path: event:/SFX/Abilities/Lob/Lob Explosion
+  Event: 
+  PlayEvent: 11
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &3111451814115449411
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,7 +29,15 @@ public class UINodeMyth : UIMenuNode
 
     override public void OnAction(Action action, int playerNumber)
     {
+        //print("Node myth OnAction! (" + action + ")");
+
         if (action == Action.Start)
             manager.TryStartGame();
+
+        if (action == Action.Submit)
+            manager.ConfirmPartyMember(playerNumber);
+
+        if (action == Action.Cancel)
+            manager.RemovePartyMember(playerNumber);
     }
 }

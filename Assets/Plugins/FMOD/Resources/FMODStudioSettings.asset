@@ -445,6 +445,7 @@ MonoBehaviour:
   Banks:
   - Ability SFX
   - Combat SFX
+  - Debris SFX
   - Music
   - UI SFX
   BanksToLoad: []

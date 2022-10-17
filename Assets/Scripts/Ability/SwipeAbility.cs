@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SwipeAbility : Ability
 {
+    [Header("Shot Ability Fields")]
     [SerializeField] private TrailRenderer trail;
 
     private void Awake()
