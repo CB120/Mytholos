@@ -24,25 +24,24 @@ public class BoomerangAbility : Ability
     [SerializeField] private TrailRenderer Trail1;
     [SerializeField] private TrailRenderer Trail2;
     [SerializeField] private TrailRenderer Trail3;
-    [SerializeField] private TrailRenderer Trail4;
+
+    [SerializeField] private Material FireMaterial;
+    [SerializeField] private Material WindMaterial;
+    [SerializeField] private Material ElectricMaterial;
+
+    private Material material;
 
     [SerializeField] private Renderer Renderer;
 
     #region Colours
     private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
-    private GradientColorKey FireEnd = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 1);
     private GradientColorKey ElectricStart = new GradientColorKey(new Color(1.0f, 0.97f, 0.0f), 0);
-    private GradientColorKey ElectricEnd = new GradientColorKey(new Color(1.0f, 0.97f, 0.0f), 1);
-    private GradientColorKey WindStart = new GradientColorKey(new Color(0.65f, 0.65f, 0.65f), 0);
-    private GradientColorKey WindEnd = new GradientColorKey(new Color(0.65f, 0.65f, 0.65f), 1);
+    private GradientColorKey WindStart = new GradientColorKey(new Color(1f, 1f, 1.0f), 0);
     #endregion
 
     private Element element { get => ability.element.element; }
 
     private GradientColorKey StartColor;
-    private GradientColorKey EndColor;
-
-    private Color ElementColor;
 
     // Start is called before the first frame update
     public override void Start()
@@ -58,11 +57,10 @@ public class BoomerangAbility : Ability
         SetColor();
         Trailgrad.SetKeys(new GradientColorKey[] { StartColor }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
 
-        Renderer.material.SetColor("_Color", ElementColor);
+        Renderer.material = material;
         Trail1.colorGradient = Trailgrad;
         Trail2.colorGradient = Trailgrad;
         Trail3.colorGradient = Trailgrad;
-        Trail4.colorGradient = Trailgrad;
     }
 
     // Update is called once per frame
@@ -120,19 +118,16 @@ public class BoomerangAbility : Ability
         switch (element)
         {
             case Element.Wind:
-                ElementColor = new Color(0.65f, 0.65f, 0.65f);
+                material = WindMaterial;
                 StartColor = WindStart;
-                EndColor = WindEnd;
                 break;
             case Element.Electric:
-                ElementColor= new Color(1.0f, 0.97f, 0.0f); 
+                material = ElectricMaterial;
                 StartColor = ElectricStart;
-                EndColor = ElectricEnd;
                 break;
             case Element.Fire:
-                ElementColor= new Color(0.68f, 0.06f, 0.0f);
+                material = FireMaterial;
                 StartColor = FireStart;
-                EndColor = FireEnd;
                 break;
         }
     }
