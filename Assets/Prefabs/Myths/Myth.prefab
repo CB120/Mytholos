@@ -388,6 +388,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementController: {fileID: 6450067431077666470}
+  dodgeSFXPrefab: {fileID: 5414215791629883969, guid: 7fd07fd40f09df64a87eabec0eb739ef,
+    type: 3}
+  timeToDestroyDodgeSFX: 1
 --- !u!114 &1511236549751959824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +584,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   swapTime: 2
+  ActiveMythController: {fileID: 0}
+  winState: {fileID: 0}
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0
