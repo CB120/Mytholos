@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Myths;
 
 public class UIGameAbility : MonoBehaviour
 {
@@ -13,8 +14,14 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private Image[] imagesToColour;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Color defaultColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
+    [SerializeField] private UISlider depletedSlider;
+    [SerializeField] private CanvasGroup canvasGroup;
+    Myth myth;
+    float abilityCost;
+    bool isDepleted;
+    bool doNotAnimate;
 
-    public void UpdateUI(SO_Ability ability)
+    public void UpdateUI(SO_Ability ability, Myth newMyth = null)
     {
         if (ability != null)
         {
@@ -48,6 +55,42 @@ public class UIGameAbility : MonoBehaviour
             if (staminaUIStat)
                 staminaUIStat.SetUpUI(0);
         }
+
+        if (newMyth != null)
+        {
+            // Remove old listener
+            if (myth != null)
+                myth.Stamina.valueChanged.RemoveListener(UpdateDepletionSlider);
+
+            abilityCost = ability.staminaCost / 100;
+            myth = newMyth;
+            myth.Stamina.valueChanged.AddListener(UpdateDepletionSlider);
+            isDepleted = true;
+            doNotAnimate = true;
+            UpdateDepletionSlider(myth.Stamina.ValuePercent);
+        }
+    }
+
+    void UpdateDepletionSlider(float percent)
+    {
+        bool wasDepleted = isDepleted;
+        isDepleted = percent < abilityCost;
+
+        if (wasDepleted && !isDepleted)
+        {
+            if (!doNotAnimate)
+                AnimateSelectedAbility();
+            else
+                doNotAnimate = false;
+
+            depletedSlider.UpdateSliderPercent(1);
+        }
+        else if (isDepleted)
+        {
+            depletedSlider.UpdateSliderPercent(percent / abilityCost);
+        }
+
+        canvasGroup.alpha = isDepleted ? 0.3f : 1;
     }
 
     public void AnimateSelectedAbility()

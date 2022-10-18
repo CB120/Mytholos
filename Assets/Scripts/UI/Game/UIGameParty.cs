@@ -108,16 +108,18 @@ public class UIGameParty : MonoBehaviour
         hoveringUI.SetMyth(myths[partyMemberNumber]);
 
         // Update the displayed abilities UI
-        DisplayAbilities(partyMemberNumber);
+        DisplayAbilities(participant, partyMemberNumber);
     }
 
     void SelectAbility(SO_Ability ability)
     {
+        // TODO: Do not animate the ability UI if the myth is currently engaged and will not actually use the attack (this doesn't get called if stamina is insufficient)
+
         if (abilityUIByAbilitySO.ContainsKey(ability) && abilitiesMenu.alpha > 0.0f)
             abilityUIByAbilitySO[ability].AnimateSelectedAbility();
     }
 
-    void DisplayAbilities(int partyMemberNumber = -1, float animationSpeed = 25.0f)
+    void DisplayAbilities(PlayerParticipant participant, int partyMemberNumber = -1, float animationSpeed = 25.0f)
     {
         //if (abilitiesMenuCoroutine != null)
         //{
@@ -133,7 +135,7 @@ public class UIGameParty : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
-            abilities[i].UpdateUI(ability);
+            abilities[i].UpdateUI(ability, myths[partyMemberNumber]);
             abilityUIByAbilitySO[ability] = abilities[i];
         }
 

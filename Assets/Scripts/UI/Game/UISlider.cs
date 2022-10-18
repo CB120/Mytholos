@@ -20,6 +20,8 @@ public class UISlider : MonoBehaviour
     bool isAnimating;
     float currentWaitTime;
 
+    //[SerializeField] bool maintainHeight;
+
     void OnEnable()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -63,6 +65,7 @@ public class UISlider : MonoBehaviour
                     ResizeSliderFill(ref animatedFill, prevPercent);
                     currentWaitTime = timeToWait;
                     isAnimating = true;
+                    animatedFill.gameObject.SetActive(true);
                 }
             }
 
@@ -73,7 +76,7 @@ public class UISlider : MonoBehaviour
     void ResizeSliderFill(ref RectTransform slider, float percent)
     {
         float width = Mathf.Abs(rectTransform.rect.x * 2) - sliderMargin * 2;
-        float height = rectTransform.sizeDelta.y - (sliderMargin * 2);
+        float height = rectTransform.sizeDelta.y == 0 ? Mathf.Abs(rectTransform.rect.y * 2) - sliderMargin * 2 : rectTransform.sizeDelta.y - (sliderMargin * 2);
         slider.sizeDelta = new Vector2(Mathf.CeilToInt(width * percent), height);
     }
 
@@ -91,7 +94,10 @@ public class UISlider : MonoBehaviour
         {
             // If the current percent is now greater than animatedFill, end the animation (animatedFill should only ever animate downwards/decrease)
             if (currentPercent > currentAnimatedPercent)
+            {
                 isAnimating = false;
+                animatedFill.gameObject.SetActive(false);
+            }
 
             // If delay is over
             else if (currentWaitTime <= 0.0f)
@@ -105,7 +111,10 @@ public class UISlider : MonoBehaviour
                     ResizeSliderFill(ref animatedFill, currentAnimatedPercent);
                 }
                 else
+                {
                     isAnimating = false;
+                    animatedFill.gameObject.SetActive(false);
+                }
             }
 
             // Tick down delay timer
