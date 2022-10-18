@@ -16,9 +16,9 @@ MonoBehaviour:
   prefab: {fileID: 2438166152000914632, guid: 0ec28ad321c53234e920c0a79188e3b8, type: 3}
   icon: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
   health: 0.4
-  size: 0.2
+  size: 0.33
   attack: 1
-  agility: 1
+  agility: 0.7
   abilities:
   - {fileID: 11400000, guid: affc8a951102a0d4f94f8115ebb8c1e0, type: 2}
   - {fileID: 11400000, guid: 9465a077fff2add43838f33cf8664fac, type: 2}

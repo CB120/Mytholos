@@ -1527,7 +1527,7 @@ MonoBehaviour:
   - {fileID: 1842428012}
   - {fileID: 970106228}
   returnToPreviousSceneGraph: {fileID: 940546540}
-  debugMode: 0
+  debugMode: 1
   nameOfSceneToLoad: PartyBuilder
   transitionAnimator: {fileID: 1938963196}
 --- !u!1001 &1444121645

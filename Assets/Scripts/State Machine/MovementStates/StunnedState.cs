@@ -31,16 +31,20 @@ namespace Commands.Behaviours
             }
 
             stunService = mythCommandHandler.Command as StunService;
-            if(stunService.stunTime == 0)
+            if (stunService.stunTime == 0)
             {
                 stunFailed.Invoke();
+                //Debug.Log("Stun time is 0");
             }
-            //Debug.Log("Is this activating");
-            Invoke("startStun", 0.1f);
+            else
+            {
+                //Debug.Log("Is this activating");
+                Invoke("startStun", 0.1f);
 
-            //SFX, added by Ethan
-            GameObject sfxGameObject = Instantiate(stunnedSFXprefab, transform.position, Quaternion.identity);
-            Destroy(sfxGameObject, timeToDestroySFX);
+                //SFX, added by Ethan
+                GameObject sfxGameObject = Instantiate(stunnedSFXprefab, transform.position, Quaternion.identity);
+                Destroy(sfxGameObject, timeToDestroySFX);
+            }
         }
 
         protected override void OnDisable()

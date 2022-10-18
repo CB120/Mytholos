@@ -26,7 +26,7 @@ public class PlayerParticipant : Participant
     private bool isAvailableToSwap = true;
     private bool isAvailableToDodge = true;
     [SerializeField] private float swappingCooldown = 2f;
-    [SerializeField] private float dodgeCooldown = 2.1f;
+    [SerializeField] private float dodgeCooldown = 2.25f;
 
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
@@ -353,6 +353,7 @@ public class PlayerParticipant : Participant
 
     private void StartDodgeCooldown()
     {
+        dodgeCooldown = dodgeCooldown - mythInPlay.walkSpeed;
         isAvailableToDodge = false;
             Invoke("EndDodgeCooldown", dodgeCooldown);
     }

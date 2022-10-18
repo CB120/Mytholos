@@ -42,7 +42,7 @@ namespace Commands.Behaviours
                 Debug.LogWarning("There was a problem with getting the knockback service, please check the Knockback State script.");
                 return;
             }
-                Invoke("lateEnable", 0.002f);
+                Invoke("lateEnable", 0.001f);
         }
 
         private void lateEnable()
