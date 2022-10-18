@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Commands;
 using Myths;
+using StateMachines;
+using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
@@ -103,15 +105,15 @@ public class PlayerParticipant : Participant
         if (!isAvailableToDodge) return;
         if (!context.performed) return;
 
-        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        if (SelectedMythCommandHandler.LastCommand is MoveCommand moveCommand)
         {
-            SelectedMythCommandHandler.Command = new DodgeCommand(moveCommand.input);   // Dodge in the input direction if the left stick is currently in use
+            SelectedMythCommandHandler.PushCommand(new DodgeCommand(moveCommand.input));   // Dodge in the input direction if the left stick is currently in use
             StartDodgeCooldown();
         }
         else
         {
             Vector3 forwardVector = mythInPlay.transform.rotation * Vector3.forward;
-            SelectedMythCommandHandler.Command = new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized);    // Else dodge in direction myth is facing
+            SelectedMythCommandHandler.PushCommand(new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized));    // Else dodge in direction myth is facing
             StartDodgeCooldown();
         }
     }
@@ -128,14 +130,16 @@ public class PlayerParticipant : Participant
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (SelectedMythCommandHandler.Command is not MoveCommand)
-            SelectedMythCommandHandler.Command = new MoveCommand();
+        // TODO: Not sure if this logic should be here or in MoveCommandReceived
+        if (SelectedMythCommandHandler.CurrentCommand is not MoveCommand)
+            SelectedMythCommandHandler.PushCommand(new MoveCommand());
 
-        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        if (SelectedMythCommandHandler.CurrentCommand is MoveCommand moveCommand)
         {
             moveCommand.input = context.ReadValue<Vector2>();
         }
     }
+    
     private void UseAbility(InputAction.CallbackContext context, Func<Myth, SO_Ability> abilityAccessor)
     {
         if (!context.performed) return;
@@ -149,7 +153,7 @@ public class PlayerParticipant : Participant
             return;
         }
 
-        SelectedMythCommandHandler.Command = new AbilityCommand(ability);
+        SelectedMythCommandHandler.PushCommand(new AbilityCommand(ability));
 
         SelectAbility.Invoke(ability);
     }
@@ -160,8 +164,8 @@ public class PlayerParticipant : Participant
         if (mythsInReserve[0].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
-            SelectedMythCommandHandler.Command = new SwapCommand();
-            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            SelectedMythCommandHandler.PushCommand(new SwapCommand());
+            if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
                 swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
                 swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
@@ -180,8 +184,8 @@ public class PlayerParticipant : Participant
         if (mythsInReserve[1].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
-            SelectedMythCommandHandler.Command = new SwapCommand();
-            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            SelectedMythCommandHandler.PushCommand(new SwapCommand());
+            if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
                 swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
                 swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
