@@ -31,6 +31,10 @@ namespace Commands.Behaviours
             }
 
             stunService = mythCommandHandler.Command as StunService;
+            if(stunService.stunTime == 0)
+            {
+                stunFailed.Invoke();
+            }
             //Debug.Log("Is this activating");
             Invoke("startStun", 0.1f);
 
