@@ -49,6 +49,13 @@ namespace StateMachines.States
         protected override void OnDisable()
         {
             base.OnDisable();
+            
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Stunned", false);
+            }
+            
             CancelInvoke();
         }
 
@@ -66,11 +73,6 @@ namespace StateMachines.States
 
         private void killStun()
         {
-            if (anim)
-            {
-                anim.speed = 1.0f;
-                anim.SetBool("Stunned", false);
-            }
             //Debug.Log("Killed stun");
             stunComplete.Invoke();
         }

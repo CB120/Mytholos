@@ -19,6 +19,13 @@ namespace StateMachines.States
             
             abilityCommand = mythCommandHandler.LastCommand as AbilityCommand;
             
+            // TODO: Sometimes fails when spamming abilities, need to look into this
+            if (abilityCommand == null)
+            {
+                performAbilityComplete.Invoke();
+                return;
+            }
+
             var abilityData = abilityCommand.abilityData;
             
             GameObject abilityPrefab = abilityData.abilityPrefab;

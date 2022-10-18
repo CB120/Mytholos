@@ -1,4 +1,3 @@
-using Commands;
 using StateMachines;
 using StateMachines.Commands;
 using UnityEngine;
@@ -23,8 +22,6 @@ namespace Myths
         public GameObject targetEnemy;
         public Effects effectController;
 
-        // TODO: Do we still need this? Some instances can be replaced by passing this in the command // 
-        [HideInInspector]public Vector2 lastInputDirection;
         public int partyIndex;
         public int PartyIndex
         {
@@ -61,8 +58,8 @@ namespace Myths
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {
-            // BUG: This is the wrong mythHandler
             mythCommandHandler.PushCommand(new KnockbackCommand());
+            // TODO: Replace with constructor
             if (mythCommandHandler.LastCommand is KnockbackCommand knockbackService)
             {
                 Debug.Log(abilityStunTime);
@@ -76,12 +73,7 @@ namespace Myths
 
         public void Stun(float abilityStunTime)
         {
-            // BUG: This is the wrong mythHandler
             mythCommandHandler.PushCommand(new StunCommand(abilityStunTime));
-            if (mythCommandHandler.LastCommand is StunCommand stunService)
-            {
-                stunService.stunTime = abilityStunTime;
-            }
         }
     }
 }
