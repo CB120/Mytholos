@@ -14,6 +14,7 @@ public class UIGameParty : MonoBehaviour
     Myth[] myths;
     [SerializeField] UIGameMyth[] mythUIs;
     [SerializeField] UIGameHovering hoveringUI;
+    [SerializeField] UIAnimator cursor;
     [SerializeField] CanvasGroup abilitiesMenu;
     RectTransform abilitiesMenuRectTransform;
     [SerializeField] UIGameAbility[] abilities;
@@ -101,11 +102,15 @@ public class UIGameParty : MonoBehaviour
         }
 
         // Update team UI to highlight selected myth, and unhighlight any unselected myths
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
             mythUIs[i].UpdateUI(partyMemberNumber);
 
         // Update hovering UI
         hoveringUI.SetMyth(myths[partyMemberNumber]);
+
+        // Update team cursor
+        if (cursor)
+            cursor.SetTransform(mythUIs[partyMemberNumber].GetComponent<RectTransform>());
 
         // Update the displayed abilities UI
         DisplayAbilities(participant, partyMemberNumber);

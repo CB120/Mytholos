@@ -53,7 +53,8 @@ public class PlayerParticipant : Participant
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
 
-    private List<Myth> mythsInReserve = new();
+    //private List<Myth> mythsInReserve = new(); // I'm removing this
+    private List<Myth> myths = new();
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
@@ -162,15 +163,17 @@ public class PlayerParticipant : Participant
     public void SwitchLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
-        SwapReserveAtIndex(0);
+
+        //SwapReserveAtIndex(0);
+        SwapInDirection(-1);
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
-        SwapReserveAtIndex(1);
+
+        //SwapReserveAtIndex(1);
+        SwapInDirection(1);
     }
 
     #endregion
@@ -309,19 +312,55 @@ public class PlayerParticipant : Participant
 
     /*** Swapping ***/
     #region Swapping
-    private void SwapReserveAtIndex(int index)
+    //private void SwapReserveAtIndex(int index)
+    //{
+    //    if (!isAvailableToSwap) return;
+    //    if (mythsInReserve[index].Health.Value == 0) return;
+    //    StartSwapCooldown();
+    //    var position = MythInPlay.transform.position;
+        
+    //    (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
+
+    //    MythInPlay.transform.position = position;
+    //}
+
+    private void SwapInDirection(int direction)
     {
         if (!isAvailableToSwap) return;
-        if (mythsInReserve[index].Health.Value == 0) return;
-        StartSwapCooldown();
-        var position = MythInPlay.transform.position;
-        
-        (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
 
-        MythInPlay.transform.position = position;
+        // Try swap in specified direciton
+        int currentMythIndex = myths.IndexOf(mythInPlay);
+        int nextIndex = (currentMythIndex + direction) % myths.Count;
+        if (nextIndex < 0) nextIndex = myths.Count - 1;
+
+        if (myths[nextIndex].Health.Value > 0)
+        {
+            Vector3 position = MythInPlay.transform.position;
+            Quaternion rotation = MythInPlay.transform.rotation;
+            MythInPlay = myths[nextIndex];
+            MythInPlay.transform.position = position;
+            MythInPlay.transform.rotation = rotation;
+            StartSwapCooldown();
+            return;
+        }
+
+        // Try swap in other direction
+        nextIndex = (currentMythIndex - direction) % myths.Count;
+        if (nextIndex < 0) nextIndex = myths.Count - 1;
+
+        if (myths[nextIndex].Health.Value > 0)
+        {
+            Vector3 position = MythInPlay.transform.position;
+            Quaternion rotation = MythInPlay.transform.rotation;
+            MythInPlay = myths[nextIndex];
+            MythInPlay.transform.position = position;
+            MythInPlay.transform.rotation = rotation;
+            StartSwapCooldown();
+            return;
+        }
     }
 
-    
+
     private void StartSwapCooldown()
     {
         isAvailableToSwap = false;
@@ -348,10 +387,11 @@ public class PlayerParticipant : Participant
     public void Initialise()
     {
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
-        
-        mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
+        myths = ParticipantData.partyData[partyIndex].myths.ToList();
 
-        if (MythInPlay != null)
-            mythsInReserve.Remove(MythInPlay);
+        //mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
+
+        //if (MythInPlay != null)
+        //    mythsInReserve.Remove(MythInPlay);
     }
 }

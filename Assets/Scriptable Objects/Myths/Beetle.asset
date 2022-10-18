@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 1825634489892544422, guid: c63504bb0aca0b4409dd8c88a13875c6, type: 3}
   icon: {fileID: -1330787377, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
   iconOff: {fileID: -1330787377, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  iconDead: {fileID: 21300000, guid: 17227cb8a644da045822b42ddeb7516a, type: 3}
+  iconDead: {fileID: -1330787377, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
   health: 0.4
   size: 0.604
   attack: 0.8

@@ -304,14 +304,17 @@ MonoBehaviour:
   - 70
   - 60
   rootWidth:
-  - 60
-  - 40
+  - 70
+  - 50
   healthHeight:
   - 9
   - 7
   staminaHeight:
   - 4
   - 3
+  leftRightOffset:
+  - 8
+  - 2
 --- !u!114 &8731877003456716195
 MonoBehaviour:
   m_ObjectHideFlags: 0

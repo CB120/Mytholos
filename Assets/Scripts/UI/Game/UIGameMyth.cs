@@ -28,6 +28,7 @@ public class UIGameMyth : MonoBehaviour
     [SerializeField] float[] rootWidth;
     [SerializeField] float[] healthHeight;
     [SerializeField] float[] staminaHeight;
+    [SerializeField] float[] leftRightOffset;
 
     void OnEnable()
     {
@@ -60,13 +61,17 @@ public class UIGameMyth : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(rootWidth[index], rootHeight[index]);
         rectTransform.anchoredPosition = new Vector2((memberNumber * rootWidth[1]) + (selectedIndex < memberNumber ? rootWidth[0] - rootWidth[1] : 0), 0);
         healthTransform.sizeDelta = new Vector2(healthTransform.sizeDelta.x, healthHeight[index]);
+        healthTransform.offsetMax = new Vector2(-leftRightOffset[index], healthTransform.offsetMax.y);
+        healthTransform.offsetMin = new Vector2(leftRightOffset[index], healthTransform.offsetMin.y);
         staminaTransform.sizeDelta = new Vector2(staminaTransform.sizeDelta.x, staminaHeight[index]);
+        staminaTransform.offsetMax = new Vector2(-leftRightOffset[index], staminaTransform.offsetMax.y);
+        staminaTransform.offsetMin = new Vector2(leftRightOffset[index], staminaTransform.offsetMin.y);
 
         // Set myth icon sprite based on if selected or not
         mythIcon.sprite = isAlive ? mythIcons[index] : mythIcons[2];
 
         // Set group alpha based on if selected or not
-        canvasGroup.alpha = isAlive ? index == 0 ? 1.0f : 0.6f : 0.25f;
+        canvasGroup.alpha = isAlive ? index == 0 ? 1.0f : 1.0f : 0.35f;
 
         // Update sliders, zeroing them if defeated
         healthSlider.FormatSliderRectTransform(isAlive ? myth.Health.ValuePercent : 0);
