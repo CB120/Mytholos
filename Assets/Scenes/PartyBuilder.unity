@@ -3707,6 +3707,11 @@ PrefabInstance:
       propertyPath: adjacent.Array.data[1]
       value: 
       objectReference: {fileID: 1069614741}
+    - target: {fileID: 5708368422759555301, guid: bd10ef027b77ad2488f66a7d026df4e7,
+        type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5793147569706396214, guid: bd10ef027b77ad2488f66a7d026df4e7,
         type: 3}
       propertyPath: adjacent.Array.data[1]
@@ -3754,6 +3759,11 @@ PrefabInstance:
       propertyPath: adjacent.Array.data[1]
       value: 
       objectReference: {fileID: 1069614741}
+    - target: {fileID: 7457807169222729801, guid: bd10ef027b77ad2488f66a7d026df4e7,
+        type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9040426694292162080, guid: bd10ef027b77ad2488f66a7d026df4e7,
         type: 3}
       propertyPath: m_IsActive
@@ -5575,10 +5585,10 @@ RectTransform:
   m_Father: {fileID: 4720286492787807328}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 640, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4720286493426074905
 CanvasRenderer:

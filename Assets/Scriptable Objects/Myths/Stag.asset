@@ -15,6 +15,8 @@ MonoBehaviour:
   name: Wolper
   prefab: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
   icon: {fileID: 720469514, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: 720469514, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconDead: {fileID: 21300000, guid: 948de91f38e6a6c4fac85284d38d9de7, type: 3}
   health: 0.4
   size: 1
   attack: 0.6

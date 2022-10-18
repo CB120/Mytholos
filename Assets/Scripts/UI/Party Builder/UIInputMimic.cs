@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.Switch;
 
 public class UIInputMimic : MonoBehaviour
 {
-    enum InputToMimic { FaceButtonNorth, FaceButtonEast, FaceButtonSouth, FaceButtonWest }
+    enum InputToMimic { FaceButtonNorth, FaceButtonEast, FaceButtonSouth, FaceButtonWest, None }
     [SerializeField] InputToMimic inputToMimic;
     [SerializeField] int playerNumber;
     [SerializeField] Sprite[] buttonsXbox; // Up/Down for each of: Xbox, PlayStation, Nintendo, Keyboard

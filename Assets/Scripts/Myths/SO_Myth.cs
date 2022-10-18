@@ -8,6 +8,8 @@ namespace Myths
         public new string name;
         public GameObject prefab;
         public Sprite icon;
+        public Sprite iconOff;
+        public Sprite iconDead;
 
         // Stats
         [Range(0,1)] public float health;

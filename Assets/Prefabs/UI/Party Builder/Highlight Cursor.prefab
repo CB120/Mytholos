@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 2172507787401330638}
   - component: {fileID: 5525711247317082747}
   - component: {fileID: 3807035421162708031}
+  - component: {fileID: 1714256996061436800}
   m_Layer: 5
   m_Name: Control R
   m_TagString: Untagged
@@ -241,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -2, y: 16}
+  m_AnchoredPosition: {x: -2, y: 17}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2172507787401330638
@@ -305,6 +306,28 @@ MonoBehaviour:
   curveHeight: 1
   curveFrequency: 10
   curveOffset: 1
+--- !u!114 &1714256996061436800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646985772732017125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dafe35a145bcf4dadbc10454420e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputToMimic: 4
+  playerNumber: 0
+  buttonsXbox:
+  - {fileID: -773262337, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
+  buttonsPlayStation:
+  - {fileID: -773262337, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
+  buttonsNintendo:
+  - {fileID: -773262337, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
+  buttonsKeyboard:
+  - {fileID: -230617087, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
 --- !u!1 &6600524100921769831
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +602,7 @@ GameObject:
   - component: {fileID: 5424351339271564109}
   - component: {fileID: 6357211950862388256}
   - component: {fileID: 8956541425147582287}
+  - component: {fileID: 4579322351727565612}
   m_Layer: 5
   m_Name: Control L
   m_TagString: Untagged
@@ -603,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2, y: 16}
+  m_AnchoredPosition: {x: 2, y: 17}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5424351339271564109
@@ -667,6 +691,28 @@ MonoBehaviour:
   curveHeight: 1
   curveFrequency: 10
   curveOffset: 0
+--- !u!114 &4579322351727565612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212865504127001977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dafe35a145bcf4dadbc10454420e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputToMimic: 4
+  playerNumber: 0
+  buttonsXbox:
+  - {fileID: 936717039, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
+  buttonsPlayStation:
+  - {fileID: 936717039, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
+  buttonsNintendo:
+  - {fileID: 936717039, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
+  buttonsKeyboard:
+  - {fileID: -2010964732, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
 --- !u!1 &8585578431556918854
 GameObject:
   m_ObjectHideFlags: 0

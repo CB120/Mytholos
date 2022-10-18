@@ -15,6 +15,8 @@ MonoBehaviour:
   name: Golem
   prefab: {fileID: 2013350400531774232, guid: 999da1d6f8078e7429f6d2e79c653633, type: 3}
   icon: {fileID: -1253118736, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: -1253118736, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconDead: {fileID: 21300000, guid: 59f13bd30052328429029e4e350ccebc, type: 3}
   health: 0.8
   size: 1
   attack: 1

@@ -769,12 +769,12 @@ GameObject:
   - component: {fileID: 7398305262685480618}
   - component: {fileID: 536830446272223968}
   m_Layer: 0
-  m_Name: UI
+  m_Name: UI (Deprecated)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7398305262685480618
 Transform:
   m_ObjectHideFlags: 0
@@ -828,7 +828,6 @@ MonoBehaviour:
   - element: 7
     positiveBuff: {fileID: 6424518313837001648}
     negativeBuff: {fileID: 463559826108987855}
-  canvas: {fileID: 1359649481628738435}
   parent: {fileID: 3758714668280120345}
 --- !u!1 &8969299549519444571
 GameObject:
@@ -869,7 +868,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8969299549519444571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1164,11 +1163,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
-  mythUI: {fileID: 536830446272223968}
   alternateIce:
     element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
     effectObject: {fileID: 3754040524866713557}
   rotateSpeed: 300
+  ActivateBuffEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DeactivateBuffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   MetalDefenceActive: 0
 --- !u!65 &6173289821993678817
 BoxCollider:
