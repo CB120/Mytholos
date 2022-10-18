@@ -1,18 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DamageNumber : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    TextMeshProUGUI text;
+    Camera gameCamera;
+    Vector3 startPosition;
+    Vector3 endPosition;
+    float timer;
+    float timeToBeginFadeOut = 1.25f;
+    float timeToDie = 1.5f;
+    RectTransform rectTransform;
+    [SerializeField] Color[] damageColors = new Color[3]; // low, normal, high
+
+    public void SetUp(float value, Vector3 worldPosition, Camera camera)
     {
-        
+        text = GetComponent<TextMeshProUGUI>();
+        text.text = value.ToString();
+        text.color = damageColors[value < 5 ? 0 : value < 20 ? 1 : 2];
+        rectTransform = GetComponent<RectTransform>();
+        float scaleFactor = value < 5 ? 0.8f : value < 20 ? 1.0f : 1.5f;
+        rectTransform.localScale = new Vector2(scaleFactor, scaleFactor);
+        gameCamera = camera;
+
+        startPosition = worldPosition;
+        endPosition = startPosition + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)); //Random.Range(1, 2), Random.Range(1, 2));
+
+        SetPosition(startPosition);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if (rectTransform)
+        {
+            Vector3 position = Vector3.Lerp(startPosition, endPosition, Mathf.Pow((timer / timeToDie), 0.25f));
+            SetPosition(position);
+        }
+
+        if (timer > timeToBeginFadeOut)
+        {
+            text.color = new Color(text.color.r, text.color.g, text.color.b, 1 - ((timer - timeToBeginFadeOut) / (timeToDie - timeToBeginFadeOut)));
+        }
+
+        if (timer > timeToDie)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void SetPosition(Vector3 position)
+    {
+        if (rectTransform != null && gameCamera != null)
+        {
+            rectTransform.localPosition = gameCamera.WorldToScreenPoint(position) - new Vector3(640, 360, 0);
+            rectTransform.localPosition = Vector3Int.RoundToInt(new Vector2(rectTransform.localPosition.x, rectTransform.localPosition.y) + new Vector2(320, 180 + 16));
+        }
     }
 }

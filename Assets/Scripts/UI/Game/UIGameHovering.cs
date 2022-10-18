@@ -10,10 +10,12 @@ public class UIGameHovering : MonoBehaviour
     [SerializeField] UISlider healthSlider;
     [SerializeField] UISlider staminaSlider;
     [SerializeField] MythUI buffIcons;
+    [SerializeField] GameObject damageNumberPrefab;
     RectTransform healthTransform;
     RectTransform staminaTransform;
     Myth myth;
     RectTransform rectTransform;
+    float previousHealth;
 
     void OnEnable()
     {
@@ -34,6 +36,8 @@ public class UIGameHovering : MonoBehaviour
 
     public void SetMyth(Myth myth)
     {
+        previousHealth = 0;
+
         if (myth != null)
         {
             // Remove listeners from previous referenced myth
@@ -63,6 +67,19 @@ public class UIGameHovering : MonoBehaviour
         healthSlider.UpdateSliderPercent(percent);
         if (percent <= 0)
             UpdateUI();
+
+        // The incredible not awesome place to create a damage number UI object
+        if (Mathf.Abs(previousHealth - myth.Health.Value) > 1)
+        {
+            if (previousHealth > myth.Health.Value)
+            {
+                float difference = Mathf.RoundToInt(previousHealth - myth.Health.Value);
+                DamageNumber damageNumber = Instantiate(damageNumberPrefab, transform.parent).GetComponent<DamageNumber>();
+                damageNumber.SetUp(difference, myth.transform.position, gameCamera);
+            }
+
+            previousHealth = myth.Health.Value;
+        }
     }
 
     void UpdateStamina(float percent)

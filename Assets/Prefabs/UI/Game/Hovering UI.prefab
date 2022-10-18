@@ -666,6 +666,8 @@ MonoBehaviour:
   healthSlider: {fileID: 2058443646777801139}
   staminaSlider: {fileID: 5009868749386196211}
   buffIcons: {fileID: 222761067336270479}
+  damageNumberPrefab: {fileID: 2089651924207897283, guid: 954d1550c9f03f742ad17f477b0275f7,
+    type: 3}
 --- !u!1001 &161062846212044677
 PrefabInstance:
   m_ObjectHideFlags: 0
