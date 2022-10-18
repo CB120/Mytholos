@@ -86,6 +86,9 @@ namespace StateMachines.States
                         anim.SetBool("Walking", false);
                         anim.speed = 1.0f;
                     }
+
+                    // TODO: I don't like having to do this...
+                    mythCommandHandler.DemoteCurrentCommand();
                     moveComplete.Invoke();
                     return;
                 }

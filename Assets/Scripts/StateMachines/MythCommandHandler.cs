@@ -9,11 +9,24 @@ namespace StateMachines
         public Command LastCommand { get; private set; }
 
         // The command currently being processed
-        public Command CurrentCommand { get; private set; }
+        public Command CurrentCommand
+        {
+            get => currentCommand;
+            private set
+            {
+                currentCommand = value;
+                currentCommandType = currentCommand == null ? "null" : currentCommand.GetType().FullName;
+            }
+        }
 
         public bool WillStoreNewCommands { get; set; }
 
         [HideInInspector] public UnityEvent lastCommandChanged = new();
+
+        [Header("Debug Only")]
+        [SerializeField] private string currentCommandType;
+
+        private Command currentCommand;
 
         public void PushCommand(Command command)
         {
@@ -27,6 +40,11 @@ namespace StateMachines
         public void PromoteLastCommand()
         {
             CurrentCommand = LastCommand;
+        }
+
+        public void DemoteCurrentCommand()
+        {
+            CurrentCommand = null;
         }
     }
 }

@@ -66,7 +66,6 @@ namespace StateMachines.States
                 anim.speed = 1.0f;
             }
             Invoke("KilliFrames", 0.33f);
-            DodgeComplete.Invoke();
 
             GameObject dodgeSFX = Instantiate(dodgeSFXPrefab, transform);
             Destroy(dodgeSFX, timeToDestroyDodgeSFX);
@@ -76,6 +75,8 @@ namespace StateMachines.States
         {
             movementController.SetTargetVelocity(Vector3.zero);
             myth.isInvulnerable = false;
+            
+            DodgeComplete.Invoke();
         }
 
     }

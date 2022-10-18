@@ -20,8 +20,14 @@ namespace StateMachines.AnyStateTransitions
         {
             if (mythCommandHandler.LastCommand is T)
             {
-                transitionEvent.Invoke();
+                Activate();
             }
+        }
+
+        protected void Activate()
+        {
+            mythCommandHandler.PromoteLastCommand();
+            transitionEvent.Invoke();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace StateMachines.AnyStateTransitions.CommandAnyStateTransition
             {
                 if (myth.isInvulnerable == false)
                 {
-                    transitionEvent.Invoke();
+                    Activate();
                 }
             }
         }
