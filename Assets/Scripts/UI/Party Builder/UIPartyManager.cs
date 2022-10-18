@@ -651,6 +651,10 @@ public class UIPartyManager : MonoBehaviour
         UpdateMenuVisualsPerNextStage(nextStage);
         UpdateProgressText();
         StartCoroutine(TransitionToNextStage(nextStage));
+
+        // Music, added by Ethan
+        if (nextStage == 1) MenuMusicController.ChangeMenuState(E_MenuState.ArenaSelect); 
+        if (nextStage == 0) MenuMusicController.ChangeMenuState(E_MenuState.MythSelect);
     }
 
     IEnumerator TransitionToNextStage(int nextStage)

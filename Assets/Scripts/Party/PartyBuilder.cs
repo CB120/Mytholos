@@ -6,6 +6,7 @@ using UnityEngine;
 public class PartyBuilder : MonoBehaviour
 {
     [SerializeField] private AllParticipantDataService allParticipantDataService;
+    [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
 
     [NonSerialized] public SO_AllParticipantData allParticipantData;
 
@@ -27,13 +28,26 @@ public class PartyBuilder : MonoBehaviour
     private void Awake()
     {
         allParticipantData = allParticipantDataService.GetAllParticipantData();
-
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
         SetDefaultTarget();
     }
 
+    private void OnEnable()
+    {
+        playerParticipantRuntimeSet.itemAdded.AddListener(InitialisePlayerParticipant);
+    }
+    
+    private void OnDisable()
+    {
+        playerParticipantRuntimeSet.itemAdded.RemoveListener(InitialisePlayerParticipant);
+    }
+
+    private void InitialisePlayerParticipant(PlayerParticipant playerParticipant)
+    {
+        playerParticipant.Initialise();
+    }
 
     //Methods
     void SetPartyParentReferences()
@@ -56,16 +70,11 @@ public class PartyBuilder : MonoBehaviour
             {
                 SpawnMyth(m,p);
             }
+        }
 
-            try
-            {
-                ((PlayerParticipant)partyData.participant).Initialise();
-            }
-            catch (Exception e)
-            {
-                Debug.LogWarning("You probably tried to run the game from the Arena scene. This doesn't work anymore. Enjoy your error.");;
-                throw;
-            }
+        foreach (var playerParticipant in playerParticipantRuntimeSet.items)
+        {
+            playerParticipant.Initialise();
         }
     }
 
@@ -83,28 +92,19 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
-    public void swappingDelay()
+    public void setSwappingTarget(GameObject swappingInMyth, int Index)
     {
-        Invoke("setSwappingTarget", 0.2f);
-    }
-
-    private void setSwappingTarget()
-    {
-        for (int i = 0; i < Party1.Count; i++)
+        if(Index == 0)
         {
-            if(Party1[i].gameObject.activeInHierarchy == true)
-            {
-                Team1ActiveMyth = Party1[i];
-            }
-            if(Party2[i].gameObject.activeInHierarchy == true)
-            {
-                Team2ActiveMyth = Party2[i];
-            }
+            Team1ActiveMyth = swappingInMyth;
+            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
+            swappingInMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
         }
-        if (Team1ActiveMyth != null && Team2ActiveMyth != null)
+        if(Index == 1)
         {
-            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
-            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
+            Team2ActiveMyth = swappingInMyth;
+            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
+            swappingInMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
         }
     }
 
@@ -128,7 +128,7 @@ public class PartyBuilder : MonoBehaviour
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
         
         
-        if (participantIndex == 1)
+        if (participantIndex == 0)
         {
             Party1.Add(newMythGameObject);
         }
@@ -151,6 +151,19 @@ public class PartyBuilder : MonoBehaviour
         mythCounter ++;
     }
 
+    public int GetRemainingMyths(int teamIndex) // dont know if i need this anymore ~ Christian
+    {
+        int remaining;
+        if(teamIndex == 0)
+        {
+            remaining = winState.team1Remaining;
+        } else 
+        {
+            remaining = winState.team2Remaining;
+        }
+        Debug.Log("Remaining = " + remaining);
+        return remaining;
+    }
 
 
     //Remove after playtest

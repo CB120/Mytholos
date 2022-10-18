@@ -15,7 +15,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Fire Shot
   description: Shot
-  damage: 10
+  damage: 5
   regenSpeed: 0
   statIncrease: 0
   staminaCost: 10
