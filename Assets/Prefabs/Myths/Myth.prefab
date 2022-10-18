@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 3685100383579352455}
   - {fileID: 2574644570502656684}
   - {fileID: 4471835222624717738}
+  - {fileID: 8896824769409683217}
 --- !u!114 &3041772259668658664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,9 +280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   performAbilityComplete:
@@ -313,9 +314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   staminaPenalty: 0.5
@@ -421,7 +422,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
-  anyStateTransitionManager: {fileID: 0}
+  anyStateTransitionManager: {fileID: 7710117388066988406}
   overrideBehaviour: 0
   exceptions: []
   anim: {fileID: 0}
@@ -475,7 +476,7 @@ MonoBehaviour:
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
   dontAllowOtherCommands: 0
-  anyStateTransitionManager: {fileID: 0}
+  anyStateTransitionManager: {fileID: 7710117388066988406}
   overrideBehaviour: 0
   exceptions: []
   anim: {fileID: 0}
@@ -493,9 +494,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   DodgeComplete:
@@ -531,9 +532,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   freezeComplete:
@@ -581,9 +582,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   movementController: {fileID: 6450067431077666470}
@@ -633,9 +634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   stunComplete:
@@ -686,9 +687,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
   mythCommandHandler: {fileID: -3291310522803648204}
-  dontAllowOtherCommands: 1
-  anyStateTransitionManager: {fileID: 0}
-  overrideBehaviour: 0
+  dontAllowOtherCommands: 0
+  anyStateTransitionManager: {fileID: 7710117388066988406}
+  overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
   swapFailed:
@@ -1240,6 +1241,7 @@ MonoBehaviour:
   lastCommandChanged:
     m_PersistentCalls:
       m_Calls: []
+  currentCommandType: 
 --- !u!114 &3328760576734170970
 MonoBehaviour:
   m_ObjectHideFlags: 0

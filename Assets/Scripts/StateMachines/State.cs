@@ -15,7 +15,6 @@ namespace StateMachines
         // TODO: Do we still need this?
         [SerializeField] protected Myth myth;
         [SerializeField] protected MythCommandHandler mythCommandHandler;
-        [SerializeField] private bool dontAllowOtherCommands;
         [SerializeField] private AnyStateTransitionManager anyStateTransitionManager;
         [SerializeField] private OverrideBehaviour overrideBehaviour;
         [SerializeField] private List<AnyStateTransition> exceptions;
@@ -32,23 +31,12 @@ namespace StateMachines
 
         protected virtual void OnEnable()
         {
-            if (dontAllowOtherCommands)
-            {
-                if (mythCommandHandler.LastCommand is not KnockbackCommand)
-                {
-                    mythCommandHandler.WillStoreNewCommands = false;
-                }
-            }
-            
-            OverrideAnyStateTransitions(true);
+            OverrideAnyStateTransitions(false);
         }
 
         protected virtual void OnDisable()
         {
-            if (dontAllowOtherCommands)
-                mythCommandHandler.WillStoreNewCommands = true;
-            
-            OverrideAnyStateTransitions(false);
+            OverrideAnyStateTransitions(true);
         }
 
         private void OverrideAnyStateTransitions(bool enabled)

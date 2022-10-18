@@ -19,8 +19,6 @@ namespace StateMachines
             }
         }
 
-        public bool WillStoreNewCommands { get; set; }
-
         [HideInInspector] public UnityEvent lastCommandChanged = new();
 
         [Header("Debug Only")]
@@ -30,8 +28,6 @@ namespace StateMachines
 
         public void PushCommand(Command command)
         {
-            if (!WillStoreNewCommands) return;
-            
             LastCommand = command;
 
             lastCommandChanged.Invoke();
