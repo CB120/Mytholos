@@ -31,7 +31,7 @@ public class Effects : MonoBehaviour
     {
         CleanseAllBuffs();
         CleanseAllDebuffs();
-        Debug.LogWarning("Clear");
+        // Debug.LogWarning("Clear");
     }
 
     #region Effect Application
