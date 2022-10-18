@@ -24,7 +24,7 @@ namespace StateMachines.States
             base.OnEnable();
             if (myth.Stamina.Value < 35)
             {
-                mythCommandHandler.Command = null;
+                // TODO: Should be checked before entering this state
                 DodgeComplete.Invoke();
                 return;
             }
@@ -46,7 +46,6 @@ namespace StateMachines.States
             movementController.SetTargetVelocity(myth.transform.forward * (myth.myth.agility + dodgeSpeed));
             if (anim) anim.SetBool("Walking", false);
             Invoke("KilliFrames", 0.33f);
-            mythCommandHandler.Command = null;
             DodgeComplete.Invoke();
         }
 

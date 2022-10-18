@@ -23,7 +23,7 @@ namespace StateMachines.States
 
             abilityWasCharged = false;
             
-            abilityCommand = mythCommandHandler.Command as AbilityCommand;
+            abilityCommand = mythCommandHandler.LastCommand as AbilityCommand;
             
             if (chargeAbilityCoroutine != null)
                 StopCoroutine(chargeAbilityCoroutine);
@@ -41,7 +41,6 @@ namespace StateMachines.States
             chargeAbilityCoroutine = null;
 
             if (!abilityWasCharged && abilityCommand != null)
-                // TODO: Unsafe. Does not prevent negative values.
                 myth.Stamina.Value -= abilityCommand.abilityData.staminaCost * staminaPenalty;
         }
 

@@ -26,7 +26,7 @@ namespace StateMachines.States
                 return;
             }
 
-            stunCommand = mythCommandHandler.Command as StunCommand;
+            stunCommand = mythCommandHandler.LastCommand as StunCommand;
             //Debug.Log("Is this activating");
             Invoke("startStun", 0.1f);
         }
@@ -47,7 +47,6 @@ namespace StateMachines.States
         private void killStun()
         {
             //Debug.Log("Killed stun");
-            mythCommandHandler.Command = null;
             stunComplete.Invoke();
         }
 

@@ -96,7 +96,7 @@ public class PlayerParticipant : Participant
     {
         if (!context.performed) return;
 
-        SelectedMythCommandHandler.Command = new DodgeCommand();
+        SelectedMythCommandHandler.PushCommand(new DodgeCommand());
 
     }
 
@@ -112,10 +112,10 @@ public class PlayerParticipant : Participant
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (SelectedMythCommandHandler.Command is not MoveCommand)
-            SelectedMythCommandHandler.Command = new MoveCommand();
+        if (SelectedMythCommandHandler.LastCommand is not MoveCommand)
+            SelectedMythCommandHandler.PushCommand(new MoveCommand());
 
-        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        if (SelectedMythCommandHandler.LastCommand is MoveCommand moveCommand)
         {
             moveCommand.input = context.ReadValue<Vector2>();
         }
@@ -129,7 +129,7 @@ public class PlayerParticipant : Participant
         // TODO: I don't think this is the right place for this check
         if (MythInPlay.Stamina.Value < ability.staminaCost) return;
 
-        SelectedMythCommandHandler.Command = new AbilityCommand(ability);
+        SelectedMythCommandHandler.PushCommand(new AbilityCommand(ability));
 
         SelectAbility.Invoke(ability);
     }

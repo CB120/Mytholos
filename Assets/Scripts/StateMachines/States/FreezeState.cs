@@ -26,7 +26,7 @@ namespace StateMachines.States
         {
             base.OnEnable();
 
-            moveCommand = mythCommandHandler.Command as MoveCommand;
+            moveCommand = mythCommandHandler.LastCommand as MoveCommand;
 
             if (moveCommand == null)
             {
@@ -94,7 +94,6 @@ namespace StateMachines.States
 
         private void moveToStun()
         {
-            mythCommandHandler.Command = null;
             freezeComplete.Invoke();
         }
     }

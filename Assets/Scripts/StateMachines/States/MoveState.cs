@@ -31,7 +31,7 @@ namespace StateMachines.States
         {
             base.OnEnable();
             
-            moveCommand = mythCommandHandler.Command as MoveCommand;
+            moveCommand = mythCommandHandler.LastCommand as MoveCommand;
 
             if (moveCommand == null)
             {
@@ -80,7 +80,6 @@ namespace StateMachines.States
 
                 if (inputVector == Vector3.zero)
                 {
-                    mythCommandHandler.Command = null;
                     movementController.SetTargetVelocity(Vector3.zero);
                     moveSpeed = 0;
                     if (anim) anim.SetBool("Walking", false);

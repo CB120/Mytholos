@@ -17,7 +17,7 @@ namespace StateMachines.States
         {
             base.OnEnable();
             
-            abilityCommand = mythCommandHandler.Command as AbilityCommand;
+            abilityCommand = mythCommandHandler.LastCommand as AbilityCommand;
             
             var abilityData = abilityCommand.abilityData;
             
@@ -68,8 +68,6 @@ namespace StateMachines.States
         private IEnumerator PerformAbility()
         {
             yield return new WaitForSeconds(abilityCommand.abilityData.performTime);
-
-            mythCommandHandler.Command = null;
             
             performAbilityComplete.Invoke();
         }

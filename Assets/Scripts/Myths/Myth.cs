@@ -61,8 +61,9 @@ namespace Myths
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {
-            mythCommandHandler.Command = new KnockbackCommand();
-            if (mythCommandHandler.Command is KnockbackCommand knockbackService)
+            // BUG: This is the wrong mythHandler
+            mythCommandHandler.PushCommand(new KnockbackCommand());
+            if (mythCommandHandler.LastCommand is KnockbackCommand knockbackService)
             {
                 Debug.Log(abilityStunTime);
                 //Debug.Log("Setting values in myth (Knockback step 2)");
@@ -76,8 +77,9 @@ namespace Myths
 
         public void Stun(float abilityStunTime)
         {
-            mythCommandHandler.Command = new StunCommand(abilityStunTime);
-            if (mythCommandHandler.Command is StunCommand stunService)
+            // BUG: This is the wrong mythHandler
+            mythCommandHandler.PushCommand(new StunCommand(abilityStunTime));
+            if (mythCommandHandler.LastCommand is StunCommand stunService)
             {
                 stunService.stunTime = abilityStunTime;
             }

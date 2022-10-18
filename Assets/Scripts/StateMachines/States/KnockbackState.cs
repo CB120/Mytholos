@@ -29,7 +29,7 @@ namespace StateMachines.States
         protected override void OnEnable()
         {
             base.OnEnable();
-            knockbackCommand = mythCommandHandler.Command as KnockbackCommand;
+            knockbackCommand = mythCommandHandler.LastCommand as KnockbackCommand;
             CancelInvoke("ResetKnockback");
             if (movementController == null)
             {
@@ -73,10 +73,9 @@ namespace StateMachines.States
         private void ResetKnockback()
         {
             movementController.SetTargetVelocity(Vector3.zero);
-            mythCommandHandler.Command = null;
             knockbackComplete.Invoke();
-            mythCommandHandler.Command = new StunCommand(stunTime);
-            if (mythCommandHandler.Command is StunCommand stunService)
+            mythCommandHandler.PushCommand(new StunCommand(stunTime));
+            if (mythCommandHandler.LastCommand is StunCommand stunService)
             {
                 //Debug.Log("Is StunService");
                 stunService.stunTime = stunTime;

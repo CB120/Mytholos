@@ -8,17 +8,17 @@ namespace StateMachines.AnyStateTransitions
 
         private void OnEnable()
         {
-            mythCommandHandler.commandChanged.AddListener(OnCommandChanged);
+            mythCommandHandler.lastCommandChanged.AddListener(OnCommandChanged);
         }
 
         private void OnDisable()
         {
-            mythCommandHandler.commandChanged.RemoveListener(OnCommandChanged);
+            mythCommandHandler.lastCommandChanged.RemoveListener(OnCommandChanged);
         }
 
         protected virtual void OnCommandChanged()
         {
-            if (mythCommandHandler.Command is T)
+            if (mythCommandHandler.LastCommand is T)
             {
                 transitionEvent.Invoke();
             }

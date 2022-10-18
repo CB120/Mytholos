@@ -6,7 +6,7 @@ namespace StateMachines.AnyStateTransitions.CommandAnyStateTransition
     {
         protected override void OnCommandChanged()
         {
-            if (mythCommandHandler.Command is DodgeCommand)
+            if (mythCommandHandler.LastCommand is DodgeCommand)
             {
                 if (myth.isInvulnerable == false)
                 {
