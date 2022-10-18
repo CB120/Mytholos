@@ -12,8 +12,6 @@ namespace StateMachines.States
         [SerializeField] private CollisionDetection movementController;
         private KnockbackCommand knockbackService;
         [SerializeField] private GameObject sender;
-        
-
 
         // Events
         public UnityEvent knockbackFailed = new();
@@ -26,7 +24,13 @@ namespace StateMachines.States
 
         // Stun properties to pass through
         private float stunTime;
-        
+
+        [Header("SFX")]
+        [SerializeField] GameObject knockbackSFXprefab; //SFX, added by Ethan
+        [SerializeField] float timeToDestroySFX = 0.4f;
+        [SerializeField] float timeBeforeRepeat = 0.3f;
+        float timeStarted = -100f;
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -43,15 +47,15 @@ namespace StateMachines.States
                 Debug.LogWarning("There was a problem with getting the knockback service, please check the Knockback State script.");
                 return;
             }
-                Invoke("lateEnable", 0.001f);
+            Invoke("lateEnable", 0.001f);
         }
 
         private void lateEnable()
         {
-                sender = knockbackService.abilitySender;
-                knockbackStrength = knockbackService.knockbackStrength;
-                senderStrength = knockbackService.senderStrength;
-                stunTime = knockbackService.stunTime;
+            sender = knockbackService.abilitySender;
+            knockbackStrength = knockbackService.knockbackStrength;
+            senderStrength = knockbackService.senderStrength;
+            stunTime = knockbackService.stunTime;
             if (sender != null && knockbackStrength != 0)
             {
                 //Debug.Log("Step 3 Knockback complete");
@@ -69,6 +73,14 @@ namespace StateMachines.States
             Vector3 direction = (myth.transform.position - sender.transform.position).normalized;
             movementController.SetTargetVelocity(direction * (knockbackStrength - (myth.myth.size - senderStrength)));
             Invoke("ResetKnockback", knockbackDelay);
+
+            //SFX, added by Ethan
+            if (timeStarted + timeBeforeRepeat <= Time.time)
+            {
+                GameObject sfxGameObject = Instantiate(knockbackSFXprefab, transform.position, Quaternion.identity);
+                Destroy(sfxGameObject, timeToDestroySFX);
+                timeStarted = Time.time;
+            }
         }
 
         private void ResetKnockback()
@@ -81,7 +93,6 @@ namespace StateMachines.States
                 //Debug.Log("Is StunService");
                 stunService.stunTime = stunTime;
             }
-
         }
     }
 }

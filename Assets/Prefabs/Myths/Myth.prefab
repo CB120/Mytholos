@@ -613,6 +613,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   knockbackDelay: 0.2
+  knockbackSFXprefab: {fileID: 6171227850557352822, guid: 4726673c287f7e3408ba18bb4deb887b,
+    type: 3}
+  timeToDestroySFX: 0.4
 --- !u!114 &3802980452727524054
 MonoBehaviour:
   m_ObjectHideFlags: 0
