@@ -53,7 +53,7 @@ public class PlayerParticipant : Participant
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
 
-    //private List<Myth> mythsInReserve = new(); // I'm removing this
+    private List<Myth> mythsInReserve = new();
     private List<Myth> myths = new();
 
     // Menu references
@@ -164,16 +164,16 @@ public class PlayerParticipant : Participant
     {
         if (!context.performed) return;
 
-        //SwapReserveAtIndex(0);
-        SwapInDirection(-1);
+        SwapReserveAtIndex(0);
+        //SwapInDirection(-1);
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
-        //SwapReserveAtIndex(1);
-        SwapInDirection(1);
+        SwapReserveAtIndex(1);
+        //SwapInDirection(1);
     }
 
     #endregion
@@ -312,17 +312,17 @@ public class PlayerParticipant : Participant
 
     /*** Swapping ***/
     #region Swapping
-    //private void SwapReserveAtIndex(int index)
-    //{
-    //    if (!isAvailableToSwap) return;
-    //    if (mythsInReserve[index].Health.Value == 0) return;
-    //    StartSwapCooldown();
-    //    var position = MythInPlay.transform.position;
-        
-    //    (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
+    private void SwapReserveAtIndex(int index)
+    {
+        if (!isAvailableToSwap) return;
+        if (mythsInReserve[index].Health.Value == 0) return;
+        StartSwapCooldown();
+        var position = MythInPlay.transform.position;
 
-    //    MythInPlay.transform.position = position;
-    //}
+        (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
+
+        MythInPlay.transform.position = position;
+    }
 
     private void SwapInDirection(int direction)
     {
@@ -389,9 +389,9 @@ public class PlayerParticipant : Participant
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
         myths = ParticipantData.partyData[partyIndex].myths.ToList();
 
-        //mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
+        mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
 
-        //if (MythInPlay != null)
-        //    mythsInReserve.Remove(MythInPlay);
+        if (MythInPlay != null)
+            mythsInReserve.Remove(MythInPlay);
     }
 }
