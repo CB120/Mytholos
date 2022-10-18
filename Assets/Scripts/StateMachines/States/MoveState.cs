@@ -121,7 +121,6 @@ namespace StateMachines.States
                 //movementController.SetTargetVelocity(targetDirection * myth.myth.agility * speedHandicap); USING THIS IS LIKE WALKING ON ICE (6 TARGET LERP SPEED, 0.45 SMOOTHING)
 
                 Vector3 lookDirection = inputVector;
-                myth.lastInputDirection = inputVector;
                 if (lookDirection != Vector3.zero)
                 {
                     myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 9);

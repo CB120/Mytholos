@@ -58,17 +58,7 @@ namespace Myths
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {
-            mythCommandHandler.PushCommand(new KnockbackCommand());
-            // TODO: Replace with constructor
-            if (mythCommandHandler.LastCommand is KnockbackCommand knockbackService)
-            {
-                Debug.Log(abilityStunTime);
-                knockbackService.abilitySender = sendingMyth;
-                knockbackService.senderStrength = myth.size;
-                knockbackService.knockbackStrength = abilityKnockback;
-                knockbackService.stunTime = abilityStunTime;
-            }
-            
+            mythCommandHandler.PushCommand(new KnockbackCommand(sendingMyth, myth.size, abilityKnockback, abilityStunTime));
         }
 
         public void Stun(float abilityStunTime)
