@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4892058137569826491}
   - component: {fileID: 2788665453749804393}
   - component: {fileID: 2059007022911807411}
+  - component: {fileID: 2842811421863119054}
+  - component: {fileID: 3445097898368556318}
   m_Layer: 0
   m_Name: BeamAbilityPrefab
   m_TagString: Untagged
@@ -51,11 +53,16 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   ParticleSystem: {fileID: 2059007022911807411}
   BeamExtender: {fileID: 7226831236815921946}
   BeamLength: 20
   BeamHead: {fileID: 3275380738363577109}
   BeamOrigin: {fileID: 8018691964653190970}
+  beamLoops: {fileID: 2842811421863119054}
+  beamFiredSFX: {fileID: 3445097898368556318}
 --- !u!199 &2788665453749804393
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4837,6 +4844,66 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2842811421863119054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807559122200386854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1701486113
+      Data2: 1270056415
+      Data3: -1968527199
+      Data4: -1002864699
+    Path: event:/SFX/Abilities/Beam/Beam Loops
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &3445097898368556318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807559122200386854}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -796359810
+      Data2: 1329156877
+      Data3: -1938584180
+      Data4: -1825321847
+    Path: event:/SFX/Abilities/Beam/Beam Fired
+  Event: 
+  PlayEvent: 11
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 1000
 --- !u!1 &4274577651556709272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,6 +5117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3275380738363577109}
+  - component: {fileID: 670844377203793124}
   m_Layer: 0
   m_Name: BeamHeadPosition
   m_TagString: Untagged
@@ -5072,6 +5140,36 @@ Transform:
   m_Father: {fileID: 919357266934999964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670844377203793124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426678438639010057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1024757564
+      Data2: 1286658574
+      Data3: -1873559135
+      Data4: -1292857916
+    Path: event:/SFX/Abilities/Beam/Beam Head
+  Event: 
+  PlayEvent: 11
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 1000
 --- !u!1 &7706961841124512121
 GameObject:
   m_ObjectHideFlags: 0

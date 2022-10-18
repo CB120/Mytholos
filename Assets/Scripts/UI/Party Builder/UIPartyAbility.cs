@@ -28,12 +28,37 @@ public class UIPartyAbility : MonoBehaviour // Not to be confused with UINodeAbi
 
     public void SetUpUI(SO_Ability newAbility)
     {
+        if (newAbility == null)
+        {
+            Debug.LogWarning("Myth has an invalid ability");
+            return;
+        }
+
         ability = newAbility;
         statDamage.SetUpUI(ability.damage / maxDamage);
         statStamina.SetUpUI(ability.staminaCost / maxStamina);
         statImpact.SetUpUI(0 / maxImpact);
         abilityName.text = ability.name;
-        styleEffectName.text = ability.abilityPrefab.name.Replace("Ability", "").Replace("Prefab", ""); // TODO: Include ability effect description in this
+
+        //styleEffectName.text = ability.abilityPrefab.name.Replace("Ability", "").Replace("Prefab", ""); // TODO: Include ability effect description in this
+        string styleName = ability.description;
+        string effectName = "";
+        if (ability.element != null)
+            effectName = ability.element.debuffDescription;
+
+        if (styleName == "Pool")
+        {
+            effectName = ability.element.buffDescription;
+        }
+
+        if (effectName.Length > 0)
+            styleName += ", " + effectName;
+        // 27 max
+        if (styleName.Length > 27)
+            styleName = styleName.Substring(0, 25) + "...";
+
+        styleEffectName.text = styleName;
+
         damageTypeName.text = "-"; // TODO: Make this say "Brawn" or "Psyche", based on the damage type of the ability (or "-" if does no damage)
 
         if (ability.element != null)

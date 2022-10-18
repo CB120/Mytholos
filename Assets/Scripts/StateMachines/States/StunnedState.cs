@@ -12,7 +12,10 @@ namespace StateMachines.States
 
         private StunCommand stunCommand;
         [SerializeField] private CollisionDetection movementController;
-        [SerializeField] private Animation anim;
+
+        [Header("SFX")]
+        [SerializeField] GameObject stunnedSFXprefab; //SFX, added by Ethan
+        [SerializeField] float timeToDestroySFX = 4f;
 
         private float stunTime;
         protected override void OnEnable()
@@ -27,8 +30,20 @@ namespace StateMachines.States
             }
 
             stunCommand = mythCommandHandler.LastCommand as StunCommand;
-            //Debug.Log("Is this activating");
-            Invoke("startStun", 0.1f);
+            if (stunCommand.stunTime == 0)
+            {
+                stunFailed.Invoke();
+                //Debug.Log("Stun time is 0");
+            }
+            else
+            {
+                //Debug.Log("Is this activating");
+                Invoke("startStun", 0.1f);
+
+                //SFX, added by Ethan
+                GameObject sfxGameObject = Instantiate(stunnedSFXprefab, transform.position, Quaternion.identity);
+                Destroy(sfxGameObject, timeToDestroySFX);
+            }
         }
 
         protected override void OnDisable()
@@ -39,6 +54,11 @@ namespace StateMachines.States
 
         private void startStun()
         {
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Stunned", true);
+            }
             stunTime = stunCommand.stunTime;
             movementController.SetTargetVelocity(Vector3.zero);
             Invoke("killStun", stunTime);
@@ -46,10 +66,13 @@ namespace StateMachines.States
 
         private void killStun()
         {
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Stunned", false);
+            }
             //Debug.Log("Killed stun");
             stunComplete.Invoke();
         }
-
-        
     }
 }

@@ -13,15 +13,9 @@ MonoBehaviour:
   m_Name: SpawnPoints
   m_EditorClassIdentifier: 
   SpawnLocations:
-  - {x: 3, y: 2, z: 0}
-  - {x: -4, y: 2, z: 7.5}
-  - {x: -4, y: 2, z: 6}
-  - {x: 12, y: 2, z: 0}
-  - {x: 14, y: 2, z: 4}
-  - {x: 16, y: 2, z: 6}
-  MIPT1: {x: 3, y: 2, z: 0}
-  MIPT2: {x: 12, y: 2, z: 0}
-  T1Reserve1: {x: -2, y: 2, z: 5}
-  T1Reserve2: {x: 0, y: 2, z: 3}
-  T2Reserve1: {x: 16, y: 2, z: 6}
-  T2Reserve2: {x: 14, y: 2, z: 4}
+  - {x: 3, y: 1.5, z: 0}
+  - {x: -4, y: 1.5, z: 7.5}
+  - {x: -4, y: 1.5, z: 6}
+  - {x: 12, y: 1.5, z: 0}
+  - {x: 14, y: 1.5, z: 4}
+  - {x: 16, y: 1.5, z: 6}

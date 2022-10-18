@@ -1,11 +1,13 @@
 using UnityEngine;
 using Myths;
 using Elements;
+using FMODUnity;
 
 public class BeamAbility : Ability
 {
     private float DurationTimer;
 
+    [Header("Beam Ability Fields")]
     [SerializeField] private ParticleSystem ParticleSystem;
 
     [SerializeField] private BeamExtender BeamExtender;
@@ -15,6 +17,8 @@ public class BeamAbility : Ability
     [SerializeField] private Transform BeamHead;
     [SerializeField] private Transform BeamOrigin;
 
+    [SerializeField] private StudioEventEmitter beamLoops;
+    [SerializeField] private StudioEventEmitter beamFiredSFX;
 
     #region Colours
     private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
@@ -53,6 +57,14 @@ public class BeamAbility : Ability
         
         transform.GetChild(0).gameObject.SetActive(true);
         ParticleSystem.Play();
+        
+        // Animation stuff
+        Animator anim = owningMyth.gameObject.GetComponentInChildren<Animator>();
+        if (anim)
+        {
+            anim.speed = 1.0f;
+            anim.SetTrigger("AttackSpecial");
+        }
     }
 
     public override void Update()
@@ -63,8 +75,26 @@ public class BeamAbility : Ability
         {
             Destroy(gameObject);
         }
+
+        // SFX stuff added by Ethan
+        float beamProgress = 0f;
+        
+        // BUG: Broken by moving charge handling to state machine.
+        // if (Charged)
+        // {
+        //     beamProgress = (DurationTimer) / (ability.performTime - ability.chargeTime) * 100 + 100;
+        //     beamFiredSFX.enabled = true;
+        // } else
+        // {
+        //     beamProgress = ChargeTimer / ability.chargeTime * 100;
+        // }
+        // beamLoops.SetParameter("Beam Progress", beamProgress);
     }
 
+    public override void TriggerStay(Myth myth)
+    {
+        Trigger(myth);
+    }
     public override void Trigger(Myth myth)
     {
         Attack(myth, ability.damage); //Called In The Parent Ability

@@ -14,7 +14,7 @@ namespace Myths.Behaviours
         public UnityEvent moveFailed = new();
         
 
-        [SerializeField] private Animator anim;
+        //[SerializeField] private Animator anim;
         [SerializeField] private CollisionDetection movementController;
         [SerializeField] private float speed;
         public NavMeshAgent navMeshAgent;

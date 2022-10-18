@@ -15,7 +15,7 @@ namespace StateMachines.States
         [SerializeField] private float targetLerpSpeed = 0.1f;
         [SerializeField]private float smoothing = 0.1f;
         [SerializeField] private float speedHandicap = 1.2f;
-        private float acceleration = 4;
+        private float acceleration = 10;
         private float moveSpeed = 0;
 
         // References & Events
@@ -23,7 +23,6 @@ namespace StateMachines.States
         public UnityEvent moveFailed = new();
 
         [SerializeField] private CollisionDetection movementController;
-        [SerializeField] private Animator anim;
 
         private MoveCommand moveCommand;
 
@@ -52,7 +51,7 @@ namespace StateMachines.States
             moveSpeed += (acceleration - (myth.myth.size * 2)) * (Time.deltaTime * 1.5f);
            
             //Debug.Log(myth.myth.size);
-            moveSpeed = Mathf.Clamp(moveSpeed, 0, myth.walkSpeed * speedHandicap);
+            moveSpeed = Mathf.Clamp(moveSpeed, 0, (myth.walkSpeed * 5) * speedHandicap);
             //Debug.Log(moveSpeed);
             return moveSpeed;
         }
@@ -82,7 +81,11 @@ namespace StateMachines.States
                 {
                     movementController.SetTargetVelocity(Vector3.zero);
                     moveSpeed = 0;
-                    if (anim) anim.SetBool("Walking", false);
+                    if (anim)
+                    {
+                        anim.SetBool("Walking", false);
+                        anim.speed = 1.0f;
+                    }
                     moveComplete.Invoke();
                     return;
                 }
@@ -99,13 +102,19 @@ namespace StateMachines.States
                 targetDirection = Vector3.Lerp(targetDirection, inputVector,
                     Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing))); // Only to be used with some sort of ice state / movement
 
-                if (anim) anim.SetBool("Walking", true);
-
                 //movementController.SetTargetVelocity(inputVector * (myth.myth.agility * speedHandicap));
                 
                 movementController.SetTargetVelocity(inputVector * speedValue());
-                
-                
+
+                if (anim)
+                {
+                    anim.SetBool("Walking", true);
+                    float walkSpeed = (inputVector * moveSpeed).magnitude;
+                    //anim.SetFloat("Speed", walkSpeed);
+                    anim.SetFloat("MoveTween", walkSpeed / 10.0f);
+                    anim.speed = walkSpeed;
+                }
+
                 //movementController.SetTargetVelocity(targetDirection * myth.myth.agility * speedHandicap); USING THIS IS LIKE WALKING ON ICE (6 TARGET LERP SPEED, 0.45 SMOOTHING)
 
                 Vector3 lookDirection = inputVector;

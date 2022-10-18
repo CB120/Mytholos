@@ -6,6 +6,7 @@ using Elements;
 
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
+    [Header("All-Ability Fields")]
     public SO_Ability ability;
     public Myth owningMyth;
     public ParticleSystem abilityPS;
@@ -15,6 +16,10 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     public float DamageMultiplier { get; set; } = 1;
 
     private Element element { get => ability.element.element;}
+
+    [Header("All-Ability SFX")] //SFX stuff, added by Ethan
+    public GameObject takingDamageSFXPrefab;
+    public float timeToDestroyTakingDamageSFX = 0.4f;
 
 
     virtual public void Start()
@@ -39,7 +44,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (!isInParty)
         {
-            var finalDamage = damage * DamageMultiplier * myth.AttackStat / myth.DefenceStat;
+            var finalDamage = damage * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
            
             if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
             {
@@ -55,6 +60,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 myth.effectController.RemoveIceOvershield();
             }
 
+            GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
+            Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
         }
         else
         {
@@ -62,18 +69,20 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 particle = ability.element.buffParticle; 
         }
 
-        
-        ParticleSystem ps = Instantiate(particle, myth.transform);
-        if (ability.element.setParticleColor)
+        if (ability.element.element != Element.Ice)
         {
-            Debug.LogWarning("Color is Set");
-            ParticleSystem.MainModule main = ps.main;
-            main.startColor = ability.element.color;
+            ParticleSystem ps = Instantiate(particle, myth.transform);
+            if (ability.element.setParticleColor)
+            {
+                Debug.LogWarning("Color is Set");
+                ParticleSystem.MainModule main = ps.main;
+                main.startColor = ability.element.color;
+            }
         }
 
         if (SOknockbackStrength > 0)
         {
-            Debug.Log(SOstunTime);
+            //Debug.Log(SOstunTime);
             myth.Knockback(SOknockbackStrength, owningMyth.gameObject, SOstunTime);
         }
 
@@ -81,10 +90,23 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         {
             myth.Stun(SOstunTime);
         }
+
+        // Animate the myth that was hit
+        Animator anim = myth.gameObject.GetComponentInChildren<Animator>();
+        if (anim)
+        {
+            anim.speed = 1.0f;
+            anim.SetTrigger("Hurt");
+        }
     }
 
     #region Collision
     virtual public void Trigger(Myth myth)
+    {
+
+    }
+
+    virtual public void TriggerStay(Myth myth)
     {
 
     }
@@ -204,7 +226,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyFireEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.Burn(3, ability.element.buffLength);
+        myth.effectController.Burn(5, ability.element.buffLength);
         myth.effectController.ActivateBuff(Element.Fire, !isInParty);
     }
     #endregion

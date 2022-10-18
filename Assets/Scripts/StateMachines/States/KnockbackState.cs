@@ -8,8 +8,9 @@ namespace StateMachines.States
     public class KnockbackState : State
     {
         // References
+        // References
         [SerializeField] private CollisionDetection movementController;
-        private KnockbackCommand knockbackCommand;
+        private KnockbackCommand knockbackService;
         [SerializeField] private GameObject sender;
         
 
@@ -29,7 +30,7 @@ namespace StateMachines.States
         protected override void OnEnable()
         {
             base.OnEnable();
-            knockbackCommand = mythCommandHandler.LastCommand as KnockbackCommand;
+            knockbackService = mythCommandHandler.LastCommand as KnockbackCommand;
             CancelInvoke("ResetKnockback");
             if (movementController == null)
             {
@@ -37,20 +38,20 @@ namespace StateMachines.States
                 return;
             }
             
-            if(knockbackCommand == null)
+            if(knockbackService == null)
             {
                 Debug.LogWarning("There was a problem with getting the knockback service, please check the Knockback State script.");
                 return;
             }
-                Invoke("lateEnable", 0.002f);
+                Invoke("lateEnable", 0.001f);
         }
 
         private void lateEnable()
         {
-                sender = knockbackCommand.abilitySender;
-                knockbackStrength = knockbackCommand.knockbackStrength;
-                senderStrength = knockbackCommand.senderStrength;
-                stunTime = knockbackCommand.stunTime;
+                sender = knockbackService.abilitySender;
+                knockbackStrength = knockbackService.knockbackStrength;
+                senderStrength = knockbackService.senderStrength;
+                stunTime = knockbackService.stunTime;
             if (sender != null && knockbackStrength != 0)
             {
                 //Debug.Log("Step 3 Knockback complete");

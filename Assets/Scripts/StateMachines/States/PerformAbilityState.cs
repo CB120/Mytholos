@@ -32,17 +32,17 @@ namespace StateMachines.States
             }
             
             Vector3 pos = gameObject.transform.position + abilityData.relativeSpawnPosition;
-
+            Vector3 rot = abilityData.relativeSpawnRotation;
             GameObject abilityObject = abilityData.spawnInWorldSpace
                 ? Instantiate(
                     abilityPrefab,
                     pos,
-                    new Quaternion(0f, 0f, 0f, 0f)
+                    new Quaternion(rot.x, rot.y, rot.z, 0f)
                 )
                 : Instantiate(
                     abilityPrefab,
                     pos,
-                    new Quaternion(0f, 0f, 0f, 0f),
+                    new Quaternion(rot.x, rot.y, rot.z, 0f),
                     gameObject.transform
                 );
 
@@ -67,9 +67,28 @@ namespace StateMachines.States
 
         private IEnumerator PerformAbility()
         {
+            if (anim)
+            {
+                anim.speed = 1.0f;
+                anim.SetBool("Attacking", true);
+
+                if (abilityCommand.abilityData.performTime > 0)
+                {
+                    //anim.SetTrigger("AttackSpecial");
+                    anim.SetTrigger("Charge");
+                }
+                else
+                {
+                    anim.SetTrigger("Attack");
+                }
+            }
+
             yield return new WaitForSeconds(abilityCommand.abilityData.performTime);
-            
+
             performAbilityComplete.Invoke();
+
+            if (anim)
+                anim.SetBool("Attacking", false);
         }
     }
 }

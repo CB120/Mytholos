@@ -39,8 +39,7 @@ public class BombAbility : Ability
     public override void Start()
     {
         startPos = transform.position;
-        //targetPos = owningMyth != null ? owningMyth.targetEnemy.gameObject.transform.position : new Vector3(10, 0, 10);
-        if (owningMyth.targetEnemy) //GUARD set added by Ethan, to prevent NREs. Remove when unneeded
+        if (owningMyth.targetEnemy) 
         {
             targetPos = owningMyth.targetEnemy.gameObject.transform.position;
         } else
@@ -67,7 +66,4 @@ public class BombAbility : Ability
         Attack(myth, ability.damage);
         base.Trigger(myth);
     }
-
-
-
 }

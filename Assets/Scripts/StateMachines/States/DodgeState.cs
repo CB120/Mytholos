@@ -1,3 +1,4 @@
+using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,49 +12,71 @@ namespace StateMachines.States
 
         // References
         [SerializeField] private CollisionDetection movementController;
-        [SerializeField] private Animator anim;
+        private DodgeCommand dodgeCommand;
 
 
-        private void Update()
-        {
-            Debug.Log($"{myth.name} used a dodge");
-        }
+        [Header("SFX")]
+        public GameObject dodgeSFXPrefab;
+        public float timeToDestroyDodgeSFX = 1f;
+
+        //private void Update()
+        //{
+            //Debug.Log($"{myth.name} used a dodge");
+        //}
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (myth.Stamina.Value < 35)
+            if (myth.Stamina.Value < 1)
             {
-                // TODO: Should be checked before entering this state
                 DodgeComplete.Invoke();
                 return;
             }
-            myth.Stamina.Value -= 35;
+            dodgeCommand = mythCommandHandler.LastCommand as DodgeCommand;
+            myth.Stamina.Value -= 1;
             ActivateDodge();
         }
 
-        private Vector3 decideDirection()
+        private /*Vector3*/ void DecideDirection()
         {
-            Vector3 direction = Vector3.zero;
-            return direction;
+            //Vector3 direction = Vector3.zero;
+            //return direction;
 
-            // Use this in the future for a better dodge?
+            var inputVector = new Vector3(
+                dodgeCommand.input.x,
+                0,
+                dodgeCommand.input.y
+            );
+
+            myth.gameObject.transform.rotation = Quaternion.LookRotation(inputVector);
+
+            // Use this in the future for a better dodge? // Okey
         }
         private void ActivateDodge()
         {
             // Initialize dodge parameters 
             myth.isInvulnerable = true;
+            if (dodgeCommand != null)
+                DecideDirection();
             movementController.SetTargetVelocity(myth.transform.forward * (myth.myth.agility + dodgeSpeed));
-            if (anim) anim.SetBool("Walking", false);
+            if (anim)
+            {
+                anim.SetTrigger("Dodge");
+                anim.SetBool("Walking", false);
+                anim.speed = 1.0f;
+            }
             Invoke("KilliFrames", 0.33f);
             DodgeComplete.Invoke();
+
+            GameObject dodgeSFX = Instantiate(dodgeSFXPrefab, transform);
+            Destroy(dodgeSFX, timeToDestroyDodgeSFX);
         }
 
         private void KilliFrames()
         {
-
             movementController.SetTargetVelocity(Vector3.zero);
             myth.isInvulnerable = false;
         }
+
     }
 }

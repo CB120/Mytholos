@@ -13,12 +13,25 @@ public class Effects : MonoBehaviour
     [SerializeField] private MythUI mythUI;
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
+    [SerializeField] private AlternateEffects alternateIce;
 
-    private void Start()
+    [Header("Effect Manipulation")]
+    [SerializeField] private float rotateSpeed = 500;
+    private bool isDisoriented;
+
+
+    private void Awake()
     {
         defaultWalkSpeed = myth.walkSpeed;
         defaultAttackStat = myth.AttackStat;
         defaultDefenceStat = myth.DefenceStat;
+    }
+
+    private void OnEnable()
+    {
+        CleanseAllBuffs();
+        CleanseAllDebuffs();
+        Debug.LogWarning("Clear");
     }
 
     #region Effect Application
@@ -60,13 +73,21 @@ public class Effects : MonoBehaviour
         CancelInvoke("RemoveFreezeDebuff");
         ActivateBuff(Element.Ice, true);
         myth.Stun(duration);
+        alternateIce.effectObject.SetActive(true);
         Invoke("RemoveFreezeDebuff", duration);
+
     }
 
     private void RemoveFreezeDebuff() //Ice Debuff
     {
         //Unfreeze
-        DeactivateBuff(Element.Ice, true);
+        if (appliedDebuffs.Contains(Element.Ice))
+        {
+            alternateIce.effectObject.SetActive(false);
+            ParticleSystem ps = Instantiate(alternateIce.element.debuffParticle, myth.transform);
+            DeactivateBuff(Element.Ice, true);
+        }
+
     }
 
     public void IceOvershield() //Ice Buff
@@ -117,6 +138,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("EndBurn");
         burnDamage = damagevalue;
+        burning = true;
         Invoke("EndBurn", duration);
     }
 
@@ -130,6 +152,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("RemoveAttackBuff");
         myth.AttackStat = Mathf.Clamp(myth.AttackStat *2, defaultAttackStat/2, defaultAttackStat * 2);
+        ActivateBuff(Element.Fire, false);
         Invoke("RemoveAttackBuff", duration);
     }
 
@@ -145,6 +168,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("RemoveDefenceBuff");
         myth.DefenceStat = Mathf.Clamp(myth.DefenceStat * 2, defaultDefenceStat/2, defaultDefenceStat*2);
+        ActivateBuff(Element.Earth, false);
         Invoke("RemoveDefenceBuff", duration);
     }
 
@@ -237,12 +261,12 @@ public class Effects : MonoBehaviour
         {
             appliedDebuffs.Add(element);
             mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].negativeBuff.Play("EffectUIAnim", -1, 0f);
+            mythUI.effectUIData[element].negativeBuff.isEnabled = true;
         }
         else { 
             appliedBuffs.Add(element);
             mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].positiveBuff.Play("EffectUIAnim", -1, 0f);
+            mythUI.effectUIData[element].positiveBuff.isEnabled = true;
         }
     }
 
@@ -252,23 +276,22 @@ public class Effects : MonoBehaviour
 
         if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
-            mythUI.effectUIData[element].negativeBuff.SetTrigger("Close");
+            mythUI.effectUIData[element].negativeBuff.isEnabled = false;
         }
         else if (!isDebuff && appliedBuffs.Contains(element)) { 
             appliedBuffs.Remove(element);
-            mythUI.effectUIData[element].positiveBuff.SetTrigger("Close");
+            mythUI.effectUIData[element].positiveBuff.isEnabled = false;
         }
     }
     #endregion
 
-    private bool isDisoriented;
-    [SerializeField] private float rotateSpeed = 500;
+
     private void Update()
     {
         if (burning)
         {
             Debug.Log("burning");
-            myth.Health.Value -= burnDamage;
+            myth.Health.Value -= burnDamage * Time.deltaTime;
         }
 
         if (isDisoriented)
@@ -295,5 +318,15 @@ public class Effects : MonoBehaviour
         RemoveIceOvershield();
         RemoveAgilityBuff();
         //RemoveMetalDefence();
+    }
+}
+
+namespace Elements
+{
+    [System.Serializable]
+    struct AlternateEffects
+    {
+        public SO_Element element;
+        public GameObject effectObject;
     }
 }

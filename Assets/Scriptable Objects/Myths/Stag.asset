@@ -16,13 +16,12 @@ MonoBehaviour:
   prefab: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
   icon: {fileID: 720469514, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
   health: 0.4
-  size: 1
-  brawn: 0.2
-  psyche: 1
-  agility: 5
+  size: 0.15
+  attack: 0.6
+  agility: 1
   abilities:
-  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
-  - {fileID: 11400000, guid: b79fadb94e8e281408f154d45bddbfc8, type: 2}
-  - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
+  - {fileID: 11400000, guid: f1725c5da4b7b5c48bc06c39c90ed8e2, type: 2}
+  - {fileID: 11400000, guid: 837ee32e5b1671d46b7fc744f6b248e8, type: 2}
+  - {fileID: 11400000, guid: 89cf5b13cba0b4346b08ae3f00554a5d, type: 2}
   - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
   - {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}

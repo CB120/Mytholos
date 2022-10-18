@@ -66,13 +66,12 @@ namespace Myths
             if (mythCommandHandler.LastCommand is KnockbackCommand knockbackService)
             {
                 Debug.Log(abilityStunTime);
-                //Debug.Log("Setting values in myth (Knockback step 2)");
                 knockbackService.abilitySender = sendingMyth;
                 knockbackService.senderStrength = myth.size;
                 knockbackService.knockbackStrength = abilityKnockback;
                 knockbackService.stunTime = abilityStunTime;
-                //Debug.Log(knockbackService.abilitySender + " " + this.gameObject);
             }
+            
         }
 
         public void Stun(float abilityStunTime)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Wind
   m_EditorClassIdentifier: 
-  color: {r: 0.86666673, g: 0.83921576, b: 0.7490196, a: 1}
+  color: {r: 0.8018868, g: 0.7761155, b: 0.69143826, a: 1}
   icon: {fileID: 108356541, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   element: 5
   buffLength: 5
@@ -26,3 +26,5 @@ MonoBehaviour:
   hasDebris: 0
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}
+  buffDescription: Raises agility
+  debuffDescription: Disorients foe

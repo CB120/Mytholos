@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8115942251408703439}
   - component: {fileID: 5464453983648899181}
+  - component: {fileID: 8479889475830056691}
   m_Layer: 0
   m_Name: ShotAbilityPrefab
   m_TagString: Untagged
@@ -160,8 +161,44 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   speed: 20
   ShotDuration: 1.5
+  Light: {fileID: 3827238983002264761}
+  Projectile: {fileID: 1457877636136650623}
+  Trail: {fileID: 6673786854070613663}
+--- !u!114 &8479889475830056691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641636710526588070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -925070190
+      Data2: 1263999955
+      Data3: -555068001
+      Data4: -1311829010
+    Path: event:/SFX/Abilities/Shot
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &5264882638746329924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229,6 +266,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6713729195525137467, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713729195525137467, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713729195525137467, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6947430728766900051, guid: ee2c6c37ac70d8f43ba59000748d53a7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -289,11 +341,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8938954004117338109, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938954004117338109, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938954004117338109, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee2c6c37ac70d8f43ba59000748d53a7, type: 3}
+--- !u!198 &1457877636136650623 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6713729195525137467, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5264882638746329924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3827238983002264761 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8938954004117338109, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5264882638746329924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4564011893456778737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8522568061213906613, guid: ee2c6c37ac70d8f43ba59000748d53a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5264882638746329924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &6673786854070613663 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 1553340641454609883, guid: ee2c6c37ac70d8f43ba59000748d53a7,
     type: 3}
   m_PrefabInstance: {fileID: 5264882638746329924}
   m_PrefabAsset: {fileID: 0}

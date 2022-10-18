@@ -11,6 +11,8 @@ public class SetUpManager : MonoBehaviour
     PlayerInputManager inputManager;
     int playerCount;
 
+    [SerializeField] bool debugMode;
+
     void Start()
     {
         inputManager = FindObjectOfType<PlayerInputManager>();
@@ -22,7 +24,8 @@ public class SetUpManager : MonoBehaviour
         if (playerCount < inputManager.playerCount)
         {
             playerTexts[playerCount].text = "Player " + (playerCount + 1) + " has joined!";
-            playerTexts[playerCount].GetComponent<RectTransform>().anchoredPosition = Vector2.zero; // Amend unwanted 0.5 offset/graphical issue that arises with centred text
+            //playerTexts[playerCount].GetComponent<RectTransform>().anchoredPosition = Vector2.zero; // Amend unwanted 0.5 offset/graphical issue that arises with centred text
+            playerTexts[playerCount].GetComponent<RectTransform>().anchoredPosition -= Vector2.left * 0.5f;
             playerCount++;
 
             // Attach that playerparticipant to the menu that lets them cancel to return to main menu
@@ -32,7 +35,6 @@ public class SetUpManager : MonoBehaviour
                 PlayerInput input = participant.GetComponent<PlayerInput>();
                 input.actions.FindActionMap("Player").Disable();
                 input.actions.FindActionMap("UI").Enable();
-
             }
 
             if (playerCount >= 2)
@@ -69,6 +71,18 @@ public class SetUpManager : MonoBehaviour
     IEnumerator LoadScene(float timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
-        SceneManager.LoadScene(nameOfSceneToLoad);
+
+        if (debugMode)
+        {
+            foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+            {
+                PlayerInput input = participant.GetComponent<PlayerInput>();
+                input.actions.FindActionMap("UI").Disable();
+                input.actions.FindActionMap("Player").Enable();
+                SceneManager.LoadScene("ArenaEddie");
+            }
+        }
+        else
+            SceneManager.LoadScene(nameOfSceneToLoad);
     }
 }

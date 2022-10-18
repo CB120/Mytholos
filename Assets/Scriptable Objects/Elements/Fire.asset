@@ -15,10 +15,10 @@ MonoBehaviour:
   color: {r: 0.95294124, g: 0.3019608, b: 0.17254902, a: 1}
   icon: {fileID: -613462781, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   element: 1
-  buffLength: 0
-  debuffParticle: {fileID: 3361534561257019739, guid: 90292d90c78142344a2278f49b408e08,
+  buffLength: 5
+  debuffParticle: {fileID: 2382774908206683239, guid: 7d783a9af7f76e743bd0fff189b9c73f,
     type: 3}
-  buffParticle: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
+  buffParticle: {fileID: 2382774908206683239, guid: aaa24b94c16d9554987ade8e0070fa77,
     type: 3}
   setParticleColor: 1
   strongAgainst:
@@ -27,3 +27,5 @@ MonoBehaviour:
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}
+  buffDescription: Raises attack
+  debuffDescription: Sets foe ablaze

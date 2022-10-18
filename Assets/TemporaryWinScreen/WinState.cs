@@ -11,7 +11,7 @@ public class WinState : MonoBehaviour
 {
     /*TO BE REMOVED AFTER MONDAY*/
     // Apologies
-    public int team1Remaining = 2, team2Remaining = 2;
+    public int team1Remaining = 3, team2Remaining = 3;
     //public GameObject obj;
     //public TextMeshProUGUI text;
 
@@ -26,7 +26,8 @@ public class WinState : MonoBehaviour
 
     public void DecreaseScore(int partyIndex)
     {
-        print("Decrease score! Player " + partyIndex);
+        //print("Decrease score! Player " + partyIndex);
+        //print("Team 1: " + team1Remaining + ", Team 2: " + team2Remaining + "(before)");
 
         if (partyIndex == 0)
         {
@@ -50,11 +51,13 @@ public class WinState : MonoBehaviour
                 //text.text = "Team 2 was Defeated";
             }
         }
+
+        //print("Team 1: " + team1Remaining + ", Team 2: " + team2Remaining + "(after)");
     }
 
     void EndGame(int winningPlayerIndex)
     {
-        print("Well, we tried");
+        //print("Well, we tried");
 
         gameObject.SetActive(true);
 
@@ -62,14 +65,18 @@ public class WinState : MonoBehaviour
         foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
         {
             // Update the winning player's current UI graph to the results menu
-            if (participant.partyIndex == winningPlayerIndex)
-                participant.currentMenuGraph = resultsMenu;
+            //if (participant.partyIndex == winningPlayerIndex)
+            //    participant.currentMenuGraph = resultsMenu;
 
-            participant.DisablePlayerInput(0.35f);
-            PlayerInput input = participant.GetComponent<PlayerInput>();
-            input.actions.FindActionMap("Player").Disable();
-            input.actions.FindActionMap("UI").Enable();
+            //participant.DisablePlayerInput(0.35f);
+            //PlayerInput input = participant.GetComponent<PlayerInput>();      // Temporarily commented out
+            //input.actions.FindActionMap("Player").Disable();
+            //input.actions.FindActionMap("UI").Enable();
+
+            participant.DisablePlayerInput(2.0f);
         }
+
+        StartCoroutine(UhhReloadTheScene());
 
         // Begin transition to fade out gameplay UI and fade in results UI
         StartCoroutine(FadeGameOutFadeResultsIn(0.35f));
@@ -79,6 +86,12 @@ public class WinState : MonoBehaviour
 
         // Set winning text image based on winning player index
         playerWinImage.sprite = playerWinSprites[winningPlayerIndex];
+    }
+
+    IEnumerator UhhReloadTheScene()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator FadeGameOutFadeResultsIn(float duration)

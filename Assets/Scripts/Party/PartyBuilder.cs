@@ -15,6 +15,9 @@ public class PartyBuilder : MonoBehaviour
     public List<GameObject> Party1;
     public List<GameObject> Party2;
 
+    public GameObject Team1ActiveMyth;
+    public GameObject Team2ActiveMyth;
+
     public SO_Ability[] allAbilities;
 
     private int mythCounter = 0;
@@ -24,7 +27,6 @@ public class PartyBuilder : MonoBehaviour
     private void Awake()
     {
         allParticipantData = allParticipantDataService.GetAllParticipantData();
-
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
@@ -46,13 +48,23 @@ public class PartyBuilder : MonoBehaviour
         for (int p = 0; p < allParticipantData.partyData.Length; p++) 
         {
             // Clear the myth lists since they will persist from previous sessions
-            allParticipantData.partyData[p].myths.Clear();
+            var partyData = allParticipantData.partyData[p];
+            partyData.myths.Clear();
             
-            foreach (MythData m in allParticipantData.partyData[p].mythData)
+            foreach (MythData m in partyData.mythData)
             {
                 SpawnMyth(m,p);
             }
 
+            try
+            {
+                ((PlayerParticipant)partyData.participant).Initialise();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("You probably tried to run the game from the Arena scene. This doesn't work anymore. Enjoy your error.");;
+                throw;
+            }
         }
     }
 
@@ -60,11 +72,29 @@ public class PartyBuilder : MonoBehaviour
     {
         if (Party1.Count == Party2.Count && Party1 != null)
         {
+            Team1ActiveMyth = Party1[0];
+            Team2ActiveMyth = Party2[0];
             for (int i = 0; i < Party1.Count; i++)
             {
                 Party1[i].GetComponent<Myth>().targetEnemy = Party2[i].gameObject;
                 Party2[i].GetComponent<Myth>().targetEnemy = Party1[i].gameObject;
             }
+        }
+    }
+
+    public void setSwappingTarget(GameObject swappingInMyth, int Index)
+    {
+        if(Index == 0)
+        {
+            Team1ActiveMyth = swappingInMyth;
+            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
+            swappingInMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
+        }
+        if(Index == 1)
+        {
+            Team2ActiveMyth = swappingInMyth;
+            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
+            swappingInMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
         }
     }
 
@@ -88,7 +118,7 @@ public class PartyBuilder : MonoBehaviour
         allParticipantData.partyData[participantIndex].myths.Add(newMyth);
         
         
-        if (participantIndex == 1)
+        if (participantIndex == 0)
         {
             Party1.Add(newMythGameObject);
         }
@@ -111,6 +141,19 @@ public class PartyBuilder : MonoBehaviour
         mythCounter ++;
     }
 
+    public int GetRemainingMyths(int teamIndex) // dont know if i need this anymore ~ Christian
+    {
+        int remaining;
+        if(teamIndex == 0)
+        {
+            remaining = winState.team1Remaining;
+        } else 
+        {
+            remaining = winState.team2Remaining;
+        }
+        Debug.Log("Remaining = " + remaining);
+        return remaining;
+    }
 
 
     //Remove after playtest

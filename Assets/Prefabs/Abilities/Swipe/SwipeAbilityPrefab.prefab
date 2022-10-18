@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 5316833831943652738}
   - component: {fileID: 2111298335}
   - component: {fileID: 1478457823589754531}
+  - component: {fileID: 1711224438327048194}
   m_Layer: 0
   m_Name: SwipeAbilityPrefab
   m_TagString: Untagged
@@ -207,6 +208,9 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
+    type: 3}
+  timeToDestroyTakingDamageSFX: 0.4
   trail: {fileID: 6915440664071520567}
 --- !u!95 &1478457823589754531
 Animator:
@@ -228,6 +232,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1711224438327048194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300852338785146115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 941269127
+      Data2: 1165906557
+      Data3: 1345779871
+      Data4: 1413309159
+    Path: event:/SFX/Abilities/Swipe
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 1000
 --- !u!1001 &9132670351590714428
 PrefabInstance:
   m_ObjectHideFlags: 0

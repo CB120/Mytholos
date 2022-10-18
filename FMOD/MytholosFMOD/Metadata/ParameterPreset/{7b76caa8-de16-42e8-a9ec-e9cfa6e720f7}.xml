@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{7b76caa8-de16-42e8-a9ec-e9cfa6e720f7}">
+		<property name="name">
+			<value>Beam Progress</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{567c9aa5-5b70-4b07-be6e-c329b5a4ed7a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{567c9aa5-5b70-4b07-be6e-c329b5a4ed7a}">
+		<property name="maximum">
+			<value>200</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

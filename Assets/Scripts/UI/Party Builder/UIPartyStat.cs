@@ -7,14 +7,15 @@ public class UIPartyStat : MonoBehaviour
 
     public void SetUpUI(float percent)
     {
-        int barsToFill = Mathf.FloorToInt(Mathf.Clamp(percent, 0, 1) * bars.Length);
+        int barsToFill = Mathf.CeilToInt(Mathf.Clamp(percent, 0, 1) * bars.Length);
+        //print("Percent: " + percent + ", Bars to fill: " + barsToFill + ", Max bars: " + bars.Length);
 
         for (int i = 0; i < bars.Length; i++)
         {
-            if (i <= barsToFill)
-                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 1.0f);
+            if (i < barsToFill)
+                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 0.99f);
             else
-                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 0.2f);
+                bars[i].color = new Color(bars[i].color.r, bars[i].color.g, bars[i].color.b, 0.15f);
         }
     }
 }

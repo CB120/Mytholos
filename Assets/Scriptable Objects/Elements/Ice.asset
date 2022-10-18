@@ -27,3 +27,5 @@ MonoBehaviour:
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}
+  buffDescription: Gain an overshield
+  debuffDescription: Freezes foe

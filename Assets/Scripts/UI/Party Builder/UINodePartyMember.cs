@@ -8,6 +8,7 @@ public class UINodePartyMember : UIMenuNode
 
     override public void OnNavigate(int playerNumber, Direction direction)
     {
+        base.OnNavigate(playerNumber, direction);
         manager.SelectTeamMember(playerNumber, this);
     }
 

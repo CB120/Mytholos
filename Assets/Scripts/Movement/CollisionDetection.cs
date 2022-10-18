@@ -5,7 +5,7 @@ public class CollisionDetection : MonoBehaviour
 {
     protected enum HitDirection { Left, Right, Down, Up, Back, Front } // X-, X+, Y-, Y+, Z-, Z+
 
-    [SerializeField] protected Vector3 gravity = new Vector3(0.0f, -9.8f, 0.0f);        // Default force that is applied every FixedUpdate
+    [SerializeField] protected Vector3 gravity = new Vector3(0.0f, 0.0f, 0.0f);        // Default force that is applied every FixedUpdate
     [SerializeField] protected float steepestSlope = 0.65f;                             // The maximum angled slope we can walk up (this is the y component of the face's normal vector)
     [SerializeField] protected bool groundOnHorizontalMovement = false;                 // Optional (not super important?), if true it sets our ground normal on horizontal movement as well as downward ones
     [SerializeField] protected bool hugGround = false;                                  // Optional, object will 'magnetically' hug the ground if possible when moving down a slope or off a ledge
@@ -14,7 +14,7 @@ public class CollisionDetection : MonoBehaviour
     protected float minimumDistance = 0.001f;
     protected float collisionBuffer = 0.01f;
 
-    protected Vector3 velocity;
+    [SerializeField] protected Vector3 velocity;
     protected bool wasGrounded;
     protected bool isGrounded;
     protected new Rigidbody rigidbody;
@@ -50,6 +50,17 @@ public class CollisionDetection : MonoBehaviour
 
         // Make record of groundedness (for hugging the ground)
         wasGrounded = isGrounded;
+        //if (velocity == Vector3.zero)
+        //{
+        //    Debug.Log(velocity + " Velocity");
+        //}
+        
+        if(rigidbody.velocity.magnitude > 0) // Quick fix
+        {
+            rigidbody.velocity = Vector3.zero;
+        }
+
+        
     }
 
     protected virtual void Move(Vector3 move, HitDirection direction, bool onlyMoveIfCollides = false)

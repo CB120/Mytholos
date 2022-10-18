@@ -19,11 +19,15 @@ namespace StateMachines
         [SerializeField] private AnyStateTransitionManager anyStateTransitionManager;
         [SerializeField] private OverrideBehaviour overrideBehaviour;
         [SerializeField] private List<AnyStateTransition> exceptions;
+        [SerializeField] protected Animator anim;
 
 
         public void Awake()
         {
             enabled = false;
+            
+            if (anim == null && myth != null)
+                anim = myth.gameObject.GetComponentInChildren<Animator>();
         }
 
         protected virtual void OnEnable()
