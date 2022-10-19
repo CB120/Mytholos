@@ -107,6 +107,21 @@ PrefabInstance:
       propertyPath: mythProperties
       value: 
       objectReference: {fileID: 4040124198851291565}
+    - target: {fileID: 2166414475685286671, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: Params.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166414475685286671, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: Params.Array.data[0].Name
+      value: Myth Selection
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166414475685286671, guid: db407f3364fe92842a089222a0ba139e,
+        type: 3}
+      propertyPath: Params.Array.data[0].Value
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2326847374803901642, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: anim
@@ -120,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 7398305262685480618, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7428839973292417855, guid: db407f3364fe92842a089222a0ba139e,
         type: 3}
