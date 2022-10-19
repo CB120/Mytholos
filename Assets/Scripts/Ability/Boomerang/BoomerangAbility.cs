@@ -101,7 +101,6 @@ public class BoomerangAbility : Ability
         Attack(myth, ability.damage); //Called In The Parent Ability
         Debug.LogWarning($"Shot Collided With Object: {myth.gameObject.name}");
         base.Trigger(myth);
-        Destroy(this.gameObject);
     }
 
     public override void TerrainInteraction()

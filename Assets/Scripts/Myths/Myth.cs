@@ -14,10 +14,10 @@ namespace Myths
         public MythStat Stamina => stamina;
 
         public SO_Myth myth;
+
         public float walkSpeed;
-        //placeholder stat of 1
-        public float AttackStat = 1;
-        public float DefenceStat = 1;
+        public float AttackStat;
+        public float DefenceStat;
         
         public GameObject targetEnemy;
         // TODO: Make serialised, fix naming mismatch
@@ -48,6 +48,7 @@ namespace Myths
         private void Awake()
         {
             walkSpeed = myth.agility;
+            AttackStat = myth.attack;
         }
 
         /*Remove everything after this after 5/09/22*/

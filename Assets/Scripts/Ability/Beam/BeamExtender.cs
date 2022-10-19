@@ -17,7 +17,7 @@ public class BeamExtender : MonoBehaviour
     void Update()
     {    
         if (!AtMaxRange)
-            BeamTransform.localScale += (new Vector3(0, 0, MaxRange)) * Time.deltaTime;
+            BeamTransform.localScale += (new Vector3(0, 0, MaxRange*2)) * Time.deltaTime;
 
         if (BeamTransform.localScale.z > MaxRange)
             AtMaxRange = true;
