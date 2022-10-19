@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Myths;
 using Elements;
 using Commands;
@@ -10,7 +11,7 @@ public class Effects : MonoBehaviour
     private float defaultWalkSpeed = 0;
     private float defaultAttackStat = 0;
     private float defaultDefenceStat = 0;
-    [SerializeField] private MythUI mythUI;
+    //[SerializeField] private MythUI mythUI;
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
     [SerializeField] private AlternateEffects alternateIce;
@@ -19,6 +20,8 @@ public class Effects : MonoBehaviour
     [SerializeField] private float rotateSpeed = 500;
     private bool isDisoriented;
 
+    public UnityEvent<Element, bool> ActivateBuffEvent = new();
+    public UnityEvent<Element, bool, bool, bool> DeactivateBuffEvent = new();
 
     private void Awake()
     {
@@ -256,32 +259,34 @@ public class Effects : MonoBehaviour
     #region Effect Interface
     public void ActivateBuff(Element element, bool isDebuff) //Baxter
     {
-        mythUI.RefreshLayout();
+        //mythUI.RefreshLayout();
+        ActivateBuffEvent.Invoke(element, isDebuff);
 
         if (isDebuff)
         {
             appliedDebuffs.Add(element);
-            mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].negativeBuff.isEnabled = true;
+            //mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
+            //mythUI.effectUIData[element].negativeBuff.isEnabled = true;
         }
         else { 
             appliedBuffs.Add(element);
-            mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].positiveBuff.isEnabled = true;
+            //mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
+            //mythUI.effectUIData[element].positiveBuff.isEnabled = true;
         }
     }
 
     public void DeactivateBuff(Element element, bool isDebuff)
     {
-        mythUI.RefreshLayout();
+        //mythUI.RefreshLayout();
+        DeactivateBuffEvent.Invoke(element, isDebuff, appliedDebuffs.Contains(element), appliedBuffs.Contains(element));
 
         if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
-            mythUI.effectUIData[element].negativeBuff.isEnabled = false;
+            //mythUI.effectUIData[element].negativeBuff.isEnabled = false;
         }
         else if (!isDebuff && appliedBuffs.Contains(element)) { 
             appliedBuffs.Remove(element);
-            mythUI.effectUIData[element].positiveBuff.isEnabled = false;
+            //mythUI.effectUIData[element].positiveBuff.isEnabled = false;
         }
     }
     #endregion
@@ -291,7 +296,7 @@ public class Effects : MonoBehaviour
     {
         if (burning)
         {
-            // Debug.Log("burning");
+            //Debug.Log("burning");
             myth.Health.Value -= burnDamage * Time.deltaTime;
         }
 

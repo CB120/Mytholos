@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Myths;
 
 public class UIGameAbility : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI abilityNameTMP;
     [SerializeField] private Image elementIcon;
     [SerializeField] private TextMeshProUGUI staminaCostTMP;
+    [SerializeField] private UIPartyStat staminaUIStat;
     [SerializeField] private Image[] imagesToColour;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Color defaultColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
+    [SerializeField] private UISlider depletedSlider;
+    [SerializeField] private CanvasGroup canvasGroup;
+    Myth myth;
+    float abilityCost;
+    bool isDepleted;
+    bool doNotAnimate;
 
-    public void UpdateUI(SO_Ability ability)
+    public void UpdateUI(SO_Ability ability, Myth newMyth = null)
     {
         if (ability != null)
         {
@@ -26,24 +34,63 @@ public class UIGameAbility : MonoBehaviour
                 if (elementIcon)
                     elementIcon.sprite = ability.element.icon;
                 foreach (Image image in imagesToColour)
-                    image.color = elementColor;
+                    image.color = new Color(elementColor.r, elementColor.g, elementColor.b, image.color.a);
             }
-            //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-            staminaCostTMP.text = Mathf.RoundToInt(ability.staminaCost) + ""; // For sprint 2, we'll just show the damage
+            if (staminaUIStat)
+                staminaUIStat.SetUpUI(ability.staminaCost / 100);
         }
         else
         {
             if (abilityNameTMP)
                 abilityNameTMP.text = "-";
-            // TODO: Should give designer control over the default element colour
+
             if (defaultIcon)
                 elementIcon.sprite = defaultIcon;
+
             elementIcon.color = defaultColor;
+
             foreach (Image image in imagesToColour)
-                image.color = defaultColor;
-            //staminaCostTMP.text = Mathf.RoundToInt(staminaCost * 100.0f) + "%"; // Assumes that stamina costs are passed in as a float ranging between 0 and 1
-            staminaCostTMP.text =  ""; // For sprint 2, we'll just show the damage
+                image.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, image.color.a);
+
+            if (staminaUIStat)
+                staminaUIStat.SetUpUI(0);
         }
+
+        if (newMyth != null)
+        {
+            // Remove old listener
+            if (myth != null)
+                myth.Stamina.valueChanged.RemoveListener(UpdateDepletionSlider);
+
+            abilityCost = ability.staminaCost / 100;
+            myth = newMyth;
+            myth.Stamina.valueChanged.AddListener(UpdateDepletionSlider);
+            isDepleted = true;
+            doNotAnimate = true;
+            UpdateDepletionSlider(myth.Stamina.ValuePercent);
+        }
+    }
+
+    void UpdateDepletionSlider(float percent)
+    {
+        bool wasDepleted = isDepleted;
+        isDepleted = percent < abilityCost;
+
+        if (wasDepleted && !isDepleted)
+        {
+            if (!doNotAnimate)
+                AnimateSelectedAbility();
+            else
+                doNotAnimate = false;
+
+            depletedSlider.UpdateSliderPercent(1);
+        }
+        else if (isDepleted)
+        {
+            depletedSlider.UpdateSliderPercent(percent / abilityCost);
+        }
+
+        canvasGroup.alpha = isDepleted ? 0.3f : 1;
     }
 
     public void AnimateSelectedAbility()
