@@ -616,6 +616,7 @@ MonoBehaviour:
   knockbackSFXprefab: {fileID: 6171227850557352822, guid: 4726673c287f7e3408ba18bb4deb887b,
     type: 3}
   timeToDestroySFX: 0.4
+  timeBeforeRepeat: 0.3
 --- !u!114 &3802980452727524054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,6 +1085,7 @@ GameObject:
   - component: {fileID: 1496457094348944347}
   - component: {fileID: 5637322297209466938}
   - component: {fileID: 6173289821993678817}
+  - component: {fileID: 2166414475685286671}
   m_Layer: 6
   m_Name: Myth
   m_TagString: Myth
@@ -1131,7 +1133,6 @@ MonoBehaviour:
   DefenceStat: 1
   targetEnemy: {fileID: 0}
   effectController: {fileID: 5637322297209466938}
-  lastInputDirection: {x: 0, y: 0}
   partyIndex: 0
   isInvulnerable: 0
   element: {fileID: 0}
@@ -1269,6 +1270,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2166414475685286671}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 9142296419116895834}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1339,6 +1352,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.731205, z: 1}
   m_Center: {x: 0, y: 0.365, z: 0}
+--- !u!114 &2166414475685286671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142296419116895834}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1386109272
+      Data2: 1143273309
+      Data3: -153177976
+      Data4: 112306372
+    Path: event:/SFX/Combat/Death
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &671719258101206772
 PrefabInstance:
   m_ObjectHideFlags: 0

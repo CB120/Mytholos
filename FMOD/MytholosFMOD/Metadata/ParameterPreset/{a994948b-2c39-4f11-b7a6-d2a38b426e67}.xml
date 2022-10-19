@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a994948b-2c39-4f11-b7a6-d2a38b426e67}">
+		<property name="name">
+			<value>Myth Selection</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{dcb4ba36-a7e0-4b0f-bb57-8ada971196f0}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{dcb4ba36-a7e0-4b0f-bb57-8ada971196f0}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>9</value>
+		</property>
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>
