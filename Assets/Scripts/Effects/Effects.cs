@@ -30,8 +30,8 @@ public class Effects : MonoBehaviour
     private void OnEnable()
     {
         CleanseAllBuffs();
-        CleanseAllDebuffs();
-        // Debug.LogWarning("Clear");
+        // TODO: Race condition with MythStat.Awake. Might permanently set stamina regen to zero.
+        // CleanseAllDebuffs();
     }
 
     #region Effect Application
@@ -53,16 +53,16 @@ public class Effects : MonoBehaviour
     public void ApplyStaminaEffect(bool isDebuff, float duration)//Electric
     {
         CancelInvoke("RemoveStaminaDebuff");
-        float value = this.myth.Stamina.regenSpeed;
+        float value = this.myth.Stamina.RegenSpeed;
         if (isDebuff) value /= 2;
         else value *= 1.25f;
-        this.myth.Stamina.regenSpeed = Mathf.Clamp(value, 0.25f, 15);
+        this.myth.Stamina.RegenSpeed = Mathf.Clamp(value, 0.25f, 15);
         Invoke("RemoveStaminaDebuff", duration);
     }
 
     private void RemoveStaminaDebuff()
     {
-        this.myth.Stamina.regenSpeed = this.myth.Stamina.defaultRegenSpeed;
+        this.myth.Stamina.RegenSpeed = this.myth.Stamina.defaultRegenSpeed;
         DeactivateBuff(Element.Electric, true);
     }
     #endregion
@@ -134,12 +134,13 @@ public class Effects : MonoBehaviour
     #region Fire - Will
     private float burnDamage;
     private bool burning;
-    public void Burn(float damagevalue, float duration)//Fire
+    public void Burn(float damagevalue, float duration = 0)//Fire
     {
         CancelInvoke("EndBurn");
         burnDamage = damagevalue;
         burning = true;
-        Invoke("EndBurn", duration);
+        if (duration > 0)
+            Invoke("EndBurn", duration);
     }
 
     public void EndBurn()
