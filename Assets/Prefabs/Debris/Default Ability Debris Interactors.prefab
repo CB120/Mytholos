@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6645402707647526545}
   - component: {fileID: 6712219606147130848}
   - component: {fileID: 8992934920333199435}
+  - component: {fileID: 1590225719605837512}
+  - component: {fileID: 116716977673510802}
   m_Layer: 0
   m_Name: Default Ability Debris Interactors
   m_TagString: Untagged
@@ -62,8 +64,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
-  effect: 0.1
+  effectValue: 0.1
   createDebrisInteractor: {fileID: 8992934920333199435}
+  positiveEffectElementFilter: {fileID: 1590225719605837512}
+  negativeEffectElementFilter: {fileID: 116716977673510802}
 --- !u!114 &8992934920333199435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,3 +81,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
+--- !u!114 &1590225719605837512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928447540730028431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f77ae4f9a84fd78427b66ddb897998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filterType: 4
+  filterElements: []
+--- !u!114 &116716977673510802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928447540730028431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f77ae4f9a84fd78427b66ddb897998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filterType: 3
+  filterElements: []

@@ -18,8 +18,9 @@ namespace Myths
         //placeholder stat of 1
         public float AttackStat = 1;
         public float DefenceStat = 1;
-
+        
         public GameObject targetEnemy;
+        // TODO: Make serialised, fix naming mismatch
         public Effects effectController;
 
         public int partyIndex;

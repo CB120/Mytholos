@@ -80,8 +80,8 @@ public class HealingAbility : Ability
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (!myth) return;
-        myth.Health.regenSpeed = myth.Stamina.defaultRegenSpeed;
-        myth.Stamina.regenSpeed = myth.Stamina.defaultRegenSpeed;
+        myth.Health.RegenSpeed = myth.Stamina.defaultRegenSpeed;
+        myth.Stamina.RegenSpeed = myth.Stamina.defaultRegenSpeed;
 
         if (!EffectWillRemain())//If we don't want healing pool to wipe effect on exit
         {
@@ -126,7 +126,7 @@ public class HealingAbility : Ability
 
     public override void ApplyElectricEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.Stamina.regenSpeed = ability.regenSpeed;
+        if (isInParty) myth.Stamina.RegenSpeed = ability.regenSpeed;
     }
 
     public override void ApplyFireEffect(Myth myth, bool isInParty)
@@ -162,6 +162,6 @@ public class HealingAbility : Ability
 
     public override void ApplyWoodEffect(Myth myth, bool isInParty)
     {
-        myth.Health.regenSpeed = ability.regenSpeed;
+        myth.Health.RegenSpeed = ability.regenSpeed;
     }
 }
