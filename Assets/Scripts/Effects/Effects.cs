@@ -179,12 +179,12 @@ public class Effects : MonoBehaviour
         DeactivateBuff(Element.Earth, false);
     }
 
-    public void AgilityDebuff(float duration)
+    public void AgilityDebuff(float duration = 0)
     {
-        CancelInvoke("RemoveAgilityDebuff");    
+        CancelInvoke("RemoveAgilityDebuff");
         myth.walkSpeed = Mathf.Clamp(myth.walkSpeed /2, defaultWalkSpeed/2, defaultWalkSpeed * 2);
-        Invoke("RemoveAgilityDebuff", duration);
-        
+        if (duration > 0)
+            Invoke("RemoveAgilityDebuff", duration);
     }
 
     public void RemoveAgilityDebuff()

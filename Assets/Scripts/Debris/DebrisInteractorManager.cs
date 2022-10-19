@@ -51,11 +51,23 @@ namespace Debris
         private void OnTriggerEntered(Collider other)
         {
             OnDebrisTrigger(other, (debrisInteractor, debris) => debrisInteractor.OnDebrisEnter(debris));
+            
+            var debris = other.GetComponent<Debris>();
+
+            if (debris == null) return;
+            
+            debris.elementToBeChanged.AddListener(OnElementToBeChanged);
         }
 
         private void OnTriggerExited(Collider other)
         {
             OnDebrisTrigger(other, (debrisInteractor, debris) => debrisInteractor.OnDebrisExit(debris));
+            
+            var debris = other.GetComponent<Debris>();
+
+            if (debris == null) return;
+            
+            debris.elementToBeChanged.RemoveListener(OnElementToBeChanged);
         }
 
         private void OnTriggerStayed(Collider other)
@@ -72,6 +84,14 @@ namespace Debris
             foreach (var debrisInteractor in debrisInteractors)
             {
                 action(debrisInteractor, debris);
+            }
+        }
+
+        private void OnElementToBeChanged(Debris debris)
+        {
+            foreach (var debrisInteractor in debrisInteractors)
+            {
+                debrisInteractor.OnDebrisExit(debris);
             }
         }
     }

@@ -63,6 +63,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1823035925346753749}
+  - {fileID: 3960733968333587459}
   m_Father: {fileID: 8072052664142603967}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,6 +82,7 @@ MonoBehaviour:
   colliderEvents: {fileID: 2401062136645096340}
   debrisInteractors:
   - {fileID: 5581297103441222297}
+  - {fileID: 4020120995808581335}
 --- !u!1 &3271615391549213713
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +314,70 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mythCommandHandler: {fileID: -3291310522803648204}
+--- !u!1 &3605918503630482501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3960733968333587459}
+  - component: {fileID: 4020120995808581335}
+  - component: {fileID: 5300534336989478273}
+  m_Layer: 6
+  m_Name: Agility Debuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3960733968333587459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605918503630482501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8470423055826312093}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4020120995808581335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605918503630482501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323e99b813c54fac9f93c42104d9e1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  overrideIfMythElementMatchesDebris: 1
+  effects: {fileID: 5637322297209466938}
+  elementFilter: {fileID: 5300534336989478273}
+--- !u!114 &5300534336989478273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605918503630482501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f77ae4f9a84fd78427b66ddb897998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filterType: 0
+  filterElements:
+  - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
 --- !u!1 &4530328650722677112
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,9 +635,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myth: {fileID: 7428839973292417855}
+  overrideIfMythElementMatchesDebris: 0
   effects: {fileID: 5637322297209466938}
-  damagePerSecond: 50
   elementFilter: {fileID: 5693104401080220880}
+  damagePerSecond: 50
 --- !u!114 &5693104401080220880
 MonoBehaviour:
   m_ObjectHideFlags: 0

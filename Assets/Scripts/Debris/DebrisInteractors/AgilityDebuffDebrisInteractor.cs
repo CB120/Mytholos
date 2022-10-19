@@ -1,23 +1,19 @@
-using UnityEngine;
-
 namespace Debris.DebrisInteractors
 {
-    public class BurnDebrisInteractor : ApplyEffectDebrisInteractor
+    public class AgilityDebuffDebrisInteractor : ApplyEffectDebrisInteractor
     {
-        [SerializeField] private float damagePerSecond;
-
         protected override void ApplyEffect()
         {
             base.ApplyEffect();
             
-            effects.Burn(damagePerSecond);
+            effects.AgilityDebuff();
         }
 
         protected override void RemoveEffect()
         {
             base.RemoveEffect();
             
-            effects.EndBurn();
+            effects.RemoveAgilityDebuff();
         }
     }
 }

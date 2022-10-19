@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,8 @@ namespace Debris
             get => currentElement;
             set
             {
+                // TODO: We shouldn't need both elementToBeChanged and OldElement.
+                elementToBeChanged.Invoke(this);
                 OldElement = currentElement;
                 currentElement = value;
                 elementChanged.Invoke(this);
@@ -23,7 +26,8 @@ namespace Debris
         
         public SO_Element OldElement { get; private set; }
 
-        public UnityEvent<Debris> elementChanged = new();
+        [NonSerialized] public UnityEvent<Debris> elementToBeChanged = new();
+        [NonSerialized] public UnityEvent<Debris> elementChanged = new();
 
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
