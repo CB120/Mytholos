@@ -71,7 +71,7 @@ public class UIGameMyth : MonoBehaviour
         mythIcon.sprite = isAlive ? mythIcons[index] : mythIcons[2];
 
         // Set group alpha based on if selected or not
-        canvasGroup.alpha = isAlive ? index == 0 ? 1.0f : 1.0f : 0.35f;
+        canvasGroup.alpha = isAlive ? index == 0 ? 1.0f : 1.0f : 0.85f;
 
         // Update sliders, zeroing them if defeated
         healthSlider.FormatSliderRectTransform(isAlive ? myth.Health.ValuePercent : 0);

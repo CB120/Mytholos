@@ -88,7 +88,17 @@ public class UIGameParty : MonoBehaviour
             playerParticipant.mythInPlayChanged.AddListener(SelectMyth);
             // TODO: Unlisten?
             playerParticipant.SelectAbility.AddListener(SelectAbility);
+
+            // Awful awful awful
+            StartCoroutine(SelectMythDelayed(playerParticipant));
         }
+    }
+
+    // Awful awful awful
+    IEnumerator SelectMythDelayed(PlayerParticipant playerParticipant)
+    {
+        yield return new WaitForEndOfFrame();
+        SelectMyth(playerParticipant);
     }
 
     void SelectMyth(PlayerParticipant participant)

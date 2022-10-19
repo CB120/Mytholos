@@ -56,7 +56,7 @@ public class PlayerParticipant : Participant
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
 
     private List<Myth> mythsInReserve = new();
-    private List<Myth> myths = new();
+    //private List<Myth> myths = new();
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
@@ -168,9 +168,6 @@ public class PlayerParticipant : Participant
     {
         if (!context.performed) return;
         if (mythsInReserve[0].Health.Value == 0) return;
-
-        //SwapInDirection(-1);
-        
         if (MythInPlay.Health.Value > 0)
         {
             SelectedMythCommandHandler.PushCommand(new SwapCommand());
@@ -191,9 +188,6 @@ public class PlayerParticipant : Participant
     {
         if (!context.performed) return;
         if (mythsInReserve[1].Health.Value == 0) return;
-
-        //SwapInDirection(1);
-
         if (MythInPlay.Health.Value > 0)
         {
             SelectedMythCommandHandler.PushCommand(new SwapCommand());
@@ -360,41 +354,41 @@ public class PlayerParticipant : Participant
         MythInPlay.transform.position = position;
     }
 
-    private void SwapInDirection(int direction)
-    {
-        if (!isAvailableToSwap) return;
+    //private void SwapInDirection(int direction)
+    //{
+    //    if (!isAvailableToSwap) return;
 
-        // Try swap in specified direciton
-        int currentMythIndex = myths.IndexOf(mythInPlay);
-        int nextIndex = (currentMythIndex + direction) % myths.Count;
-        if (nextIndex < 0) nextIndex = myths.Count - 1;
+    //    // Try swap in specified direciton
+    //    int currentMythIndex = myths.IndexOf(mythInPlay);
+    //    int nextIndex = (currentMythIndex + direction) % myths.Count;
+    //    if (nextIndex < 0) nextIndex = myths.Count - 1;
 
-        if (myths[nextIndex].Health.Value > 0)
-        {
-            Vector3 position = MythInPlay.transform.position;
-            Quaternion rotation = MythInPlay.transform.rotation;
-            MythInPlay = myths[nextIndex];
-            MythInPlay.transform.position = position;
-            MythInPlay.transform.rotation = rotation;
-            StartSwapCooldown();
-            return;
-        }
+    //    if (myths[nextIndex].Health.Value > 0)
+    //    {
+    //        Vector3 position = MythInPlay.transform.position;
+    //        Quaternion rotation = MythInPlay.transform.rotation;
+    //        MythInPlay = myths[nextIndex];
+    //        MythInPlay.transform.position = position;
+    //        MythInPlay.transform.rotation = rotation;
+    //        StartSwapCooldown();
+    //        return;
+    //    }
 
-        // Try swap in other direction
-        nextIndex = (currentMythIndex - direction) % myths.Count;
-        if (nextIndex < 0) nextIndex = myths.Count - 1;
+    //    // Try swap in other direction
+    //    nextIndex = (currentMythIndex - direction) % myths.Count;
+    //    if (nextIndex < 0) nextIndex = myths.Count - 1;
 
-        if (myths[nextIndex].Health.Value > 0)
-        {
-            Vector3 position = MythInPlay.transform.position;
-            Quaternion rotation = MythInPlay.transform.rotation;
-            MythInPlay = myths[nextIndex];
-            MythInPlay.transform.position = position;
-            MythInPlay.transform.rotation = rotation;
-            StartSwapCooldown();
-            return;
-        }
-    }
+    //    if (myths[nextIndex].Health.Value > 0)
+    //    {
+    //        Vector3 position = MythInPlay.transform.position;
+    //        Quaternion rotation = MythInPlay.transform.rotation;
+    //        MythInPlay = myths[nextIndex];
+    //        MythInPlay.transform.position = position;
+    //        MythInPlay.transform.rotation = rotation;
+    //        StartSwapCooldown();
+    //        return;
+    //    }
+    //}
 
 
     private void StartSwapCooldown()
@@ -424,7 +418,7 @@ public class PlayerParticipant : Participant
     public void Initialise()
     {
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
-        myths = ParticipantData.partyData[partyIndex].myths.ToList();
+        //myths = ParticipantData.partyData[partyIndex].myths.ToList();
 
         mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
 

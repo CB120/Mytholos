@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Gossan
   prefab: {fileID: 898435635414540011, guid: 9f0392631ea6e344d9e2077da51357ca, type: 3}
   icon: {fileID: 1411701411, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  iconOff: {fileID: 1411701411, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  iconDead: {fileID: 1411701411, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: -1528488581, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
+  iconDead: {fileID: 1514064260, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 1
   size: 0.9
   attack: 0.6

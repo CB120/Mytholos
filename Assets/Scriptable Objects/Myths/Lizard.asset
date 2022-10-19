@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Ternka
   prefab: {fileID: 2438166152000914632, guid: 0ec28ad321c53234e920c0a79188e3b8, type: 3}
   icon: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  iconOff: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
-  iconDead: {fileID: -2094240597, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: 100288492, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
+  iconDead: {fileID: -1153388875, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 0.4
   size: 0.33
   attack: 1
