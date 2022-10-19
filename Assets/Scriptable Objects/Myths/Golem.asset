@@ -15,10 +15,12 @@ MonoBehaviour:
   name: Golem
   prefab: {fileID: 2013350400531774232, guid: 999da1d6f8078e7429f6d2e79c653633, type: 3}
   icon: {fileID: -1253118736, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: 181983137, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
+  iconDead: {fileID: -1657625122, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 0.8
   size: 1
   attack: 1
-  agility: 1.1
+  agility: 0.32
   abilities:
   - {fileID: 11400000, guid: 1f1de9302d102164687d463ed5a58006, type: 2}
   - {fileID: 11400000, guid: 57b0364714799b64dae4f2fcda06fa91, type: 2}

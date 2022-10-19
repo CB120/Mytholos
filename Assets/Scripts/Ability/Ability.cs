@@ -86,7 +86,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
             myth.Knockback(SOknockbackStrength, owningMyth.gameObject, SOstunTime);
         }
 
-        if(SOstunTime > 0 && SOknockbackStrength < 0)
+        if(SOstunTime > 0 && SOknockbackStrength == 0)
         {
             myth.Stun(SOstunTime);
         }

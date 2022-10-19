@@ -6,6 +6,7 @@ using UnityEngine;
 public class PartyBuilder : MonoBehaviour
 {
     [SerializeField] private AllParticipantDataService allParticipantDataService;
+    [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
 
     [NonSerialized] public SO_AllParticipantData allParticipantData;
 
@@ -33,6 +34,20 @@ public class PartyBuilder : MonoBehaviour
         SetDefaultTarget();
     }
 
+    private void OnEnable()
+    {
+        playerParticipantRuntimeSet.itemAdded.AddListener(InitialisePlayerParticipant);
+    }
+    
+    private void OnDisable()
+    {
+        playerParticipantRuntimeSet.itemAdded.RemoveListener(InitialisePlayerParticipant);
+    }
+
+    private void InitialisePlayerParticipant(PlayerParticipant playerParticipant)
+    {
+        playerParticipant.Initialise();
+    }
 
     //Methods
     void SetPartyParentReferences()
@@ -55,16 +70,11 @@ public class PartyBuilder : MonoBehaviour
             {
                 SpawnMyth(m,p);
             }
+        }
 
-            try
-            {
-                ((PlayerParticipant)partyData.participant).Initialise();
-            }
-            catch (Exception e)
-            {
-                Debug.LogWarning("You probably tried to run the game from the Arena scene. This doesn't work anymore. Enjoy your error.");;
-                throw;
-            }
+        foreach (var playerParticipant in playerParticipantRuntimeSet.items)
+        {
+            playerParticipant.Initialise();
         }
     }
 

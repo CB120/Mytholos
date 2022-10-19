@@ -36,12 +36,12 @@ public class UIPartyMyth : MonoBehaviour
                 background.color = Color.Lerp(background.color, Color.black, 0.5f);
         }
 
-        statHealth.SetUpUI(mythData.myth.health);
-        statSize.SetUpUI(mythData.myth.size);
+        statHealth.SetUpUI(mythData.myth.health, elementColour);
+        statSize.SetUpUI(mythData.myth.size, elementColour);
         //statBrawn.SetUpUI(mythData.myth.brawn);
         //statPsyche.SetUpUI(mythData.myth.psyche);
-        statAttack.SetUpUI(mythData.myth.attack);
-        statAgility.SetUpUI(mythData.myth.agility);
+        statAttack.SetUpUI(mythData.myth.attack, elementColour);
+        statAgility.SetUpUI(mythData.myth.agility, elementColour);
 
         mythName.text = mythData.myth.name;
         //mythSubtitle.text = mythComponent.element.name + " myth";

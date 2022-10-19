@@ -15,10 +15,12 @@ MonoBehaviour:
   name: Khepra
   prefab: {fileID: 1825634489892544422, guid: c63504bb0aca0b4409dd8c88a13875c6, type: 3}
   icon: {fileID: -1330787377, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: -1691082703, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
+  iconDead: {fileID: 1015460949, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 0.4
-  size: 0.604
+  size: 0.6
   attack: 0.8
-  agility: 1.87
+  agility: 0.4
   abilities:
   - {fileID: 11400000, guid: 42cd0c54eb954ef4786e078922cbb0a1, type: 2}
   - {fileID: 11400000, guid: d9da8405993fbc74fb9ef904e4858c9e, type: 2}

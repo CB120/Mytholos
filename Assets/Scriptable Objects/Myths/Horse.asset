@@ -15,10 +15,12 @@ MonoBehaviour:
   name: Kelpie
   prefab: {fileID: 5259938521985855711, guid: ecd81f8b84747f147abf0f20d6a5795e, type: 3}
   icon: {fileID: 420892485, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: -78964623, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
+  iconDead: {fileID: 1234072291, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 0.2
   size: 0.6
   attack: 0.6
-  agility: 2.54
+  agility: 0.54
   abilities:
   - {fileID: 11400000, guid: faa3a55b3eed6ca479e524ffc99539a6, type: 2}
   - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}

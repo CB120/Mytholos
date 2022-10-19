@@ -54,8 +54,8 @@ public class UIPartyAbility : MonoBehaviour // Not to be confused with UINodeAbi
         if (effectName.Length > 0)
             styleName += ", " + effectName;
         // 27 max
-        if (styleName.Length > 27)
-            styleName = styleName.Substring(0, 25) + "...";
+        if (styleName.Length > 25)
+            styleName = styleName.Substring(0, 23) + "...";
 
         styleEffectName.text = styleName;
 

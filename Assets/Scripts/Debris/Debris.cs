@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,12 +8,16 @@ namespace Debris
     public class Debris : MonoBehaviour
     {
         [SerializeField] private float decayTime;
+        [Tooltip("Read only. For debugging purposes.")]
+        [SerializeField] private Vector3Int tilePositionReadout;
 
         public SO_Element CurrentElement
         {
             get => currentElement;
             set
             {
+                // TODO: We shouldn't need both elementToBeChanged and OldElement.
+                elementToBeChanged.Invoke(this);
                 OldElement = currentElement;
                 currentElement = value;
                 elementChanged.Invoke(this);
@@ -21,10 +26,16 @@ namespace Debris
         
         public SO_Element OldElement { get; private set; }
 
-        public UnityEvent<Debris> elementChanged = new();
+        [NonSerialized] public UnityEvent<Debris> elementToBeChanged = new();
+        [NonSerialized] public UnityEvent<Debris> elementChanged = new();
 
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
+
+        public void Initialise(Vector3Int tilePosition)
+        {
+            tilePositionReadout = tilePosition;
+        }
 
         public bool PlaceDebris(SO_Element newElement)
         {
@@ -47,6 +58,14 @@ namespace Debris
             RestartDecayTimer();
             
             return true;
+        }
+
+        public void RemoveDebris()
+        {
+            CurrentElement = null;
+            
+            if (decayCoroutine != null)
+                StopCoroutine(decayCoroutine);
         }
 
         private void RestartDecayTimer()
