@@ -290,7 +290,7 @@ public class Effects : MonoBehaviour
     {
         if (burning)
         {
-            Debug.Log("burning");
+            // Debug.Log("burning");
             myth.Health.Value -= burnDamage * Time.deltaTime;
         }
 

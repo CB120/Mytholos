@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2149221307316013115}
   - component: {fileID: 5045132342652730876}
   - component: {fileID: 6116762181619679991}
+  - component: {fileID: 6042801099107362754}
+  - component: {fileID: 6994435538079181167}
   m_Layer: 0
   m_Name: BombInFlight
   m_TagString: Untagged
@@ -164,6 +166,33 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 1000
+--- !u!114 &6042801099107362754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417791727942902249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c64cb8893847fea47ed93cded76275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debrisInteractors:
+  - {fileID: 6994435538079181167}
+--- !u!114 &6994435538079181167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417791727942902249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cec03e483174bbfb96533db5beec6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 7516873970837099685}
 --- !u!1 &7516873970837099704
 GameObject:
   m_ObjectHideFlags: 0
