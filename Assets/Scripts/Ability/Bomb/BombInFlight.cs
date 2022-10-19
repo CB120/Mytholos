@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Myths;
+using FMODUnity;
 
 public class BombInFlight : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BombInFlight : MonoBehaviour
     public float destroySpeed = 1;
     public Collider bombCollider;
     public MeshRenderer mesh;
+
+    public StudioEventEmitter bombFuseSFX; //SFX stuff added by Ethan
 
     // Update is called once per frame
     void Update()
@@ -53,6 +56,8 @@ public class BombInFlight : MonoBehaviour
             bomb.Trigger(attackedMyth);
         }
         Destroy(bomb.gameObject, destroySpeed);
+
+        bombFuseSFX.enabled = false; //SFX stuff added by Ethan
     }
 
     //private void ResetScale()

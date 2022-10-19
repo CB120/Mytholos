@@ -12,10 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  color: {r: 0.95294124, g: 0.3019608, b: 0.17254902, a: 0}
+  color: {r: 0.95294124, g: 0.3019608, b: 0.17254902, a: 1}
+  icon: {fileID: -613462781, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  element: 1
+  buffLength: 5
+  debuffParticle: {fileID: 2382774908206683239, guid: 7d783a9af7f76e743bd0fff189b9c73f,
+    type: 3}
+  buffParticle: {fileID: 2382774908206683239, guid: aaa24b94c16d9554987ade8e0070fa77,
+    type: 3}
+  setParticleColor: 1
   strongAgainst:
   - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}
+  buffDescription: Raises attack
+  debuffDescription: Sets foe ablaze

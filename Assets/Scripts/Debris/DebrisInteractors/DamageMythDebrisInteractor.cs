@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Myths;
 using UnityEngine;
 
@@ -12,8 +13,8 @@ namespace Debris.DebrisInteractors
         // TODO: Add a check for if the myth is of the same element as the debris
         internal override void OnDebrisStay(Debris debris)
         {
-            if (elementFilter.PassesFilter(debris.CurrentElement)) 
-                myth.TakeDamage(damagePerSecond * Time.deltaTime);
+            if (elementFilter.PassesFilter(debris.CurrentElement))
+                myth.Health.Value -= damagePerSecond * Time.deltaTime;
         }
     }
 }

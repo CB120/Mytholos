@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e74a657e38f9a4e806adcbe422e2d7, type: 3}
+  m_Name: Pool_Fire
+  m_EditorClassIdentifier: 
+  element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  name: Fire Pool
+  description: Pool
+  damage: 0
+  regenSpeed: 20
+  statIncrease: 15
+  staminaCost: 25
+  chargeTime: 0
+  performTime: 0
+  isRanged: 1
+  applyBuffToParty: 0
+  baseKnockback: 0
+  baseStun: 0
+  spawnInWorldSpace: 1
+  relativeSpawnPosition: {x: 0, y: 0, z: 0}
+  relativeSpawnRotation: {x: 0, y: 0, z: 0}
+  timeToDestroy: 10
+  abilityPrefab: {fileID: 2024061400511584015, guid: 90cc3f8084926764fa4bf16ccc4d62aa,
+    type: 3}

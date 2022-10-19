@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881575023aff47da84e9eed480c4ceb6, type: 3}
   m_Name: Stag
   m_EditorClassIdentifier: 
-  name: Stag
+  name: Wolper
   prefab: {fileID: 499217052893426560, guid: ddca71413c6661a4c9981f280b601c00, type: 3}
   icon: {fileID: 720469514, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  health: 0.4
+  size: 0.15
+  attack: 0.6
+  agility: 1
+  abilities:
+  - {fileID: 11400000, guid: f1725c5da4b7b5c48bc06c39c90ed8e2, type: 2}
+  - {fileID: 11400000, guid: 837ee32e5b1671d46b7fc744f6b248e8, type: 2}
+  - {fileID: 11400000, guid: 89cf5b13cba0b4346b08ae3f00554a5d, type: 2}
+  - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
+  - {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}

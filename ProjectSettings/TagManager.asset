@@ -7,6 +7,13 @@ TagManager:
   - Party 1 Parent
   - Party 2 Parent
   - Myth
+  - NavigationNode
+  - Grid
+  - MenuMusic
+  - TransitionOverlay
+  - GameCamera
+  - Terrain
+  - PartyBuilder
   layers:
   - Default
   - TransparentFX
@@ -17,7 +24,7 @@ TagManager:
   - Outline
   - No Outline
   - Debris
-  - 
+  - Terrain
   - 
   - 
   - 

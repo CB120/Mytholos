@@ -24,17 +24,29 @@ public class BombAbility : Ability
     [Header("Bomb Effects")]
 	public float areaOfEffect = 1.5f;
     public float expandSpeed = 0.5f;
+    [SerializeField] private ParticleSystem childParticle;
 
     [Header("BombInFlight")]
     [HideInInspector]
     public Vector3 nextBasePos;
 
-
+    public void Awake()
+    {
+        mesh.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
+        var main = childParticle.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
+    }
     public override void Start()
     {
         startPos = transform.position;
-        //targetPos = owningMyth != null ? owningMyth.targetEnemy.gameObject.transform.position : new Vector3(10, 0, 10);
-        targetPos = owningMyth.targetEnemy.gameObject.transform.position;
+        if (owningMyth.targetEnemy) 
+        {
+            targetPos = owningMyth.targetEnemy.gameObject.transform.position;
+        } else
+        {
+            targetPos = Vector3.zero;
+            Debug.LogWarning("owningMyth.targetEnemy is null, default-targeting the Origin.");
+        }
         base.Start();
     }
 
@@ -54,7 +66,4 @@ public class BombAbility : Ability
         Attack(myth, ability.damage);
         base.Trigger(myth);
     }
-
-
-
 }

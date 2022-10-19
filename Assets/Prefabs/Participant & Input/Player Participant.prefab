@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 781119230625859627}
   m_Layer: 0
   m_Name: Player Participant
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,81 +76,37 @@ MonoBehaviour:
     m_ActionId: 600618f6-93cf-4f3e-9d12-5f33f0e3b0c6
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4cf3e7c2-15db-4bd6-8059-7df88cf8ddf5
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 04ee6fa3-9d98-4db3-8073-83571d4a33f4
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: Submit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a2d87111-c690-42a1-9dd0-de490ee32857
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a4427be0-f44d-4481-98ff-b2b27fa6df07
     m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8f5bbe4c-4316-44c9-9ff9-54842bb6ee62
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fddd1174-2f87-44cf-82df-d9b99341699b
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 664ce671-067c-4581-8edd-d8362b8ac197
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3675e31c-ba7d-476b-a9cc-c70bda62a81c
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f3ad88cf-4bd2-4af7-87e2-f09c2cb2fdb8
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0ef24bc8-1f43-44b9-a0f0-bbf2392cb076
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b21cb573-db2f-4559-9f85-909aa9d7d188
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: SelectLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 44db108f-9d27-4a10-9110-16b63986c6e4
-    m_ActionName: Player/Select Left[/XInputControllerWindows/leftShoulder]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: SelectRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: de2d6252-0ce5-42a5-865a-8bbe6ebba150
-    m_ActionName: Player/Select Right[/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
@@ -167,38 +123,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3b697c39-2e8f-4add-8104-a397ddded3b4
     m_ActionName: Player/UseAbilityWest[/XInputControllerWindows/buttonWest]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyDown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6cd28ceb-0e3c-4f14-81d0-ab7feac01cf8
-    m_ActionName: Player/MoveStrategyDown[/XInputControllerWindows/dpad/down]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781119230625859627}
-        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2dee7095-db00-465d-8497-34a7d3c13604
-    m_ActionName: Player/MoveStrategyUp[/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
@@ -251,7 +175,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyLeft
+        m_MethodName: NavigateUp
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -261,13 +185,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 214d72e0-1ea5-458e-87dd-b8a187787715
-    m_ActionName: Player/MoveStrategyLeft[/XInputControllerWindows/dpad/left]
+    m_ActionId: ea7e63cc-b397-47eb-8ecc-abcd88d8f077
+    m_ActionName: UI/NavigateUp[/Keyboard/w,/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: MoveStrategyRight
+        m_MethodName: NavigateDown
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -277,13 +201,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 3d19a5dd-7245-4f9a-8fca-994186feb846
-    m_ActionName: Player/MoveStrategyRight[/XInputControllerWindows/dpad/right]
+    m_ActionId: 7a18ac44-6e62-4f25-a787-7bf7c41c571c
+    m_ActionName: UI/NavigateDown[/Keyboard/s,/Keyboard/downArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: TargetEnemy
+        m_MethodName: NavigateRight
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -293,13 +217,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: bbde4d9b-682a-445c-8a33-529b63ba26d5
-    m_ActionName: Player/SelectEnemyLeft[/DualSenseGamepadHID/rightStick/left]
+    m_ActionId: a1f216cd-2747-4fc6-821a-973f2281ebb0
+    m_ActionName: UI/NavigateRight[/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 781119230625859627}
         m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
-        m_MethodName: TargetEnemy
+        m_MethodName: NavigateLeft
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -309,8 +233,136 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0906f682-9854-4fb3-af50-07e55f6136c5
-    m_ActionName: Player/SelectEnemyRight[/DualSenseGamepadHID/rightStick/right]
+    m_ActionId: 58de09a0-b7c1-4a5c-b4ac-3f7478e6ebf7
+    m_ActionName: UI/NavigateLeft[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: AssignNorth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2a61ae83-aee3-4fee-8c93-56449d59fb2e
+    m_ActionName: UI/AssignNorth[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: AssignWest
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 66b3c4a5-6b80-479f-b943-04943064e017
+    m_ActionName: UI/AssignWest[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: AssignSouth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db782c80-ac34-4dce-be99-f9f000fb5b45
+    m_ActionName: UI/AssignSouth[/Keyboard/u]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: StartButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 793d2e85-98d7-4379-a3f9-81200c358ee9
+    m_ActionName: UI/Start[/XInputControllerWindows/start,/XInputControllerWindows/select,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: SwitchLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c21a6c4e-8cd4-46da-a124-142497c57f5d
+    m_ActionName: Player/Switch Reserve 1[/DualSenseGamepadHID/leftTrigger,/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: SwitchRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99e51151-6341-4ae5-b72c-5888b67f255c
+    m_ActionName: Player/Switch Reserve 2[/DualSenseGamepadHID/rightTrigger,/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: NavigateRightShoulder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f919ff23-eefc-4dd4-9676-44293e195ad5
+    m_ActionName: UI/NavigateRightShoulder
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781119230625859627}
+        m_TargetAssemblyTypeName: PlayerParticipant, Assembly-CSharp
+        m_MethodName: NavigateLeftShoulder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e1f40b0d-11e3-47d0-adfe-ddfcb87f21ed
+    m_ActionName: UI/NavigateLeftShoulder
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -331,9 +383,14 @@ MonoBehaviour:
   allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
     type: 2}
   debugOn: 0
+  partyIndex: -1
+  playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
+    type: 2}
   SelectMyth:
     m_PersistentCalls:
       m_Calls: []
   SelectAbility:
     m_PersistentCalls:
       m_Calls: []
+  currentMenuGraph: {fileID: 0}
+  currentShoulderMenuGraph: {fileID: 0}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{22900aed-570a-47b8-b2f1-5db8e3e434cb}">
+		<property name="name">
+			<value>Options Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18d1cee3-6ff1-4de0-9bba-6a7f646f9d67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{5952837a-8f14-478f-b6d7-81fb1e71a838}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{5952837a-8f14-478f-b6d7-81fb1e71a838}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

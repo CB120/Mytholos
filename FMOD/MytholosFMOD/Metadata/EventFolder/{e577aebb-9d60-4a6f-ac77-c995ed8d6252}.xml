@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{e577aebb-9d60-4a6f-ac77-c995ed8d6252}">
+		<property name="name">
+			<value>Ice Cube</value>
+		</property>
+		<relationship name="folder">
+			<destination>{18a25d16-493b-4985-b654-0898cb09ae03}</destination>
+		</relationship>
+	</object>
+</objects>

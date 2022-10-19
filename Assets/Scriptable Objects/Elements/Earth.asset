@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e903c76d177acb4b8098830d5afc884, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
-  color: {r: 0.6039216, g: 0.4, b: 0.28627452, a: 0}
+  color: {r: 0.6039216, g: 0.4, b: 0.28627452, a: 1}
+  icon: {fileID: 669466098, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  element: 7
+  buffLength: 5
+  debuffParticle: {fileID: 606802925254652523, guid: afb379dbc8562a84c9ac21db30e591dc,
+    type: 3}
+  buffParticle: {fileID: 606802925254652523, guid: 346c35163c406dc48a162f304977c3a8,
+    type: 3}
+  setParticleColor: 1
   strongAgainst:
   - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
@@ -20,3 +28,5 @@ MonoBehaviour:
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}
+  buffDescription: Raises defense
+  debuffDescription: Slows down foe

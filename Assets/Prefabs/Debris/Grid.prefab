@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 995921980033662125}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 995921980033662122}
   tile: {fileID: 11400000, guid: 40dc2d70a4f624842a8408914424f76f, type: 2}
-  blankTile: {fileID: 11400000, guid: 40dc2d70a4f624842a8408914424f76f, type: 2}
   gridBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5, y: 5, z: 0}
+  numberOfTilesWithElementChanged:
+    m_PersistentCalls:
+      m_Calls: []
