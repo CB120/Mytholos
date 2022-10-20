@@ -10,6 +10,30 @@ public class CollisionDetection : MonoBehaviour
     [SerializeField] protected bool groundOnHorizontalMovement = false;                 // Optional (not super important?), if true it sets our ground normal on horizontal movement as well as downward ones
     [SerializeField] protected bool hugGround = false;                                  // Optional, object will 'magnetically' hug the ground if possible when moving down a slope or off a ledge
     [SerializeField] protected float hugGroundDistance = 5.0f;                          // Distance from ground that this object will 'magnetically' reconnect to the ground below them if they were previously grounded
+    
+    [Header("Sliding")]
+    // [SerializeField] private float targetLerpSpeed = 6f;
+    // [SerializeField] private float smoothing = 0.45f;
+    [Tooltip("Roughly the number of seconds to reach top speed while sliding.")]
+    [SerializeField] private float slideyness;
+    private Vector3 lastInputVelocity;
+    private Vector3 targetVelocity;
+    private float lerpTime;
+    [SerializeField] bool isSliding;
+
+    public bool IsSliding
+    {
+        get => isSliding;
+        set
+        {
+            Debug.Log(value);
+            isSliding = value;
+            
+            if (isSliding == false)
+                velocity = Vector3.zero;
+        }
+    }
+
 
     protected float minimumDistance = 0.001f;
     protected float collisionBuffer = 0.01f;
@@ -33,34 +57,24 @@ public class CollisionDetection : MonoBehaviour
         isGrounded = false;
         Vector3 deltaPosition = velocity * Time.deltaTime;
 
-        // Make movement
-        if (deltaPosition != null)
-        {
-            // Perform a movement along each axis individually, handling any collisions that may occur
-            Move(deltaPosition.y * Vector3.up, HitDirection.Up);
-            Move(deltaPosition.x * new Vector3(groundNormal.y, -groundNormal.x, 0.0f).normalized, HitDirection.Right);
-            Move(deltaPosition.z * new Vector3(0.0f, -groundNormal.z, groundNormal.y).normalized, HitDirection.Front);
+        // Perform a movement along each axis individually, handling any collisions that may occur
+        Move(deltaPosition.y * Vector3.up, HitDirection.Up);
+        Move(deltaPosition.x * new Vector3(groundNormal.y, -groundNormal.x, 0.0f).normalized, HitDirection.Right);
+        Move(deltaPosition.z * new Vector3(0.0f, -groundNormal.z, groundNormal.y).normalized, HitDirection.Front);
 
-            // Try to magnetically hug the ground
-            if (wasGrounded && hugGround) Move(Vector3.down * hugGroundDistance * Time.deltaTime, HitDirection.Up, true);
-        }
+        // Try to magnetically hug the ground
+        if (wasGrounded && hugGround) Move(Vector3.down * hugGroundDistance * Time.deltaTime, HitDirection.Up, true);
 
         // Reset last known normal if no longer on the ground
         if (!isGrounded) groundNormal = Vector3.up;
 
         // Make record of groundedness (for hugging the ground)
         wasGrounded = isGrounded;
-        //if (velocity == Vector3.zero)
-        //{
-        //    Debug.Log(velocity + " Velocity");
-        //}
         
         if(rigidbody.velocity.magnitude > 0) // Quick fix
         {
             rigidbody.velocity = Vector3.zero;
         }
-
-        
     }
 
     protected virtual void Move(Vector3 move, HitDirection direction, bool onlyMoveIfCollides = false)
@@ -125,9 +139,38 @@ public class CollisionDetection : MonoBehaviour
         if (!onlyMoveIfCollides || (onlyMoveIfCollides && collisionOccurred)) rigidbody.position += move.normalized * distance;
     }
 
+    private float maxMag;
+
     public void SetTargetVelocity(Vector3 velocity)
     {
-        this.velocity = velocity;
+        if (IsSliding)
+        {
+            // var t = Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing));
+            //
+            // targetVelocity = Vector3.Lerp(targetVelocity, velocity, t);
+            //
+            // if (velocity != lastInputVelocity)
+            // {
+            //     lerpTime = 0;
+            // }
+            //
+            // lastInputVelocity = velocity;
+            //
+            // lerpTime += Time.deltaTime;
+            //
+            // this.velocity = targetVelocity;
+
+            if (velocity.magnitude > maxMag)
+            {
+                maxMag = velocity.magnitude;
+            }
+
+            this.velocity = Vector3.ClampMagnitude(this.velocity + velocity / slideyness * Time.deltaTime, maxMag);
+        }
+        else
+        {
+            this.velocity = velocity;
+        }
     }
 
     // Handles logic for hitting another collider. 'direction' is the normal of the face we've collided with.
