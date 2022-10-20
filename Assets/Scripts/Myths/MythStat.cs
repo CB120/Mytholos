@@ -8,7 +8,13 @@ namespace Myths
         [Header("Myth Stat")]
         // TODO: Depends on MaxValue
         [HideInInspector] public float defaultRegenSpeed;
-        public float regenSpeed;
+
+        public float RegenSpeed
+        {
+            get => regenSpeed;
+            set => regenSpeed = value;
+        }
+
         public float regenPauseTime;
 
         private const float MaxValue = 100;
@@ -19,6 +25,7 @@ namespace Myths
         
         public UnityEvent<float> valueChanged = new();
         public UnityEvent valueZeroed = new();
+        [SerializeField] private float regenSpeed;
 
         public float ValuePercent => Value / MaxValue;
         
@@ -44,7 +51,7 @@ namespace Myths
 
         private void Awake()
         {
-            defaultRegenSpeed = regenSpeed;
+            defaultRegenSpeed = RegenSpeed;
             value = MaxValue;
         }
 
@@ -54,7 +61,7 @@ namespace Myths
             
             if (Value >= MaxValue) return;
             
-            Value += regenSpeed * Time.deltaTime;
+            Value += RegenSpeed * Time.deltaTime;
         }
         
         private void StartRegen()

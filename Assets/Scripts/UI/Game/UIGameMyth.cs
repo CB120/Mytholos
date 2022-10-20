@@ -7,92 +7,98 @@ using Myths;
 
 public class UIGameMyth : MonoBehaviour
 {
-    // References
+    [Header("Scene references")]
     [SerializeField] Image mythIcon;
-    [SerializeField] Image healthSliderBG;
-    [SerializeField] Image healthSliderFill;
-    [SerializeField] Image staminaSliderBG;
-    [SerializeField] Image staminaSliderFill;
+    [SerializeField] UISlider healthSlider;
+    [SerializeField] RectTransform healthTransform;
+    [SerializeField] UISlider staminaSlider;
+    [SerializeField] RectTransform staminaTransform;
     CanvasGroup canvasGroup;
+    RectTransform rectTransform;
+    Myth myth; // Record of associated myth
 
-    // Variables
-    float healthMaxWidth;           // Records of UI size for slider code
-    float staminaMaxWidth;
-    Myth myth;                      // Might not be neccessary, but making note for time being
-    public bool greyedOut = false;  // Set by UIGameParty when selecting an attack, to make selected myth more obvious
-    public bool selected = false;   // Set by UIGameParty when selecting an attack, to make selected myth more obvious
+    [Header("Asset references")]
+    Sprite[] mythIcons; // Selected, not selected, defeated
+
+    [Header("Variables")]
+    public bool selected = false;   // Record of if this myth is the active myth
+    int memberNumber; // Which no. member is this myth in the team?
+    int selectedMember; // Which no. member is the selected member?
+    [SerializeField] float[] rootHeight;
+    [SerializeField] float[] rootWidth;
+    [SerializeField] float[] healthHeight;
+    [SerializeField] float[] staminaHeight;
+    [SerializeField] float[] leftRightOffset;
 
     void OnEnable()
     {
-        // Look at referenced UI object and keep a record of their transforms
-        healthMaxWidth = healthSliderBG.rectTransform.rect.width - 2.0f;
-        staminaMaxWidth = staminaSliderBG.rectTransform.rect.width - 2.0f;
-        UpdateHealth(1.0f);
-        UpdateStamina(1.0f); // TODO: Should set to 0.0f, but stamina doesn't currently exist/do anything
-
         canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1.0f;
+        rectTransform = GetComponent<RectTransform>();
+        healthTransform = healthSlider.GetComponent<RectTransform>();
+        staminaTransform = staminaSlider.GetComponent<RectTransform>();
     }
 
-    void UpdateHealth(float percent) // TODO: Update this, we're assuming that max health is 100 as myths have no constant for maximum health
+    void UpdateHealth(float percent)
     {
-        percent = Mathf.Clamp(percent, 0.0f, 1.0f);
-        healthSliderFill.rectTransform.sizeDelta = new Vector2(percent * healthMaxWidth, healthSliderFill.rectTransform.rect.height);
-        UpdateOpacity();
+        healthSlider.UpdateSliderPercent(percent);
+        if (percent <= 0)
+            UpdateUI(selectedMember);
     }
 
     void UpdateStamina(float percent)
     {
-        percent = Mathf.Clamp(percent, 0.0f, 1.0f);
-        staminaSliderFill.rectTransform.sizeDelta = new Vector2(percent * staminaMaxWidth, staminaSliderFill.rectTransform.rect.height);
+        staminaSlider.UpdateSliderPercent(percent);
     }
 
-    public void UpdateOpacity()
+    public void UpdateUI(int selectedIndex)
     {
-        // Update opacity, based on if dead and/or selected by the UIGameParty
-        if (canvasGroup != null)
-        {
-            if (healthSliderFill.rectTransform.rect.width <= 0.0f)
-                canvasGroup.alpha = 0.2f;
-            else
-                canvasGroup.alpha = 1.0f * (greyedOut ? 0.6f : 1.0f);
-        }
-        else
-            StartCoroutine(TryUpdateOpacity());
+        selectedMember = selectedIndex;
+        selected = selectedIndex == memberNumber;
+        int index = selected ? 0 : 1;
+        bool isAlive = myth.Health.Value > 0.0f;
 
-        // Spicing things up with scale
-        float scaleFactor = selected ? 1.05f : greyedOut ? 0.95f : 1.0f;
-        GetComponent<RectTransform>().localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        // Set UI transforms based on if selected or not
+        rectTransform.sizeDelta = new Vector2(rootWidth[index], rootHeight[index]);
+        rectTransform.anchoredPosition = new Vector2((memberNumber * rootWidth[1]) + (selectedIndex < memberNumber ? rootWidth[0] - rootWidth[1] : 0), 0);
+        healthTransform.sizeDelta = new Vector2(healthTransform.sizeDelta.x, healthHeight[index]);
+        healthTransform.offsetMax = new Vector2(-leftRightOffset[index], healthTransform.offsetMax.y);
+        healthTransform.offsetMin = new Vector2(leftRightOffset[index], healthTransform.offsetMin.y);
+        staminaTransform.sizeDelta = new Vector2(staminaTransform.sizeDelta.x, staminaHeight[index]);
+        staminaTransform.offsetMax = new Vector2(-leftRightOffset[index], staminaTransform.offsetMax.y);
+        staminaTransform.offsetMin = new Vector2(leftRightOffset[index], staminaTransform.offsetMin.y);
+
+        // Set myth icon sprite based on if selected or not
+        mythIcon.sprite = isAlive ? mythIcons[index] : mythIcons[2];
+
+        // Set group alpha based on if selected or not
+        canvasGroup.alpha = isAlive ? index == 0 ? 1.0f : 1.0f : 0.85f;
+
+        // Update sliders, zeroing them if defeated
+        healthSlider.FormatSliderRectTransform(isAlive ? myth.Health.ValuePercent : 0);
+        staminaSlider.FormatSliderRectTransform(isAlive ? myth.Stamina.ValuePercent : 0);
     }
 
-    IEnumerator TryUpdateOpacity() // Probably don't need this, but it will recall the function if it failed because the scene reference was null
-    {
-        yield return new WaitForSeconds(0);
-        UpdateOpacity();
-    }
-
-    // TODO?: Update listeners when this UI starts representing a differnt party member than it used to be
-    public void SetMyth(Myth myth)
+    public void SetMyth(Myth myth, int memberIndex)
     {
         if (myth != null)
         {
+            memberNumber = memberIndex;
+
             // Remove listeners from previous referenced myth
-            // TODO: Cache this for performance.
             if (this.myth != null)
             {
                 myth.Health.valueChanged.RemoveListener(UpdateHealth);
                 myth.Stamina.valueChanged.RemoveListener(UpdateStamina);
-                // TODO: Remove a listener for stamina
             }
 
             // Update UI visuals and place listeners in new referenced myth
             this.myth = myth;
+            mythIcons = new Sprite[] { myth.myth.icon, myth.myth.iconOff, myth.myth.iconDead };
             myth.Health.valueChanged.AddListener(UpdateHealth);
             myth.Stamina.valueChanged.AddListener(UpdateStamina);
             UpdateHealth(myth.Health.ValuePercent);
             UpdateStamina(myth.Stamina.ValuePercent);
-            // TODO: Create a listener (and event) for stamina
-            mythIcon.sprite = myth.myth.icon;
+            UpdateUI(0);
         }
         else
             Debug.LogWarning("UIGameMyth was passed a null reference");

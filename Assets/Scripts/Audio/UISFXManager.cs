@@ -12,6 +12,13 @@ public class UISFXPair
     public GameObject uiSFXPrefab;
 }
 
+[System.Serializable]
+public class EnoughStaminaSet : UISFXPair
+{
+    [Range(1, 3)] public int availableAbilities = 1;
+    [Range(0, 1)] public int party = 0;
+}
+
 public class UISFXManager : MonoBehaviour
 {
     // Properties
@@ -23,8 +30,8 @@ public class UISFXManager : MonoBehaviour
     // References
     static UISFXManager Singleton;
 
-    //[Space(30)]
     public UISFXPair[] uiSFXpairs;
+    public EnoughStaminaSet[] enoughStaminaSets;
 
 
     // Engine-called
@@ -54,6 +61,17 @@ public class UISFXManager : MonoBehaviour
         }
     }
 
+    public static void PlayEnoughStamina(int party, int abilitiesAvailable)
+    {
+        if (!Singleton)
+        {
+            Debug.LogWarning("No UISFXManager Singleton found! Did you forget to put the prefab in this scene?");
+            return;
+        }
+
+        Singleton.SpawnEnoughStamina(party, abilitiesAvailable);
+    }
+
         
         // Private
     void SpawnSound(string sound)
@@ -69,5 +87,22 @@ public class UISFXManager : MonoBehaviour
         }
 
         Debug.LogWarning("No sound pair found with string '" + sound + "'! Please check they are typed correctly.");
+    }
+
+    void SpawnEnoughStamina(int party, int abilitiesAvailable)
+    {
+        party--; //we do parties 0 and 1 'round these parts (1 and 2 is what's provided by UIGameAbility)
+
+        foreach (EnoughStaminaSet s in enoughStaminaSets)
+        {
+            if (s.party == party && s.availableAbilities == abilitiesAvailable)
+            {
+                GameObject soundSource = Instantiate(s.uiSFXPrefab);
+                Destroy(soundSource, 1f);
+                return;
+            }
+        }
+
+        Debug.LogWarning("No 'Enough Stamina' set found with party " + party + " and abilitiesAvailable " + abilitiesAvailable + "!");
     }
 }
