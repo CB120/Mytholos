@@ -79,9 +79,13 @@ public class UIGameAbility : MonoBehaviour
         if (wasDepleted && !isDepleted)
         {
             if (!doNotAnimate)
+            {
                 AnimateSelectedAbility();
+            }
             else
+            {
                 doNotAnimate = false;
+            }
 
             depletedSlider.UpdateSliderPercent(1);
         }

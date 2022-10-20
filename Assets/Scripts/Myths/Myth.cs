@@ -66,5 +66,19 @@ namespace Myths
         {
             mythCommandHandler.PushCommand(new StunCommand(abilityStunTime));
         }
+
+
+        // For 'Enough Stamina' SFX
+        public int NumberOfAvailableAbilities()
+        {
+            bool skipEast = true; // Honestly if we remove Dodge in the 8 days between writing this and submitting the game, I'll remember this is here
+
+            int output = 0;
+            if (northAbility.staminaCost <= Stamina.Value) output++;
+            if (westAbility.staminaCost <= Stamina.Value) output++;
+            if (southAbility.staminaCost <= Stamina.Value) output++;
+            if (eastAbility.staminaCost <= Stamina.Value && !skipEast) output++;
+            return output;
+        }
     }
 }

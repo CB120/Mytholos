@@ -49,20 +49,6 @@ public class UIGameParty : MonoBehaviour
     //}
     //#endregion
 
-    void Start()
-    {
-        // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
-        partyBuilder = FindObjectOfType<PartyBuilder>();
-        partyBuilder.allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
-        if (partyBuilder.allParticipantData.partyData[partyNumber - 1].participant != null)
-            UpdateInputListeners(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant);
-        else
-            Debug.LogWarning("UI Party failed to locate their player participant");
-
-        //if (partyBuilder)
-        //    SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
-    }
-
     private void Awake()
     {
         // Record some transform information from UI
@@ -76,6 +62,20 @@ public class UIGameParty : MonoBehaviour
         // Store party information
         myths = new Myth[3];
         SetUpMythUIs();
+    }
+
+    void Start()
+    {
+        // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
+        partyBuilder = FindObjectOfType<PartyBuilder>();
+        partyBuilder.allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
+        if (partyBuilder.allParticipantData.partyData[partyNumber - 1].participant != null)
+            UpdateInputListeners(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant);
+        else
+            Debug.LogWarning("UI Party failed to locate their player participant");
+
+        //if (partyBuilder)
+        //    SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
     }
 
     void UpdateInputListeners(Participant participant)
