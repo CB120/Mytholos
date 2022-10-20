@@ -16,6 +16,9 @@ public class UIGameAbility : MonoBehaviour
     [SerializeField] private Color defaultColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
     [SerializeField] private UISlider depletedSlider;
     [SerializeField] private CanvasGroup canvasGroup;
+
+    [HideInInspector] public UIGameParty thisGameParty;
+
     Myth myth;
     float abilityCost;
     bool isDepleted;
@@ -81,6 +84,7 @@ public class UIGameAbility : MonoBehaviour
             if (!doNotAnimate)
             {
                 AnimateSelectedAbility();
+                UISFXManager.PlayEnoughStamina(thisGameParty.partyNumber, myth.NumberOfAvailableAbilities());
             }
             else
             {
