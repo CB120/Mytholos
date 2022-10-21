@@ -17,7 +17,7 @@ public class BeamAbility : Ability
     [SerializeField] private Transform BeamHead;
     [SerializeField] private Transform BeamOrigin;
 
-    [SerializeField] private StudioEventEmitter beamLoops;
+    [SerializeField] private StudioEventEmitter beamFiredLoopSFX;
     [SerializeField] private StudioEventEmitter beamFiredSFX;
 
     #region Colours
@@ -76,19 +76,7 @@ public class BeamAbility : Ability
             Destroy(gameObject);
         }
 
-        // SFX stuff added by Ethan
-        float beamProgress = 0f;
-        
-        // BUG: Broken by moving charge handling to state machine.
-        // if (Charged)
-        // {
-        //     beamProgress = (DurationTimer) / (ability.performTime - ability.chargeTime) * 100 + 100;
-        //     beamFiredSFX.enabled = true;
-        // } else
-        // {
-        //     beamProgress = ChargeTimer / ability.chargeTime * 100;
-        // }
-        // beamLoops.SetParameter("Beam Progress", beamProgress);
+        beamFiredLoopSFX.SetParameter("Beam Progress", DurationTimer / ability.performTime * 100);
     }
 
     public override void TriggerStay(Myth myth)

@@ -699,6 +699,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
         type: 3}
+      propertyPath: debrisControllerService
+      value: 
+      objectReference: {fileID: 11400000, guid: a93847d480b645445b01a2e3e68d2f51,
+        type: 2}
+    - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
+        type: 3}
       propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

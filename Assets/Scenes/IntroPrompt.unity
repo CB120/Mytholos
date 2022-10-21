@@ -521,6 +521,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 793d2e85-98d7-4379-a3f9-81200c358ee9
     m_ActionName: UI/Start[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f919ff23-eefc-4dd4-9676-44293e195ad5
+    m_ActionName: UI/NavigateRightShoulder[/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e1f40b0d-11e3-47d0-adfe-ddfcb87f21ed
+    m_ActionName: UI/NavigateLeftShoulder[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -1248,3 +1256,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4720286493426074900}
   m_CullTransparentMesh: 1
+--- !u!1001 &7178236782515502504
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7178236782497905705, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_Name
+      value: Mouse Hider Utility
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178236782497905706, guid: 08f9338db7e568942836c1856f2d69bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08f9338db7e568942836c1856f2d69bf, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Debris
 {
+    // TODO: A lot of these Lists would be more efficient as HashSets
     public class ElementFilter : MonoBehaviour
     {
         private enum FilterType
