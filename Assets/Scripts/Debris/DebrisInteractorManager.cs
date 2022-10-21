@@ -14,17 +14,27 @@ namespace Debris
 
         private void OnEnable()
         {
+            SubscribeToColliderEvents();
+        }
+
+        private void SubscribeToColliderEvents()
+        {
             if (colliderEvents == null) return;
-            
+
             colliderEvents.triggerEntered.AddListener(OnTriggerEntered);
             colliderEvents.triggerStayed.AddListener(OnTriggerStayed);
             colliderEvents.triggerExited.AddListener(OnTriggerExited);
         }
-        
+
         private void OnDisable()
         {
+            UnsubscribeFromColliderEvents();
+        }
+
+        private void UnsubscribeFromColliderEvents()
+        {
             if (colliderEvents == null) return;
-            
+
             colliderEvents.triggerEntered.RemoveListener(OnTriggerEntered);
             colliderEvents.triggerStayed.RemoveListener(OnTriggerStayed);
             colliderEvents.triggerExited.RemoveListener(OnTriggerExited);
@@ -96,6 +106,13 @@ namespace Debris
                 if (debrisInteractor.enabled)
                     debrisInteractor.OnDebrisExit(debris);
             }
+        }
+
+        public void Initialise(ColliderEvents colliderEvents)
+        {
+            this.colliderEvents = colliderEvents;
+            
+            SubscribeToColliderEvents();
         }
     }
 }

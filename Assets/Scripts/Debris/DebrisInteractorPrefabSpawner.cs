@@ -1,60 +1,35 @@
-using System.Collections.Generic;
-using System.Linq;
 using Debris.DebrisInteractors;
 using UnityEngine;
+using Utilities;
 
 namespace Debris
 {
     // Instantiates the appropriate default debris interactor prefab for the ability's element. Allows elements of abilities to be easily changed.
+    // TODO: Name should include Ability
     public class DebrisInteractorPrefabSpawner : MonoBehaviour
     {
         [SerializeField] private Ability ability;
+        [SerializeField] private ColliderEvents colliderEvents;
 
-        private List<DebrisInteractorManager> debrisInteractorManagers = new();
-        
-        private void Awake()
+        // Must occur in Start to give ability element time to initialise
+        private void Start()
         {
             var debrisInteractorObject = Instantiate(ability.ability.element.abilityDebrisInteractorsPrefab, transform);
 
             // TODO: This needs work
-            foreach (var abilityDebrisInteractor in debrisInteractorObject.GetComponents<AbilityDebrisInteractor>())
+            foreach (var abilityDebrisInteractor in debrisInteractorObject.GetComponentsInChildren<AbilityDebrisInteractor>())
             {
                 abilityDebrisInteractor.ability = ability;
             }
             
-            foreach (var createDebrisInteractor in debrisInteractorObject.GetComponents<CreateDebrisInteractor>())
+            foreach (var createDebrisInteractor in debrisInteractorObject.GetComponentsInChildren<CreateDebrisInteractor>())
             {
                 createDebrisInteractor.ability = ability;
             }
 
-            debrisInteractorManagers = debrisInteractorObject.GetComponents<DebrisInteractorManager>().ToList();
-        }
-
-        // TODO: Copied from DebrisINteractorManager. Clean up
-        private void OnTriggerEnter(Collider other)
-        {
-            foreach (var debrisInteractorManager in debrisInteractorManagers)
+            foreach (var debrisInteractorManager in debrisInteractorObject.GetComponentsInChildren<DebrisInteractorManager>())
             {
-                debrisInteractorManager.OnDebrisTrigger(other,
-                    (debrisInteractor, debris) => debrisInteractor.OnDebrisEnter(debris));
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            foreach (var debrisInteractorManager in debrisInteractorManagers)
-            {
-                debrisInteractorManager.OnDebrisTrigger(other,
-                    (debrisInteractor, debris) => debrisInteractor.OnDebrisExit(debris));
-            }
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            foreach (var debrisInteractorManager in debrisInteractorManagers)
-            {
-                debrisInteractorManager.OnDebrisTrigger(other,
-                    (debrisInteractor, debris) => debrisInteractor.OnDebrisStay(debris));
+                debrisInteractorManager.Initialise(colliderEvents);
             }
         }
     }
