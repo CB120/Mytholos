@@ -65,6 +65,7 @@ Transform:
   - {fileID: 1823035925346753749}
   - {fileID: 3960733968333587459}
   - {fileID: 2140139230591539755}
+  - {fileID: 4210238410480450774}
   m_Father: {fileID: 8072052664142603967}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,6 +86,7 @@ MonoBehaviour:
   - {fileID: 5581297103441222297}
   - {fileID: 4020120995808581335}
   - {fileID: 1650809601834191815}
+  - {fileID: 8347180376123182533}
 --- !u!1 &3271615391549213713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1136,54 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &7667027395465377613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4210238410480450774}
+  - component: {fileID: 8347180376123182533}
+  m_Layer: 6
+  m_Name: Electrified Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4210238410480450774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667027395465377613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8470423055826312093}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8347180376123182533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667027395465377613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872c778d5ae44c7782eb8be88a7487ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myth: {fileID: 7428839973292417855}
+  electricElement: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
+  overrideIfMythIsElectric: 1
+  damagePerSecond: 5
 --- !u!1 &7846904397353092853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,8 +1591,6 @@ MonoBehaviour:
   groundOnHorizontalMovement: 0
   hugGround: 0
   hugGroundDistance: 5
-  targetLerpSpeed: 6
-  smoothing: 0.45
   slideyness: 2
   isSliding: 0
   velocity: {x: 0, y: 0, z: 0}

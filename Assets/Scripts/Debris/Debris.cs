@@ -24,16 +24,32 @@ namespace Debris
             }
         }
         
+        // TODO: Efficient, but not well organised
+        public Vector3Int TilePosition { get; private set; }
+        
         public SO_Element OldElement { get; private set; }
+
+        public bool IsElectrified
+        {
+            get => isElectrified;
+            set
+            {
+                isElectrified = value;
+                isElectrifiedChanged.Invoke(this);
+            }
+        }
 
         [NonSerialized] public UnityEvent<Debris> elementToBeChanged = new();
         [NonSerialized] public UnityEvent<Debris> elementChanged = new();
+        [NonSerialized] public UnityEvent<Debris> isElectrifiedChanged = new();
 
         private Coroutine decayCoroutine;
         private SO_Element currentElement;
+        private bool isElectrified;
 
         public void Initialise(Vector3Int tilePosition)
         {
+            TilePosition = tilePosition;
             tilePositionReadout = tilePosition;
         }
 
