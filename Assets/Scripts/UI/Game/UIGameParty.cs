@@ -10,7 +10,7 @@ using Myths;
 public class UIGameParty : MonoBehaviour
 {
     // TODO: Store a reference to relevant player's party and/or party members
-    [SerializeField] int partyNumber; // 1 or 2, used to find party by tag name
+    public int partyNumber; // 1 or 2, used to find party by tag name
     Myth[] myths;
     [SerializeField] UIGameMyth[] mythUIs;
     [SerializeField] UIGameHovering hoveringUI;
@@ -49,6 +49,26 @@ public class UIGameParty : MonoBehaviour
     //}
     //#endregion
 
+    private void Awake()
+    {
+        // Record some transform information from UI
+        abilitiesMenuRectTransform = abilitiesMenu.GetComponent<RectTransform>();
+        abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y + abilitiesLazyHardcodedOffset;
+        abilitiesUnselectedX = abilitiesSelectedX + abilitiesSelectedOffset * (partyNumber > 1 ? 1.0f : -1.0f);
+
+        foreach (UIGameAbility a in abilities)
+        {
+            a.thisGameParty = this;
+        }
+    }
+
+    void OnEnable()
+    {
+        // Store party information
+        myths = new Myth[3];
+        SetUpMythUIs();
+    }
+
     void Start()
     {
         // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
@@ -61,21 +81,6 @@ public class UIGameParty : MonoBehaviour
 
         //if (partyBuilder)
         //    SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
-    }
-
-    private void Awake()
-    {
-        // Record some transform information from UI
-        abilitiesMenuRectTransform = abilitiesMenu.GetComponent<RectTransform>();
-        abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y + abilitiesLazyHardcodedOffset;
-        abilitiesUnselectedX = abilitiesSelectedX + abilitiesSelectedOffset * (partyNumber > 1 ? 1.0f : -1.0f);
-    }
-
-    void OnEnable()
-    {
-        // Store party information
-        myths = new Myth[3];
-        SetUpMythUIs();
     }
 
     void UpdateInputListeners(Participant participant)

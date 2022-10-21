@@ -61,7 +61,7 @@ MonoBehaviour:
   BeamLength: 20
   BeamHead: {fileID: 3275380738363577109}
   BeamOrigin: {fileID: 8018691964653190970}
-  beamLoops: {fileID: 2842811421863119054}
+  beamFiredLoopSFX: {fileID: 2842811421863119054}
   beamFiredSFX: {fileID: 3445097898368556318}
 --- !u!199 &2788665453749804393
 ParticleSystemRenderer:
@@ -4859,11 +4859,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1701486113
-      Data2: 1270056415
-      Data3: -1968527199
-      Data4: -1002864699
-    Path: event:/SFX/Abilities/Beam/Beam Loops
+      Data1: 1620455044
+      Data2: 1129665349
+      Data3: 1577377669
+      Data4: 159910400
+    Path: event:/SFX/Abilities/Beam/Beam Fired Loop
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -4873,7 +4873,7 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMaxDistance: 1000
 --- !u!114 &3445097898368556318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4881,7 +4881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2807559122200386854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
