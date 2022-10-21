@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 5566186331596335564}
   - component: {fileID: 7058111125959551161}
   - component: {fileID: 5151641802203769873}
+  - component: {fileID: 2033726144975113415}
   m_Layer: 6
   m_Name: Ability State Machine
   m_TagString: Untagged
@@ -569,6 +570,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  beamChargeSFX: {fileID: 2033726144975113415}
 --- !u!114 &7058111125959551161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,6 +603,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &2033726144975113415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029060779171543208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1701486113
+      Data2: 1270056415
+      Data3: -1968527199
+      Data4: -1002864699
+    Path: event:/SFX/Abilities/Beam/Beam Charge Loop
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 1000
 --- !u!1 &5683708491569843791
 GameObject:
   m_ObjectHideFlags: 0
