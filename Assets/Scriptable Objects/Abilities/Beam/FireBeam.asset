@@ -26,7 +26,7 @@ MonoBehaviour:
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 0
-  relativeSpawnPosition: {x: 0, y: 0, z: 0}
+  relativeSpawnPosition: {x: 0, y: 0, z: 0.5}
   relativeSpawnRotation: {x: 0, y: 0, z: 0}
   timeToDestroy: 0
   abilityPrefab: {fileID: 2807559122200386854, guid: 29a300c7567db5d4e9d929c767e38f80,

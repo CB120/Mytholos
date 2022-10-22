@@ -36,3 +36,5 @@ MonoBehaviour:
   boomerangMaterial: {fileID: 0}
   flurryStartColor: {r: 0, g: 0.29803923, b: 0, a: 1}
   flurryEndColor: {r: 0, g: 0.8, b: 0, a: 1}
+  shotStartColor: {r: 0, g: 0.8, b: 0, a: 1}
+  shotEndColor: {r: 0, g: 0.8, b: 0, a: 1}

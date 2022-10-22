@@ -33,3 +33,7 @@ MonoBehaviour:
   beamEndColor: {r: 1, g: 0.24705882, b: 0, a: 1}
   boomerangStartColor: {r: 0.6784314, g: 0.05882353, b: 0, a: 1}
   boomerangMaterial: {fileID: 2100000, guid: 5d3d4b052ae70004f9de1ff0c584e74c, type: 2}
+  flurryStartColor: {r: 0, g: 0, b: 0, a: 0}
+  flurryEndColor: {r: 0, g: 0, b: 0, a: 0}
+  shotStartColor: {r: 0.6784314, g: 0.05882353, b: 0, a: 1}
+  shotEndColor: {r: 0.6784314, g: 0.05882353, b: 0, a: 1}

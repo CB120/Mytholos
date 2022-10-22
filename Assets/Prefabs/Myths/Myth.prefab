@@ -525,6 +525,7 @@ MonoBehaviour:
   overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
+  rotationSpeed: 0.25
   performAbilityComplete:
     m_PersistentCalls:
       m_Calls:
