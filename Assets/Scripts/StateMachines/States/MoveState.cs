@@ -38,7 +38,10 @@ namespace StateMachines.States
                 Debug.LogWarning("There was a problem with finding the movementController (CollisionDetection Physics). Please re-assign it in the inspector.");
                 moveFailed.Invoke();
             }
-
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Charge")){
+                anim.ResetTrigger("Charge");
+                Debug.Log("Attempting to reset charge anim");
+            }
         }
 
         private float speedValue()

@@ -12,6 +12,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     public ParticleSystem abilityPS;
     private float SOknockbackStrength;
     private float SOstunTime;
+    private float elementModifier = 1;
 
     public float DamageMultiplier { get; set; } = 1;
 
@@ -44,8 +45,14 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (!isInParty)
         {
-            var finalDamage = damage * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
-           
+            if (ability.element.strongAgainst.Contains(myth.element))
+            {
+                Debug.Log("Attack is Strong!!");
+                elementModifier = 2;
+            }
+            var finalDamage = damage * elementModifier * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
+            //Debug.Log("attack stat is " + owningMyth.AttackStat + "Final Damage is " + finalDamage);
+
             if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
             {
                 owningMyth.Health.Value += (finalDamage / 2f);
