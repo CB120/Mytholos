@@ -10,6 +10,8 @@ namespace Debris
     {
         [SerializeField] private Ability ability;
         [SerializeField] private ColliderEvents colliderEvents;
+        [SerializeField] private DebrisInteractorManager debrisInteractorManager;
+        [SerializeField] private CreateDebrisInteractor createDebrisInteractor;
 
         // Must occur in Start to give ability element time to initialise
         private void Start()
@@ -20,6 +22,7 @@ namespace Debris
             foreach (var abilityDebrisInteractor in debrisInteractorObject.GetComponentsInChildren<AbilityDebrisInteractor>())
             {
                 abilityDebrisInteractor.ability = ability;
+                abilityDebrisInteractor.createDebrisInteractor = createDebrisInteractor;
             }
             
             foreach (var createDebrisInteractor in debrisInteractorObject.GetComponentsInChildren<CreateDebrisInteractor>())
@@ -27,9 +30,14 @@ namespace Debris
                 createDebrisInteractor.ability = ability;
             }
 
-            foreach (var debrisInteractorManager in debrisInteractorObject.GetComponentsInChildren<DebrisInteractorManager>())
+            // foreach (var debrisInteractorManager in debrisInteractorObject.GetComponentsInChildren<DebrisInteractorManager>())
+            // {
+            //     debrisInteractorManager.Initialise(colliderEvents);
+            // }
+
+            foreach (var debrisInteractor in debrisInteractorObject.GetComponentsInChildren<DebrisInteractor>())
             {
-                debrisInteractorManager.Initialise(colliderEvents);
+                debrisInteractorManager.DebrisInteractors.Add(debrisInteractor);
             }
         }
     }

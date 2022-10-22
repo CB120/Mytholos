@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Debris
 {
-    // TODO: A lot of these Lists would be more efficient as HashSets
+    // TODO: Having two ways to use this script is way too confusing. 
     public class ElementFilter : MonoBehaviour
     {
         private enum FilterType
@@ -15,10 +15,13 @@ namespace Debris
             IsStrongAgainstAny,
             IsWeakAgainstAny,
             IsOrIsStrongAgainstAny,
-            IsOrIsWeakAgainstAny
+            IsOrIsWeakAgainstAny,
+            AlwaysTrue,
+            AlwaysFalse,
         }
         [Tooltip("The value returned by the filter when the filter list contains the element.")]
         [SerializeField] private FilterType filterType;
+        // TODO: Convert to HashSet
         [SerializeField] private List<SO_Element> filterElements;
 
         public bool PassesFilter(SO_Element element1, SO_Element element2)
@@ -39,6 +42,10 @@ namespace Debris
                 case FilterType.IsOrIsWeakAgainstAny:
                     return element1 == element2 ||
                            element2.strongAgainst.Contains(element1);
+                case FilterType.AlwaysTrue:
+                    return true;
+                case FilterType.AlwaysFalse:
+                    return false;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -62,6 +69,10 @@ namespace Debris
                 case FilterType.IsOrIsWeakAgainstAny:
                     return filterElements.Contains(element) || 
                         filterElements.Any(e => e.strongAgainst.Contains(element));
+                case FilterType.AlwaysTrue:
+                    return true;
+                case FilterType.AlwaysFalse:
+                    return false;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

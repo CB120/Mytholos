@@ -12,8 +12,8 @@ public class SO_Element : ScriptableObject
     public ParticleSystem debuffParticle;
     public ParticleSystem buffParticle;
     public bool setParticleColor;
-    // TODO: Move element icon here too
 
+    // TODO: Convert to HashSet
     public List<SO_Element> strongAgainst = new();
 
     // TODO: Cyclic dependency. Do we need this?
@@ -27,6 +27,7 @@ public class SO_Element : ScriptableObject
     public string debuffDescription;
 }
 
+// TODO: Why do you keep coming back?
 namespace Elements
 {
     public enum Element

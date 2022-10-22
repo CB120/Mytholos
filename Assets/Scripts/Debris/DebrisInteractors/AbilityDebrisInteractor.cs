@@ -7,7 +7,7 @@ namespace Debris.DebrisInteractors
     {
         [SerializeField] public Ability ability;
         [SerializeField] private float effectValue;
-        [SerializeField] private CreateDebrisInteractor createDebrisInteractor;
+        [SerializeField] public CreateDebrisInteractor createDebrisInteractor;
         [SerializeField] private ElementFilter positiveEffectElementFilter;
         [SerializeField] private ElementFilter negativeEffectElementFilter;
         
@@ -27,7 +27,7 @@ namespace Debris.DebrisInteractors
 
             // TODO: This can be optimised in a couple of ways, the first is to use a better data structure like a Dictionary<Vector3, bool>
             // TODO: The second would be to store the ability that created the debris on the debris, though that's a cyclic dependency
-            if (createDebrisInteractor.PlacedDebris.Contains(debris)) return;
+            if (createDebrisInteractor && createDebrisInteractor.PlacedDebris.Contains(debris)) return;
 
             // TODO: These ones can be optimised by compiling the strengths into a matrix
             var abilityElement = ability.ability.element;
