@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class DebrisSFX : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Properties
+
+
+    // Variables
+
+
+    // References
+    [Header("FMOD Emitters")]
+    public StudioEventEmitter fireLoop;
+    public StudioEventEmitter electricityLoop;
+    public StudioEventEmitter iceLoop;
+
+
+    // Engine-called
     void Start()
     {
-        
+        fireLoop.SetParameter("Debris Volume", 0f);
+        electricityLoop.SetParameter("Debris Volume", 0f);
+        iceLoop.SetParameter("Debris Volume", 0f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    // Methods
+        // Public
+    
 }

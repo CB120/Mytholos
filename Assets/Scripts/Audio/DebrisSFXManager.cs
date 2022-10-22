@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class DebrisColumn
+{
+    public DebrisSFX[] debrisSFX;
+}
+
 public class DebrisSFXManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Properties
 
-    // Update is called once per frame
-    void Update()
+
+    // Variables
+
+
+    // References
+    [Header("In-Prefab References")]
+    public DebrisColumn[] debrisColumns;
+
+
+    // Called by other systems
+    public void OnDebrisChange()
     {
-        
+
     }
 }
