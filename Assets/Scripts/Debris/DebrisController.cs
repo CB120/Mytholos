@@ -13,11 +13,9 @@ namespace Debris
         [SerializeField] private TileBase tile;
         [SerializeField] private Bounds gridBounds;
 
-        public int NumberOfTiles { get; private set; }
+        public Tilemap Tilemap => tilemap;
 
-        private readonly Dictionary<SO_Element, int> numberOfTilesWithElement = new();
-
-        public UnityEvent numberOfTilesWithElementChanged = new();
+        [NonSerialized] public UnityEvent<Debris> debrisCreated = new();
 
         private void Awake()
         {
@@ -50,37 +48,16 @@ namespace Debris
                     var tileObject = tilemap.GetInstantiatedObject(gridPos);
                     
                     tileObject.transform.localScale = Grid.Swizzle(tilemap.cellSwizzle, tilemap.cellSize);
-                    
-                    // TODO: Unlisten?
-                    tileObject.GetComponent<Debris>().elementChanged.AddListener(OnElementChanged);
-                    
-                    tileObject.GetComponent<Debris>().Initialise(gridPos);
 
-                    NumberOfTiles++;
+                    var debris = tileObject.GetComponent<Debris>();
+                    
+                    debris.Initialise(gridPos);
+                    
+                    debrisCreated.Invoke(debris);
                 }
             }
         }
 
-        private void OnElementChanged(Debris debris)
-        {
-            if (debris.OldElement != null)
-                numberOfTilesWithElement[debris.OldElement]--;
-
-            if (debris.CurrentElement != null)
-            {
-                if (!numberOfTilesWithElement.ContainsKey(debris.CurrentElement))
-                    numberOfTilesWithElement[debris.CurrentElement] = 0;
-
-                numberOfTilesWithElement[debris.CurrentElement]++;
-            }
-            
-            numberOfTilesWithElementChanged.Invoke();
-        }
-
-        public int NumberOfTilesWithElement(SO_Element element)
-        {
-            return !numberOfTilesWithElement.ContainsKey(element) ? 0 : numberOfTilesWithElement[element];
-        }
         public List<Debris> FloodGetTiles(Debris startDebris, Func<Debris, bool> testFunc)
         {
             var stack = new Stack<Debris>();

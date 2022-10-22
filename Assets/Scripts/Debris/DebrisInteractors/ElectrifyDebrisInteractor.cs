@@ -8,8 +8,6 @@ namespace Debris.DebrisInteractors
 {
     public class ElectrifyDebrisInteractor : DebrisInteractor
     {
-        [SerializeField] private Ability ability;
-        [SerializeField] private SO_Element element;
         [SerializeField] private DebrisControllerService debrisControllerService;
         [SerializeField] private ElementFilter elementFilter;
 
@@ -21,12 +19,6 @@ namespace Debris.DebrisInteractors
 
         private void Start()
         {
-            if (ability.ability.element != element)
-            {
-                enabled = false;
-                return;
-            }
-            
             debrisController = debrisControllerService.DebrisController;
 
             if (debrisController != null) return;
