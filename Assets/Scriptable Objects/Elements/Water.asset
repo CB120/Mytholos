@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   color: {r: 0.10196079, g: 0.5294118, b: 0.9333334, a: 1}
+  customMaterial: {fileID: 2100000, guid: f6acad713d8544c4c9144ff771d05300, type: 2}
   icon: {fileID: -2019498799, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  debrisTexture: {fileID: 0}
   element: 3
   buffLength: 0
   debuffParticle: {fileID: 3361534561257019739, guid: 90292d90c78142344a2278f49b408e08,

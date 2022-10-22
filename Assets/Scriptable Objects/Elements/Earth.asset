@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   color: {r: 0.6039216, g: 0.4, b: 0.28627452, a: 1}
+  customMaterial: {fileID: 0}
   icon: {fileID: 669466098, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  debrisTexture: {fileID: 2800000, guid: 3e91a478262889a418c63eb179ab1417, type: 3}
   element: 7
   buffLength: 5
   debuffParticle: {fileID: 606802925254652523, guid: afb379dbc8562a84c9ac21db30e591dc,
     type: 3}
   buffParticle: {fileID: 606802925254652523, guid: 346c35163c406dc48a162f304977c3a8,
     type: 3}
-  setParticleColor: 1
+  setParticleColor: 0
   strongAgainst:
   - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}

@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   color: {r: 0.95294124, g: 0.3019608, b: 0.17254902, a: 1}
+  customMaterial: {fileID: 2100000, guid: b00770ca5dc68564eb1b6804157dea0e, type: 2}
   icon: {fileID: -613462781, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  debrisTexture: {fileID: 0}
   element: 1
   buffLength: 5
   debuffParticle: {fileID: 2382774908206683239, guid: 7d783a9af7f76e743bd0fff189b9c73f,
     type: 3}
   buffParticle: {fileID: 2382774908206683239, guid: aaa24b94c16d9554987ade8e0070fa77,
     type: 3}
-  setParticleColor: 1
+  setParticleColor: 0
   strongAgainst:
   - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}

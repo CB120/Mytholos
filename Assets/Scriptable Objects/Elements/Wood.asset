@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.8000001, b: 0, a: 1}
+  customMaterial: {fileID: 0}
   icon: {fileID: -217181599, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  debrisTexture: {fileID: 2800000, guid: be0bfb9b2f5d3414591bac07eff647ae, type: 3}
   element: 0
   buffLength: 3
   debuffParticle: {fileID: 7099808520127916165, guid: 44b20619b46a814498a991177df1d974,

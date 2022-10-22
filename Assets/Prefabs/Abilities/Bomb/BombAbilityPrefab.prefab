@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 7516873970837099685}
-  arcHeight: 8
+  arcHeight: 6
   destroySpeed: 1
   bombCollider: {fileID: 2149221307316013115}
   mesh: {fileID: 7004085478113690020}
@@ -219,7 +219,7 @@ MonoBehaviour:
   takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
     type: 3}
   timeToDestroyTakingDamageSFX: 0.4
-  speed: 5
+  speed: 10
   mesh: {fileID: 7004085478113690020}
   startPos: {x: 0, y: 0, z: 0}
   targetPos: {x: 10, y: 2, z: 10}

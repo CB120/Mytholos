@@ -5,8 +5,13 @@ using Elements;
 [CreateAssetMenu(fileName = "Untitled", menuName = "ScriptableObjects/Element", order = 1)]
 public class SO_Element : ScriptableObject
 {
+    [Header("Appearance")]
     public Color color;
+    public Material customMaterial;
     public Sprite icon;
+    public Texture2D debrisTexture;
+
+    [Header("Properties")]
     public Element element;
     public float buffLength;
     public ParticleSystem debuffParticle;
