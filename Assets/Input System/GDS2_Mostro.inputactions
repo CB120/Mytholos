@@ -507,6 +507,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e3f921d1-9506-4459-9d33-a9dfc4fc241a",
+                    "path": "<Keyboard>/quote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "076d454b-f398-4b07-89b3-42f0057b83d1",
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",

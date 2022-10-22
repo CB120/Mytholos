@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Commands;
 using Myths;
+using StateMachines;
+using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
@@ -26,7 +28,7 @@ public class PlayerParticipant : Participant
     private bool isAvailableToSwap = true;
     private bool isAvailableToDodge = true;
     [SerializeField] private float swappingCooldown = 2f;
-    [SerializeField] private float dodgeCooldown = 2.1f;
+    [SerializeField] private float dodgeCooldown = 2.25f;
 
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
@@ -54,6 +56,7 @@ public class PlayerParticipant : Participant
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
 
     private List<Myth> mythsInReserve = new();
+    //private List<Myth> myths = new();
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
@@ -95,47 +98,54 @@ public class PlayerParticipant : Participant
 
     public void UseAbilityNorth(InputAction.CallbackContext context)
     {
+        FaceButtonNorth.Invoke(context.performed);
         UseAbility(context, myth => myth.northAbility);
     }
 
     public void UseAbilityEast(InputAction.CallbackContext context)
     {
+        FaceButtonEast.Invoke(context.performed);
+
         if (!isAvailableToDodge) return;
         if (!context.performed) return;
 
-        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        if (SelectedMythCommandHandler.LastCommand is MoveCommand moveCommand)
         {
-            SelectedMythCommandHandler.Command = new DodgeCommand(moveCommand.input);   // Dodge in the input direction if the left stick is currently in use
+            SelectedMythCommandHandler.PushCommand(new DodgeCommand(moveCommand.input));   // Dodge in the input direction if the left stick is currently in use
             StartDodgeCooldown();
         }
         else
         {
             Vector3 forwardVector = mythInPlay.transform.rotation * Vector3.forward;
-            SelectedMythCommandHandler.Command = new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized);    // Else dodge in direction myth is facing
+            SelectedMythCommandHandler.PushCommand(new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized));    // Else dodge in direction myth is facing
             StartDodgeCooldown();
         }
     }
 
     public void UseAbilitySouth(InputAction.CallbackContext context)
     {
+        FaceButtonSouth.Invoke(context.performed);
         UseAbility(context, myth => myth.southAbility);
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
+        FaceButtonWest.Invoke(context.performed);
         UseAbility(context, myth => myth.westAbility);
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (SelectedMythCommandHandler.Command is not MoveCommand)
-            SelectedMythCommandHandler.Command = new MoveCommand();
+        // TODO: Not sure if this logic should be here or in MoveCommandReceived
+        if (SelectedMythCommandHandler.CurrentCommand is not MoveCommand)
+            SelectedMythCommandHandler.PushCommand(new MoveCommand());
 
-        if (SelectedMythCommandHandler.Command is MoveCommand moveCommand)
+        if (SelectedMythCommandHandler.CurrentCommand is MoveCommand moveCommand)
         {
             moveCommand.input = context.ReadValue<Vector2>();
         }
     }
+    
     private void UseAbility(InputAction.CallbackContext context, Func<Myth, SO_Ability> abilityAccessor)
     {
         if (!context.performed) return;
@@ -149,7 +159,7 @@ public class PlayerParticipant : Participant
             return;
         }
 
-        SelectedMythCommandHandler.Command = new AbilityCommand(ability);
+        SelectedMythCommandHandler.PushCommand(new AbilityCommand(ability));
 
         SelectAbility.Invoke(ability);
     }
@@ -160,8 +170,8 @@ public class PlayerParticipant : Participant
         if (mythsInReserve[0].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
-            SelectedMythCommandHandler.Command = new SwapCommand();
-            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            SelectedMythCommandHandler.PushCommand(new SwapCommand());
+            if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
                 swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
                 swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
@@ -180,8 +190,8 @@ public class PlayerParticipant : Participant
         if (mythsInReserve[1].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
-            SelectedMythCommandHandler.Command = new SwapCommand();
-            if (SelectedMythCommandHandler.Command is SwapCommand swapCommand)
+            SelectedMythCommandHandler.PushCommand(new SwapCommand());
+            if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
                 swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
                 swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
@@ -338,13 +348,49 @@ public class PlayerParticipant : Participant
         StartSwapCooldown();
         
         var position = MythInPlay.transform.position;
-
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
+   
 
         MythInPlay.transform.position = position;
     }
 
-    
+    //private void SwapInDirection(int direction)
+    //{
+    //    if (!isAvailableToSwap) return;
+
+    //    // Try swap in specified direciton
+    //    int currentMythIndex = myths.IndexOf(mythInPlay);
+    //    int nextIndex = (currentMythIndex + direction) % myths.Count;
+    //    if (nextIndex < 0) nextIndex = myths.Count - 1;
+
+    //    if (myths[nextIndex].Health.Value > 0)
+    //    {
+    //        Vector3 position = MythInPlay.transform.position;
+    //        Quaternion rotation = MythInPlay.transform.rotation;
+    //        MythInPlay = myths[nextIndex];
+    //        MythInPlay.transform.position = position;
+    //        MythInPlay.transform.rotation = rotation;
+    //        StartSwapCooldown();
+    //        return;
+    //    }
+
+    //    // Try swap in other direction
+    //    nextIndex = (currentMythIndex - direction) % myths.Count;
+    //    if (nextIndex < 0) nextIndex = myths.Count - 1;
+
+    //    if (myths[nextIndex].Health.Value > 0)
+    //    {
+    //        Vector3 position = MythInPlay.transform.position;
+    //        Quaternion rotation = MythInPlay.transform.rotation;
+    //        MythInPlay = myths[nextIndex];
+    //        MythInPlay.transform.position = position;
+    //        MythInPlay.transform.rotation = rotation;
+    //        StartSwapCooldown();
+    //        return;
+    //    }
+    //}
+
+
     private void StartSwapCooldown()
     {
         isAvailableToSwap = false;
@@ -353,6 +399,7 @@ public class PlayerParticipant : Participant
 
     private void StartDodgeCooldown()
     {
+        dodgeCooldown = dodgeCooldown - mythInPlay.walkSpeed;
         isAvailableToDodge = false;
             Invoke("EndDodgeCooldown", dodgeCooldown);
     }
@@ -371,7 +418,8 @@ public class PlayerParticipant : Participant
     public void Initialise()
     {
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
-        
+        //myths = ParticipantData.partyData[partyIndex].myths.ToList();
+
         mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
 
         if (MythInPlay != null)

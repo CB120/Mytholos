@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Myths;
 using Elements;
 using Commands;
@@ -10,7 +11,7 @@ public class Effects : MonoBehaviour
     private float defaultWalkSpeed = 0;
     private float defaultAttackStat = 0;
     private float defaultDefenceStat = 0;
-    [SerializeField] private MythUI mythUI;
+    //[SerializeField] private MythUI mythUI;
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
     [SerializeField] private AlternateEffects alternateIce;
@@ -19,6 +20,8 @@ public class Effects : MonoBehaviour
     [SerializeField] private float rotateSpeed = 500;
     private bool isDisoriented;
 
+    public UnityEvent<Element, bool> ActivateBuffEvent = new();
+    public UnityEvent<Element, bool, bool, bool> DeactivateBuffEvent = new();
 
     private void Awake()
     {
@@ -30,8 +33,8 @@ public class Effects : MonoBehaviour
     private void OnEnable()
     {
         CleanseAllBuffs();
-        CleanseAllDebuffs();
-        Debug.LogWarning("Clear");
+        // TODO: Race condition with MythStat.Awake. Might permanently set stamina regen to zero.
+        // CleanseAllDebuffs();
     }
 
     #region Effect Application
@@ -53,16 +56,16 @@ public class Effects : MonoBehaviour
     public void ApplyStaminaEffect(bool isDebuff, float duration)//Electric
     {
         CancelInvoke("RemoveStaminaDebuff");
-        float value = this.myth.Stamina.regenSpeed;
+        float value = this.myth.Stamina.RegenSpeed;
         if (isDebuff) value /= 2;
         else value *= 1.25f;
-        this.myth.Stamina.regenSpeed = Mathf.Clamp(value, 0.25f, 15);
+        this.myth.Stamina.RegenSpeed = Mathf.Clamp(value, 0.25f, 15);
         Invoke("RemoveStaminaDebuff", duration);
     }
 
     private void RemoveStaminaDebuff()
     {
-        this.myth.Stamina.regenSpeed = this.myth.Stamina.defaultRegenSpeed;
+        this.myth.Stamina.RegenSpeed = this.myth.Stamina.defaultRegenSpeed;
         DeactivateBuff(Element.Electric, true);
     }
     #endregion
@@ -134,12 +137,13 @@ public class Effects : MonoBehaviour
     #region Fire - Will
     private float burnDamage;
     private bool burning;
-    public void Burn(float damagevalue, float duration)//Fire
+    public void Burn(float damagevalue, float duration = 0)//Fire
     {
         CancelInvoke("EndBurn");
         burnDamage = damagevalue;
         burning = true;
-        Invoke("EndBurn", duration);
+        if (duration > 0)
+            Invoke("EndBurn", duration);
     }
 
     public void EndBurn()
@@ -178,12 +182,12 @@ public class Effects : MonoBehaviour
         DeactivateBuff(Element.Earth, false);
     }
 
-    public void AgilityDebuff(float duration)
+    public void AgilityDebuff(float duration = 0)
     {
-        CancelInvoke("RemoveAgilityDebuff");    
+        CancelInvoke("RemoveAgilityDebuff");
         myth.walkSpeed = Mathf.Clamp(myth.walkSpeed /2, defaultWalkSpeed/2, defaultWalkSpeed * 2);
-        Invoke("RemoveAgilityDebuff", duration);
-        
+        if (duration > 0)
+            Invoke("RemoveAgilityDebuff", duration);
     }
 
     public void RemoveAgilityDebuff()
@@ -255,32 +259,34 @@ public class Effects : MonoBehaviour
     #region Effect Interface
     public void ActivateBuff(Element element, bool isDebuff) //Baxter
     {
-        mythUI.RefreshLayout();
+        //mythUI.RefreshLayout();
+        ActivateBuffEvent.Invoke(element, isDebuff);
 
         if (isDebuff)
         {
             appliedDebuffs.Add(element);
-            mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].negativeBuff.isEnabled = true;
+            //mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
+            //mythUI.effectUIData[element].negativeBuff.isEnabled = true;
         }
         else { 
             appliedBuffs.Add(element);
-            mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
-            mythUI.effectUIData[element].positiveBuff.isEnabled = true;
+            //mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
+            //mythUI.effectUIData[element].positiveBuff.isEnabled = true;
         }
     }
 
     public void DeactivateBuff(Element element, bool isDebuff)
     {
-        mythUI.RefreshLayout();
+        //mythUI.RefreshLayout();
+        DeactivateBuffEvent.Invoke(element, isDebuff, appliedDebuffs.Contains(element), appliedBuffs.Contains(element));
 
         if (isDebuff && appliedDebuffs.Contains(element)) {
             appliedDebuffs.Remove(element);
-            mythUI.effectUIData[element].negativeBuff.isEnabled = false;
+            //mythUI.effectUIData[element].negativeBuff.isEnabled = false;
         }
         else if (!isDebuff && appliedBuffs.Contains(element)) { 
             appliedBuffs.Remove(element);
-            mythUI.effectUIData[element].positiveBuff.isEnabled = false;
+            //mythUI.effectUIData[element].positiveBuff.isEnabled = false;
         }
     }
     #endregion
@@ -290,7 +296,7 @@ public class Effects : MonoBehaviour
     {
         if (burning)
         {
-            Debug.Log("burning");
+            //Debug.Log("burning");
             myth.Health.Value -= burnDamage * Time.deltaTime;
         }
 

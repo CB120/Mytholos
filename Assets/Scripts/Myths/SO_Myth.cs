@@ -8,6 +8,8 @@ namespace Myths
         public new string name;
         public GameObject prefab;
         public Sprite icon;
+        public Sprite iconOff;
+        public Sprite iconDead;
 
         // Stats
         [Range(0,1)] public float health;
@@ -15,7 +17,7 @@ namespace Myths
         //[Range(0, 1)] public float brawn;
         //[Range(0, 1)] public float psyche;
         [Range(0, 1)] public float attack;
-        [Range(1, 5)] public float agility;
+        [Range(0, 1)] public float agility;
 
         // Abilities
         public SO_Ability[] abilities;

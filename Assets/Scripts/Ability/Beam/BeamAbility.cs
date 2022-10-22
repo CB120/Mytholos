@@ -17,12 +17,8 @@ public class BeamAbility : Ability
     [SerializeField] private Transform BeamHead;
     [SerializeField] private Transform BeamOrigin;
 
-    [SerializeField] private StudioEventEmitter beamLoops;
+    [SerializeField] private StudioEventEmitter beamFiredLoopSFX;
     [SerializeField] private StudioEventEmitter beamFiredSFX;
-
-
-    private float ChargeTimer;
-    private bool Charged;
 
     #region Colours
     private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
@@ -58,47 +54,29 @@ public class BeamAbility : Ability
         grad.SetKeys(new GradientColorKey[] { StartColor, EndColor}, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
 
         BeamColour.color = grad;
+        
+        transform.GetChild(0).gameObject.SetActive(true);
+        ParticleSystem.Play();
+        
+        // Animation stuff
+        Animator anim = owningMyth.gameObject.GetComponentInChildren<Animator>();
+        if (anim)
+        {
+            anim.speed = 1.0f;
+            anim.SetTrigger("AttackSpecial");
+        }
     }
 
     public override void Update()
     {
-        if (!Charged)
-        ChargeTimer += Time.deltaTime;
-
-        if (ChargeTimer > ability.chargeTime && !Charged)
-        {
-            Charged = true;
-            transform.GetChild(0).gameObject.SetActive(true);
-            ParticleSystem.Play();
-
-            // Animation stuff
-            Animator anim = owningMyth.gameObject.GetComponentInChildren<Animator>();
-            if (anim)
-            {
-                anim.speed = 1.0f;
-                anim.SetTrigger("AttackSpecial");
-            }
-        }
-            
-        if (Charged)
         DurationTimer += Time.deltaTime;
 
-        if (DurationTimer > ability.performTime - ability.chargeTime)
+        if (DurationTimer > ability.performTime)
         {
             Destroy(gameObject);
         }
 
-        // SFX stuff added by Ethan
-        float beamProgress = 0f;
-        if (Charged)
-        {
-            beamProgress = (DurationTimer) / (ability.performTime - ability.chargeTime) * 100 + 100;
-            beamFiredSFX.enabled = true;
-        } else
-        {
-            beamProgress = ChargeTimer / ability.chargeTime * 100;
-        }
-        beamLoops.SetParameter("Beam Progress", beamProgress);
+        beamFiredLoopSFX.SetParameter("Beam Progress", DurationTimer / ability.performTime * 100);
     }
 
     public override void TriggerStay(Myth myth)

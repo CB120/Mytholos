@@ -84,3 +84,34 @@ MonoBehaviour:
   - soundName: Ability Denied 1
     uiSFXPrefab: {fileID: 2974248542123478264, guid: e28c2c27931226747a44273a2fd4f9ed,
       type: 3}
+  enoughStaminaSets:
+  - soundName: 
+    uiSFXPrefab: {fileID: 3886854290725850502, guid: 8fca70e7c4cc975489b4e2941fbf7095,
+      type: 3}
+    availableAbilities: 1
+    party: 0
+  - soundName: 
+    uiSFXPrefab: {fileID: 1843030155771948989, guid: 7650af353fe74ea4aa6fdc8f486ac687,
+      type: 3}
+    availableAbilities: 1
+    party: 1
+  - soundName: 
+    uiSFXPrefab: {fileID: 1450969034537972388, guid: bf996825e6b34f34cb3faac914a152e2,
+      type: 3}
+    availableAbilities: 2
+    party: 0
+  - soundName: 
+    uiSFXPrefab: {fileID: 8433763211950934603, guid: 2865c4ab90d3a164a860ed57347761e7,
+      type: 3}
+    availableAbilities: 2
+    party: 1
+  - soundName: 
+    uiSFXPrefab: {fileID: 5304328864992061578, guid: c9cb5bf8ad34c9a48bad4d5b6f2207c4,
+      type: 3}
+    availableAbilities: 3
+    party: 0
+  - soundName: 
+    uiSFXPrefab: {fileID: 5279266429717906412, guid: dd366a68059d6ab4fba08cb144cc45d7,
+      type: 3}
+    availableAbilities: 3
+    party: 1

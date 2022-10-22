@@ -3,10 +3,11 @@ using UnityEngine.Events;
 using UnityEngine.AI;
 using Commands;
 using System.Collections.Generic;
+using StateMachines;
 
 namespace Myths.Behaviours
 {
-    public class MoveBehaviour : Behaviour
+    public class MoveState : State
     {
         [Header("Move Behaviour")]
         public UnityEvent moveComplete = new();
@@ -46,7 +47,7 @@ namespace Myths.Behaviours
         {
             base.OnEnable();
             if (myth.targetEnemy == null) return;
-            switch (((AIMoveCommand)mythCommandHandler.Command).CurrentMoveCommandType) { 
+            switch (((AIMoveCommand)mythCommandHandler.LastCommand).CurrentMoveCommandType) { 
                 case AIMoveCommand.MoveCommandType.Approach:
                     ApproachEnemy();
                     Debug.Log("Approaching!");
@@ -72,13 +73,13 @@ namespace Myths.Behaviours
 
         private void Update()
         {
-             Debug.Log($"{myth.name} moved. {((AIMoveCommand)mythCommandHandler.Command).CurrentMoveCommandType}");
+             Debug.Log($"{myth.name} moved. {((AIMoveCommand)mythCommandHandler.LastCommand).CurrentMoveCommandType}");
             
             navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(navMeshAgent.gameObject.transform.rotation, NewRotation(), Time.deltaTime * 10);
 
             movementController.SetTargetVelocity((navMeshAgent.steeringTarget - transform.position).normalized * speed);
 
-            switch (((AIMoveCommand)mythCommandHandler.Command).CurrentMoveCommandType)
+            switch (((AIMoveCommand)mythCommandHandler.LastCommand).CurrentMoveCommandType)
             {
                 case AIMoveCommand.MoveCommandType.Approach:
                     ApproachEnemyDistanceCheck();
@@ -93,7 +94,6 @@ namespace Myths.Behaviours
                     break;
                 case AIMoveCommand.MoveCommandType.Idle:
                     if (anim) anim.SetBool("Walking", false);
-                    mythCommandHandler.Command = null;
                     moveComplete.Invoke();
                     break;
                 default:
@@ -110,7 +110,6 @@ namespace Myths.Behaviours
         {
             if (myth.targetEnemy == null)
             {
-                mythCommandHandler.Command = null;
                 moveFailed.Invoke();
                 return;
             }
@@ -128,7 +127,6 @@ namespace Myths.Behaviours
                 if (anim) anim.SetBool("Walking", false);
                 movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
-                mythCommandHandler.Command = null;
                 moveComplete.Invoke();
             }
         }
@@ -139,13 +137,11 @@ namespace Myths.Behaviours
             if(navigationNode == null)
             {
                 Debug.Log("Something went wrong with the nodes, please check again");
-                mythCommandHandler.Command = null;
                 moveFailed.Invoke();
                 return;
             }
             if (myth.targetEnemy == null)
             {
-                mythCommandHandler.Command = null;
                 moveFailed.Invoke();
                 return;
             }
@@ -186,7 +182,6 @@ namespace Myths.Behaviours
                 if (anim) anim.SetBool("Walking", false);
                 movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
-                mythCommandHandler.Command = null;
                 moveComplete.Invoke();
             }
         }
@@ -202,7 +197,6 @@ namespace Myths.Behaviours
                 movementController.SetTargetVelocity(Vector3.zero);
                 Debug.Log("Complete " + navMeshAgent.pathStatus);
                 // Pass the ability into here
-                mythCommandHandler.Command = null;
                 moveComplete.Invoke();
             }
         }

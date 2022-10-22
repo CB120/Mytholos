@@ -15,10 +15,12 @@ MonoBehaviour:
   name: Enfield
   prefab: {fileID: 4239484837227243420, guid: cc0e2d07a35a31740840b0fe182f194c, type: 3}
   icon: {fileID: 629849923, guid: 15e5d785287b52043b34bf3f5762164a, type: 3}
+  iconOff: {fileID: -1678888393, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
+  iconDead: {fileID: 1704563465, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 0.4
-  size: 0.4
+  size: 0.28
   attack: 0.6
-  agility: 4.08
+  agility: 0.816
   abilities:
   - {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
   - {fileID: 11400000, guid: 5af7150eaeb900c499a849a7a26baf00, type: 2}

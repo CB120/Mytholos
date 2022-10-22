@@ -1,4 +1,5 @@
-using Commands;
+using StateMachines;
+using StateMachines.Commands;
 using UnityEngine;
 
 namespace Myths
@@ -13,16 +14,15 @@ namespace Myths
         public MythStat Stamina => stamina;
 
         public SO_Myth myth;
-        public float walkSpeed;
-        //placeholder stat of 1
-        public float AttackStat = 1;
-        public float DefenceStat = 1;
 
+        public float walkSpeed;
+        public float AttackStat;
+        public float DefenceStat;
+        
         public GameObject targetEnemy;
+        // TODO: Make serialised, fix naming mismatch
         public Effects effectController;
 
-        // TODO: Do we still need this? Some instances can be replaced by passing this in the command // 
-        [HideInInspector]public Vector2 lastInputDirection;
         public int partyIndex;
         public int PartyIndex
         {
@@ -48,6 +48,7 @@ namespace Myths
         private void Awake()
         {
             walkSpeed = myth.agility;
+            AttackStat = myth.attack;
         }
 
         /*Remove everything after this after 5/09/22*/
@@ -59,25 +60,23 @@ namespace Myths
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {
-            mythCommandHandler.Command = new KnockbackService();
-            if (mythCommandHandler.Command is KnockbackService knockbackService)
-            {
-                Debug.Log(abilityStunTime);
-                knockbackService.abilitySender = sendingMyth;
-                knockbackService.senderStrength = myth.size;
-                knockbackService.knockbackStrength = abilityKnockback;
-                knockbackService.stunTime = abilityStunTime;
-            }
-            
+            mythCommandHandler.PushCommand(new KnockbackCommand(sendingMyth, myth.size, abilityKnockback, abilityStunTime));
         }
 
         public void Stun(float abilityStunTime)
         {
-            mythCommandHandler.Command = new StunService(abilityStunTime);
-            if (mythCommandHandler.Command is StunService stunService)
-            {
-                stunService.stunTime = abilityStunTime;
-            }
+            mythCommandHandler.PushCommand(new StunCommand(abilityStunTime));
+        }
+
+
+        // For 'Enough Stamina' SFX
+        public int NumberOfAvailableAbilities()
+        {
+            int output = 0;
+            if (northAbility.staminaCost <= Stamina.Value) output++;
+            if (westAbility.staminaCost <= Stamina.Value) output++;
+            if (southAbility.staminaCost <= Stamina.Value) output++;
+            return output;
         }
     }
 }

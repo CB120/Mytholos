@@ -6,8 +6,10 @@ namespace Debris.DebrisInteractors
     public class AbilityDebrisInteractor : DebrisInteractor
     {
         [SerializeField] public Ability ability;
-        [SerializeField] private float effect;
+        [SerializeField] private float effectValue;
         [SerializeField] private CreateDebrisInteractor createDebrisInteractor;
+        [SerializeField] private ElementFilter positiveEffectElementFilter;
+        [SerializeField] private ElementFilter negativeEffectElementFilter;
         
         private List<Debris> debrisTouched = new();
 
@@ -30,14 +32,14 @@ namespace Debris.DebrisInteractors
             // TODO: These ones can be optimised by compiling the strengths into a matrix
             var abilityElement = ability.ability.element;
             
-            if (debris.CurrentElement.strongAgainst.Contains(abilityElement))
+            if (negativeEffectElementFilter.PassesFilter(abilityElement, debris.CurrentElement))
             {
-                totalEffect -= effect;
+                totalEffect -= effectValue;
             }
 
-            if (abilityElement == debris.CurrentElement || abilityElement.strongAgainst.Contains(debris.CurrentElement))
+            if (positiveEffectElementFilter.PassesFilter(abilityElement, debris.CurrentElement))
             {
-                totalEffect += effect;
+                totalEffect += effectValue;
             }
 
             debrisTouched.Add(debris);

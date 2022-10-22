@@ -10,9 +10,11 @@ using Myths;
 public class UIGameParty : MonoBehaviour
 {
     // TODO: Store a reference to relevant player's party and/or party members
-    [SerializeField] int partyNumber; // 1 or 2, used to find party by tag name
+    public int partyNumber; // 1 or 2, used to find party by tag name
     Myth[] myths;
     [SerializeField] UIGameMyth[] mythUIs;
+    [SerializeField] UIGameHovering hoveringUI;
+    [SerializeField] UIAnimator cursor;
     [SerializeField] CanvasGroup abilitiesMenu;
     RectTransform abilitiesMenuRectTransform;
     [SerializeField] UIGameAbility[] abilities;
@@ -47,6 +49,26 @@ public class UIGameParty : MonoBehaviour
     //}
     //#endregion
 
+    private void Awake()
+    {
+        // Record some transform information from UI
+        abilitiesMenuRectTransform = abilitiesMenu.GetComponent<RectTransform>();
+        abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y + abilitiesLazyHardcodedOffset;
+        abilitiesUnselectedX = abilitiesSelectedX + abilitiesSelectedOffset * (partyNumber > 1 ? 1.0f : -1.0f);
+
+        foreach (UIGameAbility a in abilities)
+        {
+            a.thisGameParty = this;
+        }
+    }
+
+    void OnEnable()
+    {
+        // Store party information
+        myths = new Myth[3];
+        SetUpMythUIs();
+    }
+
     void Start()
     {
         // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
@@ -61,24 +83,6 @@ public class UIGameParty : MonoBehaviour
         //    SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);
     }
 
-    private void Awake()
-    {
-        // Record some transform information from UI
-        abilitiesMenuRectTransform = abilitiesMenu.GetComponent<RectTransform>();
-        abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y + abilitiesLazyHardcodedOffset;
-        abilitiesUnselectedX = abilitiesSelectedX + abilitiesSelectedOffset * (partyNumber > 1 ? 1.0f : -1.0f);
-    }
-
-    void OnEnable()
-    {
-        // Store party information
-        myths = new Myth[3];
-        SetUpMythUIs();
-
-        // Update UI for game beginning
-        //DisplayAbilities(false, 0, -1.0f);
-    }
-
     void UpdateInputListeners(Participant participant)
     {
         PlayerParticipant playerParticipant = participant.GetComponent<PlayerParticipant>();
@@ -89,18 +93,22 @@ public class UIGameParty : MonoBehaviour
             playerParticipant.mythInPlayChanged.AddListener(SelectMyth);
             // TODO: Unlisten?
             playerParticipant.SelectAbility.AddListener(SelectAbility);
+
+            // Awful awful awful
+            StartCoroutine(SelectMythDelayed(playerParticipant));
         }
     }
 
-    void SelectMyth(PlayerParticipant participant)//int partyMemberNumber)
+    // Awful awful awful
+    IEnumerator SelectMythDelayed(PlayerParticipant playerParticipant)
     {
-        //if (partyMemberNumber >= 0)
-        //    print("Trying to select myth " + partyMemberNumber + ", who is " + (mythUIs[partyMemberNumber].selected ? "" : "not")
-        //        + " already selected. Other myth is " + (mythUIs[partyMemberNumber == 0 ? 1 : 0].selected ? "" : "not") + " already selected.");
-        //else
-        //    print("Trying to remove currently selected myth; myth 1 is " + (mythUIs[0].selected ? "" : "not")
-        //        + " already selected, and myth 2 is " + (mythUIs[0 == 0 ? 1 : 0].selected ? "" : "not") + " already selected.");
+        yield return new WaitForEndOfFrame();
+        SelectMyth(playerParticipant);
+    }
 
+    void SelectMyth(PlayerParticipant participant)
+    {
+        // Find index of the newly selected myth for later use
         int partyMemberNumber = -1;
         for (int i = 0; i < myths.Length; i++)
         {
@@ -108,83 +116,51 @@ public class UIGameParty : MonoBehaviour
                 partyMemberNumber = i;
         }
 
-        //print("Select myth " + partyMemberNumber);
+        // Update team UI to highlight selected myth, and unhighlight any unselected myths
+        for (int i = 0; i < 3; i++)
+            mythUIs[i].UpdateUI(partyMemberNumber);
 
-        if (partyMemberNumber < 0) return;
+        // Update hovering UI
+        hoveringUI.SetMyth(myths[partyMemberNumber]);
 
-        //if (partyMemberNumber < 0 && abilitiesMenu.alpha <= 0.0f) return;                           // Don't animate menu closing if it's already closed
-        //if (mythUIs[partyMemberNumber == 0 ? 1 : 0].selected && partyMemberNumber >= 0) return;     // Don't animate if asking to display a myth, but other myth is already selected
-        
-        DisplayAbilities(partyMemberNumber >= 0, partyMemberNumber);
+        // Update team cursor
+        if (cursor)
+            cursor.SetTransform(mythUIs[partyMemberNumber].GetComponent<RectTransform>());
+
+        // Update the displayed abilities UI
+        DisplayAbilities(participant, partyMemberNumber);
     }
 
     void SelectAbility(SO_Ability ability)
     {
+        // TODO: Do not animate the ability UI if the myth is currently engaged and will not actually use the attack (this doesn't get called if stamina is insufficient)
+
         if (abilityUIByAbilitySO.ContainsKey(ability) && abilitiesMenu.alpha > 0.0f)
             abilityUIByAbilitySO[ability].AnimateSelectedAbility();
     }
 
-    void DisplayAbilities(bool showUI, int partyMemberNumber = -1, float animationSpeed = 25.0f)
+    void DisplayAbilities(PlayerParticipant participant, int partyMemberNumber = -1, float animationSpeed = 25.0f)
     {
-        if (abilitiesMenuCoroutine != null)
+        //if (abilitiesMenuCoroutine != null)
+        //{
+        //    StopCoroutine(abilitiesMenuCoroutine);
+        //    SetAbilitiesMenuTargetVisuals(!showUI);
+        //}
+        //abilitiesMenuCoroutine = StartCoroutine(AnimateAbilitiesMenu(showUI, animationSpeed));
+
+        // Show the attack menu
+        SetAbilitiesMenuTargetVisuals(true);
+
+        // Populate it with relevant info
+        for (int i = 0; i < 3; i++)
         {
-            StopCoroutine(abilitiesMenuCoroutine);
-            SetAbilitiesMenuTargetVisuals(!showUI);
+            SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
+            abilities[i].UpdateUI(ability, myths[partyMemberNumber]);
+            abilityUIByAbilitySO[ability] = abilities[i];
         }
-        abilitiesMenuCoroutine = StartCoroutine(AnimateAbilitiesMenu(showUI, animationSpeed));
 
-        if (showUI)
-        {
-            // Show the attack menu
-            //abilitiesMenu.alpha = 1.0f;
-
-            // Make all unselected myths greyed out, and vice versa
-            for (int i = 0; i < 2; i++)// (UIGameMyth mythUI in mythUIs)
-            {
-                UIGameMyth mythUI = mythUIs[i];
-                mythUI.greyedOut = i != partyMemberNumber;
-                mythUI.selected = i == partyMemberNumber;
-                try {
-                    myths[i].ring.sprite = rings[i == partyMemberNumber ? 1 : 0];
-                }
-                catch (Exception e) {
-                    if (e != null) { } // Truly, incredible code
-                }
-                mythUI.UpdateOpacity();
-            }
-
-            // Populate it with relevant info
-            for (int i = 0; i < 3; i++)
-            {
-                SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
-                //print("Myth " + partyMemberNumber + ", ability " + i + " is " + ability.name + " / " + ability.ToString());
-                abilities[i].UpdateUI(ability);
-                abilityUIByAbilitySO[ability] = abilities[i];
-            }
-
-            // TODO: Place listeners for stamina
-            // TODO: Update all visuals once (abilties with insufficient stamina are greyed out, the above listeners created above should call this same code later as well)
-        }
-        else
-        {
-            // Hide the attack menu
-            //abilitiesMenu.alpha = 0.0f;
-
-            // Make all myths ungreyed out
-            for (int i = 0; i < 3; i++)
-            {
-                UIGameMyth mythUI = mythUIs[i];
-                mythUI.greyedOut = false;
-                mythUI.selected = false;
-                try
-                {
-                    myths[i].ring.sprite = rings[0];
-                }
-                catch (Exception e) {
-                }
-                mythUI.UpdateOpacity();
-            }
-        }
+        // TODO: Place listeners for stamina
+        // TODO: Update all visuals once (abilties with insufficient stamina are greyed out, the above listeners created above should call this same code later as well)
     }
 
     IEnumerator AnimateAbilitiesMenu(bool showUI, float animationSpeed) // Not awesome workaround; if animationSpeed is negative, we skip the while loop entirely
@@ -219,11 +195,11 @@ public class UIGameParty : MonoBehaviour
 
     void SetUpMythUIs()
     {
-        int counter = 0;
+        bool setUpSucceeded = false;
 
         if (partyNumber == 1 || partyNumber == 2)
         {
-            GameObject partyParent = GameObject.FindGameObjectWithTag("Party " + partyNumber + " Parent"); // Is this a good way of doing this?
+            GameObject partyParent = GameObject.FindGameObjectWithTag("Party " + partyNumber + " Parent");
             if (partyParent != null)
             {
                 for (int i = 0; i < partyParent.transform.childCount; i++)
@@ -231,38 +207,23 @@ public class UIGameParty : MonoBehaviour
                     Myth myth = partyParent.transform.GetChild(i).GetComponent<Myth>();
                     if (myth != null)
                     {
-                        if (i/*myth.partyIndex*/ < 3) // TODO: Hook up UI to myths based on their party order
+                        if (i < 3)
                         {
-                            myths[i/*myth.partyIndex*/] = myth;
-                            counter++;
-                            //Debug.Log("Player " + partyNumber + " adding myth " + myth.myth.name + " into party in slot " + i);
-
-                            // TODO: Delete this, 100% going to be problematic after sprint 2
-                            //if (i == 2)
-                            //    myth.transform.position = new Vector3(1000.0f, 0.0f, -1000.0f);
+                            myths[i] = myth;
+                            setUpSucceeded = true;
                         }
                     }
                 }
 
-                //Debug.Log("Player " + partyNumber + " has a team of " + counter + " myths");
-                //if (counter < 3)
-                //    Debug.LogWarning("Trying to set up UIGameParty, but player " + partyNumber + " only found " + counter + " myths - we'll look again...");
-
                 // Place references within UIGameMyth children
                 for (int i = 0; i < 3; i++)
                 {
-                    //Debug.Log("Player " + partyNumber + " adding myth " + i + "... Myth is valid? " + (myths[i] != null) + " Myth UI is valid? " + (mythUIs[i] != null));
                     if (myths[i] != null && mythUIs[i] != null)
-                    {
-                        mythUIs[i].SetMyth(myths[i]);
-                        //Debug.Log("Player " + partyNumber + " adding myth " + myths[i].myth.name + " into party in slot " + i);
-                    }
+                        mythUIs[i].SetMyth(myths[i], i);
                 }
             }
-            //else
-            //    Debug.LogWarning("Party " + partyNumber + "Parent doesn't exist in the scene - we'll look again...");
 
-            if (counter < 1)
+            if (!setUpSucceeded)
                 StartCoroutine(TrySetUpMythUIs());
             else if (partyBuilder)
                 SelectMyth(partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant);

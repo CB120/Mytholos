@@ -118,6 +118,11 @@ public class UIPartyManager : MonoBehaviour
         SelectTeamMember(1, playerTeamGraphs[1].playerCurrentNode[1]);
 
         UpdateProgressText();
+
+        // Myth select mask
+        Mask mythMask = mythSelectionGraph.GetComponent<Mask>();
+        if (mythMask)
+            mythMask.enabled = false;
     }
 
     void SetUpPartyDataScriptableObjects() // Not quite an accurate name anymore // TODO: Create this functionality, later, if we really want it
@@ -666,6 +671,11 @@ public class UIPartyManager : MonoBehaviour
 
         //print("We're enumeratin' (timer = " + timer + ", direction = " + direction + ")");
 
+        // Myth selection mask
+        Mask mythMask = mythSelectionGraph.GetComponent<Mask>();
+        if (mythMask)
+            mythMask.enabled = true;
+
         // Pain, first act
         if (nextStage == 1)
         {
@@ -713,6 +723,10 @@ public class UIPartyManager : MonoBehaviour
 
             mythSelectionGraph.UpdateCursorTransforms();
         }
+
+        // Myth selection mask
+        if (mythMask != null && nextStage == 0)
+            mythMask.enabled = false;
 
         // Save arrows in the ability lists from getting weird
         foreach (UIMenuNodeList list in playerAbilityGraphs)
