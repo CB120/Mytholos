@@ -348,8 +348,8 @@ public class PlayerParticipant : Participant
         StartSwapCooldown();
         
         var position = MythInPlay.transform.position;
-
         (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
+   
 
         MythInPlay.transform.position = position;
     }
