@@ -2786,12 +2786,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debrisController: {fileID: 1783465724}
   boundsInt:
-    m_Position: {x: 25, y: 0, z: 0}
-    m_Size: {x: 5, y: 1, z: 5}
+    m_Position: {x: -25, y: 0, z: -25}
+    m_Size: {x: 51, y: 1, z: 51}
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1070058097}
+        m_TargetAssemblyTypeName: BattleMusicController, Assembly-CSharp
+        m_MethodName: OnDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1783465724 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
