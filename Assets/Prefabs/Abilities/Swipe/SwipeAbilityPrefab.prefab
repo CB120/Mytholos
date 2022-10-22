@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6684646392471459765}
   - component: {fileID: 235195530449914695}
   - component: {fileID: 1289076944217210145}
-  - component: {fileID: 2269820394154874047}
+  - component: {fileID: 8327545754941213347}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 2111298335}
---- !u!114 &2269820394154874047
+--- !u!114 &8327545754941213347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,10 +70,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1555945966451579232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba8f8a7b49e4f1da29334a78c8a197d, type: 3}
+  m_Script: {fileID: 11500000, guid: 06540a8a8164476f90a4f0bbfea42a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 2111298335}
 --- !u!1 &4920226323367389519
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +156,52 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5009964052458809521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2164811399634427727}
+  - component: {fileID: 2671223392513445676}
+  m_Layer: 0
+  m_Name: Debris Interactors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2164811399634427727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009964052458809521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5316833831943652738}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2671223392513445676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009964052458809521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba8f8a7b49e4f1da29334a78c8a197d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 2111298335}
+  colliderEvents: {fileID: 8327545754941213347}
 --- !u!1 &6300852338785146115
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +235,7 @@ Transform:
   m_Children:
   - {fileID: 6684646392471459765}
   - {fileID: 454868584762091558}
+  - {fileID: 2164811399634427727}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
