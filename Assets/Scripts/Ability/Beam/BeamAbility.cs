@@ -20,27 +20,6 @@ public class BeamAbility : Ability
     [SerializeField] private StudioEventEmitter beamFiredLoopSFX;
     [SerializeField] private StudioEventEmitter beamFiredSFX;
 
-    #region Colours
-    private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
-    private GradientColorKey FireEnd = new GradientColorKey(new Color(1.0f, 0.25f, 0.0f), 1);
-    private GradientColorKey ElectricStart = new GradientColorKey(new Color(1.0f, 0.97f, 0.0f), 0);
-    private GradientColorKey ElectricEnd = new GradientColorKey(new Color(0.69f, 1.0f, 0.47f), 1);
-    private GradientColorKey WaterStart = new GradientColorKey(new Color(0.0f, 0.06f, 1.0f), 0);
-    private GradientColorKey WaterEnd = new GradientColorKey(new Color(0.0f, 0.97f, 1.0f), 1);
-    private GradientColorKey IceStart = new GradientColorKey(new Color(0.0f, 0.93f, 1.0f), 0);
-    private GradientColorKey IceEnd = new GradientColorKey(new Color(1.0f, 1.0f, 1.0f), 1);
-    private GradientColorKey WindStart = new GradientColorKey(new Color(0.65f, 0.65f, 0.65f), 0);
-    private GradientColorKey WindEnd = new GradientColorKey(new Color(1.0f, 1.0f, 1.0f), 1);
-    private GradientColorKey EarthStart = new GradientColorKey(new Color(0.53f, 0.22f, 0.13f), 0);
-    private GradientColorKey EarthEnd = new GradientColorKey(new Color(1.0f, 0.29f, 0.01f), 1);
-    #endregion
-
-    private Element element { get => ability.element.element; }
-
-    private GradientColorKey StartColor;
-    private GradientColorKey EndColor;
-
-
     public override void Start()
     {
         base.Start();
@@ -50,7 +29,10 @@ public class BeamAbility : Ability
         var BeamColour = ParticleSystem.colorOverLifetime;
 
         Gradient grad = new Gradient();
-        SetColor();
+        
+        GradientColorKey StartColor = new GradientColorKey(ability.element.beamStartColor, 0);
+        GradientColorKey EndColor = new GradientColorKey(ability.element.beamEndColor, 1);
+
         grad.SetKeys(new GradientColorKey[] { StartColor, EndColor}, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
 
         BeamColour.color = grad;
@@ -93,36 +75,5 @@ public class BeamAbility : Ability
     public override void TerrainInteraction()
     {
         BeamExtender.AtMaxRange = true;
-    }
-
-    private void SetColor()
-    {
-        switch (element)
-        {
-            case Element.Wind:
-                StartColor = WindStart;
-                EndColor = WindEnd;
-                break;
-            case Element.Electric:
-                StartColor = ElectricStart;
-                EndColor = ElectricEnd;
-                break;
-            case Element.Water:
-                StartColor = WaterStart;
-                EndColor = WaterEnd;
-                break;
-            case Element.Fire:
-                StartColor = FireStart;
-                EndColor = FireEnd;
-                break;
-            case Element.Earth:
-                StartColor = EarthStart;
-                EndColor = EarthEnd;
-                break;
-            case Element.Ice:
-                StartColor = IceStart;
-                EndColor = IceEnd;
-                break;
-        }
     }
 }

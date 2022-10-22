@@ -29,3 +29,7 @@ MonoBehaviour:
     type: 3}
   buffDescription: Raises attack
   debuffDescription: Sets foe ablaze
+  beamStartColor: {r: 0.6784314, g: 0.05882353, b: 0, a: 1}
+  beamEndColor: {r: 1, g: 0.24705882, b: 0, a: 1}
+  boomerangStartColor: {r: 0.6784314, g: 0.05882353, b: 0, a: 1}
+  boomerangMaterial: {fileID: 2100000, guid: 5d3d4b052ae70004f9de1ff0c584e74c, type: 2}

@@ -25,6 +25,18 @@ public class SO_Element : ScriptableObject
     public string buffDescription;
     [TextArea]
     public string debuffDescription;
+
+    public Color beamStartColor;
+    public Color beamEndColor;
+
+    public Color boomerangStartColor;
+    public Material boomerangMaterial;
+
+    public Color flurryStartColor;
+    public Color flurryEndColor;
+
+    public Color shotStartColor;
+    public Color shotEndColor;
 }
 
 // TODO: Why do you keep coming back?

@@ -29,3 +29,7 @@ MonoBehaviour:
     type: 3}
   buffDescription: Cleanses debuffs
   debuffDescription: Clears foe's buffs
+  beamStartColor: {r: 0, g: 0.05882353, b: 1, a: 1}
+  beamEndColor: {r: 0, g: 0.96862745, b: 1, a: 1}
+  boomerangStartColor: {r: 0, g: 0, b: 0, a: 0}
+  boomerangMaterial: {fileID: 0}

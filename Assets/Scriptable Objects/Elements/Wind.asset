@@ -28,3 +28,7 @@ MonoBehaviour:
     type: 3}
   buffDescription: Raises agility
   debuffDescription: Disorients foe
+  beamStartColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+  beamEndColor: {r: 1, g: 1, b: 1, a: 1}
+  boomerangStartColor: {r: 1, g: 1, b: 1, a: 1}
+  boomerangMaterial: {fileID: 2100000, guid: d6bb4a714a7abdb4999cf7606153fc62, type: 2}

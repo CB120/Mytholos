@@ -25,25 +25,8 @@ public class BoomerangAbility : Ability
     [SerializeField] private TrailRenderer Trail2;
     [SerializeField] private TrailRenderer Trail3;
 
-    [SerializeField] private Material FireMaterial;
-    [SerializeField] private Material WindMaterial;
-    [SerializeField] private Material ElectricMaterial;
-
-    private Material material;
-
     [SerializeField] private Renderer Renderer;
 
-    #region Colours
-    private GradientColorKey FireStart = new GradientColorKey(new Color(0.68f, 0.06f, 0.0f), 0);
-    private GradientColorKey ElectricStart = new GradientColorKey(new Color(1.0f, 0.97f, 0.0f), 0);
-    private GradientColorKey WindStart = new GradientColorKey(new Color(1f, 1f, 1.0f), 0);
-    #endregion
-
-    private Element element { get => ability.element.element; }
-
-    private GradientColorKey StartColor;
-
-    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
@@ -54,10 +37,12 @@ public class BoomerangAbility : Ability
         boomerangSFXemitter = GetComponent<StudioEventEmitter>(); //SFX, inserted by Ethan
 
         Gradient Trailgrad = new Gradient();
-        SetColor();
+        
+        GradientColorKey StartColor = new GradientColorKey(ability.element.boomerangStartColor, 0);
+
         Trailgrad.SetKeys(new GradientColorKey[] { StartColor }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
 
-        Renderer.material = material;
+        Renderer.material = ability.element.boomerangMaterial;
         Trail1.colorGradient = Trailgrad;
         Trail2.colorGradient = Trailgrad;
         Trail3.colorGradient = Trailgrad;
@@ -110,24 +95,5 @@ public class BoomerangAbility : Ability
             speed = 0;
         }
         else Destroy(this.gameObject);
-    }
-
-    private void SetColor()
-    {
-        switch (element)
-        {
-            case Element.Wind:
-                material = WindMaterial;
-                StartColor = WindStart;
-                break;
-            case Element.Electric:
-                material = ElectricMaterial;
-                StartColor = ElectricStart;
-                break;
-            case Element.Fire:
-                material = FireMaterial;
-                StartColor = FireStart;
-                break;
-        }
     }
 }
