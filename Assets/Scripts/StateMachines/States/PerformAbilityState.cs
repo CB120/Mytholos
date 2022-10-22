@@ -23,11 +23,11 @@ namespace StateMachines.States
         {
             base.OnEnable();
             
-            abilityCommand = mythCommandHandler.LastCommand as AbilityCommand;
+            abilityCommand = mythCommandHandler.CurrentCommand as AbilityCommand;
             
-            // TODO: Sometimes fails when spamming abilities, need to look into this
             if (abilityCommand == null)
             {
+                Debug.LogWarning($"{nameof(AbilityCommand)} was null.");
                 performAbilityComplete.Invoke();
                 return;
             }
