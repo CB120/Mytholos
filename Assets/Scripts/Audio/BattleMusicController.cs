@@ -43,7 +43,7 @@ public class BattleMusicController : MonoBehaviour
     static BattleMusicController Singleton;
 
     StudioEventEmitter battleMusicEmitter;
-    DebrisController debrisController;
+    DebrisRegion debrisRegion;
 
     [Space(30)]
     [Header("Asset References")]
@@ -57,7 +57,7 @@ public class BattleMusicController : MonoBehaviour
         Singleton = this;
 
         battleMusicEmitter = GetComponent<StudioEventEmitter>();
-        debrisController = GameObject.FindWithTag("Grid").GetComponent<DebrisController>();
+        debrisRegion = GameObject.FindWithTag("Grid").GetComponent<DebrisRegion>();
 
         ReorderAllElements();
 
@@ -113,7 +113,7 @@ public class BattleMusicController : MonoBehaviour
     {
         for (int i = 0; i < allElements.Length; i++)
         {
-            musicLayers[i].score = debrisController.NumberOfTilesWithElement(allElements[i]);
+            musicLayers[i].score = debrisRegion.NumberOfTilesWithElement(allElements[i]);
         }
     }
 
