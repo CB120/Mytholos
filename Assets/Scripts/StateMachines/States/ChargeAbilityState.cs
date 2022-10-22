@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using StateMachines.Commands;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,6 +18,10 @@ namespace StateMachines.States
 
         private bool abilityWasCharged;
 
+        [Header("Beam SFX")]
+        public StudioEventEmitter beamChargeSFX;
+        float beamChargeTimer = 0f;
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -29,6 +34,10 @@ namespace StateMachines.States
                 StopCoroutine(chargeAbilityCoroutine);
 
             chargeAbilityCoroutine = StartCoroutine(ChargeAbility());
+            //anim.SetTrigger("Charge");
+
+            //SFX
+            beamChargeSFX.enabled = true;
         }
 
         protected override void OnDisable()
@@ -42,14 +51,26 @@ namespace StateMachines.States
 
             if (!abilityWasCharged && abilityCommand != null)
                 myth.Stamina.Value -= abilityCommand.abilityData.staminaCost * staminaPenalty;
+
+            
+            //SFX
+            beamChargeSFX.enabled = false;
+            beamChargeTimer = 0f;
+        }
+
+        private void Update()
+        {
+            beamChargeTimer += Time.deltaTime;
+            beamChargeSFX.SetParameter("Beam Progress", beamChargeTimer / abilityCommand.abilityData.chargeTime * 100);
         }
 
         private IEnumerator ChargeAbility()
         {
+            Debug.Log("Charge start");
+            anim.SetTrigger("Charge");
             yield return new WaitForSeconds(abilityCommand.abilityData.chargeTime);
-
+            Debug.Log("Charge done");
             abilityWasCharged = true;
-
             abilityCharged.Invoke();
         }
     }

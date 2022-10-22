@@ -93,6 +93,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         return Navigate(splitGraph.subGraphs[playerNumber], playerNumber, direction); // Navigate to nested graph that belongs to the specified player
     }
 
+
     virtual public void ParseAction(UIMenuNode.Action action, int playerNumber)
     {
         //print("Parsing action " + action + " for player " + playerNumber);

@@ -8,12 +8,7 @@ namespace StateMachines.States
     {
         [Header("Manual Move Behaviour")]
         // Movement Properties
-        private Vector3 lastDirection;
-        private Vector3 targetDirection;
 
-        [SerializeField] private float lerpTime = 0;
-        [SerializeField] private float targetLerpSpeed = 0.1f;
-        [SerializeField]private float smoothing = 0.1f;
         [SerializeField] private float speedHandicap = 1.2f;
         private float acceleration = 10;
         private float moveSpeed = 0;
@@ -43,7 +38,10 @@ namespace StateMachines.States
                 Debug.LogWarning("There was a problem with finding the movementController (CollisionDetection Physics). Please re-assign it in the inspector.");
                 moveFailed.Invoke();
             }
-
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Charge")){
+                anim.ResetTrigger("Charge");
+                Debug.Log("Attempting to reset charge anim");
+            }
         }
 
         private float speedValue()
@@ -68,7 +66,6 @@ namespace StateMachines.States
 
         private void Update()
         {
-            
             if (!myth.isInvulnerable)
             {
                 var inputVector = new Vector3(
@@ -94,18 +91,6 @@ namespace StateMachines.States
                 }
 
                 inputVector.Normalize();
-
-                if (inputVector != lastDirection)
-                {
-                    lerpTime = 0;
-                }
-
-                lastDirection = inputVector;
-
-                targetDirection = Vector3.Lerp(targetDirection, inputVector,
-                    Mathf.Clamp01(lerpTime * targetLerpSpeed * (1 - smoothing))); // Only to be used with some sort of ice state / movement
-
-                //movementController.SetTargetVelocity(inputVector * (myth.myth.agility * speedHandicap));
                 
                 movementController.SetTargetVelocity(inputVector * speedValue());
 
@@ -118,15 +103,11 @@ namespace StateMachines.States
                     anim.speed = walkSpeed;
                 }
 
-                //movementController.SetTargetVelocity(targetDirection * myth.myth.agility * speedHandicap); USING THIS IS LIKE WALKING ON ICE (6 TARGET LERP SPEED, 0.45 SMOOTHING)
-
                 Vector3 lookDirection = inputVector;
                 if (lookDirection != Vector3.zero)
                 {
                     myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 9);
                 }
-
-                lerpTime += Time.deltaTime;
             }
         }
     }

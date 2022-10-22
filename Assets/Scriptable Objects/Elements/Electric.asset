@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   hasDebris: 0
-  abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
+  abilityDebrisInteractorsPrefab: {fileID: 5864851510452739224, guid: 17fb9289bf89c2445bca76d1432bf8e4,
     type: 3}
   buffDescription: Regenerates stamina
   debuffDescription: Impairs foe's stamina

@@ -67,5 +67,16 @@ namespace Myths
         {
             mythCommandHandler.PushCommand(new StunCommand(abilityStunTime));
         }
+
+
+        // For 'Enough Stamina' SFX
+        public int NumberOfAvailableAbilities()
+        {
+            int output = 0;
+            if (northAbility.staminaCost <= Stamina.Value) output++;
+            if (westAbility.staminaCost <= Stamina.Value) output++;
+            if (southAbility.staminaCost <= Stamina.Value) output++;
+            return output;
+        }
     }
 }

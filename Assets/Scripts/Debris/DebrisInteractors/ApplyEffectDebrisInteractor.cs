@@ -12,6 +12,7 @@ namespace Debris.DebrisInteractors
 
         internal override void OnDebrisEnter(Debris debris)
         {
+            // TODO: Since myth won't changed, this can be optimised to just disable the script
             if (overrideIfMythElementMatchesDebris && myth.element == debris.CurrentElement) return;
             
             if (elementFilter.PassesFilter(debris.CurrentElement))
