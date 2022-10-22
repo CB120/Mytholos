@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{b9ec3466-5f6c-4e69-a336-cf0c4feaa4f5}">
 		<property name="name">
-			<value>Electric Debris</value>
+			<value>Electric Debris Loop</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

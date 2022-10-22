@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{6180d26e-fd2c-456f-9f2d-3fece3909f68}">
 		<property name="name">
-			<value>Ice Debris</value>
+			<value>Ice Debris Loop</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
