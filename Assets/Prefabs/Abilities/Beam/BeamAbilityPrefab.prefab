@@ -125,8 +125,9 @@ MonoBehaviour:
   ParticleSystem: {fileID: 2059007022911807411}
   BeamExtender: {fileID: 7226831236815921946}
   BeamLength: 20
-  BeamHead: {fileID: 3275380738363577109}
-  BeamOrigin: {fileID: 8018691964653190970}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
   beamFiredLoopSFX: {fileID: 2842811421863119054}
   beamFiredSFX: {fileID: 3445097898368556318}
 --- !u!199 &2788665453749804393
@@ -4986,7 +4987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7059577983412783935
 Transform:
   m_ObjectHideFlags: 0
@@ -5016,7 +5017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f001f8c0584648349a30e6dafafc4631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtMaxRange: 0
 --- !u!1 &5364032775605158230
 GameObject:
   m_ObjectHideFlags: 0

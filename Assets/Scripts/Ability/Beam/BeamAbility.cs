@@ -13,9 +13,7 @@ public class BeamAbility : Ability
     [SerializeField] private BeamExtender BeamExtender;
     
     [SerializeField] private float BeamLength;
-
-    [SerializeField] private Transform BeamHead;
-    [SerializeField] private Transform BeamOrigin;
+    [SerializeField] private LayerMask layerMask;
 
     [SerializeField] private StudioEventEmitter beamFiredLoopSFX;
     [SerializeField] private StudioEventEmitter beamFiredSFX;
@@ -37,7 +35,6 @@ public class BeamAbility : Ability
 
         BeamColour.color = grad;
         
-        transform.GetChild(0).gameObject.SetActive(true);
         ParticleSystem.Play();
         
         // Animation stuff
@@ -51,6 +48,17 @@ public class BeamAbility : Ability
 
     public override void Update()
     {
+        if (Physics.Raycast(transform.position, transform.forward, out var hit, BeamLength, layerMask))
+        {
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green);
+            BeamExtender.SetMaxRange(hit.distance);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward * BeamLength, Color.red);
+            BeamExtender.SetMaxRange(BeamLength);
+        }
+
         DurationTimer += Time.deltaTime;
 
         if (DurationTimer > ability.performTime)
@@ -65,15 +73,11 @@ public class BeamAbility : Ability
     {
         Trigger(myth);
     }
+    
     public override void Trigger(Myth myth)
     {
         Attack(myth, ability.damage); //Called In The Parent Ability
         Debug.LogWarning($"Beam Collided With Object: {myth.gameObject.name}");
         base.Trigger(myth);
-    }
-
-    public override void TerrainInteraction()
-    {
-        BeamExtender.AtMaxRange = true;
     }
 }
