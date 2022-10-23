@@ -11,6 +11,8 @@ public class DebrisColumn
 public class DebrisSFXManager : MonoBehaviour
 {
     // Properties
+    public int regionWidth;
+    public float debrisVolumeScalar = 1f;
 
 
     // Variables
@@ -20,10 +22,32 @@ public class DebrisSFXManager : MonoBehaviour
     [Header("In-Prefab References")]
     public DebrisColumn[] debrisColumns;
 
+    [Header("Element SOs")] 
+    public SO_Element fireElement;
+    public SO_Element electricityElement;
+    public SO_Element iceElement;
 
-    // Called by other systems
-    public void OnDebrisChange()
+
+    // Engine-called
+    private void Awake()
     {
+        SetRegionProperties();
+    }
 
+
+    // Methods
+        // Private
+    void SetRegionProperties() { 
+        foreach (DebrisColumn c in debrisColumns)
+        {
+            foreach (DebrisSFX d in c.debrisSFX)
+            {
+                d.regionWidth = regionWidth;
+                d.debrisVolumeScalar = debrisVolumeScalar;
+                d.fireElement = fireElement;
+                d.electricityElement = electricityElement;
+                d.iceElement = iceElement;
+            }
+        }
     }
 }

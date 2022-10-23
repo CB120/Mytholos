@@ -47,9 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 6422372656789738189}
   electricityLoop: {fileID: 3686724252994293099}
   iceLoop: {fileID: 3128612406760705972}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &6422372656789738189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,9 +430,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 1733495469343780723}
   electricityLoop: {fileID: 3798480287458784395}
   iceLoop: {fileID: 1311026973204886863}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &1733495469343780723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,9 +576,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 2120711674995289550}
   electricityLoop: {fileID: 859066016835615893}
   iceLoop: {fileID: 2231587871085155489}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &2120711674995289550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,9 +722,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 7612814819324318723}
   electricityLoop: {fileID: 1223159768664152184}
   iceLoop: {fileID: 8028871594701803428}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &7612814819324318723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,9 +868,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 3619164656809477145}
   electricityLoop: {fileID: 2753694632078066360}
   iceLoop: {fileID: 2259062141519163138}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &3619164656809477145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,6 +1020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4101fc2e347f1479b2bbb80c69eb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
   debrisColumns:
   - debrisSFX:
     - {fileID: 4356938823704674174}
@@ -1003,6 +1035,9 @@ MonoBehaviour:
     - {fileID: 209908723854328404}
     - {fileID: 4526228402370490390}
     - {fileID: 5648047809976698020}
+  fireElement: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  electricityElement: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
+  iceElement: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
 --- !u!1 &5760234216379498405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,9 +1085,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 3066580470968304875}
   electricityLoop: {fileID: 2325467520910802929}
   iceLoop: {fileID: 2541139997741962744}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &3066580470968304875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,9 +1231,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 1944597572514220498}
   electricityLoop: {fileID: 5433680399591362344}
   iceLoop: {fileID: 6214318577897557607}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &1944597572514220498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,9 +1377,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 4990268195348617333}
   electricityLoop: {fileID: 2347025882281077266}
   iceLoop: {fileID: 6271979251188298458}
+  fireElement: {fileID: 0}
+  electricityElement: {fileID: 0}
+  iceElement: {fileID: 0}
 --- !u!114 &4990268195348617333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,9 +1523,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionWidth: 17
+  debrisVolumeScalar: 1
+  region: {fileID: 0}
   fireLoop: {fileID: 5724681801400446319}
   electricityLoop: {fileID: 2813717001927203120}
   iceLoop: {fileID: 2124836212257233227}
+  fireElement: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  electricityElement: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
+  iceElement: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
 --- !u!114 &5724681801400446319
 MonoBehaviour:
   m_ObjectHideFlags: 0

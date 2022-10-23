@@ -178,6 +178,18 @@ Transform:
   m_Father: {fileID: 2138606300}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &101470798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4188073723767413982, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &194706470
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +339,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928880}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &276039593
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,61 +581,6 @@ Transform:
   m_Father: {fileID: 2138606300}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &434868770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 434868771}
-  - component: {fileID: 434868772}
-  m_Layer: 0
-  m_Name: Audio Bus Volume Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &434868771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434868770}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &434868772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434868770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eaab96659c4421478dac2d6f324b623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioBuses:
-  - name: Music Bus Volume
-    volume: 90
-  - name: Ability SFX Bus Volume
-    volume: 90
-  - name: Combat SFX Bus Volume
-    volume: 90
-  - name: UI SFX Bus Volume
-    volume: 90
-  - name: Debris SFX Bus Volume
-    volume: 90
 --- !u!1 &443856805
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +739,7 @@ PrefabInstance:
         type: 3}
       propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1070058097}
+      objectReference: {fileID: 0}
     - target: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
         type: 3}
       propertyPath: numberOfTilesWithElementChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -844,7 +813,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928881}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &553383177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1062,180 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &818928878
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 209908723854328404, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 942588767}
+    - target: {fileID: 669917731722192368, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 512617588}
+    - target: {fileID: 1572039168915572768, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_Name
+      value: Music & SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.308544
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -61.10836
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 76.968
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572039168915572769, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188073723767413982, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 1308401120}
+    - target: {fileID: 4356938823704674174, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 196652573}
+    - target: {fileID: 4526228402370490390, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 1244497177}
+    - target: {fileID: 4870735750278882828, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 1238751849}
+    - target: {fileID: 5107572014269310107, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 1617865179}
+    - target: {fileID: 5648047809976698020, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 1909154905}
+    - target: {fileID: 5879005947065505052, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+        type: 3}
+      propertyPath: region
+      value: 
+      objectReference: {fileID: 836396384}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b17c286d40c5bc6469f1e3d1333e6f68, type: 3}
+--- !u!114 &818928879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1572039169787900529, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a55f7f43cf03834f9d71acdf614f4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &818928880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4356938823704674174, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &818928881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 669917731722192368, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &818928882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 209908723854328404, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &818928883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4870735750278882828, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &836396382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1287,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816495617}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &872990762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,223 +1496,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
---- !u!1001 &979298847
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1578271955498958260, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_Name
-      value: UI SFX Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578271955498958262, guid: 0aa837af18dcc5743bd8dda806876307,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0aa837af18dcc5743bd8dda806876307, type: 3}
---- !u!1 &1070058094
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1070058095}
-  - component: {fileID: 1070058097}
-  - component: {fileID: 1070058096}
-  m_Layer: 0
-  m_Name: Battle Music Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1070058095
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070058094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1070058096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070058094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -1877677403
-      Data2: 1176784620
-      Data3: 1191900349
-      Data4: -154586312
-    Path: event:/Music/Battle Music
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: Earth Volume
-    Value: 0
-  - Name: Electric Volume
-    Value: 0
-  - Name: Fire Volume
-    Value: 0
-  - Name: Ice Volume
-    Value: 0
-  - Name: Steel Volume
-    Value: 0
-  - Name: Water Volume
-    Value: 0
-  - Name: Wind Volume
-    Value: 0
-  - Name: Wood Volume
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &1070058097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070058094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a55f7f43cf03834f9d71acdf614f4ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicLayers:
-  - name: Metal
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Wind
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Ice
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Earth
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Electric
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Fire
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Water
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  - name: Wood
-    volume: 0
-    targetVolume: 0
-    manualVolumeOverride: 0
-    score: 0
-  fadeInRate: 60
-  fadeOutRate: 20
-  nonDebrisFadeOutDelay: 5
-  desiredLayers: 3
-  allParticipantDataService: {fileID: 11400000, guid: e344e6c6edfed3147b25595e1ef07a9b,
-    type: 2}
-  allElements:
-  - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
-  - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
-  - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
-  - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
-  - {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
-  - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
-  - {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
-  - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
+      m_Calls:
+      - m_Target: {fileID: 818928882}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1104835184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1603,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928883}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1244497175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,7 +1667,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816495618}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1255947846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1876,31 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 101470798}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1408446353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5648047809976698020, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1428433002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2444,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816495619}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1635257903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3209,7 +3232,7 @@ MonoBehaviour:
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1070058097}
+      - m_Target: {fileID: 818928879}
         m_TargetAssemblyTypeName: BattleMusicController, Assembly-CSharp
         m_MethodName: OnDebrisChange
         m_Mode: 1
@@ -3231,6 +3254,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8580855eb6b499ebc5ed14ecbfa20a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1816495617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5879005947065505052, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1816495618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4526228402370490390, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1816495619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5107572014269310107, guid: b17c286d40c5bc6469f1e3d1333e6f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 818928878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1a3c304265ef4596b8603257c69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1826180073
@@ -3324,7 +3383,19 @@ MonoBehaviour:
   numberOfTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1408446353}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnRegionDebrisChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2046280200
 GameObject:
   m_ObjectHideFlags: 0
