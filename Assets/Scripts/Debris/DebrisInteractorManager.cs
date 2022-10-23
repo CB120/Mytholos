@@ -12,6 +12,8 @@ namespace Debris
         [Tooltip("Determines the order in which DebrisInteractors will be called.")]
         [SerializeField] private List<DebrisInteractor> debrisInteractors = new();
 
+        public List<DebrisInteractor> DebrisInteractors => debrisInteractors;
+
         private void OnEnable()
         {
             SubscribeToColliderEvents();

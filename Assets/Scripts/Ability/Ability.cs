@@ -4,6 +4,13 @@ using UnityEngine;
 using Myths;
 using Elements;
 
+[System.Serializable]
+public class ElementSFXPairs
+{
+    public Element element;
+    public GameObject sfx;
+}
+
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
     [Header("All-Ability Fields")]
@@ -19,6 +26,9 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     private Element element { get => ability.element.element;}
 
     [Header("All-Ability SFX")] //SFX stuff, added by Ethan
+    public ElementSFXPairs[] elementSFXPairs;
+    public float timeToDestroyElementSFX = 0.5f;
+
     public GameObject takingDamageSFXPrefab;
     public float timeToDestroyTakingDamageSFX = 0.4f;
 
@@ -28,6 +38,16 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         SOstunTime = ability.baseStun;
         SOknockbackStrength = ability.baseKnockback;
         owningMyth.Stamina.Value -= ability.staminaCost;
+
+        foreach (ElementSFXPairs p in elementSFXPairs)
+        {
+            if (p.element == element)
+            {
+                //Currently commented out so it doesn't cause errors
+                GameObject sfx = Instantiate(p.sfx, transform);
+                Destroy(sfx, timeToDestroyElementSFX);
+            }
+        }
     }
 
     virtual public void Update()

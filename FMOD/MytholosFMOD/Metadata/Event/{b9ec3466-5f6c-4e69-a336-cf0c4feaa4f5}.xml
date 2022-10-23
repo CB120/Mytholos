@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{b9ec3466-5f6c-4e69-a336-cf0c4feaa4f5}">
 		<property name="name">
-			<value>Electric Debris</value>
+			<value>Electric Debris Loop</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -175,7 +175,7 @@
 			<value>volume</value>
 		</property>
 		<relationship name="automationCurves">
-			<destination>{872ccd11-abc1-45a4-8563-acfcb5207b52}</destination>
+			<destination>{352d43df-b366-4b48-a589-d2bda916874e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{1b14cbdb-c75b-409e-a283-1e25ec3ca04d}">
@@ -191,30 +191,29 @@
 			<value>1000</value>
 		</property>
 	</object>
-	<object class="AutomationCurve" id="{872ccd11-abc1-45a4-8563-acfcb5207b52}">
+	<object class="AutomationCurve" id="{352d43df-b366-4b48-a589-d2bda916874e}">
 		<relationship name="parameter">
 			<destination>{a8d3f20b-8e43-4379-a953-efff050228c7}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{f5c32eb5-19bd-4464-a851-ad83215404b2}</destination>
-			<destination>{4d304dfd-38d4-477e-b0cd-a04eaa21abf9}</destination>
+			<destination>{74fbe417-b272-44a0-b967-100f208184ac}</destination>
+			<destination>{15f085d2-2ed2-4325-8385-6b4834e4e76d}</destination>
 		</relationship>
 	</object>
-	<object class="GainEffect" id="{fd88ee78-fc0e-457f-8319-e712e3df6e45}">
-		<property name="gain">
-			<value>-5</value>
-		</property>
-	</object>
+	<object class="GainEffect" id="{fd88ee78-fc0e-457f-8319-e712e3df6e45}" />
 	<object class="MixerBusFader" id="{f1db1b55-2980-4a0d-824c-621fd2cd6653}" />
-	<object class="AutomationPoint" id="{f5c32eb5-19bd-4464-a851-ad83215404b2}">
+	<object class="AutomationPoint" id="{74fbe417-b272-44a0-b967-100f208184ac}">
 		<property name="position">
 			<value>0</value>
 		</property>
 		<property name="value">
 			<value>-80</value>
 		</property>
+		<property name="curveShape">
+			<value>-0.0227772798</value>
+		</property>
 	</object>
-	<object class="AutomationPoint" id="{4d304dfd-38d4-477e-b0cd-a04eaa21abf9}">
+	<object class="AutomationPoint" id="{15f085d2-2ed2-4325-8385-6b4834e4e76d}">
 		<property name="position">
 			<value>100</value>
 		</property>

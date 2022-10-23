@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &339792255023890202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6925669812089917468}
+  - component: {fileID: 5776886105370245128}
+  m_Layer: 0
+  m_Name: Create Debris
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6925669812089917468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339792255023890202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2164811399634427727}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5776886105370245128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339792255023890202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cec03e483174bbfb96533db5beec6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 2111298335}
 --- !u!1 &1555945966451579232
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2164811399634427727}
   - component: {fileID: 2671223392513445676}
+  - component: {fileID: 4409009767320584668}
   m_Layer: 0
   m_Name: Debris Interactors
   m_TagString: Untagged
@@ -184,7 +230,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6925669812089917468}
   m_Father: {fileID: 5316833831943652738}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -202,6 +249,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 2111298335}
   colliderEvents: {fileID: 8327545754941213347}
+  debrisInteractorManager: {fileID: 4409009767320584668}
+  createDebrisInteractor: {fileID: 5776886105370245128}
+--- !u!114 &4409009767320584668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009964052458809521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c64cb8893847fea47ed93cded76275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderEvents: {fileID: 8327545754941213347}
+  debrisInteractors:
+  - {fileID: 5776886105370245128}
 --- !u!1 &6300852338785146115
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +318,24 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  elementSFXPairs:
+  - element: 0
+    sfx: {fileID: 1788640336051676733, guid: 342f0265c59f2eb4f87a5fa1415844ab, type: 3}
+  - element: 1
+    sfx: {fileID: 6869014654341426031, guid: 33b4c02e00a32e544933ed161db46d1e, type: 3}
+  - element: 2
+    sfx: {fileID: 1294470398952593991, guid: dc67f946a3e76ec459819f94733cb45d, type: 3}
+  - element: 3
+    sfx: {fileID: 1747195013215522767, guid: 12fb14ce32f1b9949a9575ebadc9d350, type: 3}
+  - element: 4
+    sfx: {fileID: 5291838155865224534, guid: fc56e086e75e8de47a3241dcd5260c87, type: 3}
+  - element: 5
+    sfx: {fileID: 1617537700549959423, guid: 6505fd531191bd8458b42c74ef7054d6, type: 3}
+  - element: 6
+    sfx: {fileID: 4328071262256916138, guid: cbca65202d8e7e24eaba505303f4c6dd, type: 3}
+  - element: 7
+    sfx: {fileID: 3651274735783151511, guid: 1f2684ffa8071ac4e84c3ce495cd5f3e, type: 3}
+  timeToDestroyElementSFX: 0.5
   takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
     type: 3}
   timeToDestroyTakingDamageSFX: 0.4

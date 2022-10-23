@@ -2,29 +2,19 @@ using UnityEngine;
 
 public class BeamExtender : MonoBehaviour
 {
-    private Transform BeamTransform;
+    private float maxRange;
 
-    public bool AtMaxRange;
-
-    private float MaxRange;
-
-  
-    void Start()
+    private void Update()
     {
-        BeamTransform = gameObject.transform;
+        if (transform.localScale.z < maxRange)
+            // TODO: Extension time should be adjustable to match particle speed
+            transform.localScale += new Vector3(0, 0, maxRange) * Time.deltaTime;
+        if (transform.localScale.z > maxRange)
+            transform.localScale = new Vector3(1, 1, maxRange);
     }
 
-    void Update()
-    {    
-        if (!AtMaxRange)
-            BeamTransform.localScale += (new Vector3(0, 0, MaxRange*2)) * Time.deltaTime;
-
-        if (BeamTransform.localScale.z > MaxRange)
-            AtMaxRange = true;
-    }
-
-    public void SetMaxRange(float Length)
+    public void SetMaxRange(float length)
     {
-        MaxRange = Length;
+        maxRange = length;
     }
 }

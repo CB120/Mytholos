@@ -34,7 +34,6 @@ namespace StateMachines.States
                 StopCoroutine(chargeAbilityCoroutine);
 
             chargeAbilityCoroutine = StartCoroutine(ChargeAbility());
-            //anim.SetTrigger("Charge");
 
             //SFX
             beamChargeSFX.enabled = true;
@@ -66,10 +65,8 @@ namespace StateMachines.States
 
         private IEnumerator ChargeAbility()
         {
-            Debug.Log("Charge start");
             anim.SetTrigger("Charge");
             yield return new WaitForSeconds(abilityCommand.abilityData.chargeTime);
-            Debug.Log("Charge done");
             abilityWasCharged = true;
             abilityCharged.Invoke();
         }
