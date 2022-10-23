@@ -10,6 +10,7 @@ public class SO_Element : ScriptableObject
     public Material customMaterial;
     public Sprite icon;
     public Texture2D debrisTexture;
+    public Material electrifiedMaterial;
 
     [Header("Properties")]
     public Element element;
@@ -32,6 +33,7 @@ public class SO_Element : ScriptableObject
     [TextArea]
     public string debuffDescription;
 
+    //Are these necessary?
     public Color beamStartColor;
     public Color beamEndColor;
 
