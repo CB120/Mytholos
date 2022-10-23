@@ -11,6 +11,7 @@ public class Effects : MonoBehaviour
     private float defaultWalkSpeed = 0;
     private float defaultAttackStat = 0;
     private float defaultDefenceStat = 0;
+    private float defaultSizeStat = 0;
     //[SerializeField] private MythUI mythUI;
     public HashSet<Element> appliedBuffs = new();
     public HashSet<Element> appliedDebuffs = new();
@@ -203,54 +204,53 @@ public class Effects : MonoBehaviour
     public void BuffCleanse()
     {
         CleanseAllBuffs();
+        ActivateBuff(Element.Water, false);
+        Invoke("RemoveWaterIcon", 1);
     }
+
+    public void RemoveWaterIcon()
+    {
+        DeactivateBuff(Element.Water, false);
+        DeactivateBuff(Element.Water, true);
+    }
+
 
     public void DebuffCleanse()
     {
         CleanseAllDebuffs();
+        ActivateBuff(Element.Water, true);
+        Invoke("RemoveWaterIcon", 1);
     }
 
     #endregion
 
     #region Metal - Will
-    private bool DefenceDebuffActive;
-    public bool MetalDefenceActive;
-    public void DefenceDebuff(float value)
+    public void AttackDebuff(float duration)
     {
-        if (!DefenceDebuffActive)
-        {
-            DefenceDebuffActive = true;
-            myth.DefenceStat /= 2;
-            Invoke("RemoveDefenceDebuff", value);
-        }
+        CancelInvoke("RemoveAttackDebuff");
+        myth.AttackStat = Mathf.Clamp(myth.AttackStat / 2, defaultAttackStat / 2, defaultAttackStat * 2);
+        ActivateBuff(Element.Metal, true);
+        Invoke("RemoveAttackDebuff", duration);
     }
 
-    private void RemoveDefenceDebuff()
+    private void RemoveAttackDebuff()
     {
-        if (DefenceDebuffActive)
-        {
-            DefenceDebuffActive = false;
-            myth.AttackStat *= 2;
-        }
+        myth.AttackStat = defaultAttackStat;
+        DeactivateBuff(Element.Metal, true);
     }
 
-    public void MetalDefence(float value)
+    public void SizeBuff(float duration)
     {
-        if (!MetalDefenceActive)
-        {
-            MetalDefenceActive = true;
-            myth.DefenceStat *= 3;
-            Invoke("RemoveDefenceDebuff", value);
-        }
+        CancelInvoke("RemoveSizeBuff");
+        myth.SizeStat = Mathf.Clamp(myth.SizeStat * 2, defaultSizeStat / 2, defaultSizeStat * 2);
+        ActivateBuff(Element.Metal, false);
+        Invoke("RemoveSizeBuff", duration);
     }
 
-    private void RemoveMetalDefence()
+    private void RemoveSizeBuff()
     {
-        if (MetalDefenceActive)
-        {
-            MetalDefenceActive = false;
-            myth.AttackStat /= 3;
-        }
+        myth.SizeStat = defaultSizeStat;
+        DeactivateBuff(Element.Metal, false);
     }
 
     #endregion
@@ -311,7 +311,7 @@ public class Effects : MonoBehaviour
         RemoveLifeStealDebuff();
         RemoveStaminaDebuff();
         RemoveAgilityDebuff();
-        RemoveDefenceDebuff();
+        RemoveAttackDebuff();
         RemoveFreezeDebuff();
         EndDisorient();
         EndBurn();
@@ -323,7 +323,7 @@ public class Effects : MonoBehaviour
         RemoveDefenceBuff();
         RemoveIceOvershield();
         RemoveAgilityBuff();
-        //RemoveMetalDefence();
+        RemoveSizeBuff();
     }
 }
 

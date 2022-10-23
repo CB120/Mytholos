@@ -27,6 +27,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
+  weakAgainst:
+  - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  - {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}

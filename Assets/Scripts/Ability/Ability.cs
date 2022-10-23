@@ -70,6 +70,13 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 Debug.Log("Attack is Strong!!");
                 elementModifier = 2;
             }
+
+            if (ability.element.weakAgainst.Contains(myth.element))
+            {
+                Debug.Log("Attack is Weak!!");
+                elementModifier = 0.5f;
+            }
+
             var finalDamage = damage * elementModifier * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
             //Debug.Log("attack stat is " + owningMyth.AttackStat + "Final Damage is " + finalDamage);
 
@@ -239,7 +246,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.DefenceDebuff(ability.element.buffLength);
+        myth.effectController.AttackDebuff(ability.element.buffLength);
         myth.effectController.ActivateBuff(Element.Metal, !isInParty);
     }
 

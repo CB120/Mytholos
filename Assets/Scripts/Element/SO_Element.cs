@@ -20,6 +20,7 @@ public class SO_Element : ScriptableObject
 
     // TODO: Convert to HashSet
     public List<SO_Element> strongAgainst = new();
+    public List<SO_Element> weakAgainst = new();
 
     // TODO: Cyclic dependency. Do we need this?
     public bool hasDebris;
