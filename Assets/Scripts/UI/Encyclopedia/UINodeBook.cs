@@ -15,6 +15,7 @@ public class UINodeBook : UIMenuNode
         switch (action)
         {
             case Action.Submit:
+                encyclopediaManager.ParseBookInformation(this, bookName);
                 encyclopediaManager.SetLibraryActive(false);
                 encyclopediaManager.SetBookCanvas(true);
                 break;

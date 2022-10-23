@@ -1,19 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIEncyclopediaManager : MonoBehaviour
 {
-    [SerializeField] GameObject bookCanvas;
+    [Header("Canvas References")]
+    // Canvas Game Object References (For turning on and off stages)
+    [SerializeField] GameObject openBookCanvas;
     [SerializeField] GameObject libraryCanvas;
 
+    [Header("Menu Graph References")]
+    // Menu Graph references
+    PlayerParticipant player;
+    [SerializeField] UIMenuNodeGraph LibraryGraph;
+    [SerializeField] UIMenuNodeGraph openBookGraph;
+
+    public UINodeBook playerCurrentBook;
+    public UINodeTab playerCurrentTab;
+
+
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerParticipant>();
+        if(player != null)
+        {
+            player.currentMenuGraph = LibraryGraph;
+        }
+        if(openBookGraph == null)
+        {
+            openBookGraph = openBookCanvas.GetComponent<UIMenuOpenBook>();
+        }
+    }
     public void SetLibraryActive(bool active)
     {
+
        libraryCanvas.SetActive(active);
+        if(active == true)
+        {
+            player.currentMenuGraph = LibraryGraph;
+        }
     }
 
     public void SetBookCanvas(bool active)
     {
-        bookCanvas.SetActive(active);
+        openBookCanvas.SetActive(active);
+        if (active == true)
+        {
+            player.currentMenuGraph = openBookGraph;
+        }
+    }
+
+    public void ParseBookInformation(UINodeBook selectedBook, string bookName)
+    {
+        playerCurrentBook = selectedBook;
+        Debug.Log(bookName + " " + selectedBook);
+
+        // Bro why the fuck couldnt i get the function from the reference i already have? lol
+        openBookCanvas.GetComponent<UIMenuOpenBook>().GetBookName(bookName);
+        
+
     }
 }
