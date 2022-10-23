@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{0f1d16cd-4fec-47ee-8d6e-2f7e05eb934d}">
 		<property name="name">
-			<value>Fire Debris</value>
+			<value>Fire Debris Loop</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -175,7 +175,7 @@
 			<value>volume</value>
 		</property>
 		<relationship name="automationCurves">
-			<destination>{4aafb835-361b-4aac-b395-46da99f2e3bb}</destination>
+			<destination>{35a6a290-7389-4cb1-acb9-21e06f77c31d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{1742e214-699f-4584-a607-b518579f3a3a}">
@@ -192,13 +192,13 @@
 			<value>1000</value>
 		</property>
 	</object>
-	<object class="AutomationCurve" id="{4aafb835-361b-4aac-b395-46da99f2e3bb}">
+	<object class="AutomationCurve" id="{35a6a290-7389-4cb1-acb9-21e06f77c31d}">
 		<relationship name="parameter">
 			<destination>{a8d3f20b-8e43-4379-a953-efff050228c7}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{ee06fb8a-1560-4fb5-a148-cdb998f622d3}</destination>
-			<destination>{a52f8540-148b-42c6-bfde-d6101c01805a}</destination>
+			<destination>{28735670-ef07-49de-90df-e683686261c7}</destination>
+			<destination>{336e672e-d923-43b9-b14a-c265df2fb289}</destination>
 		</relationship>
 	</object>
 	<object class="MultibandEqEffect" id="{9b58b85b-820a-43bc-8ad7-05b247553131}">
@@ -221,21 +221,20 @@
 			<value>0.288379312</value>
 		</property>
 	</object>
-	<object class="GainEffect" id="{3a9e4bbc-1508-4cf3-b868-2a5ace3ea4c0}">
-		<property name="gain">
-			<value>-8.5</value>
-		</property>
-	</object>
+	<object class="GainEffect" id="{3a9e4bbc-1508-4cf3-b868-2a5ace3ea4c0}" />
 	<object class="MixerBusFader" id="{c72717d1-7688-4f95-91cf-6ab437821a74}" />
-	<object class="AutomationPoint" id="{ee06fb8a-1560-4fb5-a148-cdb998f622d3}">
+	<object class="AutomationPoint" id="{28735670-ef07-49de-90df-e683686261c7}">
 		<property name="position">
 			<value>0</value>
 		</property>
 		<property name="value">
 			<value>-80</value>
 		</property>
+		<property name="curveShape">
+			<value>-1</value>
+		</property>
 	</object>
-	<object class="AutomationPoint" id="{a52f8540-148b-42c6-bfde-d6101c01805a}">
+	<object class="AutomationPoint" id="{336e672e-d923-43b9-b14a-c265df2fb289}">
 		<property name="position">
 			<value>100</value>
 		</property>

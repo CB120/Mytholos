@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{6180d26e-fd2c-456f-9f2d-3fece3909f68}">
 		<property name="name">
-			<value>Ice Debris</value>
+			<value>Ice Debris Loop</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -182,7 +182,6 @@
 		<relationship name="effects">
 			<destination>{0274f366-82c1-4226-ad6d-0654d681f8d8}</destination>
 			<destination>{9d476a4c-eded-42df-8bbb-517a452d5435}</destination>
-			<destination>{7f96b149-f96a-4f24-87ef-190319b8286e}</destination>
 			<destination>{ee5d143f-de16-4e21-83f0-1afd531d947e}</destination>
 		</relationship>
 	</object>
@@ -222,16 +221,7 @@
 			<value>0.309310347</value>
 		</property>
 	</object>
-	<object class="GainEffect" id="{9d476a4c-eded-42df-8bbb-517a452d5435}">
-		<property name="gain">
-			<value>-11</value>
-		</property>
-	</object>
-	<object class="SFXReverbEffect" id="{7f96b149-f96a-4f24-87ef-190319b8286e}">
-		<property name="decayTime">
-			<value>1100</value>
-		</property>
-	</object>
+	<object class="GainEffect" id="{9d476a4c-eded-42df-8bbb-517a452d5435}" />
 	<object class="MixerBusFader" id="{ee5d143f-de16-4e21-83f0-1afd531d947e}" />
 	<object class="AutomationPoint" id="{ff074e75-c916-4a49-ac5f-0ce602faf983}">
 		<property name="position">
@@ -239,6 +229,9 @@
 		</property>
 		<property name="value">
 			<value>-80</value>
+		</property>
+		<property name="curveShape">
+			<value>-1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{c50ba9fe-0453-4396-99ca-1d3ee1a8c259}">
