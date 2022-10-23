@@ -525,6 +525,7 @@ MonoBehaviour:
   overrideBehaviour: 1
   exceptions: []
   anim: {fileID: 0}
+  rotationSpeed: 0.25
   performAbilityComplete:
     m_PersistentCalls:
       m_Calls:
@@ -556,7 +557,8 @@ MonoBehaviour:
   mythCommandHandler: {fileID: -3291310522803648204}
   anyStateTransitionManager: {fileID: 7710117388066988406}
   overrideBehaviour: 1
-  exceptions: []
+  exceptions:
+  - {fileID: 4471835222624717738}
   anim: {fileID: 0}
   staminaPenalty: 0.5
   abilityCharged:

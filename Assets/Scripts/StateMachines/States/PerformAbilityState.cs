@@ -8,20 +8,26 @@ namespace StateMachines.States
     public class PerformAbilityState : State
     {
         [Header("Perform Ability Behaviour")]
+        [SerializeField] private float rotationSpeed;
         public UnityEvent performAbilityComplete = new();
 
         private Coroutine performAbilityCoroutine;
         private AbilityCommand abilityCommand;
 
+        private Ability ability;
+
+        // TODO: Weird dependency.
+        private bool abilityIsBeam;
+
         protected override void OnEnable()
         {
             base.OnEnable();
             
-            abilityCommand = mythCommandHandler.LastCommand as AbilityCommand;
+            abilityCommand = mythCommandHandler.CurrentCommand as AbilityCommand;
             
-            // TODO: Sometimes fails when spamming abilities, need to look into this
             if (abilityCommand == null)
             {
+                Debug.LogWarning($"{nameof(AbilityCommand)} was null.");
                 performAbilityComplete.Invoke();
                 return;
             }
@@ -38,7 +44,7 @@ namespace StateMachines.States
                 return;
             }
             
-            Vector3 pos = gameObject.transform.position + abilityData.relativeSpawnPosition;
+            Vector3 pos = gameObject.transform.position + transform.TransformVector(abilityData.relativeSpawnPosition);
             Vector3 rot = abilityData.relativeSpawnRotation;
             GameObject abilityObject = abilityData.spawnInWorldSpace
                 ? Instantiate(
@@ -53,7 +59,8 @@ namespace StateMachines.States
                     gameObject.transform
                 );
 
-            Ability ability = abilityObject.GetComponent<Ability>();
+            ability = abilityObject.GetComponent<Ability>();
+            abilityIsBeam = ability is BeamAbility;
             ability.owningMyth = myth;
             ability.ability = abilityData;
             if (performAbilityCoroutine != null)
@@ -96,6 +103,25 @@ namespace StateMachines.States
 
             if (anim)
                 anim.SetBool("Attacking", false);
+        }
+
+        private void Update()
+        {
+            if (!abilityIsBeam) return;
+
+            // TODO: Would be more efficient to listen to mythCommandHandler.lastCommandChanged
+            if (mythCommandHandler.LastCommand is not MoveCommand moveCommand) return;
+            
+            // TODO: Duplicate code. See MoveState.Update
+            var inputVector = new Vector3(
+                moveCommand.input.x,
+                0,
+                moveCommand.input.y
+            );
+
+            if (inputVector == Vector3.zero) return;
+            
+            myth.gameObject.transform.rotation = Quaternion.Slerp(myth.gameObject.transform.rotation, Quaternion.LookRotation(inputVector), Time.deltaTime * rotationSpeed);
         }
     }
 }

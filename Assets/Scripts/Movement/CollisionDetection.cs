@@ -26,7 +26,6 @@ public class CollisionDetection : MonoBehaviour
         get => isSliding;
         set
         {
-            Debug.Log(value);
             isSliding = value;
             
             if (isSliding == false)

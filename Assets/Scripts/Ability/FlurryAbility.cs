@@ -4,8 +4,6 @@ using Elements;
 
 public class FlurryAbility : Ability
 {
-    private Element element { get => ability.element.element; }
-
     private Color color;
 
     private float DurationTimer;
@@ -18,22 +16,15 @@ public class FlurryAbility : Ability
     [SerializeField] private ParticleSystem PS1;
     [SerializeField] private ParticleSystem PS2;
 
-    #region Colours
-    private GradientColorKey WoodStart = new GradientColorKey(new Color(0f, 0.3f, 0f), 0);
-    private GradientColorKey WoodEnd = new GradientColorKey(new Color(0f, 0.8f, 0f), 1);
-    private GradientColorKey EarthStart = new GradientColorKey(new Color(0.53f, 0.22f, 0.13f), 0);
-    private GradientColorKey EarthEnd = new GradientColorKey(new Color(1.0f, 0.29f, 0.01f), 1);
-
-    private GradientColorKey StartColor;
-    private GradientColorKey EndColor;
-    #endregion
-
     public override void Start()
     {
         var FlurryColor = PS1.colorOverLifetime;
 
         Gradient grad = new Gradient();
-        GetColor();
+    
+        GradientColorKey StartColor = new GradientColorKey(ability.element.flurryStartColor, 0);
+        GradientColorKey EndColor = new GradientColorKey(ability.element.flurryEndColor, 1);
+        
         grad.SetKeys(new GradientColorKey[] { StartColor, EndColor }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
 
         FlurryColor.color = grad;
@@ -67,22 +58,5 @@ public class FlurryAbility : Ability
         Attack(myth, ability.damage); //Called In The Parent Ability
         Debug.LogWarning($"Beam Collided With Object: {myth.gameObject.name}");
         base.Trigger(myth);
-    }
-
-    private void GetColor()
-    {
-        switch (element)
-        {
-            case Element.Wood:
-                StartColor = WoodStart;
-                EndColor = WoodEnd;
-                break;
-            case Element.Metal:
-                break;
-            case Element.Earth:
-                StartColor = EarthStart;
-                EndColor = EarthEnd;
-                break;
-        }
     }
 }

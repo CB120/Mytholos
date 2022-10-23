@@ -137,13 +137,10 @@ public class PlayerParticipant : Participant
     public void Move(InputAction.CallbackContext context)
     {
         // TODO: Not sure if this logic should be here or in MoveCommandReceived
-        if (SelectedMythCommandHandler.CurrentCommand is not MoveCommand)
-            SelectedMythCommandHandler.PushCommand(new MoveCommand());
-
-        if (SelectedMythCommandHandler.CurrentCommand is MoveCommand moveCommand)
-        {
+        if (SelectedMythCommandHandler.CurrentCommand is not MoveCommand moveCommand)
+            SelectedMythCommandHandler.PushCommand(new MoveCommand(context.ReadValue<Vector2>()));
+        else
             moveCommand.input = context.ReadValue<Vector2>();
-        }
     }
     
     private void UseAbility(InputAction.CallbackContext context, Func<Myth, SO_Ability> abilityAccessor)
