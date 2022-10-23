@@ -29,3 +29,11 @@ MonoBehaviour:
     type: 3}
   buffDescription: Regenerates stamina
   debuffDescription: Impairs foe's stamina
+  beamStartColor: {r: 1, g: 0.96862745, b: 0, a: 1}
+  beamEndColor: {r: 0.6862745, g: 1, b: 0.46666667, a: 1}
+  boomerangStartColor: {r: 1, g: 0.96862745, b: 0, a: 1}
+  boomerangMaterial: {fileID: 2100000, guid: ce094e424a1b35d489922e227699401e, type: 2}
+  flurryStartColor: {r: 0, g: 0, b: 0, a: 0}
+  flurryEndColor: {r: 0, g: 0, b: 0, a: 0}
+  shotStartColor: {r: 1, g: 0.96862745, b: 0, a: 1}
+  shotEndColor: {r: 1, g: 0.96862745, b: 0, a: 1}

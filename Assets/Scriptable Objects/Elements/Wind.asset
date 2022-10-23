@@ -24,7 +24,15 @@ MonoBehaviour:
   strongAgainst:
   - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   hasDebris: 0
-  abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
+  abilityDebrisInteractorsPrefab: {fileID: 7197803344558619826, guid: 5cdbcb5d192e7a54babeffdf51cb064c,
     type: 3}
   buffDescription: Raises agility
   debuffDescription: Disorients foe
+  beamStartColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+  beamEndColor: {r: 1, g: 1, b: 1, a: 1}
+  boomerangStartColor: {r: 1, g: 1, b: 1, a: 1}
+  boomerangMaterial: {fileID: 2100000, guid: d6bb4a714a7abdb4999cf7606153fc62, type: 2}
+  flurryStartColor: {r: 0, g: 0, b: 0, a: 0}
+  flurryEndColor: {r: 0, g: 0, b: 0, a: 0}
+  shotStartColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+  shotEndColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
