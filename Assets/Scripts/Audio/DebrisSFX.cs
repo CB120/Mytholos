@@ -37,7 +37,7 @@ public class DebrisSFX : MonoBehaviour
         electricityLoop.SetParameter("Debris Volume", 0f);
         iceLoop.SetParameter("Debris Volume", 0f);
 
-        volumeScalar = 1 / (regionWidth * regionWidth) * debrisVolumeScalar;
+        volumeScalar = 1 / Mathf.Pow(regionWidth, 2) * debrisVolumeScalar;
     }
 
 
@@ -52,7 +52,9 @@ public class DebrisSFX : MonoBehaviour
         // Private
     void UpdateLoopVolumes()
     {
-        fireLoop.SetParameter("Debris Volume", region.NumberOfTilesWithElement(fireElement) * volumeScalar);
+        float fireValue = region.NumberOfTilesWithElement(fireElement) * volumeScalar;
+        Debug.Log(fireValue);
+        fireLoop.SetParameter("Debris Volume", fireValue);
         electricityLoop.SetParameter("Debris Volume", region.NumberOfTilesWithElement(electricityElement) * volumeScalar);
         iceLoop.SetParameter("Debris Volume", region.NumberOfTilesWithElement(iceElement) * volumeScalar);
     }

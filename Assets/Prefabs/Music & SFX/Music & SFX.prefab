@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regionWidth: 17
-  debrisVolumeScalar: 1
+  debrisVolumeScalar: 10000
   debrisColumns:
   - debrisSFX:
     - {fileID: 4356938823704674174}

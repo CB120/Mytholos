@@ -11,7 +11,7 @@ public class DebrisColumn
 public class DebrisSFXManager : MonoBehaviour
 {
     // Properties
-    public int regionWidth;
+    public int regionWidth = 17;
     public float debrisVolumeScalar = 1f;
 
 
