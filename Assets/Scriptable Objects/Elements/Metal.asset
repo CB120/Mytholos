@@ -17,10 +17,10 @@ MonoBehaviour:
   icon: {fileID: 730618174, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   debrisTexture: {fileID: 2800000, guid: 15ec4827e242b0c468f2ca6506b63495, type: 3}
   element: 6
-  buffLength: 0
+  buffLength: 5
   debuffParticle: {fileID: 1854702675339866908, guid: ef58d3f889052fa4da9db457bc27a2df,
     type: 3}
-  buffParticle: {fileID: 732531023987963301, guid: c3e50b964fcdb4946b351fab6ed03582,
+  buffParticle: {fileID: 1854702675339866908, guid: c5c6ab3c17f548e449dd154286b2d25d,
     type: 3}
   setParticleColor: 1
   strongAgainst:
