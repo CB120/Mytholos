@@ -44,8 +44,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
             if (p.element == element)
             {
                 //Currently commented out so it doesn't cause errors
-                //GameObject sfx = Instantiate(p.sfx, transform);
-                //Destroy(sfx, timeToDestroyElementSFX);
+                GameObject sfx = Instantiate(p.sfx, transform);
+                Destroy(sfx, timeToDestroyElementSFX);
             }
         }
     }

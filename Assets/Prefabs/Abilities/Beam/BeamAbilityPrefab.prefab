@@ -119,6 +119,24 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 0}
+  elementSFXPairs:
+  - element: 0
+    sfx: {fileID: 1788640336051676733, guid: 342f0265c59f2eb4f87a5fa1415844ab, type: 3}
+  - element: 1
+    sfx: {fileID: 6869014654341426031, guid: 33b4c02e00a32e544933ed161db46d1e, type: 3}
+  - element: 2
+    sfx: {fileID: 1294470398952593991, guid: dc67f946a3e76ec459819f94733cb45d, type: 3}
+  - element: 3
+    sfx: {fileID: 1747195013215522767, guid: 12fb14ce32f1b9949a9575ebadc9d350, type: 3}
+  - element: 4
+    sfx: {fileID: 5291838155865224534, guid: fc56e086e75e8de47a3241dcd5260c87, type: 3}
+  - element: 5
+    sfx: {fileID: 1617537700549959423, guid: 6505fd531191bd8458b42c74ef7054d6, type: 3}
+  - element: 6
+    sfx: {fileID: 4328071262256916138, guid: cbca65202d8e7e24eaba505303f4c6dd, type: 3}
+  - element: 7
+    sfx: {fileID: 3651274735783151511, guid: 1f2684ffa8071ac4e84c3ce495cd5f3e, type: 3}
+  timeToDestroyElementSFX: 0.5
   takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
     type: 3}
   timeToDestroyTakingDamageSFX: 0.4
