@@ -200,11 +200,7 @@
 			<destination>{15f085d2-2ed2-4325-8385-6b4834e4e76d}</destination>
 		</relationship>
 	</object>
-	<object class="GainEffect" id="{fd88ee78-fc0e-457f-8319-e712e3df6e45}">
-		<property name="gain">
-			<value>-5</value>
-		</property>
-	</object>
+	<object class="GainEffect" id="{fd88ee78-fc0e-457f-8319-e712e3df6e45}" />
 	<object class="MixerBusFader" id="{f1db1b55-2980-4a0d-824c-621fd2cd6653}" />
 	<object class="AutomationPoint" id="{74fbe417-b272-44a0-b967-100f208184ac}">
 		<property name="position">
