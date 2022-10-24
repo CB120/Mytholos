@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580105237481144745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -197,9 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decayTime: 5
-  elementChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  tilePositionReadout: {x: 0, y: 0, z: 0}
 --- !u!114 &4735299503588545498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bbd1ac0cc34a7ab71d202562915b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 3921508706532891433}
+  meshRenderer: {fileID: 867638482405699770}
   debris: {fileID: 2219021158117508528}
 --- !u!114 &5799057269355196668
 MonoBehaviour:
@@ -226,6 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0b10dd4d64a7d4ba4790cee3892b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 3921508706532891433}
+  meshRenderer: {fileID: 867638482405699770}
   debris: {fileID: 2219021158117508528}
   defaultMaterial: {fileID: 2100000, guid: c0824584fa3841d40b6f05a00ac9068c, type: 2}

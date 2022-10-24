@@ -32,7 +32,9 @@ namespace StateMachines.States
         protected override void OnEnable()
         {
             base.OnEnable();
+
             swapCommand = mythCommandHandler.LastCommand as SwapCommand;
+            
             // Start the Animation
             Debug.Log("Swapping!");
             timer = 0;
@@ -44,6 +46,8 @@ namespace StateMachines.States
             if (partyIndex == 1) selectedPrefab = swapStartSFXPrefabRight;
             GameObject swapStartSFX = Instantiate(selectedPrefab, Vector3.zero, Quaternion.identity);
             Destroy(swapStartSFX, timeToDestroySwapSFX);
+
+            
         }
 
         private void Update()
@@ -63,7 +67,8 @@ namespace StateMachines.States
                     Debug.Log("Could not find the PartyBuilder to set the active myth on " + this.gameObject.name);
                 }
 
-                swapCommand.sendingPlayer.SwapReserveAtIndex(swapCommand.TriggerIndex);
+                swapCommand.sendingPlayer.SwapInDirection(swapCommand.TriggerIndex);
+                mythCommandHandler.DemoteCurrentCommand();
                 swapComplete.Invoke();
 
                 // SFX

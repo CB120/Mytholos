@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class UIMenuRotator : UIMenuNodeGraph
 {
-    // TODO: Ask eddie how to incorporate this into the already existing environment.
 
     [SerializeField] TextMeshProUGUI selectedBookName;
 
@@ -37,7 +36,7 @@ public class UIMenuRotator : UIMenuNodeGraph
     public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction)
     {
         base.Navigate(node, playerNumber, direction);
-        Debug.Log("Working from rotator");
+        
         if (direction == UIMenuNode.Direction.Left) // Replace the current books position with the position of its left-adjacent book. Repeat for every book.
         {
             for (int i = nodes.Count - 1; i >= 0; i--)

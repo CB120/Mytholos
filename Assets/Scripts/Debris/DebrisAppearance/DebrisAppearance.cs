@@ -12,11 +12,13 @@ namespace Debris
         private void OnEnable()
         {
             debris.elementChanged.AddListener(OnElementChanged);
+            debris.isElectrifiedChanged.AddListener(OnIsElectrifiedChanged);
         }
 
         private void OnDisable()
         {
             debris.elementChanged.RemoveListener(OnElementChanged);
+            debris.isElectrifiedChanged.RemoveListener(OnIsElectrifiedChanged);
         }
 
         private void OnElementChanged(Debris _)
@@ -30,6 +32,17 @@ namespace Debris
                 material.SetTexture("_MainTex", debris.CurrentElement.debrisTexture);
             else
                 material.SetColor("_Color", color);
+
+            meshRenderer.material = material;
+
+            meshRenderer.enabled = debris.CurrentElement != null;
+        }
+
+        private void OnIsElectrifiedChanged(Debris _)
+        {
+            Material material = debris.CurrentElement == null ? new Material(defaultMaterial) : debris.CurrentElement.customMaterial;
+
+            material = debris.IsElectrified ? debris.CurrentElement.electrifiedMaterial : material;
 
             meshRenderer.material = material;
 
