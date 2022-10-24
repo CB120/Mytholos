@@ -30,6 +30,8 @@ public class FlurryAbility : Ability
         FlurryColor.color = grad;
 
         Collider = gameObject.transform.GetChild(0);
+
+        PlayElementalSFX(); //remove this if you're adding base.Start() !
     }
 
     public override void Update()
@@ -49,10 +51,12 @@ public class FlurryAbility : Ability
             Destroy(gameObject);
         }
     }
+
     public override void TriggerStay(Myth myth)
     {
         Trigger(myth);
     }
+
     public override void Trigger(Myth myth)
     {
         Attack(myth, ability.damage); //Called In The Parent Ability
