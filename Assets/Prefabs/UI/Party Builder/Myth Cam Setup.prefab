@@ -234,14 +234,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6244177579583406663}
-  m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: -0.42, y: 0.32, z: -1.74}
+  m_LocalRotation: {x: 0.043246232, y: 0.13040192, z: -0.005693473, w: 0.9905012}
+  m_LocalPosition: {x: -0.559, y: 0.547, z: -1.693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1668044774725997597}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
+  m_LocalEulerAnglesHint: {x: 5, y: 15, z: 0}
 --- !u!20 &6244177579583406660
 Camera:
   m_ObjectHideFlags: 0
@@ -414,16 +414,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StagVisuals
-      objectReference: {fileID: 0}
-    - target: {fileID: 5540151402725898462, guid: 0f9d2760e9a36f14d87139d51897d827,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8675929892945326472, guid: 0f9d2760e9a36f14d87139d51897d827,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9d2760e9a36f14d87139d51897d827, type: 3}
