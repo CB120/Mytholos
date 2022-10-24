@@ -8,6 +8,8 @@ public class HealingAbility : Ability
     [Header("Heal Ability Fields")]
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
+
+    private float BuffLimiter = 0.1f;
     public float timeToDestroy { get => ability.timeToDestroy; }
     [SerializeField] private TrailRenderer[] trails;
     [SerializeField]
@@ -121,7 +123,7 @@ public class HealingAbility : Ability
     public override void ApplyEarthEffect(Myth myth, bool isInParty)
     {
         if (!isInParty) return; 
-        myth.effectController.DefenceBuff(ability.element.buffLength);
+        myth.effectController.DefenceBuff(BuffLimiter);
     }
 
     public override void ApplyElectricEffect(Myth myth, bool isInParty)
@@ -132,7 +134,7 @@ public class HealingAbility : Ability
     public override void ApplyFireEffect(Myth myth, bool isInParty)
     {
         if (!isInParty) return;
-        myth.effectController.AttackBuff(ability.element.buffLength);
+        myth.effectController.AttackBuff(BuffLimiter);
     }
 
     public override void ApplyIceEffect(Myth myth, bool isInParty)
@@ -143,8 +145,8 @@ public class HealingAbility : Ability
 
     public override void ApplyMetalEffect(Myth myth, bool isInParty)
     {
-        if (isInParty) myth.effectController.MetalDefence(0.1f);
-        if (!isInParty) myth.effectController.DefenceDebuff(3);
+        if(isInParty)
+        myth.effectController.SizeBuff(BuffLimiter);
     }
 
     public override void ApplyWaterEffect(Myth myth, bool isInParty)

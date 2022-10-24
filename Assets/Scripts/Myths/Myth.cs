@@ -18,6 +18,7 @@ namespace Myths
         public float walkSpeed;
         public float AttackStat;
         public float DefenceStat;
+        public float SizeStat;
         
         public GameObject targetEnemy;
         // TODO: Make serialised, fix naming mismatch
@@ -49,6 +50,7 @@ namespace Myths
         {
             walkSpeed = myth.agility;
             AttackStat = myth.attack;
+            SizeStat = myth.size;
         }
 
         /*Remove everything after this after 5/09/22*/
