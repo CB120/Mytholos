@@ -49,8 +49,12 @@ public class UIGameParty : MonoBehaviour
     //}
     //#endregion
 
-    private void Awake()
+    void Start()
     {
+        // Store party information
+        myths = new Myth[3];
+        SetUpMythUIs();
+
         // Record some transform information from UI
         abilitiesMenuRectTransform = abilitiesMenu.GetComponent<RectTransform>();
         abilitiesSelectedX = abilitiesMenuRectTransform.anchoredPosition.y + abilitiesLazyHardcodedOffset;
@@ -60,17 +64,7 @@ public class UIGameParty : MonoBehaviour
         {
             a.thisGameParty = this;
         }
-    }
 
-    void OnEnable()
-    {
-        // Store party information
-        myths = new Myth[3];
-        SetUpMythUIs();
-    }
-
-    void Start()
-    {
         // Find party builder and place a listener into our team's party data so we know when there's a player participant for us to place listeners in
         partyBuilder = FindObjectOfType<PartyBuilder>();
         partyBuilder.allParticipantData.partyData[partyNumber - 1].ParticipantChanged.AddListener(UpdateInputListeners);
