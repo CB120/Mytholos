@@ -51,6 +51,9 @@ public class BoomerangAbility : Ability
     // Update is called once per frame
     public override void Update()
     {
+        if (!owningMyth)
+            Destroy(this.gameObject);
+
         if (speed <= 0)
         {
             Returning = true;

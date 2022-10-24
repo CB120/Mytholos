@@ -62,7 +62,7 @@ namespace Myths
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {
-            mythCommandHandler.PushCommand(new KnockbackCommand(sendingMyth, myth.size, abilityKnockback, abilityStunTime));
+            mythCommandHandler.PushCommand(new KnockbackCommand(sendingMyth, SizeStat, abilityKnockback, abilityStunTime));
         }
 
         public void Stun(float abilityStunTime)

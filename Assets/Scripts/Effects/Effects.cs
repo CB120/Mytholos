@@ -29,6 +29,7 @@ public class Effects : MonoBehaviour
         defaultWalkSpeed = myth.walkSpeed;
         defaultAttackStat = myth.AttackStat;
         defaultDefenceStat = myth.DefenceStat;
+        defaultSizeStat = myth.SizeStat;
     }
 
     private void OnEnable()
