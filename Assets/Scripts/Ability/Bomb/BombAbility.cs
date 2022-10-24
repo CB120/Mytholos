@@ -8,8 +8,6 @@ public class BombAbility : Ability
     [Tooltip("Horizontal speed, in units/sec")]
     public float speed = 10;
 
-
-
     [Header("Objects")]
     [SerializeField] private MeshRenderer mesh;
 
@@ -36,6 +34,7 @@ public class BombAbility : Ability
         var main = childParticle.main;
         main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
     }
+
     public override void Start()
     {
         startPos = transform.position;

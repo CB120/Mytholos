@@ -39,16 +39,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         SOknockbackStrength = ability.baseKnockback;
         owningMyth.Stamina.Value -= ability.staminaCost;
 
-        foreach (ElementSFXPairs p in elementSFXPairs)
-        {
-            if (p.element == element)
-            {
-                //Currently commented out so it doesn't cause errors
-                GameObject sfx = Instantiate(p.sfx, transform);
-                Destroy(sfx, timeToDestroyElementSFX);
-                break;
-            }
-        }
+        PlayElementalSFX();
     }
 
     virtual public void Update()
@@ -95,8 +86,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 myth.effectController.RemoveIceOvershield();
             }
 
-            GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
-            Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
+            PlayDamageSFX();
         }
         else
         {
@@ -266,5 +256,27 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     #endregion
 
+    #region SFX
+    public void PlayElementalSFX()
+    {
+        foreach (ElementSFXPairs p in elementSFXPairs)
+        {
+            if (p.element == element)
+            {
+                GameObject sfx = Instantiate(p.sfx, transform);
+                Destroy(sfx, timeToDestroyElementSFX);
+                return;
+            }
+        }
+
+        Debug.LogWarning("No ElementSFXPair found with element " + element + "! Not playing anything...");
+    }
+
+    protected void PlayDamageSFX()
+    {
+        GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
+        Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
+    }
+    #endregion
 }
 
