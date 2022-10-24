@@ -196,11 +196,14 @@ public class PlayerParticipant : Participant
         //if (mythsInReserve[0].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
+            int currentMythIndex = myths.IndexOf(mythInPlay);
+            int nextIndex = (currentMythIndex + -1) % myths.Count;
+            if (nextIndex < 0) nextIndex = myths.Count - 1;
             SelectedMythCommandHandler.PushCommand(new SwapCommand());
             if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
-                swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
-                swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
+                swapCommand.SwappingInMyth = myths[nextIndex].gameObject;
+                swapCommand.PartyIndex = myths[nextIndex].partyIndex;
                 swapCommand.sendingPlayer = this;
                 swapCommand.TriggerIndex = -1;
             }
@@ -216,11 +219,14 @@ public class PlayerParticipant : Participant
         //if (mythsInReserve[1].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
+            int currentMythIndex = myths.IndexOf(mythInPlay);
+            int nextIndex = (currentMythIndex + 1) % myths.Count;
+            if (nextIndex < 0) nextIndex = myths.Count - 1;
             SelectedMythCommandHandler.PushCommand(new SwapCommand());
             if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
-                swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
-                swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
+                swapCommand.SwappingInMyth = myths[nextIndex].gameObject;
+                swapCommand.PartyIndex = myths[nextIndex].partyIndex;
                 swapCommand.sendingPlayer = this;
                 swapCommand.TriggerIndex = 1;
             }
@@ -380,6 +386,7 @@ public class PlayerParticipant : Participant
         MythInPlay.transform.position = position;
     }
 
+    
     public void SwapInDirection(int direction)
     {
         if (!isAvailableToSwap) return;
@@ -398,6 +405,7 @@ public class PlayerParticipant : Participant
 
         // Try swap in other direction
         nextIndex = (currentMythIndex - direction) % myths.Count;
+        Debug.Log("Is this called?");
         if (nextIndex < 0) nextIndex = myths.Count - 1;
 
         if (myths[nextIndex].Health.Value > 0)

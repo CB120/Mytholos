@@ -12,7 +12,6 @@ namespace StateMachines.States
         public UnityEvent swapComplete = new();
         [SerializeField] private float swapTime;
         [SerializeField] private GameObject ActiveMythController;
-        [SerializeField] private WinState winState;
         private float timer;
         private const float swapAnimationDuration = 0.79166667f; // Arcane numerics
         private SwapCommand swapCommand;
