@@ -23,7 +23,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     public float DamageMultiplier { get; set; } = 1;
 
-    private Element element { get => ability.element.element;}
+    protected Element element { get => ability.element.element;}
 
     [Header("All-Ability SFX")] //SFX stuff, added by Ethan
     public ElementSFXPairs[] elementSFXPairs;
@@ -46,6 +46,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 //Currently commented out so it doesn't cause errors
                 GameObject sfx = Instantiate(p.sfx, transform);
                 Destroy(sfx, timeToDestroyElementSFX);
+                break;
             }
         }
     }
