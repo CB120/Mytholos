@@ -14,6 +14,7 @@ namespace StateMachines.States
         [SerializeField] private GameObject ActiveMythController;
         [SerializeField] private WinState winState;
         private float timer;
+        private const float swapAnimationDuration = 0.79166667f; // Arcane numerics
         private SwapCommand swapCommand;
 
         [Header("SFX")]
@@ -24,8 +25,9 @@ namespace StateMachines.States
         public float timeToDestroySwapSFX = 0.3f;
         int partyIndex = 0;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             ActiveMythController = GameObject.FindGameObjectWithTag("PartyBuilder");
         }
 
@@ -34,9 +36,14 @@ namespace StateMachines.States
             base.OnEnable();
 
             swapCommand = mythCommandHandler.LastCommand as SwapCommand;
-            
+
             // Start the Animation
-            Debug.Log("Swapping!");
+            if (anim)
+            {
+                anim.SetTrigger("SwapOut");
+                anim.speed = swapAnimationDuration / swapTime;
+            }
+            //Debug.Log("Swapping!");
             timer = 0;
 
             // SFX
@@ -58,7 +65,7 @@ namespace StateMachines.States
                 // add some logic here to cancel the swap if you get hit!
             } else if (timer >= swapTime)
             {
-                Debug.Log("Swap complete!");
+                //Debug.Log("Swap complete!");
                 if (ActiveMythController != null)
                 {
                     ActiveMythController.GetComponent<PartyBuilder>().setSwappingTarget(swapCommand.SwappingInMyth, swapCommand.PartyIndex);
@@ -76,6 +83,16 @@ namespace StateMachines.States
                 if (partyIndex == 1) selectedPrefab = swapEndSFXPrefabRight;
                 GameObject swapStartSFX = Instantiate(selectedPrefab, Vector3.zero, Quaternion.identity);
                 Destroy(swapStartSFX, timeToDestroySwapSFX);
+            }
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (anim)
+            {
+                anim.speed = 1.0f;
             }
         }
     }

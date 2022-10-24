@@ -41,15 +41,44 @@ public class PlayerParticipant : Participant
         private set
         {
             if (mythInPlay != null)
-                mythInPlay.gameObject.SetActive(false);
-            
-            mythInPlay = value;
-            
-            if (mythInPlay != null)
-                mythInPlay.gameObject.SetActive(true);
-            
-            mythInPlayChanged.Invoke(this);
+            {
+                mythInPlay.SetAnimatorTrigger("Reset");
+                StartCoroutine(DisableSwappedOutMyth(value));
+            }
+            else // This was added after commenting the following code (and only(?) gets called on scene start)
+            {
+                mythInPlay = value;
+
+                if (mythInPlay != null)
+                {
+                    mythInPlay.gameObject.SetActive(true);
+                    mythInPlay.SetAnimatorTrigger("SwapIn");
+                }
+
+                mythInPlayChanged.Invoke(this);
+            }
         }
+    }
+
+    IEnumerator DisableSwappedOutMyth(Myth newMyth) // Need to wait a frame for the animator to return to a neutral pose, else when reenabled, will be incorrect
+    {
+        yield return new WaitForSeconds(0);
+        mythInPlay.gameObject.SetActive(false);
+
+        // Most of the following is duplicate code (beside the transform inheritance)
+        Vector3 position = MythInPlay.transform.position;
+        Quaternion rotation = MythInPlay.transform.rotation;
+        mythInPlay = newMyth;
+
+        if (mythInPlay != null)
+        {
+            mythInPlay.gameObject.SetActive(true);
+            mythInPlay.SetAnimatorTrigger("SwapIn");
+            MythInPlay.transform.position = position;
+            MythInPlay.transform.rotation = rotation;
+        }
+
+        mythInPlayChanged.Invoke(this);
     }
 
     // TODO: Should be cached for performance
@@ -362,11 +391,7 @@ public class PlayerParticipant : Participant
 
         if (myths[nextIndex].Health.Value > 0)
         {
-            Vector3 position = MythInPlay.transform.position;
-            Quaternion rotation = MythInPlay.transform.rotation;
             MythInPlay = myths[nextIndex];
-            MythInPlay.transform.position = position;
-            MythInPlay.transform.rotation = rotation;
             StartSwapCooldown();
             return;
         }
@@ -377,11 +402,7 @@ public class PlayerParticipant : Participant
 
         if (myths[nextIndex].Health.Value > 0)
         {
-            Vector3 position = MythInPlay.transform.position;
-            Quaternion rotation = MythInPlay.transform.rotation;
-           MythInPlay = myths[nextIndex];
-            MythInPlay.transform.position = position;
-            MythInPlay.transform.rotation = rotation;
+            MythInPlay = myths[nextIndex];
             StartSwapCooldown();
             return;
         }

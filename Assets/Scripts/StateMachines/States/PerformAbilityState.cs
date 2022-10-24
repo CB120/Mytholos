@@ -89,7 +89,8 @@ namespace StateMachines.States
                 if (abilityCommand.abilityData.performTime > 0)
                 {
                     //anim.SetTrigger("AttackSpecial");
-                    anim.SetTrigger("Charge");
+                    //anim.SetTrigger("Charge");
+                    //print("PerformAbilityState: Charge trigger set");
                 }
                 else
                 {
@@ -102,7 +103,10 @@ namespace StateMachines.States
             performAbilityComplete.Invoke();
 
             if (anim)
+            {
                 anim.SetBool("Attacking", false);
+                //print("PerformAbilityState: Attacking trigger set (after)");
+            }
         }
 
         private void Update()
