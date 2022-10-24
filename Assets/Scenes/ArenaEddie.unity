@@ -1244,11 +1244,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6.47
       objectReference: {fileID: 0}
-    - target: {fileID: 8852062810956013515, guid: b17c286d40c5bc6469f1e3d1333e6f68,
-        type: 3}
-      propertyPath: debrisVolumeScalar
-      value: 100000
-      objectReference: {fileID: 0}
     - target: {fileID: 8861604216155321242, guid: b17c286d40c5bc6469f1e3d1333e6f68,
         type: 3}
       propertyPath: m_LocalPosition.x
