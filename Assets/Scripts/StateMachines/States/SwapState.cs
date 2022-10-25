@@ -64,7 +64,7 @@ namespace StateMachines.States
                 // add some logic here to cancel the swap if you get hit!
             } else if (timer >= swapTime)
             {
-                swapCommand.sendingPlayer.SwapInDirection(swapCommand.TriggerIndex);
+                swapCommand.sendingPlayer.SwapFromCommand(swapCommand);
                 mythCommandHandler.DemoteCurrentCommand();
                 swapComplete.Invoke();
 

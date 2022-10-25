@@ -1,12 +1,16 @@
-using UnityEngine;
+using Myths;
 
 namespace StateMachines.Commands
 { 
     public class SwapCommand : Command
     {
-        public GameObject SwappingInMyth;
-        public int PartyIndex;
-        public int TriggerIndex;
+        public Myth mythToSwapIn;
         public PlayerParticipant sendingPlayer;
+
+        public SwapCommand(Myth mythToSwapIn, PlayerParticipant sendingPlayer)
+        {
+            this.mythToSwapIn = mythToSwapIn;
+            this.sendingPlayer = sendingPlayer;
+        }
     }
 }
