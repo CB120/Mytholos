@@ -18,6 +18,8 @@ public class FlurryAbility : Ability
 
     public override void Start()
     {
+        base.Start();
+
         var FlurryColor = PS1.colorOverLifetime;
 
         Gradient grad = new Gradient();
@@ -30,8 +32,6 @@ public class FlurryAbility : Ability
         FlurryColor.color = grad;
 
         Collider = gameObject.transform.GetChild(0);
-
-        PlayElementalSFX(); //remove this if you're adding base.Start() !
     }
 
     public override void Update()
