@@ -64,15 +64,6 @@ namespace StateMachines.States
                 // add some logic here to cancel the swap if you get hit!
             } else if (timer >= swapTime)
             {
-                //Debug.Log("Swap complete!");
-                if (ActiveMythController != null)
-                {
-                    ActiveMythController.GetComponent<PartyBuilder>().setSwappingTarget(swapCommand.SwappingInMyth, swapCommand.PartyIndex);
-                } else
-                {
-                    Debug.Log("Could not find the PartyBuilder to set the active myth on " + this.gameObject.name);
-                }
-
                 swapCommand.sendingPlayer.SwapInDirection(swapCommand.TriggerIndex);
                 mythCommandHandler.DemoteCurrentCommand();
                 swapComplete.Invoke();

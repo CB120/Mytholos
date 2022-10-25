@@ -15,12 +15,7 @@ public class PartyBuilder : MonoBehaviour
     // Keep these public lol
     public List<GameObject> Party1;
     public List<GameObject> Party2;
-
-    public GameObject Team1ActiveMyth;
-    public GameObject Team2ActiveMyth;
-
-    public SO_Ability[] allAbilities;
-
+    
     private int mythCounter = 0;
 
     Transform[] partyParents = new Transform[2];
@@ -31,7 +26,7 @@ public class PartyBuilder : MonoBehaviour
         //Ethan: these two lines were originall in Start(), moved them for BattleMusicController. If they're causing issues, move them back and tell me
         SetPartyParentReferences();
         SpawnParties();
-        SetDefaultTarget();
+        // SetDefaultTarget();
     }
 
     private void OnEnable()
@@ -47,6 +42,15 @@ public class PartyBuilder : MonoBehaviour
     private void InitialisePlayerParticipant(PlayerParticipant playerParticipant)
     {
         playerParticipant.Initialise();
+        
+        playerParticipant.mythInPlayChanged.AddListener(OnMythInPlayChanged);
+        
+        OnMythInPlayChanged(playerParticipant);
+    }
+
+    private void OnMythInPlayChanged(PlayerParticipant playerParticipant)
+    {
+        allParticipantData.partyData[1 - playerParticipant.partyIndex].myths.ForEach(myth => myth.targetEnemy = playerParticipant.MythInPlay.gameObject);
     }
 
     //Methods
@@ -74,37 +78,7 @@ public class PartyBuilder : MonoBehaviour
 
         foreach (var playerParticipant in playerParticipantRuntimeSet.items)
         {
-            playerParticipant.Initialise();
-        }
-    }
-
-    void SetDefaultTarget() // Will need to set this to be the myth in play instead
-    {
-        if (Party1.Count == Party2.Count && Party1 != null)
-        {
-            Team1ActiveMyth = Party1[0];
-            Team2ActiveMyth = Party2[0];
-            for (int i = 0; i < Party1.Count; i++)
-            {
-                Party1[i].GetComponent<Myth>().targetEnemy = Party2[i].gameObject;
-                Party2[i].GetComponent<Myth>().targetEnemy = Party1[i].gameObject;
-            }
-        }
-    }
-
-    public void setSwappingTarget(GameObject swappingInMyth, int Index)
-    {
-        if(Index == 0)
-        {
-            Team1ActiveMyth = swappingInMyth;
-            Team2ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
-            swappingInMyth.GetComponent<Myth>().targetEnemy = Team2ActiveMyth;
-        }
-        if(Index == 1)
-        {
-            Team2ActiveMyth = swappingInMyth;
-            Team1ActiveMyth.GetComponent<Myth>().targetEnemy = swappingInMyth;
-            swappingInMyth.GetComponent<Myth>().targetEnemy = Team1ActiveMyth;
+            InitialisePlayerParticipant(playerParticipant);
         }
     }
 
@@ -117,25 +91,6 @@ public class PartyBuilder : MonoBehaviour
                 participant.SwapInDirection(1);
             }
         }
-        /*
-        foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
-        {
-            if (participant.partyIndex == PartyIndex)
-            {
-                if (PartyIndex == 0)
-                {
-                    Team1ActiveMyth = participant.MythInPlay.gameObject;
-                    Team2ActiveMyth.GetComponent<Myth>().targetEnemy = participant.MythInPlay.gameObject;
-                    participant.MythInPlay.targetEnemy = Team2ActiveMyth;
-                }
-                 else if (PartyIndex == 1)
-                {
-                    Team2ActiveMyth = participant.MythInPlay.gameObject;
-                    Team1ActiveMyth.GetComponent<Myth>().targetEnemy = participant.MythInPlay.gameObject; ;
-                    participant.MythInPlay.targetEnemy = Team1ActiveMyth;
-                }
-            }
-    }*/
     }
 
 
