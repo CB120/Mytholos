@@ -1,6 +1,8 @@
+using System;
 using StateMachines;
 using StateMachines.Commands;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Myths
 {
@@ -9,6 +11,7 @@ namespace Myths
         [SerializeField] private MythStat health;
         [SerializeField] private MythStat stamina;
         [SerializeField] private MythCommandHandler mythCommandHandler;
+        [SerializeField] private MythRuntimeSet mythRuntimeSet;
         Animator anim;
         GameObject[] visuals;
 
@@ -48,6 +51,8 @@ namespace Myths
 
         public SpriteRenderer ring;
 
+        [NonSerialized] public UnityEvent<Myth> died = new();
+
         private void Awake()
         {
             walkSpeed = myth.agility;
@@ -60,13 +65,13 @@ namespace Myths
                 for (int i = 0; i < anim.transform.childCount; i++)
                      visuals[i] = anim.transform.GetChild(i).gameObject;
             }
+            
+            mythRuntimeSet.Add(this);
         }
 
-        /*Remove everything after this after 5/09/22*/
-        public WinState ws;
-        public void TemporaryUpdateTeam()
+        public void Die()
         {
-            ws.DecreaseScore(partyIndex);
+            died.Invoke(this);
         }
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
@@ -105,6 +110,11 @@ namespace Myths
 
             anim.SetTrigger(trigger);
             anim.speed = 1.0f;
+        }
+
+        private void OnDestroy()
+        {
+            mythRuntimeSet.Remove(this);
         }
     }
 }

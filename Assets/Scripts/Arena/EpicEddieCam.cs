@@ -25,6 +25,7 @@ public class EpicEddieCam : MonoBehaviour
         rotationX = transform.rotation.eulerAngles.x;
     }
 
+    // TODO: Duplicate code. See WinState.
     private void OnEnable()
     {
         playerParticipantRuntimeSet.itemAdded.AddListener(OnPlayerParticipantAdded);

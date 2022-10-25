@@ -1,17 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using Myths;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
+
 public class WinState : MonoBehaviour
 {
-    /*TO BE REMOVED AFTER MONDAY*/
-    // Apologies
-    public int team1Remaining = 3, team2Remaining = 3;
+    private int team1Remaining = 3;
+    private int team2Remaining = 3;
     //public GameObject obj;
     //public TextMeshProUGUI text;
 
@@ -23,8 +19,41 @@ public class WinState : MonoBehaviour
 
     [Header("Asset References")]
     [SerializeField] Sprite[] playerWinSprites;
+    [SerializeField] private MythRuntimeSet mythRuntimeSet;
 
-    public void DecreaseScore(int partyIndex)
+    // TODO: Duplicate code. See EpicEddieCam.
+    private void OnEnable()
+    {
+        mythRuntimeSet.itemAdded.AddListener(OnMythAdded);
+        mythRuntimeSet.itemRemoved.AddListener(OnMythRemoved);
+        
+        mythRuntimeSet.items.ForEach(OnMythAdded);
+    }
+
+    private void OnDisable()
+    {
+        mythRuntimeSet.itemAdded.RemoveListener(OnMythAdded);
+        mythRuntimeSet.itemRemoved.RemoveListener(OnMythRemoved);
+        
+        mythRuntimeSet.items.ForEach(OnMythRemoved);
+    }
+
+    private void OnMythAdded(Myth myth)
+    {
+        myth.died.AddListener(OnMythDied);
+    }
+
+    private void OnMythRemoved(Myth myth)
+    {
+        myth.died.RemoveListener(OnMythDied);
+    }
+
+    private void OnMythDied(Myth myth)
+    {
+        DecreaseScore(myth.partyIndex);
+    }
+
+    private void DecreaseScore(int partyIndex)
     {
         //print("Decrease score! Player " + partyIndex);
         //print("Team 1: " + team1Remaining + ", Team 2: " + team2Remaining + "(before)");
@@ -59,7 +88,7 @@ public class WinState : MonoBehaviour
     {
         //print("Well, we tried");
 
-        gameObject.SetActive(true);
+        resultsUI.gameObject.SetActive(true);
 
         // Swap player input controls schemes, disable their inputs momentarily for duration of transition
         foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
