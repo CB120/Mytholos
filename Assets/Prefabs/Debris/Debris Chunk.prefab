@@ -224,6 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0b10dd4d64a7d4ba4790cee3892b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 867638482405699770}
+  meshRenderer: {fileID: 3921508706532891433}
   debris: {fileID: 2219021158117508528}
   defaultMaterial: {fileID: 2100000, guid: c0824584fa3841d40b6f05a00ac9068c, type: 2}

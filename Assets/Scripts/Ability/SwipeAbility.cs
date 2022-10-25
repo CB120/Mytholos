@@ -10,7 +10,7 @@ public class SwipeAbility : Ability
 
     private void Awake()
     {
-        trail.startColor = ability.element.color * new Color(1, 1, 1, 0.8f);
+        trail.startColor = ability.element.color * new Color(1, 1, 1, 1f);
         trail.endColor = ability.element.color * new Color(1, 1, 1, 0.1f);
     }
 

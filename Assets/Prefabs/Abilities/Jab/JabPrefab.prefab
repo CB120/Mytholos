@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2c41013590b3c41bab6447388cfed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canTakeDamage: 0
   ability: {fileID: 1759088471933823970}
 --- !u!114 &3440545655334694797
 MonoBehaviour:
@@ -147,6 +148,7 @@ MonoBehaviour:
   timeToDestroyTakingDamageSFX: 0.4
   speed: 3
   jabDistance: 2.5
+  jabCollider: {fileID: 1759088471421078739}
 --- !u!114 &532436278829629379
 MonoBehaviour:
   m_ObjectHideFlags: 0
