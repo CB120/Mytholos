@@ -29,7 +29,10 @@ public class PlayerParticipant : Participant
     private bool isAvailableToDodge = true;
     [SerializeField] private float swappingCooldown = 2f;
     [SerializeField] private float dodgeCooldown = 2.25f;
+    [SerializeField] private PlayerInput playerInput;
 
+    public PlayerInput PlayerInput => playerInput;
+    
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
     // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
@@ -103,23 +106,19 @@ public class PlayerParticipant : Participant
         playerParticipantRuntimeSet.Remove(this);
     }
 
-    public void DisablePlayerInput(float timeToWait)
+    private InputActionMap oldInputActionMap;
+    
+    public void DisablePlayerInput(float timeToWait = 0)
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        if (input)
-        {
-            input.notificationBehavior = PlayerNotifications.SendMessages;
+        oldInputActionMap = playerInput.currentActionMap;
+        playerInput.currentActionMap = null;
+        if (timeToWait > 0)
             Invoke("EnablePlayerInput", timeToWait);
-        }    
     }
 
-    void EnablePlayerInput()
+    public void EnablePlayerInput()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        if (input)
-        {
-            input.notificationBehavior = PlayerNotifications.InvokeUnityEvents;
-        }
+        playerInput.currentActionMap = oldInputActionMap;
     }
 
     /*** In-Game Input events ***/

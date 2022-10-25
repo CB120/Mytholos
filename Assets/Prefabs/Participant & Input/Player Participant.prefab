@@ -392,5 +392,20 @@ MonoBehaviour:
   SelectAbility:
     m_PersistentCalls:
       m_Calls: []
+  FaceButtonNorth:
+    m_PersistentCalls:
+      m_Calls: []
+  FaceButtonWest:
+    m_PersistentCalls:
+      m_Calls: []
+  FaceButtonSouth:
+    m_PersistentCalls:
+      m_Calls: []
+  FaceButtonEast:
+    m_PersistentCalls:
+      m_Calls: []
+  swappingCooldown: 2
+  dodgeCooldown: 2.25
+  playerInput: {fileID: 2500836886932577087}
   currentMenuGraph: {fileID: 0}
   currentShoulderMenuGraph: {fileID: 0}

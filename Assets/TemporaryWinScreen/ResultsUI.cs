@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -31,6 +30,11 @@ namespace TemporaryWinScreen
 
         private void OnGameEnded(int winningPlayerIndex)
         {
+            StartCoroutine(OnGameEndedRoutine(winningPlayerIndex));
+        }
+        
+        private IEnumerator OnGameEndedRoutine(int winningPlayerIndex)
+        {
             //StartCoroutine(AnyButtonCoroutine());
             
             resultsUI.gameObject.SetActive(true);
@@ -42,31 +46,26 @@ namespace TemporaryWinScreen
                 if (participant.partyIndex == winningPlayerIndex)
                     participant.currentMenuGraph = resultsMenu;
 
-                PlayerInput input = participant.GetComponent<PlayerInput>();      // Temporarily commented out
-                // TODO: This causes errors by nulling the currentActionMap
-                // participant.DisablePlayerInput(0.35f);
-                input.actions.FindActionMap("Player").Disable();
-                input.actions.FindActionMap("UI").Enable();
-
-                // participant.DisablePlayerInput(2.0f);
+                participant.DisablePlayerInput();
             }
 
-            // StartCoroutine(UhhReloadTheScene());
-
-            // Begin transition to fade out gameplay UI and fade in results UI
-            StartCoroutine(FadeGameOutFadeResultsIn(0.35f));
+            resultsMenu.playerCursors[1 - winningPlayerIndex].gameObject.SetActive(false);
 
             // Do something with the camera
             FindObjectOfType<EpicEddieCam>().FocusOnSingleMyth(winningPlayerIndex);
 
             // Set winning text image based on winning player index
             playerWinImage.sprite = playerWinSprites[winningPlayerIndex];
-        }
+            
+            // Begin transition to fade out gameplay UI and fade in results UI
+            yield return StartCoroutine(FadeGameOutFadeResultsIn(0.35f));
+            
+            playerParticipantRuntimeSet.items.ForEach(playerParticipant =>
+            {
+                playerParticipant.EnablePlayerInput();
 
-        IEnumerator UhhReloadTheScene()
-        {
-            yield return new WaitForSeconds(2.0f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                playerParticipant.PlayerInput.currentActionMap = playerParticipant.PlayerInput.actions.FindActionMap("UI");
+            });
         }
 
         IEnumerator FadeGameOutFadeResultsIn(float duration)
@@ -83,7 +82,7 @@ namespace TemporaryWinScreen
                 playerWinImage.rectTransform.sizeDelta = originalSize * Mathf.Lerp((0.8f + 0.4f * Mathf.Sin(cycles * timer)), 1, timer / (duration + 0.5f));
 
                 timer += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
+                yield return null;
             }
 
             resultsUI.alpha = 1.0f;
@@ -94,7 +93,7 @@ namespace TemporaryWinScreen
                 playerWinImage.rectTransform.sizeDelta = originalSize * Mathf.Lerp((0.8f + 0.4f * Mathf.Sin(cycles * timer)), 1, timer / (duration + 0.5f));
 
                 timer += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
+                yield return null;
             }
 
             playerWinImage.rectTransform.sizeDelta = originalSize;

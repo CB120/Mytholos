@@ -9,6 +9,9 @@ public class WinState : MonoBehaviour
     private int team2Remaining = 3;
     [SerializeField] private MythRuntimeSet mythRuntimeSet;
 
+    [Header("Debug Only")]
+    [SerializeField] private int winningPlayerIndex;
+
     [NonSerialized] public UnityEvent<int> gameEnded = new();
 
     // TODO: Duplicate code. See EpicEddieCam.
@@ -66,6 +69,6 @@ public class WinState : MonoBehaviour
     [ContextMenu("EndGame")]
     private void EndGame()
     {
-        gameEnded.Invoke(0);
+        gameEnded.Invoke(winningPlayerIndex);
     }
 }
