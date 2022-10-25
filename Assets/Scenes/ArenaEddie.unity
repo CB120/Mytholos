@@ -337,6 +337,7 @@ MonoBehaviour:
     m_Position: {x: -25, y: 0, z: 9}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -352,6 +353,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &276039593
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +815,7 @@ MonoBehaviour:
     m_Position: {x: -8, y: 0, z: 9}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -826,6 +831,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &553383177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1373,7 @@ MonoBehaviour:
     m_Position: {x: -25, y: 0, z: -25}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1380,6 +1389,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &872990762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,6 +1586,7 @@ MonoBehaviour:
     m_Position: {x: 9, y: 0, z: 9}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1589,6 +1602,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1104835184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1697,7 @@ MonoBehaviour:
     m_Position: {x: -25, y: 0, z: -8}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1696,6 +1713,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1244497175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1765,7 @@ MonoBehaviour:
     m_Position: {x: 9, y: 0, z: -8}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1760,6 +1781,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1255947846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1978,7 @@ MonoBehaviour:
     m_Position: {x: -8, y: 0, z: -25}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1969,6 +1994,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1408446353 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5648047809976698020, guid: b17c286d40c5bc6469f1e3d1333e6f68,
@@ -2522,6 +2550,7 @@ MonoBehaviour:
     m_Position: {x: -8, y: 0, z: -8}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2537,6 +2566,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1635257903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3314,6 +3346,7 @@ MonoBehaviour:
     m_Position: {x: -25, y: 0, z: -25}
     m_Size: {x: 51, y: 1, z: 51}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3329,6 +3362,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1783465724 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 995921980033662125, guid: c17cf5ba58448ad4da03910679968464,
@@ -3466,6 +3502,7 @@ MonoBehaviour:
     m_Position: {x: 9, y: 0, z: -25}
     m_Size: {x: 17, y: 1, z: 17}
   numberOfTiles: 0
+  numberOfElectrifiedTiles: 0
   numberOfTilesWithElementChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3481,6 +3518,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numberOfElectrifiedTilesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2046280200
 GameObject:
   m_ObjectHideFlags: 0

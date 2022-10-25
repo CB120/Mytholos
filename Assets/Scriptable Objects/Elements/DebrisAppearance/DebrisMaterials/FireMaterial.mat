@@ -44,7 +44,7 @@ Material:
     - _RippleDensity: 2.11
     - _RippleSpeed: 0.1
     - _Slimness: 5
-    - _Speed: 0.1
+    - _Speed: 0.2
     - _Transparency: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0.42115396, b: 1, a: 0}
