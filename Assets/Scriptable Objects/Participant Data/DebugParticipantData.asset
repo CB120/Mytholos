@@ -24,9 +24,9 @@ MonoBehaviour:
     colour: {r: 0.9960785, g: 0.28627452, b: 0, a: 1}
     mythData:
     - myth: {fileID: 11400000, guid: eef9afa5bb251564b864e0a51212f126, type: 2}
-      northAbility: {fileID: 11400000, guid: ac83f7ad23eef2b489b1435af80c281a, type: 2}
-      westAbility: {fileID: 11400000, guid: 06920cb0f097ed04cad405a50771f12f, type: 2}
-      southAbility: {fileID: 11400000, guid: 1c272de22cfb9c94db5191816870afa6, type: 2}
+      northAbility: {fileID: 11400000, guid: 659245519ff68d8419f1d77daa1f022a, type: 2}
+      westAbility: {fileID: 11400000, guid: f1725c5da4b7b5c48bc06c39c90ed8e2, type: 2}
+      southAbility: {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
       eastAbility: {fileID: 11400000, guid: c822dd4f7a628384c90ea749ff06559f, type: 2}
     - myth: {fileID: 11400000, guid: da777e6a72da0f348a6a78174593eb60, type: 2}
       northAbility: {fileID: 11400000, guid: a5435924dbfaf9a4c9f3579b51dc8503, type: 2}
@@ -49,8 +49,8 @@ MonoBehaviour:
     colour: {r: 0, g: 0.050980397, b: 1, a: 1}
     mythData:
     - myth: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2, type: 2}
-      northAbility: {fileID: 11400000, guid: 063a6f1983b891247ab7d68b6542a149, type: 2}
-      westAbility: {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
+      northAbility: {fileID: 11400000, guid: 89cf5b13cba0b4346b08ae3f00554a5d, type: 2}
+      westAbility: {fileID: 11400000, guid: f1725c5da4b7b5c48bc06c39c90ed8e2, type: 2}
       southAbility: {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
       eastAbility: {fileID: 11400000, guid: d9da8405993fbc74fb9ef904e4858c9e, type: 2}
     - myth: {fileID: 11400000, guid: e96432c51e3d6624dabcff733645c4f2, type: 2}

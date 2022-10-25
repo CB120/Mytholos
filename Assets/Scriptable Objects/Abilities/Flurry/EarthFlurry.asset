@@ -15,7 +15,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
   name: Earth Flurry
   description: Flurry
-  damage: 15
+  damage: 10
   regenSpeed: 0
   statIncrease: 0
   staminaCost: 10

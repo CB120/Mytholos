@@ -26,6 +26,8 @@ namespace Myths
         {
             Attack(myth, ability.damage);
             base.Trigger(myth);
+
+            if (myth.partyIndex != owningMyth.partyIndex)
             jabCollider.enabled = false;
         }
     }

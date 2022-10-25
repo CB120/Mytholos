@@ -118,7 +118,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.25
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -224,8 +224,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
-      maxColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+      minColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.8983619, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -869,7 +869,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -979,7 +979,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 0
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1433,7 +1433,7 @@ ParticleSystem:
   UVModule:
     serializedVersion: 2
     enabled: 0
-    mode: 0
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -5203,6 +5203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuffPS (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8015084619428037446, guid: c3e50b964fcdb4946b351fab6ed03582,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e50b964fcdb4946b351fab6ed03582, type: 3}
 --- !u!4 &8529667066465975267 stripped
@@ -5557,6 +5562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuffPS (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015084619428037446, guid: c3e50b964fcdb4946b351fab6ed03582,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e50b964fcdb4946b351fab6ed03582, type: 3}

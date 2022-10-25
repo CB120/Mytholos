@@ -59,7 +59,7 @@ public class HealingAbility : Ability
     private void OnTriggerEnter(Collider other)
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null) return;
+        if (myth == null || myth.partyIndex != owningMyth.partyIndex) return;
         if (EffectWillRemain())
         {
             ApplyEffect(myth);
@@ -74,7 +74,7 @@ public class HealingAbility : Ability
     private void OnTriggerStay(Collider other)//Would have preferred this to be onTrigger Enter, however if there are overlapping pools, an effect may be removed
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null || EffectWillRemain()) return;
+        if (myth == null || EffectWillRemain() || myth.partyIndex != owningMyth.partyIndex) return;
             ApplyEffect(myth);
     }
 
@@ -89,6 +89,9 @@ public class HealingAbility : Ability
         {
             myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
         }
+
+        if (ability.element.element == Elements.Element.Wood)
+            myth.Health.RegenSpeed = 0;
 
         if (overlappedMyths.Contains(myth)) overlappedMyths.Remove(myth);
     }

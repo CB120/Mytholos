@@ -52,6 +52,11 @@ public class Effects : MonoBehaviour
     {
         DeactivateBuff(Element.Wood, true);
     }
+
+    public void CleanseHealthBuff()
+    {
+        myth.Health.RegenSpeed = 0;
+    }
     #endregion
 
     #region Electric - Baxter
@@ -325,6 +330,7 @@ public class Effects : MonoBehaviour
         RemoveIceOvershield();
         RemoveAgilityBuff();
         RemoveSizeBuff();
+        CleanseHealthBuff();
     }
 }
 
