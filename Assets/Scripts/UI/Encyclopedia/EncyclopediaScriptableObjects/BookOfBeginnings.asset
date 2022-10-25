@@ -34,10 +34,6 @@ MonoBehaviour:
     - Tab 3
     - tab 3 page 2
     Images: []
-  - Descriptions:
-    - Tab 4
-    - tab 4 page 2
-    Images: []
   tab1Name: About
   tab1PageTitle: Mytholos
   tab2Name: Party Builder

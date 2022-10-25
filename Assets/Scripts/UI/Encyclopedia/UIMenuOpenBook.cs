@@ -33,38 +33,33 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             selectedBookName.text = currentOpenBook.bookName;
         }
 
-        /* for each tab (Tab Data), 
-             for each description 
-
-             for each image
-         */
-
         for (int i = 0; i < currentOpenBook.tabData.Length; i++)
         {
-                for(int x = 0; x < currentOpenBook.tabData[i].Descriptions.Length; x++)
-                {
-                    nodes[i].GetComponent<UINodeTab>().descriptions[x].text = currentOpenBook.tabData[i].Descriptions[x];
-                }
+            for(int x = 0; x < currentOpenBook.tabData[i].Descriptions.Length; x++)
+            {
+                nodes[i].GetComponent<UINodeTab>().descriptions[x].text = currentOpenBook.tabData[i].Descriptions[x];
+            }
 
-                for (int y = 0; y < currentOpenBook.tabData[i].Images.Length; y++)
-                {
-                    if (currentOpenBook.tabData[i].Images[y] != null)
-                    {
-                    Debug.Log("This is getting called");
-                        nodes[i].GetComponent<UINodeTab>().images[y].sprite = currentOpenBook.tabData[i].Images[y];
-                    }
-                }
+            for (int y = 0; y < currentOpenBook.tabData[i].Images.Length; y++)
+            {
+                nodes[i].GetComponent<UINodeTab>().images[y].sprite = currentOpenBook.tabData[i].Images[y];
+            }
         }
     }
 
 
     private void OnDisable()
     {
-        //if (nodes.Count < 4 && removedNode != null)
-        //{
-        //nodes.Add(removedNode);
-        //}
-    }
+        for (int i = 0; i < currentOpenBook.tabs.Length; i++)
+        {
+            TabNames[i].text = " ";
+        }
+            //TODO : 
+            //if (nodes.Count < 4 && removedNode != null)
+            //{
+            //nodes.Add(removedNode);
+            //}
+        }
 
     public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction)
     {
