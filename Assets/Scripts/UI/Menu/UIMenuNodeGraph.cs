@@ -13,6 +13,7 @@ public class UIMenuNodeGraph : MonoBehaviour
     public float cursorPadding;
 
     [Header("Player action settings")]
+    [SerializeField] bool navigateToFirstGraphNodeAfterCancel;
     [SerializeField] bool navigateToLastGraphNodeOnCancel;
     [SerializeField] bool navigateToPreviousSceneOnCancel;
     [SerializeField] bool destroyAllParticipantsOnSceneCancel;
@@ -104,6 +105,10 @@ public class UIMenuNodeGraph : MonoBehaviour
             {
                 Navigate(nodes[nodes.Count - 1], playerNumber, UIMenuNode.Direction.Down);
                 return;
+            }
+            if (navigateToFirstGraphNodeAfterCancel)
+            {
+                Navigate(nodes[0], playerNumber, UIMenuNode.Direction.Down);
             }
         }
         else if (action == UIMenuNode.Action.HoldCancel)

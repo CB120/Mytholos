@@ -21,7 +21,7 @@ namespace StateMachines
         [SerializeField] protected Animator anim;
 
 
-        public void Awake()
+        protected virtual void Awake()
         {
             enabled = false;
             

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Electric Boomerang
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
-  name: Electric Boomerang
+  name: Bolterang
   description: Boomerang
   damage: 30
   regenSpeed: 0

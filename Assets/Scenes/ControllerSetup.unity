@@ -1243,6 +1243,7 @@ MonoBehaviour:
   displayInactiveCursors: 0
   allowCursorsToShareANode: 0
   cursorPadding: 0
+  navigateToFirstGraphNodeAfterCancel: 0
   navigateToLastGraphNodeOnCancel: 0
   navigateToPreviousSceneOnCancel: 1
   destroyAllParticipantsOnSceneCancel: 1

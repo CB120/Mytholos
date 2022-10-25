@@ -68,7 +68,10 @@ public class LobAbility : Ability
         main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
 
         hasExploded = true;
+
         explosionSFX.enabled = true; //SFX, added by Ethan
+        PlayElementalSFX();
+
         Destroy(this.gameObject, timeToDestroy);
     }
 
@@ -79,7 +82,6 @@ public class LobAbility : Ability
         {
             Attack(attackedMyth, ability.damage);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,6 +90,8 @@ public class LobAbility : Ability
         {
             GameObject sound = Instantiate(groundHitSFXPrefab, transform.position, Quaternion.identity);
             Destroy(sound, timeToDestroyGroundHit);
+
+            PlayElementalSFX();
         }
     }
 }

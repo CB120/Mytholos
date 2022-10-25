@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Ice
   m_EditorClassIdentifier: 
   color: {r: 0.427451, g: 0.95294124, b: 0.95294124, a: 1}
+  customMaterial: {fileID: 2100000, guid: dcd971c95f45e9442a36c7cb50b65cb9, type: 2}
   icon: {fileID: -341208457, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  debrisTexture: {fileID: 0}
   element: 4
   buffLength: 3
   debuffParticle: {fileID: 7488445921576471905, guid: 83604b8292e0efb47a538b31cb7ad216,
@@ -24,6 +26,10 @@ MonoBehaviour:
   strongAgainst:
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
+  weakAgainst:
+  - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
+  - {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
+  - {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}

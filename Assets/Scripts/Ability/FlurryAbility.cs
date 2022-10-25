@@ -18,6 +18,8 @@ public class FlurryAbility : Ability
 
     public override void Start()
     {
+        base.Start();
+
         var FlurryColor = PS1.colorOverLifetime;
 
         Gradient grad = new Gradient();
@@ -49,10 +51,12 @@ public class FlurryAbility : Ability
             Destroy(gameObject);
         }
     }
+
     public override void TriggerStay(Myth myth)
     {
         Trigger(myth);
     }
+
     public override void Trigger(Myth myth)
     {
         Attack(myth, ability.damage); //Called In The Parent Ability

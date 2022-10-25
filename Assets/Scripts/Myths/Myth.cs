@@ -9,6 +9,8 @@ namespace Myths
         [SerializeField] private MythStat health;
         [SerializeField] private MythStat stamina;
         [SerializeField] private MythCommandHandler mythCommandHandler;
+        Animator anim;
+        GameObject[] visuals;
 
         public MythStat Health => health;
         public MythStat Stamina => stamina;
@@ -18,6 +20,7 @@ namespace Myths
         public float walkSpeed;
         public float AttackStat;
         public float DefenceStat;
+        public float SizeStat;
         
         public GameObject targetEnemy;
         // TODO: Make serialised, fix naming mismatch
@@ -49,6 +52,14 @@ namespace Myths
         {
             walkSpeed = myth.agility;
             AttackStat = myth.attack;
+            SizeStat = myth.size;
+            anim = GetComponentInChildren<Animator>();
+            if (anim)
+            {
+                visuals = new GameObject[anim.transform.childCount];
+                for (int i = 0; i < anim.transform.childCount; i++)
+                     visuals[i] = anim.transform.GetChild(i).gameObject;
+            }
         }
 
         /*Remove everything after this after 5/09/22*/
@@ -60,7 +71,7 @@ namespace Myths
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {
-            mythCommandHandler.PushCommand(new KnockbackCommand(sendingMyth, myth.size, abilityKnockback, abilityStunTime));
+            mythCommandHandler.PushCommand(new KnockbackCommand(sendingMyth, SizeStat, abilityKnockback, abilityStunTime));
         }
 
         public void Stun(float abilityStunTime)
@@ -77,6 +88,23 @@ namespace Myths
             if (westAbility.staminaCost <= Stamina.Value) output++;
             if (southAbility.staminaCost <= Stamina.Value) output++;
             return output;
+        }
+
+        public void SetAnimatorTrigger(string trigger)
+        {
+            if (anim == null)
+            {
+                anim = GetComponentInChildren<Animator>();
+                if (anim == null) return;
+            }
+
+            bool enable = trigger != "Reset";
+
+            foreach (GameObject child in visuals)
+                child.SetActive(enable);
+
+            anim.SetTrigger(trigger);
+            anim.speed = 1.0f;
         }
     }
 }

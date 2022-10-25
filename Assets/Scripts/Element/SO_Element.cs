@@ -5,8 +5,14 @@ using Elements;
 [CreateAssetMenu(fileName = "Untitled", menuName = "ScriptableObjects/Element", order = 1)]
 public class SO_Element : ScriptableObject
 {
+    [Header("Appearance")]
     public Color color;
+    public Material customMaterial;
     public Sprite icon;
+    public Texture2D debrisTexture;
+    public Material electrifiedMaterial;
+
+    [Header("Properties")]
     public Element element;
     public float buffLength;
     public ParticleSystem debuffParticle;
@@ -15,6 +21,7 @@ public class SO_Element : ScriptableObject
 
     // TODO: Convert to HashSet
     public List<SO_Element> strongAgainst = new();
+    public List<SO_Element> weakAgainst = new();
 
     // TODO: Cyclic dependency. Do we need this?
     public bool hasDebris;
@@ -26,6 +33,7 @@ public class SO_Element : ScriptableObject
     [TextArea]
     public string debuffDescription;
 
+    //Are these necessary?
     public Color beamStartColor;
     public Color beamEndColor;
 

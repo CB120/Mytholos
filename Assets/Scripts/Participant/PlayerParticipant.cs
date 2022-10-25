@@ -41,22 +41,51 @@ public class PlayerParticipant : Participant
         private set
         {
             if (mythInPlay != null)
-                mythInPlay.gameObject.SetActive(false);
-            
-            mythInPlay = value;
-            
-            if (mythInPlay != null)
-                mythInPlay.gameObject.SetActive(true);
-            
-            mythInPlayChanged.Invoke(this);
+            {
+                mythInPlay.SetAnimatorTrigger("Reset");
+                StartCoroutine(DisableSwappedOutMyth(value));
+            }
+            else // This was added after commenting the following code (and only(?) gets called on scene start)
+            {
+                mythInPlay = value;
+
+                if (mythInPlay != null)
+                {
+                    mythInPlay.gameObject.SetActive(true);
+                    mythInPlay.SetAnimatorTrigger("SwapIn");
+                }
+
+                mythInPlayChanged.Invoke(this);
+            }
         }
+    }
+
+    IEnumerator DisableSwappedOutMyth(Myth newMyth) // Need to wait a frame for the animator to return to a neutral pose, else when reenabled, will be incorrect
+    {
+        yield return new WaitForSeconds(0);
+        mythInPlay.gameObject.SetActive(false);
+
+        // Most of the following is duplicate code (beside the transform inheritance)
+        Vector3 position = MythInPlay.transform.position;
+        Quaternion rotation = MythInPlay.transform.rotation;
+        mythInPlay = newMyth;
+
+        if (mythInPlay != null)
+        {
+            mythInPlay.gameObject.SetActive(true);
+            mythInPlay.SetAnimatorTrigger("SwapIn");
+            MythInPlay.transform.position = position;
+            MythInPlay.transform.rotation = rotation;
+        }
+
+        mythInPlayChanged.Invoke(this);
     }
 
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
 
     private List<Myth> mythsInReserve = new();
-    //private List<Myth> myths = new();
+    private List<Myth> myths = new();
 
     // Menu references
     public UIMenuNodeGraph currentMenuGraph;
@@ -164,41 +193,47 @@ public class PlayerParticipant : Participant
     public void SwitchLeft(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (mythsInReserve[0].Health.Value == 0) return;
+        //if (mythsInReserve[0].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
+            int currentMythIndex = myths.IndexOf(mythInPlay);
+            int nextIndex = (currentMythIndex + -1) % myths.Count;
+            if (nextIndex < 0) nextIndex = myths.Count - 1;
             SelectedMythCommandHandler.PushCommand(new SwapCommand());
             if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
-                swapCommand.SwappingInMyth = mythsInReserve[0].gameObject;
-                swapCommand.PartyIndex = mythsInReserve[0].partyIndex;
+                swapCommand.SwappingInMyth = myths[nextIndex].gameObject;
+                swapCommand.PartyIndex = myths[nextIndex].partyIndex;
                 swapCommand.sendingPlayer = this;
-                swapCommand.TriggerIndex = 0;
+                swapCommand.TriggerIndex = -1;
             }
         } else
         {
-            SwapReserveAtIndex(0);
+            SwapInDirection(-1); 
         }
     }
 
     public void SwitchRight(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (mythsInReserve[1].Health.Value == 0) return;
+        //if (mythsInReserve[1].Health.Value == 0) return;
         if (MythInPlay.Health.Value > 0)
         {
+            int currentMythIndex = myths.IndexOf(mythInPlay);
+            int nextIndex = (currentMythIndex + 1) % myths.Count;
+            if (nextIndex < 0) nextIndex = myths.Count - 1;
             SelectedMythCommandHandler.PushCommand(new SwapCommand());
             if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
-                swapCommand.SwappingInMyth = mythsInReserve[1].gameObject;
-                swapCommand.PartyIndex = mythsInReserve[1].partyIndex;
+                swapCommand.SwappingInMyth = myths[nextIndex].gameObject;
+                swapCommand.PartyIndex = myths[nextIndex].partyIndex;
                 swapCommand.sendingPlayer = this;
                 swapCommand.TriggerIndex = 1;
             }
         }
         else
         {
-            SwapReserveAtIndex(1);
+            SwapInDirection(1);
         }
     }
 
@@ -351,41 +386,35 @@ public class PlayerParticipant : Participant
         MythInPlay.transform.position = position;
     }
 
-    //private void SwapInDirection(int direction)
-    //{
-    //    if (!isAvailableToSwap) return;
+    
+    public void SwapInDirection(int direction)
+    {
+        if (!isAvailableToSwap) return;
 
-    //    // Try swap in specified direciton
-    //    int currentMythIndex = myths.IndexOf(mythInPlay);
-    //    int nextIndex = (currentMythIndex + direction) % myths.Count;
-    //    if (nextIndex < 0) nextIndex = myths.Count - 1;
+       // Try swap in specified direciton
+        int currentMythIndex = myths.IndexOf(mythInPlay);
+        int nextIndex = (currentMythIndex + direction) % myths.Count;
+        if (nextIndex < 0) nextIndex = myths.Count - 1;
 
-    //    if (myths[nextIndex].Health.Value > 0)
-    //    {
-    //        Vector3 position = MythInPlay.transform.position;
-    //        Quaternion rotation = MythInPlay.transform.rotation;
-    //        MythInPlay = myths[nextIndex];
-    //        MythInPlay.transform.position = position;
-    //        MythInPlay.transform.rotation = rotation;
-    //        StartSwapCooldown();
-    //        return;
-    //    }
+        if (myths[nextIndex].Health.Value > 0)
+        {
+            MythInPlay = myths[nextIndex];
+            StartSwapCooldown();
+            return;
+        }
 
-    //    // Try swap in other direction
-    //    nextIndex = (currentMythIndex - direction) % myths.Count;
-    //    if (nextIndex < 0) nextIndex = myths.Count - 1;
+        // Try swap in other direction
+        nextIndex = (currentMythIndex - direction) % myths.Count;
+        Debug.Log("Is this called?");
+        if (nextIndex < 0) nextIndex = myths.Count - 1;
 
-    //    if (myths[nextIndex].Health.Value > 0)
-    //    {
-    //        Vector3 position = MythInPlay.transform.position;
-    //        Quaternion rotation = MythInPlay.transform.rotation;
-    //        MythInPlay = myths[nextIndex];
-    //        MythInPlay.transform.position = position;
-    //        MythInPlay.transform.rotation = rotation;
-    //        StartSwapCooldown();
-    //        return;
-    //    }
-    //}
+        if (myths[nextIndex].Health.Value > 0)
+        {
+            MythInPlay = myths[nextIndex];
+            StartSwapCooldown();
+            return;
+        }
+    }
 
 
     private void StartSwapCooldown()
@@ -415,7 +444,7 @@ public class PlayerParticipant : Participant
     public void Initialise()
     {
         MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
-        //myths = ParticipantData.partyData[partyIndex].myths.ToList();
+        myths = ParticipantData.partyData[partyIndex].myths.ToList();
 
         mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
 

@@ -15,6 +15,7 @@ public class BombInFlight : MonoBehaviour
     public MeshRenderer mesh;
 
     public StudioEventEmitter bombFuseSFX; //SFX stuff added by Ethan
+    bool explosionElementalSFXPlayed = false;
 
     // Update is called once per frame
     void Update()
@@ -58,6 +59,12 @@ public class BombInFlight : MonoBehaviour
         Destroy(bomb.gameObject, destroySpeed);
 
         bombFuseSFX.enabled = false; //SFX stuff added by Ethan
+
+        if (!explosionElementalSFXPlayed)
+        {
+            bomb.PlayElementalSFX();
+            explosionElementalSFXPlayed = true;
+        }
     }
 
     //private void ResetScale()

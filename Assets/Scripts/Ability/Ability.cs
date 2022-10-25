@@ -4,6 +4,13 @@ using UnityEngine;
 using Myths;
 using Elements;
 
+[System.Serializable]
+public class ElementSFXPairs
+{
+    public Element element;
+    public GameObject sfx;
+}
+
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
     [Header("All-Ability Fields")]
@@ -16,9 +23,12 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     public float DamageMultiplier { get; set; } = 1;
 
-    private Element element { get => ability.element.element;}
+    protected Element element { get => ability.element.element;}
 
     [Header("All-Ability SFX")] //SFX stuff, added by Ethan
+    public ElementSFXPairs[] elementSFXPairs;
+    public float timeToDestroyElementSFX = 0.5f;
+
     public GameObject takingDamageSFXPrefab;
     public float timeToDestroyTakingDamageSFX = 0.4f;
 
@@ -28,6 +38,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         SOstunTime = ability.baseStun;
         SOknockbackStrength = ability.baseKnockback;
         owningMyth.Stamina.Value -= ability.staminaCost;
+
+        PlayElementalSFX();
     }
 
     virtual public void Update()
@@ -50,6 +62,13 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 Debug.Log("Attack is Strong!!");
                 elementModifier = 2;
             }
+
+            if (ability.element.weakAgainst.Contains(myth.element))
+            {
+                Debug.Log("Attack is Weak!!");
+                elementModifier = 0.5f;
+            }
+
             var finalDamage = damage * elementModifier * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
             //Debug.Log("attack stat is " + owningMyth.AttackStat + "Final Damage is " + finalDamage);
 
@@ -67,8 +86,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 myth.effectController.RemoveIceOvershield();
             }
 
-            GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
-            Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
+            PlayDamageSFX();
         }
         else
         {
@@ -219,7 +237,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
     {
         if (isInParty) return;
-        myth.effectController.DefenceDebuff(ability.element.buffLength);
+        myth.effectController.AttackDebuff(ability.element.buffLength);
         myth.effectController.ActivateBuff(Element.Metal, !isInParty);
     }
 
@@ -238,5 +256,27 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     #endregion
 
+    #region SFX
+    public void PlayElementalSFX()
+    {
+        foreach (ElementSFXPairs p in elementSFXPairs)
+        {
+            if (p.element == element)
+            {
+                GameObject sfx = Instantiate(p.sfx, transform);
+                Destroy(sfx, timeToDestroyElementSFX);
+                return;
+            }
+        }
+
+        Debug.LogWarning("No ElementSFXPair found with element " + element + "! Not playing anything...");
+    }
+
+    protected void PlayDamageSFX()
+    {
+        GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
+        Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
+    }
+    #endregion
 }
 
