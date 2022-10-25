@@ -18,17 +18,31 @@ MonoBehaviour:
   - Sound
   - Special
   tabData:
-  - Descriptions: []
+  - Descriptions:
+    - 
+    - 
     Images: []
-  - Descriptions: []
+    PageNames:
+    - 
+    - 
+  - Descriptions:
+    - 
+    - 
     Images: []
-  - Descriptions: []
+    PageNames:
+    - 
+    - 
+  - Descriptions:
+    - 
+    - 
     Images: []
-  tab1Name: Developers
-  tab1PageTitle: 
-  tab2Name: Musician
-  tab2PageTitle: 
-  tab3Name: Special
-  tab3PageTitle: 
-  tab4Name: 
-  tab4PageTitle: 
+    PageNames:
+    - 
+    - 
+  - Descriptions:
+    - 
+    - 
+    Images: []
+    PageNames:
+    - 
+    - 

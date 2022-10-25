@@ -8,7 +8,7 @@ public class UINodeTab : UIMenuNode
     [SerializeField] UIEncyclopediaManager encyclopediaManager;
 
     [Header("UI Object References")]
-    public TextMeshProUGUI pageTitle;
+    public TextMeshProUGUI[] pageTitles;
     public TextMeshProUGUI[] descriptions;
     //public TextMeshProUGUI descriptionTwo;
     public Image[] images;
@@ -23,8 +23,8 @@ public class UINodeTab : UIMenuNode
         if(images[0].sprite == null)
         {
                 images[0].gameObject.SetActive(false);
-                descriptions[0].transform.localPosition = new Vector3(65, -150, 0);
-                descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 140);
+                descriptions[0].transform.localPosition = new Vector3(65, -155, 0);
+                descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 215);
         } else
         {
             images[0].gameObject.SetActive(true);

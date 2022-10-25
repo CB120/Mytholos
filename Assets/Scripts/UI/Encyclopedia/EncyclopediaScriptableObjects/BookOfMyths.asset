@@ -14,31 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bookName: Book of Myths
   tabs:
+  - Bruv we gonna need a lot of tabs here
   - 
   - 
   - 
-  - 
-  tab1Name: 
-  tab1PageTitle: 
-  tab1DescriptionOne: 
-  tab1DescriptionTwo: 
-  tab1DescriptionThree: 
-  tab1Image: {fileID: 0}
-  tab2Name: 
-  tab2PageTitle: 
-  tab2DescriptionOne: 
-  tab2DescriptionTwo: 
-  tab2DescriptionThree: 
-  tab2Image: {fileID: 0}
-  tab3Name: 
-  tab3PageTitle: 
-  tab3DescriptionOne: 
-  tab3DescriptionTwo: 
-  tab3DescriptionThree: 
-  tab3Image: {fileID: 0}
-  tab4Name: 
-  tab4PageTitle: 
-  tab4DescriptionOne: 
-  tab4DescriptionTwo: 
-  tab4DescriptionThree: 
-  tab4Image: {fileID: 0}
+  tabData:
+  - Descriptions:
+    - 
+    - 
+    Images: []
+    PageNames:
+    - 
+    - 
+  - Descriptions:
+    - 
+    - 
+    Images: []
+    PageNames:
+    - 
+    - 
+  - Descriptions:
+    - 
+    - 
+    Images: []
+    PageNames:
+    - 
+    - 
+  - Descriptions:
+    - 
+    - 
+    Images: []
+    PageNames:
+    - 
+    - 
