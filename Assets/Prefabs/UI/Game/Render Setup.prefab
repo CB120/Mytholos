@@ -1400,6 +1400,8 @@ MonoBehaviour:
   resultsUI: {fileID: 6446870355371409973}
   playerWinImage: {fileID: 61910415390934491}
   resultsMenu: {fileID: 8283308852786903913}
+  playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
+    type: 2}
   playerWinSprites:
   - {fileID: 21300000, guid: aaf562a33558d314485bf01ccb2c4497, type: 3}
   - {fileID: 21300000, guid: 940a1713784e612489481cc022af4432, type: 3}

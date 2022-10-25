@@ -62,4 +62,10 @@ public class WinState : MonoBehaviour
             }
         }
     }
+
+    [ContextMenu("EndGame")]
+    private void EndGame()
+    {
+        gameEnded.Invoke(0);
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,9 +8,6 @@ namespace TemporaryWinScreen
 {
     public class ResultsUI : MonoBehaviour
     {
-        //public GameObject obj;
-        //public TextMeshProUGUI text;
-
         [Header("Scene References")]
         [SerializeField] private WinState winState;
         [SerializeField] CanvasGroup gameplayUI;
@@ -18,6 +16,7 @@ namespace TemporaryWinScreen
         [SerializeField] UIMenuNodeGraph resultsMenu;
 
         [Header("Asset References")]
+        [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
         [SerializeField] Sprite[] playerWinSprites;
 
         private void OnEnable()
@@ -32,27 +31,27 @@ namespace TemporaryWinScreen
 
         private void OnGameEnded(int winningPlayerIndex)
         {
-            //obj.SetActive(true);
             //StartCoroutine(AnyButtonCoroutine());
             
             resultsUI.gameObject.SetActive(true);
 
             // Swap player input controls schemes, disable their inputs momentarily for duration of transition
-            foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+            foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
             {
                 // Update the winning player's current UI graph to the results menu
-                //if (participant.partyIndex == winningPlayerIndex)
-                //    participant.currentMenuGraph = resultsMenu;
+                if (participant.partyIndex == winningPlayerIndex)
+                    participant.currentMenuGraph = resultsMenu;
 
-                //participant.DisablePlayerInput(0.35f);
-                //PlayerInput input = participant.GetComponent<PlayerInput>();      // Temporarily commented out
-                //input.actions.FindActionMap("Player").Disable();
-                //input.actions.FindActionMap("UI").Enable();
+                PlayerInput input = participant.GetComponent<PlayerInput>();      // Temporarily commented out
+                // TODO: This causes errors by nulling the currentActionMap
+                // participant.DisablePlayerInput(0.35f);
+                input.actions.FindActionMap("Player").Disable();
+                input.actions.FindActionMap("UI").Enable();
 
-                participant.DisablePlayerInput(2.0f);
+                // participant.DisablePlayerInput(2.0f);
             }
 
-            StartCoroutine(UhhReloadTheScene());
+            // StartCoroutine(UhhReloadTheScene());
 
             // Begin transition to fade out gameplay UI and fade in results UI
             StartCoroutine(FadeGameOutFadeResultsIn(0.35f));
