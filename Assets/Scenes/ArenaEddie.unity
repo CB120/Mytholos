@@ -355,7 +355,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928880}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &276039593
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +845,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928881}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &553383177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1415,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816495617}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &872990762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1640,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928882}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1104835184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1763,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818928883}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1244497175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,7 +1843,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816495618}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1255947846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,7 +2068,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 101470798}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1408446353 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5648047809976698020, guid: b17c286d40c5bc6469f1e3d1333e6f68,
@@ -2568,7 +2652,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816495619}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1635257903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3520,7 +3616,19 @@ MonoBehaviour:
         m_CallState: 2
   numberOfElectrifiedTilesChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1408446353}
+        m_TargetAssemblyTypeName: DebrisSFX, Assembly-CSharp
+        m_MethodName: OnDebrisElectrificationChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2046280200
 GameObject:
   m_ObjectHideFlags: 0
