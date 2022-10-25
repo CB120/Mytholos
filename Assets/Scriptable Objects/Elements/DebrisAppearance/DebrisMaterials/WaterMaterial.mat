@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireMaterial
+  m_Name: WaterMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 3f8bb3af1f7d26e4c87b2c5543325c37,
     type: 3}
   m_ValidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2b1c9e2e297655142b9f028255a3d549, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2ee79e856c41f2f4a9f00bb7313df91d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -45,7 +45,7 @@ Material:
     - _RippleSpeed: 0.1
     - _Slimness: 5
     - _Speed: 0.1
-    - _Transparency: 1
+    - _Transparency: 0.5
     m_Colors:
     - _BaseColor: {r: 0, g: 0.42115396, b: 1, a: 0}
     - _RippleColor: {r: 1.294118, g: 1.701961, b: 2, a: 0}
