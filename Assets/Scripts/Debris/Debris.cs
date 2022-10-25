@@ -34,8 +34,12 @@ namespace Debris
             get => isElectrified;
             set
             {
+                var changed = isElectrified != value;
+                
                 isElectrified = value;
-                isElectrifiedChanged.Invoke(this);
+                
+                if (changed)
+                    isElectrifiedChanged.Invoke(this);
             }
         }
 

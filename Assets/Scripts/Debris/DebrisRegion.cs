@@ -10,6 +10,7 @@ namespace Debris
         [SerializeField] private BoundsInt boundsInt;
         [Header("Debug Only")]
         [SerializeField] private int numberOfTiles;
+        [SerializeField] private int numberOfElectrifiedTiles;
         
         public int NumberOfTiles
         {
@@ -17,9 +18,16 @@ namespace Debris
             private set => numberOfTiles = value;
         }
 
+        public int NumberOfElectrifiedTiles
+        {
+            get => numberOfElectrifiedTiles;
+            private set => numberOfElectrifiedTiles = value;
+        }
+
         private readonly Dictionary<SO_Element, int> numberOfTilesWithElement = new();
 
         public UnityEvent numberOfTilesWithElementChanged = new();
+        public UnityEvent numberOfElectrifiedTilesChanged = new();
 
         private void OnEnable()
         {
@@ -37,6 +45,7 @@ namespace Debris
             
             // TODO: Unlisten?
             debris.elementChanged.AddListener(OnElementChanged);
+            debris.isElectrifiedChanged.AddListener(OnIsElectrifiedChanged);
 
             NumberOfTiles++;
         }
@@ -60,6 +69,16 @@ namespace Debris
         public int NumberOfTilesWithElement(SO_Element element)
         {
             return !numberOfTilesWithElement.ContainsKey(element) ? 0 : numberOfTilesWithElement[element];
+        }
+
+        private void OnIsElectrifiedChanged(Debris debris)
+        {
+            if (debris.IsElectrified)
+                NumberOfElectrifiedTiles++;
+            else
+                NumberOfElectrifiedTiles--;
+            
+            numberOfElectrifiedTilesChanged.Invoke();
         }
 
         private void OnDrawGizmosSelected()
