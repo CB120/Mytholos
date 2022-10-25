@@ -13,23 +13,26 @@ public class FlurryAbility : Ability
     Transform Collider;
 
     [Header("Flurry Ability Fields")]
-    [SerializeField] private ParticleSystem PS1;
-    [SerializeField] private ParticleSystem PS2;
+    [SerializeField] private ParticleSystem PS1; //Obsolete
+    [SerializeField] private ParticleSystem PS2; //Obsolete
+    [SerializeField] ParticleSystemRenderer pr;
 
     public override void Start()
     {
         base.Start();
 
-        var FlurryColor = PS1.colorOverLifetime;
+        //var FlurryColor = PS1.colorOverLifetime;
 
         Gradient grad = new Gradient();
-    
-        GradientColorKey StartColor = new GradientColorKey(ability.element.flurryStartColor, 0);
-        GradientColorKey EndColor = new GradientColorKey(ability.element.flurryEndColor, 1);
-        
-        grad.SetKeys(new GradientColorKey[] { StartColor, EndColor }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
 
-        FlurryColor.color = grad;
+        //GradientColorKey StartColor = new GradientColorKey(ability.element.flurryStartColor, 0);
+        //GradientColorKey EndColor = new GradientColorKey(ability.element.flurryEndColor, 1);
+
+        //grad.SetKeys(new GradientColorKey[] { StartColor, EndColor }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+
+        //FlurryColor.color = grad;
+
+        pr.material.SetColor("_Toon_Ramp_Tinting", ability.element.color * 1.25f);
 
         Collider = gameObject.transform.GetChild(0);
     }

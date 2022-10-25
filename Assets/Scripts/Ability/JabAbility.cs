@@ -9,7 +9,7 @@ namespace Myths
         [Header("Jab Ability Fields")]
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float jabDistance = 0.5f;
-
+        [SerializeField] private Collider jabCollider;
         public override void Start()
         {
             base.Start();
@@ -26,6 +26,7 @@ namespace Myths
         {
             Attack(myth, ability.damage);
             base.Trigger(myth);
+            jabCollider.enabled = false;
         }
     }
 }
