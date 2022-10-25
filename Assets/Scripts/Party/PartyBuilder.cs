@@ -108,6 +108,37 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
+    public void mythDeathSwap(int PartyIndex)
+    {
+        foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
+        {
+            if (participant.partyIndex == PartyIndex)
+            {
+                participant.SwapInDirection(1);
+            }
+        }
+        /*
+        foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
+        {
+            if (participant.partyIndex == PartyIndex)
+            {
+                if (PartyIndex == 0)
+                {
+                    Team1ActiveMyth = participant.MythInPlay.gameObject;
+                    Team2ActiveMyth.GetComponent<Myth>().targetEnemy = participant.MythInPlay.gameObject;
+                    participant.MythInPlay.targetEnemy = Team2ActiveMyth;
+                }
+                 else if (PartyIndex == 1)
+                {
+                    Team2ActiveMyth = participant.MythInPlay.gameObject;
+                    Team1ActiveMyth.GetComponent<Myth>().targetEnemy = participant.MythInPlay.gameObject; ;
+                    participant.MythInPlay.targetEnemy = Team1ActiveMyth;
+                }
+            }
+    }*/
+    }
+
+
     void SpawnMyth(MythData mythData, int participantIndex)
     {
         
@@ -145,6 +176,7 @@ public class PartyBuilder : MonoBehaviour
         newMyth.eastAbility = mythData.eastAbility;
         newMyth.PartyIndex = participantIndex;
         newMyth.ws = winState;
+        newMyth.pb = this;
         
         newMythGameObject.SetActive(false);
         

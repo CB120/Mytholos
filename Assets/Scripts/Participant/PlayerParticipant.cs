@@ -209,7 +209,7 @@ public class PlayerParticipant : Participant
             }
         } else
         {
-            SwapInDirection(-1); 
+            //SwapInDirection(-1); 
         }
     }
 
@@ -233,7 +233,7 @@ public class PlayerParticipant : Participant
         }
         else
         {
-            SwapInDirection(1);
+            //SwapInDirection(1);
         }
     }
 
