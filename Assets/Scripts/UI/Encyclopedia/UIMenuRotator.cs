@@ -33,9 +33,9 @@ public class UIMenuRotator : UIMenuNodeGraph
             }
         }
     }
-    public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction)
+    public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction, bool isPlayerInput)
     {
-        base.Navigate(node, playerNumber, direction);
+        base.Navigate(node, playerNumber, direction, isPlayerInput);
         
         if (direction == UIMenuNode.Direction.Left) // Replace the current books position with the position of its left-adjacent book. Repeat for every book.
         {

@@ -48,7 +48,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         UIMenuNode node = adjacent[index].GetComponent<UIMenuNode>(); // If there's a node in that direction, navigate to it and return its parent
         if (node != null)
         {
-            Navigate(node, playerNumber, direction);
+            Navigate(node, playerNumber, direction, true);
             return this;
         }
 
@@ -61,7 +61,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         return this;
     }
 
-    virtual public void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction)
+    virtual public void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction, bool isPlayerInput)
     {
         //print("Player" + playerNumber + " navigating " + direction + " to node " + node.name + " in " + name);
 
@@ -74,7 +74,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         else
         {
             playerCurrentNode[playerNumber] = node;
-            node.OnNavigate(playerNumber, direction); // Perform any behaviour that might occur when moving to this node
+            node.OnNavigate(playerNumber, direction, isPlayerInput); // Perform any behaviour that might occur when moving to this node
             UpdateCursorTransforms();
         }
     }
@@ -84,7 +84,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         //print("Navigating to a GRAPH");
         PlayerExitGraph(playerNumber);
         graph.PlayerEnterGraph(playerNumber);
-        graph.Navigate(graph.playerCurrentNode[playerNumber], playerNumber, direction);
+        graph.Navigate(graph.playerCurrentNode[playerNumber], playerNumber, direction, false);
         return graph; // Leave this graph, and in the adjacent graph, navigate to the current node
     }
 
@@ -103,12 +103,12 @@ public class UIMenuNodeGraph : MonoBehaviour
         {
             if (navigateToLastGraphNodeOnCancel)
             {
-                Navigate(nodes[nodes.Count - 1], playerNumber, UIMenuNode.Direction.Down);
+                Navigate(nodes[nodes.Count - 1], playerNumber, UIMenuNode.Direction.Down, false);
                 return;
             }
             if (navigateToFirstGraphNodeAfterCancel)
             {
-                Navigate(nodes[0], playerNumber, UIMenuNode.Direction.Down);
+                Navigate(nodes[0], playerNumber, UIMenuNode.Direction.Down, false);
             }
         }
         else if (action == UIMenuNode.Action.HoldCancel)

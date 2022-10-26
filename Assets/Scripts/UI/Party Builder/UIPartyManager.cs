@@ -160,7 +160,7 @@ public class UIPartyManager : MonoBehaviour
         {
             // Navigate that player's cursor to the node that matches the myth assigned to that team member
             UIMenuNode nodeInMythSelect = mythSelectionGraph.nodes[mythIndex];
-            mythSelectionGraph.Navigate(nodeInMythSelect, teamIndex, UIMenuNode.Direction.Right); // This should inherently also call SelectMyth();
+            mythSelectionGraph.Navigate(nodeInMythSelect, teamIndex, UIMenuNode.Direction.Right, false); // This should inherently also call SelectMyth();
         }
         // If no myth has been assigned to this, find the next available myth in myth selection, select it, update team member and myth details accordingly
         else
@@ -171,7 +171,7 @@ public class UIPartyManager : MonoBehaviour
                 prevIndex = playerTeamDetails[teamIndex].selectedMythIndices[selectedIndex - 1];
             }
             UIMenuNode nodeInMythSelect = mythSelectionGraph.nodes[GetFirstAvailableIndexInMythSelect(prevIndex)];
-            mythSelectionGraph.Navigate(nodeInMythSelect, teamIndex, UIMenuNode.Direction.Right); // This should inherently also call SelectMyth();
+            mythSelectionGraph.Navigate(nodeInMythSelect, teamIndex, UIMenuNode.Direction.Right, false); // This should inherently also call SelectMyth();
         }
     }
 
@@ -782,9 +782,9 @@ public class UIPartyManager : MonoBehaviour
 
             // Navigate team member graph to final/first member
             if (nextStage == 0)
-                graph.Navigate(graph.nodes[graph.nodes.Count - 1], counter, UIMenuNode.Direction.Down);
+                graph.Navigate(graph.nodes[graph.nodes.Count - 1], counter, UIMenuNode.Direction.Down, false);
             if (nextStage == 1)
-                graph.Navigate(graph.nodes[0], counter, UIMenuNode.Direction.Down);
+                graph.Navigate(graph.nodes[0], counter, UIMenuNode.Direction.Down, false);
 
             counter++;
         }
