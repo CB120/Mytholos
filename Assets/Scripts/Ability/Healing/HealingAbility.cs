@@ -167,6 +167,7 @@ public class HealingAbility : Ability
 
     public override void ApplyWoodEffect(Myth myth, bool isInParty)
     {
+        if(isInParty)
         myth.Health.RegenSpeed = ability.regenSpeed;
     }
 }

@@ -97,7 +97,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (ability.element.element != Element.Ice)
         {
-            ParticleSystem ps = Instantiate(particle, myth.transform.position, Quaternion.identity, myth.transform);
+            ParticleSystem ps = Instantiate(particle, myth.transform.position, particle.transform.rotation, myth.transform);
             if (ability.element.setParticleColor)
             {
                 Debug.LogWarning("Color is Set");

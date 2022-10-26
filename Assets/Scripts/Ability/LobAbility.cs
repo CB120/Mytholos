@@ -29,13 +29,9 @@ public class LobAbility : Ability
     [Tooltip("m/s meters per second | Minimum velocity for the ground hit sound to be heard")]
     public float groundHitSFXVelocityThreshold;
 
-    public void Awake()
-    {
-        rend.materials[1].SetColor("_Toon_Ramp_Tinting", ability.element.color);
-    }
-
     public override void Start()
     {
+        rend.materials[1].SetColor("_Toon_Ramp_Tinting", ability.element.color);
         Vector3 force = (Vector3.zero - transform.position) + new Vector3(0, 2, 0);
         if (owningMyth.targetEnemy)
         {
