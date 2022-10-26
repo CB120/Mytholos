@@ -94,7 +94,6 @@ public class Effects : MonoBehaviour
         if (appliedDebuffs.Contains(Element.Ice))
         {
             alternateIce.effectObject.SetActive(false);
-            //Instantiate(particle, myth.transform.position + ability.element.buffOffsetPos, Quaternion.identity, myth.transform);
             ParticleSystem ps = Instantiate(alternateIce.element.debuffParticle, myth.transform);
             DeactivateBuff(Element.Ice, true);
         }

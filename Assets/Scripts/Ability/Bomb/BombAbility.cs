@@ -30,15 +30,13 @@ public class BombAbility : Ability
 
     public void Awake()
     {
-
+        mesh.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
+        var main = childParticle.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
     }
 
     public override void Start()
     {
-        mesh.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
-        var main = childParticle.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(ability.element.color, ability.element.color * new Color(0.1f, 0.1f, 0.1f));
-
         startPos = transform.position;
         if (owningMyth.targetEnemy) 
         {
