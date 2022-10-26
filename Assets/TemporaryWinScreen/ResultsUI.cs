@@ -117,7 +117,7 @@ namespace TemporaryWinScreen
             nodeGraph.playerCursors[1 - controllingPlayerIndex].gameObject.SetActive(true);
 
             // Begin transition to fade out gameplay UI and fade in results UI
-            yield return StartCoroutine(FadeResultsOutFadeGameIn(0.35f));
+            yield return StartCoroutine(FadeResultsOutFadeGameIn(0.15f));
             
             playerParticipantRuntimeSet.items.ForEach(playerParticipant =>
             {
@@ -167,33 +167,21 @@ namespace TemporaryWinScreen
         {
             float timer = 0;
             Vector2 originalSize = playerWinImage.rectTransform.sizeDelta;
-            float cycles = Mathf.PI * 5.0f / (duration + 0.5f);
 
-            // while (timer < duration)
-            // {
-            //     resultsUI.alpha = timer / duration;
-            //     gameplayUI.alpha = 1 - timer / duration;
-            //
-            //     playerWinImage.rectTransform.sizeDelta = originalSize * Mathf.Lerp((0.8f + 0.4f * Mathf.Sin(cycles * timer)), 1, timer / (duration + 0.5f));
-            //
-            //     timer += Time.deltaTime;
-            //     yield return null;
-            // }
+            while (timer < duration)
+            {
+                gameplayUI.alpha = timer / duration;
+                resultsUI.alpha = 1 - timer / duration;
+
+                playerWinImage.rectTransform.sizeDelta = Mathf.Cos(timer / duration * Mathf.PI * 0.5f) * originalSize;
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
 
             resultsUI.alpha = 0.0f;
             gameplayUI.alpha = 1.0f;
-
-            // while (timer < duration + 0.5f)
-            // {
-            //     playerWinImage.rectTransform.sizeDelta = originalSize * Mathf.Lerp((0.8f + 0.4f * Mathf.Sin(cycles * timer)), 1, timer / (duration + 0.5f));
-            //
-            //     timer += Time.deltaTime;
-            //     yield return null;
-            // }
-
             playerWinImage.rectTransform.sizeDelta = originalSize;
-            
-            yield return null;
         }
     }
 }
