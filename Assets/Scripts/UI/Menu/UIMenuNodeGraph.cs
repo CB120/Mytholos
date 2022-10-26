@@ -69,7 +69,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         {
             playerCurrentNode[playerNumber] = node;
             int index = (int)direction;
-            ParseNavigation(direction, playerNumber, false);
+            ParseNavigation(direction, playerNumber, isPlayerInput);
         }
         else
         {

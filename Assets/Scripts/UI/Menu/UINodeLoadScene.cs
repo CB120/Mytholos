@@ -17,8 +17,8 @@ public class UINodeLoadScene : UIMenuNode
         switch (action)
         {
             case Action.Submit:
-
-                UISFXManager.PlaySound("Game Start");
+                if (nameOfSceneToLoad == "ControllerSetup") UISFXManager.PlaySound("Game Start");
+                if (nameOfSceneToLoad == "Encyclopedia") UISFXManager.PlaySound("To Encyclopaedia");
 
                 if (transitionAnimator)
                 {
