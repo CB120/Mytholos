@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using Myths;
 using Debris;
+using System.Linq;
 
 [System.Serializable]
 public class MusicLayer
@@ -49,6 +50,8 @@ public class BattleMusicController : MonoBehaviour
     [Header("Asset References")]
     public AllParticipantDataService allParticipantDataService;
     public SO_Element[] allElements;
+    public SO_Element[] nonDebrisElements;
+    public SO_Element windElement;
 
 
     // Engine-called
@@ -84,7 +87,6 @@ public class BattleMusicController : MonoBehaviour
     {
         CalculateElementScores();
         UpdateTargetVolumes();
-        ResetAllScores();
     }
 
 
@@ -106,15 +108,18 @@ public class BattleMusicController : MonoBehaviour
     {
         musicLayers[GetIndexOfLayer(element.name)].score = int.MaxValue;
         UpdateTargetVolumes();
-        ResetAllScores();
+
+        if (element != windElement) ResetAllScores();
     }
 
     void CalculateElementScores()
     {
         for (int i = 0; i < allElements.Length; i++)
         {
-            musicLayers[i].score = debrisRegion.NumberOfTilesWithElement(allElements[i]);
+            if (!nonDebrisElements.Contains(allElements[i])) musicLayers[i].score = debrisRegion.NumberOfTilesWithElement(allElements[i]);
         }
+
+        Debug.Log("This is still getting called!");
     }
 
     void CalculateInitialScores()
