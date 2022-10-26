@@ -6,9 +6,9 @@ public class UINodePartyMember : UIMenuNode
 {
     public UIPartyManager manager;
 
-    override public void OnNavigate(int playerNumber, Direction direction)
+    override public void OnNavigate(int playerNumber, Direction direction, bool isPlayerInput)
     {
-        base.OnNavigate(playerNumber, direction);
+        base.OnNavigate(playerNumber, direction, isPlayerInput);
         manager.SelectTeamMember(playerNumber, this);
     }
 

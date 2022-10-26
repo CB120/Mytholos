@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 724803783770948495}
   - component: {fileID: 7099808520127916165}
   - component: {fileID: 5974996241972856419}
+  - component: {fileID: -403250428783916233}
   m_Layer: 0
   m_Name: WoodDebuff
   m_TagString: Untagged
@@ -169,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -286,7 +287,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.5
-      minScalar: 0.16666667
+      minScalar: 0.25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -662,7 +663,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 32.62
+    angle: 26.49
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
@@ -3861,7 +3862,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 951
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4888,3 +4889,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-403250428783916233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546804521237601894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb82549859602c4b9fff860bbcc061c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

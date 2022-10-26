@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3282898990927684210}
   - component: {fileID: 4974120466902501752}
   - component: {fileID: 8460932615328458654}
+  - component: {fileID: 3594731077400122655}
   m_Layer: 0
   m_Name: WindDebuffPS
   m_TagString: Untagged
@@ -4888,3 +4889,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3594731077400122655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312200242735136667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb82549859602c4b9fff860bbcc061c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -52,6 +52,12 @@ public class Effects : MonoBehaviour
     {
         DeactivateBuff(Element.Wood, true);
     }
+
+    public void CleanseHealthBuff()
+    {
+        myth.Health.RegenSpeed = 0;
+        Debug.Log("Health Buff Cleansed");
+    }
     #endregion
 
     #region Electric - Baxter
@@ -89,6 +95,7 @@ public class Effects : MonoBehaviour
         if (appliedDebuffs.Contains(Element.Ice))
         {
             alternateIce.effectObject.SetActive(false);
+            //Instantiate(particle, myth.transform.position + ability.element.buffOffsetPos, Quaternion.identity, myth.transform);
             ParticleSystem ps = Instantiate(alternateIce.element.debuffParticle, myth.transform);
             DeactivateBuff(Element.Ice, true);
         }
@@ -325,6 +332,7 @@ public class Effects : MonoBehaviour
         RemoveIceOvershield();
         RemoveAgilityBuff();
         RemoveSizeBuff();
+        CleanseHealthBuff();
     }
 }
 

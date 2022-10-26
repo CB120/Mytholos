@@ -40,6 +40,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         owningMyth.Stamina.Value -= ability.staminaCost;
 
         PlayElementalSFX();
+        AdjustMusicLayers();
     }
 
     virtual public void Update()
@@ -49,6 +50,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void Attack(Myth myth, float damage)
     {
+        if (!myth.gameObject.activeInHierarchy) return;
         bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
         if (isInParty && !ability.applyBuffToParty) return; //Guard if we don't want ability to give allies buffs
 
@@ -59,13 +61,13 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         {
             if (ability.element.strongAgainst.Contains(myth.element))
             {
-                Debug.Log("Attack is Strong!!");
+                //Debug.Log("Attack is Strong!!");
                 elementModifier = 2;
             }
 
             if (ability.element.weakAgainst.Contains(myth.element))
             {
-                Debug.Log("Attack is Weak!!");
+                //Debug.Log("Attack is Weak!!");
                 elementModifier = 0.5f;
             }
 
@@ -96,10 +98,10 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         if (ability.element.element != Element.Ice)
         {
-            ParticleSystem ps = Instantiate(particle, myth.transform);
+            ParticleSystem ps = Instantiate(particle, myth.transform.position, particle.transform.rotation, myth.transform);
             if (ability.element.setParticleColor)
             {
-                Debug.LogWarning("Color is Set");
+                //Debug.LogWarning("Color is Set");
                 ParticleSystem.MainModule main = ps.main;
                 main.startColor = ability.element.color;
             }
@@ -256,7 +258,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     #endregion
 
-    #region SFX
+    #region Music & SFX
     public void PlayElementalSFX()
     {
         foreach (ElementSFXPairs p in elementSFXPairs)
@@ -276,6 +278,21 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     {
         GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
         Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
+    }
+
+    void AdjustMusicLayers()
+    {
+        switch (element) 
+        {
+            case Element.Electric:
+                BattleMusicController.OnElectricAbility();
+                return;
+            case Element.Wind:
+                BattleMusicController.OnWindAbility();
+                return;
+            default:
+                return;
+        }
     }
     #endregion
 }

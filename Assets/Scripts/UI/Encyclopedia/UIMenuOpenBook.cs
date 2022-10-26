@@ -68,9 +68,9 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             //}
         }
 
-    public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction)
+    public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction, bool isPlayerInput)
     {
-        base.Navigate(node, playerNumber, direction);
+        base.Navigate(node, playerNumber, direction, isPlayerInput);
         for (int i = 0; i < nodes.Count; i++)
         {
             if (nodes[i].GetComponent<UINodeTab>().informationSector.gameObject != null)

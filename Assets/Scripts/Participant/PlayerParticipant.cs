@@ -273,14 +273,14 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input UP. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
-        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Up, partyIndex);
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Up, partyIndex, true);
     }
     public void NavigateDown(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input DOWN. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
-        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Down, partyIndex);
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Down, partyIndex, true);
     }
 
     public void NavigateRight(InputAction.CallbackContext context)
@@ -288,12 +288,12 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input RIGHT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
-        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex, true);
 
         // If it works it works
         if (!context.performed) return;
         if (currentShoulderMenuGraph == null) return;
-        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex, true);
     }
 
     public void NavigateLeft(InputAction.CallbackContext context)
@@ -301,26 +301,26 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         //print("Player " + partyIndex + " just input LEFT. Current graph: " + currentMenuGraph.gameObject.name + ", current node: " + currentMenuGraph.playerCurrentNode[partyIndex]);
-        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+        currentMenuGraph = currentMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex, true);
 
         // If it works it works
         if (!context.performed) return;
         if (currentShoulderMenuGraph == null) return;
-        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex, true);
     }
 
     public void NavigateRightShoulder(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         if (currentShoulderMenuGraph == null) return;
-        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex);
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Right, partyIndex, true);
     }
 
     public void NavigateLeftShoulder(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         if (currentShoulderMenuGraph == null) return;
-        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex);
+        currentShoulderMenuGraph = currentShoulderMenuGraph.ParseNavigation(UIMenuNode.Direction.Left, partyIndex, true);
     }
 
     public void AssignNorth(InputAction.CallbackContext context)
