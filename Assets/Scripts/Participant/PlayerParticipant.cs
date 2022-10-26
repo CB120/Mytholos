@@ -19,6 +19,8 @@ public class PlayerParticipant : Participant
     public UnityEvent<int> SelectMyth = new();
     public UnityEvent<SO_Ability> SelectAbility = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
+    [NonSerialized] public UnityEvent<PlayerParticipant> pauseRequested = new();
+    [NonSerialized] public UnityEvent<PlayerParticipant> resumeRequested = new();
     public UnityEvent<bool> FaceButtonNorth = new();
     public UnityEvent<bool> FaceButtonWest = new();
     public UnityEvent<bool> FaceButtonSouth = new();
@@ -187,6 +189,13 @@ public class PlayerParticipant : Participant
         SelectedMythCommandHandler.PushCommand(new AbilityCommand(ability));
 
         SelectAbility.Invoke(ability);
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        pauseRequested.Invoke(this);
     }
 
     public void SwitchLeft(InputAction.CallbackContext context)
@@ -366,6 +375,13 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.Start, partyIndex);
+    }
+
+    public void Resume(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        resumeRequested.Invoke(this);
     }
 
     #endregion

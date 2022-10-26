@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TemporaryWinScreen
@@ -9,54 +8,89 @@ namespace TemporaryWinScreen
     {
         [Header("Scene References")]
         [SerializeField] private WinState winState;
+        [SerializeField] private PauseController pauseController;
         [SerializeField] CanvasGroup gameplayUI;
         [SerializeField] CanvasGroup resultsUI;
         [SerializeField] Image playerWinImage;
         [SerializeField] UIMenuNodeGraph resultsMenu;
+        [SerializeField] private UIMenuNodeGraph pauseMenu;
 
         [Header("Asset References")]
         [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
         [SerializeField] Sprite[] playerWinSprites;
+        [SerializeField] private Sprite pausedTextSprite;
 
         private void OnEnable()
         {
             winState.gameEnded.AddListener(OnGameEnded);
+            
+            pauseController.paused.AddListener(OnPaused);
+            pauseController.resumed.AddListener(OnResumed);
         }
         
         private void OnDisable()
         {
             winState.gameEnded.RemoveListener(OnGameEnded);
+            
+            pauseController.paused.RemoveListener(OnPaused);
+            pauseController.resumed.RemoveListener(OnResumed);
+        }
+
+        private void OnPaused()
+        {
+            StartCoroutine(OnGamePausedRoutine(pauseController.PausingPlayer.partyIndex));
+        }
+
+        private void OnResumed()
+        {
+            StartCoroutine(OnGameResumedRoutine(pauseController.PausingPlayer.partyIndex));
         }
 
         private void OnGameEnded(int winningPlayerIndex)
         {
             StartCoroutine(OnGameEndedRoutine(winningPlayerIndex));
         }
+
+        private IEnumerator OnGamePausedRoutine(int pausingPlayerIndex)
+        {
+            playerWinImage.sprite = pausedTextSprite;
+            
+            yield return StartCoroutine(DisableInputAndDisplay(pausingPlayerIndex, pauseMenu));
+        }
+
+        private IEnumerator OnGameResumedRoutine(int pausingPlayerIndex)
+        {
+            yield return StartCoroutine(DisableInputAndHide(pausingPlayerIndex, pauseMenu));
+        }
         
         private IEnumerator OnGameEndedRoutine(int winningPlayerIndex)
         {
-            //StartCoroutine(AnyButtonCoroutine());
-            
+            FindObjectOfType<EpicEddieCam>().FocusOnSingleMyth(winningPlayerIndex);
+
+            // Set winning text image based on winning player index
+            playerWinImage.sprite = playerWinSprites[winningPlayerIndex];
+
+            yield return StartCoroutine(DisableInputAndDisplay(winningPlayerIndex, resultsMenu));
+        }
+
+        private IEnumerator DisableInputAndDisplay(int controllingPlayerIndex, UIMenuNodeGraph nodeGraph)
+        {
             resultsUI.gameObject.SetActive(true);
+
+            nodeGraph.gameObject.SetActive(true);
 
             // Swap player input controls schemes, disable their inputs momentarily for duration of transition
             foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
             {
                 // Update the winning player's current UI graph to the results menu
-                if (participant.partyIndex == winningPlayerIndex)
-                    participant.currentMenuGraph = resultsMenu;
+                if (participant.partyIndex == controllingPlayerIndex)
+                    participant.currentMenuGraph = nodeGraph;
 
                 participant.DisablePlayerInput();
             }
 
-            resultsMenu.playerCursors[1 - winningPlayerIndex].gameObject.SetActive(false);
+            nodeGraph.playerCursors[1 - controllingPlayerIndex].gameObject.SetActive(false);
 
-            // Do something with the camera
-            FindObjectOfType<EpicEddieCam>().FocusOnSingleMyth(winningPlayerIndex);
-
-            // Set winning text image based on winning player index
-            playerWinImage.sprite = playerWinSprites[winningPlayerIndex];
-            
             // Begin transition to fade out gameplay UI and fade in results UI
             yield return StartCoroutine(FadeGameOutFadeResultsIn(0.35f));
             
@@ -66,6 +100,35 @@ namespace TemporaryWinScreen
 
                 playerParticipant.PlayerInput.currentActionMap = playerParticipant.PlayerInput.actions.FindActionMap("UI");
             });
+        }
+
+        private IEnumerator DisableInputAndHide(int controllingPlayerIndex, UIMenuNodeGraph nodeGraph)
+        {
+            // Swap player input controls schemes, disable their inputs momentarily for duration of transition
+            foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
+            {
+                // Update the winning player's current UI graph to the results menu
+                // if (participant.partyIndex == controllingPlayerIndex)
+                //     participant.currentMenuGraph = resultsMenu;
+
+                participant.DisablePlayerInput();
+            }
+
+            nodeGraph.playerCursors[1 - controllingPlayerIndex].gameObject.SetActive(true);
+
+            // Begin transition to fade out gameplay UI and fade in results UI
+            yield return StartCoroutine(FadeResultsOutFadeGameIn(0.35f));
+            
+            playerParticipantRuntimeSet.items.ForEach(playerParticipant =>
+            {
+                playerParticipant.EnablePlayerInput();
+
+                playerParticipant.PlayerInput.currentActionMap = playerParticipant.PlayerInput.actions.FindActionMap("Player");
+            });
+            
+            resultsUI.gameObject.SetActive(false);
+            
+            nodeGraph.gameObject.SetActive(false);
         }
 
         IEnumerator FadeGameOutFadeResultsIn(float duration)
@@ -99,35 +162,38 @@ namespace TemporaryWinScreen
             playerWinImage.rectTransform.sizeDelta = originalSize;
         }
 
-        //private IEnumerator AnyButtonCoroutine()
-        //{
-        //    yield return new WaitForSeconds(1);
+        // TODO:
+        private IEnumerator FadeResultsOutFadeGameIn(float duration)
+        {
+            float timer = 0;
+            Vector2 originalSize = playerWinImage.rectTransform.sizeDelta;
+            float cycles = Mathf.PI * 5.0f / (duration + 0.5f);
 
-        //    InputSystem.onEvent += OnAnyButtonPressed;
-        //}
+            // while (timer < duration)
+            // {
+            //     resultsUI.alpha = timer / duration;
+            //     gameplayUI.alpha = 1 - timer / duration;
+            //
+            //     playerWinImage.rectTransform.sizeDelta = originalSize * Mathf.Lerp((0.8f + 0.4f * Mathf.Sin(cycles * timer)), 1, timer / (duration + 0.5f));
+            //
+            //     timer += Time.deltaTime;
+            //     yield return null;
+            // }
 
-        //public void RestartGame()
-        //{
-        //    obj.SetActive(false);
+            resultsUI.alpha = 0.0f;
+            gameplayUI.alpha = 1.0f;
 
-        //    InputSystem.onEvent -= OnAnyButtonPressed;
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //}
+            // while (timer < duration + 0.5f)
+            // {
+            //     playerWinImage.rectTransform.sizeDelta = originalSize * Mathf.Lerp((0.8f + 0.4f * Mathf.Sin(cycles * timer)), 1, timer / (duration + 0.5f));
+            //
+            //     timer += Time.deltaTime;
+            //     yield return null;
+            // }
 
-        //// TODO: Copied from Round Robbin. Not optimal at all.
-        //private void OnAnyButtonPressed(InputEventPtr eventPtr, InputDevice device)
-        //{
-        //    if (!eventPtr.IsA<StateEvent>() && !eventPtr.IsA<DeltaStateEvent>()) return;
-
-        //    // Copied from InputUser, works somehow.
-        //    foreach (var control in eventPtr.EnumerateChangedControls(device: device, magnitudeThreshold: 0.0001f))
-        //    {
-        //        if (control == null || control.synthetic || control.noisy) continue;
-
-        //        RestartGame();
-
-        //        break;
-        //    }
-        //}
+            playerWinImage.rectTransform.sizeDelta = originalSize;
+            
+            yield return null;
+        }
     }
 }

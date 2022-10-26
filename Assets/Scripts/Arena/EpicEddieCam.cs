@@ -25,7 +25,7 @@ public class EpicEddieCam : MonoBehaviour
         rotationX = transform.rotation.eulerAngles.x;
     }
 
-    // TODO: Duplicate code. See WinState.
+    // TODO: Duplicate code. See WinState and PauseController.
     private void OnEnable()
     {
         playerParticipantRuntimeSet.itemAdded.AddListener(OnPlayerParticipantAdded);
