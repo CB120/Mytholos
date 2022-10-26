@@ -14,7 +14,7 @@ public class MusicLayer
     [Tooltip("Current Layer volume")]
     [Range(0, 100)] public float volume = 0f;
     //[Tooltip("Fade-in/out target volume")]
-    [HideInInspector][Range(0, 100)] public float targetVolume = 0f; 
+    [Range(0, 100)] public float targetVolume = 0f; 
     [Tooltip("If enabled, Volume slider allows direct control of FMOD parameter")]
     public bool manualVolumeOverride = false;
 
@@ -51,7 +51,6 @@ public class BattleMusicController : MonoBehaviour
     public AllParticipantDataService allParticipantDataService;
     public SO_Element[] allElements;
     public SO_Element[] nonDebrisElements;
-    public SO_Element windElement;
 
 
     // Engine-called
@@ -104,22 +103,12 @@ public class BattleMusicController : MonoBehaviour
 
     // Methods
         // Private
-    void OnNonDebrisAbility(SO_Element element)
-    {
-        musicLayers[GetIndexOfLayer(element.name)].score = int.MaxValue;
-        UpdateTargetVolumes();
-
-        if (element != windElement) ResetAllScores();
-    }
-
     void CalculateElementScores()
     {
         for (int i = 0; i < allElements.Length; i++)
         {
             if (!nonDebrisElements.Contains(allElements[i])) musicLayers[i].score = debrisRegion.NumberOfTilesWithElement(allElements[i]);
         }
-
-        Debug.Log("This is still getting called!");
     }
 
     void CalculateInitialScores()
@@ -132,6 +121,9 @@ public class BattleMusicController : MonoBehaviour
             foreach (Myth m in p.myths)
             {
                 musicLayers[GetIndexOfLayer(m.element.name)].score++;
+
+                if (m.element.name == "Wind") Invoke("ZeroWindTargetVolume", nonDebrisFadeOutDelay);
+                if (m.element.name == "Electric") Invoke("ZeroElectricTargetVolume", nonDebrisFadeOutDelay);
             }
         }
     }
@@ -164,7 +156,7 @@ public class BattleMusicController : MonoBehaviour
 
         for (int i = 0; i < musicLayers.Length; i++)
         {
-            if (!maxLayerIndexes.Contains(i)) musicLayers[i].targetVolume = 0f;
+            if (!maxLayerIndexes.Contains(i) && !nonDebrisElements.Contains(allElements[i])) musicLayers[i].targetVolume = 0f;
         }
     }
 
@@ -227,13 +219,13 @@ public class BattleMusicController : MonoBehaviour
     // Helpers
     void S_OnElectricAbility()
     {
-        OnNonDebrisAbility(allElements[GetIndexOfElement("Electric")]);
+        musicLayers[GetIndexOfElement("Electric")].targetVolume = 100f;
         Invoke("ZeroElectricTargetVolume", nonDebrisFadeOutDelay);
     }
 
     void S_OnWindAbility()
     {
-        OnNonDebrisAbility(allElements[GetIndexOfElement("Wind")]);
+        musicLayers[GetIndexOfElement("Wind")].targetVolume = 100f;
         Invoke("ZeroWindTargetVolume", nonDebrisFadeOutDelay);
     }
 
