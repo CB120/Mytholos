@@ -13,20 +13,27 @@ namespace Utilities
         [NonSerialized] public UnityEvent<T> itemAdded = new();
         [NonSerialized] public UnityEvent<T> itemRemoved = new();
 
+        [Header("Debug Only")]
+        [SerializeField] private int count;
+
         public void Add(T t)
         {
             if (items.Contains(t)) return;
             
             items.Add(t);
+
+            count = items.Count;
             
             itemAdded.Invoke(t);
         }
         
         public void Remove(T t)
         {
-            if (items.Contains(t)) return;
-            
+            if (!items.Contains(t)) return;
+
             items.Remove(t);
+            
+            count = items.Count;
             
             itemRemoved.Invoke(t);
         }

@@ -110,17 +110,18 @@ public class PlayerParticipant : Participant
 
     private InputActionMap oldInputActionMap;
     
+    // TODO: Disabling twice will cause problems
     public void DisablePlayerInput(float timeToWait = 0)
     {
-        oldInputActionMap = playerInput.currentActionMap;
-        playerInput.currentActionMap = null;
+        oldInputActionMap = PlayerInput.currentActionMap;
+        PlayerInput.currentActionMap = null;
         if (timeToWait > 0)
             Invoke("EnablePlayerInput", timeToWait);
     }
 
     public void EnablePlayerInput()
     {
-        playerInput.currentActionMap = oldInputActionMap;
+        PlayerInput.currentActionMap = oldInputActionMap;
     }
 
     /*** In-Game Input events ***/

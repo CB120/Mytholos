@@ -32,9 +32,7 @@ public class SetUpManager : MonoBehaviour
             foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
             {
                 participant.currentMenuGraph = returnToPreviousSceneGraph;
-                PlayerInput input = participant.GetComponent<PlayerInput>();
-                input.actions.FindActionMap("Player").Disable();
-                input.actions.FindActionMap("UI").Enable();
+                participant.PlayerInput.SwitchCurrentActionMap("UI");
             }
 
             if (playerCount >= 2)
@@ -52,9 +50,6 @@ public class SetUpManager : MonoBehaviour
     {
         if (transitionAnimator)
         {
-            foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
-                participant.DisablePlayerInput(0.5f);
-
             transitionAnimator.SetInteger("Direction", 1);
             transitionAnimator.SetTrigger("Fade");
             StartCoroutine(LoadScene(0.35f));

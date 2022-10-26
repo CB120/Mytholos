@@ -98,7 +98,7 @@ namespace TemporaryWinScreen
             {
                 playerParticipant.EnablePlayerInput();
 
-                playerParticipant.PlayerInput.currentActionMap = playerParticipant.PlayerInput.actions.FindActionMap("UI");
+                playerParticipant.PlayerInput.SwitchCurrentActionMap("UI");
             });
         }
 
