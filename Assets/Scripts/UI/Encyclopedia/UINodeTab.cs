@@ -8,7 +8,7 @@ public class UINodeTab : UIMenuNode
     [SerializeField] UIEncyclopediaManager encyclopediaManager;
 
     [Header("UI Object References")]
-    public TextMeshProUGUI pageTitle;
+    public TextMeshProUGUI[] pageTitles;
     public TextMeshProUGUI[] descriptions;
     //public TextMeshProUGUI descriptionTwo;
     public Image[] images;
@@ -16,11 +16,15 @@ public class UINodeTab : UIMenuNode
 
     private void OnEnable()
     {
-        if(images[0] == null)
+        Invoke("lateEnable", 0.005f);
+    }
+
+    private void lateEnable() {
+        if(images[0].sprite == null)
         {
-            images[0].gameObject.SetActive(false);
-                descriptions[0].transform.localPosition = new Vector3(65, -150, 0);
-                descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 140);
+                images[0].gameObject.SetActive(false);
+                descriptions[0].transform.localPosition = new Vector3(65, -155, 0);
+                descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 215);
         } else
         {
             images[0].gameObject.SetActive(true);
@@ -28,12 +32,13 @@ public class UINodeTab : UIMenuNode
             descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 140);
         }
 
-        if(images[1] == null)
+        if (images[1].GetComponent<Image>().sprite == null)
         {
             images[1].gameObject.SetActive(false);
             descriptions[1].transform.localPosition = new Vector3(330, -140, 0);
             descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 190);
-        } else
+        }
+        else
         {
             images[1].gameObject.SetActive(true);
             descriptions[1].transform.localPosition = new Vector3(330, -100, 0);

@@ -68,6 +68,12 @@ namespace Myths
         {
             ws.DecreaseScore(partyIndex);
         }
+        public PartyBuilder pb;
+        
+        public void TemporaryDeathSwap()
+        {
+            pb.mythDeathSwap(PartyIndex);
+        }
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
         {

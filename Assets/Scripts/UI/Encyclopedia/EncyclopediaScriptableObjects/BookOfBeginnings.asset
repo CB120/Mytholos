@@ -17,32 +17,59 @@ MonoBehaviour:
   - About
   - Party Builder
   - Controls
+  - Help
   tabData:
   - Descriptions:
-    - Welcome to Mytholos!
-    - This is another test description
-    Images:
-    - {fileID: 1023699918, guid: 2e3acf88125a5944fad50c75037cf9ad, type: 3}
-    - {fileID: -2124075053, guid: f136ee6c05cf1554ca2fa928ed2da3ec, type: 3}
-  - Descriptions:
-    - The party builder is our pre-game screen that allows players to compose a team
-    - Eddie made it really cool
-    Images:
-    - {fileID: 290562095, guid: 2e3acf88125a5944fad50c75037cf9ad, type: 3}
-    - {fileID: 1303900321, guid: 81c0a074822e1ee43b0b8ce9611ff47d, type: 3}
-  - Descriptions:
-    - Tab 3
-    - tab 3 page 2
+    - Mytholos is a PVP monster brawler where each player composes a team of three
+      unique myths to fight. The player that loses all of their myths first loses!
+    - 'The game will require at least one controller to play. '
     Images: []
+    PageNames:
+    - About Mytholos
+    - 
   - Descriptions:
-    - Tab 4
-    - tab 4 page 2
+    - "Movement || Left Stick \n\nSwap Character || Bumpers & Triggers (Left or Right
+      Direction)\n\nAbilities || North, West, South buttons (Triangle, Square & X
+      on Playstation) \n\nDodge || East button (Circle on Playstation)  "
+    - "Movement || WASD \n\nSwap Character || Left Shift & Right Shift \n\nAbilities
+      || P, L & ; (Semi-colon)\n \nDodge || '  (Apostrophe)  "
     Images: []
-  tab1Name: About
-  tab1PageTitle: Mytholos
-  tab2Name: Party Builder
-  tab2PageTitle: How to use the party builder
-  tab3Name: Controls
-  tab3PageTitle: In-game controls
-  tab4Name: 
-  tab4PageTitle: 
+    PageNames:
+    - Gamepad Controls
+    - Keyboard Controls
+  - Descriptions:
+    - 'The party builder is our pre-game screen that allows players to compose a
+      team.
+
+      Start by selecting three myths from the roster. Be quick! as your
+      enemy may take a myth you want
+
+
+      Pay attention to each myths unique qualities,
+      including their statistics, elemental type and ability pool'
+    - "After your teams roster has been filled up, the party builder will move into
+      its next phase where players must choose each myths abilities. \nHover over
+      an ability and press one of the ability keys to assign it to that key. The
+      GUI will show you what abilities you have assigned to which button. \n\nAfter
+      your first myth has been given its abilities, you can use the triggers / Left
+      & Right shift to rotate through your roster and assign abilities to the next
+      myth.\n\nOnce everyone has assigned abilities, press the start key to begin
+      the match"
+    Images: []
+    PageNames:
+    - How to use the Party Builder
+    - Assigning abilities in the Party Builder
+  - Descriptions:
+    - 'The encyclopedia contains a variety of books aimed at guiding the player through
+      their mytholos experience
+
+
+      Check out other books on Myths, Elementals,
+      Cut content & credits'
+    - 'Thank you for playing! we hope you enjoy
+
+      ~~ 5++'
+    Images: []
+    PageNames:
+    - ' '
+    - ' '

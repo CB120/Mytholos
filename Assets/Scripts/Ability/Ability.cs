@@ -40,6 +40,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         owningMyth.Stamina.Value -= ability.staminaCost;
 
         PlayElementalSFX();
+        AdjustMusicLayers();
     }
 
     virtual public void Update()
@@ -256,7 +257,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     }
     #endregion
 
-    #region SFX
+    #region Music & SFX
     public void PlayElementalSFX()
     {
         foreach (ElementSFXPairs p in elementSFXPairs)
@@ -276,6 +277,21 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     {
         GameObject sfxGameObject = Instantiate(takingDamageSFXPrefab, transform.position, Quaternion.identity);
         Destroy(sfxGameObject, timeToDestroyTakingDamageSFX);
+    }
+
+    void AdjustMusicLayers()
+    {
+        switch (element) 
+        {
+            case Element.Electric:
+                BattleMusicController.OnElectricAbility();
+                return;
+            case Element.Wind:
+                BattleMusicController.OnWindAbility();
+                return;
+            default:
+                return;
+        }
     }
     #endregion
 }
