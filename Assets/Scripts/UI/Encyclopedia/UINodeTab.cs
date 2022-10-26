@@ -35,7 +35,7 @@ public class UINodeTab : UIMenuNode
         if (images[1].GetComponent<Image>().sprite == null)
         {
             images[1].gameObject.SetActive(false);
-            descriptions[1].transform.localPosition = new Vector3(330, -140, 0);
+            descriptions[1].transform.localPosition = new Vector3(330, -160, 0);
             descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 190);
         }
         else

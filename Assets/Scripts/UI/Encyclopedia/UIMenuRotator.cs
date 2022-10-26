@@ -8,7 +8,6 @@ public class UIMenuRotator : UIMenuNodeGraph
 {
 
     [SerializeField] TextMeshProUGUI selectedBookName;
-
     private void Awake()
     {
         updatePositions(); // Get the positions of the left and right adjacent books for each node.
@@ -22,6 +21,11 @@ public class UIMenuRotator : UIMenuNodeGraph
             if(playerCurrentNode[0] == nodes[i])
             {
                 selectedBookName.text = nodes[i].GetComponent<UINodeBook>().book.bookName;
+                nodes[i].GetComponent<UINodeBook>().isSelected = true;
+            }
+            else
+            {
+                nodes[i].GetComponent<UINodeBook>().isSelected = false;
             }
             if (nodes[i].adjacent[2] != null)
             {

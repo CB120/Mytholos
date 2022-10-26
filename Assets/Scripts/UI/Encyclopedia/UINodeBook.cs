@@ -7,7 +7,7 @@ public class UINodeBook : UIMenuNode
     public SO_Book book;
     public Vector3 leftAdjacent;
     public Vector3 rightAdjacent;
-    //public string bookName;
+    public bool isSelected;
     [SerializeField] UIEncyclopediaManager encyclopediaManager;
     
 
