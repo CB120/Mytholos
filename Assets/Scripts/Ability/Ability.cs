@@ -49,7 +49,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void Attack(Myth myth, float damage)
     {
-        bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
+        bool isInParty = myth.PartyIndex == this.owningMyth.PartyIndex;
         if (isInParty && !ability.applyBuffToParty) return; //Guard if we don't want ability to give allies buffs
 
         ParticleSystem particle = ability.element.debuffParticle;
@@ -156,7 +156,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     #region Effects
     virtual public void ApplyEffect(Myth myth)
     {
-        bool isInParty = myth.partyIndex == this.owningMyth.partyIndex;
+        bool isInParty = myth.PartyIndex == this.owningMyth.PartyIndex;
         switch (element)
         {
             case Element.Wind:

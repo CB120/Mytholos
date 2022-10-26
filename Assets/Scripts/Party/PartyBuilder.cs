@@ -136,13 +136,10 @@ public class PartyBuilder : MonoBehaviour
         {
             Party2.Add(newMythGameObject);
         }
+        
+        newMyth.Initialise(mythData);
 
-
-        // TODO: I want it on the record that I don't like this
-        newMyth.northAbility = mythData.northAbility;
-        newMyth.westAbility = mythData.westAbility;
-        newMyth.southAbility = mythData.southAbility;
-        newMyth.eastAbility = mythData.eastAbility;
+        // TODO: Is this needed
         newMyth.PartyIndex = participantIndex;
         
         newMythGameObject.SetActive(false);

@@ -51,7 +51,7 @@ public class HealingAbility : Ability
         {
             trigger.enabled = false;
             if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
-            myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+            myth.effectController.DeactivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
             
         }
     }
@@ -66,7 +66,7 @@ public class HealingAbility : Ability
         }
 
         overlappedMyths.Add(myth);
-        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        myth.effectController.ActivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
         InvokeRepeating("SpawnEffects", 0, 1f);
     }
 
@@ -87,7 +87,7 @@ public class HealingAbility : Ability
 
         if (!EffectWillRemain())//If we don't want healing pool to wipe effect on exit
         {
-            myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+            myth.effectController.DeactivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
         }
 
         if (overlappedMyths.Contains(myth)) overlappedMyths.Remove(myth);
@@ -107,7 +107,7 @@ public class HealingAbility : Ability
     {
         foreach (Myth myth in overlappedMyths)
         {
-            if (myth.partyIndex == this.owningMyth.partyIndex)
+            if (myth.PartyIndex == this.owningMyth.PartyIndex)
             {
                 
                 ParticleSystem ps = Instantiate(ability.element.buffParticle, myth.transform);

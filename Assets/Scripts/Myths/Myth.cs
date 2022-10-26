@@ -12,7 +12,7 @@ namespace Myths
         [SerializeField] private MythStat stamina;
         [SerializeField] private MythCommandHandler mythCommandHandler;
         [SerializeField] private MythRuntimeSet mythRuntimeSet;
-        Animator anim;
+        private Animator anim;
         GameObject[] visuals;
 
         public MythStat Health => health;
@@ -29,12 +29,13 @@ namespace Myths
         // TODO: Make serialised, fix naming mismatch
         public Effects effectController;
 
-        public int partyIndex;
+        private int partyIndex;
         public int PartyIndex
         {
             get => partyIndex;
             set
             {
+                // TODO: Remove hardcoding
                 partyIndex = value;
                 ring.color = value == 0 ? new Color(1.0f, 0.3f, 0.0f, 1.0f)
                     : new Color(0.0f, 0.5f, 1.0f, 1.0f);
@@ -42,12 +43,14 @@ namespace Myths
         }
         public bool isInvulnerable = false;
 
+        private MythData mythData;
+
         //References
         public SO_Element element;
-        public SO_Ability northAbility;
-        public SO_Ability westAbility;
-        public SO_Ability southAbility;
-        public SO_Ability eastAbility;
+        public SO_Ability NorthAbility => mythData.northAbility;
+        public SO_Ability WestAbility => mythData.westAbility;
+        public SO_Ability SouthAbility => mythData.southAbility;
+        public SO_Ability EastAbility => mythData.eastAbility;
 
         public SpriteRenderer ring;
 
@@ -89,9 +92,9 @@ namespace Myths
         public int NumberOfAvailableAbilities()
         {
             int output = 0;
-            if (northAbility.staminaCost <= Stamina.Value) output++;
-            if (westAbility.staminaCost <= Stamina.Value) output++;
-            if (southAbility.staminaCost <= Stamina.Value) output++;
+            if (NorthAbility.staminaCost <= Stamina.Value) output++;
+            if (WestAbility.staminaCost <= Stamina.Value) output++;
+            if (SouthAbility.staminaCost <= Stamina.Value) output++;
             return output;
         }
 
@@ -115,6 +118,11 @@ namespace Myths
         private void OnDestroy()
         {
             mythRuntimeSet.Remove(this);
+        }
+
+        public void Initialise(MythData mythData)
+        {
+            this.mythData = mythData;
         }
     }
 }

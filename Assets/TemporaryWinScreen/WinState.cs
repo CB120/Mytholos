@@ -43,7 +43,7 @@ public class WinState : MonoBehaviour
 
     private void OnMythDied(Myth myth)
     {
-        DecreaseScore(myth.partyIndex);
+        DecreaseScore(myth.PartyIndex);
     }
 
     private void DecreaseScore(int partyIndex)

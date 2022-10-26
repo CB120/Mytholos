@@ -130,7 +130,7 @@ public class PlayerParticipant : Participant
     public void UseAbilityNorth(InputAction.CallbackContext context)
     {
         FaceButtonNorth.Invoke(context.performed);
-        UseAbility(context, myth => myth.northAbility);
+        UseAbility(context, myth => myth.NorthAbility);
     }
 
     public void UseAbilityEast(InputAction.CallbackContext context)
@@ -156,13 +156,13 @@ public class PlayerParticipant : Participant
     public void UseAbilitySouth(InputAction.CallbackContext context)
     {
         FaceButtonSouth.Invoke(context.performed);
-        UseAbility(context, myth => myth.southAbility);
+        UseAbility(context, myth => myth.SouthAbility);
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
         FaceButtonWest.Invoke(context.performed);
-        UseAbility(context, myth => myth.westAbility);
+        UseAbility(context, myth => myth.WestAbility);
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -212,7 +212,7 @@ public class PlayerParticipant : Participant
             if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
                 swapCommand.SwappingInMyth = myths[nextIndex].gameObject;
-                swapCommand.PartyIndex = myths[nextIndex].partyIndex;
+                swapCommand.PartyIndex = myths[nextIndex].PartyIndex;
                 swapCommand.sendingPlayer = this;
                 swapCommand.TriggerIndex = -1;
             }
@@ -235,7 +235,7 @@ public class PlayerParticipant : Participant
             if (SelectedMythCommandHandler.LastCommand is SwapCommand swapCommand)
             {
                 swapCommand.SwappingInMyth = myths[nextIndex].gameObject;
-                swapCommand.PartyIndex = myths[nextIndex].partyIndex;
+                swapCommand.PartyIndex = myths[nextIndex].PartyIndex;
                 swapCommand.sendingPlayer = this;
                 swapCommand.TriggerIndex = 1;
             }
