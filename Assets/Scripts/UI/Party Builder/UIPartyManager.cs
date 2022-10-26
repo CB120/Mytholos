@@ -554,7 +554,7 @@ public class UIPartyManager : MonoBehaviour
         }
 
         if (isMythAlreadySelectedInATeam)
-            mythSelectionGraph.ParseNavigation(direction, teamIndex);
+            mythSelectionGraph.ParseNavigation(direction, teamIndex, false);
 
         return isMythAlreadySelectedInATeam;
     }
@@ -602,7 +602,7 @@ public class UIPartyManager : MonoBehaviour
         {
             //print("Confirm party member... not final, so parse navigation to the right!");
 
-            playerTeamGraphs[teamIndex].ParseNavigation(UIMenuNode.Direction.Right, teamIndex);
+            playerTeamGraphs[teamIndex].ParseNavigation(UIMenuNode.Direction.Right, teamIndex, false);
             playersReady[teamIndex] = false;
             return;
         }
@@ -827,7 +827,7 @@ public class UIPartyManager : MonoBehaviour
         playerTeamDetails[teamIndex].selectedMythIndices[selectedIndex] = -1;
 
         // Navigate cursor in the team graph to the left
-        playerTeamGraphs[teamIndex].ParseNavigation(UIMenuNode.Direction.Left, teamIndex);
+        playerTeamGraphs[teamIndex].ParseNavigation(UIMenuNode.Direction.Left, teamIndex, false);
 
         // Update visuals
         playerTeamDetails[teamIndex].mythTeamRenderImages[selectedIndex].enabled = false;

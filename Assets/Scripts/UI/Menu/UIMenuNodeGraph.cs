@@ -29,7 +29,7 @@ public class UIMenuNodeGraph : MonoBehaviour
     //    print("No. of nodes: " + nodes.Count + ", player 0 here? " + (playerCurrentNode[0] != null) + ", player 1 here? " + (playerCurrentNode[1] != null));
     //}
 
-    virtual public UIMenuNodeGraph ParseNavigation(UIMenuNode.Direction direction, int playerNumber)
+    virtual public UIMenuNodeGraph ParseNavigation(UIMenuNode.Direction direction, int playerNumber, bool isPlayerInput)
     {
         int index = (int)direction;
 
@@ -48,7 +48,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         UIMenuNode node = adjacent[index].GetComponent<UIMenuNode>(); // If there's a node in that direction, navigate to it and return its parent
         if (node != null)
         {
-            Navigate(node, playerNumber, direction, true);
+            Navigate(node, playerNumber, direction, isPlayerInput);
             return this;
         }
 
@@ -69,7 +69,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         {
             playerCurrentNode[playerNumber] = node;
             int index = (int)direction;
-            ParseNavigation(direction, playerNumber);
+            ParseNavigation(direction, playerNumber, false);
         }
         else
         {
