@@ -112,7 +112,11 @@ public class HealingAbility : Ability
         {
             if (myth.partyIndex == this.owningMyth.partyIndex)
             {
-                
+                if (!myth.gameObject.activeInHierarchy) { 
+                    overlappedMyths.Remove(myth);
+                    return;
+                }
+
                 ParticleSystem ps = Instantiate(ability.element.buffParticle, myth.transform);
                 if (ability.element.setParticleColor)
                 {

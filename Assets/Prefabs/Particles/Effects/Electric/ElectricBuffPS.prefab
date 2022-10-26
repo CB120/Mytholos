@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7797000461725951199}
   - component: {fileID: 341167002929958869}
   - component: {fileID: 3805810806506627379}
+  - component: {fileID: 5130106213150434281}
   m_Layer: 0
   m_Name: ElectricBuffPS
   m_TagString: Untagged
@@ -4881,6 +4882,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5130106213150434281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038321923965352246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb82549859602c4b9fff860bbcc061c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1512537793498113356
 PrefabInstance:
   m_ObjectHideFlags: 0

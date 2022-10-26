@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 724803783770948495}
   - component: {fileID: 7099808520127916165}
   - component: {fileID: 5974996241972856419}
+  - component: {fileID: -403250428783916233}
   m_Layer: 0
   m_Name: WoodDebuff
   m_TagString: Untagged
@@ -4888,3 +4889,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-403250428783916233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546804521237601894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb82549859602c4b9fff860bbcc061c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
