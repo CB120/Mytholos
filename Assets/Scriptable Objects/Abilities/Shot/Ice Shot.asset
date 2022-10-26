@@ -24,7 +24,7 @@ MonoBehaviour:
   isRanged: 1
   applyBuffToParty: 0
   baseKnockback: 5
-  baseStun: 0
+  baseStun: 2
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   relativeSpawnRotation: {x: 0, y: 0, z: 0}
