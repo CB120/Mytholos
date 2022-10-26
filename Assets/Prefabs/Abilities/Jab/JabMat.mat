@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4659318967148979810
+--- !u!114 &-2578715972841020177
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DebrisDefaultMat
-  m_Shader: {fileID: -6465566751694194690, guid: afce6799f73eb0b4eb6c228a7d7f5002,
+  m_Name: JabMat
+  m_Shader: {fileID: -6465566751694194690, guid: e8fccdfd47f607b4993c54e3b5602e6b,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -34,7 +34,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
+    - _Texture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -52,9 +52,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Brightness_Factor: 0.47
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Toon_Ramp_First_Offset: 1.33
+    - _Toon_Ramp_Second_Offset: 0.86
+    - _Toon_Ramp_Smoothness: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _color: {r: 0, g: 0, b: 0, a: 0}
+    - _Toon_Ramp_Tinting: {r: 0.86723644, g: 1, b: 0.85490197, a: 1}
   m_BuildTextureStacks: []

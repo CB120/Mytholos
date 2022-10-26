@@ -535,7 +535,8 @@ MonoBehaviour:
   mythCommandHandler: {fileID: -3291310522803648204}
   anyStateTransitionManager: {fileID: 7710117388066988406}
   overrideBehaviour: 1
-  exceptions: []
+  exceptions:
+  - {fileID: 3685100383579352455}
   anim: {fileID: 0}
   rotationSpeed: 0.25
   performAbilityComplete:
