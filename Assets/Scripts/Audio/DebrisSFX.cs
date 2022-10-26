@@ -46,11 +46,6 @@ public class DebrisSFX : MonoBehaviour
     {
         UpdateLoopVolumes();
     }   
-
-    public void OnDebrisElectrificationChange() //called by DebrisRegion.numberOfElectrifiedTilesChanged
-    {
-        electricityLoop.SetParameter("Debris Volume Instant", region.NumberOfElectrifiedTiles * volumeScalar);
-    }
     
 
     // Methods
@@ -58,6 +53,7 @@ public class DebrisSFX : MonoBehaviour
     void UpdateLoopVolumes()
     {
         fireLoop.SetParameter("Debris Volume", region.NumberOfTilesWithElement(fireElement) * volumeScalar);
+        electricityLoop.SetParameter("Debris Volume", region.NumberOfTilesWithElement(electricityElement) * volumeScalar);
         iceLoop.SetParameter("Debris Volume", region.NumberOfTilesWithElement(iceElement) * volumeScalar);
     }
 }

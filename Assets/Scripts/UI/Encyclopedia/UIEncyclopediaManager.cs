@@ -17,7 +17,6 @@ public class UIEncyclopediaManager : MonoBehaviour
     [SerializeField] UIMenuNodeGraph openBookGraph;
 
     public UINodeBook playerCurrentBook;
-    public SO_Book playerCurrentBookSO;
     public UINodeTab playerCurrentTab;
 
 
@@ -52,14 +51,14 @@ public class UIEncyclopediaManager : MonoBehaviour
         }
     }
 
-    public void ParseBookInformation(UINodeBook selectedBook, SO_Book bookSO)
+    public void ParseBookInformation(UINodeBook selectedBook, string bookName)
     {
         playerCurrentBook = selectedBook;
-        playerCurrentBookSO = bookSO;
-        Debug.Log(bookSO + " " + selectedBook);
+        Debug.Log(bookName + " " + selectedBook);
 
         // Bro why the fuck couldnt i get the function from the reference i already have? lol
-        openBookCanvas.GetComponent<UIMenuOpenBook>().GetCurrentBook(bookSO);
+        openBookCanvas.GetComponent<UIMenuOpenBook>().GetBookName(bookName);
         
+
     }
 }

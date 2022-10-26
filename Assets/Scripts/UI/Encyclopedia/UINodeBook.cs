@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class UINodeBook : UIMenuNode
 {
-    public SO_Book book;
     public Vector3 leftAdjacent;
     public Vector3 rightAdjacent;
-    //public string bookName;
+    public string bookName;
     [SerializeField] UIEncyclopediaManager encyclopediaManager;
     
 
@@ -16,7 +15,7 @@ public class UINodeBook : UIMenuNode
         switch (action)
         {
             case Action.Submit:
-                encyclopediaManager.ParseBookInformation(this, book);
+                encyclopediaManager.ParseBookInformation(this, bookName);
                 encyclopediaManager.SetLibraryActive(false);
                 encyclopediaManager.SetBookCanvas(true);
                 break;

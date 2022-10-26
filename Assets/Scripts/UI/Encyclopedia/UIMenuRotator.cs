@@ -21,7 +21,7 @@ public class UIMenuRotator : UIMenuNodeGraph
         {
             if(playerCurrentNode[0] == nodes[i])
             {
-                selectedBookName.text = nodes[i].GetComponent<UINodeBook>().book.bookName;
+                selectedBookName.text = nodes[i].GetComponent<UINodeBook>().bookName;
             }
             if (nodes[i].adjacent[2] != null)
             {

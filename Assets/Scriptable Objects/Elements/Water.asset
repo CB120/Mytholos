@@ -21,7 +21,7 @@ MonoBehaviour:
   buffLength: 0
   debuffParticle: {fileID: 3361534561257019739, guid: 90292d90c78142344a2278f49b408e08,
     type: 3}
-  buffParticle: {fileID: 1159561878327914031, guid: 8d8287c04486fb3448bc513a8dcf8fcd,
+  buffParticle: {fileID: 1159561878327914031, guid: 70b5fccbb2019b245a8444bb468ec06b,
     type: 3}
   setParticleColor: 0
   strongAgainst:
