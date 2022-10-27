@@ -16,6 +16,10 @@ public class UIEncyclopediaManager : MonoBehaviour
     [SerializeField] UIMenuNodeGraph LibraryGraph;
     [SerializeField] UIMenuNodeGraph openBookGraph;
 
+    // Lower Controls references
+    [Header("Menu Graph References")]
+    [SerializeField] GameObject Select;
+
     public UINodeBook playerCurrentBook;
     public SO_Book playerCurrentBookSO;
     public UINodeTab playerCurrentTab;
@@ -35,7 +39,7 @@ public class UIEncyclopediaManager : MonoBehaviour
     }
     public void SetLibraryActive(bool active)
     {
-
+        Select.SetActive(active);
        libraryCanvas.SetActive(active);
         if(active == true)
         {

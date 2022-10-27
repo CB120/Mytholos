@@ -10,6 +10,7 @@ public class SO_Book : ScriptableObject
     
     [Header("Tab Names")]
     public string[] tabs;
+    public bool hasTabs;
 
     [Header("Plz dont use more than 2 of each field... plz ~ Christian")]
     public TabData[] tabData; 

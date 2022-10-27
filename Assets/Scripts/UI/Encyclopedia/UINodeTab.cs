@@ -20,6 +20,7 @@ public class UINodeTab : UIMenuNode
     }
 
     private void lateEnable() {
+        
         if(images[0].sprite == null)
         {
                 images[0].gameObject.SetActive(false);

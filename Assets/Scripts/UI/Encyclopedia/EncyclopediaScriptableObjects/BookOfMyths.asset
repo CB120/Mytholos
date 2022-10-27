@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bookName: Book of Myths
   tabs:
-  - Bruv we gonna need a lot of tabs here
   - 
   - 
   - 
+  - 
+  hasTabs: 0
   tabData:
   - Descriptions:
     - 

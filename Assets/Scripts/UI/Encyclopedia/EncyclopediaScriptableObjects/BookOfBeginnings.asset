@@ -18,6 +18,7 @@ MonoBehaviour:
   - Party Builder
   - Controls
   - Help
+  hasTabs: 1
   tabData:
   - Descriptions:
     - Mytholos is a PVP monster brawler where each player composes a team of three
@@ -45,16 +46,21 @@ MonoBehaviour:
       enemy may take a myth you want
 
 
-      Pay attention to each myths unique qualities,
-      including their statistics, elemental type and ability pool'
-    - "After your teams roster has been filled up, the party builder will move into
-      its next phase where players must choose each myths abilities. \nHover over
-      an ability and press one of the ability keys to assign it to that key. The
-      GUI will show you what abilities you have assigned to which button. \n\nAfter
-      your first myth has been given its abilities, you can use the triggers / Left
-      & Right shift to rotate through your roster and assign abilities to the next
-      myth.\n\nOnce everyone has assigned abilities, press the start key to begin
-      the match"
+
+      Pay attention to each myths unique
+      qualities, including their statistics, elemental type and ability pool
+
+
+
+      After
+      your teams roster has been filled up, the party builder will move into its
+      next phase where players must choose each myths abilities.'
+    - " Hover over an ability and press one of the ability keys to assign it to that
+      key. The GUI will show you what abilities you have assigned to which button.
+      \n\nAfter your first myth has been given its abilities, you can use the triggers
+      / Left & Right shift to rotate through your roster and assign abilities to
+      the next myth.\n\nOnce everyone has assigned abilities, press the start key
+      to begin the match"
     Images: []
     PageNames:
     - How to use the Party Builder
