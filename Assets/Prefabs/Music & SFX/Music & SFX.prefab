@@ -303,6 +303,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   - {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   - {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
+  nonDebrisElements:
+  - {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
+  - {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
+  windElement: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
+  electricElement: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
 --- !u!114 &1572039169787900528
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd82617972f237748bd8fb5d86fc091c, type: 3}
+  m_Name: BookOfBeginnings
+  m_EditorClassIdentifier: 
+  bookName: Book Of Beginnings
+  tabs:
+  - About
+  - Party Builder
+  - Controls
+  - Help
+  tabData:
+  - Descriptions:
+    - Mytholos is a PVP monster brawler where each player composes a team of three
+      unique myths to fight. The player that loses all of their myths first loses!
+    - 'The game will require at least one controller to play. '
+    Images: []
+    PageNames:
+    - About Mytholos
+    - 
+  - Descriptions:
+    - "Movement || Left Stick \n\nSwap Character || Bumpers & Triggers (Left or Right
+      Direction)\n\nAbilities || North, West, South buttons (Triangle, Square & X
+      on Playstation) \n\nDodge || East button (Circle on Playstation)  "
+    - "Movement || WASD \n\nSwap Character || Left Shift & Right Shift \n\nAbilities
+      || P, L & ; (Semi-colon)\n \nDodge || '  (Apostrophe)  "
+    Images: []
+    PageNames:
+    - Gamepad Controls
+    - Keyboard Controls
+  - Descriptions:
+    - 'The party builder is our pre-game screen that allows players to compose a
+      team.
+
+      Start by selecting three myths from the roster. Be quick! as your
+      enemy may take a myth you want
+
+
+      Pay attention to each myths unique qualities,
+      including their statistics, elemental type and ability pool'
+    - "After your teams roster has been filled up, the party builder will move into
+      its next phase where players must choose each myths abilities. \nHover over
+      an ability and press one of the ability keys to assign it to that key. The
+      GUI will show you what abilities you have assigned to which button. \n\nAfter
+      your first myth has been given its abilities, you can use the triggers / Left
+      & Right shift to rotate through your roster and assign abilities to the next
+      myth.\n\nOnce everyone has assigned abilities, press the start key to begin
+      the match"
+    Images: []
+    PageNames:
+    - How to use the Party Builder
+    - Assigning abilities in the Party Builder
+  - Descriptions:
+    - 'The encyclopedia contains a variety of books aimed at guiding the player through
+      their mytholos experience
+
+
+      Check out other books on Myths, Elementals,
+      Cut content & credits'
+    - 'Thank you for playing! we hope you enjoy
+
+      ~~ 5++'
+    Images: []
+    PageNames:
+    - ' '
+    - ' '

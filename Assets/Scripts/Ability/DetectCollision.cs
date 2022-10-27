@@ -7,7 +7,7 @@ namespace DetectCollision
 {
     public class DetectCollision : MonoBehaviour
     {
-        private bool canTakeDamage = true;
+        [SerializeField] private bool canTakeDamage = true;
         [SerializeField] private Ability ability;
         private void OnTriggerEnter(Collider other)
         {

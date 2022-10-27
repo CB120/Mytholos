@@ -85,6 +85,12 @@ MonoBehaviour:
   - soundName: Ability Denied 1
     uiSFXPrefab: {fileID: 2974248542123478264, guid: e28c2c27931226747a44273a2fd4f9ed,
       type: 3}
+  - soundName: To Encyclopaedia
+    uiSFXPrefab: {fileID: 5571587781106392535, guid: 2665c278f5952974fa64ac76319189ad,
+      type: 3}
+  - soundName: Deselct
+    uiSFXPrefab: {fileID: 6964249084398504448, guid: 2aaf9afd73e6e6949813462b5b075556,
+      type: 3}
   enoughStaminaSets:
   - soundName: 
     uiSFXPrefab: {fileID: 3886854290725850502, guid: 8fca70e7c4cc975489b4e2941fbf7095,

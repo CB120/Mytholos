@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a835b152e81287940871a16521388358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: d9da8405993fbc74fb9ef904e4858c9e, type: 2}
+  ability: {fileID: 0}
   owningMyth: {fileID: 0}
   abilityPS: {fileID: 6595694176158823707}
   elementSFXPairs:

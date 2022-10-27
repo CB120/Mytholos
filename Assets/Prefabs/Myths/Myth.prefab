@@ -470,6 +470,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7428839973292417855}
+        m_TargetAssemblyTypeName: Myths.Myth, Assembly-CSharp
+        m_MethodName: TemporaryDeathSwap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   regenSpeed: 0
 --- !u!1 &5029060779171543208
 GameObject:
@@ -523,7 +535,8 @@ MonoBehaviour:
   mythCommandHandler: {fileID: -3291310522803648204}
   anyStateTransitionManager: {fileID: 7710117388066988406}
   overrideBehaviour: 1
-  exceptions: []
+  exceptions:
+  - {fileID: 3685100383579352455}
   anim: {fileID: 0}
   rotationSpeed: 0.25
   performAbilityComplete:
@@ -1592,6 +1605,8 @@ MonoBehaviour:
   southAbility: {fileID: 0}
   eastAbility: {fileID: 0}
   ring: {fileID: 1257123659443305625}
+  ws: {fileID: 0}
+  pb: {fileID: 0}
 --- !u!54 &3131205609304386058
 Rigidbody:
   m_ObjectHideFlags: 0
