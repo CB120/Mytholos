@@ -17,15 +17,15 @@ public class PlayerParticipant : Participant
     [SerializeField] private float deathSwapInvulnerabilityTime;
     
     //Events
-    public UnityEvent<int> SelectMyth = new();
-    public UnityEvent<SO_Ability> SelectAbility = new();
+    [NonSerialized] public UnityEvent<int> SelectMyth = new();
+    [NonSerialized] public UnityEvent<SO_Ability> SelectAbility = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> pauseRequested = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> resumeRequested = new();
-    public UnityEvent<bool> FaceButtonNorth = new();
-    public UnityEvent<bool> FaceButtonWest = new();
-    public UnityEvent<bool> FaceButtonSouth = new();
-    public UnityEvent<bool> FaceButtonEast = new();
+    [NonSerialized] public UnityEvent<bool> FaceButtonNorth = new();
+    [NonSerialized] public UnityEvent<bool> FaceButtonWest = new();
+    [NonSerialized] public UnityEvent<bool> FaceButtonSouth = new();
+    [NonSerialized] public UnityEvent<bool> FaceButtonEast = new();
 
     //Properties
     private bool isAvailableToSwap = true;
