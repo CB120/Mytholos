@@ -16,6 +16,7 @@ MonoBehaviour:
   customMaterial: {fileID: 2100000, guid: dcd971c95f45e9442a36c7cb50b65cb9, type: 2}
   icon: {fileID: -341208457, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   debrisTexture: {fileID: 0}
+  electrifiedMaterial: {fileID: 0}
   element: 4
   buffLength: 3
   debuffParticle: {fileID: 7488445921576471905, guid: 83604b8292e0efb47a538b31cb7ad216,

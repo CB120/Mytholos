@@ -15,7 +15,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
   name: Wood Jab
   description: Jab
-  damage: 5
+  damage: 10
   regenSpeed: 0
   statIncrease: 0
   staminaCost: 10
@@ -28,6 +28,6 @@ MonoBehaviour:
   spawnInWorldSpace: 0
   relativeSpawnPosition: {x: 0, y: 0, z: 0}
   relativeSpawnRotation: {x: 0, y: 0, z: 0}
-  timeToDestroy: 0
+  timeToDestroy: 0.5
   abilityPrefab: {fileID: 1759088471933823973, guid: 50379f691b7e3694a97798c6fa0c248f,
     type: 3}

@@ -20,6 +20,7 @@ public class UINodeTab : UIMenuNode
     }
 
     private void lateEnable() {
+        
         if(images[0].sprite == null)
         {
                 images[0].gameObject.SetActive(false);
@@ -28,7 +29,7 @@ public class UINodeTab : UIMenuNode
         } else
         {
             images[0].gameObject.SetActive(true);
-            descriptions[0].transform.localPosition = new Vector3(108, -150, 0);
+            descriptions[0].transform.localPosition = new Vector3(65, -120, 0);
             descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 140);
         }
 

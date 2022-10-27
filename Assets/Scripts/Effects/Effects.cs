@@ -56,7 +56,6 @@ public class Effects : MonoBehaviour
     public void CleanseHealthBuff()
     {
         myth.Health.RegenSpeed = 0;
-        Debug.Log("Health Buff Cleansed");
     }
     #endregion
 
@@ -69,6 +68,17 @@ public class Effects : MonoBehaviour
         else value *= 1.25f;
         this.myth.Stamina.RegenSpeed = Mathf.Clamp(value, 0.25f, 15);
         Invoke("RemoveStaminaDebuff", duration);
+    }
+
+    public void IncreaseStamina(float increase)
+    {
+        this.myth.Stamina.Value += increase;
+        Invoke("RemoveStaminaBuff", .5f);
+    }
+
+    private void RemoveStaminaBuff()
+    {
+        DeactivateBuff(Element.Electric, false);
     }
 
     private void RemoveStaminaDebuff()
@@ -187,7 +197,7 @@ public class Effects : MonoBehaviour
 
     private void RemoveDefenceBuff()
     {
-        myth.AttackStat = defaultAttackStat;
+        myth.DefenceStat = defaultDefenceStat;
         DeactivateBuff(Element.Earth, false);
     }
 
@@ -212,7 +222,7 @@ public class Effects : MonoBehaviour
     public void BuffCleanse()
     {
         CleanseAllBuffs();
-        ActivateBuff(Element.Water, false);
+        ActivateBuff(Element.Water, true);
         Invoke("RemoveWaterIcon", 1);
     }
 
@@ -226,7 +236,7 @@ public class Effects : MonoBehaviour
     public void DebuffCleanse()
     {
         CleanseAllDebuffs();
-        ActivateBuff(Element.Water, true);
+        ActivateBuff(Element.Water, false);
         Invoke("RemoveWaterIcon", 1);
     }
 

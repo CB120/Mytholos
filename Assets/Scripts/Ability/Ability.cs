@@ -71,8 +71,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 elementModifier = 0.5f;
             }
 
-            var finalDamage = damage * elementModifier * DamageMultiplier * owningMyth.AttackStat / myth.DefenceStat;
-            //Debug.Log("attack stat is " + owningMyth.AttackStat + "Final Damage is " + finalDamage);
+            var finalDamage = (damage * elementModifier * DamageMultiplier * owningMyth.AttackStat) / myth.DefenceStat;
 
             if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
             {
@@ -203,9 +202,15 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyElectricEffect(Myth myth, bool isInParty)//Stamina Buff, Stamina Debuff
     {
-        if (isInParty) return;
         myth.effectController.ActivateBuff(Element.Electric, !isInParty);
-        myth.effectController.ApplyStaminaEffect(!isInParty, ability.element.buffLength);
+        if (isInParty)
+        {
+            myth.effectController.IncreaseStamina(ability.statIncrease);
+        }
+        else
+        { 
+            myth.effectController.ApplyStaminaEffect(!isInParty, ability.element.buffLength);
+        }
     }
 
     virtual public void ApplyIceEffect(Myth myth, bool isInParty)//Freezes Enemy, Grants Overshield

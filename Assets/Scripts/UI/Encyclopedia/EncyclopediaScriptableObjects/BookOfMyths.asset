@@ -13,37 +13,57 @@ MonoBehaviour:
   m_Name: BookOfMyths
   m_EditorClassIdentifier: 
   bookName: Book of Myths
-  tabs:
-  - Bruv we gonna need a lot of tabs here
-  - 
-  - 
-  - 
+  tabs: []
+  hasTabs: 0
   tabData:
   - Descriptions:
-    - 
-    - 
+    - 'Also known as the Woodland Stag, Wolper is a nimble yet powerful Myth that
+      excels against Water, Electric & Earth types thanks to his Wood elemental type.    '
+    - "The Kelpie is a well-rounded myth who is best used to support and setup a
+      strategic attack with your other myths. \n\nIts Water elemental typed abilities
+      leaves a large trail of debris over the field, allowing for a combo attack
+      with Electric elemental abilities to 'Electrify' the debris. "
     Images: []
     PageNames:
-    - 
-    - 
+    - Wolper
+    - Kelpie
   - Descriptions:
-    - 
-    - 
+    - "The almighty earthen totem, also known by its prey as the Golem. \n\nThe Golem
+      is a bulky myth with high amounts of health and strength at the cost of low
+      mobility. "
+    - 'Slicing through the wind is the feathered fox, Enfield.
+
+
+      Its all round
+      skills combined with its resistance to other elemental weaknesses makes this
+      fox a deadly option. '
     Images: []
     PageNames:
-    - 
-    - 
+    - Golem
+    - Enfield
   - Descriptions:
-    - 
-    - 
+    - "Gossan is a mysterious floating alloy. Its metallic compound is one of the
+      strongest ever found on earth, giving Gossan incredibly high health & knockback
+      resistance. \n"
+    - 'A failed re-animation experiment, Khepra is a frozen scarab that leaves a
+      trail of slippery ice everywhere it goes.
+
+
+      Khepra uses its chilling
+      touch to freeze its enemies in place.'
     Images: []
     PageNames:
-    - 
-    - 
+    - Gossan
+    - Khepra
   - Descriptions:
-    - 
-    - 
+    - "Nicknamed the 'Thunder Puppeteer', Dybbuk uses its electrical currents to
+      pilot dead bodies. \n\nIts an incredibly fragile myth with a powerful bite
+      and quick moving body.    "
+    - Arnkerrth, better known as the Aussie scorching devil, uses its fire breathing
+      genetics to inflict incredible burn damage to its enemies. The small lizard
+      also makes use of its compact body and high agility to get in and get out of
+      its fights.
     Images: []
     PageNames:
-    - 
-    - 
+    - Dybbuk
+    - Arnkerrth

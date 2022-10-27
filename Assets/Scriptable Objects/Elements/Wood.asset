@@ -16,6 +16,7 @@ MonoBehaviour:
   customMaterial: {fileID: 0}
   icon: {fileID: -217181599, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   debrisTexture: {fileID: 2800000, guid: be0bfb9b2f5d3414591bac07eff647ae, type: 3}
+  electrifiedMaterial: {fileID: 0}
   element: 0
   buffLength: 3
   debuffParticle: {fileID: 7099808520127916165, guid: 44b20619b46a814498a991177df1d974,
@@ -37,8 +38,8 @@ MonoBehaviour:
   debuffDescription: Steals foe's health
   beamStartColor: {r: 0, g: 0, b: 0, a: 0}
   beamEndColor: {r: 0, g: 0, b: 0, a: 0}
-  boomerangStartColor: {r: 0, g: 0, b: 0, a: 0}
-  boomerangMaterial: {fileID: 0}
+  boomerangStartColor: {r: 0, g: 0.8000001, b: 0, a: 1}
+  boomerangMaterial: {fileID: 2100000, guid: b74487f69a2e1d5429438fcc09b95492, type: 2}
   flurryStartColor: {r: 0, g: 0.29803923, b: 0, a: 1}
   flurryEndColor: {r: 0, g: 0.8, b: 0, a: 1}
   shotStartColor: {r: 0, g: 0.8, b: 0, a: 1}

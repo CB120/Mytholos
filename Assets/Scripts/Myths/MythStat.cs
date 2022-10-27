@@ -23,7 +23,7 @@ namespace Myths
         private const float MinValue = 0;
         
         // TODO: Rename to avoid confusion between value and this.value
-        private float value;
+        [SerializeField] private float value;
         private bool isRegenerating;
         
         public UnityEvent<float> valueChanged = new();
