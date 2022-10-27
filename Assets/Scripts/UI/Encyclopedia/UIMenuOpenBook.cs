@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIMenuOpenBook : UIMenuNodeGraph
 {
@@ -9,6 +10,7 @@ public class UIMenuOpenBook : UIMenuNodeGraph
     public TextMeshProUGUI selectedBookName;
     [SerializeField] TextMeshProUGUI[] tabNames;
     //UIMenuNode removedNode;
+    [SerializeField] GameObject Arrows;
 
     public void GetCurrentBook(SO_Book book)
     {
@@ -17,23 +19,35 @@ public class UIMenuOpenBook : UIMenuNodeGraph
 
     private void OnEnable()
     {
-        for (int i = 0; i < currentOpenBook.tabs.Length; i++)
+        if (currentOpenBook.hasTabs == false)
         {
-            nodes[i].gameObject.SetActive(true);
-            tabNames[i].text = currentOpenBook.tabs[i];
-            if (currentOpenBook.tabs.Length < 4)
+            Arrows.SetActive(true);
+            foreach (UINodeTab tab in nodes)
             {
-                for (int x = currentOpenBook.tabs.Length; x < tabNames.Length; x++)
+                tab.gameObject.GetComponent<Image>().enabled = false;
+            }
+            playerCursors[0].GetComponent<Image>().enabled = false;
+        } else {
+            for (int i = 0; i < currentOpenBook.tabs.Length; i++)
+            {
+                nodes[i].gameObject.SetActive(true);
+                nodes[i].gameObject.GetComponent<Image>().enabled = true;
+                tabNames[i].text = currentOpenBook.tabs[i];
+                if (currentOpenBook.tabs.Length < 4)
                 {
-                    //nodes[x].gameObject.SetActive(false);
-                    //removedNode = nodes[x];
-                    //nodes.RemoveAt(x);
+                    for (int x = currentOpenBook.tabs.Length; x < tabNames.Length; x++)
+                    {
+                        //nodes[x].gameObject.SetActive(false);
+                        //removedNode = nodes[x];
+                        //nodes.RemoveAt(x);
+                    }
                 }
             }
-            selectedBookName.text = currentOpenBook.bookName;
-            Debug.Log(selectedBookName.text);
+            Arrows.SetActive(false);
+            playerCursors[0].GetComponent<Image>().enabled = true;
         }
-
+        selectedBookName.text = currentOpenBook.bookName;
+        Debug.Log(selectedBookName.text);
         for (int t = 0; t < currentOpenBook.tabData.Length; t++)
         {
             for(int d = 0; d < currentOpenBook.tabData[t].Descriptions.Length; d++)

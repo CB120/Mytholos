@@ -14,33 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bookName: Book Of Credits
   tabs:
+  - Unit
   - Devs
   - Sound
   - Special
+  hasTabs: 1
   tabData:
   - Descriptions:
+    - 'Mytholos is a game developed for the Game Design Studio 2 capstone unit at
+      UTS. This subject includes a collaboration with students from the Music and
+      Sound Design degree who are also taking their capstone unit.   '
+    - 'GDS2 emulates how a professional Games Studio runs, following an agile development
+      cycle while employing project management techniques. '
+    Images: []
+    PageNames:
     - 
+    - 
+  - Descriptions:
+    - "Developers include ;\n\t- Baxter Dulieu\n\t- Christian Burgio\n\t- Edward
+      Chapman\n\t- Ethan Fitzgerald\n\t- Jack Coggins\n\t- William Major"
     - 
     Images: []
     PageNames:
     - 
     - 
   - Descriptions:
-    - 
-    - 
-    Images: []
-    PageNames:
-    - 
-    - 
-  - Descriptions:
-    - 
+    - "Sound Designers include : \n\t- Taylor Young"
     - 
     Images: []
     PageNames:
     - 
     - 
   - Descriptions:
-    - 
+    - A final special thanks to Dr. Jaime Garcia & Padraic Heaton, as well as everyone
+      who playtested and provided feedback on the game
     - 
     Images: []
     PageNames:
