@@ -71,7 +71,7 @@ namespace StateMachines.States
 
         private void Update()
         {
-            if (!myth.isInvulnerable)
+            if (!myth.IsInvulnerable)
             {
                 var inputVector = new Vector3(
                     moveCommand.input.x,

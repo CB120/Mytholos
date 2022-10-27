@@ -27,6 +27,7 @@ namespace StateMachines.States
         protected override void OnEnable()
         {
             base.OnEnable();
+            // TODO: If we don't have the stamina, we shouldn't have made it to this state
             if (myth.Stamina.Value < 1)
             {
                 DodgeComplete.Invoke();
@@ -55,7 +56,7 @@ namespace StateMachines.States
         private void ActivateDodge()
         {
             // Initialize dodge parameters 
-            myth.isInvulnerable = true;
+            myth.IsInvulnerable = true;
             if (dodgeCommand != null)
                 DecideDirection();
             movementController.SetTargetVelocity(myth.transform.forward * (myth.myth.agility + dodgeSpeed));
@@ -74,7 +75,7 @@ namespace StateMachines.States
         private void KilliFrames()
         {
             movementController.SetTargetVelocity(Vector3.zero);
-            myth.isInvulnerable = false;
+            myth.IsInvulnerable = false;
             
             DodgeComplete.Invoke();
         }

@@ -15,7 +15,9 @@ namespace Myths
             set => regenSpeed = value;
         }
 
-        public float regenPauseTime;
+        [SerializeField] private float regenPauseTime;
+
+        public bool ExternallyModifiable { get; set; } = true;
 
         private const float MaxValue = 100;
         private const float MinValue = 0;
@@ -31,6 +33,17 @@ namespace Myths
         public float ValuePercent => Value / MaxValue;
         
         public float Value
+        {
+            get => InternalValue;
+            set
+            {
+                if (!ExternallyModifiable) return;
+
+                InternalValue = value;
+            }
+        }
+
+        private float InternalValue
         {
             get => value;
             set

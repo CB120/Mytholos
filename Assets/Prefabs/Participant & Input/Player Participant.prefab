@@ -418,6 +418,7 @@ MonoBehaviour:
   partyIndex: -1
   playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
     type: 2}
+  deathSwapInvulnerabilityTime: 1
   SelectMyth:
     m_PersistentCalls:
       m_Calls: []

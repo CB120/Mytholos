@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Commands;
 using Myths;
 using StateMachines;
 using StateMachines.Commands;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
@@ -14,6 +14,7 @@ public class PlayerParticipant : Participant
 {
     // Technically a cyclic dependency, but more effort than it's worth to solve
     [SerializeField] private PlayerParticipantRuntimeSet playerParticipantRuntimeSet;
+    [SerializeField] private float deathSwapInvulnerabilityTime;
     
     //Events
     public UnityEvent<int> SelectMyth = new();
@@ -44,46 +45,34 @@ public class PlayerParticipant : Participant
     {
         get => mythInPlay;
         private set
-        {
+        { 
+            Vector3 position = Vector3.zero;
+            Quaternion rotation = Quaternion.identity;
+            
             if (mythInPlay != null)
             {
-                mythInPlay.SetAnimatorTrigger("Reset");
-                StartCoroutine(DisableSwappedOutMyth(value));
+                mythInPlay.ResetAndDisable();
+
+                position = MythInPlay.transform.position;
+                rotation = MythInPlay.transform.rotation;
             }
-            else // This was added after commenting the following code (and only(?) gets called on scene start)
+
+            mythInPlay = value;
+
+            if (mythInPlay != null)
             {
-                mythInPlay = value;
-
-                if (mythInPlay != null)
-                {
-                    mythInPlay.gameObject.SetActive(true);
-                    mythInPlay.SetAnimatorTrigger("SwapIn");
-                }
-
-                mythInPlayChanged.Invoke(this);
+                mythInPlay.gameObject.SetActive(true);
+                mythInPlay.SetAnimatorTrigger("SwapIn");
+                
+                if (position != Vector3.zero)
+                    MythInPlay.transform.position = position;
+                
+                if (rotation != quaternion.identity)
+                    MythInPlay.transform.rotation = rotation;
             }
+
+            mythInPlayChanged.Invoke(this);
         }
-    }
-
-    IEnumerator DisableSwappedOutMyth(Myth newMyth) // Need to wait a frame for the animator to return to a neutral pose, else when reenabled, will be incorrect
-    {
-        yield return new WaitForSeconds(0);
-        mythInPlay.gameObject.SetActive(false);
-
-        // Most of the following is duplicate code (beside the transform inheritance)
-        Vector3 position = MythInPlay.transform.position;
-        Quaternion rotation = MythInPlay.transform.rotation;
-        mythInPlay = newMyth;
-
-        if (mythInPlay != null)
-        {
-            mythInPlay.gameObject.SetActive(true);
-            mythInPlay.SetAnimatorTrigger("SwapIn");
-            MythInPlay.transform.position = position;
-            MythInPlay.transform.rotation = rotation;
-        }
-
-        mythInPlayChanged.Invoke(this);
     }
 
     // TODO: Should be cached for performance
@@ -239,14 +228,17 @@ public class PlayerParticipant : Participant
         StartSwapCooldown();
     }
 
-    public void SwapInDirection(int preferredDirection)
+    public Myth SwapInDirection(int preferredDirection)
     {
         var mythToSwapTo = FindMythToSwapTo(preferredDirection);
 
-        if (mythToSwapTo == null) return;
+        if (mythToSwapTo == null) return null;
 
         MythInPlay = mythToSwapTo;
+        
         StartSwapCooldown();
+        
+        return mythToSwapTo;
     }
 
     private Myth FindMythToSwapTo(int preferredDirection)
@@ -416,6 +408,7 @@ public class PlayerParticipant : Participant
     /*** Swapping ***/
     #region Swapping
     // TODO: How is this no longer being used?
+    // TODO: I think it's being duplicated by ChangeMythInPlay
     public void SwapReserveAtIndex(int index)
     {
         if (!isAvailableToSwap) return;
@@ -459,12 +452,27 @@ public class PlayerParticipant : Participant
     #endregion
     public void Initialise()
     {
-        MythInPlay = ParticipantData.partyData[partyIndex].myths.ElementAtOrDefault(0);
-        myths = ParticipantData.partyData[partyIndex].myths.ToList();
+        var allMyths = ParticipantData.partyData[partyIndex].myths;
+        
+        MythInPlay = allMyths.ElementAtOrDefault(0);
+        myths = allMyths.ToList();
 
-        mythsInReserve = ParticipantData.partyData[partyIndex].myths.ToList();
+        mythsInReserve = allMyths.ToList();
 
         if (MythInPlay != null)
             mythsInReserve.Remove(MythInPlay);
+
+        foreach (var myth in allMyths)
+        {
+            myth.died.AddListener(OnMythDied);
+        }
+    }
+
+    private void OnMythDied(Myth myth)
+    {
+        var mythToSwapTo = SwapInDirection(1);
+        
+        if (mythToSwapTo != null)
+            mythToSwapTo.Invulnerability(deathSwapInvulnerabilityTime);
     }
 }
