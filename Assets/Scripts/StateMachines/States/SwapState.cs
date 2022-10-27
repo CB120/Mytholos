@@ -46,7 +46,7 @@ namespace StateMachines.States
             timer = 0;
 
             // SFX
-            partyIndex = gameObject.GetComponentInParent<Myth>().partyIndex; // SFX
+            partyIndex = myth.PartyIndex; // SFX
 
             GameObject selectedPrefab = swapStartSFXPrefabLeft;
             if (partyIndex == 1) selectedPrefab = swapStartSFXPrefabRight;

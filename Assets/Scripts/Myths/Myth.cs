@@ -1,6 +1,8 @@
+using System;
 using StateMachines;
 using StateMachines.Commands;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Myths
 {
@@ -9,7 +11,8 @@ namespace Myths
         [SerializeField] private MythStat health;
         [SerializeField] private MythStat stamina;
         [SerializeField] private MythCommandHandler mythCommandHandler;
-        Animator anim;
+        [SerializeField] private MythRuntimeSet mythRuntimeSet;
+        private Animator anim;
         GameObject[] visuals;
 
         public MythStat Health => health;
@@ -26,12 +29,13 @@ namespace Myths
         // TODO: Make serialised, fix naming mismatch
         public Effects effectController;
 
-        public int partyIndex;
+        private int partyIndex;
         public int PartyIndex
         {
             get => partyIndex;
             set
             {
+                // TODO: Remove hardcoding
                 partyIndex = value;
                 ring.color = value == 0 ? new Color(1.0f, 0.3f, 0.0f, 1.0f)
                     : new Color(0.0f, 0.5f, 1.0f, 1.0f);
@@ -39,14 +43,18 @@ namespace Myths
         }
         public bool isInvulnerable = false;
 
+        private MythData mythData;
+
         //References
         public SO_Element element;
-        public SO_Ability northAbility;
-        public SO_Ability westAbility;
-        public SO_Ability southAbility;
-        public SO_Ability eastAbility;
+        public SO_Ability NorthAbility => mythData.northAbility;
+        public SO_Ability WestAbility => mythData.westAbility;
+        public SO_Ability SouthAbility => mythData.southAbility;
+        public SO_Ability EastAbility => mythData.eastAbility;
 
         public SpriteRenderer ring;
+
+        [NonSerialized] public UnityEvent<Myth> died = new();
 
         private void Awake()
         {
@@ -60,13 +68,13 @@ namespace Myths
                 for (int i = 0; i < anim.transform.childCount; i++)
                      visuals[i] = anim.transform.GetChild(i).gameObject;
             }
+            
+            mythRuntimeSet.Add(this);
         }
 
-        /*Remove everything after this after 5/09/22*/
-        public WinState ws;
-        public void TemporaryUpdateTeam()
+        public void Die()
         {
-            ws.DecreaseScore(partyIndex);
+            died.Invoke(this);
         }
         public PartyBuilder pb;
         
@@ -90,9 +98,9 @@ namespace Myths
         public int NumberOfAvailableAbilities()
         {
             int output = 0;
-            if (northAbility.staminaCost <= Stamina.Value) output++;
-            if (westAbility.staminaCost <= Stamina.Value) output++;
-            if (southAbility.staminaCost <= Stamina.Value) output++;
+            if (NorthAbility.staminaCost <= Stamina.Value) output++;
+            if (WestAbility.staminaCost <= Stamina.Value) output++;
+            if (SouthAbility.staminaCost <= Stamina.Value) output++;
             return output;
         }
 
@@ -111,6 +119,16 @@ namespace Myths
 
             anim.SetTrigger(trigger);
             anim.speed = 1.0f;
+        }
+
+        private void OnDestroy()
+        {
+            mythRuntimeSet.Remove(this);
+        }
+
+        public void Initialise(MythData mythData)
+        {
+            this.mythData = mythData;
         }
     }
 }

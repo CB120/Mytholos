@@ -122,37 +122,15 @@ public class PartyBuilder : MonoBehaviour
         {
             Party2.Add(newMythGameObject);
         }
+        
+        newMyth.Initialise(mythData);
 
-
-        // TODO: I want it on the record that I don't like this
-        newMyth.northAbility = mythData.northAbility;
-        newMyth.westAbility = mythData.westAbility;
-        newMyth.southAbility = mythData.southAbility;
-        newMyth.eastAbility = mythData.eastAbility;
+        // TODO: Is this needed
         newMyth.PartyIndex = participantIndex;
-        newMyth.ws = winState;
         newMyth.pb = this;
         
         newMythGameObject.SetActive(false);
         
         mythCounter ++;
     }
-
-    public int GetRemainingMyths(int teamIndex) // dont know if i need this anymore ~ Christian
-    {
-        int remaining;
-        if(teamIndex == 0)
-        {
-            remaining = winState.team1Remaining;
-        } else 
-        {
-            remaining = winState.team2Remaining;
-        }
-        Debug.Log("Remaining = " + remaining);
-        return remaining;
-    }
-
-
-    //Remove after playtest
-    public WinState winState;  
 }

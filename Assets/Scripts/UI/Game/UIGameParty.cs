@@ -148,7 +148,7 @@ public class UIGameParty : MonoBehaviour
         // Populate it with relevant info
         for (int i = 0; i < 3; i++)
         {
-            SO_Ability ability = i == 0 ? myths[partyMemberNumber].northAbility : i == 1 ? myths[partyMemberNumber].westAbility : myths[partyMemberNumber].southAbility;
+            SO_Ability ability = i == 0 ? myths[partyMemberNumber].NorthAbility : i == 1 ? myths[partyMemberNumber].WestAbility : myths[partyMemberNumber].SouthAbility;
             abilities[i].UpdateUI(ability, myths[partyMemberNumber]);
             abilityUIByAbilitySO[ability] = abilities[i];
         }

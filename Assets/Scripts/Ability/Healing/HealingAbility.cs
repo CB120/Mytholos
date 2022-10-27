@@ -51,7 +51,7 @@ public class HealingAbility : Ability
         {
             trigger.enabled = false;
             if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
-            myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+            myth.effectController.DeactivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
             
         }
     }
@@ -59,14 +59,14 @@ public class HealingAbility : Ability
     private void OnTriggerEnter(Collider other)
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null || myth.partyIndex != owningMyth.partyIndex) return;
+        if (myth == null || myth.PartyIndex != owningMyth.PartyIndex) return;
         if (EffectWillRemain())
         {
             ApplyEffect(myth);
         }
 
         overlappedMyths.Add(myth);
-        myth.effectController.ActivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+        myth.effectController.ActivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
         InvokeRepeating("SpawnEffects", 0, 1f);
     }
 
@@ -74,7 +74,7 @@ public class HealingAbility : Ability
     private void OnTriggerStay(Collider other)//Would have preferred this to be onTrigger Enter, however if there are overlapping pools, an effect may be removed
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null || EffectWillRemain() || myth.partyIndex != owningMyth.partyIndex) return;
+        if (myth == null || EffectWillRemain() || myth.PartyIndex != owningMyth.PartyIndex) return;
             ApplyEffect(myth);
     }
 
@@ -87,7 +87,7 @@ public class HealingAbility : Ability
 
         if (!EffectWillRemain())//If we don't want healing pool to wipe effect on exit
         {
-            myth.effectController.DeactivateBuff(ability.element.element, myth.partyIndex != owningMyth.partyIndex);
+            myth.effectController.DeactivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
         }
 
         if (ability.element.element == Elements.Element.Wood)
@@ -110,7 +110,7 @@ public class HealingAbility : Ability
     {
         foreach (Myth myth in overlappedMyths)
         {
-            if (myth.partyIndex == this.owningMyth.partyIndex)
+            if (myth.PartyIndex == this.owningMyth.PartyIndex)
             {
                 if (!myth.gameObject.activeInHierarchy) { 
                     overlappedMyths.Remove(myth);
