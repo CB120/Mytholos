@@ -15,10 +15,10 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   name: Ice Bomb
   description: Bomb
-  damage: 30
+  damage: 40
   regenSpeed: 0
   statIncrease: 0
-  staminaCost: 60
+  staminaCost: 55
   chargeTime: 0
   performTime: 0
   isRanged: 1
