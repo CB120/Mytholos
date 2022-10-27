@@ -16,12 +16,8 @@ MonoBehaviour:
   tabs: []
   hasTabs: 0
   tabData:
-  - Descriptions: []
+  - Descriptions:
+    - There is currently nothing in this book! come back later
     Images: []
-    PageNames: []
-  - Descriptions: []
-    Images: []
-    PageNames: []
-  - Descriptions: []
-    Images: []
-    PageNames: []
+    PageNames:
+    - Error!

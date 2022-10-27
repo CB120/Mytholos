@@ -10,7 +10,10 @@ public class UIMenuOpenBook : UIMenuNodeGraph
     public TextMeshProUGUI selectedBookName;
     [SerializeField] TextMeshProUGUI[] tabNames;
     //UIMenuNode removedNode;
+    [Header("Menu Graph References")]
     [SerializeField] GameObject Arrows;
+    [SerializeField] TextMeshProUGUI leftPageNumber;
+    [SerializeField] TextMeshProUGUI rightPageNumber;
 
     public void GetCurrentBook(SO_Book book)
     {
@@ -27,6 +30,8 @@ public class UIMenuOpenBook : UIMenuNodeGraph
                 tab.gameObject.GetComponent<Image>().enabled = false;
             }
             playerCursors[0].GetComponent<Image>().enabled = false;
+            leftPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().leftPageNumber;
+            rightPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().rightPageNumber;
         } else {
             for (int i = 0; i < currentOpenBook.tabs.Length; i++)
             {
@@ -97,6 +102,11 @@ public class UIMenuOpenBook : UIMenuNodeGraph
                 else
                 {
                     playerCurrentNode[0].GetComponent<UINodeTab>().informationSector.gameObject.SetActive(true);
+                    if (currentOpenBook.hasTabs == false)
+                    {
+                        leftPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().leftPageNumber;
+                        rightPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().rightPageNumber;
+                    }
                 }
             }
         }

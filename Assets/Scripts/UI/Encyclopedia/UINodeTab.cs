@@ -12,8 +12,9 @@ public class UINodeTab : UIMenuNode
     public TextMeshProUGUI[] descriptions;
     //public TextMeshProUGUI descriptionTwo;
     public Image[] images;
-    //public Image rightImage;
-
+    // Sorry, i know the following isnt elegant... but im running out of time... ~ Christian
+    public string leftPageNumber;
+    public string rightPageNumber;
     private void OnEnable()
     {
         Invoke("lateEnable", 0.005f);
