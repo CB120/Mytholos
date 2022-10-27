@@ -19,6 +19,8 @@ public class PlayerParticipant : Participant
     public UnityEvent<int> SelectMyth = new();
     public UnityEvent<SO_Ability> SelectAbility = new();
     [NonSerialized] public UnityEvent<PlayerParticipant> mythInPlayChanged = new();
+    [NonSerialized] public UnityEvent<PlayerParticipant> pauseRequested = new();
+    [NonSerialized] public UnityEvent<PlayerParticipant> resumeRequested = new();
     public UnityEvent<bool> FaceButtonNorth = new();
     public UnityEvent<bool> FaceButtonWest = new();
     public UnityEvent<bool> FaceButtonSouth = new();
@@ -29,7 +31,10 @@ public class PlayerParticipant : Participant
     private bool isAvailableToDodge = true;
     [SerializeField] private float swappingCooldown = 2f;
     [SerializeField] private float dodgeCooldown = 2.25f;
+    [SerializeField] private PlayerInput playerInput;
 
+    public PlayerInput PlayerInput => playerInput;
+    
     //Variables
     //int[] mythsInPlay = { 0, 1 }; //Stores indexes of Myth references in party[] corresponding to each controller 'side'/shoulder button
     // L  R   | mythsInPlay[0] = Left monster = party[mythsInPlay[0]] | opposite for Right monster
@@ -103,23 +108,20 @@ public class PlayerParticipant : Participant
         playerParticipantRuntimeSet.Remove(this);
     }
 
-    public void DisablePlayerInput(float timeToWait)
+    private InputActionMap oldInputActionMap;
+    
+    // TODO: Disabling twice will cause problems
+    public void DisablePlayerInput(float timeToWait = 0)
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        if (input)
-        {
-            input.notificationBehavior = PlayerNotifications.SendMessages;
+        oldInputActionMap = PlayerInput.currentActionMap;
+        PlayerInput.currentActionMap = null;
+        if (timeToWait > 0)
             Invoke("EnablePlayerInput", timeToWait);
-        }    
     }
 
-    void EnablePlayerInput()
+    public void EnablePlayerInput()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        if (input)
-        {
-            input.notificationBehavior = PlayerNotifications.InvokeUnityEvents;
-        }
+        PlayerInput.currentActionMap = oldInputActionMap;
     }
 
     /*** In-Game Input events ***/
@@ -128,7 +130,7 @@ public class PlayerParticipant : Participant
     public void UseAbilityNorth(InputAction.CallbackContext context)
     {
         FaceButtonNorth.Invoke(context.performed);
-        UseAbility(context, myth => myth.northAbility);
+        UseAbility(context, myth => myth.NorthAbility);
     }
 
     public void UseAbilityEast(InputAction.CallbackContext context)
@@ -154,13 +156,13 @@ public class PlayerParticipant : Participant
     public void UseAbilitySouth(InputAction.CallbackContext context)
     {
         FaceButtonSouth.Invoke(context.performed);
-        UseAbility(context, myth => myth.southAbility);
+        UseAbility(context, myth => myth.SouthAbility);
     }
 
     public void UseAbilityWest(InputAction.CallbackContext context)
     {
         FaceButtonWest.Invoke(context.performed);
-        UseAbility(context, myth => myth.westAbility);
+        UseAbility(context, myth => myth.WestAbility);
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -188,6 +190,13 @@ public class PlayerParticipant : Participant
         SelectedMythCommandHandler.PushCommand(new AbilityCommand(ability));
 
         SelectAbility.Invoke(ability);
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        pauseRequested.Invoke(this);
     }
 
     public void SwitchLeft(InputAction.CallbackContext context)
@@ -393,6 +402,13 @@ public class PlayerParticipant : Participant
         if (!context.performed) return;
         if (currentMenuGraph == null) return;
         currentMenuGraph.ParseAction(UIMenuNode.Action.Start, partyIndex);
+    }
+
+    public void Resume(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        resumeRequested.Invoke(this);
     }
 
     #endregion

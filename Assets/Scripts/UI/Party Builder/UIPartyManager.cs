@@ -496,8 +496,8 @@ public class UIPartyManager : MonoBehaviour
         {
             foreach (PlayerParticipant participant in players)
             {
-                participant.DisablePlayerInput(0.5f);
                 participant.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+                participant.DisablePlayerInput(0.5f);
             }
 
             transitionAnimator.SetInteger("Direction", 1);

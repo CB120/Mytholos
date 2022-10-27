@@ -436,7 +436,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7428839973292417855}
         m_TargetAssemblyTypeName: Myths.Myth, Assembly-CSharp
-        m_MethodName: TemporaryUpdateTeam
+        m_MethodName: Die
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1589,6 +1589,7 @@ MonoBehaviour:
   health: {fileID: 578738512660367433}
   stamina: {fileID: 3681393799570416642}
   mythCommandHandler: {fileID: -3291310522803648204}
+  mythRuntimeSet: {fileID: 11400000, guid: eb6940ad38f161645814e382c5324080, type: 2}
   myth: {fileID: 0}
   walkSpeed: 0
   AttackStat: 1
