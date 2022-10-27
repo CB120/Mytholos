@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab30241e3b44cf79321a9ed60188e1f, type: 3}
   m_Name: All Participant Data Service
   m_EditorClassIdentifier: 
-  useDebugParticipantData: 1
+  useDebugParticipantData: 0
   liveAllParticipantData: {fileID: 11400000, guid: e6d9ba1070afa3a4f911b044fe84ab18,
     type: 2}
   debugAllParticipantData: {fileID: 11400000, guid: 147620fded745804385c132b70ed8ecd,
