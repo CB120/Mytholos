@@ -56,7 +56,6 @@ public class Effects : MonoBehaviour
     public void CleanseHealthBuff()
     {
         myth.Health.RegenSpeed = 0;
-        Debug.Log("Health Buff Cleansed");
     }
     #endregion
 

@@ -72,7 +72,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
             }
 
             var finalDamage = (damage * elementModifier * DamageMultiplier * owningMyth.AttackStat) / myth.DefenceStat;
-            Debug.Log("attack stat is " + owningMyth.AttackStat + "Final Damage is " + finalDamage);
 
             if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
             {
