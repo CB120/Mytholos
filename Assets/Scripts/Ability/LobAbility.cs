@@ -74,7 +74,7 @@ public class LobAbility : Ability
     private void OnTriggerEnter(Collider other)
     {
         Myth attackedMyth = other.gameObject.GetComponent<Myth>();
-        if (attackedMyth)
+        if (attackedMyth && hasExploded)
         {
             Attack(attackedMyth, ability.damage);
         }

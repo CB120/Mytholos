@@ -10,11 +10,12 @@ namespace Myths
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float jabDistance = 0.5f;
         [SerializeField] private Collider jabCollider;
+        [SerializeField] ParticleSystemRenderer pr;
         public override void Start()
         {
+            pr.material.SetColor("_Toon_Ramp_Tinting", ability.element.color);
             base.Start();
-            Instantiate(abilityPS.gameObject, gameObject.transform.position, gameObject.transform.rotation, this.transform);
-            Destroy(this.gameObject, 0.8f);
+            Destroy(this.gameObject, ability.timeToDestroy);
         }
         public override void Update()
         {

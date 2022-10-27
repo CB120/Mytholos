@@ -288,7 +288,7 @@ MonoBehaviour:
   rigidBody: {fileID: 4679095279651952454}
   strength: 1
   rend: {fileID: 4679095279651952452}
-  areaOfEffect: 1
+  areaOfEffect: 3
   timeToExplode: 2
   expandSpeed: 5
   timeToDestroy: 1
