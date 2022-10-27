@@ -21,19 +21,26 @@ MonoBehaviour:
   hasTabs: 0
   tabData:
   - Descriptions:
-    - 
-    - 
-    Images: []
+    - 'Also known as the Woodland Stag, Wolper is a nimble yet powerful Myth that
+      excels against Water, Electric & Earth types thanks to his Wood elemental type.    '
+    - 'The Kelpie is a well-rounded myth who is best used to support and setup a
+      strategic attack with your other myths. Its Water elemental typed abilities
+      leaves a large trail of debris over the field, allowing for a combo attack
+      with Electric elemental abilities to ''Electrify'' the debris. '
+    Images:
+    - {fileID: 21300000, guid: 0ba6801c0c910b7459182d8d96aff7f6, type: 3}
     PageNames:
-    - 
-    - 
+    - Wolper
+    - Kelpie
   - Descriptions:
-    - 
+    - "The almighty earthen totem, also known by its prey as the Golem. \n\nThe Golem
+      is a bulky myth with high amounts of health and strength at the cost of low
+      mobility. "
     - 
     Images: []
     PageNames:
-    - 
-    - 
+    - Golem
+    - Enfield
   - Descriptions:
     - 
     - 
