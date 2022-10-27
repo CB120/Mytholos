@@ -20,6 +20,7 @@ namespace Myths
         private const float MaxValue = 100;
         private const float MinValue = 0;
         
+        // TODO: Rename to avoid confusion between value and this.value
         private float value;
         private bool isRegenerating;
         
@@ -44,7 +45,7 @@ namespace Myths
                 
                 valueChanged.Invoke(this.value / MaxValue);
                 
-                if (value == 0)
+                if (this.value == 0)
                     valueZeroed.Invoke();
             }
         }
@@ -57,6 +58,8 @@ namespace Myths
 
         private void Update()
         {
+            if (regenSpeed == 0) return;
+            
             if (!isRegenerating) return;
             
             if (Value >= MaxValue) return;
