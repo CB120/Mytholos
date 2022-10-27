@@ -29,7 +29,7 @@ public class PlayerParticipant : Participant
     //Properties
     private bool isAvailableToSwap = true;
     private bool isAvailableToDodge = true;
-    [SerializeField] private float swappingCooldown = 2f;
+    [SerializeField] private float swappingCooldown = 1f;
     [SerializeField] private float dodgeCooldown = 2.25f;
     [SerializeField] private PlayerInput playerInput;
 
@@ -217,6 +217,8 @@ public class PlayerParticipant : Participant
 
     private void SwapCommandInDirection(int direction)
     {
+        if (!isAvailableToSwap) return;
+        
         if (MythInPlay.Health.Value <= 0) return;
 
         var mythToSwapTo = FindMythToSwapTo(direction);
@@ -233,8 +235,6 @@ public class PlayerParticipant : Participant
 
     public void SwapFromCommand(SwapCommand swapCommand)
     {
-        if (!isAvailableToSwap) return;
-        
         MythInPlay = swapCommand.mythToSwapIn;
         StartSwapCooldown();
     }
@@ -415,6 +415,7 @@ public class PlayerParticipant : Participant
 
     /*** Swapping ***/
     #region Swapping
+    // TODO: How is this no longer being used?
     public void SwapReserveAtIndex(int index)
     {
         if (!isAvailableToSwap) return;
