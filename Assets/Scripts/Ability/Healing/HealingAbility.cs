@@ -82,7 +82,7 @@ public class HealingAbility : Ability
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (!myth) return;
-        myth.Health.RegenSpeed = myth.Stamina.defaultRegenSpeed;
+        myth.Health.RegenSpeed = myth.Health.defaultRegenSpeed;
         myth.Stamina.RegenSpeed = myth.Stamina.defaultRegenSpeed;
 
         if (!EffectWillRemain())//If we don't want healing pool to wipe effect on exit
