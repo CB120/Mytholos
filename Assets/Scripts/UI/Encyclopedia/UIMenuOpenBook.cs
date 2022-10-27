@@ -19,10 +19,10 @@ public class UIMenuOpenBook : UIMenuNodeGraph
 
     private void OnEnable()
     {
-        if(currentOpenBook.hasTabs == false)
+        if (currentOpenBook.hasTabs == false)
         {
             Arrows.SetActive(true);
-            foreach(UINodeTab tab in nodes)
+            foreach (UINodeTab tab in nodes)
             {
                 tab.gameObject.GetComponent<Image>().enabled = false;
             }
@@ -45,10 +45,9 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             }
             Arrows.SetActive(false);
             playerCursors[0].GetComponent<Image>().enabled = true;
-            selectedBookName.text = currentOpenBook.bookName;
-            Debug.Log(selectedBookName.text);
         }
-
+        selectedBookName.text = currentOpenBook.bookName;
+        Debug.Log(selectedBookName.text);
         for (int t = 0; t < currentOpenBook.tabData.Length; t++)
         {
             for(int d = 0; d < currentOpenBook.tabData[t].Descriptions.Length; d++)

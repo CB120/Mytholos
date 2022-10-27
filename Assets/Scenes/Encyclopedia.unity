@@ -2557,7 +2557,7 @@ PrefabInstance:
     - target: {fileID: 3238821639114690616, guid: 8a9da88d096a92b42a020735fc3a5baa,
         type: 3}
       propertyPath: m_Name
-      value: BookOfCutContent
+      value: Book Of Myths
       objectReference: {fileID: 0}
     - target: {fileID: 3238821639114690616, guid: 8a9da88d096a92b42a020735fc3a5baa,
         type: 3}
@@ -3079,7 +3079,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 107178587}
   - {fileID: 1412965639}
-  book: {fileID: 11400000, guid: 4ac9c3b0fd239d0478f3567d34e10b61, type: 2}
+  book: {fileID: 11400000, guid: 8f7c3f53049915c45b2502d25d18d0c4, type: 2}
   leftAdjacent: {x: 0, y: 0, z: 0}
   rightAdjacent: {x: 0, y: 0, z: 0}
   isSelected: 0
@@ -4824,7 +4824,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 285854683}
   - {fileID: 107178587}
-  book: {fileID: 11400000, guid: 8f7c3f53049915c45b2502d25d18d0c4, type: 2}
+  book: {fileID: 11400000, guid: 891eae3dcff0f514eb2224e44f5d1baa, type: 2}
   leftAdjacent: {x: 0, y: 0, z: 0}
   rightAdjacent: {x: 0, y: 0, z: 0}
   isSelected: 0

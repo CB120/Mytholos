@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd82617972f237748bd8fb5d86fc091c, type: 3}
   m_Name: BookOfAbilities
   m_EditorClassIdentifier: 
-  bookName: 
+  bookName: Book Of Abilities
   tabs: []
-  tabData: []
+  hasTabs: 0
+  tabData:
+  - Descriptions: []
+    Images: []
+    PageNames: []
+  - Descriptions: []
+    Images: []
+    PageNames: []
+  - Descriptions: []
+    Images: []
+    PageNames: []
