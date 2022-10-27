@@ -197,7 +197,7 @@ public class Effects : MonoBehaviour
 
     private void RemoveDefenceBuff()
     {
-        myth.AttackStat = defaultAttackStat;
+        myth.DefenceStat = defaultDefenceStat;
         DeactivateBuff(Element.Earth, false);
     }
 
