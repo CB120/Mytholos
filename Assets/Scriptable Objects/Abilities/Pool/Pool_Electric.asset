@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Electric Pool
   description: Pool
   damage: 0
-  regenSpeed: 30
+  regenSpeed: 20
   statIncrease: 15
   staminaCost: 25
   chargeTime: 0

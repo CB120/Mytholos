@@ -20,7 +20,7 @@ namespace Myths
         private const float MaxValue = 100;
         private const float MinValue = 0;
         
-        [SerializeField] private float value;
+        private float value;
         private bool isRegenerating;
         
         public UnityEvent<float> valueChanged = new();

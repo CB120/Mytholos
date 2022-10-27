@@ -12,6 +12,7 @@ public class ParticleVisuals : MonoBehaviour
 
     private void OnDisable()
     {
+        Debug.LogWarning("PARTICLE SYSTEM DISABLED");
         Destroy(this.gameObject);
     }
 }

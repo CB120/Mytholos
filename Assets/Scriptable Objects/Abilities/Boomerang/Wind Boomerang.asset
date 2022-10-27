@@ -15,10 +15,10 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   name: Shurricane
   description: Boomerang
-  damage: 12
+  damage: 30
   regenSpeed: 0
   statIncrease: 0
-  staminaCost: 30
+  staminaCost: 20
   chargeTime: 0
   performTime: 0
   isRanged: 1

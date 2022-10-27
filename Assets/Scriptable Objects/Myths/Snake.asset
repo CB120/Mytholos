@@ -23,7 +23,7 @@ MonoBehaviour:
   agility: 0.58
   abilities:
   - {fileID: 11400000, guid: 96aba68456099c2458ae5ac3bc0b3126, type: 2}
-  - {fileID: 11400000, guid: 099b2c916cdce0247a13c49e46f5fae5, type: 2}
-  - {fileID: 11400000, guid: 3f2e0efd3e5714340a1afbd9e77d678b, type: 2}
+  - {fileID: 11400000, guid: 1533976bc9a5c7346a7e85df3b37a3a2, type: 2}
   - {fileID: 11400000, guid: 0c557ee0d0a29e149a759bafaac99e67, type: 2}
-  - {fileID: 11400000, guid: 06920cb0f097ed04cad405a50771f12f, type: 2}
+  - {fileID: 11400000, guid: eff645aedf171704b874f5c006502333, type: 2}
+  - {fileID: 11400000, guid: 2778f19f1aa2a9e4f82396d61f4db8d1, type: 2}
