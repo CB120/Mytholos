@@ -470,18 +470,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7428839973292417855}
-        m_TargetAssemblyTypeName: Myths.Myth, Assembly-CSharp
-        m_MethodName: TemporaryDeathSwap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   regenSpeed: 0
 --- !u!1 &5029060779171543208
 GameObject:
@@ -1597,15 +1585,9 @@ MonoBehaviour:
   SizeStat: 0
   targetEnemy: {fileID: 0}
   effectController: {fileID: 5637322297209466938}
-  partyIndex: 0
   isInvulnerable: 0
   element: {fileID: 0}
-  northAbility: {fileID: 0}
-  westAbility: {fileID: 0}
-  southAbility: {fileID: 0}
-  eastAbility: {fileID: 0}
   ring: {fileID: 1257123659443305625}
-  ws: {fileID: 0}
   pb: {fileID: 0}
 --- !u!54 &3131205609304386058
 Rigidbody:

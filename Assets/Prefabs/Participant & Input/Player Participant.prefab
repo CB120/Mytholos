@@ -418,6 +418,7 @@ MonoBehaviour:
   partyIndex: -1
   playerParticipantRuntimeSet: {fileID: 11400000, guid: fcdedad2032f6ac46a83be0a174bfcd9,
     type: 2}
+  deathSwapInvulnerabilityTime: 1
   SelectMyth:
     m_PersistentCalls:
       m_Calls: []
@@ -436,7 +437,7 @@ MonoBehaviour:
   FaceButtonEast:
     m_PersistentCalls:
       m_Calls: []
-  swappingCooldown: 2
+  swappingCooldown: 1
   dodgeCooldown: 2.25
   playerInput: {fileID: 2500836886932577087}
   currentMenuGraph: {fileID: 0}

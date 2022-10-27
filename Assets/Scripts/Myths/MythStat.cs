@@ -15,11 +15,14 @@ namespace Myths
             set => regenSpeed = value;
         }
 
-        public float regenPauseTime;
+        [SerializeField] private float regenPauseTime;
+
+        public bool ExternallyModifiable { get; set; } = true;
 
         private const float MaxValue = 100;
         private const float MinValue = 0;
         
+        // TODO: Rename to avoid confusion between value and this.value
         [SerializeField] private float value;
         private bool isRegenerating;
         
@@ -30,6 +33,17 @@ namespace Myths
         public float ValuePercent => Value / MaxValue;
         
         public float Value
+        {
+            get => InternalValue;
+            set
+            {
+                if (!ExternallyModifiable) return;
+
+                InternalValue = value;
+            }
+        }
+
+        private float InternalValue
         {
             get => value;
             set
@@ -44,7 +58,7 @@ namespace Myths
                 
                 valueChanged.Invoke(this.value / MaxValue);
                 
-                if (value == 0)
+                if (this.value == 0)
                     valueZeroed.Invoke();
             }
         }
@@ -57,6 +71,8 @@ namespace Myths
 
         private void Update()
         {
+            if (regenSpeed == 0) return;
+            
             if (!isRegenerating) return;
             
             if (Value >= MaxValue) return;

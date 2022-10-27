@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using StateMachines;
 using StateMachines.Commands;
 using UnityEngine;
@@ -41,7 +42,17 @@ namespace Myths
                     : new Color(0.0f, 0.5f, 1.0f, 1.0f);
             }
         }
-        public bool isInvulnerable = false;
+
+        public bool IsInvulnerable
+        {
+            get => isInvulnerable;
+            set
+            {
+                isInvulnerable = value;
+
+                Health.ExternallyModifiable = !isInvulnerable;
+            }
+        }
 
         private MythData mythData;
 
@@ -55,6 +66,7 @@ namespace Myths
         public SpriteRenderer ring;
 
         [NonSerialized] public UnityEvent<Myth> died = new();
+        private bool isInvulnerable = false;
 
         private void Awake()
         {
@@ -72,15 +84,24 @@ namespace Myths
             mythRuntimeSet.Add(this);
         }
 
+        public void Invulnerability(float duration)
+        {
+            // TODO: Should store the routine to prevent duplicates
+            StartCoroutine(InvulnerabilityRoutine(duration));
+        }
+
+        private IEnumerator InvulnerabilityRoutine(float duration)
+        {
+            IsInvulnerable = true;
+
+            yield return new WaitForSeconds(duration);
+
+            IsInvulnerable = false;
+        }
+
         public void Die()
         {
             died.Invoke(this);
-        }
-        public PartyBuilder pb;
-        
-        public void TemporaryDeathSwap()
-        {
-            pb.mythDeathSwap(PartyIndex);
         }
 
         public void Knockback(float abilityKnockback, GameObject sendingMyth, float abilityStunTime)
@@ -129,6 +150,21 @@ namespace Myths
         public void Initialise(MythData mythData)
         {
             this.mythData = mythData;
+        }
+
+        public void ResetAndDisable()
+        {
+            StartCoroutine(ResetAndDisableRoutine());
+        }
+
+        private IEnumerator ResetAndDisableRoutine()
+        {
+            SetAnimatorTrigger("Reset");
+
+            // Need to wait a frame for the animator to return to a neutral pose, else when reenabled, will be incorrect
+            yield return null;
+
+            gameObject.SetActive(false);
         }
     }
 }

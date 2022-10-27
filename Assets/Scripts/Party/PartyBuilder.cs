@@ -82,18 +82,6 @@ public class PartyBuilder : MonoBehaviour
         }
     }
 
-    public void mythDeathSwap(int PartyIndex)
-    {
-        foreach (PlayerParticipant participant in playerParticipantRuntimeSet.items)
-        {
-            if (participant.partyIndex == PartyIndex)
-            {
-                participant.SwapInDirection(1);
-            }
-        }
-    }
-
-
     void SpawnMyth(MythData mythData, int participantIndex)
     {
         
@@ -125,9 +113,8 @@ public class PartyBuilder : MonoBehaviour
         
         newMyth.Initialise(mythData);
 
-        // TODO: Is this needed
+        // TODO: Slightly cyclic dependency, is this needed?
         newMyth.PartyIndex = participantIndex;
-        newMyth.pb = this;
         
         newMythGameObject.SetActive(false);
         

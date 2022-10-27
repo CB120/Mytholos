@@ -8,7 +8,7 @@ namespace StateMachines.AnyStateTransitions.CommandAnyStateTransition
         {
             if (mythCommandHandler.LastCommand is DodgeCommand)
             {
-                if (myth.isInvulnerable == false)
+                if (myth.IsInvulnerable == false)
                 {
                     Activate();
                 }
