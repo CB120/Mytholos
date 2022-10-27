@@ -10,6 +10,8 @@ namespace UI.Menu
         public override void OnAction(Action action, int playerNumber)
         {
             base.OnAction(action, playerNumber);
+
+            UISFXManager.PlaySound("Confirm");
             
             unityEvent.Invoke();
         }

@@ -17,8 +17,12 @@ public class UINodeLoadScene : UIMenuNode
         switch (action)
         {
             case Action.Submit:
+                // Ethan: Yes, I know this could now be a Switch in itself
                 if (nameOfSceneToLoad == "ControllerSetup") UISFXManager.PlaySound("Game Start");
                 if (nameOfSceneToLoad == "Encyclopedia") UISFXManager.PlaySound("To Encyclopaedia");
+                if (nameOfSceneToLoad == "PartyBuilder") UISFXManager.PlaySound("Back to PartyBuilder");
+                if (nameOfSceneToLoad == "Main Menu") UISFXManager.PlaySound("Back Scene");
+                if (nameOfSceneToLoad == "ArenaEddie") UISFXManager.PlaySound("Match Start");
 
                 if (transitionAnimator)
                 {

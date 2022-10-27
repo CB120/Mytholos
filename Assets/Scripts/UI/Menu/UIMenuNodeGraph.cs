@@ -104,6 +104,7 @@ public class UIMenuNodeGraph : MonoBehaviour
             if (navigateToLastGraphNodeOnCancel)
             {
                 Navigate(nodes[nodes.Count - 1], playerNumber, UIMenuNode.Direction.Down, false);
+                UISFXManager.PlaySound("Cancel");
                 return;
             }
             if (navigateToFirstGraphNodeAfterCancel)
