@@ -70,6 +70,17 @@ public class Effects : MonoBehaviour
         Invoke("RemoveStaminaDebuff", duration);
     }
 
+    public void IncreaseStamina(float increase)
+    {
+        this.myth.Stamina.Value += increase;
+        Invoke("RemoveStaminaBuff", .5f);
+    }
+
+    private void RemoveStaminaBuff()
+    {
+        DeactivateBuff(Element.Electric, false);
+    }
+
     private void RemoveStaminaDebuff()
     {
         this.myth.Stamina.RegenSpeed = this.myth.Stamina.defaultRegenSpeed;
@@ -211,7 +222,7 @@ public class Effects : MonoBehaviour
     public void BuffCleanse()
     {
         CleanseAllBuffs();
-        ActivateBuff(Element.Water, false);
+        ActivateBuff(Element.Water, true);
         Invoke("RemoveWaterIcon", 1);
     }
 
@@ -225,7 +236,7 @@ public class Effects : MonoBehaviour
     public void DebuffCleanse()
     {
         CleanseAllDebuffs();
-        ActivateBuff(Element.Water, true);
+        ActivateBuff(Element.Water, false);
         Invoke("RemoveWaterIcon", 1);
     }
 

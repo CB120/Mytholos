@@ -17,12 +17,12 @@ MonoBehaviour:
   description: Lob
   damage: 25
   regenSpeed: 0
-  statIncrease: 0
+  statIncrease: 15
   staminaCost: 40
   chargeTime: 0
   performTime: 0
   isRanged: 1
-  applyBuffToParty: 0
+  applyBuffToParty: 1
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1

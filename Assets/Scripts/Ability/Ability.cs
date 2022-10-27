@@ -202,9 +202,15 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     virtual public void ApplyElectricEffect(Myth myth, bool isInParty)//Stamina Buff, Stamina Debuff
     {
-        if (isInParty) return;
         myth.effectController.ActivateBuff(Element.Electric, !isInParty);
-        myth.effectController.ApplyStaminaEffect(!isInParty, ability.element.buffLength);
+        if (isInParty)
+        {
+            myth.effectController.IncreaseStamina(ability.statIncrease);
+        }
+        else
+        { 
+            myth.effectController.ApplyStaminaEffect(!isInParty, ability.element.buffLength);
+        }
     }
 
     virtual public void ApplyIceEffect(Myth myth, bool isInParty)//Freezes Enemy, Grants Overshield

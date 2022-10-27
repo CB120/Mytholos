@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Bomb
   damage: 40
   regenSpeed: 0
-  statIncrease: 0
+  statIncrease: 15
   staminaCost: 55
   chargeTime: 0
   performTime: 0
