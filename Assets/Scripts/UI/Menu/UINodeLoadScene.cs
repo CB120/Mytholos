@@ -26,25 +26,27 @@ public class UINodeLoadScene : UIMenuNode
 
                 if (transitionAnimator)
                 {
-                    foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+                    if (!destroyAllParticipantsOnSceneLoad)
                     {
-                        if (destroyAllParticipantsOnSceneLoad)
-                            participant.DestroyParticipant();
-                        else
+                        foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
                         {
-                            if (updateAllParticipantActionMaps)
+                            if (!destroyAllParticipantsOnSceneLoad)
                             {
-                                PlayerInput input = participant.GetComponent<PlayerInput>();
-                                if (input != null)
+                                if (updateAllParticipantActionMaps)
                                 {
-                                    string oldActionMap = input.currentActionMap.name;
-                                    input.actions.FindActionMap(oldActionMap).Disable();
-                                    input.actions.FindActionMap(nameOfActionMap).Enable();
+                                    PlayerInput input = participant.GetComponent<PlayerInput>();
+                                    if (input != null)
+                                    {
+                                        string oldActionMap = input.currentActionMap.name;
+                                        input.actions.FindActionMap(oldActionMap).Disable();
+                                        input.actions.FindActionMap(nameOfActionMap).Enable();
+                                    }
+                                    else
+                                        Debug.LogWarning("Failed to update a player participant's action map");
                                 }
-                                else
-                                    Debug.LogWarning("Failed to update a player participant's action map");
+
+                                participant.DisablePlayerInput(0.5f);
                             }
-                            participant.DisablePlayerInput(0.5f);
                         }
                     }
 
@@ -65,6 +67,13 @@ public class UINodeLoadScene : UIMenuNode
     IEnumerator LoadScene(float timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
+
+        if (destroyAllParticipantsOnSceneLoad)
+        {
+            foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+                participant.DestroyParticipant();
+        }
+
         SceneManager.LoadScene(nameOfSceneToLoad);
     }
 }

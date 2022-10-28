@@ -55,6 +55,7 @@ public class UINodeTab : UIMenuNode
             case Action.Cancel:
                 encyclopediaManager.SetLibraryActive(true);
                 encyclopediaManager.SetBookCanvas(false);
+                UISFXManager.PlaySound("Cancel");
                 break;
             default:
                 break;

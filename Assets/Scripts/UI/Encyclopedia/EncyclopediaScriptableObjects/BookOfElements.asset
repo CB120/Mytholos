@@ -18,32 +18,77 @@ MonoBehaviour:
   - Wood & Earth
   - Fire & Electricity
   - Metal & Wind
+  hasTabs: 0
   tabData:
   - Descriptions:
-    - 
-    - 
-    Images: []
+    - 'Positive Effect: Ally myths get a heal buff, increasing a myth''s health over
+      several seconds
+
+
+      Negative Effect: If hit with a wood attack, myths will
+      get applied with a wood debuff. whilst active the wood debuff will transfer
+      any damage done to the myth and apply health to the enemy myth'
+    - 'Positive Effect: Increases Attack Damage to enemies whilst fire buff is active.
+
+
+      Negative
+      Effect: Burns myth whilst fire debuff is active'
+    Images:
+    - {fileID: 0}
+    - {fileID: 0}
     PageNames:
-    - 
-    - 
+    - Wood
+    - Fire
   - Descriptions:
-    - 
-    - 
+    - 'Positive Effect: Electric Buff''s increase the speed rate of which a myth''s
+      stamina regenerates.
+
+
+      Negative Effect: Electric debuff slows stamina
+      regeneration'
+    - 'Positive Effect: Cleanses all negative effects that are currently applied
+      to a myth.
+
+
+      Negative Effect: Cleanses all positive effects that are
+      currently applied to a myth'
     Images: []
     PageNames:
-    - 
-    - 
+    - Electric
+    - Water
   - Descriptions:
-    - 
-    - 
+    - 'Positive Effect: Grants the myth with an overshield. This overshield absorbs
+      the damage of the next inflicted attack on a myth.
+
+
+      Negative Effect:
+      Freezes a myth, preventing them from performing any commands'
+    - 'Positive Effect: Myths will gain increased agility whilst wind buff is active
+
+
+      Negative
+      Effect: Myths will become disoriented and knocked back when hit with a wind
+      attack'
     Images: []
     PageNames:
-    - 
-    - 
+    - Ice
+    - Wind
   - Descriptions:
-    - 
-    - 
+    - 'Positive Effect: Increases the myths density so they are less likely to be
+      knocked back by other abilities.
+
+      
+
+      Negative Effect: Whilst metal
+      debuff is active myths attack damage will be reduced.'
+    - 'Positive Effect: Earth buff grant''s myths increased defence against oncoming
+      attacks.
+
+      
+
+      Negative Effect: Whilst earth debuff is active, myths
+      will have decreased agility.'
     Images: []
     PageNames:
-    - 
-    - 
+    - Metal
+    - Earth
