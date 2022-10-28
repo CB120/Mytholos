@@ -38,7 +38,7 @@ public class UINodeMyth : UIMenuNode
         if (action == Action.Cancel)
         {
             manager.RemovePartyMember(playerNumber);
-            UISFXManager.PlaySound("Deselct");
+            UISFXManager.PlaySound("Cancel");
         }
     }
 }

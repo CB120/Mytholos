@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -3707264552660243637, guid: 6b6118b9c060f5f4da0a45d050205dac,
         type: 3}
       propertyPath: EventReference.Path
-      value: event:/SFX/UI/Menus/Deselect
+      value: event:/SFX/UI/Menus/To AudioOptions
       objectReference: {fileID: 0}
     - target: {fileID: -3707264552660243637, guid: 6b6118b9c060f5f4da0a45d050205dac,
         type: 3}

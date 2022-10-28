@@ -13,6 +13,7 @@ public class AudioBankVolumeLoader : MonoBehaviour
     void Start()
     {
         LoadVolumes();
+        Destroy(gameObject);
     }
 
 
