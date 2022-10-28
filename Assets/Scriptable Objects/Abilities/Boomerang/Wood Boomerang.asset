@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wood Boomerang
   m_EditorClassIdentifier: 
   element: {fileID: 11400000, guid: e709dfa5eaf6b284f8561b5d12b926c0, type: 2}
-  name: Faunarang
+  name: Boomerang
   description: Boomerang
   damage: 15
   regenSpeed: 0
@@ -23,6 +23,7 @@ MonoBehaviour:
   performTime: 0
   isRanged: 1
   applyBuffToParty: 0
+  hasKnockback: 0
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 0
