@@ -162,8 +162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330, y: -110}
-  m_SizeDelta: {x: 180, y: 130}
+  m_AnchoredPosition: {x: 340, y: -130}
+  m_SizeDelta: {x: 210, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4963943666356001297
 CanvasRenderer:
@@ -193,7 +193,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Text words words longer words and a small logarithmical huh what uh  text
+    words words longer words and a small logarithmical huh what uh.
+
+
+    Text words
+    words longer words and a small logarithmical huh what uh.
+
+
+    Text words words
+    longer words and a small logarithmical huh what uh  text words words longer words
+    and a small logarithmical huh what uh  text words words longer words and a small
+    logarithmical huh what uh.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92cc007fd8fe7f1499b482e03e08ee78, type: 2}
   m_sharedMaterial: {fileID: -6520751935105553838, guid: 92cc007fd8fe7f1499b482e03e08ee78,
@@ -203,7 +214,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2147483648
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -228,12 +239,12 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -3
+  m_lineSpacing: -2.9
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -298,8 +309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: -40}
-  m_SizeDelta: {x: 150, y: 30}
+  m_AnchoredPosition: {x: 65, y: -50}
+  m_SizeDelta: {x: 210, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4963943666643189878
 CanvasRenderer:
@@ -364,7 +375,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 1
@@ -510,8 +521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: -120}
-  m_SizeDelta: {x: 150, y: 140}
+  m_AnchoredPosition: {x: 65, y: -130}
+  m_SizeDelta: {x: 210, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4963943666767584840
 CanvasRenderer:
@@ -541,7 +552,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Text words words longer words and a small logarithmical huh what uh  text
+    words words longer words and a small logarithmical huh what uh.
+
+
+    Text words
+    words longer words and a small logarithmical huh what uh.
+
+
+    Text words words
+    longer words and a small logarithmical huh what uh  text words words longer words
+    and a small logarithmical huh what uh  text words words longer words and a small
+    logarithmical huh what uh.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92cc007fd8fe7f1499b482e03e08ee78, type: 2}
   m_sharedMaterial: {fileID: -6520751935105553838, guid: 92cc007fd8fe7f1499b482e03e08ee78,
@@ -551,7 +573,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2147483648
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -576,8 +598,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -646,8 +668,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326.8, y: -40}
-  m_SizeDelta: {x: 150, y: 30}
+  m_AnchoredPosition: {x: 340, y: -50}
+  m_SizeDelta: {x: 210, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3345680672579249163
 CanvasRenderer:
@@ -712,7 +734,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 1

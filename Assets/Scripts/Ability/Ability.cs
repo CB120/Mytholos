@@ -119,7 +119,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
         // Animate the myth that was hit
         Animator anim = myth.gameObject.GetComponentInChildren<Animator>();
-        if (anim)
+        if (anim && myth.Health.Value > 0) // Only set trigger if still alive, otherwise will interupt death animation
         {
             anim.speed = 1.0f;
             anim.SetTrigger("Hurt");
