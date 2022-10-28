@@ -19,6 +19,8 @@ public class BusVolumeController : MonoBehaviour
     [Tooltip("Name-Volume pairs for Parameters in FMOD. Intended for Global Parameters automating Mixer Bus volumes.")]
     public AudioBus[] audioBuses;
 
+    string playerPrefsKeyPrefix = "BusVolume_";
+
 
     // Variables
 
@@ -30,7 +32,7 @@ public class BusVolumeController : MonoBehaviour
     // Engine - called
     void Start()
     {
-        
+        LoadSavedVolumes();
     }
 
     void Update()
@@ -40,6 +42,14 @@ public class BusVolumeController : MonoBehaviour
 
 
     // Methods
+    void LoadSavedVolumes()
+    {
+        foreach (AudioBus b in audioBuses)
+        {
+            b.volume = PlayerPrefs.GetFloat(playerPrefsKeyPrefix + name, 90f);
+        }
+    }
+
     void UpdateParameterValues()
     {
         foreach (AudioBus b in audioBuses)
