@@ -22,10 +22,6 @@ public class UIMenuOpenBook : UIMenuNodeGraph
 
     private void OnEnable()
     {
-        if(nodes[3].adjacent[2] == nodes[4].gameObject){
-            nodes[0].adjacent[3] = nodes[3].gameObject;
-            nodes[3].adjacent[2] = nodes[0].gameObject;
-        }
         if (currentOpenBook.hasTabs == false)
         {
             Arrows.SetActive(true);
@@ -36,12 +32,6 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             playerCursors[0].GetComponent<Image>().enabled = false;
             leftPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().leftPageNumber;
             rightPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().rightPageNumber;
-            if(currentOpenBook.bookName == "Book Of Abilities")
-            {
-                Debug.Log("Detected");
-                nodes[3].adjacent[2] = nodes[4].gameObject;
-                nodes[0].adjacent[3] = nodes[4].gameObject;
-            }
         } else {
             for (int i = 0; i < currentOpenBook.tabs.Length; i++)
             {
@@ -58,8 +48,6 @@ public class UIMenuOpenBook : UIMenuNodeGraph
                     }
                 }
             }
-            leftPageNumber.text = " ";
-            rightPageNumber.text = " ";
             Arrows.SetActive(false);
             playerCursors[0].GetComponent<Image>().enabled = true;
         }
