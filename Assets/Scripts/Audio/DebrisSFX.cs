@@ -14,6 +14,7 @@ public class DebrisSFX : MonoBehaviour
     [HideInInspector] public float debrisVolumeScalar = 1f;
 
     float volumeScalar;
+    float electricityTimer = 2f;
 
 
     // References
@@ -40,6 +41,12 @@ public class DebrisSFX : MonoBehaviour
         volumeScalar = 1 / Mathf.Pow(regionWidth, 2) * debrisVolumeScalar;
     }
 
+    private void Update()
+    {
+        electricityTimer -= Time.deltaTime;
+        if (electricityTimer <= 0f) electricityLoop.SetParameter("Debris Volume Instant", 0);
+    }
+
 
     // Called by other systems
     public void OnRegionDebrisChange() //called by DebrisRegion.numberOfTilesWithElementChanged
@@ -50,6 +57,7 @@ public class DebrisSFX : MonoBehaviour
     public void OnDebrisElectrificationChange() //called by DebrisRegion.numberOfElectrifiedTilesChanged
     {
         electricityLoop.SetParameter("Debris Volume Instant", region.NumberOfElectrifiedTiles * volumeScalar);
+        electricityTimer = 1f;
     }
     
 
