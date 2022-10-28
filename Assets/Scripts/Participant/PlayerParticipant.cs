@@ -80,9 +80,6 @@ public class PlayerParticipant : Participant
         }
     }
 
-    // TODO: Should be cached for performance
-    private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
-
     private HashSet<Myth> mythsInReserve = new();
     private List<Myth> myths = new();
 
@@ -134,15 +131,15 @@ public class PlayerParticipant : Participant
         if (!isAvailableToDodge) return;
         if (!context.performed) return;
 
-        if (SelectedMythCommandHandler.LastCommand is MoveCommand moveCommand)
+        if (MythInPlay.MythCommandHandler.LastCommand is MoveCommand moveCommand)
         {
-            SelectedMythCommandHandler.PushCommand(new DodgeCommand(moveCommand.input));   // Dodge in the input direction if the left stick is currently in use
+            MythInPlay.MythCommandHandler.PushCommand(new DodgeCommand(moveCommand.input));   // Dodge in the input direction if the left stick is currently in use
             StartDodgeCooldown();
         }
         else
         {
             Vector3 forwardVector = mythInPlay.transform.rotation * Vector3.forward;
-            SelectedMythCommandHandler.PushCommand(new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized));    // Else dodge in direction myth is facing
+            MythInPlay.MythCommandHandler.PushCommand(new DodgeCommand(new Vector2(forwardVector.x, forwardVector.z).normalized));    // Else dodge in direction myth is facing
             StartDodgeCooldown();
         }
     }
@@ -162,8 +159,8 @@ public class PlayerParticipant : Participant
     public void Move(InputAction.CallbackContext context)
     {
         // TODO: Not sure if this logic should be here or in MoveCommandReceived
-        if (SelectedMythCommandHandler.CurrentCommand is not MoveCommand moveCommand)
-            SelectedMythCommandHandler.PushCommand(new MoveCommand(context.ReadValue<Vector2>()));
+        if (MythInPlay.MythCommandHandler.CurrentCommand is not MoveCommand moveCommand)
+            MythInPlay.MythCommandHandler.PushCommand(new MoveCommand(context.ReadValue<Vector2>()));
         else
             moveCommand.input = context.ReadValue<Vector2>();
     }
@@ -181,7 +178,7 @@ public class PlayerParticipant : Participant
             return;
         }
 
-        SelectedMythCommandHandler.PushCommand(new AbilityCommand(ability));
+        MythInPlay.MythCommandHandler.PushCommand(new AbilityCommand(ability));
 
         SelectAbility.Invoke(ability);
     }
@@ -224,7 +221,7 @@ public class PlayerParticipant : Participant
 
     private void PushSwapCommand(Myth myth)
     {
-        SelectedMythCommandHandler.PushCommand(new SwapCommand(myth, this));
+        MythInPlay.MythCommandHandler.PushCommand(new SwapCommand(myth, this));
     }
 
     public void SwapFromCommand(SwapCommand swapCommand)
