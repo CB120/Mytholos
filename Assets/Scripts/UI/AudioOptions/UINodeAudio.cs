@@ -23,9 +23,9 @@ public class UINodeAudio : UIMenuNode
 
 
     //Called by UI Systems
-    public override void OnAudioFuckYa(Direction direction, int playerNumber) //the name was Christian
+    public override void MoveOptionSlider(Direction direction, int playerNumber) //the name was Christian
     {
-        base.OnAudioFuckYa(direction, playerNumber);
+        base.MoveOptionSlider(direction, playerNumber);
         switch (direction)
         {
             case Direction.Left:

@@ -6,7 +6,7 @@ public class UINodeGraphAudio : UIMenuNodeGraph
 {
     public override UIMenuNodeGraph ParseNavigation(UIMenuNode.Direction direction, int playerNumber, bool isPlayerInput)
     {
-        playerCurrentNode[0].OnAudioFuckYa(direction, playerNumber);
+        playerCurrentNode[0].MoveOptionSlider(direction, playerNumber);
         return base.ParseNavigation(direction, playerNumber, isPlayerInput);
         
     }
