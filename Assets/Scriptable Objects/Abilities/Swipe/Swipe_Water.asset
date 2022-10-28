@@ -23,6 +23,7 @@ MonoBehaviour:
   performTime: 0
   isRanged: 1
   applyBuffToParty: 0
+  hasKnockback: 1
   baseKnockback: 10
   baseStun: 3
   spawnInWorldSpace: 0

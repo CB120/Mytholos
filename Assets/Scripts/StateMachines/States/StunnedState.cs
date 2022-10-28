@@ -66,7 +66,9 @@ namespace StateMachines.States
                 anim.speed = 1.0f;
                 anim.SetBool("Stunned", true);
             }
+            
             stunTime = stunCommand.stunTime;
+            Debug.Log($"Stun Time: {stunTime}");
             movementController.SetTargetVelocity(Vector3.zero);
             Invoke("killStun", stunTime);
         }
