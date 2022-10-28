@@ -529,6 +529,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e1f40b0d-11e3-47d0-adfe-ddfcb87f21ed
     m_ActionName: UI/NavigateLeftShoulder[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 594cf7e4-863d-4abb-81c1-b9caceb8ee3f
+    m_ActionName: Player/Pause[/XInputControllerWindows1/start,/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ffdf9508-545d-4eb6-bc04-1f14c8a7fddb
+    m_ActionName: UI/Resume[/XInputControllerWindows1/start,/XInputControllerWindows/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -594,6 +602,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1888252058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1888252059}
+  - component: {fileID: 1888252060}
+  m_Layer: 0
+  m_Name: Audio Bank Volume Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1888252059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888252058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888252060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888252058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d938d94f4c0e94b9fe7f2d97a29b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterNames:
+  - Music Bus Volume
+  - Ability SFX Bus Volume
+  - Cmobat SFX Bus Volume
+  - UI SFX Bus Volume
+  - Debirs SFX Bus Volume
 --- !u!4 &4720286491469172964
 Transform:
   m_ObjectHideFlags: 0

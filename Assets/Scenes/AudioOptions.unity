@@ -430,6 +430,7 @@ MonoBehaviour:
   - {fileID: 0}
   volume: {fileID: 680034937}
   increments: 10
+  parameterName: Combat SFX Bus Volume
 --- !u!1 &133325389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1016,7 @@ GameObject:
   - component: {fileID: 363156897}
   - component: {fileID: 363156900}
   m_Layer: 5
-  m_Name: Master Volume
+  m_Name: Music Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1101,6 +1102,7 @@ MonoBehaviour:
   - {fileID: 0}
   volume: {fileID: 183490850}
   increments: 10
+  parameterName: Music Bus Volume
 --- !u!1 &466884646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master Volume
+  m_text: Music Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa8cfc5869e3eae4aafc4b61b98003bd, type: 2}
   m_sharedMaterial: {fileID: 6600144534688895724, guid: fa8cfc5869e3eae4aafc4b61b98003bd,
@@ -2543,6 +2545,7 @@ MonoBehaviour:
   - {fileID: 0}
   volume: {fileID: 1083148380}
   increments: 10
+  parameterName: Ability SFX Bus Volume
 --- !u!1 &1057391456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +2839,7 @@ MonoBehaviour:
   - {fileID: 0}
   volume: {fileID: 1250930759}
   increments: 10
+  parameterName: Debris SFX Bus Volume
 --- !u!1001 &1127258565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3901,6 +3905,7 @@ MonoBehaviour:
   - {fileID: 0}
   volume: {fileID: 1931404239}
   increments: 10
+  parameterName: UI SFX Bus Volume
 --- !u!1001 &1486378086
 PrefabInstance:
   m_ObjectHideFlags: 0

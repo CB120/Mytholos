@@ -95,7 +95,7 @@ public class MenuMusicController : MonoBehaviour
     }
 
 
-        // Private
+    // Private
     void UpdateFades() //applies the lerp between the current volume and target volume
     {
         foreach (MenuMusicTrack m in musicTracks)
