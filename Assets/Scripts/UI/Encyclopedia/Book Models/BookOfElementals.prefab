@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2862402267942210178}
   - component: {fileID: 1159272452194878759}
   - component: {fileID: 4031398342300283373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BookOfElementals
   m_TagString: Untagged
   m_Icon: {fileID: 0}

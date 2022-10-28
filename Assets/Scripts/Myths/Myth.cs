@@ -155,7 +155,8 @@ namespace Myths
 
         public void ResetAndDisable()
         {
-            StartCoroutine(ResetAndDisableRoutine());
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(ResetAndDisableRoutine());
         }
 
         private IEnumerator ResetAndDisableRoutine()
