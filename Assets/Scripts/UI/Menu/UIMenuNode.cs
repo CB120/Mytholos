@@ -23,7 +23,7 @@ public class UIMenuNode : MonoBehaviour
 
     virtual public void MoveOptionSlider(Direction direction, int playerNumber)
     {
-        if (direction == Direction.Up || direction == Direction.Left) UISFXManager.PlaySound("Nav Up-Left");
-        if (direction == Direction.Down || direction == Direction.Right) UISFXManager.PlaySound("Nav Down-Right");
+        if (direction == Direction.Left) UISFXManager.PlaySound("Nav Up-Left");
+        if (direction == Direction.Right) UISFXManager.PlaySound("Nav Down-Right");
     }
 }
