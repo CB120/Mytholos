@@ -60,4 +60,10 @@ public class UINodeTab : UIMenuNode
                 break;
         }
     }
+
+    private void OnDisable()
+    {
+        foreach (Image image in images)
+            image.sprite = null;
+    }
 }

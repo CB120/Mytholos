@@ -32,8 +32,14 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             foreach (UINodeTab tab in nodes)
             {
                 tab.gameObject.GetComponent<Image>().enabled = false;
+                for (int i = 0; i < tab.transform.childCount; i++)
+                {
+                    Image childImage = tab.transform.GetChild(i).GetComponent<Image>();
+                    if (childImage)
+                        childImage.enabled = false;
+                }
             }
-            playerCursors[0].GetComponent<Image>().enabled = false;
+            playerCursors[0].GetComponent<Image>().enabled = false; playerCursors[0].transform.GetChild(0).GetComponent<Image>().enabled = false;
             leftPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().leftPageNumber;
             rightPageNumber.text = playerCurrentNode[0].GetComponent<UINodeTab>().rightPageNumber;
             if(currentOpenBook.bookName == "Book Of Abilities")
@@ -47,6 +53,12 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             {
                 nodes[i].gameObject.SetActive(true);
                 nodes[i].gameObject.GetComponent<Image>().enabled = true;
+                for (int k = 0; k < nodes[i].transform.childCount; k++)
+                {
+                    Image childImage = nodes[i].transform.GetChild(k).GetComponent<Image>();
+                    if (childImage)
+                        childImage.enabled = true;
+                }
                 tabNames[i].text = currentOpenBook.tabs[i];
                 if (currentOpenBook.tabs.Length < 4)
                 {
@@ -61,10 +73,10 @@ public class UIMenuOpenBook : UIMenuNodeGraph
             leftPageNumber.text = " ";
             rightPageNumber.text = " ";
             Arrows.SetActive(false);
-            playerCursors[0].GetComponent<Image>().enabled = true;
+            playerCursors[0].GetComponent<Image>().enabled = true; playerCursors[0].transform.GetChild(0).GetComponent<Image>().enabled = true;
         }
         selectedBookName.text = currentOpenBook.bookName;
-        Debug.Log(selectedBookName.text);
+        //Debug.Log(selectedBookName.text);
         for (int t = 0; t < currentOpenBook.tabData.Length; t++)
         {
             for(int d = 0; d < currentOpenBook.tabData[t].Descriptions.Length; d++)
@@ -72,9 +84,19 @@ public class UIMenuOpenBook : UIMenuNodeGraph
                 nodes[t].GetComponent<UINodeTab>().descriptions[d].text = currentOpenBook.tabData[t].Descriptions[d];
             }
 
-            for (int i = 0; i < currentOpenBook.tabData[t].Images.Length; i++)
+            if (currentOpenBook.tabData[t].Images.Length > 0)
             {
-                nodes[t].GetComponent<UINodeTab>().images[i].sprite = currentOpenBook.tabData[t].Images[i];
+                for (int i = 0; i < currentOpenBook.tabData[t].Images.Length; i++)
+                {
+                    nodes[t].GetComponent<UINodeTab>().images[i].sprite = currentOpenBook.tabData[t].Images[i];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < currentOpenBook.tabData[t].Images.Length; i++)
+                {
+                    nodes[t].GetComponent<UINodeTab>().images[i].sprite = null;
+                }
             }
 
             for (int pt = 0; pt < currentOpenBook.tabData[t].PageNames.Length; pt++)
@@ -91,13 +113,14 @@ public class UIMenuOpenBook : UIMenuNodeGraph
         for (int i = 0; i < currentOpenBook.tabs.Length; i++)
         {
             tabNames[i].text = " ";
+
         }
-            //TODO : 
-            //if (nodes.Count < 4 && removedNode != null)
-            //{
-            //nodes.Add(removedNode);
-            //}
-        }
+        //TODO : 
+        //if (nodes.Count < 4 && removedNode != null)
+        //{
+        //nodes.Add(removedNode);
+        //}
+    }
 
     public override void Navigate(UIMenuNode node, int playerNumber, UIMenuNode.Direction direction, bool isPlayerInput)
     {
