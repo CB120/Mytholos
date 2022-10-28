@@ -428,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultRegenSpeed: 0
   regenPauseTime: 0
+  value: 0
   valueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -689,7 +690,7 @@ MonoBehaviour:
   overrideIfMythElementMatchesDebris: 0
   effects: {fileID: 5637322297209466938}
   elementFilter: {fileID: 5693104401080220880}
-  damagePerSecond: 50
+  damagePerSecond: 5
 --- !u!114 &5693104401080220880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,6 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultRegenSpeed: 0
   regenPauseTime: 0.75
+  value: 0
   valueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1585,10 +1587,8 @@ MonoBehaviour:
   SizeStat: 0
   targetEnemy: {fileID: 0}
   effectController: {fileID: 5637322297209466938}
-  isInvulnerable: 0
   element: {fileID: 0}
   ring: {fileID: 1257123659443305625}
-  pb: {fileID: 0}
 --- !u!54 &3131205609304386058
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -69,6 +69,7 @@ namespace Debris
             if (debris == null) return;
             
             debris.elementToBeChanged.AddListener(OnElementToBeChanged);
+            debris.elementChanged.AddListener(OnElementChanged);
         }
 
         private void OnTriggerExited(Collider other)
@@ -80,6 +81,7 @@ namespace Debris
             if (debris == null) return;
             
             debris.elementToBeChanged.RemoveListener(OnElementToBeChanged);
+            debris.elementChanged.AddListener(OnElementChanged);
         }
 
         private void OnTriggerStayed(Collider other)
@@ -107,6 +109,15 @@ namespace Debris
             {
                 if (debrisInteractor.enabled)
                     debrisInteractor.OnDebrisExit(debris);
+            }
+        }
+        
+        private void OnElementChanged(Debris debris)
+        {
+            foreach (var debrisInteractor in debrisInteractors)
+            {
+                if (debrisInteractor.enabled)
+                    debrisInteractor.OnDebrisEnter(debris);
             }
         }
 
