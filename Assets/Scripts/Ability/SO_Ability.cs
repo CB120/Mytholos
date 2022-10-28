@@ -19,6 +19,7 @@ public class SO_Ability : ScriptableObject
     public float performTime;
     public bool isRanged;
     public bool applyBuffToParty;
+    public bool hasKnockback;
     public float baseKnockback;
     public float baseStun;
 

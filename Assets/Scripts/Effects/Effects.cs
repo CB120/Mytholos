@@ -93,6 +93,7 @@ public class Effects : MonoBehaviour
     {
         CancelInvoke("RemoveFreezeDebuff");
         ActivateBuff(Element.Ice, true);
+        Debug.Log($"Freeze Time: {duration}");
         myth.Stun(duration);
         alternateIce.effectObject.SetActive(true);
         Invoke("RemoveFreezeDebuff", duration);
@@ -102,6 +103,8 @@ public class Effects : MonoBehaviour
     private void RemoveFreezeDebuff() //Ice Debuff
     {
         //Unfreeze
+        Debug.Log("Removed Debuff");
+
         if (appliedDebuffs.Contains(Element.Ice))
         {
             alternateIce.effectObject.SetActive(false);
