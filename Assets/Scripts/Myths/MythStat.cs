@@ -69,7 +69,7 @@ namespace Myths
             value = MaxValue;
         }
 
-        private void Update()
+        public void Update()
         {
             if (regenSpeed == 0) return;
             
