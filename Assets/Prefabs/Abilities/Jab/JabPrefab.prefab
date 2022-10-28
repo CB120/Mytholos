@@ -146,7 +146,7 @@ MonoBehaviour:
   takingDamageSFXPrefab: {fileID: 2601491639940857961, guid: 239bc90e13916aa47ba6fda288696a85,
     type: 3}
   timeToDestroyTakingDamageSFX: 0.4
-  speed: 3
+  speed: 100
   jabDistance: 2.5
   jabCollider: {fileID: 1759088471421078739}
   pr: {fileID: 1538581697726705229}

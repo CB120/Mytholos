@@ -58,6 +58,7 @@ public class UIMenuNodeGraph : MonoBehaviour
         UIMenuNodeSplitGraph splitGraph = adjacent[index].GetComponent<UIMenuNodeSplitGraph>(); // If there's a split graph, resolve navigation and return the nested graph
         if (splitGraph != null) return Navigate(splitGraph, playerNumber, direction);
 
+
         return this;
     }
 

@@ -14,7 +14,7 @@ public class MusicLayer
     [Tooltip("Current Layer volume")]
     [Range(0, 100)] public float volume = 0f;
     //[Tooltip("Fade-in/out target volume")]
-    [Range(0, 100)] public float targetVolume = 0f; 
+    [HideInInspector][Range(0, 100)] public float targetVolume = 0f; 
     [Tooltip("If enabled, Volume slider allows direct control of FMOD parameter")]
     public bool manualVolumeOverride = false;
 

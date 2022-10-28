@@ -32,13 +32,11 @@ public class UINodeMyth : UIMenuNode
         if (action == Action.Submit)
         {
             manager.ConfirmPartyMember(playerNumber);
-            UISFXManager.PlaySound("Confirm");
         }
 
         if (action == Action.Cancel)
         {
             manager.RemovePartyMember(playerNumber);
-            UISFXManager.PlaySound("Deselct");
         }
     }
 }

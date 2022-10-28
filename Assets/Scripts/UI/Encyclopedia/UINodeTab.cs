@@ -24,27 +24,27 @@ public class UINodeTab : UIMenuNode
         
         if(images[0].sprite == null)
         {
-                images[0].gameObject.SetActive(false);
-                descriptions[0].transform.localPosition = new Vector3(65, -155, 0);
-                descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 215);
+            images[0].gameObject.SetActive(false);
+            //descriptions[0].transform.localPosition = new Vector3(65, -155, 0);
+            //descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 215);
         } else
         {
             images[0].gameObject.SetActive(true);
-            descriptions[0].transform.localPosition = new Vector3(65, -120, 0);
-            descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 140);
+            //descriptions[0].transform.localPosition = new Vector3(65, -120, 0);
+            //descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 140);
         }
 
         if (images[1].GetComponent<Image>().sprite == null)
         {
             images[1].gameObject.SetActive(false);
-            descriptions[1].transform.localPosition = new Vector3(330, -160, 0);
-            descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 190);
+            //descriptions[1].transform.localPosition = new Vector3(330, -160, 0);
+            //descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 190);
         }
         else
         {
             images[1].gameObject.SetActive(true);
-            descriptions[1].transform.localPosition = new Vector3(330, -100, 0);
-            descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 130);
+            //descriptions[1].transform.localPosition = new Vector3(330, -100, 0);
+            //descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 130);
         }
     }
 

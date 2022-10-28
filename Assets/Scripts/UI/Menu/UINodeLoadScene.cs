@@ -22,6 +22,7 @@ public class UINodeLoadScene : UIMenuNode
                 if (nameOfSceneToLoad == "PartyBuilder") UISFXManager.PlaySound("Back to PartyBuilder");
                 if (nameOfSceneToLoad == "Main Menu") UISFXManager.PlaySound("Back Scene");
                 if (nameOfSceneToLoad == "ArenaEddie") UISFXManager.PlaySound("Match Start");
+                if (nameOfSceneToLoad == "AudioOptions") UISFXManager.PlaySound("To AudioOptions");
 
                 if (transitionAnimator)
                 {
