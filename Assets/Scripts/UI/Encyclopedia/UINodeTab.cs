@@ -23,7 +23,7 @@ public class UINodeTab : UIMenuNode
     private void lateEnable() {
         if(images[0].sprite == null)
         {
-            //images[0].gameObject.SetActive(false);
+            images[0].gameObject.SetActive(false);
             //descriptions[0].transform.localPosition = new Vector3(65, -155, 0);
             //descriptions[0].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 215);
         } else
@@ -35,7 +35,7 @@ public class UINodeTab : UIMenuNode
 
         if (images[1].GetComponent<Image>().sprite == null)
         {
-            //images[1].gameObject.SetActive(false);
+            images[1].gameObject.SetActive(false);
             //descriptions[1].transform.localPosition = new Vector3(330, -160, 0);
             //descriptions[1].GetComponent<RectTransform>().sizeDelta = new Vector2(180, 190);
         }
@@ -59,5 +59,11 @@ public class UINodeTab : UIMenuNode
             default:
                 break;
         }
+    }
+
+    private void OnDisable()
+    {
+        foreach (Image image in images)
+            image.sprite = null;
     }
 }
