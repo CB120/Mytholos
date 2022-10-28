@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.InputSystem;
 
 public class UINodeLoadScene : UIMenuNode
 {
@@ -27,27 +26,11 @@ public class UINodeLoadScene : UIMenuNode
 
                 if (transitionAnimator)
                 {
-                    if (!destroyAllParticipantsOnSceneLoad)
+                    if (!destroyAllParticipantsOnSceneLoad && updateAllParticipantActionMaps)
                     {
                         foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
                         {
-                            if (!destroyAllParticipantsOnSceneLoad)
-                            {
-                                if (updateAllParticipantActionMaps)
-                                {
-                                    PlayerInput input = participant.GetComponent<PlayerInput>();
-                                    if (input != null)
-                                    {
-                                        string oldActionMap = input.currentActionMap.name;
-                                        input.actions.FindActionMap(oldActionMap).Disable();
-                                        input.actions.FindActionMap(nameOfActionMap).Enable();
-                                    }
-                                    else
-                                        Debug.LogWarning("Failed to update a player participant's action map");
-                                }
-
-                                participant.DisablePlayerInput(0.5f);
-                            }
+                            participant.PlayerInput.SwitchCurrentActionMap(nameOfActionMap);
                         }
                     }
 
@@ -67,8 +50,11 @@ public class UINodeLoadScene : UIMenuNode
 
     IEnumerator LoadScene(float timeToWait)
     {
-        yield return new WaitForSeconds(timeToWait);
+        foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+            participant.DisablePlayerInput();
 
+        yield return new WaitForSeconds(timeToWait);
+        
         if (destroyAllParticipantsOnSceneLoad)
         {
             foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
@@ -76,5 +62,8 @@ public class UINodeLoadScene : UIMenuNode
         }
 
         SceneManager.LoadScene(nameOfSceneToLoad);
+
+        foreach (PlayerParticipant participant in FindObjectsOfType<PlayerParticipant>())
+            participant.EnablePlayerInput();
     }
 }

@@ -54,6 +54,8 @@ namespace Myths
             }
         }
 
+        public MythCommandHandler MythCommandHandler => mythCommandHandler;
+
         private MythData mythData;
 
         //References
