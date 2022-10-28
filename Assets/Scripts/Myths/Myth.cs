@@ -134,6 +134,7 @@ namespace Myths
             }
 
             bool enable = trigger != "Reset";
+            //print("SetAnimatorTrigger() enable = " + enable);
 
             foreach (GameObject child in visuals)
                 child.SetActive(enable);
