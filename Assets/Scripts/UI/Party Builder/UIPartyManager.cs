@@ -601,6 +601,7 @@ public class UIPartyManager : MonoBehaviour
         if (!isSelectingFinalTeamMember)
         {
             //print("Confirm party member... not final, so parse navigation to the right!");
+            UISFXManager.PlaySound("Confirm");
 
             playerTeamGraphs[teamIndex].ParseNavigation(UIMenuNode.Direction.Right, teamIndex, false);
             playersReady[teamIndex] = false;
@@ -809,6 +810,8 @@ public class UIPartyManager : MonoBehaviour
         }
         if (counter <= 1)
             return;
+
+        UISFXManager.PlaySound("Cancel");
 
         // If...
         if (playersReady[teamIndex])
