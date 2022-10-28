@@ -20,4 +20,9 @@ public class UIMenuNode : MonoBehaviour
     {
 
     }
+
+    virtual public void OnAudioFuckYa(Direction direction, int playerNumber)
+    {
+
+    }
 }
