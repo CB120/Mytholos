@@ -434,6 +434,10 @@ public class PlayerParticipant : Participant
 
     public void Initialise()
     {
+        // TODO: This is a quick fix, should find out why this isn't being reset on arena restart
+        isAvailableToSwap = true;
+        isAvailableToDodge = true;
+        
         var allMyths = ParticipantData.partyData[partyIndex].myths;
         
         MythInPlay = allMyths.ElementAtOrDefault(0);
