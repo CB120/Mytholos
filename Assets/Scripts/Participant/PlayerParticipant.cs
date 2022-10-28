@@ -46,7 +46,9 @@ public class PlayerParticipant : Participant
     {
         get => mythInPlay;
         private set
-        { 
+        {
+            print("Myth value set: " + value);
+
             Vector3 position = Vector3.zero;
             Quaternion rotation = Quaternion.identity;
             
@@ -453,10 +455,25 @@ public class PlayerParticipant : Participant
 
     private void OnMythDied(Myth myth)
     {
+        StartCoroutine(AutoSwap(myth));
+    }
+
+    IEnumerator AutoSwap(Myth myth)
+    {
+        if (mythInPlay)
+        {
+            //mythInPlay.SetAnimatorTrigger("Defeat"); // Pointless because myth is set inactive somewhere else, and I have been unsuccessful in sleuthing where
+            isAvailableToSwap = false;
+            yield return new WaitForSeconds(0.5f); // Potential issues: inputs are still allowed even though 'dead', myth can still be hit even though 'dead'
+        }
+
         var mythToSwapTo = SwapInDirection(1);
-        
+
         if (mythToSwapTo != null)
+        {
             mythToSwapTo.Invulnerability(deathSwapInvulnerabilityTime);
+            isAvailableToSwap = true;
+        }
     }
 
     private void Update()

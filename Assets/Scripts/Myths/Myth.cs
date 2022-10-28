@@ -134,6 +134,7 @@ namespace Myths
             }
 
             bool enable = trigger != "Reset";
+            //print("SetAnimatorTrigger() enable = " + enable);
 
             foreach (GameObject child in visuals)
                 child.SetActive(enable);
@@ -154,7 +155,8 @@ namespace Myths
 
         public void ResetAndDisable()
         {
-            StartCoroutine(ResetAndDisableRoutine());
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(ResetAndDisableRoutine());
         }
 
         private IEnumerator ResetAndDisableRoutine()
