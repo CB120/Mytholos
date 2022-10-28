@@ -19,6 +19,7 @@ public class UINodeBook : UIMenuNode
                 encyclopediaManager.ParseBookInformation(this, book);
                 encyclopediaManager.SetLibraryActive(false);
                 encyclopediaManager.SetBookCanvas(true);
+                UISFXManager.PlaySound("Confirm");
                 break;
             default:
                 break;

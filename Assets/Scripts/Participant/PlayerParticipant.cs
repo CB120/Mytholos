@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using Myths;
 using StateMachines;
 using StateMachines.Commands;
@@ -57,6 +58,8 @@ public class PlayerParticipant : Participant
 
                 position = MythInPlay.transform.position;
                 rotation = MythInPlay.transform.rotation;
+
+                mythsInReserve.Add(mythInPlay);
             }
 
             mythInPlay = value;
@@ -71,6 +74,8 @@ public class PlayerParticipant : Participant
                 
                 if (rotation != quaternion.identity)
                     MythInPlay.transform.rotation = rotation;
+                
+                mythsInReserve.Remove(mythInPlay);
             }
 
             mythInPlayChanged.Invoke(this);
@@ -80,7 +85,7 @@ public class PlayerParticipant : Participant
     // TODO: Should be cached for performance
     private MythCommandHandler SelectedMythCommandHandler => MythInPlay.GetComponent<MythCommandHandler>();
 
-    private List<Myth> mythsInReserve = new();
+    private HashSet<Myth> mythsInReserve = new();
     private List<Myth> myths = new();
 
     // Menu references
@@ -407,27 +412,6 @@ public class PlayerParticipant : Participant
 
     #endregion
 
-    /*** Swapping ***/
-    #region Swapping
-    // TODO: How is this no longer being used?
-    // TODO: I think it's being duplicated by ChangeMythInPlay
-    public void SwapReserveAtIndex(int index)
-    {
-        if (!isAvailableToSwap) return;
-        if (mythsInReserve[index].Health.Value == 0) return;
-        StartSwapCooldown();
-        
-        var position = MythInPlay.transform.position;
-        (MythInPlay, mythsInReserve[index]) = (mythsInReserve[index], MythInPlay);
-   
-
-        MythInPlay.transform.position = position;
-    }
-
-    
-
-
-
     private void StartSwapCooldown()
     {
         isAvailableToSwap = false;
@@ -451,7 +435,6 @@ public class PlayerParticipant : Participant
         isAvailableToDodge = true;
     }
 
-    #endregion
     public void Initialise()
     {
         var allMyths = ParticipantData.partyData[partyIndex].myths;
@@ -459,7 +442,7 @@ public class PlayerParticipant : Participant
         MythInPlay = allMyths.ElementAtOrDefault(0);
         myths = allMyths.ToList();
 
-        mythsInReserve = allMyths.ToList();
+        mythsInReserve = Enumerable.ToHashSet(allMyths);
 
         if (MythInPlay != null)
             mythsInReserve.Remove(MythInPlay);
@@ -491,5 +474,15 @@ public class PlayerParticipant : Participant
             mythToSwapTo.Invulnerability(deathSwapInvulnerabilityTime);
             isAvailableToSwap = true;
         }
+    }
+
+    private void Update()
+    {
+        // TODO: This is some major jank
+        mythsInReserve.ForEach(myth =>
+        {
+            if (myth.Health.Value > 0)
+                myth.Stamina.Update();
+        });
     }
 }
