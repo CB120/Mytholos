@@ -16,12 +16,49 @@ MonoBehaviour:
   tabs: []
   hasTabs: 0
   tabData:
-  - Descriptions: []
+  - Descriptions:
+    - 'Pool abilities apply positive effects (buffs) to your current myth depending
+      on their elemental type. '
+    - 'Beams are a powerful ranged attack that leave a trail of debris behind, based
+      on their elemental type. '
     Images: []
-    PageNames: []
-  - Descriptions: []
+    PageNames:
+    - Pool
+    - Beam
+  - Descriptions:
+    - Bomb is a ranged attack that tracks foes once fired. Bomb's deal a significant
+      amount of damage and have a high stamina cost. If the myth that performed the
+      bomb attack is in it's area of effect when it explodes, they will get an elemental
+      buff applied to them.
+    - Boomerang is a ranged attack that have the ability to return to you. If timed
+      correctly boomerangs have the ability to hit myths twice.
     Images: []
-    PageNames: []
-  - Descriptions: []
+    PageNames:
+    - Bomb
+    - Boomerang
+  - Descriptions:
+    - Lob is a ranged attack that tracks its target and slides across the ground
+      to explode after a short period of time. If the myth that performed the lob
+      attack is in it's area of effect when it explodes, they will get an elemental
+      buff applied to them.
+    - 'Swipe is a close ranged attack that has the ability to lay down debris, depending
+      on its elemental type. '
     Images: []
-    PageNames: []
+    PageNames:
+    - Lob
+    - Swipe
+  - Descriptions:
+    - Jab is a close ranged attack that has a low damage and low stamina cost. Jab
+      can be used for quick attacks against foes.
+    - Flurry is a close range, high damage attack that pauses movement whilst being
+      performed.
+    Images: []
+    PageNames:
+    - Jab
+    - Flurry
+  - Descriptions:
+    - Shot is a ranged attack that costs low stamina. Shot can be used for fending
+      off foes or quickly attacking them from a large distance.
+    Images: []
+    PageNames:
+    - Shot

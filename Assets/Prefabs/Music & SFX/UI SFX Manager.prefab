@@ -91,6 +91,9 @@ MonoBehaviour:
   - soundName: Deselct
     uiSFXPrefab: {fileID: 6964249084398504448, guid: 2aaf9afd73e6e6949813462b5b075556,
       type: 3}
+  - soundName: Cancel
+    uiSFXPrefab: {fileID: 967884896495653996, guid: fcfcd90ad25370340aabb0a2f65a29e9,
+      type: 3}
   enoughStaminaSets:
   - soundName: 
     uiSFXPrefab: {fileID: 3886854290725850502, guid: 8fca70e7c4cc975489b4e2941fbf7095,

@@ -20,6 +20,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     private float SOknockbackStrength;
     private float SOstunTime;
     private float elementModifier = 1;
+   
 
     public float DamageMultiplier { get; set; } = 1;
 
@@ -106,16 +107,16 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
             }
         }
 
-        if (SOknockbackStrength > 0)
+        if (SOknockbackStrength > 0 && ability.hasKnockback)
         {
             //Debug.Log(SOstunTime);
             myth.Knockback(SOknockbackStrength, owningMyth.gameObject, SOstunTime);
         }
 
-        if(SOstunTime > 0 && SOknockbackStrength == 0)
-        {
-            myth.Stun(SOstunTime);
-        }
+        //if (SOstunTime > 0 && SOknockbackStrength == 0)
+        //{
+        //    myth.Stun(SOstunTime);
+        //}
 
         // Animate the myth that was hit
         Animator anim = myth.gameObject.GetComponentInChildren<Animator>();
