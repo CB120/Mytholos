@@ -3,19 +3,18 @@ using UnityEngine;
 public class BeamHead : MonoBehaviour
 {
     public Transform BeamHeadPosition;
-    private Vector3 BeamHeadPositionVector;
 
     void Update()
     {
-        BeamHeadPositionVector = BeamHeadPosition.position;
-        gameObject.transform.position = BeamHeadPositionVector;
+        transform.position = BeamHeadPosition.position;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.gameObject.name == "BeamHead")
         {
-            Destroy(transform.parent.gameObject);
+            // TODO: Commented out for now
+            // Destroy(transform.parent.gameObject);
         }
     }
 }
