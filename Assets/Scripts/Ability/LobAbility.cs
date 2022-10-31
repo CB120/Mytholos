@@ -44,6 +44,8 @@ public class LobAbility : Ability
 
         rigidBody.AddForce(Vector3.ClampMagnitude((force * strength), maxStrength), ForceMode.Impulse);
 
+        triggerCollider.enabled = false;
+        
         Invoke("Explode", timeToExplode);
         base.Start();
     }
@@ -58,6 +60,7 @@ public class LobAbility : Ability
 
     void Explode()
     {
+        triggerCollider.enabled = true;
         rend.enabled = false;
         ParticleSystem ps = Instantiate(childParticle, this.transform.position, Quaternion.identity);
         var main = ps.gameObject.transform.GetChild(0).GetComponent<ParticleSystem>().main;
