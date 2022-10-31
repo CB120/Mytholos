@@ -81,7 +81,7 @@ namespace Debris
             if (debris == null) return;
             
             debris.elementToBeChanged.RemoveListener(OnElementToBeChanged);
-            debris.elementChanged.AddListener(OnElementChanged);
+            debris.elementChanged.RemoveListener(OnElementChanged);
         }
 
         private void OnTriggerStayed(Collider other)
