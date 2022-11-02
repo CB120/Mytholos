@@ -82,6 +82,8 @@ namespace Debris
 
         public void RemoveDebris()
         {
+            if (CurrentElement == null) return;
+            
             CurrentElement = null;
             
             if (decayCoroutine != null)
