@@ -18,7 +18,6 @@ MonoBehaviour:
   debrisTexture: {fileID: 0}
   electrifiedMaterial: {fileID: 2100000, guid: 48f08341dace4e04d9788ab964dfe5ae, type: 2}
   element: 2
-  buffLength: 7
   debuffParticle: {fileID: 698678746893851193, guid: 1155a9d9a50572143af3bb2b07ee806e,
     type: 3}
   buffParticle: {fileID: 341167002929958869, guid: 708bb8ddc7c24ec4b94ef53cd19ed355,
@@ -43,3 +42,5 @@ MonoBehaviour:
   flurryEndColor: {r: 0, g: 0, b: 0, a: 0}
   shotStartColor: {r: 1, g: 0.96862745, b: 0, a: 1}
   shotEndColor: {r: 1, g: 0.96862745, b: 0, a: 1}
+  sfxPrefab: {fileID: 1294470398952593991, guid: dc67f946a3e76ec459819f94733cb45d,
+    type: 3}

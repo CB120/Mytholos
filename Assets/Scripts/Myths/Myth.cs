@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using EffectSystem;
 using StateMachines;
 using StateMachines.Commands;
 using UnityEngine;
@@ -67,6 +68,8 @@ namespace Myths
 
         public SpriteRenderer ring;
 
+        // TODO: Implement
+        [NonSerialized] public UnityEvent toBeDamaged = new();
         [NonSerialized] public UnityEvent<Myth> died = new();
         private bool isInvulnerable = false;
 

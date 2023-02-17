@@ -14,7 +14,6 @@ public class SO_Element : ScriptableObject
 
     [Header("Properties")]
     public Element element;
-    public float buffLength;
     public ParticleSystem debuffParticle;
     public ParticleSystem buffParticle;
     public bool setParticleColor;
@@ -45,6 +44,8 @@ public class SO_Element : ScriptableObject
 
     public Color shotStartColor;
     public Color shotEndColor;
+
+    public GameObject sfxPrefab;
 }
 
 // TODO: Why do you keep coming back?

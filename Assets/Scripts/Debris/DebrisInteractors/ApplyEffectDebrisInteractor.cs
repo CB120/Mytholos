@@ -1,3 +1,4 @@
+using EffectSystem;
 using Myths;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Debris.DebrisInteractors
     {
         [SerializeField] private Myth myth;
         [SerializeField] private bool overrideIfMythElementMatchesDebris;
-        [SerializeField] protected Effects effects;
+        [SerializeField] protected LastingEffect lastingEffect;
         [SerializeField] private ElementFilter elementFilter;
 
         internal override void OnDebrisEnter(Debris debris)
@@ -16,7 +17,7 @@ namespace Debris.DebrisInteractors
             if (overrideIfMythElementMatchesDebris && myth.element == debris.CurrentElement) return;
             
             if (elementFilter.PassesFilter(debris.CurrentElement))
-                ApplyEffect();
+                lastingEffect.ApplyEffect();
         }
 
         internal override void OnDebrisExit(Debris debris)
@@ -24,11 +25,7 @@ namespace Debris.DebrisInteractors
             if (overrideIfMythElementMatchesDebris && myth.element == debris.CurrentElement) return;
             
             if (elementFilter.PassesFilter(debris.CurrentElement))
-                RemoveEffect();
+                lastingEffect.RemoveEffect();
         }
-
-        protected virtual void ApplyEffect() { }
-
-        protected virtual void RemoveEffect() { }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using EffectSystem;
 using UnityEngine;
 using Myths;
 using Elements;
@@ -56,7 +57,7 @@ public class UIGameHovering : MonoBehaviour
             UpdateUI();
 
             // Update buff icons
-            buffIcons.UpdateListeners(myth.GetComponent<Effects>());
+            buffIcons.UpdateListeners(myth.GetComponentInChildren<Effects>());
         }
         else
             Debug.LogWarning("UIGameMyth was passed a null reference");

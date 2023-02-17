@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// TODO: Move somewhere
 [CreateAssetMenu]
 public class AllParticipantDataService : ScriptableObject
 {

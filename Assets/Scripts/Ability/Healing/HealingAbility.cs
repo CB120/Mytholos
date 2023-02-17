@@ -1,25 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Myths;
 
+// TODO: Rename to Pool Ability
 public class HealingAbility : Ability
 {
     [Header("Heal Ability Fields")]
     public float areaOfEffect = 2;
     public float expandSpeed = 2f;
 
-    private float BuffLimiter = 0.1f;
-    public float timeToDestroy { get => ability.timeToDestroy; }
+    public float timeToDestroy => ability.timeToDestroy;
     [SerializeField] private TrailRenderer[] trails;
-    [SerializeField]
     HashSet<Myth> overlappedMyths = new HashSet<Myth>();
-    [SerializeField] private Collider trigger;
 
     public override void Start()
     {
         Invoke("ResetScale", (timeToDestroy * 0.75f));
-        Invoke("DeactivateBuff", timeToDestroy * 0.9f);
         Destroy(gameObject, timeToDestroy);
 
         foreach(TrailRenderer trail in trails)
@@ -45,37 +41,14 @@ public class HealingAbility : Ability
         areaOfEffect = 0;
     }
 
-    private void DeactivateBuff()
-    {
-        foreach (Myth myth in overlappedMyths)
-        {
-            trigger.enabled = false;
-            if (!myth.effectController.appliedBuffs.Contains(Elements.Element.Ice))
-            myth.effectController.DeactivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
-            
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (myth == null || myth.PartyIndex != owningMyth.PartyIndex) return;
-        if (EffectWillRemain())
-        {
-            ApplyEffect(myth);
-        }
+        ApplyEffect(myth);
 
         overlappedMyths.Add(myth);
-        myth.effectController.ActivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
         InvokeRepeating("SpawnEffects", 0, 1f);
-    }
-
-    //Effect Application
-    private void OnTriggerStay(Collider other)//Would have preferred this to be onTrigger Enter, however if there are overlapping pools, an effect may be removed
-    {
-        Myth myth = other.gameObject.GetComponent<Myth>();
-        if (myth == null || EffectWillRemain() || myth.PartyIndex != owningMyth.PartyIndex) return;
-            ApplyEffect(myth);
     }
 
     private void OnTriggerExit(Collider other)
@@ -83,11 +56,10 @@ public class HealingAbility : Ability
         Myth myth = other.gameObject.GetComponent<Myth>();
         if (!myth) return;
         myth.Health.RegenSpeed = myth.Health.defaultRegenSpeed;
-        myth.Stamina.RegenSpeed = myth.Stamina.defaultRegenSpeed;
 
         if (!EffectWillRemain())//If we don't want healing pool to wipe effect on exit
         {
-            myth.effectController.DeactivateBuff(ability.element.element, myth.PartyIndex != owningMyth.PartyIndex);
+            // TODO: Call RemoveEffect
         }
 
         if (ability.element.element == Elements.Element.Wood)
@@ -100,7 +72,7 @@ public class HealingAbility : Ability
     {
         switch (ability.element.element)
         {
-            case Elements.Element.Ice: return true;
+            case Elements.Element.Ice: return true; // Overshield
             case Elements.Element.Wind: return true;
             default: return false;
         }
@@ -127,51 +99,11 @@ public class HealingAbility : Ability
         }
     }
 
-    public override void ApplyEarthEffect(Myth myth, bool isInParty)
+    // TODO: Effects should remain for as long as the myth is in the pool
+    public override void ApplyEffect(Myth myth)
     {
-        if (!isInParty) return; 
-        myth.effectController.DefenceBuff(BuffLimiter);
-    }
-
-    public override void ApplyElectricEffect(Myth myth, bool isInParty)
-    {
-        if (isInParty) myth.Stamina.RegenSpeed = ability.regenSpeed;
-    }
-
-    public override void ApplyFireEffect(Myth myth, bool isInParty)
-    {
-        if (!isInParty) return;
-        myth.effectController.AttackBuff(BuffLimiter);
-    }
-
-    public override void ApplyIceEffect(Myth myth, bool isInParty)
-    {
-        if(isInParty)
-        myth.effectController.IceOvershield();
-    }
-
-    public override void ApplyMetalEffect(Myth myth, bool isInParty)
-    {
-        if(isInParty)
-        myth.effectController.SizeBuff(BuffLimiter);
-    }
-
-    public override void ApplyWaterEffect(Myth myth, bool isInParty)
-    {
-        if (!isInParty) return;
-        myth.effectController.DebuffCleanse();
-    }
-
-    public override void ApplyWindEffect(Myth myth, bool isInParty)
-    {
-        if(isInParty)
-        myth.effectController.AgilityBuff(ability.element.buffLength);
-
-    }
-
-    public override void ApplyWoodEffect(Myth myth, bool isInParty)
-    {
-        if(isInParty)
-        myth.Health.RegenSpeed = ability.regenSpeed;
+        bool isInParty = myth.PartyIndex == owningMyth.PartyIndex;
+        
+        myth.effectController.ApplyEffect(SO_Element, !isInParty);
     }
 }

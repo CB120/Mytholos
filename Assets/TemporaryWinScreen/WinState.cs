@@ -14,31 +14,14 @@ public class WinState : MonoBehaviour
 
     [NonSerialized] public UnityEvent<int> gameEnded = new();
 
-    // TODO: Duplicate code. See EpicEddieCam.
     private void OnEnable()
     {
-        mythRuntimeSet.itemAdded.AddListener(OnMythAdded);
-        mythRuntimeSet.itemRemoved.AddListener(OnMythRemoved);
-        
-        mythRuntimeSet.items.ForEach(OnMythAdded);
+        mythRuntimeSet.ListenToAll(myth => myth.died, OnMythDied);
     }
 
     private void OnDisable()
     {
-        mythRuntimeSet.itemAdded.RemoveListener(OnMythAdded);
-        mythRuntimeSet.itemRemoved.RemoveListener(OnMythRemoved);
-        
-        mythRuntimeSet.items.ForEach(OnMythRemoved);
-    }
-
-    private void OnMythAdded(Myth myth)
-    {
-        myth.died.AddListener(OnMythDied);
-    }
-
-    private void OnMythRemoved(Myth myth)
-    {
-        myth.died.RemoveListener(OnMythDied);
+        mythRuntimeSet.UnlistenToAll(myth => myth.died, OnMythDied);
     }
 
     private void OnMythDied(Myth myth)

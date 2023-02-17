@@ -28,6 +28,7 @@ namespace Myths
             Attack(myth, ability.damage);
             base.Trigger(myth);
 
+            // TODO: Pretty sure this is redundant with the way attack works
             if (myth.PartyIndex != owningMyth.PartyIndex)
             jabCollider.enabled = false;
         }

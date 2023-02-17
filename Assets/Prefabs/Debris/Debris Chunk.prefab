@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 867638482405699770}
   - component: {fileID: 3156721501054720045}
   - component: {fileID: 2219021158117508528}
-  - component: {fileID: 4735299503588545498}
   - component: {fileID: 5799057269355196668}
   m_Layer: 0
   m_Name: Debris Chunk
@@ -198,20 +197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decayTime: 5
   tilePositionReadout: {x: 0, y: 0, z: 0}
---- !u!114 &4735299503588545498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5428884417466843774}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3bbd1ac0cc34a7ab71d202562915b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 867638482405699770}
-  debris: {fileID: 2219021158117508528}
 --- !u!114 &5799057269355196668
 MonoBehaviour:
   m_ObjectHideFlags: 0

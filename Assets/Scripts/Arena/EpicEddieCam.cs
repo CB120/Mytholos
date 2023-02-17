@@ -25,32 +25,20 @@ public class EpicEddieCam : MonoBehaviour
         rotationX = transform.rotation.eulerAngles.x;
     }
 
-    // TODO: Duplicate code. See WinState and PauseController.
     private void OnEnable()
     {
+        playerParticipantRuntimeSet.ListenToAll(participant => participant.mythInPlayChanged, OnMythInPlayChanged);
         playerParticipantRuntimeSet.itemAdded.AddListener(OnPlayerParticipantAdded);
-        playerParticipantRuntimeSet.itemRemoved.AddListener(OnPlayerParticipantRemoved);
-        
-        playerParticipantRuntimeSet.items.ForEach(OnPlayerParticipantAdded);
     }
 
     private void OnDisable()
     {
+        playerParticipantRuntimeSet.UnlistenToAll(participant => participant.mythInPlayChanged, OnMythInPlayChanged);
         playerParticipantRuntimeSet.itemAdded.RemoveListener(OnPlayerParticipantAdded);
-        playerParticipantRuntimeSet.itemRemoved.RemoveListener(OnPlayerParticipantRemoved);
-        
-        playerParticipantRuntimeSet.items.ForEach(OnPlayerParticipantRemoved);
-    }
-
-    private void OnPlayerParticipantRemoved(PlayerParticipant playerParticipant)
-    {
-        playerParticipant.mythInPlayChanged.RemoveListener(OnMythInPlayChanged);
     }
 
     private void OnPlayerParticipantAdded(PlayerParticipant playerParticipant)
     {
-        playerParticipant.mythInPlayChanged.AddListener(OnMythInPlayChanged);
-
         OnMythInPlayChanged(playerParticipant);
     }
     

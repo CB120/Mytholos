@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Move to Debris namespace
 namespace Debris
 {
     public class DebrisAppearance : MonoBehaviour
@@ -9,44 +8,47 @@ namespace Debris
         [SerializeField] private MeshRenderer meshRenderer;
         [SerializeField] private Debris debris;
         [SerializeField] private Material defaultMaterial;
+        
         private void OnEnable()
         {
-            debris.elementChanged.AddListener(OnElementChanged);
-            debris.isElectrifiedChanged.AddListener(OnIsElectrifiedChanged);
+            debris.elementChanged.AddListener(OnDebrisChanged);
+            debris.isElectrifiedChanged.AddListener(OnDebrisChanged);
         }
 
         private void OnDisable()
         {
-            debris.elementChanged.RemoveListener(OnElementChanged);
-            debris.isElectrifiedChanged.RemoveListener(OnIsElectrifiedChanged);
+            debris.elementChanged.RemoveListener(OnDebrisChanged);
+            debris.isElectrifiedChanged.RemoveListener(OnDebrisChanged);
         }
 
-        private void OnElementChanged(Debris _)
+        private void OnDebrisChanged(Debris _)
         {
-            // TODO: Duplicate code. See UIGameAbility
-            var color = debris.CurrentElement == null ? Color.black : debris.CurrentElement.color;
+            meshRenderer.enabled = debris.CurrentElement != null;
+
+            if (debris.CurrentElement == null) return;
+
+            if (debris.IsElectrified)
+            {
+                if (debris.CurrentElement.electrifiedMaterial != null)
+                {
+                    meshRenderer.material = debris.CurrentElement.electrifiedMaterial;
+
+                    return;
+                }
+
+                Debug.LogWarning($"Element {debris.CurrentElement} does not have an {nameof(debris.CurrentElement.electrifiedMaterial)}.");
+            }
+            
             Material material = new Material(defaultMaterial);
-            if(debris.CurrentElement != null && debris.CurrentElement.customMaterial != null)
+
+            if (debris.CurrentElement.customMaterial != null)
                 material = debris.CurrentElement.customMaterial;
-            else if(debris.CurrentElement != null && debris.CurrentElement.debrisTexture)
+            else if (debris.CurrentElement.debrisTexture)
                 material.SetTexture("_MainTex", debris.CurrentElement.debrisTexture);
             else
-                material.SetColor("_Color", color);
+                material.SetColor("_Color", debris.CurrentElement.color);
 
             meshRenderer.material = material;
-
-            meshRenderer.enabled = debris.CurrentElement != null;
-        }
-
-        private void OnIsElectrifiedChanged(Debris _)
-        {
-            Material material = debris.CurrentElement == null ? new Material(defaultMaterial) : debris.CurrentElement.customMaterial;
-
-            material = debris.IsElectrified ? debris.CurrentElement.electrifiedMaterial : material;
-
-            meshRenderer.material = material;
-
-            meshRenderer.enabled = debris.CurrentElement != null;
         }
     }
 }

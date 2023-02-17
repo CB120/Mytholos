@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using EffectSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,33 +38,33 @@ namespace Elements
             parent.enabled = true;
         }
 
-        public void ActivateBuff(Element element, bool isDebuff)
+        public void ActivateBuff(SO_Element element, bool isDebuff)
         {
             RefreshLayout();
 
             if (isDebuff)
             {
-                effectUIData[element].negativeBuff.gameObject.SetActive(true);
-                effectUIData[element].negativeBuff.isEnabled = true;
+                effectUIData[element.element].negativeBuff.gameObject.SetActive(true);
+                effectUIData[element.element].negativeBuff.isEnabled = true;
             }
             else
             {
-                effectUIData[element].positiveBuff.gameObject.SetActive(true);
-                effectUIData[element].positiveBuff.isEnabled = true;
+                effectUIData[element.element].positiveBuff.gameObject.SetActive(true);
+                effectUIData[element.element].positiveBuff.isEnabled = true;
             }
         }
 
-        public void DeactivateBuff(Element element, bool isDebuff, bool hasDebuff, bool hasBuff)
+        public void DeactivateBuff(SO_Element element, bool isDebuff, bool hasDebuff, bool hasBuff)
         {
             RefreshLayout();
 
             if (isDebuff && hasDebuff)
             {
-                effectUIData[element].negativeBuff.isEnabled = false;
+                effectUIData[element.element].negativeBuff.isEnabled = false;
             }
             else if (!isDebuff && hasBuff)
             {
-                effectUIData[element].positiveBuff.isEnabled = false;
+                effectUIData[element.element].positiveBuff.isEnabled = false;
             }
         }
 
@@ -75,10 +76,10 @@ namespace Elements
                 effects.DeactivateBuffEvent.RemoveListener(DeactivateBuff);
 
                 // Look though all active buff effects on old effects script, and remove them from this canvas
-                foreach (Element element in effects.appliedBuffs)
+                foreach (SO_Element element in effects.appliedBuffs)
                     DeactivateBuff(element, false, false, true);
 
-                foreach (Element element in effects.appliedDebuffs)
+                foreach (SO_Element element in effects.appliedDebuffs)
                     DeactivateBuff(element, true, true, false);
             }
 

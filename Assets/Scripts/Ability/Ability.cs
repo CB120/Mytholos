@@ -1,15 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Myths;
 using Elements;
-
-[System.Serializable]
-public class ElementSFXPairs
-{
-    public Element element;
-    public GameObject sfx;
-}
 
 public class Ability : MonoBehaviour //Parent Class to All Abilities
 {
@@ -20,14 +11,12 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     private float SOknockbackStrength;
     private float SOstunTime;
     private float elementModifier = 1;
-   
 
     public float DamageMultiplier { get; set; } = 1;
 
-    protected Element element { get => ability.element.element;}
+    protected SO_Element SO_Element => ability.element;
 
     [Header("All-Ability SFX")] //SFX stuff, added by Ethan
-    public ElementSFXPairs[] elementSFXPairs;
     public float timeToDestroyElementSFX = 0.5f;
 
     public GameObject takingDamageSFXPrefab;
@@ -74,19 +63,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
             var finalDamage = (damage * elementModifier * DamageMultiplier * owningMyth.AttackStat) / myth.DefenceStat;
 
-            if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
-            {
-                owningMyth.Health.Value += (finalDamage / 2f);
-            }
-
-            if (!myth.effectController.appliedBuffs.Contains(Element.Ice)) //If The Myth Doesn't Currently Have An Ice Buff
-            {
-                myth.Health.Value -= finalDamage;
-            }
-            else
-            {
-                myth.effectController.RemoveIceOvershield();
-            }
+            myth.Health.Value -= finalDamage;
 
             PlayDamageSFX();
         }
@@ -96,6 +73,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
                 particle = ability.element.buffParticle; 
         }
 
+        // TODO: Why is there an exception for ice?
         if (ability.element.element != Element.Ice)
         {
             ParticleSystem ps = Instantiate(particle, myth.transform.position, particle.transform.rotation, myth.transform);
@@ -155,129 +133,18 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     #endregion
 
-    #region Effects
     virtual public void ApplyEffect(Myth myth)
     {
-        bool isInParty = myth.PartyIndex == this.owningMyth.PartyIndex;
-        switch (element)
-        {
-            case Element.Wind:
-                ApplyWindEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Wind, !isInParty);
-                break;
-            case Element.Electric:
-                ApplyElectricEffect(myth, isInParty);
-                break;
-            case Element.Water:
-                ApplyWaterEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Water, !isInParty);
-                break;
-            case Element.Metal:
-                ApplyMetalEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Metal, !isInParty);
-                break;
-            case Element.Fire:
-                ApplyFireEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Fire, !isInParty);
-                break;
-            case Element.Earth:
-                ApplyEarthEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Earth, !isInParty);
-                break;
-            case Element.Ice:
-                ApplyIceEffect(myth, isInParty);
-                myth.effectController.ActivateBuff(Element.Ice, !isInParty);
-                break;
-            case Element.Wood:
-                ApplyWoodEffect(myth, isInParty);
-                break;
-        }
+        bool isInParty = myth.PartyIndex == owningMyth.PartyIndex;
+        
+        myth.effectController.ApplyEffectForDefaultDuration(SO_Element, !isInParty);
     }
-
-    virtual public void ApplyWoodEffect(Myth myth, bool isInParty)//While Debuff is Active, all damage to enemies dealt will heal the attacking player slightly
-    {
-        if (isInParty) return;
-        myth.effectController.ActivateBuff(Element.Wood, !isInParty);
-        myth.effectController.ApplyLifeStealDebuff(!isInParty, ability.element.buffLength);
-    }
-
-    virtual public void ApplyElectricEffect(Myth myth, bool isInParty)//Stamina Buff, Stamina Debuff
-    {
-        myth.effectController.ActivateBuff(Element.Electric, !isInParty);
-        if (isInParty)
-        {
-            myth.effectController.IncreaseStamina(ability.statIncrease);
-        }
-        else
-        { 
-            myth.effectController.ApplyStaminaEffect(!isInParty, ability.element.buffLength);
-        }
-    }
-
-    virtual public void ApplyIceEffect(Myth myth, bool isInParty)//Freezes Enemy, Grants Overshield
-    {
-        myth.effectController.ActivateBuff(Element.Ice, !isInParty);
-        if (isInParty && ability.applyBuffToParty)
-            myth.effectController.IceOvershield();
-        else
-            myth.effectController.FreezeDebuff(ability.element.buffLength);
-    }
-
-    virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
-    {
-        if(isInParty && ability.applyBuffToParty)
-        {
-            myth.effectController.AgilityBuff(ability.element.buffLength);
-            myth.effectController.ActivateBuff(Element.Ice, !isInParty);
-        }
-        else if(!isInParty)
-        {
-            myth.effectController.Disorient(ability.statIncrease, owningMyth, ability.element.buffLength / 2);
-        }
-    }
-
-    virtual public void ApplyWaterEffect(Myth myth, bool isInParty)
-    {
-        if (isInParty) return;
-        myth.effectController.BuffCleanse();
-    }
-
-    virtual public void ApplyMetalEffect(Myth myth, bool isInParty)
-    {
-        if (isInParty) return;
-        myth.effectController.AttackDebuff(ability.element.buffLength);
-        myth.effectController.ActivateBuff(Element.Metal, !isInParty);
-    }
-
-    virtual public void ApplyEarthEffect(Myth myth, bool isInParty)
-    {
-        if (isInParty) return;
-        myth.effectController.AgilityDebuff(ability.element.buffLength);
-        myth.effectController.ActivateBuff(Element.Earth, !isInParty);
-    }
-
-    virtual public void ApplyFireEffect(Myth myth, bool isInParty)
-    {
-        if (isInParty) return;
-        myth.effectController.Burn(5, ability.element.buffLength);
-        myth.effectController.ActivateBuff(Element.Fire, !isInParty);
-    }
-    #endregion
 
     #region Music & SFX
     public void PlayElementalSFX()
     {
-        foreach (ElementSFXPairs p in elementSFXPairs)
-        {
-            if (p.element == element)
-            {
-                GameObject sfx = Instantiate(p.sfx, transform);
-                Destroy(sfx, timeToDestroyElementSFX);
-                return;
-            }
-        }
-
-        Debug.LogWarning("No ElementSFXPair found with element " + element + "! Not playing anything...");
+        GameObject sfx = Instantiate(SO_Element.sfxPrefab, transform);
+        Destroy(sfx, timeToDestroyElementSFX);
     }
 
     protected void PlayDamageSFX()
@@ -288,7 +155,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
     void AdjustMusicLayers()
     {
-        switch (element) 
+        switch (SO_Element.element) 
         {
             case Element.Electric:
                 BattleMusicController.OnElectricAbility();

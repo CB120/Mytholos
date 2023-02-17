@@ -37,5 +37,21 @@ namespace Utilities
             
             itemRemoved.Invoke(t);
         }
+
+        public void ListenToAll(Func<T, UnityEvent<T>> unityEventAccessor, UnityAction<T> listener)
+        {
+            itemAdded.AddListener(t => unityEventAccessor(t).AddListener(listener));
+            itemRemoved.AddListener(t => unityEventAccessor(t).RemoveListener(listener));
+            
+            items.ForEach(t => unityEventAccessor(t).AddListener(listener));
+        }
+        
+        public void UnlistenToAll(Func<T, UnityEvent<T>> unityEventAccessor, UnityAction<T> listener)
+        {
+            itemAdded.RemoveListener(t => unityEventAccessor(t).AddListener(listener));
+            itemRemoved.RemoveListener(t => unityEventAccessor(t).RemoveListener(listener));
+            
+            items.ForEach(t => unityEventAccessor(t).RemoveListener(listener));
+        }
     }
 }
