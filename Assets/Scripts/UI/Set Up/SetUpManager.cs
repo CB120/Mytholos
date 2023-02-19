@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
+using Participants;
 
 public class SetUpManager : MonoBehaviour
 {

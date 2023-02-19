@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Participants;
 
 public class UINodeLoadScene : UIMenuNode
 {

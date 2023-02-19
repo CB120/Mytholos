@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 using Myths;
+using Participants;
 
 public class UIPartyManager : MonoBehaviour
 {

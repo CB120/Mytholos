@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using Myths;
+using Participants;
 
 public class UIGameParty : MonoBehaviour
 {

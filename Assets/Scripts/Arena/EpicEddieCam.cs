@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Myths;
+using Participants;
 using UnityEngine;
 
 public class EpicEddieCam : MonoBehaviour
