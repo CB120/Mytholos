@@ -16,6 +16,7 @@ MonoBehaviour:
   customMaterial: {fileID: 2100000, guid: 0f2159b7b1f86bd45bae8a0f6de6f6dd, type: 2}
   icon: {fileID: 730618174, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
   debrisTexture: {fileID: 2800000, guid: 15ec4827e242b0c468f2ca6506b63495, type: 3}
+  electrifiedMaterial: {fileID: 0}
   element: 6
   buffLength: 5
   debuffParticle: {fileID: 1854702675339866908, guid: ef58d3f889052fa4da9db457bc27a2df,
@@ -30,8 +31,8 @@ MonoBehaviour:
   hasDebris: 1
   abilityDebrisInteractorsPrefab: {fileID: 5928447540730028431, guid: 858354547e5e9424ea2e4775a0d28100,
     type: 3}
-  buffDescription: No special effect
-  debuffDescription: No special effect
+  buffDescription: Raises weight
+  debuffDescription: Debuffs attack
   beamStartColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
   beamEndColor: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 0}
   boomerangStartColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 0}

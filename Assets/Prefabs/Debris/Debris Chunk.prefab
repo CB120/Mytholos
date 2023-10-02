@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e4e8448a1a4903b9537ddf8f6ed880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decayTime: 5
+  decayTime: 20
   tilePositionReadout: {x: 0, y: 0, z: 0}
 --- !u!114 &4735299503588545498
 MonoBehaviour:
