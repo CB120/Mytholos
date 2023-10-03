@@ -18,9 +18,9 @@ MonoBehaviour:
   iconOff: {fileID: -1528488581, guid: d14e1e26ef294f240ad0cc0cdc3cedf3, type: 3}
   iconDead: {fileID: 1514064260, guid: cd4ce12106be9b44e847d48ca8cc5b98, type: 3}
   health: 1
-  size: 0.9
+  size: 4
   attack: 0.6
-  agility: 0.5
+  agility: 4.4
   abilities:
   - {fileID: 11400000, guid: 0a27b19947199474eab5650ad1b63dee, type: 2}
   - {fileID: 11400000, guid: 1c272de22cfb9c94db5191816870afa6, type: 2}

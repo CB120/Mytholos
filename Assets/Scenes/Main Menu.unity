@@ -2291,6 +2291,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 781119230625859627, guid: 4c1a0b6f4f5a0244d80852718c113cc2,
         type: 3}
+      propertyPath: debugOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 781119230625859627, guid: 4c1a0b6f4f5a0244d80852718c113cc2,
+        type: 3}
       propertyPath: partyIndex
       value: 0
       objectReference: {fileID: 0}

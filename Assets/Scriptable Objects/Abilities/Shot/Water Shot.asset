@@ -15,10 +15,10 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   name: Water Shot
   description: Shot
-  damage: 10
+  damage: 7
   regenSpeed: 0
   statIncrease: 0
-  staminaCost: 10
+  staminaCost: 3
   chargeTime: 0
   performTime: 0
   isRanged: 1

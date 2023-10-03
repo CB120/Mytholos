@@ -8,10 +8,9 @@ namespace StateMachines.States
     {
         [Header("Manual Move Behaviour")]
         // Movement Properties
-
-        [SerializeField] private float speedHandicap = 1.2f;
         private float acceleration = 10;
         private float moveSpeed = 0;
+        private float maxSpeed = 0;
 
         // References & Events
         public UnityEvent moveComplete = new();
@@ -24,8 +23,9 @@ namespace StateMachines.States
         protected override void OnEnable()
         {
             base.OnEnable();
-            
+
             moveCommand = mythCommandHandler.LastCommand as MoveCommand;
+            maxSpeed = myth.walkSpeed;
 
             if (moveCommand == null)
             {
@@ -33,24 +33,19 @@ namespace StateMachines.States
                 moveFailed.Invoke();
             }
 
-            if(movementController == null)
+            if (movementController == null)
             {
                 Debug.LogWarning("There was a problem with finding the movementController (CollisionDetection Physics). Please re-assign it in the inspector.");
                 moveFailed.Invoke();
             }
-            //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Charge")){
-            //    anim.ResetTrigger("Charge");
-            //    Debug.Log("Attempting to reset charge anim");
-            //}
         }
 
         private float speedValue()
         {
-            moveSpeed += (acceleration - (myth.myth.size * 2)) * (Time.deltaTime * 1.5f);
-           
-            //Debug.Log(myth.myth.size);
-            moveSpeed = Mathf.Clamp(moveSpeed, 0, (myth.walkSpeed * 5) * speedHandicap);
-            //Debug.Log(moveSpeed);
+            if (moveSpeed < maxSpeed)
+                moveSpeed += (acceleration - (myth.myth.size)) * (Time.deltaTime); // This is for acceleration? but like ? wot
+            else
+                moveSpeed = maxSpeed;
             return moveSpeed;
         }
 
@@ -66,8 +61,6 @@ namespace StateMachines.States
                 anim.speed = 1.0f;
             }
         }
-
-
 
         private void Update()
         {
@@ -96,14 +89,13 @@ namespace StateMachines.States
                 }
 
                 inputVector.Normalize();
-                
+
                 movementController.SetTargetVelocity(inputVector * speedValue());
 
                 if (anim)
                 {
                     anim.SetBool("Walking", true);
                     float walkSpeed = (inputVector * moveSpeed).magnitude;
-                    //anim.SetFloat("Speed", walkSpeed);
                     anim.SetFloat("MoveTween", walkSpeed / 10.0f);
                     anim.speed = walkSpeed;
                 }

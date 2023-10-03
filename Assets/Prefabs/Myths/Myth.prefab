@@ -763,7 +763,6 @@ MonoBehaviour:
   overrideBehaviour: 0
   exceptions: []
   anim: {fileID: 0}
-  speedHandicap: 1.2
   moveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -1062,7 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultRegenSpeed: 0
-  regenPauseTime: 0.75
+  regenPauseTime: 0.4
   value: 0
   valueChanged:
     m_PersistentCalls:
@@ -1070,7 +1069,7 @@ MonoBehaviour:
   valueZeroed:
     m_PersistentCalls:
       m_Calls: []
-  regenSpeed: 5
+  regenSpeed: 10
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0

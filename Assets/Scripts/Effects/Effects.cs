@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using Myths;
 using Elements;
-using Commands;
 public class Effects : MonoBehaviour
 {
     public Myth myth;

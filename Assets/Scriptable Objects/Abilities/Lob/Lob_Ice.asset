@@ -15,14 +15,15 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   name: Ice Lob
   description: Lob
-  damage: 25
+  damage: 16
   regenSpeed: 0
   statIncrease: 15
-  staminaCost: 40
+  staminaCost: 30
   chargeTime: 0
   performTime: 0
   isRanged: 1
   applyBuffToParty: 1
+  hasKnockback: 0
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1

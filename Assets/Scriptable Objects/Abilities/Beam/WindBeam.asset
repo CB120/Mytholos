@@ -15,14 +15,15 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 8fa7c9bdc62acae4ba2997dcd8560828, type: 2}
   name: Wind Beam
   description: Beam
-  damage: 7
+  damage: 10
   regenSpeed: 0
   statIncrease: 0
-  staminaCost: 70
+  staminaCost: 40
   chargeTime: 2
   performTime: 4
   isRanged: 1
   applyBuffToParty: 0
+  hasKnockback: 0
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 0

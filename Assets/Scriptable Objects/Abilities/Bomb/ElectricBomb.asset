@@ -15,14 +15,15 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: f8bfe794237db224898abcd5cd3c1246, type: 2}
   name: Electric Bomb
   description: Bomb
-  damage: 40
+  damage: 28
   regenSpeed: 0
   statIncrease: 15
-  staminaCost: 55
+  staminaCost: 35
   chargeTime: 0
   performTime: 0
   isRanged: 1
   applyBuffToParty: 1
+  hasKnockback: 0
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1
