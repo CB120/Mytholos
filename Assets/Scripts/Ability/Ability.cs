@@ -220,7 +220,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         if (isInParty && ability.applyBuffToParty)
             myth.effectController.IceOvershield();
         else
-            myth.effectController.FreezeDebuff(ability.element.buffLength);
+            myth.effectController.FreezeDebuff(ability.element.buffLength, ability.element.chanceToDebuff);
     }
 
     virtual public void ApplyWindEffect(Myth myth, bool isInParty)//Agility Buff, Agility Debuff
@@ -232,7 +232,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
         }
         else if(!isInParty)
         {
-            myth.effectController.Disorient(ability.statIncrease, owningMyth, ability.element.buffLength / 2);
+            myth.effectController.Disorient(ability.statIncrease, owningMyth, ability.element.buffLength / 2, ability.element.chanceToDebuff);
         }
     }
 

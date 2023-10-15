@@ -8,5 +8,6 @@ namespace Myths
         public SO_Ability westAbility;
         public SO_Ability southAbility;
         public SO_Ability eastAbility;
+        
     }
 }

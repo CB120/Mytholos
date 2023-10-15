@@ -88,15 +88,20 @@ public class Effects : MonoBehaviour
     #endregion
 
     #region Ice - Baxter
-    public void FreezeDebuff(float duration)//Ice Debuff 
+    public void FreezeDebuff(float duration, float effectChance)//Ice Debuff 
     {
         CancelInvoke("RemoveFreezeDebuff");
-        ActivateBuff(Element.Ice, true);
-        Debug.Log($"Freeze Time: {duration}");
-        myth.Stun(duration);
-        alternateIce.effectObject.SetActive(true);
-        Invoke("RemoveFreezeDebuff", duration);
 
+        float rollChance = Random.Range(0f, 1f);
+        Debug.LogError(rollChance + " " + effectChance);
+        if (rollChance <= effectChance)
+        {
+            ActivateBuff(Element.Ice, true);
+            Debug.Log($"Freeze Time: {duration}");
+            myth.Stun(duration);
+            alternateIce.effectObject.SetActive(true);
+            Invoke("RemoveFreezeDebuff", duration);
+        }
     }
 
     private void RemoveFreezeDebuff() //Ice Debuff
@@ -139,13 +144,18 @@ public class Effects : MonoBehaviour
         DeactivateBuff(Element.Wind, false);
     }
 
-    public void Disorient(float knockback, Myth sendingMyth, float duration)
+    public void Disorient(float knockback, Myth sendingMyth, float duration, float effectChance)
     {
-        CancelInvoke("EndDisorient");
-        isDisoriented = true;
-        myth.Knockback(knockback, sendingMyth.gameObject, duration * 0.75f);
-        //Add Knockback here too
-        Invoke("EndDisorient", duration);
+        float rollChance = Random.Range(0f, 1f);
+        Debug.LogError(rollChance + " " + effectChance);
+        if (rollChance <= effectChance)
+        {
+            CancelInvoke("EndDisorient");
+            isDisoriented = true;
+            myth.Knockback(knockback, sendingMyth.gameObject, duration * 0.75f);
+            Invoke("EndDisorient", duration);
+
+        }
     }
 
     private void EndDisorient()
@@ -176,7 +186,7 @@ public class Effects : MonoBehaviour
     public void AttackBuff(float duration)
     {
         CancelInvoke("RemoveAttackBuff");
-        myth.AttackStat = Mathf.Clamp(myth.AttackStat *2, defaultAttackStat/2, defaultAttackStat * 2);
+        myth.AttackStat = Mathf.Clamp(myth.AttackStat * 2, defaultAttackStat / 2, defaultAttackStat * 2);
         ActivateBuff(Element.Fire, false);
         Invoke("RemoveAttackBuff", duration);
     }
@@ -192,7 +202,7 @@ public class Effects : MonoBehaviour
     public void DefenceBuff(float duration)
     {
         CancelInvoke("RemoveDefenceBuff");
-        myth.DefenceStat = Mathf.Clamp(myth.DefenceStat * 2, defaultDefenceStat/2, defaultDefenceStat*2);
+        myth.DefenceStat = Mathf.Clamp(myth.DefenceStat * 2, defaultDefenceStat / 2, defaultDefenceStat * 2);
         ActivateBuff(Element.Earth, false);
         Invoke("RemoveDefenceBuff", duration);
     }
@@ -206,7 +216,7 @@ public class Effects : MonoBehaviour
     public void AgilityDebuff(float duration = 0)
     {
         CancelInvoke("RemoveAgilityDebuff");
-        myth.walkSpeed = Mathf.Clamp(myth.walkSpeed /2, defaultWalkSpeed/2, defaultWalkSpeed * 2);
+        myth.walkSpeed = Mathf.Clamp(myth.walkSpeed / 2, defaultWalkSpeed / 2, defaultWalkSpeed * 2);
         if (duration > 0)
             Invoke("RemoveAgilityDebuff", duration);
     }
@@ -288,7 +298,8 @@ public class Effects : MonoBehaviour
             //mythUI.effectUIData[element].negativeBuff.gameObject.SetActive(true);
             //mythUI.effectUIData[element].negativeBuff.isEnabled = true;
         }
-        else { 
+        else
+        {
             appliedBuffs.Add(element);
             //mythUI.effectUIData[element].positiveBuff.gameObject.SetActive(true);
             //mythUI.effectUIData[element].positiveBuff.isEnabled = true;
@@ -300,11 +311,13 @@ public class Effects : MonoBehaviour
         //mythUI.RefreshLayout();
         DeactivateBuffEvent.Invoke(element, isDebuff, appliedDebuffs.Contains(element), appliedBuffs.Contains(element));
 
-        if (isDebuff && appliedDebuffs.Contains(element)) {
+        if (isDebuff && appliedDebuffs.Contains(element))
+        {
             appliedDebuffs.Remove(element);
             //mythUI.effectUIData[element].negativeBuff.isEnabled = false;
         }
-        else if (!isDebuff && appliedBuffs.Contains(element)) { 
+        else if (!isDebuff && appliedBuffs.Contains(element))
+        {
             appliedBuffs.Remove(element);
             //mythUI.effectUIData[element].positiveBuff.isEnabled = false;
         }

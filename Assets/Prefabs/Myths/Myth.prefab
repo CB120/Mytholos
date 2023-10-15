@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultRegenSpeed: 0
-  regenPauseTime: 0.4
+  regenPauseTime: 0.5
   value: 0
   valueChanged:
     m_PersistentCalls:
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   valueZeroed:
     m_PersistentCalls:
       m_Calls: []
-  regenSpeed: 10
+  regenSpeed: 7
 --- !u!1 &6739046808065001758
 GameObject:
   m_ObjectHideFlags: 0

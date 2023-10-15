@@ -13,9 +13,10 @@ namespace Myths
 
         // Stats
         [Range(0,1)] public float health;
-        [Range(1, 5)] public float size;
+        [Range(0, 1)] public float size;
         [Range(0, 1)] public float attack;
-        [Range(1, 5)] public float agility;
+        [Range(0, 1)] public float agility;
+        public SO_Element elementalType;
 
         // Abilities
         public SO_Ability[] abilities;

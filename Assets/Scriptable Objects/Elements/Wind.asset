@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Wind
   m_EditorClassIdentifier: 
   color: {r: 0.8018868, g: 0.7761155, b: 0.69143826, a: 1}
+  customMaterial: {fileID: 0}
   icon: {fileID: 108356541, guid: 9f6929ae5278e0845b2b1d40258a8a61, type: 3}
+  debrisTexture: {fileID: 0}
+  electrifiedMaterial: {fileID: 0}
   element: 5
+  chanceToDebuff: 0.4
   buffLength: 5
   debuffParticle: {fileID: 4974120466902501752, guid: b2e22f159d2a3964fa42eb4121a6ee59,
     type: 3}
@@ -23,6 +27,7 @@ MonoBehaviour:
   setParticleColor: 0
   strongAgainst:
   - {fileID: 11400000, guid: 2deee7b4ecccfcb4186ef8e4161ec721, type: 2}
+  weakAgainst: []
   hasDebris: 0
   abilityDebrisInteractorsPrefab: {fileID: 7197803344558619826, guid: 5cdbcb5d192e7a54babeffdf51cb064c,
     type: 3}

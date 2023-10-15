@@ -43,7 +43,7 @@ namespace StateMachines.States
         private float speedValue()
         {
             if (moveSpeed < maxSpeed)
-                moveSpeed += (acceleration - (myth.myth.size)) * (Time.deltaTime); // This is for acceleration? but like ? wot
+                moveSpeed += (acceleration - (myth.myth.size * 2)) * (Time.deltaTime); // This is for acceleration? but like ? wot
             else
                 moveSpeed = maxSpeed;
             return moveSpeed;
