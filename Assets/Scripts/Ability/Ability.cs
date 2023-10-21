@@ -75,7 +75,7 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
             if (myth.effectController.appliedDebuffs.Contains(Element.Wood))//Health Steal if wood buff is applied
             {
-                owningMyth.Health.Value += (finalDamage / 2f);
+                owningMyth.Health.Value += Mathf.Abs((finalDamage / 2f));
             }
 
             if (!myth.effectController.appliedBuffs.Contains(Element.Ice)) //If The Myth Doesn't Currently Have An Ice Buff
