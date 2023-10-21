@@ -20,7 +20,6 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
     private float SOknockbackStrength;
     private float SOstunTime;
     private float elementModifier = 1;
-   
 
     public float DamageMultiplier { get; set; } = 1;
 
@@ -81,6 +80,8 @@ public class Ability : MonoBehaviour //Parent Class to All Abilities
 
             if (!myth.effectController.appliedBuffs.Contains(Element.Ice)) //If The Myth Doesn't Currently Have An Ice Buff
             {
+                if (ability.element.strongAgainst.Contains(myth.element)) myth.BeforeReceiveEffectiveDamage?.Invoke();
+                if (ability.element.weakAgainst.Contains(myth.element)) myth.BeforeReceiveIneffectiveDamage?.Invoke();
                 myth.Health.Value -= finalDamage;
             }
             else

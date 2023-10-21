@@ -45,12 +45,16 @@ public class UIGameHovering : MonoBehaviour
             {
                 myth.Health.valueChanged.RemoveListener(UpdateHealth);
                 myth.Stamina.valueChanged.RemoveListener(UpdateStamina);
+                myth.BeforeReceiveEffectiveDamage -= FlagEffectiveDamage;
+                myth.BeforeReceiveIneffectiveDamage -= FlagIneffectiveDamage;
             }
 
             // Update UI visuals and place listeners in new referenced myth
             this.myth = myth;
             myth.Health.valueChanged.AddListener(UpdateHealth);
             myth.Stamina.valueChanged.AddListener(UpdateStamina);
+            myth.BeforeReceiveEffectiveDamage += FlagEffectiveDamage;
+            myth.BeforeReceiveIneffectiveDamage += FlagIneffectiveDamage;
             UpdateHealth(myth.Health.ValuePercent);
             UpdateStamina(myth.Stamina.ValuePercent);
             UpdateUI();
@@ -61,6 +65,11 @@ public class UIGameHovering : MonoBehaviour
         else
             Debug.LogWarning("UIGameMyth was passed a null reference");
     }
+
+    bool effectiveFlagged;
+    bool ineffectiveFlagged;
+    void FlagEffectiveDamage() => effectiveFlagged = true;
+    void FlagIneffectiveDamage() => ineffectiveFlagged = true;
 
     void UpdateHealth(float percent)
     {
@@ -75,7 +84,9 @@ public class UIGameHovering : MonoBehaviour
             {
                 float difference = Mathf.RoundToInt(previousHealth - myth.Health.Value);
                 DamageNumber damageNumber = Instantiate(damageNumberPrefab, transform.parent).GetComponent<DamageNumber>();
-                damageNumber.SetUp(difference, myth.transform.position, gameCamera);
+                damageNumber.SetUp(difference, myth.transform.position, gameCamera, 0 + (effectiveFlagged ? 1 : 0) + (ineffectiveFlagged ? -1 : 0));
+                effectiveFlagged = false;
+                ineffectiveFlagged = false;
             }
 
             previousHealth = myth.Health.Value;

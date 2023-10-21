@@ -19,10 +19,32 @@ public class UIGameAbility : MonoBehaviour
 
     [HideInInspector] public UIGameParty thisGameParty;
 
+    [Header("Multiplier Indicator")]
+    [SerializeField] private Image multiplicationIcon;
+    [SerializeField] private Image effectiveIcon;
+    [SerializeField] private Image ineffectiveIcon;
+
     Myth myth;
     float abilityCost;
     bool isDepleted;
     bool doNotAnimate;
+
+    public void UpdateMultiplierIndicator(Myth foe, SO_Ability ability) {
+        var abilityClass = ability.abilityPrefab.GetComponent<Ability>();
+        if (abilityClass != null && abilityClass is not HealingAbility && (foe.element.weakAgainst.Contains(ability.element) || foe.element.strongAgainst.Contains(ability.element))) {
+            bool isEffective = foe.element.weakAgainst.Contains(ability.element);
+            multiplicationIcon.gameObject.SetActive(true);
+            effectiveIcon.gameObject.SetActive(isEffective);
+            ineffectiveIcon.gameObject.SetActive(isEffective == false);
+            multiplicationIcon.color = isEffective ? DamageNumber.effectiveColor : DamageNumber.ineffectiveColor;
+            effectiveIcon.color = isEffective ? DamageNumber.effectiveColor : DamageNumber.ineffectiveColor;
+            ineffectiveIcon.color = isEffective ? DamageNumber.effectiveColor : DamageNumber.ineffectiveColor;
+        } else {
+            multiplicationIcon.gameObject.SetActive(false);
+            effectiveIcon.gameObject.SetActive(false);
+            ineffectiveIcon.gameObject.SetActive(false);
+        }
+    }
 
     public void UpdateUI(SO_Ability ability, Myth newMyth = null)
     {

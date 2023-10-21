@@ -13,13 +13,27 @@ public class DamageNumber : MonoBehaviour
     float timeToBeginFadeOut = 1.25f;
     float timeToDie = 1.5f;
     RectTransform rectTransform;
-    [SerializeField] Color[] damageColors = new Color[3]; // low, normal, high
+    //[SerializeField] Color[] damageColors = new Color[3]; // low, normal, high
 
-    public void SetUp(float value, Vector3 worldPosition, Camera camera)
+    public static Color defaultColor = new Color(1f, 1f, 0f, 1f);
+    public static Color ineffectiveColor = new Color(.6f, .6f, .6f, 1f);
+    public static Color effectiveColor = new Color(1f, .33f, 0f, 1f);
+
+    public void SetUp(float value, Vector3 worldPosition, Camera camera, int effectiveness = 0)
     {
         text = GetComponent<TextMeshProUGUI>();
         text.text = value.ToString();
-        text.color = damageColors[value < 5 ? 0 : value < 20 ? 1 : 2];
+        //text.color = damageColors[value < 5 ? 0 : value < 20 ? 1 : 2];
+        if (value > 1) {
+            text.color = effectiveness switch {
+                -1 => ineffectiveColor,
+                1 => effectiveColor,
+                _ => defaultColor
+            };
+        } else {
+            text.color = ineffectiveColor;
+        }
+
         rectTransform = GetComponent<RectTransform>();
         float scaleFactor = value < 5 ? 0.8f : value < 20 ? 1.0f : 1.5f;
         rectTransform.localScale = new Vector2(scaleFactor, scaleFactor);

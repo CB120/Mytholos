@@ -67,6 +67,9 @@ namespace Myths
 
         public SpriteRenderer ring;
 
+        [NonSerialized] public Action BeforeReceiveEffectiveDamage;
+        [NonSerialized] public Action BeforeReceiveIneffectiveDamage;
+
         [NonSerialized] public UnityEvent<Myth> died = new();
         private bool isInvulnerable = false;
 

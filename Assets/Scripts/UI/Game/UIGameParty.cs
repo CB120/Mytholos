@@ -90,6 +90,9 @@ public class UIGameParty : MonoBehaviour
 
             // Awful awful awful
             StartCoroutine(SelectMythDelayed(playerParticipant));
+
+            var foeParticipant = partyBuilder.allParticipantData.partyData[partyNumber % 2].participant as PlayerParticipant;
+            foeParticipant.mythInPlayChanged.AddListener(OnFoeSwapped);
         }
     }
 
@@ -98,6 +101,9 @@ public class UIGameParty : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         SelectMyth(playerParticipant);
+
+        yield return new WaitForEndOfFrame();
+        OnFoeSwapped(null);
     }
 
     void SelectMyth(PlayerParticipant participant)
@@ -133,6 +139,24 @@ public class UIGameParty : MonoBehaviour
             abilityUIByAbilitySO[ability].AnimateSelectedAbility();
     }
 
+    void OnFoeSwapped(Participant participant)
+    {
+        int partyMemberNumber = -1;
+        for (int i = 0; i < myths.Length; i++)
+        {
+            if (myths[i] == (partyBuilder.allParticipantData.partyData[partyNumber - 1].participant as PlayerParticipant).MythInPlay)
+                partyMemberNumber = i;
+        }
+
+        Myth foe = (partyBuilder.allParticipantData.partyData[partyNumber % 2].participant as PlayerParticipant).MythInPlay;
+
+        for (int i = 0; i < 3; i++)
+        {
+            SO_Ability ability = i == 0 ? myths[partyMemberNumber].NorthAbility : i == 1 ? myths[partyMemberNumber].WestAbility : myths[partyMemberNumber].SouthAbility;
+            abilities[i].UpdateMultiplierIndicator(foe, ability);
+        }
+    }
+
     void DisplayAbilities(PlayerParticipant participant, int partyMemberNumber = -1, float animationSpeed = 25.0f)
     {
         //if (abilitiesMenuCoroutine != null)
@@ -152,6 +176,8 @@ public class UIGameParty : MonoBehaviour
             abilities[i].UpdateUI(ability, myths[partyMemberNumber]);
             abilityUIByAbilitySO[ability] = abilities[i];
         }
+
+        OnFoeSwapped(null);
 
         // TODO: Place listeners for stamina
         // TODO: Update all visuals once (abilties with insufficient stamina are greyed out, the above listeners created above should call this same code later as well)
