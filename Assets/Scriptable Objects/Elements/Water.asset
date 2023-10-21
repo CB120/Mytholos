@@ -18,6 +18,7 @@ MonoBehaviour:
   debrisTexture: {fileID: 0}
   electrifiedMaterial: {fileID: 2100000, guid: 781f673e38705ce46b0c95859eccbb7d, type: 2}
   element: 3
+  chanceToDebuff: 1
   buffLength: 0
   debuffParticle: {fileID: 1159561878327914031, guid: 8d8287c04486fb3448bc513a8dcf8fcd,
     type: 3}

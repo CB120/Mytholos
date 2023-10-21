@@ -15,7 +15,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: b645d1410cf71184bb68fc37631aff05, type: 2}
   name: Fire Jab
   description: Jab
-  damage: 14
+  damage: 8
   regenSpeed: 0
   statIncrease: 0
   staminaCost: 3

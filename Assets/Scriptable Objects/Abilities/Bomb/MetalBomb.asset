@@ -15,7 +15,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 7b15b174ff536584391971904d3a245f, type: 2}
   name: Metal Bomb
   description: Bomb
-  damage: 28
+  damage: 24
   regenSpeed: 0
   statIncrease: 15
   staminaCost: 35

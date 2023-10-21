@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 11
   regenSpeed: 0
   statIncrease: 5
-  staminaCost: 6
+  staminaCost: 10
   chargeTime: 0
   performTime: 0
   isRanged: 1
