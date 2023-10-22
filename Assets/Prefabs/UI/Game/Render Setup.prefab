@@ -3060,6 +3060,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2287927239855997577}
     m_Modifications:
+    - target: {fileID: 66558549445515534, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 454739936349783254, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_Color.b
@@ -3239,6 +3244,11 @@ PrefabInstance:
     - target: {fileID: 2848755742245003896, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: abilitiesLazyHardcodedOffset
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062042031613628487, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3133028215953399009, guid: 4889c2244aed57449ae8d21e63a75fe2,
@@ -3316,6 +3326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Party Menu L
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297416938067254481, guid: 4889c2244aed57449ae8d21e63a75fe2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929640039331997874, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
@@ -3435,7 +3450,7 @@ PrefabInstance:
     - target: {fileID: 8368680698053999628, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8368680698053999628, guid: 4889c2244aed57449ae8d21e63a75fe2,
         type: 3}
