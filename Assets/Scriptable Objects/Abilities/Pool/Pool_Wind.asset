@@ -18,11 +18,12 @@ MonoBehaviour:
   damage: 0
   regenSpeed: 20
   statIncrease: 15
-  staminaCost: 30
+  staminaCost: 26
   chargeTime: 0
   performTime: 0
   isRanged: 1
   applyBuffToParty: 0
+  hasKnockback: 0
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1

@@ -59,7 +59,7 @@ namespace StateMachines.States
             myth.IsInvulnerable = true;
             if (dodgeCommand != null)
                 DecideDirection();
-            movementController.SetTargetVelocity(myth.transform.forward * (myth.myth.agility + dodgeSpeed));
+            movementController.SetTargetVelocity(myth.transform.forward * ((myth.myth.agility * 5) + dodgeSpeed));
             if (anim)
             {
                 anim.SetTrigger("Dodge");

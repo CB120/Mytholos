@@ -15,14 +15,15 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   name: Water Lob
   description: Lob
-  damage: 25
+  damage: 14
   regenSpeed: 0
   statIncrease: 15
-  staminaCost: 40
+  staminaCost: 25
   chargeTime: 0
   performTime: 0
   isRanged: 1
   applyBuffToParty: 1
+  hasKnockback: 0
   baseKnockback: 0
   baseStun: 0
   spawnInWorldSpace: 1

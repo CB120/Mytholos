@@ -41,7 +41,7 @@ public class UIPartyMyth : MonoBehaviour
         //statBrawn.SetUpUI(mythData.myth.brawn);
         //statPsyche.SetUpUI(mythData.myth.psyche);
         statAttack.SetUpUI(mythData.myth.attack, elementColour);
-        statAgility.SetUpUI(mythData.myth.agility, elementColour);
+        statAgility.SetUpUI((mythData.myth.agility - 0.8f) * 5, elementColour); // Some jank
 
         mythName.text = mythData.myth.name;
         //mythSubtitle.text = mythComponent.element.name + " myth";

@@ -20,7 +20,8 @@ MonoBehaviour:
   health: 0.3
   size: 0.6
   attack: 0.6
-  agility: 0.54
+  agility: 0.93
+  elementalType: {fileID: 11400000, guid: e8ae196ae333c5741bb287ba18dc342d, type: 2}
   abilities:
   - {fileID: 11400000, guid: faa3a55b3eed6ca479e524ffc99539a6, type: 2}
   - {fileID: 11400000, guid: e6196ec95f84f734dafa3a55059e6972, type: 2}

@@ -14,6 +14,7 @@ public class SO_Element : ScriptableObject
 
     [Header("Properties")]
     public Element element;
+    public float chanceToDebuff;
     public float buffLength;
     public ParticleSystem debuffParticle;
     public ParticleSystem buffParticle;

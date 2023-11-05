@@ -59,7 +59,7 @@ namespace Myths
         private MythData mythData;
 
         //References
-        public SO_Element element;
+        public SO_Element element => myth.elementalType;
         public SO_Ability NorthAbility => mythData.northAbility;
         public SO_Ability WestAbility => mythData.westAbility;
         public SO_Ability SouthAbility => mythData.southAbility;
@@ -75,7 +75,7 @@ namespace Myths
 
         private void Awake()
         {
-            walkSpeed = myth.agility;
+            walkSpeed = myth.agility * 5;
             AttackStat = myth.attack;
             SizeStat = myth.size;
             anim = GetComponentInChildren<Animator>();

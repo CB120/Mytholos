@@ -15,14 +15,15 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 967aee9440b5fdc4fb1ad370c5c42893, type: 2}
   name: Ice Swipe
   description: Swipe
-  damage: 10
+  damage: 11
   regenSpeed: 0
   statIncrease: 5
-  staminaCost: 20
+  staminaCost: 10
   chargeTime: 0
   performTime: 0
   isRanged: 1
   applyBuffToParty: 0
+  hasKnockback: 0
   baseKnockback: 10
   baseStun: 3
   spawnInWorldSpace: 0
